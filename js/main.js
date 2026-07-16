@@ -292,9 +292,7 @@
         var formData = new FormData(form);
         var data = {};
         formData.forEach(function (value, key) {
-          if (key !== '_honey') {
-            data[key] = value.trim();
-          }
+          data[key] = value.trim();
         });
         // Add security metadata
         data._t = Date.now();
