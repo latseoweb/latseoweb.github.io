@@ -177,14 +177,76 @@
   }
 
   /* ==========================================================
-     CONTACT FORM
+     CONTACT FORM — SECURE SUBMISSION
+     Webhook URL is encoded to prevent scraping from public repo.
+     Protections: honeypot, rate-limit, time-check, encoded URL.
      ========================================================== */
   function initContactForm() {
+    // Decode webhook URL (base64 encoded to hide from scrapers)
+    var WEBHOOK = atob('aHR0cHM6Ly9ob29rLmV1MS5tYWtlLmNvbS9vbWJmb2pkcWhzY3NwcnM1ODg3bjJuZjd1Y2RjM2dsNw==');
+
+    var COOLDOWN_MS = 30000;    // 30 seconds between submissions
+    var MIN_FILL_TIME = 3000;   // form must take at least 3 seconds to fill
+
     var forms = document.querySelectorAll('.contact-form');
 
     forms.forEach(function (form) {
+      // Track when user starts interacting with the form
+      var formStartTime = Date.now();
+      var fields = form.querySelectorAll('input:not([type="hidden"]):not([name="_honey"]), textarea');
+      fields.forEach(function (field) {
+        field.addEventListener('focus', function () {
+          if (!formStartTime) formStartTime = Date.now();
+        }, { once: true });
+        field.addEventListener('input', function () {
+          if (!formStartTime) formStartTime = Date.now();
+        }, { once: true });
+      });
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        // ── HONEYPOT CHECK: bots auto-fill hidden fields ──
+        var honey = form.querySelector('.contact-form__honey');
+        if (honey && honey.value.trim() !== '') {
+          // Silently reject — bot thinks it succeeded
+          form.reset();
+          return;
+        }
+
+        // ── RATE LIMIT CHECK (localStorage) ──
+        try {
+          var lastSubmit = localStorage.getItem('latseo_form_ts');
+          var now = Date.now();
+          if (lastSubmit && (now - parseInt(lastSubmit, 10)) < COOLDOWN_MS) {
+            var submitBtn = form.querySelector('.contact-form__submit');
+            var remain = Math.ceil((COOLDOWN_MS - (now - parseInt(lastSubmit, 10))) / 1000);
+            submitBtn.textContent = 'Uzgaidi ' + remain + 's...';
+            submitBtn.style.background = '#F59E0B';
+            submitBtn.style.opacity = '1';
+            setTimeout(function () {
+              submitBtn.textContent = 'Submit';
+              submitBtn.style.background = '';
+              submitBtn.style.opacity = '';
+            }, 2000);
+            return;
+          }
+        } catch (_) { /* localStorage unavailable — allow */ }
+
+        // ── TIME CHECK: too fast = bot ──
+        var fillTime = Date.now() - formStartTime;
+        if (fillTime < MIN_FILL_TIME) {
+          var submitBtn2 = form.querySelector('.contact-form__submit');
+          submitBtn2.textContent = 'Pārāk ātri!';
+          submitBtn2.style.background = '#EF4444';
+          submitBtn2.style.opacity = '1';
+          setTimeout(function () {
+            submitBtn2.textContent = 'Submit';
+            submitBtn2.style.background = '';
+            submitBtn2.style.opacity = '';
+          }, 2000);
+          return;
+        }
 
         // Basic validation
         var inputs = form.querySelectorAll('input[required], textarea[required]');
@@ -214,6 +276,11 @@
           }
         }
 
+        // Save submission timestamp
+        try {
+          localStorage.setItem('latseo_form_ts', Date.now().toString());
+        } catch (_) {}
+
         // Submit button UI feedback
         var submitBtn = form.querySelector('.contact-form__submit');
         var originalText = submitBtn.textContent;
@@ -221,15 +288,20 @@
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.7';
 
-        // Collect form data
+        // Collect form data (exclude honeypot)
         var formData = new FormData(form);
         var data = {};
         formData.forEach(function (value, key) {
-          data[key] = value;
+          if (key !== '_honey') {
+            data[key] = value.trim();
+          }
         });
+        // Add security metadata
+        data._t = Date.now();
+        data._src = window.location.href;
 
-        // Send to Make.com webhook
-        fetch(form.action, {
+        // Send to Make.com webhook (URL encoded in code)
+        fetch(WEBHOOK, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
@@ -241,6 +313,7 @@
             submitBtn.style.opacity = '1';
             submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.3)';
             form.reset();
+            formStartTime = Date.now(); // reset timer
           } else {
             submitBtn.textContent = 'Kļūda! Mēģini vēlreiz';
             submitBtn.style.background = '#EF4444';
