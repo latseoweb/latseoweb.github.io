@@ -728,6 +728,7 @@ h1,h2,h3,h4,h5,h6{
   :root{--sp-3xl:4rem;--sp-2xl:3rem}
   .features-grid,
   .services-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
   .footer__grid{grid-template-columns:1fr 1fr}
   .cta-section__grid{grid-template-columns:1fr;gap:var(--sp-xl)}
   .hero__stats{gap:var(--sp-lg)}
