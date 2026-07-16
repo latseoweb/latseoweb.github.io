@@ -145,13 +145,12 @@ h1,h2,h3,h4,h5,h6{
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:1000;
   height:var(--header-height);
-  transition:background var(--transition-base),box-shadow var(--transition-base)
+  background:var(--clr-bg);
+  border-bottom:1px solid var(--clr-border-light);
+  transition:box-shadow var(--transition-base)
 }
 .site-header--scrolled{
-  background:rgba(245,245,240,0.9);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--clr-border-light)
+  box-shadow:0 1px 4px rgba(0,0,0,0.06)
 }
 
 .header__inner{
