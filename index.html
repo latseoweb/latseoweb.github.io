@@ -48,19 +48,91 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "LatSEO",
-    "url": "https://latseo.com/",
-    "logo": "https://latseo.com/assets/images/logo.png",
-    "description": "Neatgriezeniska organiskā datplūsma jūsu biznesam. Profesionāli SEO pakalpojumi un mājaslapu optimizācija bez aģentūru birokrātijas.",
-    "email": "sales@latseo.com",
-    "telephone": "+37124424434",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Rīga",
-      "addressCountry": "LV"
-    },
-    "sameAs": []
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://latseo.com/#org",
+        "name": "Baltic SEO, SIA",
+        "alternateName": "LatSEO",
+        "url": "https://latseo.com/",
+        "logo": "https://latseo.com/wp-content/uploads/2026/02/cropped-LatSEO-logo-black-scaled-1.png",
+        "taxID": "LV40203749304",
+        "vatID": "LV40203749304",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kārklu iela 4, Odukalns",
+          "addressLocality": "Ķekavas novads",
+          "addressCountry": "LV",
+          "postalCode": "LV-2123"
+        },
+        "email": "sales@latseo.com",
+        "telephone": "+37124424434",
+        "sameAs": [],
+        "founder": {
+          "@type": "Person",
+          "name": "Adrians Stankevičs",
+          "jobTitle": "Dibinātājs un SEO stratēģis",
+          "telephone": "+37124424434"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+37124424434",
+          "email": "sales@latseo.com",
+          "contactType": "sales",
+          "availableLanguage": ["Latvian", "English"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://latseo.com/#website",
+        "url": "https://latseo.com/",
+        "name": "LatSEO — SEO Pakalpojumi un Optimizācija",
+        "inLanguage": "lv",
+        "publisher": { "@id": "https://latseo.com/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://latseo.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Cik ilgā laikā redzami SEO rezultāti?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pirmās pozīciju izmaiņas parasti novērojamas 2–4 mēnešu laikā atkarībā no nišas konkurences un vietnes sākotnējā stāvokļa. Pilns SEO efekts attīstās 6–12 mēnešu periodā."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vai LatSEO strādā ar maziem uzņēmumiem?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Jā, mēs strādājam gan ar maziem vietējiem uzņēmumiem, gan lielākiem e-komercijas projektiem. Katram klientam izstrādājam individuālu stratēģiju, kas atbilst tā budžetam un mērķiem."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kāda ir atšķirība starp SEO un Google Ads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SEO ir ilgtermiņa stratēģija — ieguldītais darbs turpina nest rezultātus arī pēc aktīvās optimizācijas pārtraukšanas. Google Ads ir maksas reklāma, kas pārstāj darboties, tiklīdz budžets tiek apturēts."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://latseo.com/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Sākums",
+            "item": "https://latseo.com/"
+          }
+        ]
+      }
+    ]
   }
   </script>
   <meta name="date" content="2026-07-16">
@@ -68,6 +140,8 @@
 </head>
 
 <body>
+
+  <a href="#main-content" class="skip-link">Pāriet uz saturu</a>
 
   <!-- ============================================================
        HEADER / NAVIGĀCIJA
@@ -161,10 +235,8 @@
             un mājaslapu optimizācija
           </h1>
 
-          <!-- Šeit ievietot esošo apraksta tekstu -->
-          <p class="hero__description">
-            Mēs nekoncentrējamies uz tukšām atskaitēm, bet gan uz izmērāmiem biznesa rezultātiem. Mūsu komanda palīdz e-komercijas un pakalpojumu uzņēmumiem audzēt organisko datplūsmu, izmantojot uz datiem balstītu Google optimizāciju.
-          </p>
+          <p class="hero__description" id="hero-description">
+            Mēs nekoncentrējamies uz tukšām atskaitēm, bet gan uz izmērāmiem biznesa rezultātiem. Mūsu komanda palīdz e-komercijas un pakalpojumu uzņēmumiem audzēt organisko datplūsmu, izmantojot <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer">uz datiem balstītu Google optimizāciju</a>.</p>
 
           <!-- CTA Buttons -->
           <div class="hero__actions">
@@ -295,7 +367,7 @@
               Google nespēs augstu novērtēt Jūsu vietni, ja tās tehniskā bāze ir novecojusi. Mēs veicam pilnu koda un Search Console auditu, novēršam ielādes ātruma problēmas un sakārtojam strukturētos datus (Schema).
             </p>
             <a href="/tehniskais-seo/" class="service-card__link">
-              Uzzināt vairāk
+              Uzzināt vairāk par tehnisko SEO
               <span class="service-card__link-arrow" aria-hidden="true">→</span>
             </a>
           </article>
@@ -310,7 +382,7 @@
               Neatkarīgi no tā, vai pārvaldāt e-veikalu vai pakalpojumu portālu, kvalitatīvs saturs ir panākumu atslēga. Mēs izstrādājam pārdomātas atslēgvārdu struktūras un atrodam konkurentu vājās vietas.
             </p>
             <a href="/satura-strategija/" class="service-card__link">
-              Uzzināt vairāk
+              Uzzināt vairāk par satura stratēģiju
               <span class="service-card__link-arrow" aria-hidden="true">→</span>
             </a>
           </article>
@@ -325,7 +397,7 @@
               Lielisks risinājums vietējiem uzņēmumiem. Mēs optimizējam Jūsu Google Business Profile un izveidojam atsauksmju piesaistes sistēmu, lai nodrošinātu dominanci kartes meklēšanas rezultātos.
             </p>
             <a href="/lokalais-seo/" class="service-card__link">
-              Uzzināt vairāk
+              Uzzināt vairāk par lokālo SEO
               <span class="service-card__link-arrow" aria-hidden="true">→</span>
             </a>
           </article>

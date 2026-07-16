@@ -87,6 +87,17 @@
   --header-height: 76px;
 }
 
+/* ---------- Skip Link ---------- */
+.skip-link{
+  position:absolute;top:-100px;left:var(--sp-md);
+  padding:var(--sp-xs) var(--sp-md);
+  background:var(--clr-accent-text);color:#fff;
+  z-index:9999;font-size:var(--fs-sm);
+  border-radius:0 0 4px 4px;
+  transition:top var(--transition-fast)
+}
+.skip-link:focus{top:0}
+
 /* ---------- CSS Reset ---------- */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
