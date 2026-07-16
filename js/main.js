@@ -214,20 +214,45 @@
           }
         }
 
-        // Simulate submission
+        // Submit button UI feedback
         var submitBtn = form.querySelector('.contact-form__submit');
         var originalText = submitBtn.textContent;
         submitBtn.textContent = 'Notiek nosūtīšana...';
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.7';
 
-        setTimeout(function () {
-          submitBtn.textContent = '✓ Nosūtīts!';
-          submitBtn.style.background = '#10B981';
-          submitBtn.style.opacity = '1';
-          submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.3)';
-          form.reset();
+        // Collect form data
+        var formData = new FormData(form);
+        var data = {};
+        formData.forEach(function (value, key) {
+          data[key] = value;
+        });
 
+        // Send to Make.com webhook
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        .then(function (response) {
+          if (response.ok) {
+            submitBtn.textContent = '✓ Nosūtīts!';
+            submitBtn.style.background = '#10B981';
+            submitBtn.style.opacity = '1';
+            submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.3)';
+            form.reset();
+          } else {
+            submitBtn.textContent = 'Kļūda! Mēģini vēlreiz';
+            submitBtn.style.background = '#EF4444';
+            submitBtn.style.opacity = '1';
+          }
+        })
+        .catch(function () {
+          submitBtn.textContent = 'Kļūda! Mēģini vēlreiz';
+          submitBtn.style.background = '#EF4444';
+          submitBtn.style.opacity = '1';
+        })
+        .finally(function () {
           setTimeout(function () {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
@@ -235,7 +260,7 @@
             submitBtn.style.opacity = '';
             submitBtn.style.boxShadow = '';
           }, 3000);
-        }, 1000);
+        });
       });
 
       // Clear error styling on input
