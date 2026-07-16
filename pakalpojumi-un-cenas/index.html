@@ -29,7 +29,16 @@
       <nav class="header__nav" role="navigation" aria-label="Galvenā navigācija">
         <ul class="header__nav-list">
           <li><a href="/" class="header__nav-link">Sākums</a></li>
-          <li><a href="/pakalpojumi-un-cenas/" class="header__nav-link header__nav-link--active">Pakalpojumi un cenas</a></li>
+          <li class="header__dropdown">
+            <span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">Pakalpojumi un cenas <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span></span>
+            <div class="header__dropdown-menu">
+              <a href="/pakalpojumi-un-cenas/">Pakalpojumu cenas</a>
+              <a href="/tehniskais-seo/">Tehniskais SEO</a>
+              <a href="/lokalais-seo/">Lokālais SEO</a>
+              <a href="/saisu-veidosana/">Saišu veidošana</a>
+              <a href="/satura-strategija/">Satura stratēģija</a>
+            </div>
+          </li>
           <li><a href="/projekti/" class="header__nav-link">Projekti</a></li>
           <li><a href="/kontakti/" class="header__nav-link">Kontakti</a></li>
         </ul>
@@ -38,7 +47,13 @@
       </nav>
       <button class="header__mobile-toggle" aria-label="Izvēlne"><span></span><span></span><span></span></button>
     </div>
-    <div class="header__mobile-menu"><a href="/">Sākums</a><a href="/pakalpojumi-un-cenas/">Pakalpojumi un cenas</a><a href="/projekti/">Projekti</a><a href="/kontakti/">Kontakti</a><div class="header__mobile-lang"><a href="/pakalpojumi-un-cenas/" class="header__lang-btn header__lang-btn--active">LV</a><a href="/en/pakalpojumi-un-cenas/" class="header__lang-btn">EN</a></div></div>
+    <div class="header__mobile-menu" role="dialog" aria-label="Mobilā navigācija">
+      <a href="/">Sākums</a><a href="/pakalpojumi-un-cenas/">Pakalpojumi un cenas</a>
+      <a href="/tehniskais-seo/">Tehniskais SEO</a><a href="/lokalais-seo/">Lokālais SEO</a>
+      <a href="/saisu-veidosana/">Saišu veidošana</a><a href="/satura-strategija/">Satura stratēģija</a>
+      <a href="/projekti/">Projekti</a><a href="/kontakti/">Kontakti</a>
+      <div class="header__mobile-lang"><a href="/pakalpojumi-un-cenas/" class="header__lang-btn header__lang-btn--active">LV</a><a href="/en/pakalpojumi-un-cenas/" class="header__lang-btn" hreflang="en" lang="en">EN</a></div>
+    </div>
   </header>
   <main id="main-content">
     <section class="section section--light" style="padding-top:calc(var(--header-height) + var(--sp-2xl))">

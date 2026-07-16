@@ -316,6 +316,23 @@ h1,h2,h3,h4,h5,h6{
   66%{transform:translate(-10px,10px) scale(0.98)}
 }
 
+/* Hero with full background image */
+.hero--bg{
+  background: linear-gradient(rgba(31,21,1,0.55), rgba(31,21,1,0.45)), url('../assets/images/rigas_fons.webp') center/cover no-repeat
+}
+.hero--bg .hero__title,
+.hero--bg .hero__description,
+.hero--bg .hero__stat-value,
+.hero--bg .hero__stat-label,
+.hero--bg .hero__badge{color:#F5F5F0}
+.hero--bg .hero__title-highlight{color:#E6D8C3}
+.hero--bg .hero__badge{background:rgba(245,245,240,0.08);border-color:rgba(245,245,240,0.15);color:#E6D8C3}
+.hero--bg .hero__badge-dot{background:#E6D8C3}
+.hero--bg .hero__stats{border-top-color:rgba(245,245,240,0.15)}
+.hero--bg .btn--secondary{color:#F5F5F0;border-color:rgba(245,245,240,0.25)}
+.hero--bg .btn--secondary:hover{background:rgba(245,245,240,0.08);border-color:rgba(245,245,240,0.4);color:#F5F5F0}
+.hero__overlay{display:none}
+
 .hero__content{position:relative;z-index:1;max-width:700px}
 
 /* Hero Grid Layout (text + image) */
