@@ -800,51 +800,70 @@ h1,h2,h3,h4,h5,h6{
 }
 
 /* ============================================================
-   FLOATING CONTACT BAR (Mobile Lead Capture)
+   FLOATING ACTION BUTTONS — WhatsApp + Phone
    ============================================================ */
-.float-contact{
-  display:none;
-  position:fixed;bottom:0;left:0;right:0;z-index:999;
-  background:var(--clr-bg);
-  border-top:1px solid var(--clr-border);
-  padding:var(--sp-xs) var(--sp-md);
-  gap:var(--sp-sm)
+.floating-ctas{
+  position:fixed;bottom:28px;right:28px;z-index:998;
+  display:flex;flex-direction:column;gap:10px;
+  align-items:flex-end
 }
-.float-contact__btn{
-  display:flex;align-items:center;justify-content:center;gap:var(--sp-2xs);
-  flex:1;
-  padding:0.7rem 1rem;
+.floating-cta{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 20px;
   font-size:var(--fs-sm);font-weight:var(--fw-medium);
   text-decoration:none;
-  transition:all var(--transition-fast)
+  border-radius:50px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.10),0 1px 3px rgba(0,0,0,0.06);
+  transition:all 0.25s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+  white-space:nowrap
 }
-.float-contact__btn--call{
-  background:var(--clr-text-primary);color:var(--clr-text-inverse)
+.floating-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.14),0 2px 6px rgba(0,0,0,0.08)
 }
-.float-contact__btn--call:hover{background:var(--clr-accent-hover);color:var(--clr-text-inverse)}
-.float-contact__btn--whatsapp{
-  background:#25D366;color:#fff
-}
-.float-contact__btn--whatsapp:hover{background:#1da851;color:#fff}
-.float-contact__btn svg{flex-shrink:0}
+.floating-cta svg{flex-shrink:0}
 
-@media(max-width:768px){
-  .float-contact{display:flex}
-  .scroll-top{bottom:80px}
-  body{padding-bottom:70px}
+/* Phone pill */
+.floating-cta--call{
+  background:var(--clr-dark);
+  color:var(--clr-text-inverse)
+}
+.floating-cta--call:hover{
+  background:#2a1f08;
+  color:var(--clr-text-inverse)
 }
 
-/* Desktop: WhatsApp bubble only */
-.float-whatsapp-desktop{
-  display:flex;align-items:center;justify-content:center;
-  position:fixed;bottom:var(--sp-lg);right:calc(var(--sp-lg) + 60px);z-index:99;
-  width:48px;height:48px;
-  background:#25D366;color:#fff;
-  border-radius:50%;
-  box-shadow:0 4px 14px rgba(37,211,102,0.35);
-  transition:all var(--transition-base)
+/* WhatsApp pill */
+.floating-cta--whatsapp{
+  background:#25D366;
+  color:#fff
 }
-.float-whatsapp-desktop:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(37,211,102,0.45);color:#fff}
+.floating-cta--whatsapp:hover{
+  background:#1da851;
+  color:#fff
+}
+
+/* Label — hidden on small screens, visible on larger */
+.floating-cta__label{
+  font-family:var(--ff-body);
+  letter-spacing:0.01em
+}
+
+/* Mobile: compact circle buttons, no label */
 @media(max-width:768px){
-  .float-whatsapp-desktop{display:none}
+  .floating-ctas{
+    bottom:16px;right:16px;gap:8px
+  }
+  .floating-cta{
+    width:50px;height:50px;padding:0;
+    justify-content:center;
+    border-radius:50%
+  }
+  .floating-cta__label{display:none}
+  .floating-cta svg{width:22px;height:22px}
+  .scroll-top{bottom:120px}
 }
+
+/* Adjust scroll-to-top so it doesn't overlap */
+.scroll-top{bottom:120px}
