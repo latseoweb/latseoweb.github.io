@@ -798,3 +798,53 @@ h1,h2,h3,h4,h5,h6{
   .site-header,.scroll-top,.hero__bg{display:none}
   body{background:white;color:black}
 }
+
+/* ============================================================
+   FLOATING CONTACT BAR (Mobile Lead Capture)
+   ============================================================ */
+.float-contact{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:999;
+  background:var(--clr-bg);
+  border-top:1px solid var(--clr-border);
+  padding:var(--sp-xs) var(--sp-md);
+  gap:var(--sp-sm)
+}
+.float-contact__btn{
+  display:flex;align-items:center;justify-content:center;gap:var(--sp-2xs);
+  flex:1;
+  padding:0.7rem 1rem;
+  font-size:var(--fs-sm);font-weight:var(--fw-medium);
+  text-decoration:none;
+  transition:all var(--transition-fast)
+}
+.float-contact__btn--call{
+  background:var(--clr-text-primary);color:var(--clr-text-inverse)
+}
+.float-contact__btn--call:hover{background:var(--clr-accent-hover);color:var(--clr-text-inverse)}
+.float-contact__btn--whatsapp{
+  background:#25D366;color:#fff
+}
+.float-contact__btn--whatsapp:hover{background:#1da851;color:#fff}
+.float-contact__btn svg{flex-shrink:0}
+
+@media(max-width:768px){
+  .float-contact{display:flex}
+  .scroll-top{bottom:80px}
+  body{padding-bottom:70px}
+}
+
+/* Desktop: WhatsApp bubble only */
+.float-whatsapp-desktop{
+  display:flex;align-items:center;justify-content:center;
+  position:fixed;bottom:var(--sp-lg);right:calc(var(--sp-lg) + 60px);z-index:99;
+  width:48px;height:48px;
+  background:#25D366;color:#fff;
+  border-radius:50%;
+  box-shadow:0 4px 14px rgba(37,211,102,0.35);
+  transition:all var(--transition-base)
+}
+.float-whatsapp-desktop:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(37,211,102,0.45);color:#fff}
+@media(max-width:768px){
+  .float-whatsapp-desktop{display:none}
+}

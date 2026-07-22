@@ -17,6 +17,7 @@
     initSmoothScroll();
     initContactForm();
     initCurrentPageHighlight();
+    initEventTracking();
   });
 
   /* ==========================================================
@@ -225,7 +226,7 @@
             submitBtn.style.background = '#F59E0B';
             submitBtn.style.opacity = '1';
             setTimeout(function () {
-              submitBtn.textContent = 'Submit';
+              submitBtn.textContent = 'Sūtīt Pieprasījumu';
               submitBtn.style.background = '';
               submitBtn.style.opacity = '';
             }, 2000);
@@ -241,7 +242,7 @@
           submitBtn2.style.background = '#EF4444';
           submitBtn2.style.opacity = '1';
           setTimeout(function () {
-            submitBtn2.textContent = 'Submit';
+            submitBtn2.textContent = 'Sūtīt Pieprasījumu';
             submitBtn2.style.background = '';
             submitBtn2.style.opacity = '';
           }, 2000);
@@ -310,6 +311,14 @@
             submitBtn.style.background = '#10B981';
             submitBtn.style.opacity = '1';
             submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.3)';
+            // GA4: track successful form submission
+            if (typeof gtag === 'function') {
+              gtag('event', 'form_submit', {
+                'event_category': 'lead',
+                'event_label': data.website || window.location.href,
+                'value': 1
+              });
+            }
             form.reset();
             formStartTime = Date.now(); // reset timer
           } else {
@@ -415,5 +424,52 @@
   document.querySelectorAll('[data-count]').forEach(function (el) {
     counterObserver.observe(el);
   });
+
+  /* ==========================================================
+     GA4 EVENT TRACKING — WhatsApp, Phone, Form
+     ========================================================== */
+  function initEventTracking() {
+    // Track WhatsApp clicks
+    document.addEventListener('click', function (e) {
+      var waLink = e.target.closest('a[href*="wa.me"]');
+      if (waLink) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'whatsapp_click', {
+            'event_category': 'lead',
+            'event_label': window.location.href,
+            'value': 1
+          });
+        }
+      }
+    });
+
+    // Track phone clicks (tel: links)
+    document.addEventListener('click', function (e) {
+      var telLink = e.target.closest('a[href^="tel:"]');
+      if (telLink) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'phone_click', {
+            'event_category': 'lead',
+            'event_label': telLink.getAttribute('href'),
+            'value': 1
+          });
+        }
+      }
+    });
+
+    // Track CTA button clicks
+    document.addEventListener('click', function (e) {
+      var ctaBtn = e.target.closest('.header__cta, .cta-section__contact-link[href*="tel:"], .btn--primary[href*="kontakti"]');
+      if (ctaBtn) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'cta_click', {
+            'event_category': 'lead',
+            'event_label': ctaBtn.textContent.trim() || ctaBtn.getAttribute('href'),
+            'value': 1
+          });
+        }
+      }
+    });
+  }
 
 })();
