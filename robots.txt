@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://latseo.com/sitemap.xml
+
+# Disallow admin / sensitive paths (none for static site)

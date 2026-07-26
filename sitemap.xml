@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- ================================
+       Sākums / Home
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ================================
+       Lokālais SEO / Local SEO
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/lokalais-seo/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/lokalais-seo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/lokalais-seo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/lokalais-seo/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ================================
+       Pakalpojumi un cenas / Pricing
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/pakalpojumi-un-cenas/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/pakalpojumi-un-cenas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/pakalpojumi-un-cenas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/pakalpojumi-un-cenas/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ================================
+       Tehniskais SEO / Technical SEO
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/tehniskais-seo/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/tehniskais-seo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/tehniskais-seo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/tehniskais-seo/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ================================
+       Satura stratēģija / Content
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/satura-strategija/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/satura-strategija/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/satura-strategija/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/satura-strategija/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ================================
+       Saišu veidošana / Link Building
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/saisu-veidosana/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/saisu-veidosana/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/saisu-veidosana/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/saisu-veidosana/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ================================
+       Projekti / Projects
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/projekti/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/projekti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/projekti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/projekti/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ================================
+       Kontakti / Contact
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/kontakti/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/kontakti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/kontakti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/kontakti/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ================================
+       SEO Pakalpojumi Rīgā (LV only)
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/seo-pakalpojumi-riga/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/seo-pakalpojumi-riga/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/seo-pakalpojumi-riga/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
