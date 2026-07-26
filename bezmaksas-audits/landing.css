@@ -1,0 +1,772 @@
+/* ============================================================
+   LatSEO Landing Page — "Bezmaksas SEO Audits"
+   Google Ads optimized | High-conversion design
+   Inherits CSS custom properties from ../css/style.css
+   ============================================================ */
+
+/* ---------- Container ---------- */
+.lp-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--sp-lg);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.lp-hero {
+  background: var(--clr-dark);
+  color: var(--clr-text-inverse);
+  padding: var(--sp-3xl) 0 var(--sp-2xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grain overlay for depth */
+.lp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(93, 134, 108, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.lp-hero > .lp-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Urgency Banner */
+.lp-urgency-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  background: rgba(93, 134, 108, 0.15);
+  border: 1px solid rgba(93, 134, 108, 0.3);
+  color: var(--clr-accent-text);
+  padding: var(--sp-xs) var(--sp-md);
+  border-radius: 50px;
+  font-size: var(--fs-sm);
+  margin-bottom: var(--sp-xl);
+  animation: lp-fade-in-up 0.6s ease both;
+}
+
+.lp-urgency-banner strong {
+  font-weight: var(--fw-semibold);
+}
+
+/* Headline */
+.lp-hero-headline {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-light);
+  font-size: clamp(2rem, 5vw, var(--fs-5xl));
+  line-height: var(--lh-tight);
+  color: var(--clr-text-inverse);
+  margin-bottom: var(--sp-md);
+  animation: lp-fade-in-up 0.6s 0.1s ease both;
+}
+
+.lp-highlight {
+  color: var(--clr-accent-text);
+  font-weight: var(--fw-semibold);
+}
+
+/* Sub-headline */
+.lp-hero-sub {
+  font-size: clamp(var(--fs-md), 2.5vw, var(--fs-xl));
+  line-height: var(--lh-relaxed);
+  color: var(--clr-accent-soft);
+  max-width: 680px;
+  margin: 0 auto var(--sp-2xl);
+  animation: lp-fade-in-up 0.6s 0.2s ease both;
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.lp-form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  animation: lp-fade-in-up 0.6s 0.3s ease both;
+}
+
+.lp-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.lp-form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+}
+
+.lp-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3xs);
+  text-align: left;
+}
+
+.lp-field:first-child,
+.lp-field:nth-child(2) {
+  grid-column: span 1;
+}
+
+.lp-field:nth-child(3),
+.lp-field:nth-child(4) {
+  grid-column: span 1;
+}
+
+.lp-field-label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-accent-soft);
+  margin-left: 2px;
+}
+
+.lp-field-label span {
+  color: var(--clr-accent-text);
+}
+
+.lp-field input {
+  width: 100%;
+  padding: var(--sp-xs) var(--sp-sm);
+  background: rgba(245, 245, 240, 0.06);
+  border: 1px solid rgba(245, 245, 240, 0.12);
+  color: var(--clr-text-inverse);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.lp-field input::placeholder {
+  color: var(--clr-text-muted);
+  opacity: 0.6;
+}
+
+.lp-field input:focus {
+  border-color: var(--clr-accent-text);
+  background: rgba(245, 245, 240, 0.08);
+  outline: none;
+}
+
+.lp-field input.error {
+  border-color: #e05555;
+}
+
+.lp-field-error {
+  font-size: var(--fs-xs);
+  color: #e05555;
+  min-height: 1em;
+  margin-top: 2px;
+}
+
+/* Submit Button */
+.lp-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2xs);
+  background: var(--clr-accent-text);
+  color: var(--clr-text-inverse);
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-base);
+  padding: var(--sp-sm) var(--sp-xl);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+  width: 100%;
+  margin-top: var(--sp-xs);
+}
+
+.lp-btn-primary:hover {
+  background: var(--clr-accent-hover);
+  transform: translateY(-1px);
+}
+
+.lp-btn-primary:active {
+  transform: translateY(0);
+}
+
+.lp-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.lp-btn-icon {
+  transition: transform var(--transition-fast);
+}
+
+.lp-btn-primary:hover .lp-btn-icon {
+  transform: translateX(3px);
+}
+
+/* Button sizes */
+.lp-btn-lg {
+  width: auto;
+  padding: var(--sp-md) var(--sp-2xl);
+  font-size: var(--fs-md);
+}
+
+.lp-btn-xl {
+  width: auto;
+  padding: var(--sp-md) var(--sp-2xl);
+  font-size: var(--fs-lg);
+}
+
+/* Micro-trust Line */
+.lp-trust-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-xs);
+  margin-top: var(--sp-md);
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  flex-wrap: wrap;
+}
+
+.lp-trust-line span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lp-trust-sep {
+  opacity: 0.4;
+}
+
+/* Success Message */
+.lp-success {
+  text-align: center;
+  padding: var(--sp-xl) 0;
+  animation: lp-fade-in-up 0.5s ease both;
+}
+
+.lp-success-icon {
+  color: var(--clr-accent-text);
+  margin-bottom: var(--sp-md);
+}
+
+.lp-success-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-2xl);
+  color: var(--clr-text-inverse);
+  margin-bottom: var(--sp-sm);
+}
+
+.lp-success-text {
+  font-size: var(--fs-md);
+  color: var(--clr-accent-soft);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: var(--lh-relaxed);
+}
+
+/* ============================================================
+   SECTIONS (Shared)
+   ============================================================ */
+.lp-section {
+  padding: var(--sp-4xl) 0;
+}
+
+.lp-section-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-light);
+  font-size: clamp(1.75rem, 4vw, var(--fs-3xl));
+  line-height: var(--lh-tight);
+  color: var(--clr-text-primary);
+  margin-bottom: var(--sp-xl);
+  max-width: 700px;
+}
+
+/* ============================================================
+   WHAT YOU GET
+   ============================================================ */
+.lp-what-you-get {
+  background: var(--clr-bg);
+  text-align: center;
+}
+
+.lp-what-you-get .lp-section-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lp-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-lg);
+  text-align: left;
+  margin-top: var(--sp-lg);
+}
+
+.lp-benefit-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border-light);
+  padding: var(--sp-xl) var(--sp-lg);
+  transition: border-color var(--transition-fast);
+}
+
+.lp-benefit-card:hover {
+  border-color: var(--clr-accent-soft);
+}
+
+.lp-benefit-icon {
+  color: var(--clr-accent-text);
+  margin-bottom: var(--sp-md);
+}
+
+.lp-benefit-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-md);
+  color: var(--clr-text-primary);
+  margin-bottom: var(--sp-xs);
+}
+
+.lp-benefit-text {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+.lp-how-it-works {
+  background: var(--clr-bg-alt);
+  text-align: center;
+}
+
+.lp-how-it-works .lp-section-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lp-steps {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  margin-top: var(--sp-xl);
+  text-align: left;
+}
+
+.lp-step {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  position: relative;
+}
+
+.lp-step-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-accent-text);
+  color: var(--clr-text-inverse);
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-lg);
+}
+
+.lp-step-content {
+  flex: 1;
+}
+
+.lp-step-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-md);
+  color: var(--clr-text-primary);
+  margin-bottom: var(--sp-2xs);
+}
+
+.lp-step-text {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+.lp-step-arrow {
+  flex-shrink: 0;
+  color: var(--clr-accent-soft);
+  margin-top: 12px;
+}
+
+.lp-step:last-child .lp-step-arrow {
+  display: none;
+}
+
+/* ============================================================
+   WHY LatSEO
+   ============================================================ */
+.lp-why-us {
+  background: var(--clr-bg);
+}
+
+.lp-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--sp-2xl);
+  align-items: center;
+}
+
+.lp-why-lead {
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--sp-lg);
+  max-width: 560px;
+}
+
+.lp-why-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.lp-why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-xs);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+.lp-why-item svg {
+  flex-shrink: 0;
+  color: var(--clr-accent-text);
+  margin-top: 2px;
+}
+
+.lp-why-item strong {
+  color: var(--clr-text-primary);
+  font-weight: var(--fw-medium);
+}
+
+/* Trust Card */
+.lp-trust-card {
+  background: var(--clr-dark);
+  color: var(--clr-text-inverse);
+  padding: var(--sp-xl);
+}
+
+.lp-trust-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding-bottom: var(--sp-lg);
+  border-bottom: 1px solid rgba(245, 245, 240, 0.1);
+  margin-bottom: var(--sp-lg);
+}
+
+.lp-logo-mark {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-accent-text);
+  color: var(--clr-text-inverse);
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-md);
+}
+
+.lp-trust-card-sub {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+.lp-trust-card-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-sm);
+  text-align: center;
+}
+
+.lp-trust-stat-num {
+  display: block;
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-xl);
+  color: var(--clr-accent-text);
+}
+
+.lp-trust-stat-label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   URGENCY CTA
+   ============================================================ */
+.lp-urgency-cta {
+  background: var(--clr-bg-alt);
+}
+
+.lp-urgency-card {
+  text-align: center;
+  background: var(--clr-dark);
+  color: var(--clr-text-inverse);
+  padding: var(--sp-3xl) var(--sp-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-urgency-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(93, 134, 108, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.lp-urgency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  background: rgba(93, 134, 108, 0.2);
+  border: 1px solid rgba(93, 134, 108, 0.4);
+  color: var(--clr-accent-text);
+  padding: var(--sp-2xs) var(--sp-md);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--sp-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lp-urgency-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-light);
+  font-size: clamp(1.5rem, 3.5vw, var(--fs-2xl));
+  color: var(--clr-text-inverse);
+  margin-bottom: var(--sp-md);
+  line-height: var(--lh-tight);
+}
+
+.lp-urgency-text {
+  font-size: var(--fs-md);
+  color: var(--clr-accent-soft);
+  max-width: 600px;
+  margin: 0 auto var(--sp-xl);
+  line-height: var(--lh-relaxed);
+}
+
+.lp-urgency-text strong {
+  color: var(--clr-accent-text);
+  font-weight: var(--fw-medium);
+}
+
+.lp-urgency-card .lp-btn-primary {
+  width: auto;
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.lp-final-cta {
+  background: var(--clr-bg);
+  text-align: center;
+  padding: var(--sp-4xl) 0;
+}
+
+.lp-final-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-light);
+  font-size: clamp(1.75rem, 4vw, var(--fs-3xl));
+  color: var(--clr-text-primary);
+  margin-bottom: var(--sp-sm);
+  line-height: var(--lh-tight);
+}
+
+.lp-final-sub {
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  margin-bottom: var(--sp-xl);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.lp-footer {
+  background: var(--clr-dark);
+  color: var(--clr-text-muted);
+  text-align: center;
+  padding: var(--sp-lg) 0;
+}
+
+.lp-footer-text {
+  font-size: var(--fs-xs);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes lp-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lp-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Loading spinner in button */
+.lp-btn-loading {
+  position: relative;
+}
+
+.lp-btn-loading .lp-btn-text {
+  opacity: 0;
+}
+
+.lp-btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: lp-spin 0.6s linear infinite;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 960px) {
+  .lp-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lp-why-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-xl);
+  }
+
+  .lp-trust-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  :root {
+    --sp-2xl: 2.5rem;
+    --sp-3xl: 2.5rem;
+    --sp-4xl: 3rem;
+  }
+
+  .lp-hero {
+    padding: var(--sp-2xl) 0 var(--sp-xl);
+  }
+
+  .lp-hero-sub br {
+    display: none;
+  }
+
+  .lp-form-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-steps {
+    flex-direction: column;
+    gap: var(--sp-lg);
+  }
+
+  .lp-step-arrow {
+    display: none;
+  }
+
+  .lp-urgency-card {
+    padding: var(--sp-xl) var(--sp-md);
+  }
+
+  .lp-trust-card-body {
+    grid-template-columns: 1fr;
+    gap: var(--sp-md);
+  }
+
+  .lp-trust-line {
+    flex-direction: column;
+    gap: var(--sp-2xs);
+  }
+
+  .lp-trust-sep {
+    display: none;
+  }
+
+  .lp-btn-lg,
+  .lp-btn-xl {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY: Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .lp-hero-headline,
+  .lp-hero-sub,
+  .lp-urgency-banner,
+  .lp-form-wrapper,
+  .lp-success {
+    animation: none;
+  }
+
+  .lp-btn-primary:hover .lp-btn-icon {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   PRINT: Hide form, show content
+   ============================================================ */
+@media print {
+  .lp-hero {
+    background: #fff;
+    color: #000;
+  }
+
+  .lp-form-wrapper,
+  .lp-btn-primary,
+  .lp-urgency-banner {
+    display: none;
+  }
+}

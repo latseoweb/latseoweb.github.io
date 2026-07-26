@@ -116,4 +116,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ================================
+       Bezmaksas SEO Audits — Google Ads Landing Page (LV only)
+       ================================ -->
+  <url>
+    <loc>https://latseo.com/bezmaksas-audits/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/bezmaksas-audits/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/bezmaksas-audits/"/>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
