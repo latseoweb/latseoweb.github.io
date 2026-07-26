@@ -362,10 +362,11 @@
       var form = document.querySelector('.contact-form');
       if (!form) return;
       form.addEventListener('submit', function () {
-        // main.js handles the webhook; we just redirect after a short delay
+        // Capture name NOW — main.js resets the form after webhook success
+        var nameInput = form.querySelector('input[name="name"]');
+        var firstName = nameInput ? nameInput.value.trim().split(' ')[0] : '';
+        // Redirect after short delay (webhook fires in background)
         setTimeout(function () {
-          var nameInput = form.querySelector('input[name="name"]');
-          var firstName = nameInput ? nameInput.value.trim().split(' ')[0] : '';
           window.location.href = '../paldies/?name=' + encodeURIComponent(firstName);
         }, 1800);
       });
