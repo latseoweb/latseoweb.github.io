@@ -105,19 +105,19 @@
 
       <!-- Lead Capture Form (same backend as /kontakti/) -->
       <div class="lp-form-wrapper" id="lp-form-wrapper">
-        <form class="contact-form lp-form" action="#" method="POST" data-form-init="0" id="lp-audit-form">
+        <form class="contact-form lp-form" action="#" method="POST" data-form-init="0" id="lp-audit-form" autocomplete="off">
           <div class="lp-form-fields">
             <div class="contact-form__group lp-field">
-              <input type="text" name="name" class="contact-form__input" placeholder="Jūsu vārds: *" required>
+              <input type="text" name="name" class="contact-form__input" placeholder="Jūsu vārds: *" required autocomplete="name">
             </div>
             <div class="contact-form__group lp-field">
-              <input type="tel" name="phone" class="contact-form__input" placeholder="Jūsu tālrunis: *" required>
+              <input type="tel" name="phone" class="contact-form__input" placeholder="Jūsu tālrunis: *" required autocomplete="tel">
             </div>
             <div class="contact-form__group lp-field">
-              <input type="email" name="email" class="contact-form__input" placeholder="Jūsu e-pasts: *" required>
+              <input type="email" name="email" class="contact-form__input" placeholder="Jūsu e-pasts: *" required autocomplete="email">
             </div>
             <div class="contact-form__group lp-field">
-              <input type="text" name="website" class="contact-form__input" placeholder="Jūsu mājaslapa: *" required>
+              <input type="text" name="website" class="contact-form__input" placeholder="Jūsu mājaslapa: *" required autocomplete="organization">
             </div>
           </div>
           <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
