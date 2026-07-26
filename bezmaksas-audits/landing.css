@@ -588,6 +588,26 @@
   font-size: var(--fs-xs);
 }
 
+.lp-footer-phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2xs);
+  margin-top: var(--sp-xs);
+  font-size: var(--fs-sm);
+  color: var(--clr-accent-text);
+}
+
+.lp-footer-phone a {
+  color: inherit;
+  font-weight: var(--fw-medium);
+  transition: color var(--transition-fast);
+}
+
+.lp-footer-phone a:hover {
+  color: var(--clr-text-inverse);
+}
+
 /* ============================================================
    ANIMATIONS
    ============================================================ */
