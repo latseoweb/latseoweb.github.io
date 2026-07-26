@@ -84,7 +84,7 @@
 }
 
 /* ============================================================
-   FORM
+   FORM (uses contact-form classes, dark hero overrides)
    ============================================================ */
 .lp-form-wrapper {
   max-width: 600px;
@@ -92,82 +92,47 @@
   animation: lp-fade-in-up 0.6s 0.3s ease both;
 }
 
-.lp-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-md);
+/* Override contact-form background for dark hero */
+.lp-hero .contact-form {
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .lp-form-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--sp-sm);
+  gap: var(--sp-sm) var(--sp-md);
 }
 
-.lp-field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3xs);
-  text-align: left;
+/* Remove extra margin from contact-form groups inside our grid */
+.lp-form-fields .contact-form__group {
+  margin-bottom: 0;
 }
 
-.lp-field:first-child,
-.lp-field:nth-child(2) {
-  grid-column: span 1;
-}
-
-.lp-field:nth-child(3),
-.lp-field:nth-child(4) {
-  grid-column: span 1;
-}
-
-.lp-field-label {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--clr-accent-soft);
-  margin-left: 2px;
-}
-
-.lp-field-label span {
-  color: var(--clr-accent-text);
-}
-
-.lp-field input {
-  width: 100%;
-  padding: var(--sp-xs) var(--sp-sm);
-  background: rgba(245, 245, 240, 0.06);
-  border: 1px solid rgba(245, 245, 240, 0.12);
+/* Dark-themed input overrides */
+.lp-hero .contact-form__input {
   color: var(--clr-text-inverse);
+  border-bottom-color: rgba(245, 245, 240, 0.2);
   font-size: var(--fs-base);
-  line-height: 1.5;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
+  padding: 0.75rem 0;
 }
 
-.lp-field input::placeholder {
-  color: var(--clr-text-muted);
-  opacity: 0.6;
+.lp-hero .contact-form__input::placeholder {
+  color: rgba(245, 245, 240, 0.35);
 }
 
-.lp-field input:focus {
-  border-color: var(--clr-accent-text);
-  background: rgba(245, 245, 240, 0.08);
-  outline: none;
+.lp-hero .contact-form__input:focus {
+  border-bottom-color: var(--clr-accent-text);
 }
 
-.lp-field input.error {
-  border-color: #e05555;
+/* Error state for contact-form inputs */
+.lp-hero .contact-form__input.error {
+  border-bottom-color: #e05555;
 }
 
-.lp-field-error {
-  font-size: var(--fs-xs);
-  color: #e05555;
-  min-height: 1em;
-  margin-top: 2px;
-}
-
-/* Submit Button */
+/* Submit Button — overrides contact-form__submit */
+.lp-hero .contact-form__submit,
 .lp-btn-primary {
   display: inline-flex;
   align-items: center;
@@ -184,9 +149,10 @@
   transition: background var(--transition-fast), transform var(--transition-fast);
   text-decoration: none;
   width: 100%;
-  margin-top: var(--sp-xs);
+  margin-top: var(--sp-md);
 }
 
+.lp-hero .contact-form__submit:hover,
 .lp-btn-primary:hover {
   background: var(--clr-accent-hover);
   transform: translateY(-1px);
@@ -196,6 +162,7 @@
   transform: translateY(0);
 }
 
+.lp-hero .contact-form__submit:disabled,
 .lp-btn-primary:disabled {
   opacity: 0.6;
   cursor: not-allowed;

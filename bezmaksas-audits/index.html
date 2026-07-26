@@ -40,6 +40,15 @@
   <!-- Landing Page Specific Styles -->
   <link rel="stylesheet" href="landing.css">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MF7Q1R9722');
+  </script>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -94,38 +103,27 @@
         un tieši ko darīt, lai piesaistītu vairāk klientu.
       </p>
 
-      <!-- Lead Capture Form -->
+      <!-- Lead Capture Form (same backend as /kontakti/) -->
       <div class="lp-form-wrapper" id="lp-form-wrapper">
-        <form class="lp-form" id="lp-audit-form" novalidate>
+        <form class="contact-form lp-form" action="#" method="POST" data-form-init="0" id="lp-audit-form">
           <div class="lp-form-fields">
-            <div class="lp-field">
-              <label for="lp-name" class="lp-field-label">Vārds <span aria-hidden="true">*</span></label>
-              <input type="text" id="lp-name" name="name" placeholder="Jānis Bērziņš" required autocomplete="name">
-              <span class="lp-field-error" id="lp-name-error" role="alert"></span>
+            <div class="contact-form__group lp-field">
+              <input type="text" name="name" class="contact-form__input" placeholder="Jūsu vārds: *" required autocomplete="name">
             </div>
-            <div class="lp-field">
-              <label for="lp-website" class="lp-field-label">Mājaslapas adrese <span aria-hidden="true">*</span></label>
-              <input type="url" id="lp-website" name="website" placeholder="https://tavauzņēmums.lv" required autocomplete="url">
-              <span class="lp-field-error" id="lp-website-error" role="alert"></span>
+            <div class="contact-form__group lp-field">
+              <input type="text" name="website" class="contact-form__input" placeholder="Jūsu mājaslapa: *" required autocomplete="url">
             </div>
-            <div class="lp-field">
-              <label for="lp-email" class="lp-field-label">E-pasts <span aria-hidden="true">*</span></label>
-              <input type="email" id="lp-email" name="email" placeholder="janis@tavauzņēmums.lv" required autocomplete="email">
-              <span class="lp-field-error" id="lp-email-error" role="alert"></span>
+            <div class="contact-form__group lp-field">
+              <input type="email" name="email" class="contact-form__input" placeholder="Jūsu e-pasts: *" required autocomplete="email">
             </div>
-            <div class="lp-field">
-              <label for="lp-phone" class="lp-field-label">Tālrunis <span aria-hidden="true">*</span></label>
-              <input type="tel" id="lp-phone" name="phone" placeholder="+371 20 000 000" required autocomplete="tel">
-              <span class="lp-field-error" id="lp-phone-error" role="alert"></span>
+            <div class="contact-form__group lp-field">
+              <input type="tel" name="phone" class="contact-form__input" placeholder="Jūsu tālrunis: *" required autocomplete="tel">
             </div>
           </div>
-
-          <button type="submit" class="lp-btn-primary" id="lp-submit-btn">
-            <span class="lp-btn-text">Saņemt bezmaksas auditu</span>
-            <svg class="lp-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </button>
+          <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+            <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" class="contact-form__submit lp-btn-primary">Saņemt bezmaksas auditu</button>
         </form>
 
         <!-- Micro-trust Line -->
@@ -145,19 +143,6 @@
             Konfidenciāli
           </span>
         </div>
-      </div>
-
-      <!-- Success Message (Hidden by default) -->
-      <div class="lp-success" id="lp-success" hidden>
-        <div class="lp-success-icon" aria-hidden="true">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/><polyline points="16 10 11 15 8 12"/>
-          </svg>
-        </div>
-        <h2 class="lp-success-title">Pieteikums saņemts!</h2>
-        <p class="lp-success-text">
-          Mēs izanalizēsim tavu mājaslapu un 24 stundu laikā nosūtīsim personalizētu video auditu uz tavu e-pastu. <strong>Pārbaudi inbox!</strong>
-        </p>
       </div>
     </div>
   </section>
@@ -295,7 +280,7 @@
             <div class="lp-logo-mark" aria-hidden="true">LS</div>
             <div>
               <strong>Baltic SEO, SIA</strong>
-              <span class="lp-trust-card-sub">SEO pakalpojumi kopš 2023</span>
+              <span class="lp-trust-card-sub">SEO pakalpojumi un konsultācijas</span>
             </div>
           </div>
           <div class="lp-trust-card-body">
@@ -350,8 +335,8 @@
     <div class="lp-container">
       <h2 class="lp-final-title">Vai esi gatavs redzēt savu mājaslapu Google augšgalā?</h2>
       <p class="lp-final-sub">Aizpildi formu un saņem personalizētu video auditu 24 stundu laikā. Bez saistībām.</p>
-      <a href="#hero" class="lp-btn-primary lp-btn-xl">
-        <span>Saņemt bezmaksas auditu</span>
+      <a href="../" class="lp-btn-primary lp-btn-xl">
+        <span>Uzzināt vairāk par LatSEO</span>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
@@ -365,35 +350,27 @@
   <footer class="lp-footer">
     <div class="lp-container">
       <p class="lp-footer-text">© 2026 Baltic SEO, SIA — LatSEO. Visas tiesības aizsargātas.</p>
-      <!--
-      ============================================================
-      SVARĪGI: Formas konfigurācija
-      ============================================================
-      Forma pašlaik ir iestatīta ar client-side validation.
-      Lai saņemtu pieteikumus e-pastā, izvēlies vienu no iespējām:
-
-      1. FORMSFREE (Ieteicams — bezmaksas 50 submissions/mēnesī):
-         - Reģistrējies https://formspree.io
-         - Nomaini formas action uz savu Formspree endpoint:
-           action="https://formspree.io/f/TavsFormspreeID"
-         - Pievieno method="POST"
-
-      2. GETFORM (bezmaksas):
-         - Reģistrējies https://getform.io
-         - Nomaini formas action uz Getform endpoint
-
-      3. PAŠU PHP SKRIPTS:
-         - Izveido send.php un norādi to kā action
-
-      Pēc formas backend konfigurācijas, noņem JavaScript preventDefault()
-      no lp-landing.js faila, lai forma reāli sūtītu datus.
-      ============================================================
-      -->
     </div>
   </footer>
 
-  <!-- Landing Page JavaScript -->
-  <script src="landing.js"></script>
+  <!-- Shared JS (contact form handler + nav, etc.) -->
+  <script src="../js/main.js"></script>
+
+  <!-- Redirect to /paldies/ after form success (conversion tracking) -->
+  <script>
+    (function () {
+      var form = document.querySelector('.contact-form');
+      if (!form) return;
+      form.addEventListener('submit', function () {
+        // main.js handles the webhook; we just redirect after a short delay
+        setTimeout(function () {
+          var nameInput = form.querySelector('input[name="name"]');
+          var firstName = nameInput ? nameInput.value.trim().split(' ')[0] : '';
+          window.location.href = '../paldies/?name=' + encodeURIComponent(firstName);
+        }, 1800);
+      });
+    })();
+  </script>
 
 </body>
 </html>
