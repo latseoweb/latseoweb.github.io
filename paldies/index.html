@@ -189,13 +189,23 @@
     </div>
   </div>
 
-  <!-- Personalize name from URL -->
+  <!-- Personalize name from sessionStorage (fallback: URL param) -->
   <script>
     (function () {
-      var params = new URLSearchParams(window.location.search);
-      var name = params.get('name');
       var el = document.getElementById('ty-name');
-      if (name && el) {
+      if (!el) return;
+
+      // Try sessionStorage first (most reliable)
+      var name = '';
+      try { name = sessionStorage.getItem('lp_name') || ''; } catch(e) {}
+
+      // Fallback to URL parameter
+      if (!name) {
+        var params = new URLSearchParams(window.location.search);
+        name = params.get('name') || '';
+      }
+
+      if (name) {
         // Sanitize: only allow letters, spaces, and Latvian diacritics
         var safe = name.replace(/[^a-zA-ZĀāČčĒēĢģĪīĶķĻļŅņŌōŖŗŠšŪūŽž\s\-']/g, '').trim();
         if (safe) {

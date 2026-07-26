@@ -361,13 +361,25 @@
     (function () {
       var form = document.querySelector('.contact-form');
       if (!form) return;
+
+      // Also save name on each keystroke as fallback
+      var nameInput = form.querySelector('input[name="name"]');
+      if (nameInput) {
+        nameInput.addEventListener('input', function () {
+          try { sessionStorage.setItem('lp_name', nameInput.value.trim()); } catch(e) {}
+        });
+      }
+
       form.addEventListener('submit', function () {
-        // Capture name NOW — main.js resets the form after webhook success
-        var nameInput = form.querySelector('input[name="name"]');
-        var firstName = nameInput ? nameInput.value.trim().split(' ')[0] : '';
+        // Capture name now (before main.js resets the form)
+        var firstName = '';
+        if (nameInput) {
+          firstName = nameInput.value.trim().split(' ')[0];
+          try { sessionStorage.setItem('lp_name', firstName); } catch(e) {}
+        }
         // Redirect after short delay (webhook fires in background)
         setTimeout(function () {
-          window.location.href = '../paldies/?name=' + encodeURIComponent(firstName);
+          window.location.href = '../paldies/';
         }, 1800);
       });
     })();
