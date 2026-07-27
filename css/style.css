@@ -701,7 +701,7 @@ h1,h2,h3,h4,h5,h6{
    SCROLL-TO-TOP
    ============================================================ */
 .scroll-top{
-  position:fixed;bottom:var(--sp-lg);right:var(--sp-lg);
+  position:fixed;bottom:140px;right:var(--sp-lg);
   width:44px;height:44px;
   display:flex;align-items:center;justify-content:center;
   background:var(--clr-dark);color:var(--clr-text-inverse);
@@ -862,8 +862,10 @@ h1,h2,h3,h4,h5,h6{
   }
   .floating-cta__label{display:none}
   .floating-cta svg{width:22px;height:22px}
-  .scroll-top{bottom:120px}
+  .scroll-top{bottom:20px;right:auto;left:16px}
 }
 
-/* Adjust scroll-to-top so it doesn't overlap */
-.scroll-top{bottom:120px}
+/* Adjust scroll-to-top above floating CTAs on desktop */
+@media(min-width:769px){
+  .scroll-top{bottom:140px;right:var(--sp-lg);left:auto}
+}
