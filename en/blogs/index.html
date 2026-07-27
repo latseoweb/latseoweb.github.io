@@ -35,21 +35,25 @@
   </script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
-
-  <!-- ============================================================
+  <a href="#main-content" class="skip-link">Skip to content</a>  <!-- ============================================================
        HEADER / NAVIGATION
        ============================================================ -->
   <header class="site-header" role="banner">
     <div class="header__inner">
+      <!-- Logo -->
       <a href="/en/" class="header__logo" aria-label="LatSEO - Home">
         <img src="/assets/images/LatSEO%20logo%20black.png" alt="LatSEO" class="header__logo-img" width="140" height="38">
       </a>
+
+      <!-- Desktop Navigation -->
       <nav class="header__nav" role="navigation" aria-label="Main navigation">
         <ul class="header__nav-list">
           <li><a href="/en/" class="header__nav-link">Home</a></li>
           <li class="header__dropdown">
-            <span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">Services &amp; Pricing <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span></span>
+            <span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              Services &amp; Pricing
+              <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span>
+            </span>
             <div class="header__dropdown-menu">
               <a href="/en/pakalpojumi-un-cenas/">Service Pricing</a>
               <a href="/en/tehniskais-seo/">Technical SEO</a>
@@ -62,16 +66,28 @@
           <li><a href="/en/blogs/" class="header__nav-link header__nav-link--active">Blog</a></li>
           <li><a href="/en/kontakti/" class="header__nav-link">Contact</a></li>
         </ul>
+
+        <!-- Language Switcher -->
         <div class="header__lang-switch" role="group" aria-label="Language selection">
-          <a href="/blogs/" class="header__lang-btn" hreflang="lv" lang="lv">LV</a>
+          <a href="/blogs/" class="header__lang-btn">LV</a>
           <a href="/en/blogs/" class="header__lang-btn header__lang-btn--active" aria-current="page">EN</a>
         </div>
-        <a href="/en/kontakti/" class="header__cta">Request an Audit <span aria-hidden="true">→</span></a>
+
+        <!-- CTA Button -->
+        <a href="/en/kontakti/" class="header__cta">
+          Request Audit
+          <span aria-hidden="true">→</span>
+        </a>
       </nav>
+
+      <!-- Mobile Menu Toggle -->
       <button class="header__mobile-toggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
+
     <!-- Mobile Menu -->
     <div class="header__mobile-menu" role="dialog" aria-label="Mobile navigation">
       <a href="/en/">Home</a>
@@ -84,7 +100,7 @@
       <a href="/en/blogs/">Blog</a>
       <a href="/en/kontakti/">Contact</a>
       <div class="header__mobile-lang">
-        <a href="/blogs/" class="header__lang-btn" hreflang="lv" lang="lv">LV</a>
+        <a href="/blogs/" class="header__lang-btn">LV</a>
         <a href="/en/blogs/" class="header__lang-btn header__lang-btn--active">EN</a>
       </div>
     </div>
