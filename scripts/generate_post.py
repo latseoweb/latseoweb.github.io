@@ -189,6 +189,8 @@ Tavs rakstīšanas stils:
 - Iekļauj vismaz 2-3 iekšējās saites uz: /lokalais-seo/, /tehniskais-seo/, /satura-strategija/, /majaslapas-izstrade/, /pakalpojumi-un-cenas/, /saisu-veidosana/, /kontakti/
 - Beigās iekļauj CTA (call-to-action) uz /kontakti/ vai /pakalpojumi-un-cenas/
 - NELIETO Markdown formatting - izmanto tikai HTML tagus (p, h2, h3, ul, li, strong, em, a)
+- NELIETO # simbolu NEKUR — ne virsrakstos, ne sarakstos, ne tekstā. Sarakstiem lieto <ul> un <li> tagus
+- Virsrakstiem un domuzīmēm lieto parasto domuzīmi "-" vai garo domuzīmi "—", nevis "#"
 
 Svarīgi: Atgriez TIKAI derīgu JSON ar šādiem laukiem:
 {
@@ -229,6 +231,8 @@ Your writing style:
 - Include at least 2-3 internal links to: /en/lokalais-seo/, /en/tehniskais-seo/, /en/satura-strategija/, /en/majaslapas-izstrade/, /en/pakalpojumi-un-cenas/, /en/saisu-veidosana/, /en/kontakti/
 - End with a CTA to /en/kontakti/ or /en/pakalpojumi-un-cenas/
 - DO NOT use Markdown - use only HTML tags (p, h2, h3, ul, li, strong, em, a)
+- DO NOT use # symbol ANYWHERE — not in headings, not in lists, not in text. Use <ul> and <li> tags for lists
+- For headings and dashes, use regular dash "-" or em dash "—", never "#"
 
 IMPORTANT: Return ONLY valid JSON with these fields:
 {
