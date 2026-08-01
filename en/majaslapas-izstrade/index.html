@@ -251,7 +251,7 @@
             <span style="font-size:var(--fs-xs);opacity:0.6;text-transform:uppercase;letter-spacing:0.06em">Total</span>
             <div style="font-family:var(--ff-heading);font-size:var(--fs-2xl);font-weight:var(--fw-light)" id="calc-total">€0</div>
           </div>
-          <a href="/en/kontakti/" class="btn btn--primary" style="background:var(--clr-accent-text);padding:var(--sp-sm) var(--sp-lg);font-size:var(--fs-sm)">Get in Touch <span aria-hidden="true">→</span></a>
+          <a href="#apply" class="btn btn--primary" style="background:var(--clr-accent-text);padding:var(--sp-sm) var(--sp-lg);font-size:var(--fs-sm)">Get in Touch <span aria-hidden="true">→</span></a>
         </div>
 
         <div id="web-calculator">
@@ -312,11 +312,14 @@
               </label>
             </div>
           </div>
-
+          <!-- Package detail (shown after selection) -->
+          <div id="calc-package-detail" style="display:none;margin-top:var(--sp-md);padding:var(--sp-lg);background:var(--clr-surface);border:1px solid var(--clr-border-light)">
+            <div id="calc-detail-content"></div>
+          </div>
           <!-- ============================================================
                DESIGN & FOUNDATION
                ============================================================ -->
-          <div style="margin-bottom:var(--sp-xl)">
+          <div class="calc-category" data-category="design" style="margin-bottom:var(--sp-xl);display:none">
             <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Design &amp; Foundation</h3>
             <div class="calc-addons" id="calc-design-addons">
               <label class="calc-row" data-price="249"><input type="checkbox" name="addon" value="dizaina-sagatave"><span class="calc-row-label">Professional design template</span><span class="calc-row-price">+€249</span></label>
@@ -329,7 +332,7 @@
           <!-- ============================================================
                CONTENT & MEDIA
                ============================================================ -->
-          <div style="margin-bottom:var(--sp-xl)">
+          <div class="calc-category" data-category="content" style="margin-bottom:var(--sp-xl);display:none">
             <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Content &amp; Media</h3>
             <div class="calc-addons" id="calc-content-addons">
               <label class="calc-row" data-price="35"><input type="checkbox" name="addon" value="foto-galerija"><span class="calc-row-label">Photo gallery</span><span class="calc-row-price">+€35</span></label>
@@ -346,7 +349,7 @@
           <!-- ============================================================
                E-COMMERCE FEATURES
                ============================================================ -->
-          <div style="margin-bottom:var(--sp-xl)">
+          <div class="calc-category" data-category="ecom" style="margin-bottom:var(--sp-xl);display:none">
             <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">E-Commerce Features</h3>
             <div class="calc-addons" id="calc-ecom-addons">
               <label class="calc-row" data-price="299"><input type="checkbox" name="addon" value="precu-katalogs"><span class="calc-row-label">Product catalog (categories)</span><span class="calc-row-price">+€299</span></label>
@@ -363,7 +366,7 @@
           <!-- ============================================================
                ADDITIONAL FEATURES
                ============================================================ -->
-          <div style="margin-bottom:var(--sp-xl)">
+          <div class="calc-category" data-category="extra" style="margin-bottom:var(--sp-xl);display:none">
             <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Additional Features</h3>
             <div class="calc-addons" id="calc-extra-addons">
               <label class="calc-row" data-price="25"><input type="checkbox" name="addon" value="kontaktforma"><span class="calc-row-label">Contact form</span><span class="calc-row-price">+€25</span></label>
@@ -378,7 +381,7 @@
           <!-- ============================================================
                MAINTENANCE & OTHER COSTS
                ============================================================ -->
-          <div style="margin-bottom:var(--sp-md)">
+          <div class="calc-category" data-category="maintenance" style="margin-bottom:var(--sp-md);display:none">
             <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Maintenance &amp; Other Costs <span style="font-weight:var(--fw-normal);font-size:var(--fs-sm);color:var(--clr-text-muted)">(recurring)</span></h3>
             <div class="calc-addons" id="calc-monthly-addons">
               <label class="calc-row" data-price="10" data-periodic="month"><input type="checkbox" name="addon" value="serveris-lapa"><span class="calc-row-label">Server hosting (website)</span><span class="calc-row-price">+€10/mo</span></label>
@@ -409,6 +412,44 @@
       }
     </style>
 
+    <!-- ============================================================
+         CONTACT FORM
+         ============================================================ -->
+    <section class="section section--muted" id="apply">
+      <div class="container" style="max-width:640px">
+        <div class="section__header">
+          <span class="section-label">Apply</span>
+          <h2 class="section__title">Get a Precise Price Quote</h2>
+          <p class="section__description">Fill out the form and we'll prepare a personalized quote within 24h with your selected package and addons.</p>
+        </div>
+
+        <form class="contact-form" action="#" method="POST" data-form-init="0" autocomplete="off" style="background:var(--clr-surface);border:1px solid var(--clr-border-light);padding:var(--sp-xl)">
+          <!-- Hidden calculator data -->
+          <input type="hidden" name="calc_package" id="calc-form-package" value="">
+          <input type="hidden" name="calc_addons" id="calc-form-addons" value="">
+          <input type="hidden" name="calc_total" id="calc-form-total" value="">
+          <input type="hidden" name="calc_platforms" id="calc-form-platforms" value="">
+          <input type="hidden" name="page_source" value="Website Development Calculator">
+
+          <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
+            <input type="text" name="name" class="contact-form__input" placeholder="Your name: *" required autocomplete="name">
+          </div>
+          <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
+            <input type="email" name="email" class="contact-form__input" placeholder="Your email: *" required autocomplete="email">
+          </div>
+          <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
+            <input type="tel" name="phone" class="contact-form__input" placeholder="Your phone: *" required autocomplete="tel">
+          </div>
+          <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
+            <textarea name="message" class="contact-form__textarea" placeholder="Brief project description (optional)..." style="min-height:80px"></textarea>
+          </div>
+          <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+            <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" class="contact-form__submit" style="width:100%;padding:var(--sp-sm) var(--sp-xl);background:var(--clr-accent-text);color:var(--clr-text-inverse);font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);border:none;cursor:pointer;transition:background var(--transition-fast)">Submit Application</button>
+        </form>
+      </div>
+    </section>
     <!-- ============================================================
          FAQ
          ============================================================ -->
@@ -507,40 +548,80 @@
     var totalEl = document.getElementById('calc-total');
     var packageInputs = document.querySelectorAll('input[name="package"]');
     var addonInputs = document.querySelectorAll('input[name="addon"]');
+    var detailDiv = document.getElementById('calc-package-detail');
+    var detailContent = document.getElementById('calc-detail-content');
+    var categories = document.querySelectorAll('.calc-category');
+    var stickyCta = document.querySelector('#calc-sticky .btn');
+    var stickyLabel = document.querySelector('#calc-sticky span');
+
+    var packageDetails = {\'vizitkarte\': {\'name\': \'Business Card Site\', \'price\': \'€449\', \'includes\': \'Ready professional template, CMS admin, up to 5 sections, responsive design, basic SEO structure, SSL certificate\', \'platforms\': \'Tilda, Wix, WordPress, GitHub Pages (static)\', \'audience\': \'Small businesses, sole traders, and freelancers\', \'time\': \'3–5 business days\', \'addons\': \'design,content,extra,maintenance\'}, \'bizness\': {\'name\': \'Business Website\', \'price\': \'€799\', \'includes\': \'Customized design (not a template), unlimited sections, CMS, responsive design, SEO optimization, blog functionality\', \'platforms\': \'WordPress, Tilda, GitHub Pages (static)\', \'audience\': \'Small to medium businesses with a broader service range\', \'time\': \'2–4 weeks\', \'addons\': \'design,content,extra,maintenance\'}, \'veikals-vienk\': {\'name\': \'Online Store (Simple)\', \'price\': \'€1,299\', \'includes\': \'Customized design, product catalog with categories, shopping cart & checkout, CMS, payment integration (Stripe/MakeCommerce)\', \'platforms\': \'Shopify, WordPress (WooCommerce)\', \'audience\': \'Businesses with a small product range (up to ~100 products)\', \'time\': \'3–5 weeks\', \'addons\': \'design,content,ecom,extra,maintenance\'}, \'korporativa\': {\'name\': \'Corporate Website\', \'price\': \'€1,499\', \'includes\': \'Customized design, multiple service pages, blog, multilingual support, CMS, in-depth SEO structure, SSL\', \'platforms\': \'WordPress, GitHub Pages (static)\', \'audience\': \'Medium to large businesses with a wide service range\', \'time\': \'4–6 weeks\', \'addons\': \'design,content,extra,maintenance\'}, \'individuala\': {\'name\': \'Custom Website\', \'price\': \'€1,699\', \'includes\': \'Fully unique design from scratch, completely tailored functionality, any type of integrations, premium SEO, CMS, SSL\', \'platforms\': \'WordPress, GitHub Pages (custom static) — fully tailored solution\', \'audience\': \'Businesses with specific, non-standard requirements\', \'time\': \'6–10 weeks\', \'addons\': \'design,content,ecom,extra,maintenance\'}, \'veikals-sarez\': {\'name\': \'Online Store (Complex)\', \'price\': \'€2,599\', \'includes\': \'Everything from Simple Store + product filters, sorting, multilingual, card payments/PayPal, customer registration, profiles, product feed export\', \'platforms\': \'Shopify, WordPress (WooCommerce)\', \'audience\': \'Large e-commerce projects with extensive product catalogs\', \'time\': \'6–12 weeks\', \'addons\': \'design,content,ecom,extra,maintenance\'}};
+
+    function buildDetailHTML(pkg) {
+      var d = packageDetails[pkg];
+      if (!d) return '';
+      return '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md)">' +
+        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Included in Base</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.includes + '</div></div>' +
+        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Platforms</div><div style="font-size:var(--fs-sm);color:var(--clr-accent-text);line-height:1.6;font-weight:var(--fw-medium)">' + d.platforms + '</div></div>' +
+        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Best For</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.audience + '</div></div>' +
+        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Timeline</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.time + '</div></div>' +
+        '</div>';
+    }
 
     function updateTotal() {
       var total = 0;
+      var selectedPkg = null;
 
       var selectedPackage = document.querySelector('input[name="package"]:checked');
       if (selectedPackage) {
+        selectedPkg = selectedPackage.value;
         total += parseInt(selectedPackage.closest('.calc-card').dataset.price) || 0;
       }
 
+      if (selectedPkg && packageDetails[selectedPkg]) {
+        var allowedCategories = packageDetails[selectedPkg].addons.split(',');
+        categories.forEach(function(cat) {
+          var catName = cat.dataset.category;
+          if (allowedCategories.indexOf(catName) >= 0) {
+            cat.style.display = '';
+          } else {
+            cat.style.display = 'none';
+            cat.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+          }
+        });
+        detailDiv.style.display = '';
+        detailContent.innerHTML = buildDetailHTML(selectedPkg);
+        stickyLabel.textContent = packageDetails[selectedPkg].name + ' • Total';
+        stickyCta.style.opacity = '1';
+        stickyCta.innerHTML = 'Get in Touch <span aria-hidden="true">→</span>';
+        document.getElementById('calc-form-package').value = packageDetails[selectedPkg].name + ' (' + packageDetails[selectedPkg].price + ')';
+        document.getElementById('calc-form-platforms').value = packageDetails[selectedPkg].platforms;
+      } else {
+        categories.forEach(function(cat) { cat.style.display = 'none'; });
+        detailDiv.style.display = 'none';
+        stickyLabel.textContent = 'Select a package ↓';
+        stickyCta.textContent = 'Select a package ↓';
+        stickyCta.style.opacity = '0.6';
+        document.getElementById('calc-form-package').value = '';
+        document.getElementById('calc-form-platforms').value = '';
+      }
+
+      var addonNames = [];
       addonInputs.forEach(function(input) {
         if (input.checked) {
           var row = input.closest('.calc-row');
           total += parseInt(row.dataset.price) || 0;
+          addonNames.push(row.querySelector('.calc-row-label').textContent + ' (' + row.querySelector('.calc-row-price').textContent + ')');
         }
       });
 
       totalEl.textContent = '€' + total.toLocaleString('en-US');
-
-      var cta = document.querySelector('#calc-sticky .btn');
-      if (total === 0 && !selectedPackage) {
-        cta.textContent = 'Select a package ↓';
-        cta.style.opacity = '0.6';
-      } else {
-        cta.innerHTML = 'Get in Touch <span aria-hidden="true">→</span>';
-        cta.style.opacity = '1';
-      }
+      document.getElementById('calc-form-addons').value = addonNames.join('; ');
+      document.getElementById('calc-form-total').value = '€' + total.toLocaleString('en-US');
+      stickyCta.href = '#apply';
     }
 
-    packageInputs.forEach(function(input) {
-      input.addEventListener('change', updateTotal);
-    });
-    addonInputs.forEach(function(input) {
-      input.addEventListener('change', updateTotal);
-    });
+    packageInputs.forEach(function(input) { input.addEventListener('change', updateTotal); });
+    addonInputs.forEach(function(input) { input.addEventListener('change', updateTotal); });
 
     document.querySelectorAll('.calc-row').forEach(function(row) {
       row.addEventListener('click', function(e) {
