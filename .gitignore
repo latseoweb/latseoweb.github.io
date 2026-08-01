@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Keep the progress file tracked — it's needed for the automation
+!.blog-progress.json
