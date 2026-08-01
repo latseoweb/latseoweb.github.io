@@ -1,5 +1,14 @@
 {
-  "lastPublishedDay": 0,
-  "lastPublishedDate": null,
-  "publishedPosts": []
+  "lastPublishedDay": 2,
+  "lastPublishedDate": "2026-08-01",
+  "publishedPosts": [
+    {
+      "day": 2,
+      "date": "2026-08-01",
+      "lvSlug": "mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam",
+      "enSlug": "seo-is-not-just-keywords-why-this-myth-harms-your-business",
+      "titleLV": "Mīts: SEO ir tikai atslēgvārdi — kāpēc tas ir bīstami",
+      "titleEN": "SEO Is Not Just Keywords: Why This Myth Harms Your Business"
+    }
+  ]
 }
