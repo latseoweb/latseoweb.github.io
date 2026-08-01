@@ -365,7 +365,7 @@ def build_blog_html(
     is_lv = (lang == "lv")
     lang_attr = "lv" if is_lv else "en"
     og_locale = "lv_LV" if is_lv else "en_US"
-    base_path = "../" if is_lv else "../../../"
+    base_path = "../../" if is_lv else "../../../"
     canonical_base = "" if is_lv else "/en"
     blog_path = "blogs" if is_lv else "en/blogs"
     page_url = f"{SITE_URL}{canonical_base}/{blog_path}/{slug}/"
