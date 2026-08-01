@@ -291,10 +291,6 @@ IMPORTANT: Return ONLY valid JSON with these fields:
   "content": "<h2>...</h2><p>...</p>... (clean HTML, no Markdown, with concrete examples in every paragraph)",
   "imageQuery": "Short image description for Pexels/Unsplash search (3-5 words)"
 }"""
-  "metaDescription": "Meta description (140-160 chars) with keywords",
-  "content": "<h2>...</h2><p>...</p>... (clean HTML, no Markdown)",
-  "imageQuery": "Short image description for Pexels/Unsplash search (3-5 words)"
-}"""
 
         user_prompt = f"""Write an SEO blog post in English.
 
