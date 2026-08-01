@@ -545,92 +545,82 @@
   <!-- Calculator Logic -->
   <script>
   (function() {
-    var totalEl = document.getElementById('calc-total');
+    var totalEl = document.getElementById("calc-total");
     var packageInputs = document.querySelectorAll('input[name="package"]');
     var addonInputs = document.querySelectorAll('input[name="addon"]');
-    var detailDiv = document.getElementById('calc-package-detail');
-    var detailContent = document.getElementById('calc-detail-content');
-    var categories = document.querySelectorAll('.calc-category');
-    var stickyCta = document.querySelector('#calc-sticky .btn');
-    var stickyLabel = document.querySelector('#calc-sticky span');
+    var detailDiv = document.getElementById("calc-package-detail");
+    var detailContent = document.getElementById("calc-detail-content");
+    var categories = document.querySelectorAll(".calc-category");
+    var stickyCta = document.querySelector("#calc-sticky .btn");
+    var stickyLabel = document.querySelector("#calc-sticky span");
 
-    var packageDetails = {\'vizitkarte\': {\'name\': \'Business Card Site\', \'price\': \'€449\', \'includes\': \'Ready professional template, CMS admin, up to 5 sections, responsive design, basic SEO structure, SSL certificate\', \'platforms\': \'Tilda, Wix, WordPress, GitHub Pages (static)\', \'audience\': \'Small businesses, sole traders, and freelancers\', \'time\': \'3–5 business days\', \'addons\': \'design,content,extra,maintenance\'}, \'bizness\': {\'name\': \'Business Website\', \'price\': \'€799\', \'includes\': \'Customized design (not a template), unlimited sections, CMS, responsive design, SEO optimization, blog functionality\', \'platforms\': \'WordPress, Tilda, GitHub Pages (static)\', \'audience\': \'Small to medium businesses with a broader service range\', \'time\': \'2–4 weeks\', \'addons\': \'design,content,extra,maintenance\'}, \'veikals-vienk\': {\'name\': \'Online Store (Simple)\', \'price\': \'€1,299\', \'includes\': \'Customized design, product catalog with categories, shopping cart & checkout, CMS, payment integration (Stripe/MakeCommerce)\', \'platforms\': \'Shopify, WordPress (WooCommerce)\', \'audience\': \'Businesses with a small product range (up to ~100 products)\', \'time\': \'3–5 weeks\', \'addons\': \'design,content,ecom,extra,maintenance\'}, \'korporativa\': {\'name\': \'Corporate Website\', \'price\': \'€1,499\', \'includes\': \'Customized design, multiple service pages, blog, multilingual support, CMS, in-depth SEO structure, SSL\', \'platforms\': \'WordPress, GitHub Pages (static)\', \'audience\': \'Medium to large businesses with a wide service range\', \'time\': \'4–6 weeks\', \'addons\': \'design,content,extra,maintenance\'}, \'individuala\': {\'name\': \'Custom Website\', \'price\': \'€1,699\', \'includes\': \'Fully unique design from scratch, completely tailored functionality, any type of integrations, premium SEO, CMS, SSL\', \'platforms\': \'WordPress, GitHub Pages (custom static) — fully tailored solution\', \'audience\': \'Businesses with specific, non-standard requirements\', \'time\': \'6–10 weeks\', \'addons\': \'design,content,ecom,extra,maintenance\'}, \'veikals-sarez\': {\'name\': \'Online Store (Complex)\', \'price\': \'€2,599\', \'includes\': \'Everything from Simple Store + product filters, sorting, multilingual, card payments/PayPal, customer registration, profiles, product feed export\', \'platforms\': \'Shopify, WordPress (WooCommerce)\', \'audience\': \'Large e-commerce projects with extensive product catalogs\', \'time\': \'6–12 weeks\', \'addons\': \'design,content,ecom,extra,maintenance\'}};
+    var packageDetails = {"vizitkarte": {"name": "Business Card Site", "price": "€449", "includes": "Ready professional template, CMS admin, up to 5 sections, responsive design, basic SEO structure, SSL certificate", "platforms": "Tilda, Wix, WordPress, GitHub Pages (static)", "audience": "Small businesses, sole traders, and freelancers", "time": "3–5 business days", "addons": "design,content,extra,maintenance"}, "bizness": {"name": "Business Website", "price": "€799", "includes": "Customized design (not a template), unlimited sections, CMS, responsive design, SEO optimization, blog functionality", "platforms": "WordPress, Tilda, GitHub Pages (static)", "audience": "Small to medium businesses with a broader service range", "time": "2–4 weeks", "addons": "design,content,extra,maintenance"}, "veikals-vienk": {"name": "Online Store (Simple)", "price": "€1,299", "includes": "Customized design, product catalog with categories, shopping cart & checkout, CMS, payment integration (Stripe/MakeCommerce)", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Businesses with a small product range (up to ~100 products)", "time": "3–5 weeks", "addons": "design,content,ecom,extra,maintenance"}, "korporativa": {"name": "Corporate Website", "price": "€1,499", "includes": "Customized design, multiple service pages, blog, multilingual support, CMS, in-depth SEO structure, SSL", "platforms": "WordPress, GitHub Pages (static)", "audience": "Medium to large businesses with a wide service range", "time": "4–6 weeks", "addons": "design,content,extra,maintenance"}, "individuala": {"name": "Custom Website", "price": "€1,699", "includes": "Fully unique design from scratch, completely tailored functionality, any type of integrations, premium SEO, CMS, SSL", "platforms": "WordPress, GitHub Pages (custom static)", "audience": "Businesses with specific, non-standard requirements", "time": "6–10 weeks", "addons": "design,content,ecom,extra,maintenance"}, "veikals-sarez": {"name": "Online Store (Complex)", "price": "€2,599", "includes": "Everything from Simple Store + product filters, sorting, multilingual, card payments/PayPal, customer registration, profiles, product feed export", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Large e-commerce projects with extensive product catalogs", "time": "6–12 weeks", "addons": "design,content,ecom,extra,maintenance"}};
 
     function buildDetailHTML(pkg) {
       var d = packageDetails[pkg];
-      if (!d) return '';
-      return '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md)">' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Included in Base</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.includes + '</div></div>' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Platforms</div><div style="font-size:var(--fs-sm);color:var(--clr-accent-text);line-height:1.6;font-weight:var(--fw-medium)">' + d.platforms + '</div></div>' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Best For</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.audience + '</div></div>' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Timeline</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.time + '</div></div>' +
-        '</div>';
+      if (!d) return "";
+      var h = "";
+      h += "<div style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md)\">";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Included in Base</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.includes + "</div></div>";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Platforms</div><div style=\"font-size:var(--fs-sm);color:var(--clr-accent-text);line-height:1.6;font-weight:var(--fw-medium)\">" + d.platforms + "</div></div>";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Best For</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.audience + "</div></div>";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Timeline</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.time + "</div></div>";
+      h += "</div>";
+      return h;
     }
 
     function updateTotal() {
-      var total = 0;
-      var selectedPkg = null;
-
-      var selectedPackage = document.querySelector('input[name="package"]:checked');
-      if (selectedPackage) {
-        selectedPkg = selectedPackage.value;
-        total += parseInt(selectedPackage.closest('.calc-card').dataset.price) || 0;
+      var total = 0, selectedPkg = null;
+      var sp = document.querySelector('input[name="package"]:checked');
+      if (sp) {
+        selectedPkg = sp.value;
+        total += parseInt(sp.closest(".calc-card").dataset.price) || 0;
       }
-
       if (selectedPkg && packageDetails[selectedPkg]) {
-        var allowedCategories = packageDetails[selectedPkg].addons.split(',');
+        var allowed = packageDetails[selectedPkg].addons.split(",");
         categories.forEach(function(cat) {
-          var catName = cat.dataset.category;
-          if (allowedCategories.indexOf(catName) >= 0) {
-            cat.style.display = '';
-          } else {
-            cat.style.display = 'none';
-            cat.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
-          }
+          if (allowed.indexOf(cat.dataset.category) >= 0) { cat.style.display = ""; }
+          else { cat.style.display = "none"; cat.querySelectorAll('input[type="checkbox"]').forEach(function(cb){cb.checked=false;}); }
         });
-        detailDiv.style.display = '';
+        detailDiv.style.display = "";
         detailContent.innerHTML = buildDetailHTML(selectedPkg);
-        stickyLabel.textContent = packageDetails[selectedPkg].name + ' • Total';
-        stickyCta.style.opacity = '1';
-        stickyCta.innerHTML = 'Get in Touch <span aria-hidden="true">→</span>';
-        document.getElementById('calc-form-package').value = packageDetails[selectedPkg].name + ' (' + packageDetails[selectedPkg].price + ')';
-        document.getElementById('calc-form-platforms').value = packageDetails[selectedPkg].platforms;
+        stickyLabel.textContent = packageDetails[selectedPkg].name + " \u2022 Total";
+        stickyCta.style.opacity = "1";
+        stickyCta.innerHTML = "Get in Touch <span aria-hidden=\"true\">→</span>";
+        document.getElementById("calc-form-package").value = packageDetails[selectedPkg].name + " (" + packageDetails[selectedPkg].price + ")";
+        document.getElementById("calc-form-platforms").value = packageDetails[selectedPkg].platforms;
       } else {
-        categories.forEach(function(cat) { cat.style.display = 'none'; });
-        detailDiv.style.display = 'none';
-        stickyLabel.textContent = 'Select a package ↓';
-        stickyCta.textContent = 'Select a package ↓';
-        stickyCta.style.opacity = '0.6';
-        document.getElementById('calc-form-package').value = '';
-        document.getElementById('calc-form-platforms').value = '';
+        categories.forEach(function(cat) { cat.style.display = "none"; });
+        detailDiv.style.display = "none";
+        stickyLabel.textContent = "Select a package ↓";
+        stickyCta.textContent = "Select a package ↓";
+        stickyCta.style.opacity = "0.6";
+        document.getElementById("calc-form-package").value = "";
+        document.getElementById("calc-form-platforms").value = "";
       }
-
       var addonNames = [];
       addonInputs.forEach(function(input) {
         if (input.checked) {
-          var row = input.closest('.calc-row');
+          var row = input.closest(".calc-row");
           total += parseInt(row.dataset.price) || 0;
-          addonNames.push(row.querySelector('.calc-row-label').textContent + ' (' + row.querySelector('.calc-row-price').textContent + ')');
+          addonNames.push(row.querySelector(".calc-row-label").textContent + " (" + row.querySelector(".calc-row-price").textContent + ")");
         }
       });
-
-      totalEl.textContent = '€' + total.toLocaleString('en-US');
-      document.getElementById('calc-form-addons').value = addonNames.join('; ');
-      document.getElementById('calc-form-total').value = '€' + total.toLocaleString('en-US');
-      stickyCta.href = '#apply';
+      totalEl.textContent = "€" + total.toLocaleString("en-US");
+      document.getElementById("calc-form-addons").value = addonNames.join("; ");
+      document.getElementById("calc-form-total").value = "€" + total.toLocaleString("en-US");
+      stickyCta.href = "#apply";
     }
 
-    packageInputs.forEach(function(input) { input.addEventListener('change', updateTotal); });
-    addonInputs.forEach(function(input) { input.addEventListener('change', updateTotal); });
-
-    document.querySelectorAll('.calc-row').forEach(function(row) {
-      row.addEventListener('click', function(e) {
-        if (e.target.tagName === 'INPUT') return;
+    packageInputs.forEach(function(inp) { inp.addEventListener("change", updateTotal); });
+    addonInputs.forEach(function(inp) { inp.addEventListener("change", updateTotal); });
+    document.querySelectorAll(".calc-row").forEach(function(row) {
+      row.addEventListener("click", function(e) {
+        if (e.target.tagName === "INPUT") return;
         var cb = row.querySelector('input[type="checkbox"]');
-        if (cb) { cb.checked = !cb.checked; cb.dispatchEvent(new Event('change')); }
+        if (cb) { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); }
       });
     });
-
     updateTotal();
   })();
   </script>

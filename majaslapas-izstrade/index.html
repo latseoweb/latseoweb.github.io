@@ -543,114 +543,85 @@
 
   <script src="../js/main.js"></script>
 
-  <!-- Cenrāža loģika -->
+  <!-- Calculator Logic -->
   <script>
   (function() {
-    var totalEl = document.getElementById('calc-total');
+    var totalEl = document.getElementById("calc-total");
     var packageInputs = document.querySelectorAll('input[name="package"]');
     var addonInputs = document.querySelectorAll('input[name="addon"]');
-    var detailDiv = document.getElementById('calc-package-detail');
-    var detailContent = document.getElementById('calc-detail-content');
-    var categories = document.querySelectorAll('.calc-category');
-    var stickyCta = document.querySelector('#calc-sticky .btn');
-    var stickyLabel = document.querySelector('#calc-sticky span');
+    var detailDiv = document.getElementById("calc-package-detail");
+    var detailContent = document.getElementById("calc-detail-content");
+    var categories = document.querySelectorAll(".calc-category");
+    var stickyCta = document.querySelector("#calc-sticky .btn");
+    var stickyLabel = document.querySelector("#calc-sticky span");
 
-    // Package detail templates
-    var packageDetails = {\'vizitkarte\': {\'name\': \'Vizītkartes lapa\', \'price\': \'449 €\', \'includes\': \'Gatavs profesionāls šablons, CMS administrācija, līdz 5 sadaļām, responsīvs dizains, pamata SEO struktūra, SSL sertifikāts\', \'platforms\': \'Tilda, Wix, WordPress, GitHub Pages (statiska)\', \'audience\': \'Maziem uzņēmumiem, individuālajiem komersantiem un freelanceriem\', \'time\': \'3–5 darba dienas\', \'addons\': \'design,content,extra,maintenance\'}, \'bizness\': {\'name\': \'Biznesa lapa\', \'price\': \'799 €\', \'includes\': \'Pielāgots dizains (ne šablons), neierobežots sadaļu skaits, CMS, responsīvs dizains, SEO optimizācija, bloga funkcionalitāte\', \'platforms\': \'WordPress, Tilda, GitHub Pages (statiska)\', \'audience\': \'Maziem un vidējiem uzņēmumiem ar plašāku pakalpojumu klāstu\', \'time\': \'2–4 nedēļas\', \'addons\': \'design,content,extra,maintenance\'}, \'veikals-vienk\': {\'name\': \'Interneta veikals (vienkāršs)\', \'price\': \'1 299 €\', \'includes\': \'Pielāgots dizains, preču katalogs ar kategorijām, preču grozs un pasūtīšana, CMS, maksājumu integrācija (Stripe/MakeCommerce)\', \'platforms\': \'Shopify, WordPress (WooCommerce)\', \'audience\': \'Uzņēmumiem ar nelielu preču klāstu (līdz ~100 produktiem)\', \'time\': \'3–5 nedēļas\', \'addons\': \'design,content,ecom,extra,maintenance\'}, \'korporativa\': {\'name\': \'Korporatīvā lapa\', \'price\': \'1 499 €\', \'includes\': \'Pielāgots dizains, vairākas pakalpojumu lapas, blogs, vairāku valodu atbalsts, CMS, padziļināta SEO struktūra, SSL\', \'platforms\': \'WordPress, GitHub Pages (statiska)\', \'audience\': \'Vidējiem un lieliem uzņēmumiem ar plašu pakalpojumu klāstu\', \'time\': \'4–6 nedēļas\', \'addons\': \'design,content,extra,maintenance\'}, \'individuala\': {\'name\': \'Individuāla lapa\', \'price\': \'1 699 €\', \'includes\': \'Pilnībā unikāls dizains no nulles, pilnībā pielāgota funkcionalitāte, jebkāda veida integrācijas, premium SEO, CMS, SSL\', \'platforms\': \'WordPress, GitHub Pages (custom static) — pilnībā pielāgots risinājums\', \'audience\': \'Uzņēmumiem ar specifiskām, nestandarta prasībām\', \'time\': \'6–10 nedēļas\', \'addons\': \'design,content,ecom,extra,maintenance\'}, \'veikals-sarez\': {\'name\': \'Interneta veikals (sarežģīts)\', \'price\': \'2 599 €\', \'includes\': \'Viss no vienkāršā veikala + preču filtri, sortēšana, vairāku valodu atbalsts, maksājumu karšu/PayPal integrācija, klientu reģistrācija, profils, produktu izlāde salīdzināšanas portāliem\', \'platforms\': \'Shopify, WordPress (WooCommerce)\', \'audience\': \'Lieliem e-komercijas projektiem ar plašu preču klāstu\', \'time\': \'6–12 nedēļas\', \'addons\': \'design,content,ecom,extra,maintenance\'}};
+    var packageDetails = {"vizitkarte": {"name": "Vizītkartes lapa", "price": "449 €", "includes": "Gatavs profesionāls šablons, CMS administrācija, līdz 5 sadaļām, responsīvs dizains, pamata SEO struktūra, SSL sertifikāts", "platforms": "Tilda, Wix, WordPress, GitHub Pages (statiska)", "audience": "Maziem uzņēmumiem, individuālajiem komersantiem un freelanceriem", "time": "3–5 darba dienas", "addons": "design,content,extra,maintenance"}, "bizness": {"name": "Biznesa lapa", "price": "799 €", "includes": "Pielāgots dizains (ne šablons), neierobežots sadaļu skaits, CMS, responsīvs dizains, SEO optimizācija, bloga funkcionalitāte", "platforms": "WordPress, Tilda, GitHub Pages (statiska)", "audience": "Maziem un vidējiem uzņēmumiem ar plašāku pakalpojumu klāstu", "time": "2–4 nedēļas", "addons": "design,content,extra,maintenance"}, "veikals-vienk": {"name": "Interneta veikals (vienkāršs)", "price": "1 299 €", "includes": "Pielāgots dizains, preču katalogs ar kategorijām, preču grozs un pasūtīšana, CMS, maksājumu integrācija (Stripe/MakeCommerce)", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Uzņēmumiem ar nelielu preču klāstu (līdz ~100 produktiem)", "time": "3–5 nedēļas", "addons": "design,content,ecom,extra,maintenance"}, "korporativa": {"name": "Korporatīvā lapa", "price": "1 499 €", "includes": "Pielāgots dizains, vairākas pakalpojumu lapas, blogs, vairāku valodu atbalsts, CMS, padziļināta SEO struktūra, SSL", "platforms": "WordPress, GitHub Pages (statiska)", "audience": "Vidējiem un lieliem uzņēmumiem ar plašu pakalpojumu klāstu", "time": "4–6 nedēļas", "addons": "design,content,extra,maintenance"}, "individuala": {"name": "Individuāla lapa", "price": "1 699 €", "includes": "Pilnībā unikāls dizains no nulles, pilnībā pielāgota funkcionalitāte, jebkāda veida integrācijas, premium SEO, CMS, SSL", "platforms": "WordPress, GitHub Pages (custom static) — pilnībā pielāgots risinājums", "audience": "Uzņēmumiem ar specifiskām, nestandarta prasībām", "time": "6–10 nedēļas", "addons": "design,content,ecom,extra,maintenance"}, "veikals-sarez": {"name": "Interneta veikals (sarežģīts)", "price": "2 599 €", "includes": "Viss no vienkāršā veikala + preču filtri, sortēšana, vairāku valodu atbalsts, maksājumu karšu/PayPal integrācija, klientu reģistrācija, profils, produktu izlāde salīdzināšanas portāliem", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Lieliem e-komercijas projektiem ar plašu preču klāstu", "time": "6–12 nedēļas", "addons": "design,content,ecom,extra,maintenance"}};
 
     function buildDetailHTML(pkg) {
       var d = packageDetails[pkg];
-      if (!d) return '';
-      return '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md)">' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Iekļauts bāzē</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.includes + '</div></div>' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Platformas</div><div style="font-size:var(--fs-sm);color:var(--clr-accent-text);line-height:1.6;font-weight:var(--fw-medium)">' + d.platforms + '</div></div>' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Kam paredzēts</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.audience + '</div></div>' +
-        '<div><div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Izstrādes laiks</div><div style="font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6">' + d.time + '</div></div>' +
-        '</div>';
+      if (!d) return "";
+      var h = "";
+      h += "<div style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md)\">";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Iekļauts bāzē</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.includes + "</div></div>";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Platformas</div><div style=\"font-size:var(--fs-sm);color:var(--clr-accent-text);line-height:1.6;font-weight:var(--fw-medium)\">" + d.platforms + "</div></div>";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Kam paredzēts</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.audience + "</div></div>";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Izstrādes laiks</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.time + "</div></div>";
+      h += "</div>";
+      return h;
     }
 
     function updateTotal() {
-      var total = 0;
-      var selectedPkg = null;
-
-      var selectedPackage = document.querySelector('input[name="package"]:checked');
-      if (selectedPackage) {
-        selectedPkg = selectedPackage.value;
-        total += parseInt(selectedPackage.closest('.calc-card').dataset.price) || 0;
+      var total = 0, selectedPkg = null;
+      var sp = document.querySelector('input[name="package"]:checked');
+      if (sp) {
+        selectedPkg = sp.value;
+        total += parseInt(sp.closest(".calc-card").dataset.price) || 0;
       }
-
-      // Show/hide addon categories and detail card
       if (selectedPkg && packageDetails[selectedPkg]) {
-        var allowedCategories = packageDetails[selectedPkg].addons.split(',');
+        var allowed = packageDetails[selectedPkg].addons.split(",");
         categories.forEach(function(cat) {
-          var catName = cat.dataset.category;
-          if (allowedCategories.indexOf(catName) >= 0) {
-            cat.style.display = '';
-          } else {
-            cat.style.display = 'none';
-            // Uncheck addons in hidden categories
-            cat.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
-          }
+          if (allowed.indexOf(cat.dataset.category) >= 0) { cat.style.display = ""; }
+          else { cat.style.display = "none"; cat.querySelectorAll('input[type="checkbox"]').forEach(function(cb){cb.checked=false;}); }
         });
-        // Show & populate detail card
-        detailDiv.style.display = '';
+        detailDiv.style.display = "";
         detailContent.innerHTML = buildDetailHTML(selectedPkg);
-        // Update sticky bar
-        stickyLabel.textContent = packageDetails[selectedPkg].name + ' • Kopējā summa';
-        stickyCta.style.opacity = '1';
-        stickyCta.innerHTML = 'Pieteikties <span aria-hidden="true">→</span>';
-        // Populate hidden form fields
-        document.getElementById('calc-form-package').value = packageDetails[selectedPkg].name + ' (' + packageDetails[selectedPkg].price + ')';
-        document.getElementById('calc-form-platforms').value = packageDetails[selectedPkg].platforms;
+        stickyLabel.textContent = packageDetails[selectedPkg].name + " \u2022 Kopējā summa";
+        stickyCta.style.opacity = "1";
+        stickyCta.innerHTML = "Pieteikties <span aria-hidden=\"true\">→</span>";
+        document.getElementById("calc-form-package").value = packageDetails[selectedPkg].name + " (" + packageDetails[selectedPkg].price + ")";
+        document.getElementById("calc-form-platforms").value = packageDetails[selectedPkg].platforms;
       } else {
-        categories.forEach(function(cat) { cat.style.display = 'none'; });
-        detailDiv.style.display = 'none';
-        stickyLabel.textContent = 'Izvēlieties paketi ↓';
-        stickyCta.textContent = 'Izvēlieties paketi ↓';
-        stickyCta.style.opacity = '0.6';
-        document.getElementById('calc-form-package').value = '';
-        document.getElementById('calc-form-platforms').value = '';
+        categories.forEach(function(cat) { cat.style.display = "none"; });
+        detailDiv.style.display = "none";
+        stickyLabel.textContent = "Izvēlieties paketi ↓";
+        stickyCta.textContent = "Izvēlieties paketi ↓";
+        stickyCta.style.opacity = "0.6";
+        document.getElementById("calc-form-package").value = "";
+        document.getElementById("calc-form-platforms").value = "";
       }
-
-      // Calculate addons total
       var addonNames = [];
       addonInputs.forEach(function(input) {
         if (input.checked) {
-          var row = input.closest('.calc-row');
+          var row = input.closest(".calc-row");
           total += parseInt(row.dataset.price) || 0;
-          addonNames.push(row.querySelector('.calc-row-label').textContent + ' (' + row.querySelector('.calc-row-price').textContent + ')');
+          addonNames.push(row.querySelector(".calc-row-label").textContent + " (" + row.querySelector(".calc-row-price").textContent + ")");
         }
       });
-
-      // Update total display
-      totalEl.textContent = '€' + total.toLocaleString('lv-LV');
-
-      // Update form hidden fields
-      document.getElementById('calc-form-addons').value = addonNames.join('; ');
-      document.getElementById('calc-form-total').value = '€' + total.toLocaleString('lv-LV');
-
-      // Update sticky CTA link
-      stickyCta.href = '#pieteikties';
+      totalEl.textContent = "€" + total.toLocaleString("lv-LV");
+      document.getElementById("calc-form-addons").value = addonNames.join("; ");
+      document.getElementById("calc-form-total").value = "€" + total.toLocaleString("lv-LV");
+      stickyCta.href = "#pieteikties";
     }
 
-    // Listen to all inputs
-    packageInputs.forEach(function(input) {
-      input.addEventListener('change', updateTotal);
-    });
-    addonInputs.forEach(function(input) {
-      input.addEventListener('change', updateTotal);
-    });
-
-    // Click anywhere on row toggles checkbox
-    document.querySelectorAll('.calc-row').forEach(function(row) {
-      row.addEventListener('click', function(e) {
-        if (e.target.tagName === 'INPUT') return;
+    packageInputs.forEach(function(inp) { inp.addEventListener("change", updateTotal); });
+    addonInputs.forEach(function(inp) { inp.addEventListener("change", updateTotal); });
+    document.querySelectorAll(".calc-row").forEach(function(row) {
+      row.addEventListener("click", function(e) {
+        if (e.target.tagName === "INPUT") return;
         var cb = row.querySelector('input[type="checkbox"]');
-        if (cb) { cb.checked = !cb.checked; cb.dispatchEvent(new Event('change')); }
+        if (cb) { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); }
       });
     });
-
-    // Initial update
     updateTotal();
   })();
   </script>
