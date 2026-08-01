@@ -802,11 +802,44 @@ def main():
         en_slug = slugify(en_content["title"][:80])
 
     # ── Image ────────────────────────────────────────────────────────────
-    # Use AI-suggested image query with Unsplash Source (free, relevant, random)
-    image_query_raw = lv_content.get("imageQuery", "SEO digital marketing")
-    image_query = image_query_raw.replace(" ", ",")
-    image_src = f"https://source.unsplash.com/1200x628/?{image_query}"
-    image_alt = image_query_raw
+    # Rotating list of reliable Unsplash photos (SEO, digital marketing, business)
+    UNSPLASH_PHOTOS = [
+        "photo-1432888498266-38ffec3eaf0a",  # laptop, coffee, notebook
+        "photo-1460925895917-afdab827c52f",  # analytics charts
+        "photo-1551288049-bebda4e38f71",     # digital marketing dashboard
+        "photo-1552664730-d307ca884978",     # team meeting, whiteboard
+        "photo-1454165804606-c3d57bc86b40",  # workspace, laptop
+        "photo-1522202176988-66273c2fd55f",  # team collaboration
+        "photo-1512758017271-d7b84c2113f1",  # digital screen, data
+        "photo-1553877522-43269d4ea984",     # office workspace plant
+        "photo-1504868584819-f8e8b4b6d7e3",  # analytics graphs
+        "photo-1559028012-481c04fa702d",     # laptop code
+        "photo-1532619675605-1ede6c2ed2b0",  # creative workspace
+        "photo-1486312338219-ce68d2c6f44d",  # woman laptop coffee
+        "photo-1499951360447-b19be8fe80f5",  # desk setup
+        "photo-1519389950473-47ba0277781c",  # team office
+        "photo-1522071820081-009f0129c71c",  # team around table
+        "photo-1542744173-8e7e53415bb0",     # meeting glass wall
+        "photo-1557804506-669a67965ba0",     # office discussion
+        "photo-1571171637578-41eb5d09b1f2",  # developer setup
+        "photo-1600880292201-6414f5a5a6c5",  # handshake business
+        "photo-1507003211169-0a1dd7228f2d",  # office whiteboard sticky notes
+        "photo-1517245386807-bb43f82c33c4",  # coworking space
+        "photo-1552664688-cf287c386cee",     # laptop and phone
+        "photo-1560472354-b33ff0c44a43",     # search engine marketing
+        "photo-1571728485813-7ecbcf2df42a",  # google search on phone
+        "photo-1533750349088-bdee7b5f0006",  # seo letters
+        "photo-1562577309-c349a5e21d15",     # digital marketing neon
+        "photo-1557804506-669a67965ba0",     # business meeting
+        "photo-1434030216411-0b793f4b4173",  # writing notebook
+        "photo-1559526324-593bc073d938",     # trading charts
+        "photo-1498050108023-c5249f4df085",  # developer desk
+        "photo-1516321318423-f06f85e504b3",  # mobile search
+        "photo-1559136558-4b0b5f5f8b6a",     # digital strategy board
+    ]
+    photo_id = UNSPLASH_PHOTOS[(topic_info["day"] - 1) % len(UNSPLASH_PHOTOS)]
+    image_src = f"https://images.unsplash.com/{photo_id}?w=1200&h=628&fit=crop&auto=format"
+    image_alt = lv_content.get("imageQuery", "SEO digitālais mārketings")
 
     # ── Format content ───────────────────────────────────────────────────
     lv_content["content"] = format_html_content(lv_content["content"])
