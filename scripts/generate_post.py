@@ -80,6 +80,21 @@ def slugify(text: str) -> str:
     return text.strip("-")
 
 
+def format_html_content(html: str) -> str:
+    """Add proper line breaks between HTML block elements for readability."""
+    # Add newline before opening block tags and after closing block tags
+    block_tags = ["h2", "h3", "h4", "p", "ul", "ol", "li", "figure", "blockquote", "table", "tr"]
+    for tag in block_tags:
+        html = html.replace(f"<{tag}>", f"\n<{tag}>")
+        html = html.replace(f"<{tag} ", f"\n<{tag} ")
+        html = html.replace(f"</{tag}>", f"</{tag}>\n")
+    # Clean up multiple consecutive newlines
+    html = re.sub(r"\n{3,}", "\n\n", html)
+    # Remove leading/trailing whitespace
+    html = html.strip()
+    return html
+
+
 def get_today_lv() -> str:
     """Get today's date in Latvian format."""
     months = [
@@ -787,9 +802,16 @@ def main():
         en_slug = slugify(en_content["title"][:80])
 
     # ── Image ────────────────────────────────────────────────────────────
-    image_query = lv_content.get("imageQuery", "SEO digital marketing").replace(" ", "-")
-    image_src = f"https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&h=628&fit=crop"
-    image_alt = lv_content.get("imageQuery", "SEO digitālais mārketings")
+    # Use AI-suggested image query with Unsplash Source (free, relevant, random)
+    image_query_raw = lv_content.get("imageQuery", "SEO digital marketing")
+    image_query = image_query_raw.replace(" ", ",")
+    image_src = f"https://source.unsplash.com/1200x628/?{image_query}"
+    image_alt = image_query_raw
+
+    # ── Format content ───────────────────────────────────────────────────
+    lv_content["content"] = format_html_content(lv_content["content"])
+    if en_content:
+        en_content["content"] = format_html_content(en_content["content"])
 
     # ── Dates ────────────────────────────────────────────────────────────
     date_lv = get_today_lv()
