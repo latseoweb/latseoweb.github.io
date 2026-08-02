@@ -39,10 +39,10 @@ DEEPSEEK_MODEL = "deepseek-chat"
 GITHUB_REPO = "latseoweb/latseoweb.github.io"
 GITHUB_BRANCH = "main"
 
-# Paths (relative to the repo root on Render)
-REPO_DIR = Path("/app/repo")  # Will be cloned here
-TOPICS_FILE = REPO_DIR / "scripts" / "topics.json"
-PROGRESS_FILE = REPO_DIR / "scripts" / ".blog-progress.json"
+# Paths — use the project root (where Render deploys the repo)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+TOPICS_FILE = PROJECT_ROOT / "scripts" / "topics.json"
+PROGRESS_FILE = PROJECT_ROOT / "scripts" / ".blog-progress.json"
 
 # Timezone
 LV_TZ_HOUR = 3  # Latvia is UTC+3 (summer) / UTC+2 (winter)
@@ -283,6 +283,10 @@ async def new_post_command(update, context):
         await update.message.reply_text("⛔ Tikai administrators var veidot rakstus.")
         return
 
+    # Auto-init progress file if missing
+    if not PROGRESS_FILE.exists():
+        save_json(PROGRESS_FILE, {"lastPublishedDay": 0, "lastPublishedDate": None, "publishedPosts": []})
+    
     progress = load_json(PROGRESS_FILE)
     day_number = progress.get("lastPublishedDay", 0) + 1
     
@@ -434,6 +438,8 @@ async def publish_command(update, context):
 
 async def status_command(update, context):
     """Handle /status command."""
+    if not PROGRESS_FILE.exists():
+        save_json(PROGRESS_FILE, {"lastPublishedDay": 0, "lastPublishedDate": None, "publishedPosts": []})
     progress = load_json(PROGRESS_FILE)
     last_day = progress.get("lastPublishedDay", 0)
     next_day = last_day + 1
@@ -522,22 +528,14 @@ def main():
 async def auto_daily_trigger(context):
     """Send daily prompt to admin at 09:00."""
     try:
-        # Reload from file in case Render wiped in-memory state
-        progress_path = Path("/app/repo/scripts/.blog-progress.json")
-        if progress_path.exists():
-            progress = load_json(progress_path)
-        else:
-            progress = {"lastPublishedDay": 0, "publishedPosts": []}
+        # Auto-initialize progress file if missing
+        if not PROGRESS_FILE.exists():
+            save_json(PROGRESS_FILE, {"lastPublishedDay": 0, "lastPublishedDate": None, "publishedPosts": []})
             
+        progress = load_json(PROGRESS_FILE)
         day_number = progress.get("lastPublishedDay", 0) + 1
         
         if day_number > 365:
-            return
-
-        # We need the topics file
-        topics_path = Path("/app/repo/scripts/topics.json")
-        if not topics_path.exists():
-            print("Topics file not found, skipping daily trigger")
             return
 
         topic_info = get_day_info(day_number)
