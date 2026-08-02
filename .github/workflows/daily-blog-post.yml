@@ -2,10 +2,10 @@
 name: Daily Blog Post
 
 on:
-  schedule:
-    # Runs every day at 06:00 UTC (09:00 Latvia time)
-    - cron: "0 6 * * *"
-  # Allow manual trigger from GitHub UI
+  # DISABLED: Cron replaced by Telegram bot system
+  # schedule:
+  #   - cron: "0 6 * * *"
+  # Allow manual trigger from GitHub UI (for testing only)
   workflow_dispatch:
     inputs:
       day:
