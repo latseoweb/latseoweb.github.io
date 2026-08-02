@@ -1,5 +1,5 @@
 {
-  "lastPublishedDay": 3,
+  "lastPublishedDay": 4,
   "lastPublishedDate": "2026-08-02",
   "publishedPosts": [
     {
@@ -17,6 +17,14 @@
       "enSlug": "7-seo-basics-every-business-owner-must-know-before-building-a-website",
       "titleLV": "7 SEO pamati, kas jāzina pirms mājaslapas izveides",
       "titleEN": "7 SEO Basics Every Business Owner Must Know Before Building a Website"
+    },
+    {
+      "day": 4,
+      "date": "2026-08-02",
+      "lvSlug": "ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem",
+      "enSlug": "seo-basics-my-journey-from-zero-to-first-clients",
+      "titleLV": "SEO pamati: 5 mācības no manas pirmās klientu pieredzes",
+      "titleEN": "SEO Basics: My Journey from Zero to First Clients"
     }
   ]
 }
