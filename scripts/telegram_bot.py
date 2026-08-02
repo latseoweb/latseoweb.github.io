@@ -216,7 +216,7 @@ AUTHOR'S ANSWERS (in Latvian — translate to English):
 
 Return ONLY JSON with ENGLISH content: {{"title":"...", "metaDescription":"...", "content":"<h2>...</h2><p>...</p>...", "imageQuery":"..."}}"""
 
-    response = client.chat.completions.create(model=DEEPSEEK_MODEL, messages=[{"role":"system","content":system_prompt}], temperature=0.7, max_tokens=4000)
+    response = client.chat.completions.create(model=DEEPSEEK_MODEL, messages=[{"role":"system","content":system_prompt}], temperature=0.7, max_tokens=4000, timeout=60)
     raw = response.choices[0].message.content.strip()
     if raw.startswith("```"):
         raw = re.sub(r"^```(?:json)?\s*\n?", "", raw)
@@ -870,6 +870,7 @@ Return ONLY the LinkedIn post text. No explanations."""
         messages=[{"role": "user", "content": prompt}],
         temperature=0.8,
         max_tokens=800,
+        timeout=30,  # 30 second timeout — fail fast if API hangs
     )
     return response.choices[0].message.content.strip()
 
