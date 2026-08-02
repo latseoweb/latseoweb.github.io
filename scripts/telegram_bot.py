@@ -380,11 +380,11 @@ async def publish_command(update, context):
     if update.effective_user.id != ADMIN_CHAT_ID:
         return
 
-    if not user_state["awaiting_answers"]:
+    if not user_state.get("awaiting_answers"):
         await update.message.reply_text("Nav aktīva raksta. Raksti /jauns lai sāktu.")
         return
 
-    if len(user_state["answers"]) < len(user_state["questions"]):
+    if len(user_state.get("answers", [])) < len(user_state.get("questions", [])):
         missing = len(user_state["questions"]) - len(user_state["answers"])
         await update.message.reply_text(f"⚠️ Trūkst {missing} atbildes. Atbildi uz visiem jautājumiem.")
         return
@@ -392,48 +392,223 @@ async def publish_command(update, context):
     await update.message.reply_text("✍️ Ģenerēju bloga rakstu... Tas var aizņemt ~30 sekundes.")
 
     try:
+        topic = user_state["current_topic"]
+        questions = user_state["questions"]
+        answers = user_state["answers"]
+        day = user_state["current_day"]
+
         # Generate LV content
-        lv_content = generate_blog_post(
-            user_state["current_topic"],
-            user_state["questions"],
-            user_state["answers"],
-            "lv"
-        )
+        lv_content = generate_blog_post(topic, questions, answers, "lv")
         lv_content["content"] = format_html_content(lv_content["content"])
         
         # Generate EN content
-        en_content = generate_blog_post(
-            user_state["current_topic"],
-            user_state["questions"],
-            user_state["answers"],
-            "en"
-        )
+        en_content = generate_blog_post(topic, questions, answers, "en")
         en_content["content"] = format_html_content(en_content["content"])
 
-        lv_slug = user_state["current_topic"]["topicSlug"]
+        lv_slug = topic["topicSlug"]
         en_slug = slugify(en_content["title"][:80])
-        day = user_state["current_day"]
         image_src = f"https://picsum.photos/seed/day{day}/1200/628"
-        image_alt = lv_content.get("imageQuery", "SEO blog illustration")
+        today_lv = datetime.now().strftime("%Y. gada %-d. %B").replace("August", "augusts").replace("July","jūlijs").replace("June","jūnijs").replace("May","maijs").replace("April","aprīlis").replace("March","marts").replace("February","februāris").replace("January","janvāris").replace("September","septembris").replace("October","oktobris").replace("November","novembris").replace("December","decembris")
+        today_en = datetime.now().strftime("%B %d, %Y")
 
-        # Build HTML (simplified — full template available in generate_post.py)
-        # For now, commit the generated content directly
-        # The full HTML build would replicate build_blog_html() from generate_post.py
+        # Clone repo, write files, commit, push
+        import git
+        from git import Repo
         
-        await update.message.reply_text(
-            f"✅ *Raksts uzģenerēts!*\n\n"
-            f"📝 {lv_content['title']}\n"
-            f"🔗 /blogs/{lv_slug}/\n\n"
-            f"Bet man vēl jāintegrē pilna HTML ģenerēšana un commit/push.\n"
-            f"Pagaidām — šeit ir tavs saturs:\n\n"
-            f"{lv_content['content'][:500]}...",
-            parse_mode="Markdown"
-        )
+        repo_dir = Path("/tmp/latseo-repo")
+        if repo_dir.exists():
+            subprocess.run(["rm", "-rf", str(repo_dir)])
+        
+        clone_url = f"https://x-access-token:{GITHUB_TOKEN}@github.com/{GITHUB_REPO}.git"
+        repo = Repo.clone_from(clone_url, repo_dir, branch=GITHUB_BRANCH)
+
+        # Write LV blog post
+        lv_dir = repo_dir / "blogs" / lv_slug
+        lv_dir.mkdir(parents=True, exist_ok=True)
+        lv_html = build_full_blog_html(lv_content["title"], lv_content["metaDescription"], lv_slug, topic["category"], today_lv, today_en, lv_content["content"], image_src, lv_content.get("imageQuery","SEO"), "lv", en_slug, lv_slug)
+        (lv_dir / "index.html").write_text(lv_html, encoding="utf-8")
+
+        # Write EN blog post
+        en_dir = repo_dir / "en" / "blogs" / en_slug
+        en_dir.mkdir(parents=True, exist_ok=True)
+        en_html = build_full_blog_html(en_content["title"], en_content["metaDescription"], en_slug, topic["category"], today_lv, today_en, en_content["content"], image_src, en_content.get("imageQuery","SEO"), "en", en_slug, lv_slug)
+        (en_dir / "index.html").write_text(en_html, encoding="utf-8")
+
+        # Update blog index pages
+        update_index(repo_dir / "blogs" / "index.html", lv_content["title"], lv_slug, lv_content["metaDescription"], topic["category"], today_lv, image_src, lv_content.get("imageQuery","SEO"), "lv")
+        update_index(repo_dir / "en" / "blogs" / "index.html", en_content["title"], en_slug, en_content["metaDescription"], topic["category"], today_en, image_src, en_content.get("imageQuery","SEO"), "en")
+
+        # Update progress
+        progress_path = repo_dir / "scripts" / ".blog-progress.json"
+        progress = load_json(progress_path) if progress_path.exists() else {"lastPublishedDay": 0, "publishedPosts": []}
+        progress["lastPublishedDay"] = day
+        progress["lastPublishedDate"] = date.today().isoformat()
+        save_json(progress_path, progress)
+
+        # Also update progress locally (Render copy)
+        save_json(PROGRESS_FILE, progress)
+
+        # Git commit & push
+        repo.git.config("user.email", "bot@latseo.com")
+        repo.git.config("user.name", "LatSEO Bot")
+        repo.git.add(A=True)
+        repo.git.commit(m=f"📝 Blog post — Day {day}/365 (Telegram Q&A)")
+        repo.git.push("origin", GITHUB_BRANCH)
 
         user_state["awaiting_answers"] = False
 
+        await update.message.reply_text(
+            f"✅ *Raksts publicēts!*\n\n"
+            f"📝 {lv_content['title']}\n"
+            f"🔗 https://latseo.com/blogs/{lv_slug}/\n\n"
+            f"🌍 EN: https://latseo.com/en/blogs/{en_slug}/",
+            parse_mode="Markdown",
+            disable_web_page_preview=True
+        )
+
     except Exception as e:
-        await update.message.reply_text(f"❌ Kļūda: {str(e)}")
+        await update.message.reply_text(f"❌ Kļūda publicējot: {str(e)}")
+
+
+def build_full_blog_html(title, meta_desc, slug, category, date_lv, date_en, content, image_src, image_alt, lang, en_slug, lv_slug):
+    """Build complete blog post HTML matching the existing site style."""
+    is_lv = lang == "lv"
+    base_path = "../../" if is_lv else "../../../"
+    services_base = "" if is_lv else "/en"
+    home_url = "/" if is_lv else "/en/"
+    blogs_url = "/blogs/" if is_lv else "/en/blogs/"
+    page_url = f"https://latseo.com{'' if is_lv else '/en'}/blogs/{slug}/"
+    lv_page = f"https://latseo.com/blogs/{lv_slug}/"
+    en_page = f"https://latseo.com/en/blogs/{en_slug}/"
+    
+    word_count = len(re.sub(r"<[^>]+>", "", content).split())
+    read_time = max(1, round(word_count / 200))
+    
+    labels = {
+        "home": "Sākums" if is_lv else "Home",
+        "blog": "Blogs" if is_lv else "Blog",
+        "back": "Atpakaļ uz blogu" if is_lv else "Back to blog",
+        "author_label": "Autors" if is_lv else "Author",
+        "author": "Adrians Stankevičs" if is_lv else "Adrians Stankevics",
+        "read": "min lasīšanai" if is_lv else "min read",
+        "skip": "Pāriet uz saturu" if is_lv else "Skip to content",
+        "services": "Pakalpojumi un cenas" if is_lv else "Services & Pricing",
+        "webdev": "Mājaslapu izstrāde" if is_lv else "Web Development",
+        "tech": "Tehniskais SEO" if is_lv else "Technical SEO",
+        "local": "Lokālais SEO" if is_lv else "Local SEO",
+        "links": "Saišu veidošana" if is_lv else "Link Building",
+        "content_strat": "Satura stratēģija" if is_lv else "Content Strategy",
+        "cta": "Bezmaksas SEO Audits" if is_lv else "Free SEO Audit",
+        "related": "Saistītie SEO pakalpojumi" if is_lv else "Related SEO Services",
+    }
+    
+    return f"""<!DOCTYPE html>
+<html lang="{'lv' if is_lv else 'en'}">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F1501'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='17' fill='%23F5F5F0'%3ELS%3C/text%3E%3Cstyle%3E@media(prefers-color-scheme:dark){{rect{{fill:%23EAE5DA}}text{{fill:%231F1501}}}}%3C/style%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="{base_path}assets/images/LatSEO%20logo%20black.png">
+  <meta name="description" content="{meta_desc}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:locale" content="{'lv_LV' if is_lv else 'en_US'}"><meta property="og:type" content="article">
+  <meta property="og:title" content="{title} | LatSEO Blog">
+  <meta property="og:description" content="{meta_desc}">
+  <meta property="og:url" content="{page_url}">
+  <meta property="og:image" content="{image_src}">
+  <link rel="canonical" href="{page_url}">
+  <link rel="alternate" hreflang="lv" href="{lv_page}">
+  <link rel="alternate" hreflang="en" href="{en_page}">
+  <link rel="alternate" hreflang="x-default" href="{lv_page}">
+  <title>{title} | LatSEO Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{base_path}css/style.css">
+  <meta name="date" content="{date.today().isoformat()}">
+  <meta name="author" content="{labels['author']}, Baltic SEO, SIA">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-MF7Q1R9722');gtag('config','AW-18351772465');</script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">{labels['skip']}</a>
+  <header class="site-header"><div class="header__inner">
+    <a href="{home_url}" class="header__logo"><img src="/assets/images/LatSEO%20logo%20black.png" alt="LatSEO" class="header__logo-img" width="140" height="38"></a>
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        <li><a href="{home_url}" class="header__nav-link">{labels['home']}</a></li>
+        <li class="header__dropdown"><span class="header__dropdown-toggle" tabindex="0">{labels['services']} <span class="header__dropdown-toggle-icon">▾</span></span>
+          <div class="header__dropdown-menu">
+            <a href="{services_base}/pakalpojumi-un-cenas/">Pakalpojumu cenas</a>
+            <a href="{services_base}/majaslapas-izstrade/">{labels['webdev']}</a>
+            <a href="{services_base}/tehniskais-seo/">{labels['tech']}</a>
+            <a href="{services_base}/lokalais-seo/">{labels['local']}</a>
+            <a href="{services_base}/saisu-veidosana/">{labels['links']}</a>
+            <a href="{services_base}/satura-strategija/">{labels['content_strat']}</a>
+          </div></li>
+        <li><a href="{services_base}/projekti/" class="header__nav-link">Projekti</a></li>
+        <li><a href="{blogs_url}" class="header__nav-link">{labels['blog']}</a></li>
+        <li><a href="{services_base}/kontakti/" class="header__nav-link">Kontakti</a></li>
+      </ul>
+      <div class="header__lang-switch">
+        <a href="/blogs/{lv_slug}/" class="header__lang-btn{'' if not is_lv else ' header__lang-btn--active'}">LV</a>
+        <a href="/en/blogs/{en_slug}/" class="header__lang-btn{'' if is_lv else ' header__lang-btn--active'}" hreflang="en" lang="en">EN</a>
+      </div>
+      <a href="{services_base}/kontakti/" class="header__cta">{labels['cta']} <span aria-hidden="true">→</span></a>
+    </nav>
+  </div></header>
+  <main id="main-content"><article class="section section--light" style="padding-top:calc(var(--header-height) + var(--sp-2xl))"><div class="container" style="max-width:800px;margin:0 auto">
+    <nav style="margin-bottom:var(--sp-lg);font-size:var(--fs-sm);color:var(--clr-text-muted)"><a href="{home_url}" style="color:var(--clr-text-muted);text-decoration:none">{labels['home']}</a> &rsaquo; <a href="{blogs_url}" style="color:var(--clr-text-muted);text-decoration:none">{labels['blog']}</a> &rsaquo; <span style="color:var(--clr-text-secondary)">{title}</span></nav>
+    <div style="font-size:var(--fs-xs);color:var(--clr-accent-text);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:var(--sp-sm)">{category} &bull; {date_lv if is_lv else date_en}</div>
+    <h1 class="section__title" style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:var(--sp-lg)">{title}</h1>
+    <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-xl);font-size:var(--fs-sm);color:var(--clr-text-secondary)"><span>{labels['author_label']}: <strong>{labels['author']}</strong></span><span>&bull;</span><span>~{read_time} {labels['read']}</span></div>
+    <figure style="margin-bottom:var(--sp-xl)"><img src="{image_src}" alt="{image_alt}" style="width:100%;height:auto;border-radius:var(--br-lg)" loading="eager"><figcaption style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-align:center;margin-top:var(--sp-xs)">{image_alt}</figcaption></figure>
+    <div class="blog-content" style="font-size:var(--fs-base);line-height:1.8;color:var(--clr-text-primary)">{content}</div>
+    <div style="margin-top:var(--sp-xl);padding:var(--sp-lg);background:var(--clr-bg-secondary);border-radius:var(--br-lg)"><h3 style="font-size:var(--fs-lg);margin-bottom:var(--sp-md)">{labels['related']}</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-sm)">
+        <li><a href="{services_base}/lokalais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📍 {labels['local']}</a></li>
+        <li><a href="{services_base}/tehniskais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">⚙️ {labels['tech']}</a></li>
+        <li><a href="{services_base}/satura-strategija/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📝 {labels['content_strat']}</a></li>
+        <li><a href="{services_base}/pakalpojumi-un-cenas/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">💼 Visi pakalpojumi</a></li>
+      </ul></div>
+    <div style="margin-top:var(--sp-2xl);padding-top:var(--sp-lg);border-top:1px solid var(--clr-border)"><a href="{blogs_url}" class="service-card__link" style="font-size:var(--fs-base)">&larr; {labels['back']}</a></div>
+  </div></article></main>
+  <footer class="site-footer"><div class="container"><div class="footer__grid">
+    <div><a href="{home_url}" class="header__logo"><img src="/assets/images/LatSEO%20logo%20black.png" alt="LatSEO" class="header__logo-img" width="140" height="38"></a><p class="footer__brand-text">{'Mēs palīdzam uzņēmumiem augt tiešsaistē ar datu balstītām SEO stratēģijām, kas sniedz izmērāmus rezultātus Google meklētājā.' if is_lv else 'We help businesses grow online with data-driven SEO strategies that deliver measurable results on Google.'}</p></div>
+    <div><div class="footer__heading">{'Uzņēmums' if is_lv else 'Company'}</div><ul class="footer__links"><li><a href="{home_url}">{'Sākumlapa' if is_lv else 'Home'}</a></li><li><a href="{services_base}/pakalpojumi-un-cenas/">{labels['services']}</a></li><li><a href="{services_base}/projekti/">{'Mūsu projekti' if is_lv else 'Our projects'}</a></li><li><a href="{blogs_url}">{labels['blog']}</a></li><li><a href="{services_base}/kontakti/">Kontakti</a></li></ul></div>
+    <div><div class="footer__heading">{'SEO Pakalpojumi' if is_lv else 'SEO Services'}</div><ul class="footer__links"><li><a href="{services_base}/tehniskais-seo/">{labels['tech']}</a></li><li><a href="{services_base}/satura-strategija/">{labels['content_strat']}</a></li><li><a href="{services_base}/lokalais-seo/">{labels['local']}</a></li></ul></div>
+    <div><div class="footer__heading">{'Citi' if is_lv else 'Other'}</div><ul class="footer__links"><li><a href="{services_base}/majaslapas-izstrade/">{labels['webdev']}</a></li></ul></div>
+    <div><div class="footer__heading">{'Saziņa' if is_lv else 'Contact'}</div><div class="footer__contact-item"><a href="mailto:sales@latseo.com">sales@latseo.com</a></div><div class="footer__contact-item"><a href="tel:+37124424434">+371 24424434</a></div><div class="footer__contact-item"><span>Rīga, Latvija</span></div></div>
+  </div><div class="footer__bottom"><p>&copy; {date.today().year} LatSEO. {'Visas tiesības aizsargātas.' if is_lv else 'All rights reserved.'}</p></div></div></footer>
+  <script src="{base_path}js/main.js"></script>
+  <button class="scroll-top" aria-label="{'Uz augšu' if is_lv else 'Back to top'}">↑</button>
+</body></html>"""
+
+
+def update_index(index_path: Path, title: str, slug: str, desc: str, category: str, date_str: str, image_src: str, image_alt: str, lang: str):
+    """Insert a new blog card at the top of a blog index page."""
+    if not index_path.exists():
+        return
+    content = index_path.read_text(encoding="utf-8")
+    marker = 'id="blog-posts-container"'
+    pos = content.find(marker)
+    if pos == -1:
+        return
+    pos = content.find(">", pos) + 1
+    blog_base = "/blogs/" if lang == "lv" else "/en/blogs/"
+    read_more = "Lasīt vairāk" if lang == "lv" else "Read more"
+    card = f"""
+          <article class="service-card">
+            <a href="{blog_base}{slug}/" style="display:block;margin-bottom:var(--sp-md)">
+              <img src="{image_src}" alt="{image_alt}" style="width:100%;height:auto;border-radius:var(--br-lg)" loading="lazy">
+            </a>
+            <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:var(--sp-2xs)">{category} &middot; {date_str}</div>
+            <h3 class="service-card__title">
+              <a href="{blog_base}{slug}/" style="color:inherit;text-decoration:none">{title}</a>
+            </h3>
+            <p class="service-card__text">{desc}</p>
+            <a href="{blog_base}{slug}/" class="service-card__link">{read_more} <span class="service-card__link-arrow">→</span></a>
+          </article>"""
+    new_content = content[:pos] + card + content[pos:]
+    index_path.write_text(new_content, encoding="utf-8")
 
 
 async def status_command(update, context):
