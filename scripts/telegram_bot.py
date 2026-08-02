@@ -448,7 +448,7 @@ async def publish_command(update, context):
 
         lv_slug = topic["topicSlug"]
         en_slug = slugify(en_content["title"][:80])
-        image_src = f"https://images.unsplash.com/{UNSPLASH_PHOTOS[(day - 1) % len(UNSPLASH_PHOTOS)]}?w=1200&h=628&fit=crop&auto=format"
+        image_src = f"https://images.unsplash.com/{UNSPLASH_PHOTOS[(day - 1) % len(UNSPLASH_PHOTOS)]}?w=1200&q=80"
         
         # Format dates
         lv_months = ["janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris"]
