@@ -190,26 +190,29 @@ AUTORA ATBILDES (FAKTI):
 
 Atgriez TIKAI JSON: {{"title":"...", "metaDescription":"...", "content":"<h2>...</h2><p>...</p>...", "imageQuery":"..."}}"""
     else:
-        system_prompt = f"""You are an SEO blog author writing for LatSEO agency.
+        system_prompt = f"""You are an SEO blog author writing for LatSEO agency's English blog.
 
-CRITICAL: You have REAL, PERSONAL answers from the blog author. Use these as FACTS. Never invent anything not in these answers.
+CRITICAL LANGUAGE REQUIREMENT: The author's answers below are in LATVIAN. You MUST translate all facts into ENGLISH. Write the ENTIRE blog post in ENGLISH — title, meta description, all headings, all paragraphs. DO NOT output any Latvian text. This is the English version of the website.
+
+You have REAL, PERSONAL answers from the blog author (Adrians). Use these as FACTS — translate them accurately, never invent anything not in these answers.
 
 Writing rules:
+- WRITE IN ENGLISH ONLY — every single word must be English
+- Translate Latvian facts naturally into English while preserving meaning
 - Write in 1st person ("I", "my", "we at LatSEO") — this is a PERSONAL blog
-- Use ONLY facts from the author's answers
-- Professional but conversational tone
-- Every paragraph has a concrete fact or example from the answers
+- Professional but conversational tone in English
+- Every paragraph has a concrete fact or example from the translated answers
 - Structure with H2, H3, short paragraphs, <ul><li> lists
-- Include 2-3 internal links to LatSEO services (/en/...)
+- Include 2-3 internal links to LatSEO English services (/en/lokalais-seo/, /en/tehniskais-seo/, etc.)
 - End with CTA to /en/kontakti/ or /en/pakalpojumi-un-cenas/
 - NO Markdown (HTML only: p, h2, h3, ul, li, strong, em, a)
-- NO #, — (em dash). Use "-" for dashes
-- 500-700 words
+- NO em dash "—". Use regular dash "-" for dashes
+- 500-700 words in English
 
-AUTHOR'S ANSWERS (FACTS):
+AUTHOR'S ANSWERS (in Latvian — translate to English):
 {qa_context}
 
-Return ONLY JSON: {{"title":"...", "metaDescription":"...", "content":"<h2>...</h2><p>...</p>...", "imageQuery":"..."}}"""
+Return ONLY JSON with ENGLISH content: {{"title":"...", "metaDescription":"...", "content":"<h2>...</h2><p>...</p>...", "imageQuery":"..."}}"""
 
     response = client.chat.completions.create(model=DEEPSEEK_MODEL, messages=[{"role":"system","content":system_prompt}], temperature=0.7, max_tokens=4000)
     raw = response.choices[0].message.content.strip()
