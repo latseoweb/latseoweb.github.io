@@ -465,7 +465,7 @@ async def skip_command(update, context):
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
-async def main():
+def main():
     """Start the Telegram bot."""
     if not BOT_TOKEN:
         print("❌ BOT_TOKEN nav iestatīts!")
@@ -491,15 +491,15 @@ async def main():
     # Message handler (for answers)
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    # Schedule daily job using the application's job queue (no separate scheduler needed)
-    # Runs at 06:00 UTC = 09:00 Latvia time
+    # Schedule daily job at 06:00 UTC = 09:00 Latvia time
     app.job_queue.run_daily(
         auto_daily_trigger,
         time=time(hour=6, minute=0, tzinfo=timezone.utc),
     )
 
     print("🤖 LatSEO Blog Bot started! Waiting for messages...")
-    await app.run_polling()
+    # run_polling() manages its own event loop — do NOT wrap in asyncio.run()
+    app.run_polling()
 
 
 async def auto_daily_trigger(context):
@@ -550,4 +550,4 @@ async def auto_daily_trigger(context):
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
