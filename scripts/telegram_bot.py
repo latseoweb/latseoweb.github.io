@@ -430,7 +430,7 @@ async def publish_command(update, context):
 
         lv_slug = topic["topicSlug"]
         en_slug = slugify(en_content["title"][:80])
-        image_src = f"https://images.pexels.com/photos/{PEXELS_PHOTOS[(day - 1) % len(PEXELS_PHOTOS)]}/pexels-photo-{PEXELS_PHOTOS[(day - 1) % len(PEXELS_PHOTOS)]}.jpeg?w=1200&h=628&fit=crop"
+        image_src = f"https://images.pexels.com/photos/{PEXELS_PHOTOS[(day - 1) % len(PEXELS_PHOTOS)]}/pexels-photo-{PEXELS_PHOTOS[(day - 1) % len(PEXELS_PHOTOS)]}.jpeg"
         
         # Format dates
         lv_months = ["janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris"]
