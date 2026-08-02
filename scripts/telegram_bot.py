@@ -47,38 +47,20 @@ PROGRESS_FILE = PROJECT_ROOT / "scripts" / ".blog-progress.json"
 # Timezone
 LV_TZ_HOUR = 3  # Latvia is UTC+3 (summer) / UTC+2 (winter)
 
-# Curated Unsplash photos — all business/office/SEO/tech related, 60+ unique images
-UNSPLASH_PHOTOS = [
-    "photo-1432888498266-38ffec3eaf0a", "photo-1460925895917-afdab827c52f",
-    "photo-1551288049-bebda4e38f71", "photo-1552664730-d307ca884978",
-    "photo-1454165804606-c3d57bc86b40", "photo-1522202176988-66273c2fd55f",
-    "photo-1512758017271-d7b84c2113f1", "photo-1553877522-43269d4ea984",
-    "photo-1504868584819-f8e8b4b6d7e3", "photo-1559028012-481c04fa702d",
-    "photo-1532619675605-1ede6c2ed2b0", "photo-1486312338219-ce68d2c6f44d",
-    "photo-1499951360447-b19be8fe80f5", "photo-1519389950473-47ba0277781c",
-    "photo-1522071820081-009f0129c71c", "photo-1542744173-8e7e53415bb0",
-    "photo-1557804506-669a67965ba0", "photo-1571171637578-41eb5d09b1f2",
-    "photo-1600880292201-6414f5a5a6c5", "photo-1507003211169-0a1dd7228f2d",
-    "photo-1517245386807-bb43f82c33c4", "photo-1552664688-cf287c386cee",
-    "photo-1560472354-b33ff0c44a43", "photo-1571728485813-7ecbcf2df42a",
-    "photo-1533750349088-bdee7b5f0006", "photo-1562577309-c349a5e21d15",
-    "photo-1434030216411-0b793f4b4173", "photo-1559526324-593bc073d938",
-    "photo-1498050108023-c5249f4df085", "photo-1516321318423-f06f85e504b3",
-    "photo-1559136558-4b0b5f5f8b6a", "photo-1523240795612-9a054b0db5d4",
-    "photo-1461749280684-dccba630e2f6", "photo-1504384308090-c894fdcc538d",
-    "photo-1517048676732-d65c6e0b2c3c", "photo-1556761175-4b46a572b786",
-    "photo-1553028826-b8ddce317e6a", "photo-1599658880436-617b5e1a5a5c",
-    "photo-1531482615713-2afd8a5e0b9f", "photo-1549923749-5f50e17f25bd",
-    "photo-1607962837359-5e7e89f86776", "photo-1507537297725-24a1c029d3ca",
-    "photo-1558403189-ab3f0aad34b1", "photo-1563986768609-322da13575f2",
-    "photo-1558403191-14807de17862", "photo-1470790376778-a9fdb86b2dd4",
-    "photo-1555421689-d68471e189f2", "photo-1535957998253-d26ff1ca4bc8",
-    "photo-1556761175-b413da4cf2f6", "photo-1521791136064-798e4a2eec9f",
-    "photo-1568992687947-febf11de21d8", "photo-1601933470099-0e731f668fe1",
-    "photo-1573164574230-d99ae9c9b1cb", "photo-1581291518633-83b4a4c1e56e",
-    "photo-1551739440-5dd4fc0a3c8a", "photo-1533228872887-8d3c1cf9ecd5",
-    "photo-1542623066180-e0cfc08248f4", "photo-1554226655-02e8e2ef4f74",
-    "photo-1606857521015-f2e2a0b0c7ec", "photo-1573497620053-e2278f4e0a20",
+# Curated Pexels photos — SEO, office, business, technology. Reliable hotlinking.
+PEXELS_PHOTOS = [
+    "3183150", "3184292", "3184296", "3184338", "3184418",
+    "3184611", "3184640", "3861969", "3861972", "3861976",
+    "6696159", "6696196", "6696220", "6801648", "6802048",
+    "7437495", "7437663", "7688336", "7688350", "7688366",
+    "1181244", "1181263", "1181271", "1181303", "1181359",
+    "2422290", "2422293", "2422294", "3182771", "3182784",
+    "3861944", "3861951", "3861958", "6476578", "6476589",
+    "6696151", "6696162", "6801642", "6801655", "7688342",
+    "1181345", "1181362", "2422288", "3182765", "3861940",
+    "6476572", "6476594", "6696145", "6696178", "6801635",
+    "6801660", "7688332", "7688358", "1181284", "1181318",
+    "2422297", "3182801", "3861963", "6476582", "6696188",
 ]
 
 # ── Bot State ────────────────────────────────────────────────────────────────
@@ -448,7 +430,7 @@ async def publish_command(update, context):
 
         lv_slug = topic["topicSlug"]
         en_slug = slugify(en_content["title"][:80])
-        image_src = f"https://picsum.photos/1200/628?random={day}"
+        image_src = f"https://images.pexels.com/photos/{PEXELS_PHOTOS[(day - 1) % len(PEXELS_PHOTOS)]}/pexels-photo-{PEXELS_PHOTOS[(day - 1) % len(PEXELS_PHOTOS)]}.jpeg?w=1200&h=628&fit=crop"
         
         # Format dates
         lv_months = ["janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris"]
