@@ -1,6 +1,6 @@
 {
-  "lastPublishedDay": 2,
-  "lastPublishedDate": "2026-08-01",
+  "lastPublishedDay": 3,
+  "lastPublishedDate": "2026-08-02",
   "publishedPosts": [
     {
       "day": 2,
@@ -9,6 +9,14 @@
       "enSlug": "seo-is-not-just-keywords-why-this-myth-hurts-your-business",
       "titleLV": "Mīts: SEO ir tikai atslēgvārdi - kāpēc tas kaitē tavam biznesam",
       "titleEN": "SEO Is Not Just Keywords: Why This Myth Hurts Your Business"
+    },
+    {
+      "day": 3,
+      "date": "2026-08-02",
+      "lvSlug": "7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap",
+      "enSlug": "7-seo-basics-every-business-owner-must-know-before-building-a-website",
+      "titleLV": "7 SEO pamati, kas jāzina pirms mājaslapas izveides",
+      "titleEN": "7 SEO Basics Every Business Owner Must Know Before Building a Website"
     }
   ]
 }
