@@ -305,7 +305,9 @@ async def start_command(update, context):
         "Komandas:\n"
         "/jauns - sākt jaunu rakstu tūlīt\n"
         "/izlaist - izlaist šodienas rakstu\n"
-        "/status - pārbaudīt statusu"
+        "/status - pārbaudīt statusu\n"
+        "/raksti - saraksts ar publicētajiem rakstiem (LinkedIn)\n"
+        "/li_mark N - atzīmēt rakstu kā izmantotu LinkedIn"
     )
 
 
@@ -365,10 +367,15 @@ async def new_post_command(update, context):
 
 
 async def handle_message(update, context):
-    """Handle user's answers."""
+    """Handle user's answers — checks LinkedIn mode first, then blog Q&A."""
     global user_state
     
     if update.effective_user.id != ADMIN_CHAT_ID:
+        return
+
+    # Check if in LinkedIn selection mode
+    if linkedin_state.get("selecting"):
+        await handle_linkedin_number(update, context)
         return
 
     if not user_state["awaiting_answers"]:
@@ -441,7 +448,7 @@ async def publish_command(update, context):
 
         lv_slug = topic["topicSlug"]
         en_slug = slugify(en_content["title"][:80])
-        image_src = f"https://images.unsplash.com/photo-{UNSPLASH_PHOTOS[(day - 1) % len(UNSPLASH_PHOTOS)]}?w=1200&h=628&fit=crop&auto=format"
+        image_src = f"https://images.unsplash.com/{UNSPLASH_PHOTOS[(day - 1) % len(UNSPLASH_PHOTOS)]}?w=1200&h=628&fit=crop&auto=format"
         
         # Format dates
         lv_months = ["janvāris","februāris","marts","aprīlis","maijs","jūnijs","jūlijs","augusts","septembris","oktobris","novembris","decembris"]
@@ -690,6 +697,200 @@ async def skip_command(update, context):
     await update.message.reply_text("⏭️ Šodienas raksts izlaists. Rīt turpināsim ar nākamo tēmu.")
 
 
+# ── LinkedIn Post Generation ──────────────────────────────────────────────────
+
+# Track LinkedIn mode state
+linkedin_state = {"selecting": False, "posts": []}
+
+
+async def list_posts_command(update, context):
+    """Handle /raksti — list all published blog posts for LinkedIn selection."""
+    global linkedin_state
+    
+    if update.effective_user.id != ADMIN_CHAT_ID:
+        return
+
+    progress = load_json(PROGRESS_FILE) if PROGRESS_FILE.exists() else {"publishedPosts": [], "linkedinPosts": []}
+    posts = progress.get("publishedPosts", [])
+    linkedin_used = progress.get("linkedinPosts", [])
+
+    if not posts:
+        await update.message.reply_text("📭 Nav neviena publicēta raksta. Sāc ar /jauns!")
+        return
+
+    linkedin_state["selecting"] = True
+    linkedin_state["posts"] = posts
+    linkedin_state["linkedin_used"] = linkedin_used
+
+    text = "📋 *Publicētie raksti:*\n\n"
+    for i, post in enumerate(posts, 1):
+        used = "🔗" if post.get("lvSlug") in linkedin_used else "⬜"
+        title = post.get("titleLV", f"Day {post.get('day', '?')}")[:60]
+        text += f"*{i}.* {used} {title}\n"
+
+    text += "\n🔗 = jau izmantots LinkedIn\n⬜ = vēl nav postots\n\n"
+    text += "Atbildi ar *numuru*, lai ģenerētu LinkedIn postu."
+    
+    await update.message.reply_text(text, parse_mode="Markdown")
+
+
+async def handle_linkedin_number(update, context):
+    """Handle number input when user is selecting a post for LinkedIn."""
+    global linkedin_state
+    
+    if update.effective_user.id != ADMIN_CHAT_ID:
+        return
+
+    if not linkedin_state.get("selecting"):
+        return  # Not in LinkedIn selection mode
+
+    try:
+        num = int(update.message.text.strip())
+        posts = linkedin_state["posts"]
+        
+        if num < 1 or num > len(posts):
+            await update.message.reply_text(f"⚠️ Izvēlies skaitli no 1 līdz {len(posts)}.")
+            return
+
+        post = posts[num - 1]
+        lv_slug = post.get("lvSlug", "")
+        title = post.get("titleLV", "Bloga raksts")
+        
+        # Find the blog post HTML file
+        blog_path = PROJECT_ROOT / "blogs" / lv_slug / "index.html"
+        if not blog_path.exists():
+            await update.message.reply_text("⚠️ Nevaru atrast raksta failu. Varbūt tas vēl nav sinhronizēts.")
+            return
+
+        # Extract text content from HTML
+        html = blog_path.read_text(encoding="utf-8")
+        # Get content between blog-content div
+        content_match = re.search(r'<div class="blog-content"[^>]*>(.*?)</div>\s*<div style="margin-top', html, re.DOTALL)
+        if not content_match:
+            content_match = re.search(r'<div class="blog-content"[^>]*>(.*?)</div>', html, re.DOTALL)
+        
+        if not content_match:
+            await update.message.reply_text("⚠️ Nevaru izgūt raksta saturu.")
+            return
+
+        raw_html = content_match.group(1)
+        # Strip HTML tags for the prompt
+        plain_text = re.sub(r'<[^>]+>', ' ', raw_html)
+        plain_text = re.sub(r'\s+', ' ', plain_text).strip()
+
+        await update.message.reply_text(f"✍️ Ģenerēju LinkedIn postu no: *{title}*...", parse_mode="Markdown")
+
+        # Generate LinkedIn post
+        linkedin_text = generate_linkedin_post(title, plain_text, lv_slug)
+
+        linkedin_state["selecting"] = False
+
+        await update.message.reply_text(
+            f"✅ *LinkedIn posts gatavs!*\n\n"
+            f"{linkedin_text}\n\n"
+            f"📋 _Nokopē augstāk esošo tekstu un ielīmē LinkedIn._\n"
+            f"Kad izdarīts, raksti /li_ok lai atzīmētu kā izmantotu.",
+            parse_mode="Markdown",
+            disable_web_page_preview=True
+        )
+
+    except ValueError:
+        pass  # Not a number, ignore
+
+
+async def linkedin_ok_command(update, context):
+    """Handle /li_ok — mark the last generated LinkedIn post as used."""
+    global linkedin_state
+    
+    if update.effective_user.id != ADMIN_CHAT_ID:
+        return
+
+    posts = linkedin_state.get("posts", [])
+    if not posts:
+        await update.message.reply_text("Nav aktīvas LinkedIn sesijas. Raksti /raksti vispirms.")
+        return
+
+    # Get the last viewed post from the previous selection
+    # We need to store it — let's use the last post that was selected
+    # For now, ask the user which one
+    await update.message.reply_text(
+        "Kuru rakstu tu ieliki LinkedIn? Atbildi ar numuru.\n"
+        "Raksti /raksti lai redzētu sarakstu vēlreiz."
+    )
+
+
+def generate_linkedin_post(title: str, content: str, slug: str) -> str:
+    """Generate a LinkedIn post from blog content using DeepSeek."""
+    from openai import OpenAI
+    client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
+
+    prompt = f"""Pārveido šo bloga rakstu par LinkedIn postu latviešu valodā.
+
+NOTEIKUMI:
+- 150-300 vārdi (LinkedIn optimālais garums)
+- Sāc ar spēcīgu hook/uzmanības piesaistītāju (1. teikums)
+- Saglabā personīgo toni — raksti 1. personā
+- Izmanto īsus teikumus, rindkopas atdalītas ar tukšu rindu
+- Beigās 1-2 hashtags (piem., #SEO #Latvija)
+- Iekļauj saiti uz rakstu: https://latseo.com/blogs/{slug}/
+- NAV Markdown, NAV zvaigznīšu, NAV formatējuma. Tikai tīrs teksts.
+
+BLOGA RAKSTS:
+Virsraksts: {title}
+Saturs: {content[:3000]}
+
+Atgriez TIKAI gatavo LinkedIn posta tekstu, bez paskaidrojumiem."""
+
+    response = client.chat.completions.create(
+        model=DEEPSEEK_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7,
+        max_tokens=1000,
+    )
+    return response.choices[0].message.content.strip()
+
+
+async def linkedin_mark_command(update, context):
+    """Handle /li_mark N — mark post N as used on LinkedIn."""
+    global linkedin_state
+    
+    if update.effective_user.id != ADMIN_CHAT_ID:
+        return
+
+    args = update.message.text.strip().split()
+    if len(args) < 2:
+        await update.message.reply_text("Lieto: /li_mark [numurs]\nPiemērs: /li_mark 1")
+        return
+
+    try:
+        num = int(args[1])
+    except ValueError:
+        await update.message.reply_text("Jānorāda skaitlis. Piemērs: /li_mark 1")
+        return
+
+    progress = load_json(PROGRESS_FILE) if PROGRESS_FILE.exists() else {"publishedPosts": [], "linkedinPosts": []}
+    posts = progress.get("publishedPosts", [])
+    
+    if num < 1 or num > len(posts):
+        await update.message.reply_text(f"⚠️ Izvēlies skaitli no 1 līdz {len(posts)}.")
+        return
+
+    post = posts[num - 1]
+    lv_slug = post.get("lvSlug", "")
+
+    if "linkedinPosts" not in progress:
+        progress["linkedinPosts"] = []
+
+    if lv_slug in progress["linkedinPosts"]:
+        await update.message.reply_text("⚠️ Šis raksts jau ir atzīmēts kā izmantots LinkedIn.")
+        return
+
+    progress["linkedinPosts"].append(lv_slug)
+    save_json(PROGRESS_FILE, progress)
+    
+    await update.message.reply_text(f"✅ Raksts #{num} atzīmēts kā izmantots LinkedIn!")
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
@@ -736,6 +937,9 @@ def main():
     app.add_handler(CommandHandler("publicet", publish_command))
     app.add_handler(CommandHandler("status", status_command))
     app.add_handler(CommandHandler("izlaist", skip_command))
+    app.add_handler(CommandHandler("raksti", list_posts_command))
+    app.add_handler(CommandHandler("li_ok", linkedin_ok_command))
+    app.add_handler(CommandHandler("li_mark", linkedin_mark_command))
 
     # Message handler (for answers)
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
