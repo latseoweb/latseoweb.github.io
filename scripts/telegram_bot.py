@@ -746,10 +746,10 @@ def main():
         time=time(hour=6, minute=0, tzinfo=timezone.utc),
     )
 
-    # Delete any leftover webhook, then use polling with retry
-    import requests
+    # Delete any leftover webhook, then use polling
+    import urllib.request
     try:
-        requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/deleteWebhook?drop_pending_updates=true", timeout=5)
+        urllib.request.urlopen(f"https://api.telegram.org/bot{BOT_TOKEN}/deleteWebhook?drop_pending_updates=true", timeout=5)
     except:
         pass
 
