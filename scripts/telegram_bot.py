@@ -477,6 +477,24 @@ def main():
         print("❌ DEEPSEEK_API_KEY nav iestatīts!")
         sys.exit(1)
 
+    # Start a tiny HTTP server in background to satisfy Render's port check
+    import threading
+    from http.server import HTTPServer, BaseHTTPRequestHandler
+    
+    class HealthHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"OK")
+        def log_message(self, format, *args):
+            pass  # silence logs
+    
+    port = int(os.environ.get("PORT", "10000"))
+    server = HTTPServer(("0.0.0.0", port), HealthHandler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    print(f"🌐 Health check server listening on port {port}")
+
     from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
     app = Application.builder().token(BOT_TOKEN).build()
@@ -498,7 +516,6 @@ def main():
     )
 
     print("🤖 LatSEO Blog Bot started! Waiting for messages...")
-    # run_polling() manages its own event loop — do NOT wrap in asyncio.run()
     app.run_polling()
 
 
