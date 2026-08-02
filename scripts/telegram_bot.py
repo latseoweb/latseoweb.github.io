@@ -838,13 +838,16 @@ async def handle_linkedin_number(update, context):
 
         linkedin_state["selecting"] = False
 
+        # Send header with Markdown, then the post as plain text
         await update.message.reply_text(
-            f"✅ *LinkedIn posts (EN):*\n\n"
-            f"{linkedin_text}\n\n"
-            f"📋 _Nokopē un ielīmē LinkedIn._\n"
-            f"Kad izdarīts: /li_mark {num}",
-            parse_mode="Markdown",
-            disable_web_page_preview=True
+            f"✅ LinkedIn posts (EN):\n\n👉 *{title[:60]}*",
+            parse_mode="Markdown"
+        )
+        # Send the actual post as PLAIN TEXT (no Markdown parsing to avoid entity errors)
+        await update.message.reply_text(linkedin_text)
+        await update.message.reply_text(
+            f"📋 _Nokopē un ielīmē LinkedIn._\nKad izdarīts: /li_mark {num}",
+            parse_mode="Markdown"
         )
 
     except ValueError:
