@@ -713,6 +713,10 @@ def main():
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b"OK")
+        def do_POST(self):
+            # Telegram sends POST to /telegram — health server shouldn't handle these
+            self.send_response(404)
+            self.end_headers()
         def log_message(self, format, *args):
             pass  # silence logs
     
@@ -720,7 +724,7 @@ def main():
     server = HTTPServer(("0.0.0.0", port), HealthHandler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
-    print(f"🌐 Health check server listening on port {port}")
+    print(f"🌐 Health check server on port {port}")
 
     from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
@@ -742,7 +746,15 @@ def main():
         time=time(hour=6, minute=0, tzinfo=timezone.utc),
     )
 
-    print("🤖 LatSEO Blog Bot started! Waiting for messages...")
+    # Delete any leftover webhook, then use polling with retry
+    import requests
+    try:
+        requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/deleteWebhook?drop_pending_updates=true", timeout=5)
+    except:
+        pass
+
+    print("🤖 LatSEO Blog Bot started! Polling for messages...")
+    app.run_polling(drop_pending_updates=True)
     app.run_polling()
 
 
