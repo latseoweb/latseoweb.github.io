@@ -176,6 +176,8 @@ Rakstīšanas noteikumi:
 - Raksti 1. personā ("es", "mans", "mēs LatSEO") — tas ir PERSONĪGS blogs
 - Izmanto tikai faktus no autora atbildēm. Ja kaut kas nav atbildēs, neizdomā
 - Profesionāls, bet sarunvalodas tonis
+- **VIENOTA TĒMA UN PLŪDUMS** — viss raksts ir viena vienota doma. Izvēlies 1-2 galvenās idejas no autora atbildēm un izvērs tās. Katrai nākamajai rindkopai dabiski jāizriet no iepriekšējās. Lieto pārejas frāzes: "Un tieši tāpēc...", "Bet ar to viss nebeidzas...", "Lūk, ko es no tā iemācījos...", "Piemēram...", "Vēl vairāk..."
+- NERAKSTI katru rindkopu par citu tēmu — lasītājam jābūt sajūtai, ka viņš lasa vienotu stāstu, nevis sarakstu ar faktiem
 - Katrā rindkopā konkrēts fakts, skaitlis vai piemērs no atbildēm
 - Strukturē ar H2, H3, īsām rindkopām, <ul><li> sarakstiem
 - Iekļauj 2-3 iekšējās saites uz LatSEO pakalpojumiem
@@ -783,10 +785,20 @@ async def handle_linkedin_number(update, context):
         slug = post["slug"]
         title = post["title"]
 
+        # Git pull first to get latest blog files
+        try:
+            import git
+            repo = git.Repo(str(PROJECT_ROOT))
+            origin = repo.remotes.origin
+            origin.pull()
+        except Exception:
+            pass  # Pull may fail, that's OK — use whatever files exist
+
         # Read the blog HTML file
         blog_path = PROJECT_ROOT / "blogs" / slug / "index.html"
         if not blog_path.exists():
-            await update.message.reply_text("⚠️ Nevaru atrast raksta failu.")
+            await update.message.reply_text("⚠️ Nevaru atrast raksta failu. Mēģini vēlreiz pēc mirkļa.")
+            linkedin_state["selecting"] = False
             return
 
         html = blog_path.read_text(encoding="utf-8")
@@ -796,6 +808,7 @@ async def handle_linkedin_number(update, context):
 
         if not content_match:
             await update.message.reply_text("⚠️ Nevaru izgūt raksta saturu.")
+            linkedin_state["selecting"] = False
             return
 
         raw_html = content_match.group(1)
@@ -804,7 +817,12 @@ async def handle_linkedin_number(update, context):
 
         await update.message.reply_text(f"✍️ Ģenerēju LinkedIn postu no: *{title}*...", parse_mode="Markdown")
 
-        linkedin_text = generate_linkedin_post(title, plain_text, slug)
+        try:
+            linkedin_text = generate_linkedin_post(title, plain_text, slug)
+        except Exception as e:
+            await update.message.reply_text(f"❌ Neizdevās uzģenerēt: {str(e)[:200]}")
+            linkedin_state["selecting"] = False
+            return
 
         linkedin_state["selecting"] = False
 
