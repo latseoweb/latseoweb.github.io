@@ -827,10 +827,14 @@ async def handle_linkedin_number(update, context):
         plain_text = re.sub(r'<[^>]+>', ' ', raw_html)
         plain_text = re.sub(r'\s+', ' ', plain_text).strip()
 
+        # Find the EN version URL from hreflang tag
+        en_url_match = re.search(r'hreflang="en"\s+href="([^"]+)"', html)
+        en_url = en_url_match.group(1) if en_url_match else f"https://latseo.com/en/blogs/{slug}/"
+
         await update.message.reply_text(f"✍️ Ģenerēju LinkedIn postu no: *{title}*...", parse_mode="Markdown")
 
         try:
-            linkedin_text = generate_linkedin_post(title, plain_text, slug)
+            linkedin_text = generate_linkedin_post(title, plain_text, en_url)
         except Exception as e:
             await update.message.reply_text(f"❌ Neizdevās uzģenerēt: {str(e)[:200]}")
             linkedin_state["selecting"] = False
@@ -854,7 +858,7 @@ async def handle_linkedin_number(update, context):
         pass
 
 
-def generate_linkedin_post(title: str, content: str, slug: str) -> str:
+def generate_linkedin_post(title: str, content: str, blog_url: str) -> str:
     """Generate an English LinkedIn post that sounds human and authentic."""
     from openai import OpenAI
     client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
@@ -871,7 +875,7 @@ CRITICAL RULES:
 - No hashtags at the end — use MAX 3 relevant hashtags
 - NO emojis (maybe 1 max if absolutely needed)
 - NO markdown, NO bold, NO formatting — pure plain text
-- Include the blog link: https://latseo.com/blogs/{slug}/
+- Include the blog link: {blog_url}
 - Sound like a smart friend sharing advice, not a marketer
 
 BLOG TITLE: {title}
