@@ -20,7 +20,7 @@ import sys
 import subprocess
 import tempfile
 import asyncio
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, time, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -465,7 +465,7 @@ async def skip_command(update, context):
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
-def main():
+async def main():
     """Start the Telegram bot."""
     if not BOT_TOKEN:
         print("❌ BOT_TOKEN nav iestatīts!")
@@ -491,28 +491,36 @@ def main():
     # Message handler (for answers)
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    # Schedule daily job (09:00 Latvia time = 06:00 UTC)
-    from apscheduler.schedulers.asyncio import AsyncIOScheduler
-    scheduler = AsyncIOScheduler()
-    scheduler.add_job(
-        lambda: asyncio.create_task(auto_daily_trigger(app)),
-        "cron",
-        hour=6,
-        minute=0,
+    # Schedule daily job using the application's job queue (no separate scheduler needed)
+    # Runs at 06:00 UTC = 09:00 Latvia time
+    app.job_queue.run_daily(
+        auto_daily_trigger,
+        time=time(hour=6, minute=0, tzinfo=timezone.utc),
     )
-    scheduler.start()
 
     print("🤖 LatSEO Blog Bot started! Waiting for messages...")
-    app.run_polling()
+    await app.run_polling()
 
 
-async def auto_daily_trigger(app):
+async def auto_daily_trigger(context):
     """Send daily prompt to admin at 09:00."""
     try:
-        progress = load_json(PROGRESS_FILE)
+        # Reload from file in case Render wiped in-memory state
+        progress_path = Path("/app/repo/scripts/.blog-progress.json")
+        if progress_path.exists():
+            progress = load_json(progress_path)
+        else:
+            progress = {"lastPublishedDay": 0, "publishedPosts": []}
+            
         day_number = progress.get("lastPublishedDay", 0) + 1
         
         if day_number > 365:
+            return
+
+        # We need the topics file
+        topics_path = Path("/app/repo/scripts/topics.json")
+        if not topics_path.exists():
+            print("Topics file not found, skipping daily trigger")
             return
 
         topic_info = get_day_info(day_number)
@@ -536,10 +544,10 @@ async def auto_daily_trigger(app):
             q_text += f"*{i}.* {q}\n\n"
         q_text += "Atbildi uz jautājumiem, tad raksti /publicet"
 
-        await app.bot.send_message(chat_id=ADMIN_CHAT_ID, text=q_text, parse_mode="Markdown")
+        await context.bot.send_message(chat_id=ADMIN_CHAT_ID, text=q_text, parse_mode="Markdown")
     except Exception as e:
         print(f"Auto trigger error: {e}")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
