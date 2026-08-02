@@ -732,11 +732,22 @@ def scan_blog_posts() -> list[dict]:
 
 
 async def list_posts_command(update, context):
-    """Handle /raksti — scan blog directories and list all posts for LinkedIn."""
+    """Handle /raksti — git pull latest, then scan blog directories for LinkedIn."""
     global linkedin_state
 
     if update.effective_user.id != ADMIN_CHAT_ID:
         return
+
+    # Git pull with authentication to get latest blog files
+    try:
+        import git
+        repo = git.Repo(str(PROJECT_ROOT))
+        # Update remote URL with token for auth
+        clone_url = f"https://x-access-token:{GITHUB_TOKEN}@github.com/{GITHUB_REPO}.git"
+        repo.remotes.origin.set_url(clone_url)
+        repo.remotes.origin.pull()
+    except Exception as e:
+        print(f"Git pull failed: {e}")
 
     posts = scan_blog_posts()
 
@@ -789,8 +800,9 @@ async def handle_linkedin_number(update, context):
         try:
             import git
             repo = git.Repo(str(PROJECT_ROOT))
-            origin = repo.remotes.origin
-            origin.pull()
+            clone_url = f"https://x-access-token:{GITHUB_TOKEN}@github.com/{GITHUB_REPO}.git"
+            repo.remotes.origin.set_url(clone_url)
+            repo.remotes.origin.pull()
         except Exception:
             pass  # Pull may fail, that's OK — use whatever files exist
 
