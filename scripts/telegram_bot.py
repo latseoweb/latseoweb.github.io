@@ -1006,7 +1006,14 @@ def main():
         pass
 
     print("🤖 LatSEO Blog Bot started! Polling for messages...")
-    app.run_polling(drop_pending_updates=True)
+    # Auto-restart if polling crashes (Render free tier may kill after sleep)
+    while True:
+        try:
+            app.run_polling(drop_pending_updates=True)
+        except Exception as e:
+            print(f"Polling crashed: {e}. Restarting in 5s...")
+            import time as _time
+            _time.sleep(5)
     app.run_polling()
 
 
