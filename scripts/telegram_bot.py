@@ -567,6 +567,9 @@ def build_full_blog_html(title, meta_desc, slug, category, date_lv, date_en, con
   <meta name="author" content="{labels['author']}, Baltic SEO, SIA">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-MF7Q1R9722');gtag('config','AW-18351772465');</script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){{c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}})(window, document, "clarity", "script", "xx3mt1i3hw");
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">{labels['skip']}</a>
