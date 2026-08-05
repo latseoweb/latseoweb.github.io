@@ -3,13 +3,13 @@
     "description": "52 nedēļu satura plāns ar 7 unikālām, nepārklājošam tēmām katrai nedēļai = 364 + 1 bonusa diena = 365 raksti",
     "startDate": "2026-08-03",
     "dailyFormats": {
-      "1": { "dayName": "Pirmdiena" },
-      "2": { "dayName": "Otrdiena" },
-      "3": { "dayName": "Trešdiena" },
-      "4": { "dayName": "Ceturtdiena" },
-      "5": { "dayName": "Piektdiena" },
-      "6": { "dayName": "Sestdiena" },
-      "7": { "dayName": "Svētdiena" }
+      "1": { "dayName": "Pirmdiena", "format": "Detalizēts ceļvedis", "style": "Pamatīgs, izglītojošs" },
+      "2": { "dayName": "Otrdiena", "format": "Salīdzinājums un analīze", "style": "Analītisks, ar datiem" },
+      "3": { "dayName": "Trešdiena", "format": "Praktiski padomi", "style": "Praktisks, soli pa solim" },
+      "4": { "dayName": "Ceturtdiena", "format": "Personīga pieredze", "style": "Personīgs stāsts" },
+      "5": { "dayName": "Piektdiena", "format": "Aiz kadra", "style": "Nepiespiests, atklāts" },
+      "6": { "dayName": "Sestdiena", "format": "Nozares ieskati", "style": "Profesionāls, padziļināts" },
+      "7": { "dayName": "Svētdiena", "format": "Pārdomas un atziņas", "style": "Reflektīvs, iedvesmojošs" }
     }
   },
   "weeks": [
