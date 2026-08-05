@@ -1,802 +1,802 @@
 {
   "meta": {
-    "description": "52 nedēļu satura plāns ar 7 dienas formātiem katrai nedēļai = 364 + bonusa diena = 365 raksti",
+    "description": "52 nedēļu satura plāns ar 7 unikālām, nepārklājošam tēmām katrai nedēļai = 364 + 1 bonusa diena = 365 raksti",
     "startDate": "2026-08-03",
     "dailyFormats": {
-      "1": { "dayName": "Pirmdiena", "format": "Kā...", "style": "Praktisks ceļvedis / How-to" },
-      "2": { "dayName": "Otrdiena", "format": "Mīts par...", "style": "Mītu graušana / Myth-busting" },
-      "3": { "dayName": "Trešdiena", "format": "X padomi...", "style": "Padomu saraksts / Listicle" },
-      "4": { "dayName": "Ceturtdiena", "format": "Ko es iemācījos par...", "style": "Personīgā pieredze / Lessons learned" },
-      "5": { "dayName": "Piektdiena", "format": "Aiz kadra: ...", "style": "Iekšiene / Behind the scenes" },
-      "6": { "dayName": "Sestdiena", "format": "BUJ: ...", "style": "Biežāk uzdotie jautājumi / FAQ" },
-      "7": { "dayName": "Svētdiena", "format": "Nedēļas kopsavilkums: ...", "style": "Kopsavilkums / Weekly roundup" }
+      "1": { "dayName": "Pirmdiena" },
+      "2": { "dayName": "Otrdiena" },
+      "3": { "dayName": "Trešdiena" },
+      "4": { "dayName": "Ceturtdiena" },
+      "5": { "dayName": "Piektdiena" },
+      "6": { "dayName": "Sestdiena" },
+      "7": { "dayName": "Svētdiena" }
     }
   },
   "weeks": [
     {
       "week": 1, "quarter": 1,
-      "theme": "Tavas nozares absolūtie pamati (Back to basics)",
-      "themeSlug": "nozares-pamati",
+      "theme": "SEO absolūtie pamati",
+      "themeSlug": "seo-pamati",
       "category": "SEO Pamati",
       "topics": [
-        "Kā SEO mainījis manu biznesa domāšanu — 5 pamatprincipi, ko ievēroju katru dienu",
-        "Mīts: SEO ir tikai atslēgvārdi — kāpēc šis uzskats ir bīstams tavam biznesam",
-        "7 SEO pamati, ko katram uzņēmējam būtu jāzina pirms mājaslapas izveides",
-        "Ko es iemācījos par SEO pamatiem — no nulles līdz pirmajiem klientiem",
-        "Aiz kadra: 5 lietas, ko pārbaudu katrā SEO audita video — un ko klienti parasti nepamana",
-        "Kā notiek Google meklēšana patiesībā — indeksācija, rangi un algoritmu atjauninājumi vienkāršā valodā",
-        "Nedēļas kopsavilkums: 5 SEO patiesības, ko zinu tagad un ko vēlējos zināt pirms gada"
+        "Kā Google patiesībā sarindo mājaslapas — vienkāršs skaidrojums bez tehniskā žargona",
+        "Atslēgvārdu izpēte iesācējiem — kā atrast frāzes, ko tavi klienti reāli meklē",
+        "Title tag un meta apraksts — mazās lietas, kas pilnībā maina tavu klikšķu skaitu",
+        "Mājaslapas struktūra un iekšējās saites — kā pareizi organizēt saturu, lai Google to saprot",
+        "Aiz kadra: 5 lietas, ko pārbaudu katrā SEO audita video un ko klienti parasti nepamana",
+        "Kā notiek Google meklēšana patiesībā: indeksācija, rangi un algoritmu atjauninājumi",
+        "5 SEO patiesības, ko zinu tagad un ko vēlējos zināt pirms gada"
       ]
     },
     {
       "week": 2, "quarter": 1,
       "theme": "Cenu veidošana un vērtība pret naudu",
       "themeSlug": "cenu-veidosana",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā aprēķināt savu stundas likmi — praktisks ceļvedis SEO speciālistiem",
-        "Mīts: Lētākais SEO = sliktākais SEO — kāda ir patiesība?",
-        "7 faktori, kas ietekmē SEO pakalpojumu cenu Latvijā",
-        "Ko es iemācījos par cenu veidošanu — kļūdas, kas maksāja naudu",
-        "Aiz kadra: Kā es veidoju cenas saviem SEO pakalpojumiem un kāpēc esam caurspīdīgi",
-        "BUJ: Cik maksā SEO optimizācija Latvijā? Godīgas atbildes",
-        "Nedēļas kopsavilkums: Cena pret vērtību — ko tu patiesībā pērc ar SEO"
+        "Kā es aprēķinu sava darba stundas likmi — formula, ko izmantoju jau gadiem",
+        "Kāpēc lēts SEO ir dārgs — reāls piemērs, kur klients zaudēja naudu ar lēto risinājumu",
+        "Kas ietekmē SEO pakalpojumu cenu Latvijā — 5 faktori, ko lielākā daļa neņem vērā",
+        "Caurspīdīgas cenas — kāpēc mēs publicējam savas SEO cenas atklāti un ko tas maina",
+        "Kā klienti reaģē uz mūsu cenām — atklāta saruna par to, kāpēc daži aiziet un daži paliek",
+        "Cik daudz tu vari nopelnīt kā SEO speciālists Latvijā — reāli skaitļi",
+        "Kas ir dārgāk — SEO, Google Ads vai Facebook? Godīgs izmaksu salīdzinājums Latvijas tirgū"
       ]
     },
     {
       "week": 3, "quarter": 1,
-      "theme": "Ideālais klients – kurš tas ir un ar ko tu nestrādā",
+      "theme": "Ideālais klients",
       "themeSlug": "idealais-klients",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā definēt savu ideālo klientu — vadlīnijas, kas strādā",
-        "Mīts: Jo vairāk klientu, jo labāk bizness — kāpēc kvalitāte > kvantitāte",
-        "7 pazīmes, ka klients NAV priekš tevis (un kāpēc no tādiem jāatsakās)",
-        "Ko es iemācījos par ideālā klienta atrašanu — mans filtrēšanas process",
-        "Aiz kadra: Kā es novērtēju, vai potenciālais klients ir mums piemērots",
-        "BUJ: Vai jūs strādājat ar jebkuru uzņēmumu? Kam mēs palīdzam vislabāk",
-        "Nedēļas kopsavilkums: Ideālais klients — kāpēc niša ir tava lielākā priekšrocība"
+        "Kā es definēju savu ideālo klientu — 3 jautājumi, kurus uzdodu sev pirms sadarbības",
+        "Vai ir vērts strādāt ar jebkuru? Stāsts par klientu, kurš maksāja 3x vairāk laika nekā naudas",
+        "5 sarkanie karogi, ko ignorēju sākumā — un kā tie man maksāja naudu",
+        "Nišas SEO priekšrocības — kāpēc šaurs fokuss bieži vien ir izdevīgāks nekā plašs",
+        "Kā es atlasu klientus — mans 10 minūšu novērtēšanas process pirms pirmās tikšanās",
+        "Kurš klients man atnesa vislielāko peļņu un kurš — vislielākās galvassāpes",
+        "Kāpēc es atteicos no 3 klientiem šogad — un kā tas uzlaboja manu biznesu"
       ]
     },
     {
       "week": 4, "quarter": 1,
-      "theme": "Rīki un programmatūra, kas darbina tavu biznesu",
+      "theme": "Rīki un programmatūra",
       "themeSlug": "riki-un-programmatura",
-      "category": "Rīki & Resursi",
+      "category": "Rīki",
       "topics": [
-        "Kā izvēlēties pareizos SEO rīkus savam biznesam — iesācēja ceļvedis",
-        "Mīts: Dārgi SEO rīki vienmēr ir labāki — bezmaksas alternatīvas, kas strādā",
-        "7 neaizstājami rīki, ko izmantoju katru dienu SEO darbā",
-        "Ko es iemācījos par SEO rīkiem — no kuriem atteicos un kāpēc",
-        "Aiz kadra: Mans SEO rīku komplekts — kas, kāpēc un cik maksā",
-        "BUJ: Kādi SEO rīki ir vislabākie iesācējiem? Godīgs salīdzinājums",
-        "Nedēļas kopsavilkums: Rīki, kas darbina SEO — mans tech stack 2026"
+        "Google Search Console: 5 atskaites, ko skatos katru rītu pirms kafijas",
+        "Bezmaksas SEO rīki pret maksas — ko tiešām ir vērts pirkt un kas ir naudas izmešana",
+        "Ahrefs, Semrush vai Screaming Frog? Mans godīgais SEO rīku salīdzinājums",
+        "SEO rīki, no kuriem atteicos un kāpēc — 3 programmas, kas vairs nav manā arsenālā",
+        "Kā es izmantoju ChatGPT un DeepSeek SEO darbā — konkrēti piemēri un rezultāti",
+        "Google Analytics 4 pret veco Universal Analytics — kas mainījās un kā to lasīt SEO kontekstā",
+        "Mans SEO rīku budžets — cik es tērēju mēnesī un kāda ir atdeve"
       ]
     },
     {
       "week": 5, "quarter": 1,
-      "theme": "Pirmie soļi, kad klients sāk strādāt ar tevi (Onboarding)",
+      "theme": "Klienta onboardings",
       "themeSlug": "klienta-onboardings",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā notiek pirmā mēneša sadarbība ar LatSEO — soli pa solim",
-        "Mīts: SEO rezultāti ir redzami pirmajā nedēļā — reālistisks laika grafiks",
-        "7 lietas, ko sagatavot pirms SEO aģentūras piesaistes",
-        "Ko es iemācījos par klientu onboarding — kā izvairīties no pārpratumiem",
-        "Aiz kadra: Mūsu onboarding process jaunam SEO klientam",
-        "BUJ: Kas notiek pēc līguma parakstīšanas? Pirmais mēnesis ar mums",
-        "Nedēļas kopsavilkums: Onboarding — kāpēc pirmās 30 dienas ir izšķirošas SEO"
+        "Kas notiek pirmajās 48 stundās pēc līguma parakstīšanas — mans process soli pa solim",
+        "Kāpēc SEO rezultāti nav redzami pirmajā nedēļā — reālistisks laika grafiks 1., 3., 6. mēnesī",
+        "Kā mēs vācam informāciju no jauna klienta — 10 jautājumu anketa, kas aiztaupa stundas",
+        "Pirmais SEO audits klientam — kā es to pasniedzu, lai nerastos panika no sarkanajiem karogiem",
+        "Viena lieta, ko klienti nekad nepasaka pirmajā tikšanās reizē — bet ko es vienmēr uzzinu",
+        "Kā es nodefinēju veiksmes metriku katram klientam — nevis pozīcijas, bet biznesa rezultātus",
+        "Kas notiek pēc pirmā mēneša — atskaites, korekcijas un nākamie soļi"
       ]
     },
     {
       "week": 6, "quarter": 1,
-      "theme": "Tavas jomas lielākie stereotipi",
+      "theme": "Nozares stereotipi un mīti",
       "themeSlug": "nozares-stereotipi",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā mainīt priekšstatu par SEO nozarē — ko mēs darām savādāk",
-        "Mīts: SEO ir krāpniecība — kā atšķirt īstu SEO no solījumu tirgotājiem",
-        "7 izplatītākie SEO stereotipi, kas kaitē tavam biznesam",
-        "Ko es iemācījos par SEO stereotipiem — kā es mainīju klientu domāšanu",
-        "Aiz kadra: Kā es cīnos ar SEO stereotipiem, tiekoties ar potenciālajiem klientiem",
-        "BUJ: Vai SEO tiešām strādā? Atbildes, kas balstītas datos",
-        "Nedēļas kopsavilkums: Stereotipi pret realitāti — SEO nozares patiesā seja"
+        "SEO nav krāpniecība — kā atšķirt īstu SEO aģentūru no solījumu tirgotāja",
+        "Vai SEO vēl strādā 2026. gadā? Dati no maniem pēdējiem 10 projektiem",
+        "Mīts: SEO garantē pirmo vietu Google — kāpēc tas ir fiziski neiespējami",
+        "Kāpēc cilvēki domā, ka SEO ir viegli — un kāpēc viņi maldās",
+        "Kas notiek, kad klients pats mēģina SEO — 3 reāli stāsti no manas prakses",
+        "SEO pret web dizaineru — kāpēc labs dizains bez SEO ir kā skaista mašīna bez dzinēja",
+        "Vai SEO ir tikai jauniem uzņēmumiem? Kāpēc nobrieduši biznesi iegūst visvairāk"
       ]
     },
     {
       "week": 7, "quarter": 1,
-      "theme": "Kā tu plāno savu darba nedēļu (Produktivitāte)",
+      "theme": "Produktivitāte un darba plānošana",
       "themeSlug": "produktivitate",
       "category": "Produktivitāte",
       "topics": [
-        "Kā es plānoju savu darba nedēļu SEO aģentūrā — mans kalendārs",
-        "Mīts: Jo vairāk strādā, jo vairāk sasniedz — produktivitātes patiesība",
-        "7 produktivitātes principi, kas mainīja manu darba rutīnu",
-        "Ko es iemācījos par laika plānošanu — eksperimenti, kas nostrādāja",
-        "Aiz kadra: Viena diena SEO speciālista dzīvē — no rīta līdz vakaram",
-        "BUJ: Kā atrast laiku SEO, ja esmu aizņemts uzņēmējs?",
-        "Nedēļas kopsavilkums: Produktivitāte — mazāk stundu, vairāk rezultātu"
+        "Kā es plānoju savu darba nedēļu SEO aģentūrā — mans piektdienas rituāls",
+        "Vai strādāt 12 stundas dienā tiešām dod rezultātu? Mans eksperiments ar darba laiku",
+        "3 rīki, kas ietaupa man 10 stundas nedēļā — automatizācija SEO rutīnas darbiem",
+        "Kā es žonglēju starp 5 klientiem vienlaicīgi — mana projektu vadības sistēma",
+        "Viena diena LatSEO birojā — no rīta kafijas līdz vakara atskaitei",
+        "Kā es beidzot pārstāju strādāt brīvdienās — robežu noteikšana, kad esi pats sev priekšnieks",
+        "SEO speciālista iknedēļas checklist — 10 lietas, ko daru katru piektdienu"
       ]
     },
     {
       "week": 8, "quarter": 1,
-      "theme": "Sliktākie padomi, ko esi dzirdējis savā nozarē",
+      "theme": "Sliktākie padomi un kļūdas",
       "themeSlug": "sliktie-padomi",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā atpazīt sliktu SEO padomu — 5 brīdinājuma signāli",
-        "Mīts: Jo vairāk atslēgvārdu, jo labāks SEO — kāpēc tas ir bīstami",
-        "7 sliktākie SEO padomi, ko esmu dzirdējis (un ko darīt tā vietā)",
-        "Ko es iemācījos no sliktiem padomiem — dārgas kļūdas, no kurām izvairīties",
-        "Aiz kadra: Kā es laboju SEO kļūdas, ko citi 'speciālisti' atstājuši",
-        "BUJ: Vai tiešām vajag 10 000 vārdu rakstus? Atbildes uz dīvainiem SEO jautājumiem",
-        "Nedēļas kopsavilkums: Sliktie padomi — no kā izvairīties SEO pasaulē"
+        "Sliktākais SEO padoms, ko esmu dzirdējis — un ko es teicu klientam, kurš tam ticēja",
+        "Kāpēc keyword density jeb atslēgvārdu blīvums ir muļķības — ar matemātisku piemēru",
+        "4 SEO kļūdas, ko pieļāvu savā pirmajā gadā — un cik tās man maksāja",
+        "Vai vajag 10 000 vārdu rakstus? Patiesība par garo saturu un SEO",
+        "Kā es gandrīz sabojāju klienta mājaslapu ar vienu nepareizu robots.txt ierakstu",
+        "Kāpēc meta keywords vairs nestrādā — un kādi 5 citi novecojuši padomi jāaizmirst",
+        "Nekad neklausies šajos 3 SEO padomos, ko dod Facebook eksperti"
       ]
     },
     {
       "week": 9, "quarter": 1,
-      "theme": "Kā mērīt rezultātus – kas patiešām ir svarīgi",
+      "theme": "Rezultātu mērīšana",
       "themeSlug": "rezultatu-merisana",
       "category": "SEO Pamati",
       "topics": [
-        "Kā izmērīt SEO rezultātus — metrikas, kurām ir nozīme",
-        "Mīts: Pozīcija #1 ir viss, kas ir svarīgs SEO — kāpēc tas tā nav",
-        "7 KPI, ko izsekoju katram SEO klientam ik mēnesi",
-        "Ko es iemācījos par SEO mērīšanu — no datiem līdz reālai izaugsmei",
-        "Aiz kadra: Kā es veidoju ikmēneša SEO atskaites klientiem",
-        "BUJ: Kā zināt, vai SEO investīcija atmaksājas?",
-        "Nedēļas kopsavilkums: Mērīšana — bez datiem tu tikai minē"
+        "Kā izmērīt SEO rezultātus — metrikas, kurām patiešām ir nozīme un kuras ignorēt",
+        "Kāpēc pozīcija #1 nav viss — 4 svarīgākas SEO metrikas, kam sekot",
+        "Katra SEO klienta ikmēneša atskaite — ko es iekļauju un kāpēc",
+        "Kā es pierādu SEO ROI klientam — vienkārša formula ar reāliem skaitļiem",
+        "Kāds bija mans sliktākais SEO mēnesis — un kā es to izskaidroju klientam bez panikas",
+        "Kas ir labs CTR, bounce rate un dwell time SEO kontekstā — reāli benchmarki",
+        "Kā es plānoju SEO mērķus 12 mēnešiem uz priekšu — mana stratēģijas veidne"
       ]
     },
     {
       "week": 10, "quarter": 1,
-      "theme": "Saziņa un robežu novilkšana ar klientiem",
+      "theme": "Saziņa un robežas ar klientiem",
       "themeSlug": "sazina-un-robezas",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā noteikt veselīgas robežas ar SEO klientiem — praktiska rokasgrāmata",
-        "Mīts: Klientam vienmēr ir taisnība — kad un kāpēc jāsaka NĒ",
-        "7 komunikācijas noteikumi veiksmīgai SEO sadarbībai",
-        "Ko es iemācījos par klientu komunikāciju — situācijas, kas mainīja manu pieeju",
-        "Aiz kadra: Kā mēs komunicējam ar klientiem ikdienā",
-        "BUJ: Cik bieži saņemšu atskaites? Ko darīt, ja nepiekrītu stratēģijai?",
-        "Nedēļas kopsavilkums: Robežas un komunikācija — veselīgas sadarbības pamats"
+        "Kā es paskaidroju SEO klientam bez tehniskā žargona — vienkārša valoda, kas strādā",
+        "Kas notiek, kad klients zvana svētdienas vakarā — kā es novilku robežas",
+        "E-pasts pret WhatsApp pret Zoom — kā es komunicēju ar dažādiem klientu tipiem",
+        "Kā pateikt klientam, ka viņa ideja ir slikta — pieklājīgi, bet godīgi",
+        "Vai atbildēt uz e-pastiem 2 stundu laikā ir obligāti? Mans komunikācijas SLA",
+        "Ko darīt, ja klients nepilda savu daļu — saturu neiesūta, piekļuves nedod",
+        "Kā es beidzu sadarbību ar klientu — profesionāli, bez drāmas un juridiskām sekām"
       ]
     },
     {
       "week": 11, "quarter": 1,
-      "theme": "Tavas profesijas 'neredzamais' darbs, ko klienti nepamana",
+      "theme": "Neredzamais SEO darbs",
       "themeSlug": "neredzamais-darbs",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā izskatās SEO darbs, ko klients nekad neredz — 5 aizkulišu aktivitātes",
-        "Mīts: SEO ir tikai dažas stundas darba mēnesī — patiesais darba apjoms",
-        "7 SEO uzdevumi, kas notiek 'aiz skatuves' un kāpēc tie ir svarīgi",
-        "Ko es iemācījos par neredzamo darbu — kāpēc labs SEO prasa laiku",
-        "Aiz kadra: Ko es daru, kad klients domā, ka 'nekas nenotiek'",
-        "BUJ: Par ko es īsti maksāju SEO aģentūrai katru mēnesi?",
-        "Nedēļas kopsavilkums: Neredzamais darbs — SEO aisberga zemūdens daļa"
+        "Ko es daru 40 stundas nedēļā, ja SEO nav tik daudz darba — detalizēts laika sadalījums",
+        "Tehniskais audits, ko klients nekad neredz — 404 lapas, canonical tagi, XML sitemap",
+        "Satura stratēģija aiz kadra — atslēgvārdu pētniecība, konkurentu analīze, content gap",
+        "Saišu veidošana — tas, ko mēs darām, bet nekad nepublicējam un kāpēc",
+        "Kāpēc SEO nevar izdarīt 1 stundā mēnesī — patiesais darba apjoms vienam klientam",
+        "Vai SEO aģentūra tiešām pelna ar 300 EUR mēnesī? Mans godīgais izmaksu aprēķins",
+        "Kas notiek, kad klients prasa tikai nedaudz SEO — kāpēc tas nestrādā"
       ]
     },
     {
       "week": 12, "quarter": 1,
-      "theme": "Biežāk uzdotie jautājumi (FAQ), ko dzirdi katru nedēļu",
+      "theme": "Biežāk uzdotie jautājumi",
       "themeSlug": "faq",
       "category": "SEO Pamati",
       "topics": [
-        "Kā izvēlēties SEO speciālistu — 5 jautājumi, kas jāuzdod pirms sadarbības",
-        "Mīts: SEO garantē Top 1 pozīciju — ko īsti nozīmē SEO garantijas",
-        "7 visbiežāk uzdotie jautājumi par SEO (un godīgas atbildes)",
-        "Ko es iemācījos no klientu jautājumiem — kā tie uzlaboja mūsu pakalpojumus",
-        "Aiz kadra: Mūsu visbiežāk saņemtie e-pasti un kā uz tiem atbildam",
-        "BUJ: TOP 15 jautājumi, ko uzdod katrs jauns SEO klients",
-        "Nedēļas kopsavilkums: Jautājumi un atbildes — ko klienti patiešām grib zināt"
+        "Cik ilgi jāgaida SEO rezultāti? Atbilde ar konkrētiem datiem no maniem projektiem",
+        "Vai es varu izdarīt SEO pats? Godīgs ceļvedis iesācējam ar reālu laika aplēsi",
+        "Kāpēc mans konkurents ir augstāk par mani? 5 iemesli, ko vari pārbaudīt tūlīt",
+        "Vai man vajag blogu priekš SEO? Kā satura mārketings ietekmē Google rangus",
+        "Kas ir backlinks un vai tos vēl vajag 2026. gadā? Vienkāršs skaidrojums",
+        "Vai SEO strādā visās nozarēs? Atšķirības starp e-veikalu, pakalpojumu un blogu SEO",
+        "Cik bieži jāatjaunina mājaslapa SEO dēļ? Kad un kāpēc veikt izmaiņas"
       ]
     },
     {
       "week": 13, "quarter": 1,
-      "theme": "Krīzes un negaidīti pavērsieni – kā saglabāt vēsu prātu",
+      "theme": "SEO krīzes un to risināšana",
       "themeSlug": "krizes-parvaldisana",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā rīkoties, kad Google algoritma atjauninājums ietekmē tavu mājaslapu",
-        "Mīts: SEO krīze nozīmē biznesa beigas — kā atgūties pēc krituma",
-        "7 soļi, kā saglabāt mieru, kad SEO rezultāti krītas",
-        "Ko es iemācījos no SEO krīzēm — reālas situācijas un risinājumi",
-        "Aiz kadra: Kā mēs rīkojāmies, kad klienta trafika nokrita par 50%",
-        "BUJ: Ko darīt, ja mans Google rankings pēkšņi nokrīt?",
-        "Nedēļas kopsavilkums: Krīzes menedžments SEO — galvenais ir nesacelt paniku"
+        "Google algoritma atjauninājums nogāza manu trafiku par 40% — ko es izdarīju pirmajās 24h",
+        "Kā atgūties pēc Google soda — mans soli-pa-solim process ar reālu piemēru",
+        "Mājaslapas migrācija uz jaunu domēnu — ko es iemācījos, kad zaudējām 60% trafika",
+        "Hakeru uzbrukums un SEO — kā atjaunot rangus pēc lapas inficēšanas",
+        "Kas notiek, kad konkurents sāk negatīvu SEO kampaņu pret tevi",
+        "Kā nomierināt klientu, kura trafika nokritusi par 50% — mana krīzes komunikācijas veidne",
+        "Ko es iemācījos no savām 3 lielākajām SEO krīzēm"
       ]
     },
     {
       "week": 14, "quarter": 2,
-      "theme": "Kāpēc tu vispār sāki šo biznesu/darbu?",
+      "theme": "Uzņēmēja stāsts",
       "themeSlug": "uznemeja-stasts",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā es sāku savu SEO aģentūru no nulles — mans stāsts",
-        "Mīts: Vajag lielu kapitālu, lai sāktu SEO biznesu — kā es sāku ar €0",
-        "7 lietas, ko vēlos būtu zinājis pirms sāku savu SEO aģentūru",
-        "Ko es iemācījos, būvējot SEO biznesu Latvijā — 3 gadu pieredze",
-        "Aiz kadra: Kāpēc es pametu algotu darbu, lai sāktu savu SEO aģentūru",
-        "BUJ: Kāpēc tu izvēlējies tieši SEO nozari? Personīgi jautājumi",
-        "Nedēļas kopsavilkums: Mans ceļš līdz SEO aģentūrai — mācības un izaugsme"
+        "Kā es sāku savu SEO aģentūru no nulles — bez naudas, bez klientiem, tikai ar datoru",
+        "Ko es darīju pirms SEO — mans karjeras ceļš un kas mani noveda līdz šejienei",
+        "Pirmais klients un pirmie 100 EUR — kā es ieguvu savu pirmo SEO projektu",
+        "Brīdis, kad es sapratu, ka SEO ir mans aicinājums — un kas notika pēc tam",
+        "Kas mani visvairāk pārsteidza par uzņēmējdarbību — lietas, ko neviens nestāsta",
+        "Kā es tiku galā ar šaubām pirmajā gadā — imposter syndrome un kā to pārvarēt",
+        "Jauna SEO aģentūra pret pieredzējušu — kā es konkurēju ar lielajiem"
       ]
     },
     {
       "week": 15, "quarter": 2,
-      "theme": "Lielākās biznesa kļūdas, kas tev maksāja naudu vai laiku",
+      "theme": "Lielākās biznesa kļūdas",
       "themeSlug": "biznesa-kludas",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā atpazīt biznesa kļūdas, pirms tās kļūst dārgas — mans proces",
-        "Mīts: Biznesa kļūdas ir neveiksmes — kāpēc tās ir vērtīgākās mācības",
-        "7 dārgākās SEO biznesa kļūdas, ko esmu pieļāvis",
-        "Ko es iemācījos no savām lielākajām biznesa kļūdām",
-        "Aiz kadra: Kā es zaudēju €5000 vienā projektā un ko tas man iemācīja",
-        "BUJ: Vai tu kādreiz esi pieļāvis kļūdu, kas ietekmēja klientu?",
-        "Nedēļas kopsavilkums: Kļūdas — visdārgākā SEO biznesa skola"
+        "Kā es zaudēju 3000 EUR vienā projektā — un ko es no tā iemācījos",
+        "Līgums, kuru es neparakstīju — kāpēc verbāla vienošanās man maksāja klientu",
+        "Kā es nepareizi novērtēju projektu un strādāju par grašiem 2 mēnešus",
+        "Viss, kas var noiet greizi ar jaunu darbinieku — mana pirmā algošanas kļūda",
+        "Es domāju, ka zinu visu par SEO — kā pārliecība gandrīz izpostīja manu reputāciju",
+        "Kāpēc es nepacēlu cenas 2 gadus — un kā tas bremzēja manu izaugsmi",
+        "Mana visdārgākā SEO kļūda — kā neuzmanība ar canonical tagiem izmaksāja klientam pozīcijas"
       ]
     },
     {
       "week": 16, "quarter": 2,
-      "theme": "Mentori, padomdevēji un cilvēki, no kuriem mācies",
+      "theme": "Mentori un iedvesmas avoti",
       "themeSlug": "mentori",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā atrast mentoru SEO nozarē — mans ceļš pie īstajiem cilvēkiem",
-        "Mīts: Veiksmīgam cilvēkam nav vajadzīgs mentors — kāpēc tas ir aplami",
-        "7 SEO eksperti, no kuriem esmu mācījies visvairāk",
-        "Ko es iemācījos no saviem mentoriem — vērtīgākās atziņas",
-        "Aiz kadra: Ar ko es konsultējos, kad pats nezinu atbildi",
-        "BUJ: Kā atrast labu SEO mentoru Latvijā?",
-        "Nedēļas kopsavilkums: Mentori — kāpēc mācīšanās no citiem ir ātrākais ceļš"
+        "Cilvēks, kurš mainīja manu domāšanu par SEO — un ko es no viņa iemācījos",
+        "Grāmatas, kas ietekmēja manu biznesu vairāk nekā jebkurš SEO kurss",
+        "Ko es iemācījos no klientiem — jā, arī klienti var būt skolotāji",
+        "SEO konferences, kuras apmeklēju — un kura bija katras ceļa naudas vērta",
+        "Podcasti un YouTube kanāli, kas veido manu SEO domāšanu katru nedēļu",
+        "Cilvēki, kuriem sekoju LinkedIn — un kāpēc viņu saturs ir vērtīgāks nekā SEO blogi",
+        "Ko es teiktu sev 20 gadu vecumā, ja varētu — vēstule jaunākam sev"
       ]
     },
     {
       "week": 17, "quarter": 2,
-      "theme": "Uzņēmuma (vai tavu personīgo) vērtību nozīme ikdienā",
+      "theme": "Uzņēmuma vērtības",
       "themeSlug": "uznemuma-vertibas",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā uzņēmuma vērtības ietekmē SEO stratēģiju — mūsu pieeja",
-        "Mīts: Vērtības ir tikai vārdi uz sienas — kā tās reāli strādā",
-        "7 LatSEO vērtības, kas nosaka katru mūsu lēmumu",
-        "Ko es iemācījos par vērtību nozīmi klientu attiecībās",
-        "Aiz kadra: Kā mūsu vērtības ietekmē to, ar ko mēs strādājam",
-        "BUJ: Kādas ir jūsu kā SEO aģentūras vērtības?",
-        "Nedēļas kopsavilkums: Vērtības — neredzamais kompass biznesa lēmumos"
+        "Kādas ir LatSEO vērtības un kā tās ietekmē mūsu lēmumus ikdienā",
+        "Kāpēc mēs nekad nesolām #1 vietu Google — godīgums kā biznesa stratēģija",
+        "Kā mēs izvēlamies, ar ko strādāt — mūsu iekšējais klientu ētikas tests",
+        "Vai nauda ir viss? Kāpēc mēs reizēm atsakāmies no ienesīgiem projektiem",
+        "Kā mēs turamies pie savām vērtībām, kad bizness iet grūti — reāls stāsts",
+        "Caurspīdīgums kā mārketinga instruments — kāpēc mēs publicējam cenas un procesus",
+        "Mūsu komandas kultūra — kā mēs strādājam kopā, lai sasniegtu klientu mērķus"
       ]
     },
     {
       "week": 18, "quarter": 2,
-      "theme": "Pašizglītība – kā tu uzturi savas zināšanas svaigas",
+      "theme": "Pašizglītība un nepārtraukta mācīšanās",
       "themeSlug": "pasizglitiba",
       "category": "Produktivitāte",
       "topics": [
-        "Kā uzturēt SEO zināšanas aktuālas — mans mācību plāns",
-        "Mīts: SEO var iemācīties vienreiz un pielietot mūžīgi — kāpēc tas nestrādā",
-        "7 avoti, kuriem sekoju, lai būtu lietas kursā par SEO jaunumiem",
-        "Ko es iemācījos par nepārtrauktu izglītību SEO jomā",
-        "Aiz kadra: Cik stundas nedēļā es veltu mācībām un kā tas izskatās",
-        "BUJ: Kā kļūt par SEO speciālistu? Ar ko sākt?",
-        "Nedēļas kopsavilkums: Pašizglītība — vienīgais veids, kā nenovecot SEO"
+        "Kā es uzturu savas SEO zināšanas svaigas — mans iknedēļas mācību plāns",
+        "SEO mainās katru dienu — kā es sekoju līdzi bez izdegšanas",
+        "5 SEO kursi, kurus esmu izgājis — un kurš bija izšķērdēta nauda",
+        "Google dokumentācija pret blogu ierakstiem — kam es uzticos vairāk un kāpēc",
+        "Kā es testēju jaunas SEO stratēģijas pirms piedāvāju klientiem — mana testa vietne",
+        "Cik stundas nedēļā es veldu mācībām — un kā tas mainījies 3 gadu laikā",
+        "Viena lieta, ko es iemācījos šomēnes — un kā tā mainīja manu pieeju SEO"
       ]
     },
     {
       "week": 19, "quarter": 2,
-      "theme": "Kā tu svini mazās uzvaras",
+      "theme": "Mazās uzvaras un to svinēšana",
       "themeSlug": "mazas-uzvaras",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā svinēt mazās SEO uzvaras — un kāpēc tas ir svarīgi",
-        "Mīts: Tikai lieli rezultāti ir svinēšanas vērti — mazo uzvaru spēks",
-        "7 mazas SEO uzvaras, kas noved pie lieliem rezultātiem",
-        "Ko es iemācījos par pacietību un mazo uzvaru svinēšanu SEO",
-        "Aiz kadra: Kā mēs komandā atzīmējam pat nelielus SEO uzlabojumus",
-        "BUJ: Kādi ir pirmie SEO panākumu signāli, ko sagaidīt?",
-        "Nedēļas kopsavilkums: Mazās uzvaras — SEO maratons, nevis sprints"
+        "Pirmā lapa Google — kā jutās, kad mans klients pirmo reizi tur nokļuva",
+        "Mazākās SEO uzvaras, kas noved pie lielākajiem rezultātiem",
+        "Kā es svinu uzvaras ar klientiem — un kāpēc tas ir svarīgi attiecībām",
+        "SEO uzvara, kas aizņēma 18 mēnešus — pacietības stāsts",
+        "Kāpēc es katru mēnesi atzīmēju pat 0.1% trafika pieaugumu",
+        "Klienta atsauksme, kas man lika justies kā miljonāram",
+        "Kā mēs komandā svinam — mūsu mazie rituāli, kas uztur motivāciju"
       ]
     },
     {
       "week": 20, "quarter": 2,
-      "theme": "Brīdis, kad gribējās visu pamest (Burnout prevencija)",
-      "themeSlug": "burnout-prevencija",
+      "theme": "Izdegšana un mentālā veselība",
+      "themeSlug": "izdegsana",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā izvairīties no izdegšanas SEO darbā — stratēģijas, kas strādā",
-        "Mīts: Izdegšana nozīmē, ka neesi pietiekami stiprs — patiesība par burnout",
-        "7 pazīmes, ka SEO speciālists ir uz izdegšanas robežas",
-        "Ko es iemācījos no sava izdegšanas brīža — kā es atguvos",
-        "Aiz kadra: Mans melnākais periods biznesā un kā es no tā izkļuvu",
-        "BUJ: Kā tu tiek galā ar stresu, kad nekas nestrādā?",
-        "Nedēļas kopsavilkums: Burnout — kāpēc atpūta ir daļa no SEO stratēģijas"
+        "Kā es sapratu, ka esmu uz izdegšanas robežas — 7 simptomi, kurus ignorēju",
+        "Ko es darīju, kad vairs nevarēju piespiest sevi atvērt laptopu",
+        "SEO un trauksme — kā tikt galā, kad Google algoritms iznīcina tavu darbu",
+        "Kā es atguvos pēc 3 mēnešu intensīva darba bez brīvdienām",
+        "Vai SEO ir viens no stresainākajiem darbiem? Godīga atbilde",
+        "Robežas, ko es iemācījos noteikt, lai nekad vairs nenonāktu līdz izdegšanai",
+        "Atpūta kā daļa no SEO stratēģijas — kāpēc es tagad plānoju brīvdienas"
       ]
     },
     {
       "week": 21, "quarter": 2,
-      "theme": "Konkurence – kāpēc tu no tās nebaidies (vai no kā mācies)",
+      "theme": "Konkurence",
       "themeSlug": "konkurence",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā analizēt konkurentu SEO un mācīties no viņiem",
-        "Mīts: Konkurence ir ienaidnieks — kāpēc veselīga konkurence ceļ visu nozari",
-        "7 veidi, kā pārspēt konkurentus Google meklējumos",
-        "Ko es iemācījos no saviem SEO konkurentiem Latvijā",
-        "Aiz kadra: Kā es sekoju līdzi konkurentiem un ko ar šo info daru",
-        "BUJ: Kā konkurēt ar lieliem uzņēmumiem, kam ir milzīgs SEO budžets?",
-        "Nedēļas kopsavilkums: Konkurence — tavs labākais SEO skolotājs"
+        "Kā es analizēju konkurentu SEO — mans 5 soļu process",
+        "Ko es iemācījos no sava lielākā konkurenta — un kā es viņu apsteidzu",
+        "Vai konkurence SEO ir veselīga? Kāpēc es nebaidos no jauniem spēlētājiem",
+        "Kā konkurēt ar lieliem budžetiem — SEO stratēģijas mazajiem uzņēmumiem",
+        "Kā es uzzināju, ka konkurents kopē mūsu saturu — un ko es izdarīju",
+        "Sadarbība ar konkurentiem — jā, tas ir iespējams",
+        "Kāpēc es vairs neskatos uz konkurentiem katru dienu — un kas mainījās"
       ]
     },
     {
       "week": 22, "quarter": 2,
-      "theme": "Atsauksmes – kā tās prasīt un kā reaģēt uz negatīvajām",
+      "theme": "Atsauksmes un reputācija",
       "themeSlug": "atsauksmes",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā iegūt vairāk Google atsauksmju savam biznesam — pārbaudīta sistēma",
-        "Mīts: Negatīvas atsauksmes ir jādzēš — kāpēc tās ir vērtīgas",
-        "7 veidi, kā elegantatbildēt uz negatīvu atsauksmi Google",
-        "Ko es iemācījos no klientu atsauksmēm — kā tās uzlaboja mūsu servisu",
-        "Aiz kadra: Kā es reaģēju, kad saņēmu savu pirmo negatīvo atsauksmi",
-        "BUJ: Ko darīt, ja konkurents atstāj viltus negatīvu atsauksmi?",
-        "Nedēļas kopsavilkums: Atsauksmes — bezmaksas SEO zelts"
+        "Kā es iegūstu Google atsauksmes — sistēma, kas man atnesa 50+ atsauksmes",
+        "Mana pirmā negatīvā atsauksme — kā es reaģēju un ko tas mainīja",
+        "Vai atsauksmes ietekmē SEO? Pētījums ar datiem no 20 klientu profiliem",
+        "Kā es atbildēju uz publisku sūdzību — un pārvērtu to par mārketinga uzvaru",
+        "Viltus atsauksmes — kā es identificēju un noņēmu negatīvas atsauksmes no konkurenta",
+        "Kāpēc mēs lūdzam atsauksmes pēc katra projekta — un kā tas ietekmē pārdošanu",
+        "Trustpilot, Google, Facebook — kurā platformā atsauksmes ir vissvarīgākās SEO"
       ]
     },
     {
       "week": 23, "quarter": 2,
-      "theme": "Bezmaksas vērtības došana – kur ir robeža?",
+      "theme": "Bezmaksas vērtība pret maksas pakalpojumiem",
       "themeSlug": "bezmaksas-vertiba",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā dot bezmaksas vērtību, nedevalvējot savus pakalpojumus",
-        "Mīts: Jo vairāk dod par brīvu, jo vairāk klientu — robežas nepieciešamība",
-        "7 bezmaksas SEO resursi, ko varam piedāvāt, nezaudējot biznesu",
-        "Ko es iemācījos par bezmaksas konsultāciju robežām",
-        "Aiz kadra: Kur es novelku robežu starp bezmaksas un maksas SEO padomiem",
-        "BUJ: Kāpēc jūs piedāvājat bezmaksas SEO auditu? Kas tajā ir iekļauts?",
-        "Nedēļas kopsavilkums: Bezmaksas vērtība — stratēģija, nevis labdarība"
+        "Kāpēc mēs piedāvājam bezmaksas SEO auditu — un kur ir robeža",
+        "Bezmaksas saturs pret maksas konsultāciju — ko es iekļauju blogā un ko atstāju klientiem",
+        "Vai es kādreiz esmu nožēlojis, ka iedevu par daudz bezmaksas informācijas",
+        "Kā bezmaksas audits pārvēršas par maksas klientu — mana pārdošanas piltuve",
+        "Kāpēc es pārstāju piedāvāt bezmaksas SEO padomus Facebook grupās",
+        "Vai bezmaksas saturs devalvē tavu ekspertīzi — ko es domāju tagad pret ko domāju pirms gada",
+        "Kā es izlemju, ko dot par brīvu un ko paturēt kā maksas pakalpojumu"
       ]
     },
     {
       "week": 24, "quarter": 2,
-      "theme": "Dizaina, vizuālā tēla vai prezentācijas nozīme tavā darbā",
-      "themeSlug": "dizaina-nozime",
+      "theme": "Mājaslapas dizains un SEO",
+      "themeSlug": "dizains-seo",
       "category": "Mājaslapu Izstrāde",
       "topics": [
-        "Kā mājaslapas dizains ietekmē SEO — lietotāja pieredzes faktors",
-        "Mīts: Skaista mājaslapa nav svarīga SEO — patiesība par UX signāliem",
-        "7 dizaina elementi, kas uzlabo gan izskatu, gan SEO rangu",
-        "Ko es iemācījos par dizaina un SEO saistību — no kodētāja skatpunkta",
-        "Aiz kadra: Kā mēs pieņemam dizaina lēmumus, kas nekonfliktē ar SEO",
-        "BUJ: Vai man vajag pilnībā pārtaisīt mājaslapu SEO dēļ?",
-        "Nedēļas kopsavilkums: Dizains + SEO — kāpēc viens bez otra nestrādā"
+        "Kā mājaslapas dizains ietekmē SEO — 3 reāli piemēri ar datiem",
+        "Ātrums pret izskatu — kāpēc mēs upurējam animācijas SEO labā",
+        "Mobile-first dizains — kāpēc 70% mūsu klientu trafika nāk no mobilajām ierīcēm",
+        "Kā mēs izvēlamies krāsas un fontus — un kā tas ietekmē lietotāja pieredzi un SEO",
+        "Kāpēc mēs neizmantojam WordPress page builderus — tehniskais SEO pret ērtībām",
+        "A/B testēšana un SEO — kā mēs testējam dizaina izmaiņas, nezaudējot rangus",
+        "Mūsu mājaslapu izstrādes process — no pirmās skices līdz SEO optimizētai lapai"
       ]
     },
     {
       "week": 25, "quarter": 2,
-      "theme": "Darba un personīgās dzīves 'balanss' (un vai tāds eksistē)",
+      "theme": "Darba un dzīves balanss",
       "themeSlug": "darba-dzives-balanss",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā es balansēju starp SEO biznesu un personīgo dzīvi",
-        "Mīts: Work-life balance nozīmē perfektu 50/50 — realitāte",
-        "7 paradumi, kas palīdz nodalīt darbu no dzīves",
-        "Ko es iemācījos par darba un dzīves līdzsvaru kā uzņēmējs",
-        "Aiz kadra: Cik stundas dienā es tiešām strādāju",
-        "BUJ: Kā tu atslēdzies no darba, kad esi pats sev priekšnieks?",
-        "Nedēļas kopsavilkums: Balanss — mīts vai sasniedzams mērķis?"
+        "Vai work-life balance vispār eksistē kā uzņēmējam? Mana atbilde pēc 3 gadiem",
+        "Kā es izslēdzos no darba, kad mans birojs ir manā guļamistabā",
+        "Cik stundas es patiesībā strādāju nedēļā — atklāts laika audits",
+        "Kā es plānoju atvaļinājumus, kad esmu vienīgais SEO speciālists komandā",
+        "Sports, ģimene, hobiji — kā es iekļauju dzīvi ārpus SEO",
+        "Kāpēc es pārstāju strādāt naktīs — un ko tas mainīja manā produktivitātē",
+        "Mans rīta rituāls — kā es sāku dienu, lai būtu produktīvs, nevis izdedzis"
       ]
     },
     {
       "week": 26, "quarter": 2,
-      "theme": "Administratīvais slogs (grāmatvedība, papīri) un kā to paciest",
+      "theme": "Administratīvais slogs un juridiskās lietas",
       "themeSlug": "administrativais-slogs",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā es automatizēju administratīvos procesus savā SEO aģentūrā",
-        "Mīts: Uzņēmējs pats visu var izdarīt — kad un kāpēc deleģēt admin darbus",
-        "7 rīki, kas atvieglo administratīvo slogu mazam biznesam",
-        "Ko es iemācījos par grāmatvedību un papīriem — kļūdas, no kurām izvairīties",
-        "Aiz kadra: Cik stundas mēnesī aiziet uz administrēšanu un kā es to samazinu",
-        "BUJ: Kā jūs izrakstāt rēķinus? Vai strādājat ar juridiskām personām?",
-        "Nedēļas kopsavilkums: Administrēšana — neizbēgams, bet optimizējams ļaunums"
+        "Grāmatvedība SEO aģentūrai — kā es organizēju rēķinus, nodokļus un algas",
+        "Kā es automatizēju administratīvos darbus — 3 rīki, kas ietaupa 5h nedēļā",
+        "Kādi līgumi ir obligāti SEO aģentūrai — mans juridiskais minimums",
+        "PVN, UIN, VSAOI — kā es sapratu nodokļu sistēmu un beidzu no tās baidīties",
+        "Kā es izrakstu rēķinus — mana sistēma no piedāvājuma līdz apmaksai",
+        "Reģistrācija, licences, atļaujas — ko es nezināju, kad sāku, bet vajadzēja zināt",
+        "Cik daudz laika aizņem administrēšana — un kā es to samazināju līdz minimumam"
       ]
     },
     {
       "week": 27, "quarter": 3,
-      "theme": "Pārdošana, kas neizskatās pēc pārdošanas",
+      "theme": "Pārdošana bez pārdošanas sajūtas",
       "themeSlug": "pardosana",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā pārdot SEO pakalpojumus, nejūtoties kā pārdevējam",
-        "Mīts: Labs produkts pārdod pats sevi — kāpēc arī SEO vajag pārdošanu",
-        "7 pārdošanas principi, kas strādā SEO nozarē",
-        "Ko es iemācījos par SEO pārdošanu — no pirmā zvana līdz līgumam",
-        "Aiz kadra: Kā izskatās mūsu pārdošanas saruna ar potenciālo klientu",
-        "BUJ: Kāpēc jūs nesolāt #1 pozīciju Google? Kā jūs pārdodat SEO?",
-        "Nedēļas kopsavilkums: Pārdošana — palīdzēt, nevis uzspiest"
+        "Kā es pārdodu SEO, nejūtoties kā lietots auto tirgonis — mana pieeja",
+        "Pirmais zvans ar potenciālo klientu — ko es saku un ko NESAKU",
+        "Kā es veidoju SEO piedāvājumu — no pirmās sarunas līdz līgumam",
+        "Kāpēc es nekad nepārdodu cenu — es pārdodu rezultātu",
+        "Kā es rīkojos, kad klients saka 'es padomāšu' — follow-up sistēma bez uzmācības",
+        "SEO pārdošanas psiholoģija — kāpēc cilvēki pērk bailēs, nevis cerībās",
+        "Kā es zaudēju lielu darījumu — un ko es mainīju pēc tam"
       ]
     },
     {
       "week": 28, "quarter": 3,
-      "theme": "Kā pateikt klientam 'Nē' eleganti",
+      "theme": "Kā pateikt klientam Nē",
       "themeSlug": "pateikt-ne",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā profesionāli atteikt SEO klientam — saglabājot attiecības",
-        "Mīts: Atteikt klientam = zaudēt naudu — kāpēc Nē ir izdevīgāk",
-        "7 situācijas, kad SEO speciālistam jāsaka Nē",
-        "Ko es iemācījos par atteikšanu — kā tas uzlaboja manu biznesu",
-        "Aiz kadra: Reālas situācijas, kad esam atteikuši potenciālajiem klientiem",
-        "BUJ: Vai jūs kādreiz atsakāt klientiem? Kāpēc?",
-        "Nedēļas kopsavilkums: Māksla pateikt Nē — tavs bizness, tavi noteikumi"
+        "5 reizes, kad es atteicos no klienta — un katru reizi tas bija pareizs lēmums",
+        "Kā pateikt nē, nezaudējot attiecības — profesionālas atteikuma frāzes",
+        "Klients grib SEO, bet viņam nav budžeta — kā es piedāvāju alternatīvas",
+        "Kāpēc es atteicos no sava lielākā klienta — un ko tas man iemācīja",
+        "Kā es atpazīstu klientu, kuram SEO neder — 3 jautājumi, kas atklāj patiesību",
+        "Nē teikšana sev — kā es iemācījos neuzņemties par daudz",
+        "Kā pateikt nē klientam, kurš grib tikai vienu mazu izmaiņu desmito reizi"
       ]
     },
     {
       "week": 29, "quarter": 3,
-      "theme": "Dīvainākie vai neparastākie klientu pieprasījumi",
+      "theme": "Dīvainākie klientu pieprasījumi",
       "themeSlug": "divainie-pieprasijumi",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā rīkoties ar neparastiem SEO pieprasījumiem — profesionāla pieeja",
-        "Mīts: Klients vienmēr zina, ko grib — kad jāpārliecina par citu pieeju",
-        "7 dīvainākie SEO pieprasījumi, ko esmu saņēmis",
-        "Ko es iemācījos no neparastiem klientu pieprasījumiem",
-        "Aiz kadra: Smieklīgākie un trakākie SEO pieprasījumi mūsu praksē",
-        "BUJ: Vai jūs varat izdarīt SEO, lai es būtu #1 rīt? (un citi dīvaini jautājumi)",
-        "Nedēļas kopsavilkums: Dīvainie pieprasījumi — humors un mācības"
+        "Vai jūs varat izveidot man SEO, lai es rīt esmu #1 — un citi dīvaini jautājumi",
+        "Klients gribēja, lai es paslēpju viņa konkurentu no Google — ko es atbildēju",
+        "5 reizes, kad klienti prasīja neiespējamo — un kā es to atrisināju",
+        "Klients man atsūtīja 50 lapu SEO stratēģiju no ChatGPT — ko es ar to izdarīju",
+        "Vai jūs varat izveidot man 10 000 backlinks nedēļā — kāpēc šis jautājums ir bīstams",
+        "Visdīvainākais SEO pieprasījums manā karjerā — tu neticēsi",
+        "Ko klienti visbiežāk pārprot par SEO — un kā es to izskaidroju ar smaidu"
       ]
     },
     {
       "week": 30, "quarter": 3,
-      "theme": "'Underpromise, overdeliver' jeb kā patīkami pārsteigt klientu",
+      "theme": "Underpromise, overdeliver",
       "themeSlug": "underpromise-overdeliver",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā pārsteigt SEO klientu, pārsniedzot solīto — konkrēti piemēri",
-        "Mīts: Jo vairāk soli, jo vairāk pārdod — kāpēc underpromise strādā labāk",
-        "7 veidi, kā 'overdeliver' SEO pakalpojumos",
-        "Ko es iemācījos par solījumu pārspēšanu SEO nozarē",
-        "Aiz kadra: Kā mēs pārsteidzam klientus ar papildu vērtību, ko negaida",
-        "BUJ: Ko es varu sagaidīt no jūsu SEO pakalpojumiem virs līguma?",
-        "Nedēļas kopsavilkums: Underpromise, overdeliver — klientu lojalitātes formula"
+        "Kā es pārsteidzu klientus ar rezultātiem, ko viņi negaidīja — 3 konkrēti piemēri",
+        "Soli mazāk, dod vairāk — kāpēc šī stratēģija strādā SEO labāk nekā lielie solījumi",
+        "Kā es reaģēju, kad sasniedzām rezultātus 2x ātrāk nekā solīts",
+        "Papildu vērtība, ko es dodu klientiem bez maksas — un kāpēc es to daru",
+        "Kāpēc es vienmēr saku, ka SEO prasīs ilgāk, nekā es domāju",
+        "Klients, kurš gaidīja 3 mēnešus, bet dabūja rezultātus 6 nedēļās — viņa reakcija",
+        "Vai overdeliver var būt slikti? Kad klienti sāk gaidīt par daudz"
       ]
     },
     {
       "week": 31, "quarter": 3,
-      "theme": "Pielāgošanās izmaiņām (jauni likumi, jauni trendi)",
+      "theme": "Pielāgošanās pārmaiņām",
       "themeSlug": "pielagosanas-izmainam",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā SEO aģentūra pielāgojas Google algoritmu izmaiņām",
-        "Mīts: Kad Google ko maina, SEO ir jāsāk no jauna — adaptācijas patiesība",
-        "7 soļi, kā ātri reaģēt uz SEO izmaiņām",
-        "Ko es iemācījos par pielāgošanos — no Google Core Updates līdz GDPR",
-        "Aiz kadra: Mūsu rīcības plāns, kad iznāk liels Google atjauninājums",
-        "BUJ: Ko darīt, ja mans SEO pārstāj strādāt pēc Google atjauninājuma?",
-        "Nedēļas kopsavilkums: Pārmaiņas — vienīgā konstante SEO pasaulē"
+        "Google Core Update — ko tas mainīja maniem klientiem un kā es reaģēju",
+        "GDPR un SEO — kā datu aizsardzības likumi ietekmē analītiku un mērījumus",
+        "Kā es pielāgojos Google AI Overviews — jaunā realitāte meklēšanā",
+        "No desktop uz mobile-first — kā es mainīju visu savu SEO pieeju",
+        "Kad Google izslēdza trešo pušu sīkdatnes — ko tas nozīmēja SEO",
+        "Kā es mainu savas stratēģijas, kad mainās industrija — mana pielāgošanās formula",
+        "Ko es darīšu, ja SEO kādreiz vairs nebūs aktuāls — mans plāns B"
       ]
     },
     {
       "week": 32, "quarter": 3,
-      "theme": "Kā nomierināt dusmīgu vai satrauktu klientu",
-      "themeSlug": "klientu-apkalposana",
-      "category": "Bizness & Stratēģija",
+      "theme": "Darbs ar sarežģītiem klientiem",
+      "themeSlug": "sarezgiti-klienti",
+      "category": "Bizness",
       "topics": [
-        "Kā nomierināt klientu, kurš nav apmierināts ar SEO rezultātiem",
-        "Mīts: Dusmīgs klients ir zaudēts klients — kā pagriezt situāciju par labu",
-        "7 soļi efektīvai konfliktu risināšanai ar SEO klientiem",
-        "Ko es iemācījos no sarežģītām klientu sarunām",
-        "Aiz kadra: Mans grūtākais zvans ar klientu un kā es to atrisināju",
-        "BUJ: Ko darīt, ja neesmu apmierināts ar SEO rezultātiem?",
-        "Nedēļas kopsavilkums: Konfliktu risināšana — empātija + dati = risinājums"
+        "Kā es nomierināju klientu, kurš gribēja lauzt līgumu pēc 2 mēnešiem",
+        "Klients, kurš mainīja prasības katru nedēļu — kā es to atrisināju",
+        "Kā es strādāju ar klientu, kurš domā, ka zina SEO labāk par mani",
+        "Ko darīt, ja klients neapmaksā rēķinu — mana rīcība soli pa solim",
+        "Kā es pārtraucu sadarbību ar toksisku klientu — un ko es iemācījos",
+        "Kāpēc daži klienti nekad nebūs apmierināti — un kā to pieņemt",
+        "Kas notika, kad klients publiski sūdzējās par mums sociālajos tīklos"
       ]
     },
     {
       "week": 33, "quarter": 3,
-      "theme": "Pacietība biznesā un ātro rezultātu (get-rich-quick) ilūzija",
-      "themeSlug": "pacietiba-biznesa",
-      "category": "Bizness & Stratēģija",
+      "theme": "Pacietība un ilgtermiņa domāšana SEO",
+      "themeSlug": "pacietiba",
+      "category": "Bizness",
       "topics": [
-        "Kā izkopt pacietību SEO — cik ilgi jāgaida rezultāti",
-        "Mīts: SEO var dot rezultātus 30 dienās — reālistisks laika grafiks",
-        "7 iemesli, kāpēc SEO prasa pacietību un kā to izturēt",
-        "Ko es iemācījos par pacietību — mans 3 gadu SEO ceļojums",
-        "Aiz kadra: Kā es izskaidroju klientiem, ka SEO nav 'ātrā nauda'",
-        "BUJ: Cik ilgi jāgaida, līdz SEO sāks strādāt? Godīga atbilde",
-        "Nedēļas kopsavilkums: Pacietība — SEO visgrūtākā, bet svarīgākā sastāvdaļa"
+        "SEO nav 100 metru sprints — kāpēc pacietība ir tava lielākā priekšrocība",
+        "Klients, kurš gaidīja 12 mēnešus — un tagad pelna no organiskā trafika",
+        "Kā es izskaidroju SEO laika grafiku klientiem — vienkārša analoģija, kas strādā",
+        "SEO rezultāti pa mēnešiem — reāli dati no mana klienta pirmā gada",
+        "Kāpēc es investēju SEO, nevis Google Ads — ilgtermiņa pret īstermiņa",
+        "Kā es palieku motivēts, kad rezultāti nav redzami uzreiz",
+        "Vai SEO ir tā vērts? Atbilde pēc 3 gadu datu analīzes"
       ]
     },
     {
       "week": 34, "quarter": 3,
-      "theme": "Lojalitāte – kāpēc klienti atgriežas pie tevis",
-      "themeSlug": "lojalitate",
-      "category": "Bizness & Stratēģija",
+      "theme": "Klientu lojalitāte",
+      "themeSlug": "klientu-lojalitate",
+      "category": "Bizness",
       "topics": [
-        "Kā veidot ilgtermiņa attiecības ar SEO klientiem — lojalitātes formula",
-        "Mīts: Klients paliek tikai tad, ja rezultāti ir ideāli — citi lojalitātes faktori",
-        "7 iemesli, kāpēc klienti paliek ar mums gadiem",
-        "Ko es iemācījos par klientu lojalitāti — kas patiešām notur cilvēkus",
-        "Aiz kadra: Mūsu klientu retention stratēģija — ko mēs darām savādāk",
-        "BUJ: Cik ilgi vidēji jūsu klienti strādā ar jums?",
-        "Nedēļas kopsavilkums: Lojalitāte — vairāk nekā tikai labi rezultāti"
+        "Kāpēc mani klienti paliek ar mani 2+ gadus — 5 lietas, ko es daru savādāk",
+        "Kā es atgriezu klientu, kurš bija aizgājis pie konkurenta",
+        "Klientu lojalitātes programma SEO aģentūrai — vai tāda vispār ir iespējama",
+        "Kā es veidoju ilgtermiņa attiecības ar klientiem — ārpus ikmēneša atskaitēm",
+        "Cik daudz laika es veldu klientam pēc projekta beigām — un kāpēc",
+        "Kā es svinu klienta dzimšanas dienu un kāpēc tas ir svarīgi",
+        "Kas notiek, kad klients kļūst par draugu — robežas starp biznesu un personīgo"
       ]
     },
     {
       "week": 35, "quarter": 3,
-      "theme": "Uzticības veidošana virtuālajā vidē",
+      "theme": "Uzticības veidošana tiešsaistē",
       "themeSlug": "uzticibas-veidosana",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā SEO aģentūra var veidot uzticību tiešsaistē — 5 stratēģijas",
-        "Mīts: Uzticību var nopirkt ar reklāmām — kāpēc autentiskums uzvar",
-        "7 signāli, kas liecina, ka SEO aģentūra ir uzticama",
-        "Ko es iemācījos par uzticības veidošanu attālinātā darbā",
-        "Aiz kadra: Kā mēs pelnām klientu uzticību bez klātienes tikšanās",
-        "BUJ: Kā zināt, vai SEO aģentūra tiešām dara darbu, par ko maksāju?",
-        "Nedēļas kopsavilkums: Uzticība — valūta, ko nevar nopirkt ar naudu"
+        "Kā es pārliecinu klientu, ka neesmu kārtējais SEO krāpnieks — uzticības veidošana",
+        "Mana LinkedIn stratēģija — kā es izmantoju sociālos tīklus, lai veidotu autoritāti",
+        "Kāpēc es publicēju reālus klientu rezultātus — caurspīdīgums pret privātumu",
+        "Kā es izskatos uzticams video zvanā — mazi triki, kas strādā",
+        "Mans portfolio — kā es prezentēju savus projektus, lai pārliecinātu jaunus klientus",
+        "Kā es iegūstu pirmos klientus bez mājaslapas — personīgā zīmola spēks",
+        "Kāpēc klienti izvēlas mani, nevis lielo aģentūru — mana unikālā vērtība"
       ]
     },
     {
       "week": 36, "quarter": 3,
-      "theme": "Sarežģītu terminu izskaidrošana 'cilvēku valodā'",
+      "theme": "SEO terminu izskaidrošana vienkāršā valodā",
       "themeSlug": "terminu-izskaidrosana",
       "category": "SEO Pamati",
       "topics": [
-        "Kā izskaidrot SEO klientiem bez tehniskā žargona — vienkāršā valodā",
-        "Mīts: Jo sarežģītāk runā, jo gudrāks izklausies — kāpēc vienkāršība uzvar",
-        "7 SEO termini, ko katrs uzņēmējs var saprast 5 minūtēs",
-        "Ko es iemācījos par SEO skaidrošanu 'normālā' valodā",
-        "Aiz kadra: Kā es tulkoju SEO terminus savai mammai un klientiem",
-        "BUJ: Kas ir SEO, bet vienkāršiem vārdiem?",
-        "Nedēļas kopsavilkums: Vienkāršā valodā — SEO demistificēts"
+        "Kas ir domēna autoritāte un kāpēc tev par to nav jāuztraucas",
+        "Canonical tag, robots.txt, sitemap.xml — izskaidrots tā, lai saprastu tava vecmāmiņa",
+        "Kas ir EEAT un kāpēc Google to mīl — vienkāršs skaidrojums ar piemēru",
+        "SERP, CTR, CPC, ROI — SEO saīsinājumi, kurus tev patiešām vajag zināt",
+        "Kas ir backlinks un kāpēc tie ir kā rekomendācijas vēstules tavam biznesam",
+        "Strukturētie dati un schema.org — kas tas ir un kāpēc tavai mājaslapai to vajag",
+        "Core Web Vitals — kas tie ir un kāpēc Google par tiem var sodīt tavu lapu"
       ]
     },
     {
       "week": 37, "quarter": 3,
-      "theme": "Sliktu klientu identificēšana pirms sadarbības sākuma (Red flags)",
-      "themeSlug": "sliktie-klienti",
-      "category": "Bizness & Stratēģija",
+      "theme": "Sarkanie karogi pirms sadarbības",
+      "themeSlug": "sarkanie-karogi",
+      "category": "Bizness",
       "topics": [
-        "Kā atpazīt problemātisku SEO klientu pirms līguma parakstīšanas",
-        "Mīts: Katrs klients ir labs klients — sarkanie karogi, ko nedrīkst ignorēt",
-        "7 'red flags', kas liecina — nestrādā ar šo SEO klientu",
-        "Ko es iemācījos no sliktiem klientiem — kā tie padarīja mani labāku",
-        "Aiz kadra: Reāli piemēri, kad esam pateikuši 'nē, paldies'",
-        "BUJ: Vai jūs strādājat ar visiem? Kad jūs atsakāt?",
-        "Nedēļas kopsavilkums: Sarkanie karogi — pasargā savu biznesu no sliktiem klientiem"
+        "5 lietas, ko klienti saka, un es uzreiz zinu — ar šo cilvēku nestrādāšu",
+        "Kā es sapratu, ka potenciālais klients mani krāpj — un kā es pieklājīgi atteicos",
+        "Kāpēc es vienmēr prasu 50% priekšapmaksu — un kas notika, kad to nedarīju",
+        "Klients, kurš solīja lielu projektu, bet pazuda pēc bezmaksas audita",
+        "Kā es pārbaudu potenciālā klienta biznesa reputāciju pirms sadarbības",
+        "3 jautājumi, ko uzdodu katrā pirmajā sarunā — un atbildes, kas ir sarkanie karogi",
+        "Kāpēc es vairs nestrādāju ar draugiem un ģimeni — skarbs, bet godīgs stāsts"
       ]
     },
     {
       "week": 38, "quarter": 3,
-      "theme": "Tīklošanās (Networking) – kas strādā un kas ir lieka laika tērēšana",
+      "theme": "Tīklošanās un sadarbības",
       "themeSlug": "tiklosanas",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā veidot vērtīgus kontaktus SEO nozarē — stratēģijas, kas strādā",
-        "Mīts: Networking = vizītkaršu dalīšana pasākumos — kas patiešām strādā",
-        "7 networking kanāli, kas atnesa mums jaunus SEO klientus",
-        "Ko es iemācījos par tīklošanos — kas bija laika tērēšana un kas nē",
-        "Aiz kadra: Kā es izmantoju LinkedIn savam SEO biznesam",
-        "BUJ: Kā atrast SEO klientus bez aukstajiem zvaniem?",
-        "Nedēļas kopsavilkums: Tīklošanās — attiecības > transakcijas"
+        "Kā es ieguvu savus labākos klientus caur LinkedIn — mana stratēģija soli pa solim",
+        "SEO konferences un pasākumi — vai tie tiešām atnes klientus",
+        "Kā es sadarbojos ar web dizaineriem, kas man sūta klientus",
+        "Aukstie e-pasti pret siltajiem kontaktiem — kas strādā labāk SEO nozarē",
+        "Kā es kļuvu par vieslektoru un kā tas ietekmēja manu biznesu",
+        "Networking, kas neizskatās pēc networking — kā es veidoju attiecības dabiski",
+        "Kā es atradu savu biznesa partneri — un kāpēc solo vairs nestrādāju"
       ]
     },
     {
       "week": 39, "quarter": 3,
-      "theme": "Kā tu pārdzīvo lēnos periodus biznesā",
+      "theme": "Lēnie periodi biznesā",
       "themeSlug": "lenie-periodi",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā izdzīvot SEO biznesa klusajos mēnešos — praktisks plāns",
-        "Mīts: Veiksmīgam biznesam nav kluso periodu — realitātes pārbaude",
-        "7 stratēģijas, ko izmantoju lēnajos periodos SEO aģentūrā",
-        "Ko es iemācījos no klusajiem mēnešiem — kā tie padarīja mani stiprāku",
-        "Aiz kadra: Mans sliktākais mēnesis biznesā un kā es to pārvarēju",
-        "BUJ: Ko jūs darāt, kad nav jaunu SEO klientu?",
-        "Nedēļas kopsavilkums: Lēnie periodi — iespēja, nevis drauds"
+        "Ko es daru, kad mēnesi nav neviena jauna klienta — mans izdzīvošanas plāns",
+        "Janvāris — klusākais mēnesis SEO. Kā es tam gatavojos",
+        "Kā es diversificēju ienākumus, lai nekad nebūtu atkarīgs no viena klienta",
+        "Mans sliktākais finanšu mēnesis — un ko es darīju, lai no tā izkļūtu",
+        "SEO aģentūras sezonalitāte — kad ir labi un kad slikti laiki",
+        "Kā es investēju klusajos periodos — mācības, saturs, tīklošanās",
+        "Kāpēc klusie periodi ir labākais laiks, lai augtu — un ko es daru savādāk"
       ]
     },
     {
       "week": 40, "quarter": 4,
-      "theme": "Kā AI (mākslīgais intelekts) ietekmē un mainīs tavu nozari",
+      "theme": "AI ietekme uz SEO",
       "themeSlug": "ai-ietekme",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā AI maina SEO nozari 2026. gadā — kas jāzina katram uzņēmējam",
-        "Mīts: AI aizvietos SEO speciālistus — kāpēc cilvēka faktors paliek svarīgs",
-        "7 veidi, kā es izmantoju AI savā SEO darbā ikdienā",
-        "Ko es iemācījos par AI un SEO — eksperimenti un rezultāti",
-        "Aiz kadra: Kā es integrēju AI rīkus savā SEO aģentūrā",
-        "BUJ: Vai Google AI pārskati (AI Overviews) nogalinās SEO?",
-        "Nedēļas kopsavilkums: AI + SEO — draugs, ienaidnieks vai rīks?"
+        "Google AI Overviews — kā tas maina SEO un ko es daru lietas labā",
+        "Vai AI aizvietos SEO speciālistus? Mana godīgā atbilde pēc 12 mēnešu testēšanas",
+        "Kā es izmantoju ChatGPT SEO darbā — 7 konkrēti uzdevumi, kurus automatizēju",
+        "DeepSeek pret ChatGPT priekš SEO — kurš ir labāks un kāpēc",
+        "AI ģenerēts saturs — vai Google to soda? Dati no mana pēdējā eksperimenta",
+        "Kā AI mainīs SEO nākamgad — manas prognozes 2027. gadam",
+        "Kā es mācu klientiem izmantot AI satura radīšanai — nevis aizvietot, bet papildināt SEO"
       ]
     },
     {
       "week": 41, "quarter": 4,
-      "theme": "Lokālā tirgus specifika – kas strādā pie mums, bet ne ārzemēs",
-      "themeSlug": "lokalais-tirgus",
+      "theme": "Lokālā SEO specifika Latvijā",
+      "themeSlug": "lokalais-seo-latvija",
       "category": "Lokālais SEO",
       "topics": [
-        "Kā SEO Latvijā atšķiras no SEO ASV vai Lielbritānijā",
-        "Mīts: Globālās SEO stratēģijas vienmēr strādā lokāli — lokālās nianses",
-        "7 lietas, kas SEO Latvijā strādā savādāk nekā citur pasaulē",
-        "Ko es iemācījos par Latvijas SEO tirgu — unikālās iespējas un izaicinājumi",
-        "Aiz kadra: Kā mēs pielāgojam starptautiskās SEO prakses Latvijas tirgum",
-        "BUJ: Vai SEO Latvijā ir vieglāk vai grūtāk nekā ārzemēs?",
-        "Nedēļas kopsavilkums: Latvijas SEO tirgus — mazs, bet dinamisks"
+        "Kāpēc lokālais SEO Latvijā ir vieglāks nekā ASV — un kā to izmantot",
+        "Google Business Profile Latvijā — 5 iestatījumi, ko 90% uzņēmumu ignorē",
+        "Latviešu valodas SEO īpatnības — locījumi, garumzīmes un meklēšanas paradumi",
+        "Kā es optimizēju mājaslapu latviešu un krievu valodā vienlaicīgi",
+        "Latvijas reģionu SEO — Rīga pret reģioniem, atšķirības un stratēģijas",
+        "SEO konkurence Latvijā — kuras nozares ir piesātinātas un kurās ir iespējas",
+        "Kā es palīdzu vietējam biznesam konkurēt ar starptautiskajiem milžiem"
       ]
     },
     {
       "week": 42, "quarter": 4,
-      "theme": "Nākamās 5 gadu tendences tavā jomā",
+      "theme": "SEO nākotnes tendences",
       "themeSlug": "nakotnes-tendences",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā sagatavoties SEO nākotnei — 5 tendences, kas veidos nozari",
-        "Mīts: SEO paliks tāds pats kā šodien — kāpēc jāsagatavojas pārmaiņām",
-        "7 SEO prognozes 2026-2031 — kas mainīsies un kā tam sagatavoties",
-        "Ko es iemācījos par SEO nākotnes prognozēšanu — nozarē, kas mainās katru dienu",
-        "Aiz kadra: Kā mēs plānojam savu SEO aģentūru 5 gadiem uz priekšu",
-        "BUJ: Vai SEO būs aktuāls pēc 5 gadiem? Manas domas",
-        "Nedēļas kopsavilkums: SEO 2031 — ko mēs zinām un ko tikai minam"
+        "SEO 2027 — 5 lietas, kas mainīsies un kā tām sagatavoties jau tagad",
+        "Voice search jeb balss meklēšana — vai tā ietekmēs SEO Latvijā",
+        "Video SEO — kāpēc YouTube ir otrs lielākais meklētājs un kā to izmantot",
+        "TikTok un SEO — vai sociālie tīkli kādreiz aizvietos Google",
+        "Blockchain un SEO — vai decentralizēta meklēšana ir nākotne",
+        "Personalizēta meklēšana — kā Google zina, ko tu gribi, pirms tu to ieraksti",
+        "SEO 2030 — vai šī profesija vispār eksistēs pēc 5 gadiem"
       ]
     },
     {
       "week": 43, "quarter": 4,
-      "theme": "Lietas, ko vairs nedari un kāpēc no tām atteicies",
-      "themeSlug": "ko-vairs-nedaru",
+      "theme": "No kā es atteicos",
+      "themeSlug": "atteicos",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā es optimizēju savu SEO darbu, atsakoties no liekā",
-        "Mīts: Jo vairāk SEO aktivitāšu, jo labāk — kāpēc mazāk ir vairāk",
-        "7 SEO prakses, no kurām esmu atteicies (un kāpēc)",
-        "Ko es iemācījos, atsakoties no vecajiem SEO ieradumiem",
-        "Aiz kadra: Kādas SEO aktivitātes mēs vairs nepiedāvājam klientiem",
-        "BUJ: Vai jūs joprojām izmantojat [novecojušu SEO metodi]?",
-        "Nedēļas kopsavilkums: Atteikšanās — izaugsme caur atlasi, nevis pievienošanu"
+        "SEO taktikas, no kurām es atteicos — un kāpēc tās vairs nestrādā",
+        "Kāpēc es pārstāju piedāvāt SEO komplektu par 199 EUR",
+        "3 servisi, ko es vairs nepiedāvāju — un kā tas uzlaboja manu biznesu",
+        "Kāpēc es izdzēsu savu Facebook biznesa lapu — un koncentrējos uz LinkedIn",
+        "Kā es pārstāju skatīties uz konkurentiem katru dienu — un ko es ieguvu",
+        "No kādiem klientiem es atteicos šogad — un kāpēc tas bija labākais lēmums",
+        "SEO rīki, no kuriem atteicos — un bezmaksas alternatīvas, ko izmantoju tagad"
       ]
     },
     {
       "week": 44, "quarter": 4,
-      "theme": "Ilgtspēja – kā tavs bizness ietekmē vidi vai sabiedrību",
+      "theme": "Ilgtspēja digitālajā biznesā",
       "themeSlug": "ilgtspeja",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā digitālais mārketings var būt ilgtspējīgs — mūsu pieeja",
-        "Mīts: Digitālajam biznesam nav ietekmes uz vidi — patiesība par serveriem un enerģiju",
-        "7 veidi, kā SEO aģentūra var būt zaļāka",
-        "Ko es iemācījos par ilgtspēju digitālajā biznesā",
-        "Aiz kadra: Mūsu mazie soļi pretī zaļākai SEO aģentūrai",
-        "BUJ: Vai SEO patērē daudz enerģijas? Digitālā oglekļa pēda",
-        "Nedēļas kopsavilkums: Ilgtspēja — atbildība, kas attiecas arī uz SEO"
+        "Vai SEO ir zaļš? Kā digitālais mārketings ietekmē vidi",
+        "Kā es samazināju savas aģentūras oglekļa pēdu — mazi soļi, liela ietekme",
+        "Digitālā pieejamība un SEO — kāpēc tavai lapai jābūt pieejamai cilvēkiem ar invaliditāti",
+        "Kā es izvēlos klientus, kuru vērtības saskan ar manējām",
+        "Ilgtspējīgs SEO — kāpēc es vairs nepieņemu projektus, kas prasa 80h nedēļā",
+        "Kā es iekļauju ilgtspēju savā SEO stratēģijā — un kāpēc klienti to novērtē",
+        "Ko nozīmē būt atbildīgam digitālajam uzņēmējam"
       ]
     },
     {
       "week": 45, "quarter": 4,
-      "theme": "Kvalitātes kontrole – kā tu zini, ka tavs darbs ir izdarīts labi",
+      "theme": "Kvalitātes kontrole",
       "themeSlug": "kvalitates-kontrole",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā mēs nodrošinām SEO darba kvalitāti — mūsu iekšējais process",
-        "Mīts: SEO kvalitāti nevar izmērīt — metrikas, kas pierāda pretējo",
-        "7 kvalitātes kontroles soļi katram SEO projektam",
-        "Ko es iemācījos par kvalitātes nodrošināšanu SEO — no kļūdām līdz standartiem",
-        "Aiz kadra: Mūsu SEO checklist pirms jebkura darba nodošanas klientam",
-        "BUJ: Kā jūs garantējat, ka SEO darbs ir kvalitatīvs?",
-        "Nedēļas kopsavilkums: Kvalitāte — SEO, ar kuru vari lepoties"
+        "Kā es zinu, ka mans SEO darbs ir izdarīts labi — mana kvalitātes checklist",
+        "Kā es pārbaudu savu darbu pirms nodošanas klientam — 10 punktu sistēma",
+        "Kā es mēru SEO kvalitāti — ne tikai rangi, bet arī lietotāju pieredze",
+        "Ko es daru, kad atrodu kļūdu savā darbā — un kā to izlaboju pirms klients pamana",
+        "Peer review SEO aģentūrā — kā mēs pārbaudām viens otra darbu",
+        "SEO standarti, kurus es nekad nepārkāpju — mana sarkanā līnija",
+        "Kā es garantēju kvalitāti, kad strādāju viens — bez komandas kontroles"
       ]
     },
     {
       "week": 46, "quarter": 4,
-      "theme": "Rutīna un paradumi, kas tevi notur virs ūdens",
+      "theme": "Rutīna un paradumi",
       "themeSlug": "rutina-un-paradumi",
       "category": "Produktivitāte",
       "topics": [
-        "Kā izveidot produktīvu rīta rutīnu SEO speciālistam",
-        "Mīts: Rutīna nogalina radošumu — kāpēc struktūra atbrīvo",
-        "7 ikdienas paradumi, kas uztur manu SEO produktivitāti",
-        "Ko es iemācījos par paradumu spēku SEO karjerā",
-        "Aiz kadra: Mans rīts — no kafijas līdz pirmajam SEO auditam",
-        "BUJ: Kā tu saglabā fokusu, strādājot ar vairākiem SEO projektiem?",
-        "Nedēļas kopsavilkums: Paradumi — mazas lietas, kas veido lielus rezultātus"
+        "Mans rīta rituāls — 5 lietas, ko daru pirms 9:00 un kas maina visu dienu",
+        "Kā es plānoju savu dienu 15 minūtēs — un kāpēc tas strādā",
+        "SEO rutīnas — 3 lietas, ko daru katru dienu, lai klientu rangi augtu",
+        "Iknedēļas pārskats — kā es reflektēju par padarīto un plānoju nākamo nedēļu",
+        "Mani sliktie ieradumi, kurus es joprojām neesmu salauzis — godīgi",
+        "Kā es izveidoju paradumu mācīties katru dienu — un kāpēc tas ir svarīgi SEO",
+        "Mana vakara rutīna — kā es izslēdzos no darba un sagatavojos nākamajai dienai"
       ]
     },
     {
       "week": 47, "quarter": 4,
-      "theme": "Kā mārketings tavā nozarē ir mainījies pēdējos 3 gados",
-      "themeSlug": "marketings-mainas",
+      "theme": "Mārketinga evolūcija",
+      "themeSlug": "marketings-evolucija",
       "category": "Nozares Ieskati",
       "topics": [
-        "Kā SEO mārketings ir mainījies 2023-2026 — galvenās pārmaiņas",
-        "Mīts: Vecās mārketinga metodes vairs nestrādā — kas patiešām nomainījies",
-        "7 lielākās SEO mārketinga pārmaiņas pēdējos 3 gados",
-        "Ko es iemācījos no SEO mārketinga evolūcijas",
-        "Aiz kadra: Kā mēs mainījām savu mārketinga stratēģiju 3 gadu laikā",
-        "BUJ: Vai SEO mārketings 2026. gadā ir tas pats, kas 2023. gadā?",
-        "Nedēļas kopsavilkums: 3 gadi SEO — kas mainījies, kas palicis nemainīgs"
+        "Kā SEO mārketings mainījies no 2021. līdz 2026. gadam — mans skatījums",
+        "SEO pret sociālajiem tīkliem — kurš kanāls man atnesa vairāk klientu",
+        "Kā es izmantoju video saturu SEO — un kāpēc tas strādā labāk nekā teksta blogi",
+        "Personalizācija mārketingā — kā es pielāgoju SEO saturu konkrētam klienta tipam",
+        "Kā es integrēju SEO ar e-pasta mārketingu — viens papildina otru",
+        "Kā mainījās mans mārketinga budžets 3 gadu laikā — no 0 EUR līdz X",
+        "Kas nogalināja tradicionālo SEO — un kas to aizvietoja"
       ]
     },
     {
       "week": 48, "quarter": 4,
-      "theme": "Sadarbības partneri un kāpēc nedarīt visu pašam",
+      "theme": "Sadarbības partneri",
       "themeSlug": "sadarbibas-partneri",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā atrast pareizos sadarbības partnerus SEO biznesā",
-        "Mīts: Ja gribi, lai ir labi, izdari pats — kāpēc delegēšana ir spēks",
-        "7 partnerības, kas palīdzēja mūsu SEO aģentūrai augt",
-        "Ko es iemācījos par sadarbību — kāpēc 1+1 var būt 3",
-        "Aiz kadra: Ar ko mēs sadarbojamies — web izstrādātāji, dizaineri, fotogrāfi",
-        "BUJ: Vai jūs strādājat ar citām mārketinga aģentūrām?",
-        "Nedēļas kopsavilkums: Partneri — tava SEO superspēja"
+        "Kā es atradu savu labāko sadarbības partneri — un ko mēs kopā sasniedzām",
+        "Ar ko es sadarbojos — web izstrādātāji, dizaineri, fotogrāfi, copywriteri",
+        "Kāpēc es necenšos visu izdarīt pats — delegēšanas māksla SEO aģentūrā",
+        "Kā es izvēlos ārpakalpojumu sniedzējus — 5 kritēriji, kas man ir svarīgi",
+        "Sadarbība ar citām SEO aģentūrām — konkurenti vai partneri",
+        "Kā es veidoju savu freelanceru tīklu — un kāpēc tas ir mans lielākais spēks",
+        "Ko es iemācījos, uzticot daļu sava darba citiem — kontrole pret izaugsmi"
       ]
     },
     {
       "week": 49, "quarter": 4,
-      "theme": "Godīgums un caurspīdīgums (Transparency) cenās un procesos",
+      "theme": "Godīgums un caurspīdīgums",
       "themeSlug": "godigums-un-caurspidigums",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā mēs esam caurspīdīgi savās SEO cenās — un kāpēc tas ir svarīgi",
-        "Mīts: Cenas jāslēpj, lai nepazaudētu klientus — caurspīdīguma ieguvumi",
-        "7 iemesli, kāpēc mēs publicējam SEO cenas atklāti",
-        "Ko es iemācījos par godīgumu SEO biznesā",
-        "Aiz kadra: Kā mēs veidojam savas SEO cenas — pilnīga atklātība",
-        "BUJ: Kāpēc jūsu SEO cenas ir publiskas, kamēr citi slēpj?",
-        "Nedēļas kopsavilkums: Caurspīdīgums — uzticība sākas ar godīgumu"
+        "Kāpēc mēs publicējam savas SEO cenas — un kā tas ietekmē pārdošanu",
+        "Mans gada pārskats — ieņēmumi, izdevumi, peļņa, kļūdas",
+        "Kā es runāju ar klientiem par neveiksmēm — caurspīdīgums, kas ceļ uzticību",
+        "SEO, ko es neprotu — godīgi par manām vājībām un kā es tās kompensēju",
+        "Kā es veidoju atskaites, kuras klienti patiešām lasa — nevis 30 lapu PDF",
+        "Kāpēc es nekad neslēpju savas kļūdas — un kā tas palīdz manam biznesam",
+        "Caurspīdīgums kā konkurences priekšrocība — kāpēc es atklāju vairāk nekā citi"
       ]
     },
     {
       "week": 50, "quarter": 4,
-      "theme": "'Ja es sāktu visu no nulles šodien, ko es darītu citādi?'",
+      "theme": "Ja es sāktu no nulles",
       "themeSlug": "ja-saktu-no-nulles",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā es sāktu SEO biznesu no nulles 2026. gadā — soli pa solim",
-        "Mīts: Ir par vēlu sākt SEO biznesu — kāpēc iespēju joprojām ir daudz",
-        "7 lietas, ko darītu citādi, ja sāktu SEO karjeru no jauna",
-        "Ko es iemācījos no savām kļūdām — ko es mainītu, ja varētu",
-        "Aiz kadra: Mans iedomātais Day 1 — kā es sāktu SEO aģentūru šodien",
-        "BUJ: Ko tu ieteiktu kādam, kas tikai sāk SEO karjeru?",
-        "Nedēļas kopsavilkums: Sākt no jauna — mācības, ko vērts zināt"
+        "Ja es šodien sāktu SEO aģentūru no nulles — ko es darītu citādi",
+        "Kā es atrastu pirmos 3 klientus 30 dienās, ja sāktu no jauna",
+        "Kādu SEO nišu es izvēlētos, ja sāktu šodien — un kāpēc",
+        "Kā es veidotu savu personīgo zīmolu no nulles",
+        "3 lietas, ko es NEDARĪTU, ja sāktu no jauna — dārgas kļūdas, no kurām izvairīties",
+        "Cik daudz naudas vajag, lai sāktu SEO biznesu — reāls budžets",
+        "Vai es vispār izvēlētos SEO, ja sāktu no jauna? Godīga atbilde"
       ]
     },
     {
       "week": 51, "quarter": 4,
-      "theme": "Gada plānošana un vīzija – kā tu mēri progresu",
+      "theme": "Gada plānošana un vīzija",
       "themeSlug": "gada-planosana",
-      "category": "Bizness & Stratēģija",
+      "category": "Bizness",
       "topics": [
-        "Kā izveidot SEO stratēģiju visam gadam — plānošanas ietvars",
-        "Mīts: Gada plāns ir lieks — kāpēc SEO nevar būt tikai 'darām lietas'",
-        "7 soļi efektīvai SEO gada plānošanai",
-        "Ko es iemācījos par ilgtermiņa plānošanu SEO",
-        "Aiz kadra: Kā mēs plānojam SEO stratēģijas klientiem 12 mēnešus uz priekšu",
-        "BUJ: Kā jūs veidojat SEO stratēģiju? Kā mērijat progresu?",
-        "Nedēļas kopsavilkums: Plānošana — SEO bez plāna ir tikai vēlme"
+        "Kā es veidoju SEO stratēģiju 12 mēnešiem uz priekšu — mana plānošanas veidne",
+        "Kā es izvirzu biznesa mērķus — un kāpēc lielākā daļa cilvēku to dara nepareizi",
+        "Mani nākamā gada mērķi — ko es gribu sasniegt",
+        "Kā es mēru progresu pret mērķiem — ceturkšņa atskaites sistēma",
+        "Ko es mainīšu savā biznesā nākamgad — 3 lielas pārmaiņas",
+        "Kā es plānoju savu personīgo dzīvi ap biznesa mērķiem",
+        "Kāpēc es katru decembri veltu 2 dienas tikai plānošanai"
       ]
     },
     {
       "week": 52, "quarter": 4,
-      "theme": "Gada kopsavilkums – lielākās mācības un pateicība",
+      "theme": "Gada kopsavilkums un pateicība",
       "themeSlug": "gada-kopsavilkums",
       "category": "Personīgais Zīmols",
       "topics": [
-        "Kā novērtēt SEO gadu — ko mērīt un kā analizēt",
-        "Mīts: Ja rezultāti nav perfekti, gads ir izgāzies — kāpēc katra pieredze ir vērtīga",
-        "7 lielākās SEO mācības no aizvadītā gada",
-        "Ko es iemācījos gada laikā — personīgās un profesionālās atziņas",
-        "Aiz kadra: Mūsu SEO aģentūras gada pārskats — skaitļi, fakti, emocijas",
-        "BUJ: Kāds bija jūsu labākais un sliktākais SEO mirklis šogad?",
-        "Nedēļas kopsavilkums: Gada noslēgums — pateicība un ceļš uz priekšu"
+        "Mans SEO gads skaitļos — trafiks, klienti, ieņēmumi, neveiksmes",
+        "5 lielākās mācības, ko es iemācījos šogad par SEO un biznesu",
+        "Kurš bija mans labākais klients šogad — un kāpēc",
+        "Mans gada neveiksmju tops — 3 lietas, kas nogāja greizi un ko es mainīšu",
+        "Kam es esmu pateicīgs šogad — klientiem, komandai, ģimenei",
+        "Mani 3 mīļākie bloga raksti šogad — un kāpēc tieši šie",
+        "Ko es ceru sasniegt nākamgad — vīzija nākotnei"
       ]
     }
   ],
   "bonusDay365": {
     "day": 365,
-    "theme": "Ko es iemācījos, publicējot saturu 365 dienas pēc kārtas (dati, ieguvumi un vai tas bija tā vērts)",
+    "theme": "Ko es iemācījos, publicējot saturu 365 dienas pēc kārtas — dati, ieguvumi un vai tas bija tā vērts",
     "themeSlug": "365-dienu-atskats",
     "category": "Personīgais Zīmols"
   }
