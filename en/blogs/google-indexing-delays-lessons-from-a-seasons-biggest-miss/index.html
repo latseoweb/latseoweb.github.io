@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F1501'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='17' fill='%23F5F5F0'%3ELS%3C/text%3E%3Cstyle%3E@media(prefers-color-scheme:dark){rect{fill:%23EAE5DA}text{fill:%231F1501}}%3C/style%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/LatSEO%20logo%20black.png">
+  <meta name="description" content="LatSEO's Adrians shares his first-hand experience with Google indexing delays, the tools he uses to track rankings, and why indexing is the foundation of SEO success.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:locale" content="en_US"><meta property="og:type" content="article">
+  <meta property="og:title" content="Google Indexing Delays: Lessons from a Season's Biggest Miss | LatSEO Blog">
+  <meta property="og:description" content="LatSEO's Adrians shares his first-hand experience with Google indexing delays, the tools he uses to track rankings, and why indexing is the foundation of SEO success.">
+  <meta property="og:url" content="https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/">
+  <meta property="og:image" content="https://images.pexels.com/photos/3184611/pexels-photo-3184611.jpeg">
+  <link rel="canonical" href="https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/">
+  <link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/">
+  <link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/">
+  <link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/">
+  <title>Google Indexing Delays: Lessons from a Season's Biggest Miss | LatSEO Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+    .blog-content h2 { font-size:clamp(1.3rem,3vw,1.7rem); margin-top:var(--sp-xl); margin-bottom:var(--sp-md); }
+    .blog-content h3 { font-size:clamp(1.1rem,2.5vw,1.4rem); margin-top:var(--sp-lg); margin-bottom:var(--sp-sm); }
+    .blog-content h4 { font-size:clamp(1rem,2vw,1.2rem); margin-top:var(--sp-md); margin-bottom:var(--sp-xs); }
+    .blog-content p { margin-bottom:var(--sp-md); }
+    .blog-content ul, .blog-content ol { margin-bottom:var(--sp-lg); padding-left:1.2em; }
+    .blog-content li { margin-bottom:var(--sp-sm); }
+  </style>
+  <meta name="date" content="2026-08-08">
+  <meta name="author" content="Adrians Stankevics, Baltic SEO, SIA">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MF7Q1R9722');gtag('config','AW-18351772465');</script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xx3mt1i3hw");
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header"><div class="header__inner">
+    <a href="/en/" class="header__logo"><img src="/assets/images/LatSEO%20logo%20black.png" alt="LatSEO" class="header__logo-img" width="140" height="38"></a>
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        <li><a href="/en/" class="header__nav-link">Home</a></li>
+        <li class="header__dropdown"><span class="header__dropdown-toggle" tabindex="0">Services & Pricing <span class="header__dropdown-toggle-icon">▾</span></span>
+          <div class="header__dropdown-menu">
+            <a href="/en/pakalpojumi-un-cenas/">Pakalpojumu cenas</a>
+            <a href="/en/majaslapas-izstrade/">Web Development</a>
+            <a href="/en/tehniskais-seo/">Technical SEO</a>
+            <a href="/en/lokalais-seo/">Local SEO</a>
+            <a href="/en/saisu-veidosana/">Link Building</a>
+            <a href="/en/satura-strategija/">Content Strategy</a>
+          </div></li>
+        <li><a href="/en/projekti/" class="header__nav-link">Projekti</a></li>
+        <li><a href="/en/blogs/" class="header__nav-link">Blog</a></li>
+        <li><a href="/en/kontakti/" class="header__nav-link">Kontakti</a></li>
+      </ul>
+      <div class="header__lang-switch">
+        <a href="/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/" class="header__lang-btn">LV</a>
+        <a href="/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/" class="header__lang-btn header__lang-btn--active" hreflang="en" lang="en">EN</a>
+      </div>
+      <a href="/en/kontakti/" class="header__cta">Free SEO Audit <span aria-hidden="true">→</span></a>
+    </nav>
+  </div></header>
+  <main id="main-content"><article class="section section--light" style="padding-top:calc(var(--header-height) + var(--sp-2xl))"><div class="container" style="max-width:800px;margin:0 auto">
+    <nav style="margin-bottom:var(--sp-lg);font-size:var(--fs-sm);color:var(--clr-text-muted)"><a href="/en/" style="color:var(--clr-text-muted);text-decoration:none">Home</a> &rsaquo; <a href="/en/blogs/" style="color:var(--clr-text-muted);text-decoration:none">Blog</a> &rsaquo; <span style="color:var(--clr-text-secondary)">Google Indexing Delays: Lessons from a Season's Biggest Miss</span></nav>
+    <div style="font-size:var(--fs-xs);color:var(--clr-accent-text);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:var(--sp-sm)">SEO Pamati &bull; August 08, 2026</div>
+    <h1 class="section__title" style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:var(--sp-lg)">Google Indexing Delays: Lessons from a Season's Biggest Miss</h1>
+    <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-xl);font-size:var(--fs-sm);color:var(--clr-text-secondary)"><span>Author: <strong>Adrians Stankevics</strong></span><span>&bull;</span><span>~3 min read</span></div>
+    <figure style="margin-bottom:var(--sp-xl)"><img src="https://images.pexels.com/photos/3184611/pexels-photo-3184611.jpeg" alt="Google indexing delay concept with magnifying glass and search results" style="width:100%;height:auto;border-radius:var(--br-lg)" loading="eager"><figcaption style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-align:center;margin-top:var(--sp-xs)">Google indexing delay concept with magnifying glass and search results</figcaption></figure>
+    <div class="blog-content" style="font-size:var(--fs-base);line-height:1.8;color:var(--clr-text-primary)"><h2>When Indexing Failed at the Worst Possible Moment</h2>
+
+<p>My first real encounter with Google indexing delays happened at the worst possible time. The page in question contained the most valuable content my client had - it was the peak of the season, with the highest demand of the year. And yet, Google wasn't indexing it at all.</p>
+
+<p>The culprit? Duplicate pages. Because I had duplicate versions of the same content, Google couldn't decide which one to index, so it ended up indexing none of them. That was a hard lesson: duplicate content isn't just a ranking issue, it's an indexing blocker.</p>
+
+<h3>What I Learned from That Delay</h3>
+
+<ul>
+  <li>Duplicate pages confuse Google's crawlers and can lead to zero indexing.</li>
+  <li>Seasonal peaks amplify the damage of indexing delays - you lose the exact traffic you needed most.</li>
+  <li>Technical SEO hygiene (canonicals, redirects, unique content) is non-negotiable.</li>
+</ul>
+
+<p>If you're struggling with duplicate content or crawl issues, our <a href="/en/tehniskais-seo/">technical SEO services</a> can help you clean things up before it costs you.</p>
+
+<h2>How Fast Does Google Index a New Page for Me Now?</h2>
+
+<p>Today, a new page on my own site gets indexed in under an hour. The key difference? My domain has a normal, healthy age and a solid crawl history. Google trusts it, so it visits frequently and picks up new content quickly.</p>
+
+<p>For a brand-new site, that trust doesn't exist yet. You have to build it through consistent publishing, internal linking, and technical fixes. But once you do, indexing becomes almost automatic.</p>
+
+<h2>Tools I Use to Monitor Rankings</h2>
+
+<p>When it comes to tracking ranking changes, I rely on two main tools: <strong>SE Ranking</strong> and <strong>Google Search Console</strong> (GSC).</p>
+
+<ul>
+  <li><strong>SE Ranking</strong> - for day-to-day keyword position tracking and competitor insights.</li>
+  <li><strong>GSC</strong> - for indexing status, crawl errors, and performance data straight from Google.</li>
+</ul>
+
+<p>These two give me a complete picture: what's ranking, what's indexed, and what needs attention. If you want to set up proper tracking for your own site, our <a href="/en/lokalais-seo/">local SEO services</a> include comprehensive monitoring and reporting.</p>
+
+<h2>The Algorithm Update That Hurt the Most</h2>
+
+<p>Without a doubt, the most damaging update I've experienced was <strong>Google AI Overview</strong>. It didn't just change rankings - it slashed the number of clicks to regular pages by a huge percentage. People got their answers directly in the search results, so they didn't need to visit websites anymore.</p>
+
+<p>That forced me to rethink content strategy entirely: focus on long-tail queries, user intent, and formats that AI Overviews can't fully replace - like in-depth guides, personal experiences, and interactive tools.</p>
+
+<h3>Why Indexing Is the Foundation of All SEO</h3>
+
+<p>Indexing simply means your page can be found in Google Search. If a page isn't indexed, there is no way anyone will ever find it through Google - no matter how great the content is. You can have the best article in the world, but if it's not in the index, it's invisible.</p>
+
+<p>This is why we always start any SEO project with a full technical audit to ensure nothing is blocking indexing. If you're not sure whether your pages are being indexed properly, <a href="/en/pakalpojumi-un-cenas/">check out our services and pricing</a> to see how we can help.</p>
+
+<h2>Final Thoughts</h2>
+
+<p>Indexing delays are frustrating, but they're almost always fixable. Whether it's duplicate content, a weak crawl budget, or technical errors, the sooner you address them, the sooner you'll see results. And in a world where Google AI Overviews are reducing clicks, being indexed and visible is more important than ever.</p>
+
+<p>Need help with indexing or any other SEO issue? <a href="/en/kontakti/">Contact us today</a> - we'll get your pages into Google's index and keep them there.</p></div>
+    <div style="margin-top:var(--sp-xl);padding:var(--sp-lg);background:var(--clr-bg-secondary);border-radius:var(--br-lg)"><h3 style="font-size:var(--fs-lg);margin-bottom:var(--sp-md)">Related SEO Services</h3>
+      <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-sm)">
+        <li><a href="/en/lokalais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📍 Local SEO</a></li>
+        <li><a href="/en/tehniskais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">⚙️ Technical SEO</a></li>
+        <li><a href="/en/satura-strategija/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📝 Content Strategy</a></li>
+        <li><a href="/en/pakalpojumi-un-cenas/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">💼 Visi pakalpojumi</a></li>
+      </ul></div>
+    <div style="margin-top:var(--sp-2xl);padding-top:var(--sp-lg);border-top:1px solid var(--clr-border)"><a href="/en/blogs/" class="service-card__link" style="font-size:var(--fs-base)">&larr; Back to blog</a></div>
+  </div></article></main>
+  <footer class="site-footer"><div class="container"><div class="footer__grid">
+    <div><a href="/en/" class="header__logo"><img src="/assets/images/LatSEO%20logo%20black.png" alt="LatSEO" class="header__logo-img" width="140" height="38"></a><p class="footer__brand-text">We help businesses grow online with data-driven SEO strategies that deliver measurable results on Google.</p></div>
+    <div><div class="footer__heading">Company</div><ul class="footer__links"><li><a href="/en/">Home</a></li><li><a href="/en/pakalpojumi-un-cenas/">Services & Pricing</a></li><li><a href="/en/projekti/">Our projects</a></li><li><a href="/en/blogs/">Blog</a></li><li><a href="/en/kontakti/">Kontakti</a></li></ul></div>
+    <div><div class="footer__heading">SEO Services</div><ul class="footer__links"><li><a href="/en/tehniskais-seo/">Technical SEO</a></li><li><a href="/en/satura-strategija/">Content Strategy</a></li><li><a href="/en/lokalais-seo/">Local SEO</a></li></ul></div>
+    <div><div class="footer__heading">Other</div><ul class="footer__links"><li><a href="/en/majaslapas-izstrade/">Web Development</a></li></ul></div>
+    <div><div class="footer__heading">Contact</div><div class="footer__contact-item"><a href="mailto:sales@latseo.com">sales@latseo.com</a></div><div class="footer__contact-item"><a href="tel:+37124424434">+371 24424434</a></div><div class="footer__contact-item"><span>Rīga, Latvija</span></div></div>
+  </div><div class="footer__bottom"><p>&copy; 2026 LatSEO. All rights reserved.</p></div></div></footer>
+  <script src="../../../js/main.js"></script>
+  <button class="scroll-top" aria-label="Back to top">↑</button>
+</body></html>
