@@ -18,6 +18,7 @@
     initContactForm();
     initCurrentPageHighlight();
     initEventTracking();
+    initAdConversionTracking();
   });
 
   /* ==========================================================
@@ -321,6 +322,10 @@
             submitBtn.style.background = '#10B981';
             submitBtn.style.opacity = '1';
             submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.3)';
+            // Google Ads: reģistrē konversiju pēc veiksmīgas formas nosūtīšanas
+            if (typeof gtag === 'function') {
+              gtag('event', 'conversion', { 'send_to': 'AW-18351723640/d5EGCK2B59YcEPio5K5E' });
+            }
             var redirectTarget = form.getAttribute('data-redirect');
             // GA4: track successful form submission
             if (typeof gtag === 'function') {
@@ -488,6 +493,18 @@
           });
         }
       }
+    });
+  }
+
+  /* ==========================================================
+     GOOGLE ADS CONVERSION — WhatsApp + Phone clicks
+     ========================================================== */
+  function initAdConversionTracking() {
+    if (typeof gtag !== 'function') return;
+    document.querySelectorAll('a[href^="tel:"], a[href*="wa.me"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'conversion', { 'send_to': 'AW-18351723640/d5EGCK2B59YcEPio5K5E' });
+      });
     });
   }
 

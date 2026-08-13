@@ -40,7 +40,7 @@ AUTHOR_NAME = "Adrians Stankevičs"
 AUTHOR_NAME_EN = "Adrians Stankevics"
 COMPANY = "Baltic SEO, SIA"
 GTAG_ID = "G-MF7Q1R9722"
-GTAG_AW = "AW-18351772465"
+GTAG_AW = "AW-18351723640"
 
 # ── AI API Configuration ────────────────────────────────────────────────────
 # Uses DEEPSEEK_API_KEY from environment (set in GitHub Secrets)
