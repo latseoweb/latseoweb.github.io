@@ -311,16 +311,25 @@
             submitBtn.style.background = '#10B981';
             submitBtn.style.opacity = '1';
             submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.3)';
+            var redirectTarget = form.getAttribute('data-redirect');
             // GA4: track successful form submission
             if (typeof gtag === 'function') {
               gtag('event', 'form_submit', {
                 'event_category': 'lead',
                 'event_label': data.website || window.location.href,
-                'value': 1
+                'value': 1,
+                'event_callback': function () {
+                  if (redirectTarget) window.location.href = redirectTarget;
+                }
               });
             }
-            form.reset();
-            formStartTime = Date.now(); // reset timer
+            if (redirectTarget) {
+              // Fallback in case GA4 is unavailable
+              setTimeout(function () { window.location.href = redirectTarget; }, 1500);
+            } else {
+              form.reset();
+              formStartTime = Date.now(); // reset timer
+            }
           } else {
             submitBtn.textContent = 'Kļūda! Mēģini vēlreiz';
             submitBtn.style.background = '#EF4444';

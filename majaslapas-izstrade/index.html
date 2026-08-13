@@ -167,6 +167,7 @@
           <span class="section-label">Mājaslapu izstrāde</span>
           <h1 class="section__title">Mājas Lapu Izstrāde — Mūsdienīgas un Ātras Mājaslapas Jūsu Biznesam</h1>
           <p class="section__description">Izstrādājam vizītkartes lapas, uzņēmumu mājaslapas un e-veikalus, kas ne tikai izskatās lieliski, bet arī strādā — ātra ielāde, SEO optimizācija un pārdomāta lietotāja pieredze jau no pirmās dienas.</p>
+          <p style="margin-top:var(--sp-md);font-family:var(--ff-heading);font-size:var(--fs-md);font-weight:var(--fw-medium);color:var(--clr-accent-text)">✓ Katra mājaslapa nāk ar iebūvētu pamata SEO — Google tevi atrod jau no pirmās dienas.</p>
           <a href="#kalkulators" class="btn btn--primary btn--lg" style="margin-top:var(--sp-md);display:inline-flex">Aprēķināt cenu <span aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -249,13 +250,13 @@
         <div class="section__header">
           <span class="section-label">Cenu Kalkulators</span>
           <h2 class="section__title">Mājas Lapu Izstrādes Cenrādis</h2>
-          <p class="section__description">Izvēlieties pamata paketi un pievienojiet nepieciešamos papildpakalpojumus — kopējā summa rēķinās automātiski.</p>
+          <p class="section__description">Izvēlies mājaslapas veidu un vajadzīgās papildopcijas — aptuveno cenu redzēsi uzreiz. Precīzu piedāvājumu sagatavosim pēc pieteikuma.</p>
         </div>
 
         <!-- Sticky Total Bar -->
         <div id="calc-sticky" style="position:sticky;top:var(--header-height);z-index:50;background:var(--clr-dark);color:var(--clr-text-inverse);padding:var(--sp-md) var(--sp-lg);margin-bottom:var(--sp-lg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-sm)">
           <div>
-            <span style="font-size:var(--fs-xs);opacity:0.6;text-transform:uppercase;letter-spacing:0.06em">Kopējā summa</span>
+            <span style="font-size:var(--fs-xs);opacity:0.6;text-transform:uppercase;letter-spacing:0.06em">Aptuvenā cena</span>
             <div style="font-family:var(--ff-heading);font-size:var(--fs-2xl);font-weight:var(--fw-light)" id="calc-total">€0</div>
           </div>
           <a href="#pieteikties" class="btn btn--primary" style="background:var(--clr-accent-text);padding:var(--sp-sm) var(--sp-lg);font-size:var(--fs-sm)">Pieteikties <span aria-hidden="true">→</span></a>
@@ -266,135 +267,73 @@
           <!-- ============================================================
                PAMATA PAKETES
                ============================================================ -->
-          <div style="margin-bottom:var(--sp-xl)">
-            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Pamata paketes <span style="font-weight:var(--fw-normal);font-size:var(--fs-sm);color:var(--clr-text-muted)">(Izvēlieties vienu)</span></h3>
+          <div style="margin-bottom:var(--sp-lg)">
+            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Izvēlies mājaslapas veidu</h3>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--sp-sm)" id="calc-packages">
               <label class="calc-card" data-price="449">
                 <input type="radio" name="package" value="vizitkarte" style="display:none">
                 <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Vizītkartes lapa</div>
-                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Gatavs šablons, CMS, līdz 5 sadaļām</div>
+                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Vienas lapas vietne ar svarīgāko par tavu uzņēmumu</div>
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 449 €</div>
+                  <div class="calc-seo-note">✓ Iebūvēts pamata SEO</div>
                 </div>
               </label>
               <label class="calc-card" data-price="799">
                 <input type="radio" name="package" value="bizness" style="display:none">
                 <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Biznesa lapa</div>
-                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Pielāgots dizains, neierobežots sadaļu skaits</div>
+                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Vairāku lapu vietne ar pakalpojumiem, par mums un blogu</div>
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 799 €</div>
+                  <div class="calc-seo-note">✓ Iebūvēts pamata SEO</div>
                 </div>
               </label>
               <label class="calc-card" data-price="1299">
-                <input type="radio" name="package" value="veikals-vienk" style="display:none">
+                <input type="radio" name="package" value="veikals" style="display:none">
                 <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Interneta veikals (vienkāršs)</div>
-                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Pamata e-komercijas funkcionalitāte</div>
+                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Interneta veikals</div>
+                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Preču katalogs, grozs, pasūtīšana un maksājumi</div>
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 1 299 €</div>
-                </div>
-              </label>
-              <label class="calc-card" data-price="1499">
-                <input type="radio" name="package" value="korporativa" style="display:none">
-                <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Korporatīvā lapa</div>
-                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Vairākas pakalpojumu lapas, blogs, valodas</div>
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 1 499 €</div>
-                </div>
-              </label>
-              <label class="calc-card" data-price="1699">
-                <input type="radio" name="package" value="individuala" style="display:none">
-                <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Individuāla lapa</div>
-                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Unikāls dizains, pilnībā pielāgota izstrāde</div>
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 1 699 €</div>
-                </div>
-              </label>
-              <label class="calc-card" data-price="2599">
-                <input type="radio" name="package" value="veikals-sarez" style="display:none">
-                <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Interneta veikals (sarežģīts)</div>
-                  <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Filtri, integrācijas, vairākas valodas</div>
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 2 599 €</div>
+                  <div class="calc-seo-note">✓ Iebūvēts pamata SEO</div>
                 </div>
               </label>
             </div>
+            <p style="font-size:var(--fs-sm);color:var(--clr-text-muted);margin-top:var(--sp-sm)">Sarežģītākiem projektiem sagatavojam individuālu piedāvājumu — <a href="/kontakti/" style="color:var(--clr-accent-text)">sazinies ar mums</a>.</p>
           </div>
+
           <!-- Paketes apraksts (parādās pēc izvēles) -->
-          <div id="calc-package-detail" style="display:none;margin-top:var(--sp-md);padding:var(--sp-lg);background:var(--clr-surface);border:1px solid var(--clr-border-light)">
+          <div id="calc-package-detail" style="display:none;margin:var(--sp-md) 0 var(--sp-lg);padding:var(--sp-lg);background:var(--clr-surface);border:1px solid var(--clr-border-light)">
             <div id="calc-detail-content"></div>
-          </div>
-          <!-- ============================================================
-               DIZAINS UN PAMATS
-               ============================================================ -->
-          <div class="calc-category" data-category="design" style="margin-bottom:var(--sp-xl);display:none">
-            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Dizains un pamats</h3>
-            <div class="calc-addons" id="calc-design-addons">
-              <label class="calc-row" data-price="249"><input type="checkbox" name="addon" value="dizaina-sagatave"><span class="calc-row-label">Profesionāla dizaina sagatave</span><span class="calc-row-price">+249 €</span></label>
-              <label class="calc-row" data-price="799"><input type="checkbox" name="addon" value="unikals-dizains"><span class="calc-row-label">Unikāls individuāls dizains</span><span class="calc-row-price">+799 €</span></label>
-              <label class="calc-row" data-price="289"><input type="checkbox" name="addon" value="logotips"><span class="calc-row-label">Logotipa izstrāde (3 varianti)</span><span class="calc-row-price">+289 €</span></label>
-              <label class="calc-row" data-price="99"><input type="checkbox" name="addon" value="responsivs"><span class="calc-row-label">Responsīvs dizains</span><span class="calc-row-price">+99 €</span></label>
-            </div>
           </div>
 
           <!-- ============================================================
-               SATURS UN MEDIJI
+               PAPILDOPCIJAS
                ============================================================ -->
-          <div class="calc-category" data-category="content" style="margin-bottom:var(--sp-xl);display:none">
-            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Saturs un mediji</h3>
-            <div class="calc-addons" id="calc-content-addons">
+          <div style="margin-bottom:var(--sp-md)">
+            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Papildopcijas <span style="font-weight:var(--fw-normal);font-size:var(--fs-sm);color:var(--clr-text-muted)">(pēc izvēles)</span></h3>
+            <div class="calc-addons" id="calc-main-addons">
+              <label class="calc-row" data-price="289"><input type="checkbox" name="addon" value="logotips"><span class="calc-row-label">Logotipa izstrāde (3 varianti)</span><span class="calc-row-price">+289 €</span></label>
+              <label class="calc-row" data-price="42"><input type="checkbox" name="addon" value="valodas"><span class="calc-row-label">Vairāku valodu atbalsts</span><span class="calc-row-price">+42 €</span></label>
+              <label class="calc-row" data-price="42"><input type="checkbox" name="addon" value="blogs"><span class="calc-row-label">Blogs / jaunumu sadaļa</span><span class="calc-row-price">+42 €</span></label>
+              <label class="calc-row" data-price="25"><input type="checkbox" name="addon" value="kontaktforma"><span class="calc-row-label">Kontaktforma</span><span class="calc-row-price">+25 €</span></label>
+              <label class="calc-row" data-price="599"><input type="checkbox" name="addon" value="eveikals"><span class="calc-row-label">E-veikala pamatfunkcijas (katalogs, grozs, pasūtīšana, maksājumi)</span><span class="calc-row-price">+599 €</span></label>
+            </div>
+
+            <button type="button" id="calc-more-toggle" style="margin-top:var(--sp-sm);display:inline-flex;align-items:center;gap:var(--sp-2xs);background:transparent;border:none;color:var(--clr-accent-text);font-family:var(--ff-heading);font-size:var(--fs-sm);font-weight:var(--fw-medium);cursor:pointer;padding:0">Vairāk opciju <span aria-hidden="true">▾</span></button>
+
+            <div class="calc-addons" id="calc-more-addons" style="display:none;margin-top:var(--sp-sm)">
               <label class="calc-row" data-price="35"><input type="checkbox" name="addon" value="foto-galerija"><span class="calc-row-label">Foto galerija</span><span class="calc-row-price">+35 €</span></label>
               <label class="calc-row" data-price="39"><input type="checkbox" name="addon" value="video-galerija"><span class="calc-row-label">Video galerija</span><span class="calc-row-price">+39 €</span></label>
               <label class="calc-row" data-price="35"><input type="checkbox" name="addon" value="epasta-jaunumi"><span class="calc-row-label">E-pasta jaunumu pieteikšanās</span><span class="calc-row-price">+35 €</span></label>
-              <label class="calc-row" data-price="42"><input type="checkbox" name="addon" value="jaunumu-sadala"><span class="calc-row-label">Jaunumu sadaļa</span><span class="calc-row-price">+42 €</span></label>
               <label class="calc-row" data-price="42"><input type="checkbox" name="addon" value="atsauksmju-sadala"><span class="calc-row-label">Atsauksmju sadaļa</span><span class="calc-row-price">+42 €</span></label>
               <label class="calc-row" data-price="42"><input type="checkbox" name="addon" value="aptauja"><span class="calc-row-label">Aptauja</span><span class="calc-row-price">+42 €</span></label>
-              <label class="calc-row" data-price="42"><input type="checkbox" name="addon" value="valodas"><span class="calc-row-label">Vairāku valodu atbalsts</span><span class="calc-row-price">+42 €</span></label>
-              <label class="calc-row" data-price="129"><input type="checkbox" name="addon" value="pakalp-katalogs"><span class="calc-row-label">Pakalpojumu katalogs</span><span class="calc-row-price">+129 €</span></label>
-            </div>
-          </div>
-
-          <!-- ============================================================
-               E-KOMERCIJAS FUNKCIJAS
-               ============================================================ -->
-          <div class="calc-category" data-category="ecom" style="margin-bottom:var(--sp-xl);display:none">
-            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">E-komercijas funkcijas</h3>
-            <div class="calc-addons" id="calc-ecom-addons">
-              <label class="calc-row" data-price="299"><input type="checkbox" name="addon" value="precu-katalogs"><span class="calc-row-label">Preču katalogs (kategorijas)</span><span class="calc-row-price">+299 €</span></label>
-              <label class="calc-row" data-price="129"><input type="checkbox" name="addon" value="grozs-pasutisana"><span class="calc-row-label">Preču grozs un pasūtīšana</span><span class="calc-row-price">+129 €</span></label>
-              <label class="calc-row" data-price="69"><input type="checkbox" name="addon" value="atlaizu-modulis"><span class="calc-row-label">Atlaižu modulis</span><span class="calc-row-price">+69 €</span></label>
-              <label class="calc-row" data-price="169"><input type="checkbox" name="addon" value="filtri-sortesana"><span class="calc-row-label">Preču filtri un sortēšana</span><span class="calc-row-price">+169 €</span></label>
-              <label class="calc-row" data-price="129"><input type="checkbox" name="addon" value="pasutijumu-vesture"><span class="calc-row-label">Pasūtījumu vēsture</span><span class="calc-row-price">+129 €</span></label>
-              <label class="calc-row" data-price="249"><input type="checkbox" name="addon" value="norekini-kartes"><span class="calc-row-label">Norēķini ar maksājumu kartēm/PayPal</span><span class="calc-row-price">+249 €</span></label>
-              <label class="calc-row" data-price="169"><input type="checkbox" name="addon" value="izlade-portaliem"><span class="calc-row-label">Produktu izlāde salīdzināšanas portāliem</span><span class="calc-row-price">+169 €</span></label>
-              <label class="calc-row" data-price="299"><input type="checkbox" name="addon" value="klientu-registracija"><span class="calc-row-label">Klientu reģistrācija un profils</span><span class="calc-row-price">+299 €</span></label>
-            </div>
-          </div>
-
-          <!-- ============================================================
-               PAPILDU FUNKCIONALITĀTE
-               ============================================================ -->
-          <div class="calc-category" data-category="extra" style="margin-bottom:var(--sp-xl);display:none">
-            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Papildu funkcionalitāte</h3>
-            <div class="calc-addons" id="calc-extra-addons">
-              <label class="calc-row" data-price="25"><input type="checkbox" name="addon" value="kontaktforma"><span class="calc-row-label">Kontaktforma</span><span class="calc-row-price">+25 €</span></label>
-              <label class="calc-row" data-price="25"><input type="checkbox" name="addon" value="sitemap"><span class="calc-row-label">Lapas karte (sitemap)</span><span class="calc-row-price">+25 €</span></label>
               <label class="calc-row" data-price="42"><input type="checkbox" name="addon" value="mekletajs"><span class="calc-row-label">Meklētājs lapā</span><span class="calc-row-price">+42 €</span></label>
               <label class="calc-row" data-price="25"><input type="checkbox" name="addon" value="socialie-tikli"><span class="calc-row-label">Sociālo tīklu sasaiste</span><span class="calc-row-price">+25 €</span></label>
               <label class="calc-row" data-price="45"><input type="checkbox" name="addon" value="slaidrade"><span class="calc-row-label">Slaidrāde galvenajā lapā</span><span class="calc-row-price">+45 €</span></label>
-              <label class="calc-row" data-price="129"><input type="checkbox" name="addon" value="sms-integacija"><span class="calc-row-label">SMS ziņu izsūtīšanas integrācija</span><span class="calc-row-price">+129 €</span></label>
-            </div>
-          </div>
-
-          <!-- ============================================================
-               UZTURĒŠANA UN CITI MAKSĀJUMI
-               ============================================================ -->
-          <div class="calc-category" data-category="maintenance" style="margin-bottom:var(--sp-md);display:none">
-            <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Uzturēšana un citi maksājumi <span style="font-weight:var(--fw-normal);font-size:var(--fs-sm);color:var(--clr-text-muted)">(periodiski)</span></h3>
-            <div class="calc-addons" id="calc-monthly-addons">
-              <label class="calc-row" data-price="10" data-periodic="mēnesī"><input type="checkbox" name="addon" value="serveris-lapa"><span class="calc-row-label">Servera uzturēšana (mājas lapai)</span><span class="calc-row-price">+10 €/mēn.</span></label>
-              <label class="calc-row" data-price="15" data-periodic="mēnesī"><input type="checkbox" name="addon" value="serveris-veikals"><span class="calc-row-label">Servera uzturēšana (e-veikalam)</span><span class="calc-row-price">+15 €/mēn.</span></label>
-              <label class="calc-row" data-price="20" data-periodic="gadā"><input type="checkbox" name="addon" value="domena-registracija"><span class="calc-row-label">Domēna reģistrācija (.lv)</span><span class="calc-row-price">+20 €/gadā</span></label>
-              <label class="calc-row" data-price="25" data-periodic="stundā"><input type="checkbox" name="addon" value="papildu-labojumi"><span class="calc-row-label">Papildu labojumi/izmaiņas pēc nodošanas</span><span class="calc-row-price">+25 €/h</span></label>
+              <label class="calc-row" data-price="25"><input type="checkbox" name="addon" value="sitemap"><span class="calc-row-label">Lapas karte (sitemap)</span><span class="calc-row-price">+25 €</span></label>
+              <label class="calc-row" data-price="69"><input type="checkbox" name="addon" value="atlaizu-modulis"><span class="calc-row-label">Atlaižu modulis</span><span class="calc-row-price">+69 €</span></label>
+              <label class="calc-row" data-price="169"><input type="checkbox" name="addon" value="filtri-sortesana"><span class="calc-row-label">Preču filtri un sortēšana</span><span class="calc-row-price">+169 €</span></label>
+              <label class="calc-row" data-price="299"><input type="checkbox" name="addon" value="klientu-konti"><span class="calc-row-label">Klientu konti un reģistrācija</span><span class="calc-row-price">+299 €</span></label>
             </div>
           </div>
 
@@ -417,6 +356,10 @@
       .calc-row--included .calc-row-label { color: var(--clr-accent-text); }
       .calc-row--included .calc-row-price { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.04em; }
       .calc-row--included input { opacity: 0.6; pointer-events: none; }
+      .calc-seo-note { margin-top: var(--sp-xs); font-size: var(--fs-xs); color: var(--clr-accent-text); font-weight: var(--fw-medium); }
+      .calc-row--static { cursor: default; }
+      .calc-row--static:hover { background: var(--clr-surface); }
+      #calc-more-toggle:hover { text-decoration: underline; }
       @media (max-width: 600px) {
         .calc-row { padding: var(--sp-xs) var(--sp-sm); font-size: var(--fs-xs); }
         .calc-row-price { min-width: 70px; font-size: var(--fs-xs); }
@@ -435,12 +378,12 @@
           <p class="section__description">Aizpildiet formu un mēs 24h laikā sagatavosim personalizētu piedāvājumu ar Jūsu izvēlēto paketi un papildfunkcijām.</p>
         </div>
 
-        <form class="contact-form" action="#" method="POST" data-form-init="0" autocomplete="off" style="background:var(--clr-surface);border:1px solid var(--clr-border-light);padding:var(--sp-xl)">
+        <form class="contact-form" action="#" method="POST" data-form-init="0" data-redirect="/paldies/" autocomplete="off" style="background:var(--clr-surface);border:1px solid var(--clr-border-light);padding:var(--sp-xl)">
           <!-- Hidden calculator data -->
           <input type="hidden" name="calc_package" id="calc-form-package" value="">
           <input type="hidden" name="calc_addons" id="calc-form-addons" value="">
           <input type="hidden" name="calc_total" id="calc-form-total" value="">
-          <input type="hidden" name="calc_platforms" id="calc-form-platforms" value="">
+          <input type="hidden" name="calc_platforms" id="calc-form-platforms" value="Pielāgota izstrāde (HTML, CSS, JavaScript)">
           <input type="hidden" name="calc_summary" id="calc-form-summary-text" value="">
           <input type="hidden" name="page_source" value="Mājaslapu izstrādes kalkulators">
 
@@ -464,6 +407,23 @@
         </form>
       </div>
     </section>
+
+    <!-- ============================================================
+         PĒC PROJEKTA (PERIODISKI)
+         ============================================================ -->
+    <section class="section section--muted" style="padding-top:0">
+      <div class="container" style="max-width:640px">
+        <h3 style="font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--clr-text-primary);margin-bottom:var(--sp-sm)">Pēc projekta (periodiski)</h3>
+        <p style="font-size:var(--fs-sm);color:var(--clr-text-muted);margin-bottom:var(--sp-md)">Šīs izmaksas nav iekļautas augstāk redzamajā cenā un tiek apmaksātas atsevišķi pēc mājaslapas nodošanas.</p>
+        <div style="border:1px solid var(--clr-border)">
+          <div class="calc-row calc-row--static"><span class="calc-row-label">Servera uzturēšana (mājaslapai)</span><span class="calc-row-price">10 €/mēn.</span></div>
+          <div class="calc-row calc-row--static"><span class="calc-row-label">Servera uzturēšana (e-veikalam)</span><span class="calc-row-price">15 €/mēn.</span></div>
+          <div class="calc-row calc-row--static"><span class="calc-row-label">Domēna reģistrācija (.lv)</span><span class="calc-row-price">20 €/gadā</span></div>
+          <div class="calc-row calc-row--static"><span class="calc-row-label">Papildu labojumi/izmaiņas pēc nodošanas</span><span class="calc-row-price">25 €/h</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================================================
          FAQ
          ============================================================ -->
@@ -483,11 +443,11 @@
         </details>
         <details style="border-top:1px solid var(--clr-border);padding:var(--sp-md) 0">
           <summary style="font-family:var(--ff-heading);font-size:var(--fs-base);font-weight:var(--fw-light);color:var(--clr-text-primary);cursor:pointer;list-style:none;display:flex;justify-content:space-between">Kādas platformas jūs izmantojat?<span style="font-size:var(--fs-xl);font-weight:var(--fw-light);color:var(--clr-accent-text)">+</span></summary>
-          <p style="padding-top:var(--sp-sm);font-size:var(--fs-sm);color:var(--clr-text-secondary);line-height:var(--lh-relaxed)">Strādājam ar WordPress, Shopify un Webflow. Tāpat izstrādājam pilnībā pielāgotus risinājumus izmantojot HTML, CSS un JavaScript. Platformu izvēlamies atkarībā no Jūsu biznesa vajadzībām un budžeta.</p>
+          <p style="padding-top:var(--sp-sm);font-size:var(--fs-sm);color:var(--clr-text-secondary);line-height:var(--lh-relaxed)">Veidojam ātras, pielāgotas mājaslapas ar tīru kodu (HTML, CSS, JavaScript) — bez lieka svara, kas palēnina lapu vai kaitē SEO.</p>
         </details>
         <details style="border-top:1px solid var(--clr-border);padding:var(--sp-md) 0">
           <summary style="font-family:var(--ff-heading);font-size:var(--fs-base);font-weight:var(--fw-light);color:var(--clr-text-primary);cursor:pointer;list-style:none;display:flex;justify-content:space-between">Vai pēc izstrādes varēšu pats rediģēt saturu?<span style="font-size:var(--fs-xl);font-weight:var(--fw-light);color:var(--clr-accent-text)">+</span></summary>
-          <p style="padding-top:var(--sp-sm);font-size:var(--fs-sm);color:var(--clr-text-secondary);line-height:var(--lh-relaxed)">Jā, mēs nodrošinām ērtu CMS administrācijas paneli, kas ļauj Jums pašam pievienot un rediģēt saturu, attēlus un produktus bez tehniskām zināšanām. Pēc nodošanas sniedzam arī apmācību.</p>
+          <p style="padding-top:var(--sp-sm);font-size:var(--fs-sm);color:var(--clr-text-secondary);line-height:var(--lh-relaxed)">Nelielas satura izmaiņas veicam ātri un par pieejamu cenu. Ja vēlies rediģēt pats, varam piedāvāt atsevišķu risinājumu — parunāsim par tavām vajadzībām.</p>
         </details>
       </div>
     </section>
@@ -564,43 +524,34 @@
     var addonInputs = document.querySelectorAll('input[name="addon"]');
     var detailDiv = document.getElementById("calc-package-detail");
     var detailContent = document.getElementById("calc-detail-content");
-    var categories = document.querySelectorAll(".calc-category");
     var stickyCta = document.querySelector("#calc-sticky .btn");
     var stickyLabel = document.querySelector("#calc-sticky span");
+    var moreToggle = document.getElementById("calc-more-toggle");
+    var moreWrap = document.getElementById("calc-more-addons");
 
-    var packageDetails = {"vizitkarte": {"name": "Vizītkartes lapa", "price": "449 €", "includes": "Gatavs profesionāls šablons, CMS administrācija, līdz 5 sadaļām, responsīvs dizains, pamata SEO struktūra, SSL sertifikāts", "platforms": "Tilda, Wix, WordPress, GitHub Pages (statiska)", "audience": "Maziem uzņēmumiem, individuālajiem komersantiem un freelanceriem", "time": "3–5 darba dienas", "addons": "design,content,extra,maintenance"}, "bizness": {"name": "Biznesa lapa", "price": "799 €", "includes": "Pielāgots dizains (ne šablons), neierobežots sadaļu skaits, CMS, responsīvs dizains, SEO optimizācija, bloga funkcionalitāte", "platforms": "WordPress, Tilda, GitHub Pages (statiska)", "audience": "Maziem un vidējiem uzņēmumiem ar plašāku pakalpojumu klāstu", "time": "2–4 nedēļas", "addons": "design,content,extra,maintenance"}, "veikals-vienk": {"name": "Interneta veikals (vienkāršs)", "price": "1 299 €", "includes": "Pielāgots dizains, preču katalogs ar kategorijām, preču grozs un pasūtīšana, CMS, maksājumu integrācija (Stripe/MakeCommerce)", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Uzņēmumiem ar nelielu preču klāstu (līdz ~100 produktiem)", "time": "3–5 nedēļas", "addons": "design,content,ecom,extra,maintenance"}, "korporativa": {"name": "Korporatīvā lapa", "price": "1 499 €", "includes": "Pielāgots dizains, vairākas pakalpojumu lapas, blogs, vairāku valodu atbalsts, CMS, padziļināta SEO struktūra, SSL", "platforms": "WordPress, GitHub Pages (statiska)", "audience": "Vidējiem un lieliem uzņēmumiem ar plašu pakalpojumu klāstu", "time": "4–6 nedēļas", "addons": "design,content,extra,maintenance"}, "individuala": {"name": "Individuāla lapa", "price": "1 699 €", "includes": "Pilnībā unikāls dizains no nulles, pilnībā pielāgota funkcionalitāte, jebkāda veida integrācijas, premium SEO, CMS, SSL", "platforms": "WordPress, GitHub Pages (custom static) — pilnībā pielāgots risinājums", "audience": "Uzņēmumiem ar specifiskām, nestandarta prasībām", "time": "6–10 nedēļas", "addons": "design,content,ecom,extra,maintenance"}, "veikals-sarez": {"name": "Interneta veikals (sarežģīts)", "price": "2 599 €", "includes": "Viss no vienkāršā veikala + preču filtri, sortēšana, vairāku valodu atbalsts, maksājumu karšu/PayPal integrācija, klientu reģistrācija, profils, produktu izlāde salīdzināšanas portāliem", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Lieliem e-komercijas projektiem ar plašu preču klāstu", "time": "6–12 nedēļas", "addons": "design,content,ecom,extra,maintenance"}};
-
-    // Kuras papildopcijas jau ir iekļautas konkrētajā paketē (bez papildu maksas)
-    var includedAddons = {
-      "vizitkarte": ["dizaina-sagatave","responsivs"],
-      "bizness": ["unikals-dizains","responsivs","jaunumu-sadala"],
-      "veikals-vienk": ["unikals-dizains","responsivs","precu-katalogs","grozs-pasutisana","norekini-kartes"],
-      "korporativa": ["unikals-dizains","responsivs","jaunumu-sadala","valodas"],
-      "individuala": ["unikals-dizains","responsivs"],
-      "veikals-sarez": ["unikals-dizains","responsivs","precu-katalogs","grozs-pasutisana","norekini-kartes","filtri-sortesana","valodas","klientu-registracija","izlade-portaliem"]
+    var packageDetails = {
+      "vizitkarte": {"name": "Vizītkartes lapa", "price": "449 €", "includes": "Pielāgots dizains, līdz 5 sadaļām, responsīvs dizains, iebūvēts pamata SEO, SSL sertifikāts", "audience": "Maziem uzņēmumiem un pašnodarbinātajiem", "time": "3–5 darba dienas"},
+      "bizness": {"name": "Biznesa lapa", "price": "799 €", "includes": "Pielāgots dizains, neierobežots sadaļu skaits, responsīvs dizains, iebūvēts pamata SEO, SSL sertifikāts", "audience": "Maziem un vidējiem uzņēmumiem", "time": "2–4 nedēļas"},
+      "veikals": {"name": "Interneta veikals", "price": "1 299 €", "includes": "Preču katalogs, grozs un pasūtīšana, maksājumu integrācija, responsīvs dizains, iebūvēts pamata SEO, SSL sertifikāts", "audience": "Uzņēmumiem, kas vēlas tirgoties tiešsaistē", "time": "3–5 nedēļas"}
     };
+
+    var includedAddons = { "vizitkarte": [], "bizness": [], "veikals": ["eveikals"] };
 
     function buildDetailHTML(pkg) {
       var d = packageDetails[pkg];
       if (!d) return "";
       var h = "";
+      h += "<div style=\"font-size:var(--fs-sm);color:var(--clr-accent-text);margin-bottom:var(--sp-md);line-height:1.6\"><strong>Katra mājaslapa nāk ar iebūvētu pamata SEO</strong> — Google tevi atrod jau no pirmās dienas.</div>";
       h += "<div style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-md)\">";
-      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Iekļauts bāzē</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.includes + "</div></div>";
-      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Platformas</div><div style=\"font-size:var(--fs-sm);color:var(--clr-accent-text);line-height:1.6;font-weight:var(--fw-medium)\">" + d.platforms + "</div></div>";
+      h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Iekļauts</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.includes + "</div></div>";
       h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Kam paredzēts</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.audience + "</div></div>";
       h += "<div><div style=\"font-size:var(--fs-xs);color:var(--clr-text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px\">Izstrādes laiks</div><div style=\"font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.6\">" + d.time + "</div></div>";
       h += "</div>";
       return h;
     }
 
-    function getIncluded(pkg) {
-      return (pkg && includedAddons[pkg]) ? includedAddons[pkg] : [];
-    }
-
-    // Atzīmē paketē iekļautās opcijas kā "Iekļauts" (bez papildu maksas) un
-    // atjauno pārējās opcijas uz parasto (neatzīmētu) stāvokli.
     function applyIncludedAddons(pkg) {
-      var included = getIncluded(pkg);
+      var included = (pkg && includedAddons[pkg]) ? includedAddons[pkg] : [];
       addonInputs.forEach(function(input) {
         var row = input.closest(".calc-row");
         var priceEl = row.querySelector(".calc-row-price");
@@ -622,16 +573,15 @@
 
     function buildSummaryHTML(pkg, chosenAddons, includedNames, total) {
       if (!pkg) {
-        return "<span style=\"color:var(--clr-text-muted)\">Vispirms izvēlieties mājaslapas variantu kalkulatorā.</span>";
+        return "<span style=\"color:var(--clr-text-muted)\">Vispirms izvēlies mājaslapas veidu kalkulatorā.</span>";
       }
       var h = "";
       h += "<div style=\"display:flex;justify-content:space-between;gap:var(--sp-sm);margin-bottom:4px\"><span style=\"color:var(--clr-text-muted)\">Izvēlētais variants</span><strong>" + pkg.name + " (" + pkg.price + ")</strong></div>";
-      h += "<div style=\"display:flex;justify-content:space-between;gap:var(--sp-sm);margin-bottom:8px\"><span style=\"color:var(--clr-text-muted)\">Platformas</span><span>" + pkg.platforms + "</span></div>";
       if (includedNames.length) {
         h += "<div style=\"margin-bottom:8px\"><span style=\"color:var(--clr-text-muted)\">Iekļauts paketē:</span> " + includedNames.join(", ") + "</div>";
       }
       h += "<div style=\"margin-bottom:8px\"><span style=\"color:var(--clr-text-muted)\">Izvēlētās papildopcijas:</span> " + (chosenAddons.length ? chosenAddons.join(", ") : "Nav izvēlētas") + "</div>";
-      h += "<div style=\"border-top:1px solid var(--clr-border);padding-top:8px;display:flex;justify-content:space-between;gap:var(--sp-sm)\"><span style=\"color:var(--clr-text-muted)\">Kopējā summa</span><strong style=\"color:var(--clr-accent-text)\">€" + total.toLocaleString("lv-LV") + "</strong></div>";
+      h += "<div style=\"border-top:1px solid var(--clr-border);padding-top:8px;display:flex;justify-content:space-between;gap:var(--sp-sm)\"><span style=\"color:var(--clr-text-muted)\">Aptuvenā cena</span><strong style=\"color:var(--clr-accent-text)\">€" + total.toLocaleString("lv-LV") + "</strong></div>";
       return h;
     }
 
@@ -641,26 +591,18 @@
       if (sp) selectedPkg = sp.value;
 
       if (selectedPkg && packageDetails[selectedPkg]) {
-        var allowed = packageDetails[selectedPkg].addons.split(",");
-        categories.forEach(function(cat) {
-          if (allowed.indexOf(cat.dataset.category) >= 0) { cat.style.display = ""; }
-          else { cat.style.display = "none"; }
-        });
         detailDiv.style.display = "";
         detailContent.innerHTML = buildDetailHTML(selectedPkg);
-        stickyLabel.textContent = packageDetails[selectedPkg].name + " \u2022 Kopējā summa";
+        stickyLabel.textContent = packageDetails[selectedPkg].name + " \u2022 Aptuvenā cena";
         stickyCta.style.opacity = "1";
         stickyCta.innerHTML = "Pieteikties <span aria-hidden=\"true\">→</span>";
         document.getElementById("calc-form-package").value = packageDetails[selectedPkg].name + " (" + packageDetails[selectedPkg].price + ")";
-        document.getElementById("calc-form-platforms").value = packageDetails[selectedPkg].platforms;
       } else {
-        categories.forEach(function(cat) { cat.style.display = "none"; });
         detailDiv.style.display = "none";
-        stickyLabel.textContent = "Izvēlieties paketi ↓";
-        stickyCta.textContent = "Izvēlieties paketi ↓";
+        stickyLabel.textContent = "Izvēlies mājaslapas veidu ↓";
+        stickyCta.textContent = "Izvēlies veidu ↓";
         stickyCta.style.opacity = "0.6";
         document.getElementById("calc-form-package").value = "";
-        document.getElementById("calc-form-platforms").value = "";
       }
       applyIncludedAddons(selectedPkg);
       updateTotal();
@@ -714,6 +656,13 @@
         if (cb && !cb.disabled) { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); }
       });
     });
+    if (moreToggle && moreWrap) {
+      moreToggle.addEventListener("click", function() {
+        var open = moreWrap.style.display !== "none";
+        moreWrap.style.display = open ? "none" : "";
+        moreToggle.innerHTML = open ? "Vairāk opciju <span aria-hidden=\"true\">▾</span>" : "Mazāk opciju <span aria-hidden=\"true\">▴</span>";
+      });
+    }
     onPackageChange();
   })();
   </script>
