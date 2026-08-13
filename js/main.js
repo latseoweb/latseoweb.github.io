@@ -295,6 +295,16 @@
         formData.forEach(function (value, key) {
           data[key] = value.trim();
         });
+
+        // Ja kalkulatorā ir saglabāta izvēles kopsavilkums, pievieno to ziņai,
+        // lai tā būtu redzama e-pasta paziņojumā ("Ziņa" laukā).
+        if (data.calc_summary && data.calc_summary.trim()) {
+          var summary = data.calc_summary.trim();
+          data.message = (data.message && data.message.trim())
+            ? data.message.trim() + "\n\n" + summary
+            : summary;
+        }
+
         // Add security metadata
         data._t = Date.now();
         data._src = window.location.href;
