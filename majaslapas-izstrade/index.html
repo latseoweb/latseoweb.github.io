@@ -413,6 +413,10 @@
       .calc-row-label { flex: 1; color: var(--clr-text-primary); }
       .calc-row-price { font-weight: var(--fw-medium); color: var(--clr-accent-text); white-space: nowrap; min-width: 90px; text-align: right; }
       .calc-row input:checked ~ .calc-row-label { font-weight: var(--fw-medium); }
+      .calc-row--included { background: rgba(93,134,108,0.06); }
+      .calc-row--included .calc-row-label { color: var(--clr-accent-text); }
+      .calc-row--included .calc-row-price { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.04em; }
+      .calc-row--included input { opacity: 0.6; pointer-events: none; }
       @media (max-width: 600px) {
         .calc-row { padding: var(--sp-xs) var(--sp-sm); font-size: var(--fs-xs); }
         .calc-row-price { min-width: 70px; font-size: var(--fs-xs); }
@@ -437,6 +441,7 @@
           <input type="hidden" name="calc_addons" id="calc-form-addons" value="">
           <input type="hidden" name="calc_total" id="calc-form-total" value="">
           <input type="hidden" name="calc_platforms" id="calc-form-platforms" value="">
+          <input type="hidden" name="calc_summary" id="calc-form-summary-text" value="">
           <input type="hidden" name="page_source" value="Mājaslapu izstrādes kalkulators">
 
           <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
@@ -451,6 +456,7 @@
           <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
             <textarea name="message" class="contact-form__textarea" placeholder="Īss Jūsu projekta apraksts (nav obligāti)..." style="min-height:80px"></textarea>
           </div>
+          <div id="calc-form-summary" style="margin-bottom:var(--sp-md);padding:var(--sp-md);background:var(--clr-bg);border:1px solid var(--clr-border);font-size:var(--fs-sm);color:var(--clr-text-primary);line-height:1.5"></div>
           <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
             <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off">
           </div>
@@ -564,6 +570,16 @@
 
     var packageDetails = {"vizitkarte": {"name": "Vizītkartes lapa", "price": "449 €", "includes": "Gatavs profesionāls šablons, CMS administrācija, līdz 5 sadaļām, responsīvs dizains, pamata SEO struktūra, SSL sertifikāts", "platforms": "Tilda, Wix, WordPress, GitHub Pages (statiska)", "audience": "Maziem uzņēmumiem, individuālajiem komersantiem un freelanceriem", "time": "3–5 darba dienas", "addons": "design,content,extra,maintenance"}, "bizness": {"name": "Biznesa lapa", "price": "799 €", "includes": "Pielāgots dizains (ne šablons), neierobežots sadaļu skaits, CMS, responsīvs dizains, SEO optimizācija, bloga funkcionalitāte", "platforms": "WordPress, Tilda, GitHub Pages (statiska)", "audience": "Maziem un vidējiem uzņēmumiem ar plašāku pakalpojumu klāstu", "time": "2–4 nedēļas", "addons": "design,content,extra,maintenance"}, "veikals-vienk": {"name": "Interneta veikals (vienkāršs)", "price": "1 299 €", "includes": "Pielāgots dizains, preču katalogs ar kategorijām, preču grozs un pasūtīšana, CMS, maksājumu integrācija (Stripe/MakeCommerce)", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Uzņēmumiem ar nelielu preču klāstu (līdz ~100 produktiem)", "time": "3–5 nedēļas", "addons": "design,content,ecom,extra,maintenance"}, "korporativa": {"name": "Korporatīvā lapa", "price": "1 499 €", "includes": "Pielāgots dizains, vairākas pakalpojumu lapas, blogs, vairāku valodu atbalsts, CMS, padziļināta SEO struktūra, SSL", "platforms": "WordPress, GitHub Pages (statiska)", "audience": "Vidējiem un lieliem uzņēmumiem ar plašu pakalpojumu klāstu", "time": "4–6 nedēļas", "addons": "design,content,extra,maintenance"}, "individuala": {"name": "Individuāla lapa", "price": "1 699 €", "includes": "Pilnībā unikāls dizains no nulles, pilnībā pielāgota funkcionalitāte, jebkāda veida integrācijas, premium SEO, CMS, SSL", "platforms": "WordPress, GitHub Pages (custom static) — pilnībā pielāgots risinājums", "audience": "Uzņēmumiem ar specifiskām, nestandarta prasībām", "time": "6–10 nedēļas", "addons": "design,content,ecom,extra,maintenance"}, "veikals-sarez": {"name": "Interneta veikals (sarežģīts)", "price": "2 599 €", "includes": "Viss no vienkāršā veikala + preču filtri, sortēšana, vairāku valodu atbalsts, maksājumu karšu/PayPal integrācija, klientu reģistrācija, profils, produktu izlāde salīdzināšanas portāliem", "platforms": "Shopify, WordPress (WooCommerce)", "audience": "Lieliem e-komercijas projektiem ar plašu preču klāstu", "time": "6–12 nedēļas", "addons": "design,content,ecom,extra,maintenance"}};
 
+    // Kuras papildopcijas jau ir iekļautas konkrētajā paketē (bez papildu maksas)
+    var includedAddons = {
+      "vizitkarte": ["dizaina-sagatave","responsivs"],
+      "bizness": ["unikals-dizains","responsivs","jaunumu-sadala"],
+      "veikals-vienk": ["unikals-dizains","responsivs","precu-katalogs","grozs-pasutisana","norekini-kartes"],
+      "korporativa": ["unikals-dizains","responsivs","jaunumu-sadala","valodas"],
+      "individuala": ["unikals-dizains","responsivs"],
+      "veikals-sarez": ["unikals-dizains","responsivs","precu-katalogs","grozs-pasutisana","norekini-kartes","filtri-sortesana","valodas","klientu-registracija","izlade-portaliem"]
+    };
+
     function buildDetailHTML(pkg) {
       var d = packageDetails[pkg];
       if (!d) return "";
@@ -577,18 +593,58 @@
       return h;
     }
 
-    function updateTotal() {
-      var total = 0, selectedPkg = null;
-      var sp = document.querySelector('input[name="package"]:checked');
-      if (sp) {
-        selectedPkg = sp.value;
-        total += parseInt(sp.closest(".calc-card").dataset.price) || 0;
+    function getIncluded(pkg) {
+      return (pkg && includedAddons[pkg]) ? includedAddons[pkg] : [];
+    }
+
+    // Atzīmē paketē iekļautās opcijas kā "Iekļauts" (bez papildu maksas) un
+    // atjauno pārējās opcijas uz parasto (neatzīmētu) stāvokli.
+    function applyIncludedAddons(pkg) {
+      var included = getIncluded(pkg);
+      addonInputs.forEach(function(input) {
+        var row = input.closest(".calc-row");
+        var priceEl = row.querySelector(".calc-row-price");
+        var isIncluded = included.indexOf(input.value) >= 0;
+        if (isIncluded) {
+          if (!row.dataset.origPrice) row.dataset.origPrice = priceEl.textContent;
+          input.checked = true;
+          input.disabled = true;
+          row.classList.add("calc-row--included");
+          priceEl.textContent = "Iekļauts";
+        } else {
+          input.disabled = false;
+          input.checked = false;
+          row.classList.remove("calc-row--included");
+          if (row.dataset.origPrice) priceEl.textContent = row.dataset.origPrice;
+        }
+      });
+    }
+
+    function buildSummaryHTML(pkg, chosenAddons, includedNames, total) {
+      if (!pkg) {
+        return "<span style=\"color:var(--clr-text-muted)\">Vispirms izvēlieties mājaslapas variantu kalkulatorā.</span>";
       }
+      var h = "";
+      h += "<div style=\"display:flex;justify-content:space-between;gap:var(--sp-sm);margin-bottom:4px\"><span style=\"color:var(--clr-text-muted)\">Izvēlētais variants</span><strong>" + pkg.name + " (" + pkg.price + ")</strong></div>";
+      h += "<div style=\"display:flex;justify-content:space-between;gap:var(--sp-sm);margin-bottom:8px\"><span style=\"color:var(--clr-text-muted)\">Platformas</span><span>" + pkg.platforms + "</span></div>";
+      if (includedNames.length) {
+        h += "<div style=\"margin-bottom:8px\"><span style=\"color:var(--clr-text-muted)\">Iekļauts paketē:</span> " + includedNames.join(", ") + "</div>";
+      }
+      h += "<div style=\"margin-bottom:8px\"><span style=\"color:var(--clr-text-muted)\">Izvēlētās papildopcijas:</span> " + (chosenAddons.length ? chosenAddons.join(", ") : "Nav izvēlētas") + "</div>";
+      h += "<div style=\"border-top:1px solid var(--clr-border);padding-top:8px;display:flex;justify-content:space-between;gap:var(--sp-sm)\"><span style=\"color:var(--clr-text-muted)\">Kopējā summa</span><strong style=\"color:var(--clr-accent-text)\">€" + total.toLocaleString("lv-LV") + "</strong></div>";
+      return h;
+    }
+
+    function onPackageChange() {
+      var selectedPkg = null;
+      var sp = document.querySelector('input[name="package"]:checked');
+      if (sp) selectedPkg = sp.value;
+
       if (selectedPkg && packageDetails[selectedPkg]) {
         var allowed = packageDetails[selectedPkg].addons.split(",");
         categories.forEach(function(cat) {
           if (allowed.indexOf(cat.dataset.category) >= 0) { cat.style.display = ""; }
-          else { cat.style.display = "none"; cat.querySelectorAll('input[type="checkbox"]').forEach(function(cb){cb.checked=false;}); }
+          else { cat.style.display = "none"; }
         });
         detailDiv.style.display = "";
         detailContent.innerHTML = buildDetailHTML(selectedPkg);
@@ -606,30 +662,59 @@
         document.getElementById("calc-form-package").value = "";
         document.getElementById("calc-form-platforms").value = "";
       }
-      var addonNames = [];
+      applyIncludedAddons(selectedPkg);
+      updateTotal();
+    }
+
+    function updateTotal() {
+      var total = 0, selectedPkg = null;
+      var sp = document.querySelector('input[name="package"]:checked');
+      if (sp) {
+        selectedPkg = sp.value;
+        total += parseInt(sp.closest(".calc-card").dataset.price) || 0;
+      }
+      var chosenAddons = [], includedNames = [];
       addonInputs.forEach(function(input) {
         if (input.checked) {
           var row = input.closest(".calc-row");
-          total += parseInt(row.dataset.price) || 0;
-          addonNames.push(row.querySelector(".calc-row-label").textContent + " (" + row.querySelector(".calc-row-price").textContent + ")");
+          var label = row.querySelector(".calc-row-label").textContent;
+          if (row.classList.contains("calc-row--included")) {
+            includedNames.push(label);
+          } else {
+            total += parseInt(row.dataset.price) || 0;
+            chosenAddons.push(label + " (" + row.querySelector(".calc-row-price").textContent + ")");
+          }
         }
       });
       totalEl.textContent = "€" + total.toLocaleString("lv-LV");
-      document.getElementById("calc-form-addons").value = addonNames.join("; ");
+      document.getElementById("calc-form-addons").value = chosenAddons.join("; ");
       document.getElementById("calc-form-total").value = "€" + total.toLocaleString("lv-LV");
+
+      var summaryEl = document.getElementById("calc-form-summary");
+      if (summaryEl) summaryEl.innerHTML = buildSummaryHTML(packageDetails[selectedPkg], chosenAddons, includedNames, total);
+
+      var summaryParts = [];
+      if (selectedPkg && packageDetails[selectedPkg]) {
+        summaryParts.push("Variants: " + packageDetails[selectedPkg].name + " (" + packageDetails[selectedPkg].price + ")");
+        summaryParts.push("Papildopcijas: " + (chosenAddons.length ? chosenAddons.join(", ") : "Nav"));
+        summaryParts.push("Kopā: €" + total.toLocaleString("lv-LV"));
+      }
+      var summaryHidden = document.getElementById("calc-form-summary-text");
+      if (summaryHidden) summaryHidden.value = summaryParts.join(" | ");
+
       stickyCta.href = "#pieteikties";
     }
 
-    packageInputs.forEach(function(inp) { inp.addEventListener("change", updateTotal); });
+    packageInputs.forEach(function(inp) { inp.addEventListener("change", onPackageChange); });
     addonInputs.forEach(function(inp) { inp.addEventListener("change", updateTotal); });
     document.querySelectorAll(".calc-row").forEach(function(row) {
       row.addEventListener("click", function(e) {
         if (e.target.tagName === "INPUT") return;
         var cb = row.querySelector('input[type="checkbox"]');
-        if (cb) { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); }
+        if (cb && !cb.disabled) { cb.checked = !cb.checked; cb.dispatchEvent(new Event("change")); }
       });
     });
-    updateTotal();
+    onPackageChange();
   })();
   </script>
 
