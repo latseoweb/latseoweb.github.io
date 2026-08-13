@@ -8,14 +8,14 @@
        SEO Meta Tags
        ============================================================ -->
   <title>Paldies! | LatSEO</title>
-  <meta name="description" content="Tavs bezmaksas SEO audita pieteikums ir saņemts. Mēs sazināsimies 24 stundu laikā.">
+  <meta name="description" content="Tavs pieteikums ir saņemts. Mēs sazināsimies 24 stundu laikā.">
   <meta name="robots" content="noindex, follow">
 
   <!-- Open Graph -->
   <meta property="og:locale" content="lv_LV">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Paldies par pieteikumu | LatSEO">
-  <meta property="og:description" content="Tavs bezmaksas SEO audita pieteikums ir saņemts. Mēs sazināsimies 24 stundu laikā.">
+  <meta property="og:description" content="Tavs pieteikums ir saņemts. Mēs sazināsimies 24 stundu laikā.">
   <meta property="og:url" content="https://latseo.com/paldies/">
   <meta property="og:site_name" content="LatSEO">
   <meta name="twitter:card" content="summary_large_image">
@@ -171,67 +171,22 @@
       </div>
 
       <!-- Personalized Greeting -->
-      <h1 class="ty-title">
-        Paldies, <span class="ty-name" id="ty-name">…</span>!
-      </h1>
+      <h1 class="ty-title">Paldies!</h1>
 
       <p class="ty-sub">
-        Tavs pieteikums bezmaksas SEO auditam ir saņemts.
-        <strong>Mēs sazināsimies 24 stundu laikā.</strong>
+        Paldies, ka aizpildījāt kontaktformu.
+        <strong>Mēs sazināsimies ar Jums 24 stundu laikā.</strong>
       </p>
 
-      <!-- What Happens Next -->
-      <div class="ty-steps">
-        <div class="ty-step">
-          <svg class="ty-step-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span><strong>Šodien:</strong> Mēs saņēmām tavu pieteikumu un sākam analīzi</span>
-        </div>
-        <div class="ty-step">
-          <svg class="ty-step-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-          <span><strong>24h laikā:</strong> Saņemsi personalizētu video auditu savā e-pastā</span>
-        </div>
-        <div class="ty-step">
-          <svg class="ty-step-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <span><strong>Pēc tam:</strong> Bezmaksas online konsultācija, lai pārrunātu nākamos soļus</span>
-        </div>
-      </div>
-
-      <!-- Back Link -->
-      <a href="../" class="ty-back">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Atpakaļ uz latseo.com
+      <!-- Back to Homepage -->
+      <a href="/" class="btn btn--primary btn--lg">
+        Atpakaļ uz sākuma lapu <span aria-hidden="true">→</span>
       </a>
 
     </div>
   </div>
 
-  <!-- Personalize name from sessionStorage (fallback: URL param) -->
-  <script>
-    (function () {
-      var el = document.getElementById('ty-name');
-      if (!el) return;
-
-      // Try sessionStorage first (most reliable)
-      var name = '';
-      try { name = sessionStorage.getItem('lp_name') || ''; } catch(e) {}
-
-      // Fallback to URL parameter
-      if (!name) {
-        var params = new URLSearchParams(window.location.search);
-        name = params.get('name') || '';
-      }
-
-      if (name) {
-        // Sanitize: only allow letters, spaces, and Latvian diacritics
-        var safe = name.replace(/[^a-zA-ZĀāČčĒēĢģĪīĶķĻļŅņŌōŖŗŠšŪūŽž\s\-']/g, '').trim();
-        if (safe) {
-          el.textContent = safe;
-        }
-      }
-    })();
-  </script>
-
-  <!-- Google Ads Conversion Tracking — Free Audit Request -->
+  <!-- Google Ads Conversion Tracking — Contact / Lead -->
   <script>
     gtag('event', 'conversion', {'send_to': 'AW-18351772465/0c8WCM3SgdccELGm565E'});
   </script>
