@@ -168,7 +168,8 @@
           <h1 class="section__title">Mājas Lapu Izstrāde — Mūsdienīgas un Ātras Mājaslapas Jūsu Biznesam</h1>
           <p class="section__description">Izstrādājam vizītkartes lapas, uzņēmumu mājaslapas un e-veikalus, kas ne tikai izskatās lieliski, bet arī strādā — ātra ielāde, SEO optimizācija un pārdomāta lietotāja pieredze jau no pirmās dienas.</p>
           <p style="margin-top:var(--sp-md);font-family:var(--ff-heading);font-size:var(--fs-md);font-weight:var(--fw-medium);color:var(--clr-accent-text)">✓ Katra mājaslapa nāk ar iebūvētu pamata SEO — Google tevi atrod jau no pirmās dienas.</p>
-          <a href="#kalkulators" class="btn btn--primary btn--lg" style="margin-top:var(--sp-md);display:inline-flex">Aprēķināt cenu <span aria-hidden="true">→</span></a>
+          <a href="#kalkulators" class="btn btn--primary btn--lg" style="margin-top:var(--sp-md);display:inline-flex;padding:var(--sp-md) var(--sp-xl);font-size:var(--fs-lg);font-weight:var(--fw-semibold)">Aprēķināt cenu <span aria-hidden="true">→</span></a>
+          <p style="margin-top:var(--sp-sm);font-size:var(--fs-xs);color:var(--clr-text-muted)">Bezmaksas · aizņem mazāk par 1 minūti</p>
         </div>
       </div>
     </section>
@@ -176,7 +177,7 @@
     <!-- ============================================================
          PAKALPOJUMU VEIDI
          ============================================================ -->
-    <section class="section section--muted">
+    <section class="section section--muted" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-xl)">
       <div class="container">
         <div class="section__header">
           <span class="section-label">Mūsu Pakalpojumi</span>
@@ -210,7 +211,7 @@
     <!-- ============================================================
          IZSTRĀDES PROCESS
          ============================================================ -->
-    <section class="section section--light">
+    <section class="section section--light" style="padding-top:var(--sp-xl);padding-bottom:var(--sp-xl)">
       <div class="container">
         <div class="section__header">
           <span class="section-label">Process</span>
@@ -337,6 +338,12 @@
             </div>
           </div>
 
+          <!-- Kalkulatora rezultāta CTA (parādās pēc izvēles) -->
+          <div id="calc-cta" style="display:none;margin-top:var(--sp-xl);text-align:center">
+            <a href="#pieteikties" style="display:block;background:var(--clr-accent-text);color:var(--clr-text-inverse);padding:var(--sp-lg) var(--sp-md);border-radius:12px;font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-lg);text-decoration:none;transition:background var(--transition-fast)">Nofiksēt šo cenu — <span id="calc-cta-total">€0</span> → saņemt precīzu piedāvājumu</a>
+            <p style="font-size:var(--fs-sm);color:var(--clr-text-muted);margin-top:var(--sp-sm)">✓ Bezmaksas konsultācija 24h laikā &nbsp;·&nbsp; ✓ Bez saistībām</p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -360,8 +367,10 @@
       .calc-row--static { cursor: default; }
       .calc-row--static:hover { background: var(--clr-surface); }
       #calc-more-toggle:hover { text-decoration: underline; }
+      #calc-cta a:hover { filter: brightness(1.08); }
       @media (max-width: 600px) {
         .calc-row { padding: var(--sp-xs) var(--sp-sm); font-size: var(--fs-xs); }
+        #calc-cta a { font-size: var(--fs-base); padding: var(--sp-md); }
         .calc-row-price { min-width: 70px; font-size: var(--fs-xs); }
         .calc-card-inner { padding: var(--sp-sm); }
       }
@@ -372,10 +381,16 @@
          ============================================================ -->
     <section class="section section--muted" id="pieteikties">
       <div class="container" style="max-width:640px">
-        <div class="section__header">
+        <div class="section__header" style="margin-bottom:var(--sp-lg)">
           <span class="section-label">Pieteikties</span>
           <h2 class="section__title">Saņemiet precīzu cenas piedāvājumu</h2>
-          <p class="section__description">Aizpildiet formu un mēs 24h laikā sagatavosim personalizētu piedāvājumu ar Jūsu izvēlēto paketi un papildfunkcijām.</p>
+          <p class="section__description">Šī ir aptuvenā cena. Saņem <strong>precīzu piedāvājumu + bezmaksas konsultāciju 24h laikā, bez saistībām.</strong></p>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--sp-sm) var(--sp-lg);justify-content:center;margin-bottom:var(--sp-md);font-size:var(--fs-sm);color:var(--clr-text-secondary)">
+          <span>✓ 7+ izstrādāti projekti</span>
+          <span>✓ Atbilde 24h laikā</span>
+          <span>✓ Bez saistībām</span>
         </div>
 
         <form class="contact-form" action="#" method="POST" data-form-init="0" data-redirect="/paldies/" autocomplete="off" style="background:var(--clr-surface);border:1px solid var(--clr-border-light);padding:var(--sp-xl)">
@@ -388,13 +403,13 @@
           <input type="hidden" name="page_source" value="Mājaslapu izstrādes kalkulators">
 
           <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
-            <input type="text" name="name" class="contact-form__input" placeholder="Jūsu vārds: *" required autocomplete="name">
+            <input type="text" name="name" class="contact-form__input" placeholder="Jūsu vārds *" required autocomplete="name">
           </div>
           <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
-            <input type="email" name="email" class="contact-form__input" placeholder="Jūsu e-pasts: *" required autocomplete="email">
+            <input type="email" name="email" class="contact-form__input" placeholder="Jūsu e-pasts (nav obligāti)" autocomplete="email">
           </div>
           <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
-            <input type="tel" name="phone" class="contact-form__input" placeholder="Jūsu tālrunis: *" required autocomplete="tel">
+            <input type="tel" name="phone" class="contact-form__input" placeholder="Jūsu tālrunis *" required autocomplete="tel">
           </div>
           <div class="contact-form__group" style="margin-bottom:var(--sp-md)">
             <textarea name="message" class="contact-form__textarea" placeholder="Īss Jūsu projekta apraksts (nav obligāti)..." style="min-height:80px"></textarea>
@@ -528,6 +543,8 @@
     var stickyLabel = document.querySelector("#calc-sticky span");
     var moreToggle = document.getElementById("calc-more-toggle");
     var moreWrap = document.getElementById("calc-more-addons");
+    var calcCta = document.getElementById("calc-cta");
+    var calcCtaTotal = document.getElementById("calc-cta-total");
 
     var packageDetails = {
       "vizitkarte": {"name": "Vizītkartes lapa", "price": "449 €", "includes": "Pielāgots dizains, līdz 5 sadaļām, responsīvs dizains, iebūvēts pamata SEO, SSL sertifikāts", "audience": "Maziem uzņēmumiem un pašnodarbinātajiem", "time": "3–5 darba dienas"},
@@ -593,12 +610,14 @@
       if (selectedPkg && packageDetails[selectedPkg]) {
         detailDiv.style.display = "";
         detailContent.innerHTML = buildDetailHTML(selectedPkg);
+        if (calcCta) calcCta.style.display = "";
         stickyLabel.textContent = packageDetails[selectedPkg].name + " \u2022 Aptuvenā cena";
         stickyCta.style.opacity = "1";
         stickyCta.innerHTML = "Pieteikties <span aria-hidden=\"true\">→</span>";
         document.getElementById("calc-form-package").value = packageDetails[selectedPkg].name + " (" + packageDetails[selectedPkg].price + ")";
       } else {
         detailDiv.style.display = "none";
+        if (calcCta) calcCta.style.display = "none";
         stickyLabel.textContent = "Izvēlies mājaslapas veidu ↓";
         stickyCta.textContent = "Izvēlies veidu ↓";
         stickyCta.style.opacity = "0.6";
@@ -629,6 +648,7 @@
         }
       });
       totalEl.textContent = "€" + total.toLocaleString("lv-LV");
+      if (calcCtaTotal) calcCtaTotal.textContent = "€" + total.toLocaleString("lv-LV");
       document.getElementById("calc-form-addons").value = chosenAddons.join("; ");
       document.getElementById("calc-form-total").value = "€" + total.toLocaleString("lv-LV");
 
