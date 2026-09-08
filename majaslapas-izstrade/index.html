@@ -256,7 +256,9 @@
 
         <!-- Akcijas baneris (rādās tikai akcijas laikā) -->
         <div id="calc-promo-banner" style="display:none;margin-bottom:var(--sp-lg);padding:var(--sp-md) var(--sp-lg);background:var(--clr-accent-text);color:var(--clr-text-inverse);border-radius:12px;text-align:center;font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-md)">
-          ⚡ Īpašā atlaide — tikai līdz 13.09. Cenas jau ir ar atlaidi!
+          ⚡ Īpašā atlaide — tikai līdz 13.09
+          <div id="promo-countdown" style="margin-top:var(--sp-xs);font-size:var(--fs-xl);font-weight:var(--fw-semibold);letter-spacing:0.02em">–</div>
+          <div style="font-size:var(--fs-xs);font-weight:var(--fw-normal);opacity:0.85;margin-top:var(--sp-2xs)">Cenas jau ir ar atlaidi!</div>
         </div>
 
         <!-- Sticky Total Bar -->
@@ -590,6 +592,26 @@
       });
       var promoBanner = document.getElementById("calc-promo-banner");
       if (promoBanner) promoBanner.style.display = "";
+      // Taimeris līdz akcijas beigām
+      var promoCountdown = document.getElementById("promo-countdown");
+      if (promoCountdown) {
+        var countdownInterval = null;
+        var updateCountdown = function () {
+          var diff = PROMO_END_DATE.getTime() - Date.now();
+          if (diff <= 0) {
+            promoCountdown.textContent = "Akcija ir beigusies";
+            if (countdownInterval) clearInterval(countdownInterval);
+            return;
+          }
+          var d = Math.floor(diff / 86400000);
+          var h = Math.floor((diff % 86400000) / 3600000);
+          var m = Math.floor((diff % 3600000) / 60000);
+          var s = Math.floor((diff % 60000) / 1000);
+          promoCountdown.textContent = d + "d " + h + "h " + m + "m " + s + "s";
+        };
+        updateCountdown();
+        countdownInterval = setInterval(updateCountdown, 1000);
+      }
     }
 
     function buildDetailHTML(pkg) {
@@ -749,6 +771,7 @@
     .offer-popup__close{position:absolute;top:4px;right:10px;background:none;border:none;font-size:28px;line-height:1;color:var(--clr-text-muted);cursor:pointer}
     .offer-popup__close:hover{color:var(--clr-text-primary)}
     .offer-popup__title{font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-md);color:var(--clr-text-primary);margin-bottom:var(--sp-xs);padding-right:18px}
+    .offer-popup__countdown{font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-xl);color:var(--clr-accent-text);margin-bottom:var(--sp-xs)}
     .offer-popup__text{font-size:var(--fs-sm);color:var(--clr-text-secondary);margin-bottom:var(--sp-md);line-height:var(--lh-relaxed)}
     .offer-popup__input{width:100%;padding:.7rem .9rem;border:1px solid var(--clr-border);border-radius:8px;font-size:var(--fs-sm);color:var(--clr-text-primary);background:var(--clr-bg);margin-bottom:var(--sp-sm)}
     .offer-popup__input:focus{border-color:var(--clr-accent-text);outline:none}
@@ -761,6 +784,7 @@
     <div class="offer-popup__card">
       <button type="button" class="offer-popup__close" id="offer-popup-close" aria-label="Aizvērt">&times;</button>
       <div class="offer-popup__title" id="offer-popup-title">⚡ Īpašā atlaide — tikai līdz 13.09</div>
+      <div id="popup-countdown" class="offer-popup__countdown" style="display:none">–</div>
       <p class="offer-popup__text">Atstāj e-pastu — atsūtīsim precīzu piedāvājumu ar atlaidi 24h laikā.</p>
       <form class="contact-form" action="#" method="POST" autocomplete="off">
         <input type="hidden" name="page_source" value="Piedāvājuma popup — mājaslapu izstrāde">
@@ -783,6 +807,21 @@
     var promoActive = new Date() <= new Date(2026, 8, 13, 23, 59, 59);
     if (!promoActive && title) {
       title.textContent = "Saņem precīzu piedāvājumu 24h laikā";
+    }
+    var countdownEl = document.getElementById("popup-countdown");
+    if (promoActive && countdownEl) {
+      countdownEl.style.display = "";
+      var tickCountdown = function () {
+        var diff = new Date(2026, 8, 13, 23, 59, 59).getTime() - Date.now();
+        if (diff <= 0) { countdownEl.textContent = "Akcija ir beigusies"; return; }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        countdownEl.textContent = d + "d " + h + "h " + m + "m " + s + "s";
+      };
+      tickCountdown();
+      setInterval(tickCountdown, 1000);
     }
     var timer = setTimeout(function () { popup.style.display = ""; }, SHOW_DELAY);
     try {
