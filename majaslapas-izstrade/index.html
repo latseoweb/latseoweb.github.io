@@ -254,6 +254,11 @@
           <p class="section__description">Izvēlies mājaslapas veidu un vajadzīgās papildopcijas — aptuveno cenu redzēsi uzreiz. Precīzu piedāvājumu sagatavosim pēc pieteikuma.</p>
         </div>
 
+        <!-- Akcijas baneris (rādās tikai akcijas laikā) -->
+        <div id="calc-promo-banner" style="display:none;margin-bottom:var(--sp-lg);padding:var(--sp-md) var(--sp-lg);background:var(--clr-accent-text);color:var(--clr-text-inverse);border-radius:12px;text-align:center;font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-md)">
+          ⚡ Īpašā atlaide — tikai līdz 13.09. Cenas jau ir ar atlaidi!
+        </div>
+
         <!-- Sticky Total Bar -->
         <div id="calc-sticky" style="position:sticky;top:var(--header-height);z-index:50;background:var(--clr-dark);color:var(--clr-text-inverse);padding:var(--sp-md) var(--sp-lg);margin-bottom:var(--sp-lg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-sm)">
           <div>
@@ -276,7 +281,7 @@
                 <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Vizītkartes lapa</div>
                   <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Vienas lapas vietne ar svarīgāko par tavu uzņēmumu</div>
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 449 €</div>
+                  <div class="calc-card-price" style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 449 €</div>
                   <div class="calc-seo-note">✓ Iebūvēts pamata SEO</div>
                 </div>
               </label>
@@ -285,7 +290,7 @@
                 <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Biznesa lapa</div>
                   <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Vairāku lapu vietne ar pakalpojumiem, par mums un blogu</div>
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 799 €</div>
+                  <div class="calc-card-price" style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 799 €</div>
                   <div class="calc-seo-note">✓ Iebūvēts pamata SEO</div>
                 </div>
               </label>
@@ -294,7 +299,7 @@
                 <div class="calc-card-inner" style="border:2px solid var(--clr-border);padding:var(--sp-md);cursor:pointer;transition:all var(--transition-fast);background:var(--clr-surface)">
                   <div style="font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-base);color:var(--clr-text-primary);margin-bottom:4px">Interneta veikals</div>
                   <div style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:var(--sp-xs);line-height:1.4">Preču katalogs, grozs, pasūtīšana un maksājumi</div>
-                  <div style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 1 299 €</div>
+                  <div class="calc-card-price" style="font-family:var(--ff-heading);font-weight:var(--fw-semibold);font-size:var(--fs-lg);color:var(--clr-accent-text)">no 1 299 €</div>
                   <div class="calc-seo-note">✓ Iebūvēts pamata SEO</div>
                 </div>
               </label>
@@ -554,6 +559,39 @@
 
     var includedAddons = { "vizitkarte": [], "bizness": [], "veikals": ["eveikals"] };
 
+    // ---- LIMITĒTA AKCIJA (spēkā līdz 13.09.2026 23:59) ----
+    var PROMO_END_DATE = new Date(2026, 8, 13, 23, 59, 59);
+    var promoActive = new Date() <= PROMO_END_DATE;
+    var promoPackagePrices = { "vizitkarte": 229, "bizness": 559, "veikals": 990 };
+
+    if (promoActive) {
+      packageInputs.forEach(function (inp) {
+        var newPrice = promoPackagePrices[inp.value];
+        if (!newPrice) return;
+        var card = inp.closest(".calc-card");
+        var oldPrice = parseInt(card.dataset.price, 10) || newPrice;
+        card.dataset.price = newPrice;
+        var priceEl = card.querySelector(".calc-card-price");
+        if (priceEl) {
+          priceEl.innerHTML = '<s style="font-size:var(--fs-xs);color:var(--clr-text-muted)">' + oldPrice + ' €</s> <span>no ' + newPrice + ' €</span>';
+        }
+        if (packageDetails[inp.value]) {
+          packageDetails[inp.value].price = newPrice + " €";
+        }
+      });
+      addonInputs.forEach(function (inp) {
+        var row = inp.closest(".calc-row");
+        var orig = parseInt(row.dataset.price, 10) || 0;
+        if (!orig) return;
+        var half = Math.round(orig / 2);
+        row.dataset.price = half;
+        var priceEl = row.querySelector(".calc-row-price");
+        if (priceEl) priceEl.textContent = "+" + half + " €";
+      });
+      var promoBanner = document.getElementById("calc-promo-banner");
+      if (promoBanner) promoBanner.style.display = "";
+    }
+
     function buildDetailHTML(pkg) {
       var d = packageDetails[pkg];
       if (!d) return "";
@@ -701,5 +739,63 @@
 
   <!-- Scroll to Top Button -->
   <button class="scroll-top" aria-label="Uz augšu" title="Uz augšu">↑</button>
+
+  <!-- ============================================================
+       PIEDĀVĀJUMA POPUP (apakšējā labajā stūrī)
+       ============================================================ -->
+  <style>
+    .offer-popup{position:fixed;right:16px;bottom:210px;z-index:999;width:320px;max-width:calc(100vw - 32px);animation:offerFadeIn .4s ease both}
+    .offer-popup__card{position:relative;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:14px;padding:var(--sp-lg);box-shadow:0 16px 48px rgba(0,0,0,.22)}
+    .offer-popup__close{position:absolute;top:4px;right:10px;background:none;border:none;font-size:28px;line-height:1;color:var(--clr-text-muted);cursor:pointer}
+    .offer-popup__close:hover{color:var(--clr-text-primary)}
+    .offer-popup__title{font-family:var(--ff-heading);font-weight:var(--fw-medium);font-size:var(--fs-md);color:var(--clr-text-primary);margin-bottom:var(--sp-xs);padding-right:18px}
+    .offer-popup__text{font-size:var(--fs-sm);color:var(--clr-text-secondary);margin-bottom:var(--sp-md);line-height:var(--lh-relaxed)}
+    .offer-popup__input{width:100%;padding:.7rem .9rem;border:1px solid var(--clr-border);border-radius:8px;font-size:var(--fs-sm);color:var(--clr-text-primary);background:var(--clr-bg);margin-bottom:var(--sp-sm)}
+    .offer-popup__input:focus{border-color:var(--clr-accent-text);outline:none}
+    .offer-popup .contact-form__submit{border-radius:10px}
+    @keyframes offerFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    @media(max-width:768px){.offer-popup{bottom:140px;right:12px;width:calc(100vw - 24px);max-width:340px}}
+  </style>
+
+  <div id="offer-popup" class="offer-popup" style="display:none">
+    <div class="offer-popup__card">
+      <button type="button" class="offer-popup__close" id="offer-popup-close" aria-label="Aizvērt">&times;</button>
+      <div class="offer-popup__title" id="offer-popup-title">⚡ Īpašā atlaide — tikai līdz 13.09</div>
+      <p class="offer-popup__text">Atstāj e-pastu — atsūtīsim precīzu piedāvājumu ar atlaidi 24h laikā.</p>
+      <form class="contact-form" action="#" method="POST" autocomplete="off">
+        <input type="hidden" name="page_source" value="Piedāvājuma popup — mājaslapu izstrāde">
+        <input type="email" name="email" class="offer-popup__input" placeholder="Tavs e-pasts" required autocomplete="email">
+        <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+          <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="contact-form__submit">Saņemt piedāvājumu</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var popup = document.getElementById("offer-popup");
+    if (!popup) return;
+    var closeBtn = document.getElementById("offer-popup-close");
+    var title = document.getElementById("offer-popup-title");
+    var SHOW_DELAY = 6000;
+    var promoActive = new Date() <= new Date(2026, 8, 13, 23, 59, 59);
+    if (!promoActive && title) {
+      title.textContent = "Saņem precīzu piedāvājumu 24h laikā";
+    }
+    var timer = setTimeout(function () { popup.style.display = ""; }, SHOW_DELAY);
+    try {
+      if (sessionStorage.getItem("latseo_popup_closed") === "1") { clearTimeout(timer); }
+    } catch (e) {}
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+        clearTimeout(timer);
+        try { sessionStorage.setItem("latseo_popup_closed", "1"); } catch (e) {}
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
