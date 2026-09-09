@@ -66,13 +66,29 @@ PEXELS_PHOTOS = [
 # ── Bot State ────────────────────────────────────────────────────────────────
 # In-memory state (simple dict — fine for single-user bot)
 user_state = {
-    "awaiting_answers": False,
+    "conversation_active": False,
     "current_day": 0,
     "current_topic": {},
-    "questions": [],
-    "answers": [],
-    "question_index": 0,
+    "conversation": [],      # list of {"question": ..., "answer": ...}
+    "last_question": "",     # question currently awaiting an answer
+    "question_count": 0,     # how many questions have been answered
 }
+
+MAX_QUESTIONS = 15
+STOP_KEYWORDS = ["pietiek", "pietiekami", "beidz", "stop", "vairs ne", "tas arī viss", "beigas", "gatavs"]
+
+
+def is_stop_message(text: str) -> bool:
+    """Detect if the user wants to end the Q&A early."""
+    t = text.lower().strip()
+    if not t or len(t.split()) > 5:
+        return False
+    for phrase in ["tas arī viss", "vairs ne", "pietiekami"]:
+        if phrase in t:
+            return True
+    words = [re.sub(r"[^a-zāčēģīķļņšūž]", "", w) for w in t.split()]
+    stop_words = {"pietiek", "beidz", "beigt", "stop", "gatavs", "gatava", "beigas", "gala"}
+    return any(w in stop_words for w in words)
 
 
 # ── Helper Functions ─────────────────────────────────────────────────────────
@@ -157,15 +173,85 @@ utt. Bez papildu teksta."""
     return questions[:5]
 
 
-def generate_blog_post(topic_info: dict, questions: list[str], answers: list[str], lang: str = "lv") -> dict:
-    """Generate blog post using the user's answers as factual context."""
+def generate_first_question(topic_info: dict) -> str:
+    """Generate a single opening question to start the conversation."""
+    from openai import OpenAI
+    client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
+
+    prompt = f"""Tu esi SEO bloga redaktors. Tev jāuzsāk saruna ar bloga autoru (Adrianu no LatSEO), lai savāktu faktus bloga rakstam.
+
+ŠODIENAS TĒMA:
+- Virsraksts: {topic_info['topicTitle']}
+- Nedēļas tēma: {topic_info['theme']}
+- Formāts: {topic_info['styleLV']}
+- Kategorija: {topic_info['category']}
+
+Uzdod VIENU atvērto jautājumu LATVIEŠU valodā, kas ir konkrēts un personīgs, prasa FAKTUS un PIEMĒRUS, un ir īss (max 15 vārdi).
+
+Atgriez TIKAI jautājumu, bez numura un papildu teksta."""
+
+    try:
+        response = client.chat.completions.create(model=DEEPSEEK_MODEL, messages=[{"role":"user","content":prompt}], temperature=0.7, max_tokens=100, timeout=60)
+        q = response.choices[0].message.content.strip()
+        q = re.sub(r"^\d+[\.\)]\s*", "", q).strip()
+    except Exception:
+        q = ""
+    if len(q) < 5:
+        q = f"Kāda ir tava personīgā pieredze ar {topic_info['theme'].lower()}?"
+    return q
+
+
+def decide_next_question(topic_info: dict, conversation: list[dict]) -> dict:
+    """Ask the model whether to ask another follow-up or conclude the interview."""
+    from openai import OpenAI
+    client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
+
+    transcript = ""
+    for i, item in enumerate(conversation, 1):
+        transcript += f"J{i}: {item['question']}\nA{i}: {item['answer']}\n\n"
+
+    prompt = f"""Tu esi SEO bloga redaktors, kurš intervē autoru, lai savāktu faktus bloga rakstam.
+
+TĒMA:
+- Virsraksts: {topic_info['topicTitle']}
+- Nedēļas tēma: {topic_info['theme']}
+- Formāts: {topic_info['styleLV']}
+- Kategorija: {topic_info['category']}
+
+SARUNA LĪDZ ŠIM ({len(conversation)} atbildes saņemtas, maksimums 15):
+{transcript}
+
+Izvērtē, vai tev jau ir PIETIEKAMI daudz konkrētu, personīgu faktu un piemēru, lai uzrakstītu labu 600-900 vārdu bloga rakstu.
+
+Ja informācijas pietiek — atbildi TIKAI ar vārdu: DONE
+
+Ja vēl vajag — atbildi TIKAI ar vienu nākamo jautājumu latviešu valodā (max 15 vārdi, konkrēts un balstīts uz iepriekšējām atbildēm — izseko, kas vēl nav paskaidrots). Bez numura."""
+
+    try:
+        response = client.chat.completions.create(model=DEEPSEEK_MODEL, messages=[{"role":"user","content":prompt}], temperature=0.7, max_tokens=150, timeout=60)
+        raw = response.choices[0].message.content.strip()
+    except Exception as e:
+        print(f"decide_next_question failed: {e}")
+        return {"done": False, "question": "Vai vēl kaut kas svarīgs, ko vēlies piebilst par šo tēmu?"}
+
+    if raw.upper().startswith("DONE"):
+        return {"done": True}
+
+    q = re.sub(r"^\d+[\.\)]\s*", "", raw).strip()
+    if len(q) > 3:
+        return {"done": False, "question": q}
+    return {"done": True}
+
+
+def generate_blog_post(topic_info: dict, conversation: list[dict], lang: str = "lv") -> dict:
+    """Generate blog post using the conversation Q&A as factual context."""
     from openai import OpenAI
     client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url=DEEPSEEK_BASE_URL)
 
     # Build Q&A context
     qa_context = ""
-    for q, a in zip(questions, answers):
-        qa_context += f"J: {q}\nA: {a}\n\n"
+    for i, item in enumerate(conversation, 1):
+        qa_context += f"J{i}: {item['question']}\nA{i}: {item['answer']}\n\n"
 
     if lang == "lv":
         system_prompt = f"""Tu esi latviešu SEO bloga autors. Tu raksti LatSEO aģentūras blogam.
@@ -287,10 +373,12 @@ async def start_command(update, context):
     """Handle /start command."""
     await update.message.reply_text(
         "👋 Sveiks! Es esmu LatSEO bloga bots.\n\n"
-        "Katru dienu plkst. 09:00 es tev atsūtīšu jautājumus par šodienas bloga tēmu.\n"
-        "Atbildi uz jautājumiem, un es uzrakstīšu bloga rakstu balstoties uz TAVIEM faktiem.\n\n"
+        "Katru dienu plkst. 09:00 es sākšu sarunu par šodienas bloga tēmu.\n"
+        "Atbildi uz jautājumiem, un es uzrakstīšu bloga rakstu balstoties uz TAVIEM faktiem.\n"
+        "Kad man pietiks informācijas (vai ierakstīsi 'pietiek'), es beigšu uzdot jautājumus.\n\n"
         "Komandas:\n"
         "/jauns - sākt jaunu rakstu tūlīt\n"
+        "/publicet - ģenerēt un publicēt rakstu\n"
         "/izlaist - izlaist šodienas rakstu\n"
         "/status - pārbaudīt statusu\n"
         "/raksti - saraksts ar publicētajiem rakstiem (LinkedIn)\n"
@@ -299,9 +387,9 @@ async def start_command(update, context):
 
 
 async def new_post_command(update, context):
-    """Handle /jauns — start a new blog post Q&A now."""
+    """Handle /jauns — start a new blog post conversation now."""
     global user_state
-    
+
     if update.effective_user.id != ADMIN_CHAT_ID:
         await update.message.reply_text("⛔ Tikai administrators var veidot rakstus.")
         return
@@ -309,54 +397,49 @@ async def new_post_command(update, context):
     # Auto-init progress file if missing
     if not PROGRESS_FILE.exists():
         save_json(PROGRESS_FILE, {"lastPublishedDay": 0, "lastPublishedDate": None, "publishedPosts": []})
-    
+
     progress = load_json(PROGRESS_FILE)
     day_number = progress.get("lastPublishedDay", 0) + 1
-    
+
     if day_number > 365:
         await update.message.reply_text("🎉 Visi 365 raksti jau ir uzrakstīti!")
         return
 
     topic_info = get_day_info(day_number)
-    
+
     await update.message.reply_text(
         f"📝 *Gatavojam rakstu #{day_number}/365*\n\n"
         f"📅 {topic_info['dayNameLV']}, {topic_info['week']}. nedēļa\n"
         f"📂 {topic_info['category']}\n"
         f"📝 {topic_info['topicTitle']}\n"
         f"🎨 {topic_info['styleLV']}\n\n"
-        f"⏳ Ģenerēju jautājumus...",
+        f"⏳ Ģenerēju pirmo jautājumu...",
         parse_mode="Markdown"
     )
 
-    # Generate questions
-    questions = generate_questions(topic_info)
-    
+    first_q = generate_first_question(topic_info)
+
     user_state = {
-        "awaiting_answers": True,
+        "conversation_active": True,
         "current_day": day_number,
         "current_topic": topic_info,
-        "questions": questions,
-        "answers": [],
-        "question_index": 0,
+        "conversation": [],
+        "last_question": first_q,
+        "question_count": 0,
     }
 
-    # Send questions
-    q_text = "📋 *Atbildi uz šiem jautājumiem:*\n\n"
-    for i, q in enumerate(questions, 1):
-        q_text += f"*{i}.* {q}\n\n"
-    q_text += "──────────────\n"
-    q_text += "Atbildi uz VISIEM jautājumiem vienā ziņā, atdalot atbildes ar tukšu rindu.\n"
-    q_text += "Vai arī atbildi pa vienam — es gaidīšu.\n"
-    q_text += "Kad esi pabeidzis, raksti /publicet"
-
-    await update.message.reply_text(q_text, parse_mode="Markdown")
+    await update.message.reply_text(
+        f"💬 Sākam sarunu (0/{MAX_QUESTIONS})\n\n"
+        f"1. {first_q}\n\n"
+        "Atbildi dabīgi — īsi vai gari, kā gribi.\n"
+        "Ja tev pietiek, ieraksti 'pietiek'."
+    )
 
 
 async def handle_message(update, context):
-    """Handle user's answers — checks LinkedIn mode first, then blog Q&A."""
+    """Handle user messages — LinkedIn mode first, then blog conversation."""
     global user_state
-    
+
     if update.effective_user.id != ADMIN_CHAT_ID:
         return
 
@@ -365,72 +448,79 @@ async def handle_message(update, context):
         await handle_linkedin_number(update, context)
         return
 
-    if not user_state["awaiting_answers"]:
-        await update.message.reply_text("Šobrīd negaidu atbildes. Raksti /jauns lai sāktu.")
+    if not user_state["conversation_active"]:
+        await update.message.reply_text("Šobrīd nav aktīvas sarunas. Raksti /jauns, lai sāktu.")
         return
 
     text = update.message.text.strip()
-    
-    # Check if it's a multi-answer (separated by blank lines)
-    parts = re.split(r"\n\s*\n", text)
-    if len(parts) >= len(user_state["questions"]):
-        # Got all answers at once
-        user_state["answers"] = [p.strip() for p in parts[:len(user_state["questions"])]]
+
+    # User wants to stop early?
+    if is_stop_message(text):
+        user_state["conversation_active"] = False
+        n = len(user_state["conversation"])
         await update.message.reply_text(
-            f"✅ Saņēmu {len(user_state['answers'])} atbildes!\n"
-            "Raksti /publicet lai ģenerētu rakstu, vai turpini atbildēt."
+            f"👌 Labi, pārtraucu. Saņēmu {n} atbildes.\n"
+            "Raksti /publicet, lai ģenerētu rakstu no līdz šim savāktā."
         )
-    else:
-        # Single answer — add to list
-        idx = user_state["question_index"]
-        if idx < len(user_state["questions"]):
-            user_state["answers"].append(text)
-            user_state["question_index"] += 1
-            
-            if user_state["question_index"] < len(user_state["questions"]):
-                next_q = user_state["questions"][user_state["question_index"]]
-                await update.message.reply_text(
-                    f"✅ Atbilde {user_state['question_index']}/{len(user_state['questions'])} saņemta!\n\n"
-                    f"Nākamais jautājums:\n*{user_state['question_index']+1}. {next_q}*",
-                    parse_mode="Markdown"
-                )
-            else:
-                await update.message.reply_text(
-                    f"✅ Visas {len(user_state['questions'])} atbildes saņemtas!\n"
-                    "Raksti /publicet lai ģenerētu rakstu."
-                )
+        return
+
+    # Save the answer to the pending question
+    user_state["conversation"].append({"question": user_state["last_question"], "answer": text})
+    user_state["question_count"] = len(user_state["conversation"])
+
+    # Hard cap reached?
+    if user_state["question_count"] >= MAX_QUESTIONS:
+        user_state["conversation_active"] = False
+        await update.message.reply_text(
+            f"✅ Sasniegts maksimums — {user_state['question_count']}/{MAX_QUESTIONS} atbildes saņemtas.\n"
+            "Raksti /publicet, lai ģenerētu rakstu."
+        )
+        return
+
+    # Ask the model what's next
+    await update.message.reply_text("💭 Domāju, ko pajautāt tālāk...")
+    decision = decide_next_question(user_state["current_topic"], user_state["conversation"])
+
+    if decision.get("done"):
+        user_state["conversation_active"] = False
+        await update.message.reply_text(
+            f"✅ Man pietiek — {user_state['question_count']} atbildes saņemtas.\n"
+            "Raksti /publicet, lai ģenerētu rakstu."
+        )
+        return
+
+    user_state["last_question"] = decision["question"]
+    n = user_state["question_count"] + 1
+    await update.message.reply_text(
+        f"{n}. {decision['question']}\n\n"
+        f"({user_state['question_count']}/{MAX_QUESTIONS} saņemtas — ja pietiek, ieraksti 'pietiek')"
+    )
 
 
 async def publish_command(update, context):
     """Handle /publicet — generate and publish the blog post."""
     global user_state
-    
+
     if update.effective_user.id != ADMIN_CHAT_ID:
         return
 
-    if not user_state.get("awaiting_answers"):
-        await update.message.reply_text("Nav aktīva raksta. Raksti /jauns lai sāktu.")
-        return
-
-    if len(user_state.get("answers", [])) < len(user_state.get("questions", [])):
-        missing = len(user_state["questions"]) - len(user_state["answers"])
-        await update.message.reply_text(f"⚠️ Trūkst {missing} atbildes. Atbildi uz visiem jautājumiem.")
+    conversation = user_state.get("conversation", [])
+    if not conversation:
+        await update.message.reply_text("Nav savāktu atbilžu. Raksti /jauns, lai sāktu sarunu.")
         return
 
     await update.message.reply_text("✍️ Ģenerēju bloga rakstu... Tas var aizņemt ~30 sekundes.")
 
     try:
         topic = user_state["current_topic"]
-        questions = user_state["questions"]
-        answers = user_state["answers"]
         day = user_state["current_day"]
 
         # Generate LV content
-        lv_content = generate_blog_post(topic, questions, answers, "lv")
+        lv_content = generate_blog_post(topic, conversation, "lv")
         lv_content["content"] = format_html_content(lv_content["content"])
-        
+
         # Generate EN content
-        en_content = generate_blog_post(topic, questions, answers, "en")
+        en_content = generate_blog_post(topic, conversation, "en")
         en_content["content"] = format_html_content(en_content["content"])
 
         lv_slug = topic["topicSlug"]
@@ -487,7 +577,7 @@ async def publish_command(update, context):
         repo.git.commit(m=f"📝 Blog post — Day {day}/365 (Telegram Q&A)")
         repo.git.push("origin", GITHUB_BRANCH)
 
-        user_state["awaiting_answers"] = False
+        user_state["conversation_active"] = False
 
         await update.message.reply_text(
             f"✅ *Raksts publicēts!*\n\n"
@@ -740,11 +830,11 @@ async def skip_command(update, context):
     progress["lastPublishedDate"] = date.today().isoformat()
     save_json(PROGRESS_FILE, progress)
 
-    # Reset any in-progress Q&A so old answers don't linger
-    user_state["awaiting_answers"] = False
-    user_state["answers"] = []
-    user_state["question_index"] = 0
-    user_state["questions"] = []
+    # Reset any in-progress conversation so old answers don't linger
+    user_state["conversation_active"] = False
+    user_state["conversation"] = []
+    user_state["last_question"] = ""
+    user_state["question_count"] = 0
 
     next_day = skipped_day + 1
     if next_day > 365:
@@ -1110,27 +1200,25 @@ async def auto_daily_trigger(context):
             return
 
         topic_info = get_day_info(day_number)
-        questions = generate_questions(topic_info)
+        first_q = generate_first_question(topic_info)
 
         global user_state
         user_state = {
-            "awaiting_answers": True,
+            "conversation_active": True,
             "current_day": day_number,
             "current_topic": topic_info,
-            "questions": questions,
-            "answers": [],
-            "question_index": 0,
+            "conversation": [],
+            "last_question": first_q,
+            "question_count": 0,
         }
 
-        q_text = f"🌅 *Labrīt! Šodienas raksts #{day_number}/365*\n\n"
+        q_text = f"🌅 Labrīt! Šodienas raksts #{day_number}/365\n\n"
         q_text += f"📝 {topic_info['topicTitle']}\n"
         q_text += f"🎨 {topic_info['styleLV']}\n\n"
-        q_text += "📋 *Jautājumi:*\n\n"
-        for i, q in enumerate(questions, 1):
-            q_text += f"*{i}.* {q}\n\n"
-        q_text += "Atbildi uz jautājumiem, tad raksti /publicet"
+        q_text += f"💬 1. {first_q}\n\n"
+        q_text += "Atbildi dabīgi. Ja tev pietiek — ieraksti 'pietiek'."
 
-        await context.bot.send_message(chat_id=ADMIN_CHAT_ID, text=q_text, parse_mode="Markdown")
+        await context.bot.send_message(chat_id=ADMIN_CHAT_ID, text=q_text)
     except Exception as e:
         print(f"Auto trigger error: {e}")
 
