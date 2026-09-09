@@ -676,15 +676,91 @@ async def status_command(update, context):
     await update.message.reply_text(status, parse_mode="Markdown")
 
 
+async def sync_progress_to_github(progress: dict):
+    """Push the updated .blog-progress.json to GitHub (best-effort)."""
+    try:
+        import git
+        from git import Repo
+
+        repo_dir = Path("/tmp/latseo-repo-progress")
+        if repo_dir.exists():
+            subprocess.run(["rm", "-rf", str(repo_dir)])
+
+        clone_url = f"https://x-access-token:{GITHUB_TOKEN}@github.com/{GITHUB_REPO}.git"
+        repo = Repo.clone_from(clone_url, repo_dir, branch=GITHUB_BRANCH)
+
+        progress_path = repo_dir / "scripts" / ".blog-progress.json"
+        # Merge with whatever is on GitHub so we never move the counter backwards
+        if progress_path.exists():
+            remote_progress = load_json(progress_path)
+            merged = {**remote_progress, **progress}
+            merged["lastPublishedDay"] = max(
+                remote_progress.get("lastPublishedDay", 0),
+                progress.get("lastPublishedDay", 0),
+            )
+            merged["skippedDays"] = sorted(set(
+                remote_progress.get("skippedDays", []) + progress.get("skippedDays", [])
+            ))
+            progress = merged
+        save_json(progress_path, progress)
+
+        repo.git.config("user.email", "bot@latseo.com")
+        repo.git.config("user.name", "LatSEO Bot")
+        repo.git.add(A=True)
+        repo.git.commit(m="⏭️ Skip blog post day (Telegram /izlaist)")
+        repo.git.push("origin", GITHUB_BRANCH)
+    except Exception as e:
+        print(f"Progress sync to GitHub failed: {e}")
+
+
 async def skip_command(update, context):
-    """Handle /izlaist — skip today's post."""
+    """Handle /izlaist — skip today's post and advance to the next day."""
     global user_state
-    
+
     if update.effective_user.id != ADMIN_CHAT_ID:
+        await update.message.reply_text("⛔ Tikai administrators var izlaist rakstus.")
         return
 
+    # Auto-init progress file if missing
+    if not PROGRESS_FILE.exists():
+        save_json(PROGRESS_FILE, {"lastPublishedDay": 0, "lastPublishedDate": None, "publishedPosts": []})
+
+    progress = load_json(PROGRESS_FILE)
+    skipped_day = progress.get("lastPublishedDay", 0) + 1
+
+    if skipped_day > 365:
+        await update.message.reply_text("🎉 Visi 365 raksti jau ir uzrakstīti — nav ko izlaist.")
+        return
+
+    # Record the skipped day and advance the counter
+    progress.setdefault("skippedDays", [])
+    if skipped_day not in progress["skippedDays"]:
+        progress["skippedDays"].append(skipped_day)
+    progress["lastPublishedDay"] = skipped_day
+    progress["lastPublishedDate"] = date.today().isoformat()
+    save_json(PROGRESS_FILE, progress)
+
+    # Reset any in-progress Q&A so old answers don't linger
     user_state["awaiting_answers"] = False
-    await update.message.reply_text("⏭️ Šodienas raksts izlaists. Rīt turpināsim ar nākamo tēmu.")
+    user_state["answers"] = []
+    user_state["question_index"] = 0
+    user_state["questions"] = []
+
+    next_day = skipped_day + 1
+    if next_day > 365:
+        next_text = "🎉 Visas tēmas izskatītas!"
+    else:
+        next_topic = get_day_info(next_day)
+        next_text = f"Nākamais būs #{next_day}/365: {next_topic['topicTitle'][:80]}"
+
+    await update.message.reply_text(
+        f"⏭️ Raksts #{skipped_day}/365 izlaists.\n"
+        f"{next_text}\n\n"
+        "Raksti /jauns, lai sāktu nākamo rakstu."
+    )
+
+    # Keep the GitHub copy of the progress in sync too
+    await sync_progress_to_github(progress)
 
 
 # ── LinkedIn Post Generation ──────────────────────────────────────────────────
