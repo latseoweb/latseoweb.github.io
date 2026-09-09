@@ -1,6 +1,9 @@
 {
-  "lastPublishedDay": 6,
-  "lastPublishedDate": "2026-08-08",
+  "lastPublishedDay": 7,
+  "lastPublishedDate": "2026-09-09",
   "publishedPosts": [],
-  "linkedinPosts": []
+  "linkedinPosts": [],
+  "skippedDays": [
+    7
+  ]
 }
