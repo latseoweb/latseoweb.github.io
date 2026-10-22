@@ -1,0 +1,46 @@
+<!--meta
+{
+  "path": "/en/kontakti/",
+  "lang": "en",
+  "lv": "/kontakti/",
+  "title": "Contact — website development & SEO in Riga | LatSEO",
+  "description": "Contact LatSEO: phone +371 24424434, email sales@latseo.com, WhatsApp. I reply within 24 hours. Website development and SEO services across Latvia.",
+  "crumbs": [["/en/", "Home"], ["/en/kontakti/", "Contact"]],
+  "page_type": "ContactPage"
+}
+-->
+<section class="page-hero">
+  <div class="container">
+    {{breadcrumbs}}
+    <p class="eyebrow">Contact</p>
+    <h1 class="page-title">Get in touch</h1>
+    <p class="lead">I reply within 24 hours — with first recommendations or an invitation to a short call. For a faster answer, call or message me on WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container two-col">
+    <div>
+      <div class="about-card" style="margin-bottom:2rem">
+        <img src="{{photo}}" alt="Adrians Stankevičs" width="148" height="148" class="about-card__photo" loading="lazy">
+        <div>
+          <h2 style="font-size:var(--fs-xl)">Adrians Stankevičs</h2>
+          <p class="muted">Website developer and SEO specialist, LatSEO</p>
+        </div>
+      </div>
+      <div class="contact-list">
+        <a href="tel:{{phone}}"><span>Phone</span><strong>{{phone_h}}</strong></a>
+        <a href="https://wa.me/37124424434" target="_blank" rel="noopener"><span>WhatsApp</span><strong>{{phone_h}}</strong></a>
+        <a href="mailto:{{email}}"><span>Email</span><strong>{{email}}</strong></a>
+        <a href="{{linkedin}}" target="_blank" rel="noopener"><span>LinkedIn</span><strong>Adrians Stankevičs</strong></a>
+        <div><span>Service area</span><strong>Riga and all of Latvia</strong></div>
+      </div>
+      <h3 style="font-size:var(--fs-md);margin:2rem 0 .75rem">Company details</h3>
+      <p class="small">Baltic SEO, SIA<br>Reg. no.: 40203749304<br>VAT no.: LV40203749304<br>Registered address: Kārklu iela 4, Odukalns, Ķekava Parish, Ķekava Municipality, LV-2123</p>
+    </div>
+    <div class="form-card">
+      <h2 style="font-size:var(--fs-xl);margin-bottom:1rem">Write to me</h2>
+      {{form:contact|Contact page}}
+    </div>
+  </div>
+</section>

@@ -1,219 +1,294 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F1501'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='17' fill='%23F5F5F0'%3ELS%3C/text%3E%3Cstyle%3E@media(prefers-color-scheme:dark){rect{fill:%23EAE5DA}text{fill:%231F1501}}%3C/style%3E%3C/svg%3E">
-  <meta name="description" content="SEO eksperts Adriāns dalās ar savu pirmo lielo kļūdu - URL pārveidošanu, kas noveda pie 404 lapām un zaudētas naudas. Uzzini, kā no tā izvairīties un kādi ir 3 svarīgākie SEO pamati.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta property="og:locale" content="lv_LV"><meta property="og:type" content="article">
-  <meta property="og:title" content="Mana pirmā SEO kļūda un 3 mācības, ko es no tās ieguvu | LatSEO Blog">
-  <meta property="og:description" content="SEO eksperts Adriāns dalās ar savu pirmo lielo kļūdu - URL pārveidošanu, kas noveda pie 404 lapām un zaudētas naudas. Uzzini, kā no tā izvairīties un kādi ir 3 svarīgākie SEO pamati.">
-  <meta property="og:url" content="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/">
-  <meta property="og:image" content="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mana pirmā SEO kļūda un ko es no tās iemācījos | LatSEO</title>
+  <meta name="description" content="URL maiņa, kas 4 dienas sūtīja Google reklāmas uz 404 lapu. Ko no tā iemācījos un kā tagad strādāju ar Search Console, E-E-A-T un AI Overview.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/">
   <link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/">
   <link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/">
   <link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/">
-  <title>Mana pirmā SEO kļūda un 3 mācības, ko es no tās ieguvu | LatSEO Blog</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"></noscript>
-  <link rel="stylesheet" href="/css/style.css">
-  <style>
-    .blog-content h2 { font-size:clamp(1.3rem,3vw,1.7rem); margin-top:var(--sp-xl); margin-bottom:var(--sp-md); }
-    .blog-content h3 { font-size:clamp(1.1rem,2.5vw,1.4rem); margin-top:var(--sp-lg); margin-bottom:var(--sp-sm); }
-    .blog-content h4 { font-size:clamp(1rem,2vw,1.2rem); margin-top:var(--sp-md); margin-bottom:var(--sp-xs); }
-    .blog-content p { margin-bottom:var(--sp-md); }
-    .blog-content ul, .blog-content ol { margin-bottom:var(--sp-lg); padding-left:1.2em; }
-    .blog-content li { margin-bottom:var(--sp-sm); }
-  </style>
-  <meta name="date" content="2026-08-05">
-  <meta name="author" content="Adrians Stankevičs, Baltic SEO, SIA">
+  <meta property="og:locale" content="lv_LV">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="LatSEO">
+  <meta property="og:title" content="Mana pirmā SEO kļūda un ko es no tās iemācījos | LatSEO">
+  <meta property="og:description" content="URL maiņa, kas 4 dienas sūtīja Google reklāmas uz 404 lapu. Ko no tā iemācījos un kā tagad strādāju ar Search Console, E-E-A-T un AI Overview.">
+  <meta property="og:url" content="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/">
+  <meta property="og:image" content="https://latseo.com/assets/covers/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#F6F4EE">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=2026-10-23">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "ProfessionalService",
+    "LocalBusiness"
+   ],
+   "@id": "https://latseo.com/#org",
+   "name": "LatSEO",
+   "legalName": "Baltic SEO, SIA",
+   "url": "https://latseo.com/",
+   "logo": "https://latseo.com/assets/images/latseo-logo.png",
+   "image": "https://latseo.com/assets/images/og-latseo.jpg",
+   "description": "Mājaslapu izstrāde ar iebūvētu SEO un SEO pakalpojumi Rīgā.",
+   "taxID": "40203749304",
+   "vatID": "LV40203749304",
+   "telephone": "+37124424434",
+   "email": "sales@latseo.com",
+   "priceRange": "€€",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kārklu iela 4, Odukalns",
+    "addressLocality": "Ķekavas novads",
+    "postalCode": "LV-2123",
+    "addressCountry": "LV"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Rīga"
+    },
+    {
+     "@type": "Country",
+     "name": "Latvija"
+    }
+   ],
+   "founder": {
+    "@id": "https://latseo.com/#adrians"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/company/latseo"
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://latseo.com/#adrians",
+   "name": "Adrians Stankevičs",
+   "jobTitle": "Mājaslapu izstrādātājs un SEO speciālists",
+   "url": "https://latseo.com/par-mani/",
+   "image": "https://latseo.com/assets/images/adrians-stankevics.jpg",
+   "worksFor": {
+    "@id": "https://latseo.com/#org"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/in/adrians-stankevics/"
+   ],
+   "description": "Mājaslapu izstrādātājs un SEO speciālists Rīgā, 2 gadu pieredze SEO un mājaslapu izstrādē, Bratus oficiālais IT partneris.",
+   "knowsAbout": [
+    "Mājaslapu izstrāde",
+    "SEO",
+    "Tehniskais SEO",
+    "Lokālais SEO",
+    "Google Search Console",
+    "WordPress",
+    "Shopify"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://latseo.com/#website",
+   "url": "https://latseo.com/",
+   "name": "LatSEO",
+   "inLanguage": [
+    "lv",
+    "en"
+   ],
+   "publisher": {
+    "@id": "https://latseo.com/#org"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Sākums",
+     "item": "https://latseo.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blogs",
+     "item": "https://latseo.com/blogs/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Mana pirmā SEO kļūda un mācības, ko no tās ieguvu",
+     "item": "https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/"
+    }
+   ],
+   "@id": "https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/#breadcrumb"
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/#webpage",
+   "url": "https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/",
+   "name": "Mana pirmā SEO kļūda un ko es no tās iemācījos | LatSEO",
+   "description": "URL maiņa, kas 4 dienas sūtīja Google reklāmas uz 404 lapu. Ko no tā iemācījos un kā tagad strādāju ar Search Console, E-E-A-T un AI Overview.",
+   "inLanguage": "lv",
+   "isPartOf": {
+    "@id": "https://latseo.com/#website"
+   },
+   "about": {
+    "@id": "https://latseo.com/#org"
+   },
+   "dateModified": "2026-10-23",
+   "breadcrumb": {
+    "@id": "https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/#breadcrumb"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/#article",
+   "headline": "Mana pirmā SEO kļūda un mācības, ko no tās ieguvu",
+   "description": "URL maiņa, kas 4 dienas sūtīja Google reklāmas uz 404 lapu. Ko no tā iemācījos un kā tagad strādāju ar Search Console, E-E-A-T un AI Overview.",
+   "image": "https://latseo.com/assets/covers/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem.jpg",
+   "datePublished": "2026-08-05",
+   "dateModified": "2026-10-23",
+   "author": {
+    "@id": "https://latseo.com/#adrians"
+   },
+   "publisher": {
+    "@id": "https://latseo.com/#org"
+   },
+   "inLanguage": "lv",
+   "mainEntityOfPage": {
+    "@id": "https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/#webpage"
+   },
+   "wordCount": 759,
+   "articleSection": "SEO pamati"
+  }
+ ]
+}
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MF7Q1R9722');gtag('config','AW-18351723640');</script>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xx3mt1i3hw");
-  </script>
+  <script>(function(){var d=false;function l(){if(d)return;d=true;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","xx3mt1i3hw");}['scroll','pointerdown','keydown','touchstart'].forEach(function(e){addEventListener(e,l,{once:true,passive:true});});setTimeout(l,4000);})();</script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Pāriet uz saturu</a>
-  <!-- SITE-HEADER:START -->
-  <header class="site-header" role="banner">
-    <div class="header__inner">
-      <a href="/" class="header__logo" aria-label="LatSEO - Uz sākumlapu">
-        <img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44">
-      </a>
+<a href="#main-content" class="skip-link">Pāriet uz saturu</a>
+<header class="site-header" role="banner">
+  <div class="header__inner">
+    <a href="/" class="header__logo" aria-label="LatSEO — uz sākumlapu"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40"></a>
+    <nav class="header__nav" aria-label="Galvenā navigācija">
+      <ul class="header__nav-list"><li><a href="/majaslapas-izstrade/" class="header__nav-link">Mājaslapu izstrāde</a></li><li class="header__dropdown"><span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true">SEO pakalpojumi <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span></span><div class="header__dropdown-menu"><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a><a href="/tehniskais-seo/">Tehniskais SEO un audits</a><a href="/lokalais-seo/">Lokālais SEO</a><a href="/satura-strategija/">Satura stratēģija</a><a href="/saisu-veidosana/">Saišu veidošana</a></div></li><li><a href="/pakalpojumi-un-cenas/" class="header__nav-link">Cenas</a></li><li><a href="/projekti/" class="header__nav-link">Projekti</a></li><li><a href="/blogs/" class="header__nav-link">Blogs</a></li><li><a href="/par-mani/" class="header__nav-link">Par mani</a></li><li><a href="/kontakti/" class="header__nav-link">Kontakti</a></li></ul>
+      <div class="header__lang-switch" role="group" aria-label="Valoda"><a href="/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/" class="header__lang-btn header__lang-btn--active" hreflang="lv" lang="lv" aria-current="true">LV</a><a href="/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/" class="header__lang-btn" hreflang="en" lang="en">EN</a></div>
+      <a href="/majaslapas-izstrade/#kalkulators" class="header__cta">Aprēķināt cenu <span class="arrow" aria-hidden="true">→</span></a>
+    </nav>
+    <button class="header__mobile-toggle" aria-label="Atvērt izvēlni" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="header__mobile-menu" id="mobile-menu" aria-label="Mobilā navigācija">
+    <a href="/">Sākums</a><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a><a href="/tehniskais-seo/">Tehniskais SEO un audits</a><a href="/lokalais-seo/">Lokālais SEO</a><a href="/pakalpojumi-un-cenas/">Cenas</a><a href="/projekti/">Projekti</a><a href="/blogs/">Blogs</a><a href="/par-mani/">Par mani</a><a href="/kontakti/">Kontakti</a>
+    <a href="/majaslapas-izstrade/#kalkulators" class="btn btn--primary">Aprēķināt mājaslapas cenu</a>
+    <div class="header__mobile-lang"><a href="/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/" class="header__lang-btn header__lang-btn--active" hreflang="lv" lang="lv" aria-current="true">LV</a><a href="/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/" class="header__lang-btn" hreflang="en" lang="en">EN</a></div>
+  </div>
+</header>
+<main id="main-content">
+<article>
+<header class="article-head container">
+  <nav class="breadcrumbs" aria-label="Ceļš"><a href="/">Sākums</a><span aria-hidden="true">/</span><a href="/blogs/">Blogs</a><span aria-hidden="true">/</span><span aria-current="page">Mana pirmā SEO kļūda un mācības, ko no tās ieguvu</span></nav>
+  <p class="eyebrow">SEO pamati</p>
+  <h1>Mana pirmā SEO kļūda un mācības, ko no tās ieguvu</h1>
+  <p class="article-meta"><span>Autors: <a href="/par-mani/">Adrians Stankevičs</a></span><span>Publicēts: <time datetime="2026-08-05">2026. gada 5. augusts</time></span><span>Atjaunināts: <time datetime="2026-10-23">2026. gada 23. oktobris</time></span><span>4 min lasīšanai</span></p>
+</header>
+<div class="container"><img class="article-cover" src="/assets/covers/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem.jpg" alt="Mana pirmā SEO kļūda un mācības, ko no tās ieguvu" width="1200" height="630"></div>
+<div class="container article-layout">
+  <div class="article-body">
+<p class="lead">Mana pirmā lielā SEO kļūda bija URL maiņa, pēc kuras Google reklāmas četras dienas veda uz 404 lapu. No tās iemācījos pārbaudīt visu, kas ir saistīts ar veco adresi, pirms kaut ko maināt. Šajā rakstā dalos ar šo un citām mācībām no pirmajiem diviem darba gadiem SEO.</p>
 
-      <nav class="header__nav" role="navigation" aria-label="Galvenā navigācija">
-        <ul class="header__nav-list">
-          <li><a href="/majaslapas-izstrade/" class="header__nav-link">Mājaslapu izstrāde</a></li>
-          <li class="header__dropdown">
-            <span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              SEO pakalpojumi
-              <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span>
-            </span>
-            <div class="header__dropdown-menu">
-              <a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a>
-              <a href="/tehniskais-seo/">Tehniskais SEO un audits</a>
-              <a href="/lokalais-seo/">Lokālais SEO</a>
-              <a href="/satura-strategija/">Satura stratēģija</a>
-              <a href="/saisu-veidosana/">Saišu veidošana</a>
-            </div>
-          </li>
-          <li><a href="/pakalpojumi-un-cenas/" class="header__nav-link">Cenas</a></li>
-          <li><a href="/projekti/" class="header__nav-link">Projekti</a></li>
-          <li><a href="/blogs/" class="header__nav-link">Blogs</a></li>
-          <li><a href="/kontakti/" class="header__nav-link">Kontakti</a></li>
-        </ul>
+<h2 id="url-maina-un-404">Kā URL maiņa man izmaksāja reklāmas budžetu</h2>
+<p>Es pārveidoju mājaslapas URL struktūru, bet neievēroju, ka uz vecajām adresēm joprojām veda Google reklāmas. Pēc izmaiņām visas reklāmas sūtīja cilvēkus uz 404 lapu. Cilvēki klikšķināja, bet redzēja tikai kļūdas paziņojumu.</p>
+<p>Pagāja četras dienas, līdz sapratu, kas noticis. Visu šo laiku par klikšķiem tika maksāts, un šo reklāmas budžetu es zaudēju.</p>
+<p>Galvenā mācība: pirms maināt URL, pārbaudiet, kas uz veco adresi norāda. Tās var būt reklāmas, iekšējās saites, e-pasta kampaņas vai saites citās vietnēs. Vecā adrese ar 301 pāradresāciju jānovirza uz jauno, lai ne cilvēki, ne Google nenonāktu 404 lapā.</p>
 
-        <div class="header__lang-switch" role="group" aria-label="Valodas izvēle">
-          <a href="/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/" class="header__lang-btn header__lang-btn--active" aria-current="page">LV</a>
-          <a href="/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/" class="header__lang-btn" hreflang="en" lang="en">EN</a>
-        </div>
+<h2 id="parbaude-pirms-un-pec">Pirms jebkādām izmaiņām pārbaudu visu</h2>
+<p>Tagad pirms un pēc katras lielākas izmaiņas veicu pārbaudi. Tas attiecas ne tikai uz URL, bet arī uz saturu, meta tagiem un iekšējām saitēm. Vienkāršu <a href="/tehniskais-seo/">tehnisko pārbaudi</a> var izdarīt ar Screaming Frog, kas atrod saites uz neesošām lapām.</p>
+<p>Svarīgi ir arī saprast, kāpēc izmaiņas vispār vajadzīgas. Kad strādāju ar savu mājaslapu, sapratu, ka saturs ir pārāk informatīvs un neviens to nemeklē. Es pārveidoju saturu un SEO, un tikai tad parādījās plūsma. Pirmie organiskie apmeklētāji atnāca pēc pusotra mēneša.</p>
+<p>SEO prasa pacietību, bet ar pareizu pamatu rezultāti var parādīties arī ātrāk. Lazergriezeji.lv, kuru izstrādāju no nulles, mazāk nekā mēneša laikā sāka saņemt organiskos apmeklētājus un zvanus no cilvēkiem, kas interesējās par precēm.</p>
 
-        <a href="/majaslapas-izstrade/#kalkulators" class="header__cta">
-          Aprēķināt cenu
-          <span aria-hidden="true">→</span>
-        </a>
-      </nav>
+<h2 id="atslegvardi-ir-pamats">Atslēgvārdi ir pamats, bet ne viss</h2>
+<p>Otra mācība ir par atslēgvārdu izpēti. Izmantoju Google Keyword Planner, lai saprastu, ko cilvēki meklē un kur var konkurēt. Taču meklēšanas apjoms vien neko nepasaka. Svarīgāk ir saprast, ko Jūsu klients patiešām grib atrast.</p>
+<p>Mans pirmais klients bija uzņēmums, kurā iepriekš strādāju. Es viņiem veidoju mājaslapas un tā, darot praktisku darbu, iemācījos arī SEO. Tur sapratu, ka SEO nav tikai tehniska puse. Tas ir arī saturs, kas atbild uz cilvēku jautājumiem.</p>
+<p>Atslēgvārdi ir tikai sākums. Tikpat svarīga ir lapas struktūra, iekšējās saites un tas, cik viegli lietotājs atrod vajadzīgo. Kā to visu savienot vienā plānā, rakstīju lapā par <a href="/satura-strategija/">satura stratēģiju</a>.</p>
 
-      <button class="header__mobile-toggle" aria-label="Izvēlne" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+<h2 id="e-e-a-t">E-E-A-T: princips, ko sākumā ignorēju</h2>
+<p>Sākumā man šķita, ka pietiek ar labu saturu un atslēgvārdiem. E-E-A-T nozīmi novērtēju tikai vēlāk. Šis saīsinājums apzīmē pieredzi, ekspertīzi, autoritāti un uzticamību (Experience, Expertise, Authoritativeness, Trustworthiness).</p>
+<p>Google šos principus izmanto meklēšanas kvalitātes vērtētāju vadlīnijās (Search Quality Rater Guidelines), lai novērtētu, vai saturu veido cilvēki, kas zina, par ko runā. Tāpēc tagad to uzskatu par vienu no svarīgākajām lietām, pie kā strādāju klientu lapās.</p>
+<p>Praksē tas nozīmē skaidru informāciju par autoru un uzņēmumu, reālu pieredzi tekstā un precīzus faktus. Šajā blogā es tāpēc rakstu par saviem darbiem un kļūdām, nevis vispārīgu teoriju.</p>
 
-    <div class="header__mobile-menu" role="dialog" aria-label="Mobilā navigācija">
-      <a href="/">Sākums</a>
-      <a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a>
-      <a href="/seo-pakalpojumi-riga/">SEO pakalpojumi</a>
-      <a href="/tehniskais-seo/">Tehniskais SEO un audits</a>
-      <a href="/lokalais-seo/">Lokālais SEO</a>
-      <a href="/pakalpojumi-un-cenas/">Cenas</a>
-      <a href="/projekti/">Projekti</a>
-      <a href="/blogs/">Blogs</a>
-      <a href="/kontakti/">Kontakti</a>
-      <a href="/majaslapas-izstrade/#kalkulators" class="btn btn--primary">Aprēķināt cenu</a>
-      <div class="header__mobile-lang">
-        <a href="/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/" class="header__lang-btn header__lang-btn--active">LV</a>
-        <a href="/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/" class="header__lang-btn" hreflang="en" lang="en">EN</a>
+<h2 id="search-console-katru-ritu">Mans rīta rituāls ar Google Search Console</h2>
+<p>Katru rītu atveru Google Search Console. Mani vispirms interesē visas mājaslapas kopējie rezultāti, nevis viena atslēgvārda pozīcija. Search Console parāda, kā attīstās viss domēns: rādījumi, klikšķi un lapas, kas aug vai krīt.</p>
+<p>Atsevišķus atslēgvārdus pārbaudu tad, ja klientam tie ir svarīgi un mums ir nosprausti konkrēti mērķi. Šī ikdienas pārbaude palīdz ātri pamanīt izmaiņas un reaģēt, pirms problēma izaug.</p>
+
+<h2 id="ai-overview-un-geo">Pielāgošanās AI Overview</h2>
+<p>SEO pieeju mainu, kad mainās meklēšana. Pēdējo reizi tā notika, kad Google ieviesa AI Overview — mākslīgā intelekta ģenerētu kopsavilkumu virs parastajiem meklēšanas rezultātiem.</p>
+<p>Lai klientu lapas tur varētu parādīties, sāku tās optimizēt arī pēc GEO (Generative Engine Optimization) principiem. Tas nozīmē, ka lapā ir skaidras, īsas atbildes uz konkrētiem jautājumiem, ko mākslīgais intelekts var saprast un izmantot. Šī raksta ievads ir veidots tieši tā.</p>
+
+<h2 id="seo-un-pieteikumi">SEO palīdz iegūt kvalitatīvus pieteikumus</h2>
+<p>Man svarīgākais SEO ieguvums nav pozīcijas pašas par sevi. Tas ir kvalitatīvi pieteikumi no cilvēkiem, kas jau meklē Jūsu pakalpojumu.</p>
+<p>Kad redzat, kuras lapas atved visvairāk pieteikumu, varat pieņemt pārdomātākus lēmumus par budžetu un saturu. Lapām, kas strādā, var veltīt vairāk laika, bet lapas, kas nedod rezultātu, pārskatīt.</p>
+
+<h2 id="ko-daru-tagad">Ko daru tagad, lai kļūdas neatkārtotos</h2>
+<ul>
+<li>Pirms URL maiņas pārbaudu, vai uz veco adresi neved reklāmas vai citas saites, un iestatu pāradresāciju.</li>
+<li>Pirms un pēc izmaiņām pārbaudu URL, meta tagus, iekšējās saites un saturu.</li>
+<li>Katru rītu skatos Google Search Console.</li>
+<li>Saturā parādu reālu pieredzi un faktus, lai stiprinātu E-E-A-T.</li>
+<li>Lapas veidoju tā, lai tās būtu saprotamas gan Google, gan AI Overview.</li>
+</ul>
+<p>SEO nav uzdevums, ko var uzstādīt un aizmirst. Tas ir jāuzrauga, jāanalizē un jāuzlabo.</p>
+
+<h2 id="nakamais-solis">Nākamais solis</h2>
+<p>Ja vēlaties zināt, vai Jūsu mājaslapā nav līdzīgu kļūdu, piesakiet <a href="/bezmaksas-audits/">bezmaksas video auditu</a>. To ierakstu pats un nosūtu 24 stundu laikā, un pēc tam varat izlemt, vai vēlaties turpināt ar <a href="/seo-pakalpojumi-riga/">SEO pakalpojumiem</a>.</p>
+    <div class="author-box"><img src="/assets/images/adrians-stankevics.webp" alt="Adrians Stankevičs" width="64" height="64" loading="lazy"><div><strong>Adrians Stankevičs</strong><p>Izstrādā mājaslapas ar iebūvētu SEO un strādā ar SEO esošām mājaslapām. 2 gadu pieredze SEO un mājaslapu izstrādē. <a href="/par-mani/">Par mani</a> · <a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a></p></div></div>
+  </div>
+  <aside class="article-aside" aria-label="Papildinformācija">
+    <div class="aside-card"><p class="aside-card__title">Saturs</p><ol class="toc"><li><a href="#url-maina-un-404">Kā URL maiņa man izmaksāja reklāmas budžetu</a></li><li><a href="#parbaude-pirms-un-pec">Pirms jebkādām izmaiņām pārbaudu visu</a></li><li><a href="#atslegvardi-ir-pamats">Atslēgvārdi ir pamats, bet ne viss</a></li><li><a href="#e-e-a-t">E-E-A-T: princips, ko sākumā ignorēju</a></li><li><a href="#search-console-katru-ritu">Mans rīta rituāls ar Google Search Console</a></li><li><a href="#ai-overview-un-geo">Pielāgošanās AI Overview</a></li><li><a href="#seo-un-pieteikumi">SEO palīdz iegūt kvalitatīvus pieteikumus</a></li><li><a href="#ko-daru-tagad">Ko daru tagad, lai kļūdas neatkārtotos</a></li><li><a href="#nakamais-solis">Nākamais solis</a></li></ol></div>
+    <div class="aside-card aside-card--ink"><p class="aside-card__title">Bezmaksas video audits</p><p>Personalizēts ekrāna ieraksts par Jūsu mājaslapas SEO 24 stundu laikā. Bez saistībām.</p><a class="btn btn--primary" href="/bezmaksas-audits/">Pieteikt auditu</a></div>
+  </aside>
+</div>
+</article>
+<section class="section section--muted"><div class="container"><h2 class="section__title">Citi raksti</h2><div class="blog-grid"><a class="post-card" href="/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/"><img class="post-card__cover" src="/assets/covers/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">Tehniskais SEO · 2026. gada 8. augusts</span><span class="post-card__title">Kāpēc indeksācija ir pirmais SEO solis, ko nedrīkst ignorēt</span><span class="post-card__excerpt">Ja Google nav indeksējis Jūsu lapu, to neatradīs neviens. Skaidroju, kas ir indeksācija, kāpēc lapas pazūd no indeksa un kā paātrināt indeksāciju.</span><span class="post-card__more">Lasīt rakstu →</span></span></a><a class="post-card" href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"><img class="post-card__cover" src="/assets/covers/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">SEO pamati · 2026. gada 6. augusts</span><span class="post-card__title">Video audits: kāpēc vispirms skatos title un description, nevis rīkus</span><span class="post-card__excerpt">Ko es pārbaudu katrā SEO video auditā un kāpēc sāku ar title un meta description, nevis rīkiem. Ko Jūs varat pārbaudīt pats un kas jāpaskaidro dziļāk.</span><span class="post-card__more">Lasīt rakstu →</span></span></a><a class="post-card" href="/blogs/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam/"><img class="post-card__cover" src="/assets/covers/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">SEO pamati · 2026. gada 3. augusts</span><span class="post-card__title">Kāpēc SEO nav tikai atslēgvārdi: mana pirmā projekta mācība</span><span class="post-card__excerpt">Kāpēc ar atslēgvārdiem vien SEO nedarbojas? Dalos pieredzē no sava pirmā projekta: tehniskais SEO, satura kvalitāte (E-E-A-T) un redzamība MI rīkos (GEO).</span><span class="post-card__more">Lasīt rakstu →</span></span></a></div></div></section>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="/" class="header__logo" aria-label="LatSEO"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40" loading="lazy"></a>
+        <p class="footer__brand-text">Mājaslapu izstrāde ar iebūvētu SEO un SEO pakalpojumi esošām mājaslapām. Rīga un visa Latvija.</p>
+        <p class="footer__legal">Baltic SEO, SIA · Reģ. nr. 40203749304<br>PVN: LV40203749304<br>Kārklu iela 4, Odukalns, Ķekavas nov., LV-2123</p>
+      </div>
+      <div><div class="footer__heading">Mājaslapas</div><ul class="footer__links"><li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a></li><li><a href="/majaslapas-izstrade/#kalkulators">Cenu kalkulators</a></li><li><a href="/blogs/cik-maksa-majaslapa/">Cik maksā mājaslapa</a></li><li><a href="/projekti/">Projekti</a></li></ul></div><div><div class="footer__heading">SEO</div><ul class="footer__links"><li><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a></li><li><a href="/tehniskais-seo/">Tehniskais SEO un audits</a></li><li><a href="/lokalais-seo/">Lokālais SEO</a></li><li><a href="/bezmaksas-audits/">Bezmaksas video audits</a></li><li><a href="/pakalpojumi-un-cenas/">Cenas</a></li></ul></div>
+      <div>
+        <div class="footer__heading">Saziņa</div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+37124424434">+371 24424434</a></div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:sales@latseo.com">sales@latseo.com</a></div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a></div>
+        <ul class="footer__links footer__links--more"><li><a href="/par-mani/">Par mani</a></li><li><a href="/kontakti/">Kontakti</a></li></ul>
       </div>
     </div>
-  </header>
-  <!-- SITE-HEADER:END -->
-  <main id="main-content"><article class="section section--light" style="padding-top:calc(var(--header-height) + var(--sp-2xl))"><div class="container" style="max-width:800px;margin:0 auto">
-    <nav style="margin-bottom:var(--sp-lg);font-size:var(--fs-sm);color:var(--clr-text-muted)"><a href="/" style="color:var(--clr-text-muted);text-decoration:none">Sākums</a> &rsaquo; <a href="/blogs/" style="color:var(--clr-text-muted);text-decoration:none">Blogs</a> &rsaquo; <span style="color:var(--clr-text-secondary)">Mana pirmā SEO kļūda un 3 mācības, ko es no tās ieguvu</span></nav>
-    <div style="font-size:var(--fs-xs);color:var(--clr-accent-text);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:var(--sp-sm)">SEO Pamati &bull; 2026. gada 5. augusts</div>
-    <h1 class="section__title" style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:var(--sp-lg)">Mana pirmā SEO kļūda un 3 mācības, ko es no tās ieguvu</h1>
-    <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-xl);font-size:var(--fs-sm);color:var(--clr-text-secondary)"><span>Autors: <strong>Adrians Stankevičs</strong></span><span>&bull;</span><span>~3 min lasīšanai</span></div>
-    <figure style="margin-bottom:var(--sp-xl)"><img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg" alt="SEO kļūda URL pārveidošana 404 lapa" style="width:100%;height:auto;border-radius:var(--br-lg)" loading="eager"><figcaption style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-align:center;margin-top:var(--sp-xs)">SEO kļūda URL pārveidošana 404 lapa</figcaption></figure>
-    <div class="blog-content" style="font-size:var(--fs-base);line-height:1.8;color:var(--clr-text-primary)"><h2>Kā es zaudēju naudu 4 dienās un ko tas man iemācīja</h2>
-
-<p>Katram SEO speciālistam ir tā kļūda, kuru viņš atceras vēl gadiem ilgi. Manējā ir URL pārveidošana. Izklausās vienkārši, vai ne? Bet šī viena kļūda man izmaksāja 4 dienas un diezgan lielu summu Google Ads budžetā.</p>
-
-<p>Es pārveidoju mājaslapas URL struktūru, bet aizmirsu par sarkanajiem pavedieniem, kas savienoja reklāmas ar vecajām lapām. Rezultātā visas Google reklāmas tika pārvirzītas uz 404 lapu. Cilvēki klikšķināja, bet neredzēja neko citu kā kļūdas paziņojumu. Nauda, ko tērēju klikšķiem, vienkārši iztvaikoja.</p>
-
-<p>Un tieši tāpēc es šodien gribu padalīties ar trim mācībām, kuras šī kļūda man iemācīja un kuras es izmantoju katru dienu savā darbā LatSEO.</p>
-
-<h2>Mācība #1: Pirms jebkādām izmaiņām, pārbaudi visu trīs reizes</h2>
-
-<p>Pirmais, ko es iemācījos, ir elementāra pārbaude. Pirms maināt URL, jums ir jāpārliecinās, ka viss darbojas. Es tagad vienmēr veicu pilnu auditu pirms un pēc izmaiņām. Un tas attiecas ne tikai uz URL, bet arī uz saturu, meta tagiem un iekšējām saitēm.</p>
-
-<p>Bet ar to viss nebeidzas. Vēl svarīgāk ir saprast, kāpēc jūs vispār veicat izmaiņas. Piemēram, kad es strādāju ar savu mājaslapu, es sapratu, ka saturs ir pārāk informatīvs un neviens to nemeklē. Es izmainīju saturu un SEO, un tikai tad plūsma sāka parādīties. Pirmie organiskie apmeklētāji atnāca tikai pēc pusotra mēneša.</p>
-
-<p>Lūk, ko es no tā iemācījos: SEO nav ātrs process. Tas prasa pacietību un stratēģisku pieeju. Bet, ja jūs visu darāt pareizi, rezultāti nāk. Piemēram, mans klients lazergriezeji.lv jau pēc mazāk kā mēneša saņem organiskos apmeklētājus un zvanus no cilvēkiem, kuri interesējas par precēm.</p>
-
-<h2>Mācība #2: Atslēgvārdi ir pamats, bet ne viss</h2>
-
-<p>Otra lieta, ko es iemācījos, ir atslēgvārdu izpēte. Es izmantoju Google Keyword Planner, lai saprastu, kurus atslēgvārdus cilvēki visvairāk meklē un kā es varu konkurēt. Bet tas nav tikai par meklēšanas apjomu. Tas ir par sapratni, ko jūsu mērķauditorija patiešām vēlas.</p>
-
-<p>Kad es sāku strādāt ar savu pirmo klientu, uzņēmumu, kurā es iepriekš strādāju, es sapratu, ka SEO nav tikai par tehnisko pusi. Tas ir par saturu, kas atbild uz cilvēku jautājumiem un risina viņu problēmas. Es viņiem taisīju mājaslapas un tādā dabīgā veidā iemācījos arī par SEO.</p>
-
-<p>Vēl vairāk - es sapratu, ka atslēgvārdi ir tikai sākums. Jums ir jādomā par visu lapas struktūru, iekšējām saitēm un lietotāja pieredzi. Tas viss kopā veido veiksmīgu SEO stratēģiju. Ja jums nepieciešama palīdzība ar to, mūsu <a href="/pakalpojumi-un-cenas/">SEO pakalpojumi</a> var būt tieši tas, kas jums nepieciešams.</p>
-
-<h2>Mācība #3: EEAT ir vissvarīgākais faktors, ko es sākumā ignorēju</h2>
-
-<p>Trešā un, iespējams, vissvarīgākā mācība ir par EEAT. Sākumā es to ignorēju, bet tagad uzskatu, ka tas ir vissvarīgākais, kas varētu būt priekš ranking. EEAT nozīmē pieredze, ekspertīze, autoritatīvums un uzticamība. Google vēlas redzēt, ka jūsu saturu veido cilvēki, kuri zina, par ko runā.</p>
-
-<p>Bet kā to parādīt? Piemēram, manā blogā es dalos ar savu personīgo pieredzi un kļūdām. Tas parāda, ka es ne tikai runāju teorētiski, bet arī praktiski esmu to izmēģinājis. Google to novērtē, un jūsu lasītāji arī.</p>
-
-<p>Vēl viens veids, kā uzlabot EEAT, ir iegūt atsauksmes un atsauces no citiem ekspertiem. Ja jūs varat parādīt, ka jūsu saturs ir pārbaudīts un apstiprināts, tas palielina jūsu uzticamību. Un tas savukārt uzlabo jūsu rangu meklētājā.</p>
-
-<h2>Ko es daru tagad, lai izvairītos no kļūdām?</h2>
-
-<p>Tagad es vienmēr veicu pilnu SEO auditu pirms jebkādām izmaiņām. Es pārbaudu URL, meta tagus, iekšējās saites un saturu. Un es vienmēr domāju par EEAT - kā es varu parādīt savu ekspertīzi un uzticamību.</p>
-
-<p>Bet pats galvenais - es esmu iemācījies, ka SEO ir nepārtraukts process. Jūs nevarat vienkārši uzstādīt un aizmirst. Jums ir pastāvīgi jāuzrauga, jāanalizē un jāoptimizē. Un, ja jums nav laika vai resursu to darīt, mūsu <a href="/pakalpojumi-un-cenas/">SEO optimizācijas pakalpojumi</a> var palīdzēt jums sasniegt jūsu mērķus.</p>
-
-<p>Lūk, ko es no tā iemācījos: kļūdas ir neizbēgamas, bet tās ir arī lieliskas mācību iespējas. Galvenais ir no tām mācīties un nepieļaut tās atkal. Un, ja jums ir nepieciešama palīdzība ar jūsu SEO stratēģiju, nevilcinieties <a href="/kontakti/">sazināties ar mani</a>. Es labprāt padalīšos ar savu pieredzi un palīdzēšu jums izvairīties no manām kļūdām.</p></div>
-    <div style="margin-top:var(--sp-xl);padding:var(--sp-lg);background:var(--clr-bg-secondary);border-radius:var(--br-lg)"><h3 style="font-size:var(--fs-lg);margin-bottom:var(--sp-md)">Saistītie SEO pakalpojumi</h3>
-      <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-sm)">
-        <li><a href="/lokalais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📍 Lokālais SEO</a></li>
-        <li><a href="/tehniskais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">⚙️ Tehniskais SEO</a></li>
-        <li><a href="/satura-strategija/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📝 Satura stratēģija</a></li>
-        <li><a href="/pakalpojumi-un-cenas/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">💼 Visi pakalpojumi</a></li>
-      </ul></div>
-    <div style="margin-top:var(--sp-2xl);padding-top:var(--sp-lg);border-top:1px solid var(--clr-border)"><a href="/blogs/" class="service-card__link" style="font-size:var(--fs-base)">&larr; Atpakaļ uz blogu</a></div>
-  </div></article></main>
-  <!-- SITE-FOOTER:START -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <a href="/" class="header__logo" aria-label="LatSEO">
-            <img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44" loading="lazy">
-          </a>
-          <p class="footer__brand-text">Mājaslapu izstrāde ar iebūvētu SEO un SEO pakalpojumi Rīgā.</p>
-          <p style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-top:var(--sp-sm);line-height:1.6">
-            Baltic SEO, SIA &middot; Reģ. nr. 40203749304<br>
-            PVN: LV40203749304<br>
-            Kārklu iela 4, Odukalns, Ķekavas nov., LV-2123
-          </p>
-        </div>
-
-        <div>
-          <div class="footer__heading">Mājaslapu izstrāde</div>
-          <ul class="footer__links">
-            <li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a></li>
-            <li><a href="/majaslapas-izstrade/#kalkulators">Cenu kalkulators</a></li>
-            <li><a href="/projekti/">Projekti</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer__heading">SEO pakalpojumi</div>
-          <ul class="footer__links">
-            <li><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a></li>
-            <li><a href="/tehniskais-seo/">Tehniskais SEO un audits</a></li>
-            <li><a href="/lokalais-seo/">Lokālais SEO</a></li>
-            <li><a href="/bezmaksas-audits/">Bezmaksas video audits</a></li>
-            <li><a href="/pakalpojumi-un-cenas/">Cenas</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer__heading">Saziņa</div>
-          <div class="footer__contact-item">
-            <svg class="footer__contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:sales@latseo.com">sales@latseo.com</a>
-          </div>
-          <div class="footer__contact-item">
-            <svg class="footer__contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+37124424434">+371 24424434</a>
-          </div>
-          <div class="footer__contact-item">
-            <svg class="footer__contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            <a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; 2026 LatSEO. Visas tiesības aizsargātas.</p>
-      </div>
-    </div>
-  </footer>
-  <!-- SITE-FOOTER:END -->
-  <script src="/js/main.js" defer></script>
-  <button class="scroll-top" aria-label="Uz augšu">↑</button>
-</body></html>
+    <div class="footer__bottom"><p>© 2026 LatSEO · Baltic SEO, SIA</p><p>Cenas norādītas bez PVN.</p></div>
+  </div>
+</footer>
+<div class="floating-ctas" aria-label="Ātrā saziņa">
+  <a href="tel:+37124424434" class="floating-cta floating-cta--call" aria-label="Zvanīt +371 24424434"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="floating-cta__label">Zvanīt</span></a>
+  <a href="https://wa.me/37124424434" class="floating-cta floating-cta--whatsapp" aria-label="Rakstīt WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span class="floating-cta__label">WhatsApp</span></a>
+</div>
+<script src="/js/main.js?v=2026-10-23" defer></script>
+</body>
+</html>

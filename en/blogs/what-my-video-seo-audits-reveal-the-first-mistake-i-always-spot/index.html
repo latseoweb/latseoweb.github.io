@@ -1,129 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F1501'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='17' fill='%23F5F5F0'%3ELS%3C/text%3E%3Cstyle%3E@media(prefers-color-scheme:dark){rect{fill:%23EAE5DA}text{fill:%231F1501}}%3C/style%3E%3C/svg%3E">
-  <meta name="description" content="LatSEO's Adrians shares what he finds in video SEO audits - from unoptimized meta titles to keyword strength issues that tools simply can't detect.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta property="og:locale" content="en_US"><meta property="og:type" content="article">
-  <meta property="og:title" content="What My Video SEO Audits Reveal: The First Mistake I Always Spot | LatSEO Blog">
-  <meta property="og:description" content="LatSEO's Adrians shares what he finds in video SEO audits - from unoptimized meta titles to keyword strength issues that tools simply can't detect.">
-  <meta property="og:url" content="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/">
-  <meta property="og:image" content="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What I Check in a Video SEO Audit and Why | LatSEO</title>
+  <meta name="description" content="What I check in every video SEO audit and why I start with the title and meta description, not tools. What you can check yourself and what needs a deeper look.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/">
   <link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/">
   <link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/">
   <link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/">
-  <title>What My Video SEO Audits Reveal: The First Mistake I Always Spot | LatSEO Blog</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../../css/style.css">
-  <style>
-    .blog-content h2 { font-size:clamp(1.3rem,3vw,1.7rem); margin-top:var(--sp-xl); margin-bottom:var(--sp-md); }
-    .blog-content h3 { font-size:clamp(1.1rem,2.5vw,1.4rem); margin-top:var(--sp-lg); margin-bottom:var(--sp-sm); }
-    .blog-content h4 { font-size:clamp(1rem,2vw,1.2rem); margin-top:var(--sp-md); margin-bottom:var(--sp-xs); }
-    .blog-content p { margin-bottom:var(--sp-md); }
-    .blog-content ul, .blog-content ol { margin-bottom:var(--sp-lg); padding-left:1.2em; }
-    .blog-content li { margin-bottom:var(--sp-sm); }
-  </style>
-  <meta name="date" content="2026-08-06">
-  <meta name="author" content="Adrians Stankevics, Baltic SEO, SIA">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="LatSEO">
+  <meta property="og:title" content="What I Check in a Video SEO Audit and Why | LatSEO">
+  <meta property="og:description" content="What I check in every video SEO audit and why I start with the title and meta description, not tools. What you can check yourself and what needs a deeper look.">
+  <meta property="og:url" content="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/">
+  <meta property="og:image" content="https://latseo.com/assets/covers/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#F6F4EE">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=2026-10-23">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "ProfessionalService",
+    "LocalBusiness"
+   ],
+   "@id": "https://latseo.com/#org",
+   "name": "LatSEO",
+   "legalName": "Baltic SEO, SIA",
+   "url": "https://latseo.com/",
+   "logo": "https://latseo.com/assets/images/latseo-logo.png",
+   "image": "https://latseo.com/assets/images/og-latseo.jpg",
+   "description": "Website development with built-in SEO, and SEO services in Riga, Latvia.",
+   "taxID": "40203749304",
+   "vatID": "LV40203749304",
+   "telephone": "+37124424434",
+   "email": "sales@latseo.com",
+   "priceRange": "€€",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kārklu iela 4, Odukalns",
+    "addressLocality": "Ķekavas novads",
+    "postalCode": "LV-2123",
+    "addressCountry": "LV"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Riga"
+    },
+    {
+     "@type": "Country",
+     "name": "Latvia"
+    }
+   ],
+   "founder": {
+    "@id": "https://latseo.com/#adrians"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/company/latseo"
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://latseo.com/#adrians",
+   "name": "Adrians Stankevičs",
+   "jobTitle": "Web developer and SEO specialist",
+   "url": "https://latseo.com/en/par-mani/",
+   "image": "https://latseo.com/assets/images/adrians-stankevics.jpg",
+   "worksFor": {
+    "@id": "https://latseo.com/#org"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/in/adrians-stankevics/"
+   ],
+   "description": "Web developer and SEO specialist in Riga with 2 years of experience in SEO and web development; official IT partner of Bratus.",
+   "knowsAbout": [
+    "Website development",
+    "SEO",
+    "Technical SEO",
+    "Local SEO",
+    "Google Search Console",
+    "WordPress",
+    "Shopify"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://latseo.com/#website",
+   "url": "https://latseo.com/",
+   "name": "LatSEO",
+   "inLanguage": [
+    "lv",
+    "en"
+   ],
+   "publisher": {
+    "@id": "https://latseo.com/#org"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://latseo.com/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://latseo.com/en/blogs/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Video audit: why I look at the title and description first, not the tools",
+     "item": "https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/"
+    }
+   ],
+   "@id": "https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/#breadcrumb"
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/#webpage",
+   "url": "https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/",
+   "name": "What I Check in a Video SEO Audit and Why | LatSEO",
+   "description": "What I check in every video SEO audit and why I start with the title and meta description, not tools. What you can check yourself and what needs a deeper look.",
+   "inLanguage": "en",
+   "isPartOf": {
+    "@id": "https://latseo.com/#website"
+   },
+   "about": {
+    "@id": "https://latseo.com/#org"
+   },
+   "dateModified": "2026-10-23",
+   "breadcrumb": {
+    "@id": "https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/#breadcrumb"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/#article",
+   "headline": "Video audit: why I look at the title and description first, not the tools",
+   "description": "What I check in every video SEO audit and why I start with the title and meta description, not tools. What you can check yourself and what needs a deeper look.",
+   "image": "https://latseo.com/assets/covers/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot.jpg",
+   "datePublished": "2026-08-06",
+   "dateModified": "2026-10-23",
+   "author": {
+    "@id": "https://latseo.com/#adrians"
+   },
+   "publisher": {
+    "@id": "https://latseo.com/#org"
+   },
+   "inLanguage": "en",
+   "mainEntityOfPage": {
+    "@id": "https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/#webpage"
+   },
+   "wordCount": 933,
+   "articleSection": "SEO basics"
+  }
+ ]
+}
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MF7Q1R9722');gtag('config','AW-18351723640');</script>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xx3mt1i3hw");
-  </script>
+  <script>(function(){var d=false;function l(){if(d)return;d=true;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","xx3mt1i3hw");}['scroll','pointerdown','keydown','touchstart'].forEach(function(e){addEventListener(e,l,{once:true,passive:true});});setTimeout(l,4000);})();</script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
-  <header class="site-header"><div class="header__inner">
-    <a href="/en/" class="header__logo"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44"></a>
-    <nav class="header__nav">
-      <ul class="header__nav-list">
-        <li><a href="/en/" class="header__nav-link">Home</a></li>
-        <li class="header__dropdown"><span class="header__dropdown-toggle" tabindex="0">Services & Pricing <span class="header__dropdown-toggle-icon">▾</span></span>
-          <div class="header__dropdown-menu">
-            <a href="/en/pakalpojumi-un-cenas/">Pakalpojumu cenas</a>
-            <a href="/en/majaslapas-izstrade/">Web Development</a>
-            <a href="/en/tehniskais-seo/">Technical SEO</a>
-            <a href="/en/lokalais-seo/">Local SEO</a>
-            <a href="/en/saisu-veidosana/">Link Building</a>
-            <a href="/en/satura-strategija/">Content Strategy</a>
-          </div></li>
-        <li><a href="/en/projekti/" class="header__nav-link">Projekti</a></li>
-        <li><a href="/en/blogs/" class="header__nav-link">Blog</a></li>
-        <li><a href="/en/kontakti/" class="header__nav-link">Kontakti</a></li>
-      </ul>
-      <div class="header__lang-switch">
-        <a href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/" class="header__lang-btn">LV</a>
-        <a href="/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/" class="header__lang-btn header__lang-btn--active" hreflang="en" lang="en">EN</a>
-      </div>
-      <a href="/en/kontakti/" class="header__cta">Free SEO Audit <span aria-hidden="true">→</span></a>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<header class="site-header" role="banner">
+  <div class="header__inner">
+    <a href="/en/" class="header__logo" aria-label="LatSEO — home"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40"></a>
+    <nav class="header__nav" aria-label="Main navigation">
+      <ul class="header__nav-list"><li><a href="/en/majaslapas-izstrade/" class="header__nav-link">Website development</a></li><li class="header__dropdown"><span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true">SEO services <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span></span><div class="header__dropdown-menu"><a href="/en/seo-pakalpojumi-riga/">SEO services in Riga</a><a href="/en/tehniskais-seo/">Technical SEO &amp; audit</a><a href="/en/lokalais-seo/">Local SEO</a><a href="/en/satura-strategija/">Content strategy</a><a href="/en/saisu-veidosana/">Link building</a></div></li><li><a href="/en/pakalpojumi-un-cenas/" class="header__nav-link">Pricing</a></li><li><a href="/en/projekti/" class="header__nav-link">Projects</a></li><li><a href="/en/blogs/" class="header__nav-link">Blog</a></li><li><a href="/en/par-mani/" class="header__nav-link">About</a></li><li><a href="/en/kontakti/" class="header__nav-link">Contact</a></li></ul>
+      <div class="header__lang-switch" role="group" aria-label="Language"><a href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/" class="header__lang-btn" hreflang="lv" lang="lv">LV</a><a href="/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/" class="header__lang-btn header__lang-btn--active" hreflang="en" lang="en" aria-current="true">EN</a></div>
+      <a href="/en/majaslapas-izstrade/#calculator" class="header__cta">Get a price <span class="arrow" aria-hidden="true">→</span></a>
     </nav>
-  </div></header>
-  <main id="main-content"><article class="section section--light" style="padding-top:calc(var(--header-height) + var(--sp-2xl))"><div class="container" style="max-width:800px;margin:0 auto">
-    <nav style="margin-bottom:var(--sp-lg);font-size:var(--fs-sm);color:var(--clr-text-muted)"><a href="/en/" style="color:var(--clr-text-muted);text-decoration:none">Home</a> &rsaquo; <a href="/en/blogs/" style="color:var(--clr-text-muted);text-decoration:none">Blog</a> &rsaquo; <span style="color:var(--clr-text-secondary)">What My Video SEO Audits Reveal: The First Mistake I Always Spot</span></nav>
-    <div style="font-size:var(--fs-xs);color:var(--clr-accent-text);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:var(--sp-sm)">SEO Pamati &bull; August 06, 2026</div>
-    <h1 class="section__title" style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:var(--sp-lg)">What My Video SEO Audits Reveal: The First Mistake I Always Spot</h1>
-    <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-xl);font-size:var(--fs-sm);color:var(--clr-text-secondary)"><span>Author: <strong>Adrians Stankevics</strong></span><span>&bull;</span><span>~3 min read</span></div>
-    <figure style="margin-bottom:var(--sp-xl)"><img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg" alt="SEO specialist recording video audit of website on computer screen" style="width:100%;height:auto;border-radius:var(--br-lg)" loading="eager"><figcaption style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-align:center;margin-top:var(--sp-xs)">SEO specialist recording video audit of website on computer screen</figcaption></figure>
-    <div class="blog-content" style="font-size:var(--fs-base);line-height:1.8;color:var(--clr-text-primary)"><h2>Why I Record Video Audits for Every Client</h2>
+    <button class="header__mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="header__mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="/en/">Home</a><a href="/en/majaslapas-izstrade/">Website development</a><a href="/en/seo-pakalpojumi-riga/">SEO services in Riga</a><a href="/en/tehniskais-seo/">Technical SEO &amp; audit</a><a href="/en/lokalais-seo/">Local SEO</a><a href="/en/pakalpojumi-un-cenas/">Pricing</a><a href="/en/projekti/">Projects</a><a href="/en/blogs/">Blog</a><a href="/en/par-mani/">About</a><a href="/en/kontakti/">Contact</a>
+    <a href="/en/majaslapas-izstrade/#calculator" class="btn btn--primary">Calculate your website price</a>
+    <div class="header__mobile-lang"><a href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/" class="header__lang-btn" hreflang="lv" lang="lv">LV</a><a href="/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/" class="header__lang-btn header__lang-btn--active" hreflang="en" lang="en" aria-current="true">EN</a></div>
+  </div>
+</header>
+<main id="main-content">
+<article>
+<header class="article-head container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">/</span><a href="/en/blogs/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Video audit: why I look at the title and description first, not the tools</span></nav>
+  <p class="eyebrow">SEO basics</p>
+  <h1>Video audit: why I look at the title and description first, not the tools</h1>
+  <p class="article-meta"><span>Author: <a href="/en/par-mani/">Adrians Stankevičs</a></span><span>Published: <time datetime="2026-08-06">6 August 2026</time></span><span>Updated: <time datetime="2026-10-23">23 October 2026</time></span><span>5 min read</span></p>
+</header>
+<div class="container"><img class="article-cover" src="/assets/covers/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot.jpg" alt="Video audit: why I look at the title and description first, not the tools" width="1200" height="630"></div>
+<div class="container article-layout">
+  <div class="article-body">
+<p class="lead">In every video SEO audit, I first check the page title and meta description, because they are SEO basics and are most often not optimised. After that I look at the technical elements and backlinks. In this article I explain what exactly I check, why tools do not show everything and what you can check yourself.</p>
 
-<p>I personally conduct video audits for all LatSEO clients and send them the recordings. This approach lets me show exactly what I see when I analyze a website - and it often reveals issues that would otherwise go unnoticed.</p>
+<h2 id="what-is-a-video-audit">What a video audit is and how I make it</h2>
+<p>I record video audits myself and send them to the client. I open your website, go through it, explain what I see and recommend what to improve. The audit is free, and I send it within 24 hours.</p>
+<p>I chose the video format because it lets me show a problem on screen and explain right away why it matters. You get my recommendations, not just an automatic tool report.</p>
+<p>A video audit is not a full technical audit. Its purpose is to show where the first and most obvious problems are, so that you can decide where to start.</p>
 
-<h2>The First Mistake I Always Spot: Meta Title and Description</h2>
+<h2 id="title-and-description">The first thing I notice: the title and meta description</h2>
+<p>The first thing I usually notice is an unoptimised meta title and description. The title is the page name that Google shows as the link in the search results. The meta description is the short description below it.</p>
+<p>If these elements are not in order, there are most likely problems elsewhere too. So I start with them and say how they could be improved.</p>
+<p>An example: if a fishing tackle store's title is “Labākās pīckas Latvijā” (using a colloquial word for fishing rods), it should be changed to “Labākās makšķeres Latvijā” (the standard word people actually search for) or a similar phrase. People search for the words they use themselves, and the title has to match them. A fix like this can be made right away.</p>
+<p>Google sometimes shows a different text snippet from the page instead of the meta description. Still, a well-written description with a clear offer gives people a reason to choose your link rather than the competitor's link next to it.</p>
 
-<p>The very first thing I notice in almost every audit is an unoptimized meta title and meta description. These are the absolute basics of SEO, yet so many websites get them wrong. I always point this out to clients and suggest concrete improvements.</p>
+<h2 id="keyword-relevance">Why tools do not show keyword relevance</h2>
+<p>Tools such as Ahrefs or Google Keyword Planner show a keyword's search volume and competition. They cannot directly assess whether a particular keyword really fits your page and your customers. This judgement is partly subjective.</p>
+<p>That is why I assess keyword relevance myself, based on my experience. Tools provide the data, but I provide the context and the recommendations on what to do with that data. For example, a title can be technically correct but use a keyword your customers do not search for. A tool will not flag that as an error, but I will notice it.</p>
 
-<p>For example, I might see a fishing tackle shop using a title like "Best Picks in Latvia" when it should clearly be "Best Fishing Rods in Latvia" or something similar. Tools simply cannot detect this kind of mismatch - it requires human judgment.</p>
+<h2 id="ahrefs-toolbar">How I use the Ahrefs toolbar</h2>
+<p>In the video audit I use the Ahrefs toolbar — a browser extension that quickly shows a page's technical SEO basics. With it I immediately see the title, description, H1 heading, canonical and other elements.</p>
+<p>The canonical tells Google which version of a page is the main one when similar content is available at several addresses. The H1 is the page's main heading, and a page should usually have only one.</p>
+<p>The Ahrefs toolbar shows the technical picture well, but it does not replace content and keyword analysis. If the website has many pages, I also use Screaming Frog, which checks all pages in one go. I wrote about this work in more detail on the <a href="/en/tehniskais-seo/">technical SEO</a> page.</p>
 
-<h2>Keyword Strength: The Problem That Tools Can't Show</h2>
+<h2 id="backlinks">Backlinks: the topic I explain most often</h2>
+<p>Backlinks are links to your website from other websites. Clients ask about them most often, and I have to explain them in more detail.</p>
+<p>It is often assumed that more links automatically mean better SEO. Quality and relevance matter more. Backlinks can be compared to votes from other websites, but not all votes are equally valuable. A link from an authoritative industry portal is worth more than many links from low-quality directories.</p>
+<p>That is why, in the video audit, I show which backlinks are valuable and which ones should be avoided. I described how I build links for clients on the <a href="/en/saisu-veidosana/">link building</a> page.</p>
 
-<p>One of the most common issues I uncover is keyword strength levels. Tools cannot directly display this metric because it is partially subjective. I spot these problems based on my own expertise and what I believe is the right approach for each specific page.</p>
+<h2 id="latseo-example">An example: what I found on my own website</h2>
+<p>I apply the same principles to the LatSEO website. In the October 2026 audit I found that the sitemap file contained only 10 of 40 pages. Six internal links led to 404 pages.</p>
+<p>For the query “seo pakalpojumi” (SEO services), the page received 1,674 impressions and 0 clicks in 90 days. This means the page appears in search, but people do not click on it. In a case like this, I check the page's ranking and how its title and description look in the results.</p>
 
-<p>This is where a <a href="/en/lokalais-seo/">local SEO strategy</a> becomes important - understanding what your actual customers are searching for, not just what a tool suggests.</p>
+<h2 id="what-you-can-check">What you can check yourself</h2>
+<ol>
+<li>Check the title and meta description of every important page. They should be different from each other, include a keyword your customers search for and match the page content.</li>
+<li>Make sure each page has one H1 heading.</li>
+<li>Use the Ahrefs toolbar or a similar tool to look at the technical elements, including the canonical.</li>
+<li>In Google Search Console, check which queries have many impressions but few clicks.</li>
+<li>Review which websites link to you, and judge them by quality, not quantity.</li>
+</ol>
 
-<h2>My Go-To Tool: Ahrefs Toolbar</h2>
-
-<p>For video audits, I rely on the Ahrefs Toolbar. It allows me to quickly review all the technical SEO fundamentals without unnecessary hassle. The toolbar gives me instant access to key on-page data while I record my screen and explain findings in real time.</p>
-
-<h2>Backlinks: The Concept Clients Always Struggle With</h2>
-
-<p>The topic that clients most often fail to understand immediately is backlinks. I always have to explain this concept in greater depth. People hear "backlinks" and think it's just about getting any link, but the quality, relevance, and authority of those links matter far more.</p>
-
-<p>This is why I incorporate backlink analysis into my <a href="/en/tehniskais-seo/">technical SEO audits</a> - it's not enough to just fix on-page issues if your off-page profile is weak.</p>
-
-<h2>What My Video Audits Actually Reveal</h2>
-
-<p>In every video audit, I aim to cover three main areas:</p>
-
-<ul>
-  <li><strong>Meta data optimization</strong> - fixing titles and descriptions that don't match search intent</li>
-  <li><strong>Keyword targeting</strong> - identifying where the strength level is off and suggesting better alternatives</li>
-  <li><strong>Technical basics</strong> - using Ahrefs Toolbar to verify all fundamental elements are in place</li>
-</ul>
-
-<p>The video format is powerful because clients can see exactly what I see. They watch me scroll through their site, point out problems, and explain solutions in plain language. This builds trust and helps them understand why certain changes are necessary.</p>
-
-<h2>Ready for a Clear Picture of Your SEO?</h2>
-
-<p>If you want to see exactly what is holding your website back, I can record a video audit for you too. You will see the problems with your own eyes, and I will explain how to fix them step by step. Check out our <a href="/en/pakalpojumi-un-cenas/">services and pricing</a> or <a href="/en/kontakti/">contact us</a> to get started.</p></div>
-    <div style="margin-top:var(--sp-xl);padding:var(--sp-lg);background:var(--clr-bg-secondary);border-radius:var(--br-lg)"><h3 style="font-size:var(--fs-lg);margin-bottom:var(--sp-md)">Related SEO Services</h3>
-      <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-sm)">
-        <li><a href="/en/lokalais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📍 Local SEO</a></li>
-        <li><a href="/en/tehniskais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">⚙️ Technical SEO</a></li>
-        <li><a href="/en/satura-strategija/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📝 Content Strategy</a></li>
-        <li><a href="/en/pakalpojumi-un-cenas/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">💼 Visi pakalpojumi</a></li>
-      </ul></div>
-    <div style="margin-top:var(--sp-2xl);padding-top:var(--sp-lg);border-top:1px solid var(--clr-border)"><a href="/en/blogs/" class="service-card__link" style="font-size:var(--fs-base)">&larr; Back to blog</a></div>
-  </div></article></main>
-  <footer class="site-footer"><div class="container"><div class="footer__grid">
-    <div><a href="/en/" class="header__logo"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44"></a><p class="footer__brand-text">We help businesses grow online with data-driven SEO strategies that deliver measurable results on Google.</p></div>
-    <div><div class="footer__heading">Company</div><ul class="footer__links"><li><a href="/en/">Home</a></li><li><a href="/en/pakalpojumi-un-cenas/">Services & Pricing</a></li><li><a href="/en/projekti/">Our projects</a></li><li><a href="/en/blogs/">Blog</a></li><li><a href="/en/kontakti/">Kontakti</a></li></ul></div>
-    <div><div class="footer__heading">SEO Services</div><ul class="footer__links"><li><a href="/en/tehniskais-seo/">Technical SEO</a></li><li><a href="/en/satura-strategija/">Content Strategy</a></li><li><a href="/en/lokalais-seo/">Local SEO</a></li></ul></div>
-    <div><div class="footer__heading">Other</div><ul class="footer__links"><li><a href="/en/majaslapas-izstrade/">Web Development</a></li></ul></div>
-    <div><div class="footer__heading">Contact</div><div class="footer__contact-item"><a href="mailto:sales@latseo.com">sales@latseo.com</a></div><div class="footer__contact-item"><a href="tel:+37124424434">+371 24424434</a></div><div class="footer__contact-item"><span>Rīga, Latvija</span></div></div>
-  </div><div class="footer__bottom"><p>&copy; 2026 LatSEO. All rights reserved.</p></div></div></footer>
-  <script src="../../../js/main.js"></script>
-  <button class="scroll-top" aria-label="Back to top">↑</button>
-</body></html>
+<h2 id="after-the-audit">What happens after the audit</h2>
+<p>After the video audit, you can make the fixes yourself or leave them to me. An SEO audit costs from €150, and monthly SEO work from €300/month (excl. VAT). All prices are listed on the <a href="/en/pakalpojumi-un-cenas/">services and prices</a> page.</p>
+<p>If you want to see what I would notice on your website, <a href="/en/kontakti/">request a free video audit</a>, and within 24 hours you will receive a recording with my recommendations.</p>
+    <div class="author-box"><img src="/assets/images/adrians-stankevics.webp" alt="Adrians Stankevičs" width="64" height="64" loading="lazy"><div><strong>Adrians Stankevičs</strong><p>Builds websites with built-in SEO and works on SEO for existing websites. 2 years of experience in SEO and web development. <a href="/en/par-mani/">About me</a> · <a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a></p></div></div>
+  </div>
+  <aside class="article-aside" aria-label="Related">
+    <div class="aside-card"><p class="aside-card__title">Contents</p><ol class="toc"><li><a href="#what-is-a-video-audit">What a video audit is and how I make it</a></li><li><a href="#title-and-description">The first thing I notice: the title and meta description</a></li><li><a href="#keyword-relevance">Why tools do not show keyword relevance</a></li><li><a href="#ahrefs-toolbar">How I use the Ahrefs toolbar</a></li><li><a href="#backlinks">Backlinks: the topic I explain most often</a></li><li><a href="#latseo-example">An example: what I found on my own website</a></li><li><a href="#what-you-can-check">What you can check yourself</a></li><li><a href="#after-the-audit">What happens after the audit</a></li></ol></div>
+    <div class="aside-card aside-card--ink"><p class="aside-card__title">Free video audit</p><p>A personal screen recording about your website's SEO within 24 hours. No obligation.</p><a class="btn btn--primary" href="/en/kontakti/">Request an audit</a></div>
+  </aside>
+</div>
+</article>
+<section class="section section--muted"><div class="container"><h2 class="section__title">More articles</h2><div class="blog-grid"><a class="post-card" href="/en/blogs/why-ai-visibility-is-changing-seo-pricing-in-latvia-and-what-it-means-for-you/"><img class="post-card__cover" src="/assets/covers/why-ai-visibility-is-changing-seo-pricing-in-latvia-and-what-it-means-for-you.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">SEO pricing · 9 September 2026</span><span class="post-card__title">How much does SEO cost in Latvia in 2026</span><span class="post-card__excerpt">How much does SEO cost in Latvia in 2026? My prices: SEO audit from €150, monthly SEO from €300/month. I explain what affects the price and what you get for it.</span><span class="post-card__more">Read article →</span></span></a><a class="post-card" href="/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/"><img class="post-card__cover" src="/assets/covers/my-first-seo-mistakes-lessons-from-the-trenches.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">SEO basics · 5 August 2026</span><span class="post-card__title">My first SEO mistake and the lessons I learned from it</span><span class="post-card__excerpt">A URL change that sent Google Ads to a 404 page for 4 days. What I learned from it and how I now work with Google Search Console, E-E-A-T and AI Overview.</span><span class="post-card__more">Read article →</span></span></a><a class="post-card" href="/en/blogs/the-biggest-seo-mistake-i-see-clients-make-before-building-a-website/"><img class="post-card__cover" src="/assets/covers/the-biggest-seo-mistake-i-see-clients-make-before-building-a-website.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">Website development · 4 August 2026</span><span class="post-card__title">Why SEO should start before website development</span><span class="post-card__excerpt">Why you should think about SEO before website development: keywords, structure, speed and URLs. My experience and what I build into every website I develop.</span><span class="post-card__more">Read article →</span></span></a></div></div></section>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="/en/" class="header__logo" aria-label="LatSEO"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40" loading="lazy"></a>
+        <p class="footer__brand-text">Website development with built-in SEO, and SEO services for existing websites. Riga and all of Latvia.</p>
+        <p class="footer__legal">Baltic SEO, SIA · Reg. no. 40203749304<br>VAT: LV40203749304<br>Kārklu iela 4, Odukalns, Ķekava Municipality, LV-2123</p>
+      </div>
+      <div><div class="footer__heading">Websites</div><ul class="footer__links"><li><a href="/en/majaslapas-izstrade/">Website development</a></li><li><a href="/en/majaslapas-izstrade/#calculator">Price calculator</a></li><li><a href="/en/blogs/how-much-does-a-website-cost/">How much a website costs</a></li><li><a href="/en/projekti/">Projects</a></li></ul></div><div><div class="footer__heading">SEO</div><ul class="footer__links"><li><a href="/en/seo-pakalpojumi-riga/">SEO services in Riga</a></li><li><a href="/en/tehniskais-seo/">Technical SEO &amp; audit</a></li><li><a href="/en/lokalais-seo/">Local SEO</a></li><li><a href="/en/kontakti/">Free video audit</a></li><li><a href="/en/pakalpojumi-un-cenas/">Pricing</a></li></ul></div>
+      <div>
+        <div class="footer__heading">Contact</div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+37124424434">+371 24424434</a></div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:sales@latseo.com">sales@latseo.com</a></div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a></div>
+        <ul class="footer__links footer__links--more"><li><a href="/en/par-mani/">About</a></li><li><a href="/en/kontakti/">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="footer__bottom"><p>© 2026 LatSEO · Baltic SEO, SIA</p><p>Prices exclude VAT.</p></div>
+  </div>
+</footer>
+<div class="floating-ctas" aria-label="Quick contact">
+  <a href="tel:+37124424434" class="floating-cta floating-cta--call" aria-label="Call +371 24424434"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="floating-cta__label">Call</span></a>
+  <a href="https://wa.me/37124424434" class="floating-cta floating-cta--whatsapp" aria-label="Message on WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span class="floating-cta__label">WhatsApp</span></a>
+</div>
+<script src="/js/main.js?v=2026-10-23" defer></script>
+</body>
+</html>

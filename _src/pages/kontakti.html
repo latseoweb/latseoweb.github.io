@@ -1,0 +1,45 @@
+<!--meta
+{
+  "path": "/kontakti/",
+  "en": "/en/kontakti/",
+  "title": "Kontakti — mājaslapu izstrāde un SEO Rīgā | LatSEO",
+  "description": "Sazinieties ar LatSEO: tālrunis +371 24424434, e-pasts sales@latseo.com, WhatsApp. Atbilde 24 stundu laikā. Mājaslapu izstrāde un SEO pakalpojumi visā Latvijā.",
+  "crumbs": [["/", "Sākums"], ["/kontakti/", "Kontakti"]],
+  "page_type": "ContactPage"
+}
+-->
+<section class="page-hero">
+  <div class="container">
+    {{breadcrumbs}}
+    <p class="eyebrow">Kontakti</p>
+    <h1 class="page-title">Sazinieties ar mani</h1>
+    <p class="lead">Atbildu 24 stundu laikā — ar pirmajiem ieteikumiem vai aicinājumu uz īsu sarunu. Ātrāk — zvaniet vai rakstiet WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container two-col">
+    <div>
+      <div class="about-card" style="margin-bottom:2rem">
+        <img src="{{photo}}" alt="Adrians Stankevičs" width="148" height="148" class="about-card__photo" loading="lazy">
+        <div>
+          <h2 style="font-size:var(--fs-xl)">Adrians Stankevičs</h2>
+          <p class="muted">Mājaslapu izstrādātājs un SEO speciālists, LatSEO</p>
+        </div>
+      </div>
+      <div class="contact-list">
+        <a href="tel:{{phone}}"><span>Tālrunis</span><strong>{{phone_h}}</strong></a>
+        <a href="https://wa.me/37124424434" target="_blank" rel="noopener"><span>WhatsApp</span><strong>{{phone_h}}</strong></a>
+        <a href="mailto:{{email}}"><span>E-pasts</span><strong>{{email}}</strong></a>
+        <a href="{{linkedin}}" target="_blank" rel="noopener"><span>LinkedIn</span><strong>Adrians Stankevičs</strong></a>
+        <div><span>Darbības zona</span><strong>Rīga un visa Latvija</strong></div>
+      </div>
+      <h3 style="font-size:var(--fs-md);margin:2rem 0 .75rem">Rekvizīti</h3>
+      <p class="small">Baltic SEO, SIA<br>Reģ. nr.: 40203749304<br>PVN maksātāja nr.: LV40203749304<br>Juridiskā adrese: Ķekavas nov., Ķekavas pag., Odukalns, Kārklu iela 4, LV-2123</p>
+    </div>
+    <div class="form-card">
+      <h2 style="font-size:var(--fs-xl);margin-bottom:1rem">Rakstiet</h2>
+      {{form:contact|Kontaktu lapa}}
+    </div>
+  </div>
+</section>

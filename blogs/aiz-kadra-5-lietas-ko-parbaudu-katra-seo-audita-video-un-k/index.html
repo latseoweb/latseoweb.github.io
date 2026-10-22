@@ -1,215 +1,291 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F1501'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='17' fill='%23F5F5F0'%3ELS%3C/text%3E%3Cstyle%3E@media(prefers-color-scheme:dark){rect{fill:%23EAE5DA}text{fill:%231F1501}}%3C/style%3E%3C/svg%3E">
-  <meta name="description" content="Uzzini, kāpēc video auditā vispirms jāskatās meta title un description, kā Ahrefs toolbar palīdz redzēt tehnisko SEO un kāpēc backlinks ir grūti izskaidrojami.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta property="og:locale" content="lv_LV"><meta property="og:type" content="article">
-  <meta property="og:title" content="Video audits: Kāpēc es vispirms skatos title un description, nevis rīkus | LatSEO Blog">
-  <meta property="og:description" content="Uzzini, kāpēc video auditā vispirms jāskatās meta title un description, kā Ahrefs toolbar palīdz redzēt tehnisko SEO un kāpēc backlinks ir grūti izskaidrojami.">
-  <meta property="og:url" content="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/">
-  <meta property="og:image" content="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ko pārbaudu SEO video auditā un kāpēc | LatSEO</title>
+  <meta name="description" content="Ko es pārbaudu katrā SEO video auditā un kāpēc sāku ar title un meta description, nevis rīkiem. Ko Jūs varat pārbaudīt pats un kas jāpaskaidro dziļāk.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/">
   <link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/">
   <link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/">
   <link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/">
-  <title>Video audits: Kāpēc es vispirms skatos title un description, nevis rīkus | LatSEO Blog</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"></noscript>
-  <link rel="stylesheet" href="/css/style.css">
-  <style>
-    .blog-content h2 { font-size:clamp(1.3rem,3vw,1.7rem); margin-top:var(--sp-xl); margin-bottom:var(--sp-md); }
-    .blog-content h3 { font-size:clamp(1.1rem,2.5vw,1.4rem); margin-top:var(--sp-lg); margin-bottom:var(--sp-sm); }
-    .blog-content h4 { font-size:clamp(1rem,2vw,1.2rem); margin-top:var(--sp-md); margin-bottom:var(--sp-xs); }
-    .blog-content p { margin-bottom:var(--sp-md); }
-    .blog-content ul, .blog-content ol { margin-bottom:var(--sp-lg); padding-left:1.2em; }
-    .blog-content li { margin-bottom:var(--sp-sm); }
-  </style>
-  <meta name="date" content="2026-08-06">
-  <meta name="author" content="Adrians Stankevičs, Baltic SEO, SIA">
+  <meta property="og:locale" content="lv_LV">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="LatSEO">
+  <meta property="og:title" content="Ko pārbaudu SEO video auditā un kāpēc | LatSEO">
+  <meta property="og:description" content="Ko es pārbaudu katrā SEO video auditā un kāpēc sāku ar title un meta description, nevis rīkiem. Ko Jūs varat pārbaudīt pats un kas jāpaskaidro dziļāk.">
+  <meta property="og:url" content="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/">
+  <meta property="og:image" content="https://latseo.com/assets/covers/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#F6F4EE">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=2026-10-23">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "ProfessionalService",
+    "LocalBusiness"
+   ],
+   "@id": "https://latseo.com/#org",
+   "name": "LatSEO",
+   "legalName": "Baltic SEO, SIA",
+   "url": "https://latseo.com/",
+   "logo": "https://latseo.com/assets/images/latseo-logo.png",
+   "image": "https://latseo.com/assets/images/og-latseo.jpg",
+   "description": "Mājaslapu izstrāde ar iebūvētu SEO un SEO pakalpojumi Rīgā.",
+   "taxID": "40203749304",
+   "vatID": "LV40203749304",
+   "telephone": "+37124424434",
+   "email": "sales@latseo.com",
+   "priceRange": "€€",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kārklu iela 4, Odukalns",
+    "addressLocality": "Ķekavas novads",
+    "postalCode": "LV-2123",
+    "addressCountry": "LV"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Rīga"
+    },
+    {
+     "@type": "Country",
+     "name": "Latvija"
+    }
+   ],
+   "founder": {
+    "@id": "https://latseo.com/#adrians"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/company/latseo"
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://latseo.com/#adrians",
+   "name": "Adrians Stankevičs",
+   "jobTitle": "Mājaslapu izstrādātājs un SEO speciālists",
+   "url": "https://latseo.com/par-mani/",
+   "image": "https://latseo.com/assets/images/adrians-stankevics.jpg",
+   "worksFor": {
+    "@id": "https://latseo.com/#org"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/in/adrians-stankevics/"
+   ],
+   "description": "Mājaslapu izstrādātājs un SEO speciālists Rīgā, 2 gadu pieredze SEO un mājaslapu izstrādē, Bratus oficiālais IT partneris.",
+   "knowsAbout": [
+    "Mājaslapu izstrāde",
+    "SEO",
+    "Tehniskais SEO",
+    "Lokālais SEO",
+    "Google Search Console",
+    "WordPress",
+    "Shopify"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://latseo.com/#website",
+   "url": "https://latseo.com/",
+   "name": "LatSEO",
+   "inLanguage": [
+    "lv",
+    "en"
+   ],
+   "publisher": {
+    "@id": "https://latseo.com/#org"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Sākums",
+     "item": "https://latseo.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blogs",
+     "item": "https://latseo.com/blogs/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Video audits: kāpēc vispirms skatos title un description, nevis rīkus",
+     "item": "https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"
+    }
+   ],
+   "@id": "https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/#breadcrumb"
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/#webpage",
+   "url": "https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/",
+   "name": "Ko pārbaudu SEO video auditā un kāpēc | LatSEO",
+   "description": "Ko es pārbaudu katrā SEO video auditā un kāpēc sāku ar title un meta description, nevis rīkiem. Ko Jūs varat pārbaudīt pats un kas jāpaskaidro dziļāk.",
+   "inLanguage": "lv",
+   "isPartOf": {
+    "@id": "https://latseo.com/#website"
+   },
+   "about": {
+    "@id": "https://latseo.com/#org"
+   },
+   "dateModified": "2026-10-23",
+   "breadcrumb": {
+    "@id": "https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/#breadcrumb"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/#article",
+   "headline": "Video audits: kāpēc vispirms skatos title un description, nevis rīkus",
+   "description": "Ko es pārbaudu katrā SEO video auditā un kāpēc sāku ar title un meta description, nevis rīkiem. Ko Jūs varat pārbaudīt pats un kas jāpaskaidro dziļāk.",
+   "image": "https://latseo.com/assets/covers/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k.jpg",
+   "datePublished": "2026-08-06",
+   "dateModified": "2026-10-23",
+   "author": {
+    "@id": "https://latseo.com/#adrians"
+   },
+   "publisher": {
+    "@id": "https://latseo.com/#org"
+   },
+   "inLanguage": "lv",
+   "mainEntityOfPage": {
+    "@id": "https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/#webpage"
+   },
+   "wordCount": 725,
+   "articleSection": "SEO pamati"
+  }
+ ]
+}
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MF7Q1R9722');gtag('config','AW-18351723640');</script>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xx3mt1i3hw");
-  </script>
+  <script>(function(){var d=false;function l(){if(d)return;d=true;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","xx3mt1i3hw");}['scroll','pointerdown','keydown','touchstart'].forEach(function(e){addEventListener(e,l,{once:true,passive:true});});setTimeout(l,4000);})();</script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Pāriet uz saturu</a>
-  <!-- SITE-HEADER:START -->
-  <header class="site-header" role="banner">
-    <div class="header__inner">
-      <a href="/" class="header__logo" aria-label="LatSEO - Uz sākumlapu">
-        <img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44">
-      </a>
+<a href="#main-content" class="skip-link">Pāriet uz saturu</a>
+<header class="site-header" role="banner">
+  <div class="header__inner">
+    <a href="/" class="header__logo" aria-label="LatSEO — uz sākumlapu"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40"></a>
+    <nav class="header__nav" aria-label="Galvenā navigācija">
+      <ul class="header__nav-list"><li><a href="/majaslapas-izstrade/" class="header__nav-link">Mājaslapu izstrāde</a></li><li class="header__dropdown"><span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true">SEO pakalpojumi <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span></span><div class="header__dropdown-menu"><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a><a href="/tehniskais-seo/">Tehniskais SEO un audits</a><a href="/lokalais-seo/">Lokālais SEO</a><a href="/satura-strategija/">Satura stratēģija</a><a href="/saisu-veidosana/">Saišu veidošana</a></div></li><li><a href="/pakalpojumi-un-cenas/" class="header__nav-link">Cenas</a></li><li><a href="/projekti/" class="header__nav-link">Projekti</a></li><li><a href="/blogs/" class="header__nav-link">Blogs</a></li><li><a href="/par-mani/" class="header__nav-link">Par mani</a></li><li><a href="/kontakti/" class="header__nav-link">Kontakti</a></li></ul>
+      <div class="header__lang-switch" role="group" aria-label="Valoda"><a href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/" class="header__lang-btn header__lang-btn--active" hreflang="lv" lang="lv" aria-current="true">LV</a><a href="/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/" class="header__lang-btn" hreflang="en" lang="en">EN</a></div>
+      <a href="/majaslapas-izstrade/#kalkulators" class="header__cta">Aprēķināt cenu <span class="arrow" aria-hidden="true">→</span></a>
+    </nav>
+    <button class="header__mobile-toggle" aria-label="Atvērt izvēlni" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="header__mobile-menu" id="mobile-menu" aria-label="Mobilā navigācija">
+    <a href="/">Sākums</a><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a><a href="/tehniskais-seo/">Tehniskais SEO un audits</a><a href="/lokalais-seo/">Lokālais SEO</a><a href="/pakalpojumi-un-cenas/">Cenas</a><a href="/projekti/">Projekti</a><a href="/blogs/">Blogs</a><a href="/par-mani/">Par mani</a><a href="/kontakti/">Kontakti</a>
+    <a href="/majaslapas-izstrade/#kalkulators" class="btn btn--primary">Aprēķināt mājaslapas cenu</a>
+    <div class="header__mobile-lang"><a href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/" class="header__lang-btn header__lang-btn--active" hreflang="lv" lang="lv" aria-current="true">LV</a><a href="/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/" class="header__lang-btn" hreflang="en" lang="en">EN</a></div>
+  </div>
+</header>
+<main id="main-content">
+<article>
+<header class="article-head container">
+  <nav class="breadcrumbs" aria-label="Ceļš"><a href="/">Sākums</a><span aria-hidden="true">/</span><a href="/blogs/">Blogs</a><span aria-hidden="true">/</span><span aria-current="page">Video audits: kāpēc vispirms skatos title un description, nevis rīkus</span></nav>
+  <p class="eyebrow">SEO pamati</p>
+  <h1>Video audits: kāpēc vispirms skatos title un description, nevis rīkus</h1>
+  <p class="article-meta"><span>Autors: <a href="/par-mani/">Adrians Stankevičs</a></span><span>Publicēts: <time datetime="2026-08-06">2026. gada 6. augusts</time></span><span>Atjaunināts: <time datetime="2026-10-23">2026. gada 23. oktobris</time></span><span>4 min lasīšanai</span></p>
+</header>
+<div class="container"><img class="article-cover" src="/assets/covers/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k.jpg" alt="Video audits: kāpēc vispirms skatos title un description, nevis rīkus" width="1200" height="630"></div>
+<div class="container article-layout">
+  <div class="article-body">
+<p class="lead">Katrā SEO video auditā vispirms pārbaudu lapas title un meta description, jo tie ir SEO pamati un visbiežāk ir neoptimizēti. Pēc tam skatos tehniskos elementus un atpakaļsaites. Šajā rakstā paskaidroju, ko tieši pārbaudu, kāpēc rīki visu neparāda un ko Jūs varat pārbaudīt pats.</p>
 
-      <nav class="header__nav" role="navigation" aria-label="Galvenā navigācija">
-        <ul class="header__nav-list">
-          <li><a href="/majaslapas-izstrade/" class="header__nav-link">Mājaslapu izstrāde</a></li>
-          <li class="header__dropdown">
-            <span class="header__dropdown-toggle" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              SEO pakalpojumi
-              <span class="header__dropdown-toggle-icon" aria-hidden="true">▾</span>
-            </span>
-            <div class="header__dropdown-menu">
-              <a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a>
-              <a href="/tehniskais-seo/">Tehniskais SEO un audits</a>
-              <a href="/lokalais-seo/">Lokālais SEO</a>
-              <a href="/satura-strategija/">Satura stratēģija</a>
-              <a href="/saisu-veidosana/">Saišu veidošana</a>
-            </div>
-          </li>
-          <li><a href="/pakalpojumi-un-cenas/" class="header__nav-link">Cenas</a></li>
-          <li><a href="/projekti/" class="header__nav-link">Projekti</a></li>
-          <li><a href="/blogs/" class="header__nav-link">Blogs</a></li>
-          <li><a href="/kontakti/" class="header__nav-link">Kontakti</a></li>
-        </ul>
+<h2 id="kas-ir-video-audits">Kas ir video audits un kā es to veidoju</h2>
+<p>Video auditus ierakstu pats un nosūtu klientam. Es atveru Jūsu mājaslapu, ejot cauri tai, skaidroju, ko redzu, un iesaku, ko uzlabot. Audits ir bez maksas, un to nosūtu 24 stundu laikā.</p>
+<p>Video formātu izvēlējos tāpēc, ka tajā varu parādīt problēmu uz ekrāna un uzreiz paskaidrot, kāpēc tā ir svarīga. Jūs saņemat manus ieteikumus, nevis tikai automātisku rīka atskaiti.</p>
+<p>Video audits nav pilns tehniskais audits. Tā mērķis ir parādīt, kur ir pirmās un acīmredzamākās problēmas, lai Jūs varētu izlemt, ar ko sākt.</p>
 
-        <div class="header__lang-switch" role="group" aria-label="Valodas izvēle">
-          <a href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/" class="header__lang-btn header__lang-btn--active" aria-current="page">LV</a>
-          <a href="/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/" class="header__lang-btn" hreflang="en" lang="en">EN</a>
-        </div>
+<h2 id="title-un-description">Pirmais, ko pamanu: title un meta description</h2>
+<p>Pirmā lieta, ko parasti pamanu, ir neoptimizēts meta title un description. Title ir lapas nosaukums, ko Google rāda kā saiti meklēšanas rezultātos. Meta description ir īss apraksts zem tās.</p>
+<p>Ja tieši šie elementi nav sakārtoti, visticamāk, problēmas ir arī citur. Tāpēc sāku ar tiem un pasaku, kā tos varētu uzlabot.</p>
+<p>Piemērs: ja makšķernieku veikala title ir „Labākās pīckas Latvijā” (sarunvalodas vārds), to vajadzētu nomainīt uz „Labākās makšķeres Latvijā” vai līdzīgu frāzi. Cilvēki meklē vārdu, ko paši lieto, un title tam jāatbilst. Šādu labojumu var izdarīt uzreiz.</p>
+<p>Google dažreiz meta description vietā parāda citu teksta fragmentu no lapas. Tomēr labi uzrakstīts apraksts ar skaidru piedāvājumu dod cilvēkam iemeslu izvēlēties tieši Jūsu saiti, nevis konkurenta saiti blakus.</p>
 
-        <a href="/majaslapas-izstrade/#kalkulators" class="header__cta">
-          Aprēķināt cenu
-          <span aria-hidden="true">→</span>
-        </a>
-      </nav>
+<h2 id="atslegvarda-atbilstiba">Kāpēc rīki neparāda atslēgvārda atbilstību</h2>
+<p>Rīki, piemēram, Ahrefs vai Google Keyword Planner, rāda atslēgvārda meklēšanas apjomu un konkurenci. Tie nevar tieši novērtēt, vai konkrētais atslēgvārds patiešām atbilst Jūsu lapai un klientiem. Šis vērtējums daļēji ir subjektīvs.</p>
+<p>Tāpēc atslēgvārda atbilstību vērtēju pats, balstoties uz savu pieredzi. Rīki dod datus, bet kontekstu un ieteikumus, ko darīt ar šiem datiem, sniedzu es. Piemēram, title var būt tehniski pareizs, bet ar atslēgvārdu, ko Jūsu klienti nemeklē. To rīks neatzīmēs kā kļūdu, bet es to pamanīšu.</p>
 
-      <button class="header__mobile-toggle" aria-label="Izvēlne" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+<h2 id="ahrefs-toolbar">Kā izmantoju Ahrefs toolbar</h2>
+<p>Video auditā izmantoju Ahrefs toolbar — pārlūka paplašinājumu, kas ātri parāda lapas tehniskos SEO pamatus. Ar to uzreiz redzu title, description, H1 virsrakstu, canonical un citus elementus.</p>
+<p>Canonical ir norāde Google, kura lapas versija ir galvenā, ja līdzīgs saturs pieejams vairākās adresēs. H1 ir lapas galvenais virsraksts, un lapā tam parasti jābūt vienam.</p>
+<p>Ahrefs toolbar labi parāda tehnisko ainu, bet neaizstāj satura un atslēgvārdu analīzi. Ja mājaslapā ir daudz lapu, papildus izmantoju Screaming Frog, kas pārbauda visas lapas vienā reizē. Sīkāk par šo darbu rakstīju lapā par <a href="/tehniskais-seo/">tehnisko SEO</a>.</p>
 
-    <div class="header__mobile-menu" role="dialog" aria-label="Mobilā navigācija">
-      <a href="/">Sākums</a>
-      <a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a>
-      <a href="/seo-pakalpojumi-riga/">SEO pakalpojumi</a>
-      <a href="/tehniskais-seo/">Tehniskais SEO un audits</a>
-      <a href="/lokalais-seo/">Lokālais SEO</a>
-      <a href="/pakalpojumi-un-cenas/">Cenas</a>
-      <a href="/projekti/">Projekti</a>
-      <a href="/blogs/">Blogs</a>
-      <a href="/kontakti/">Kontakti</a>
-      <a href="/majaslapas-izstrade/#kalkulators" class="btn btn--primary">Aprēķināt cenu</a>
-      <div class="header__mobile-lang">
-        <a href="/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/" class="header__lang-btn header__lang-btn--active">LV</a>
-        <a href="/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/" class="header__lang-btn" hreflang="en" lang="en">EN</a>
+<h2 id="atpakalsaites">Atpakaļsaites: tēma, ko skaidroju visbiežāk</h2>
+<p>Atpakaļsaites jeb backlinks ir saites uz Jūsu mājaslapu no citām vietnēm. Tieši par tām klienti visbiežāk jautā, un tās man nākas skaidrot sīkāk.</p>
+<p>Bieži tiek uzskatīts, ka vairāk saišu automātiski nozīmē labāku SEO. Svarīgāka ir kvalitāte un atbilstība. Atpakaļsaites var salīdzināt ar balsojumiem no citām vietnēm, bet ne visi balsojumi ir vienlīdz vērtīgi. Saite no autoritatīva nozares portāla ir vērtīgāka nekā daudzas saites no zemas kvalitātes katalogiem.</p>
+<p>Tāpēc video auditā parādu, kuras atpakaļsaites ir vērtīgas un no kurām būtu jāizvairās. Kā veidoju saites klientiem, aprakstīju lapā par <a href="/saisu-veidosana/">saišu veidošanu</a>.</p>
+
+<h2 id="piemers-latseo">Piemērs: ko atradu savā mājaslapā</h2>
+<p>Tos pašus principus pielietoju arī LatSEO mājaslapai. 2026. gada oktobra auditā atradu, ka sitemap failā bija tikai 10 no 40 lapām. Sešas iekšējās saites veda uz 404 lapām.</p>
+<p>Vaicājumam „seo pakalpojumi” lapa 90 dienās saņēma 1 674 rādījumus un 0 klikšķu. Tas nozīmē, ka lapa meklēšanā parādās, bet cilvēki uz to neklikšķina. Šādā gadījumā pārbaudu lapas pozīciju un to, kā tās title un description izskatās rezultātos.</p>
+
+<h2 id="ko-varat-parbaudit-pats">Ko Jūs varat pārbaudīt pats</h2>
+<ol>
+<li>Pārbaudiet title un meta description katrai svarīgajai lapai. Tiem jābūt atšķirīgiem, ar atslēgvārdu, ko klienti meklē, un atbilstošiem lapas saturam.</li>
+<li>Pārliecinieties, ka katrā lapā ir viens H1 virsraksts.</li>
+<li>Ar Ahrefs toolbar vai līdzīgu rīku apskatiet tehniskos elementus, tostarp canonical.</li>
+<li>Google Search Console pārbaudiet, kuriem vaicājumiem ir daudz rādījumu, bet maz klikšķu.</li>
+<li>Pārskatiet, no kurām vietnēm uz Jums ved saites, un vērtējiet to kvalitāti, nevis skaitu.</li>
+</ol>
+
+<h2 id="pec-audita">Kas notiek pēc audita</h2>
+<p>Pēc video audita Jūs varat labojumus veikt paši vai uzticēt tos man. SEO audits maksā no 150 €, bet ikmēneša SEO darbs no 300 € mēnesī (bez PVN). Visas cenas ir apkopotas lapā <a href="/pakalpojumi-un-cenas/">pakalpojumi un cenas</a>.</p>
+<p>Ja vēlaties redzēt, ko es pamanītu Jūsu mājaslapā, piesakiet <a href="/bezmaksas-audits/">bezmaksas video auditu</a>, un 24 stundu laikā saņemsiet ierakstu ar maniem ieteikumiem.</p>
+    <div class="author-box"><img src="/assets/images/adrians-stankevics.webp" alt="Adrians Stankevičs" width="64" height="64" loading="lazy"><div><strong>Adrians Stankevičs</strong><p>Izstrādā mājaslapas ar iebūvētu SEO un strādā ar SEO esošām mājaslapām. 2 gadu pieredze SEO un mājaslapu izstrādē. <a href="/par-mani/">Par mani</a> · <a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a></p></div></div>
+  </div>
+  <aside class="article-aside" aria-label="Papildinformācija">
+    <div class="aside-card"><p class="aside-card__title">Saturs</p><ol class="toc"><li><a href="#kas-ir-video-audits">Kas ir video audits un kā es to veidoju</a></li><li><a href="#title-un-description">Pirmais, ko pamanu: title un meta description</a></li><li><a href="#atslegvarda-atbilstiba">Kāpēc rīki neparāda atslēgvārda atbilstību</a></li><li><a href="#ahrefs-toolbar">Kā izmantoju Ahrefs toolbar</a></li><li><a href="#atpakalsaites">Atpakaļsaites: tēma, ko skaidroju visbiežāk</a></li><li><a href="#piemers-latseo">Piemērs: ko atradu savā mājaslapā</a></li><li><a href="#ko-varat-parbaudit-pats">Ko Jūs varat pārbaudīt pats</a></li><li><a href="#pec-audita">Kas notiek pēc audita</a></li></ol></div>
+    <div class="aside-card aside-card--ink"><p class="aside-card__title">Bezmaksas video audits</p><p>Personalizēts ekrāna ieraksts par Jūsu mājaslapas SEO 24 stundu laikā. Bez saistībām.</p><a class="btn btn--primary" href="/bezmaksas-audits/">Pieteikt auditu</a></div>
+  </aside>
+</div>
+</article>
+<section class="section section--muted"><div class="container"><h2 class="section__title">Citi raksti</h2><div class="blog-grid"><a class="post-card" href="/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/"><img class="post-card__cover" src="/assets/covers/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">SEO cenas · 2026. gada 9. septembris</span><span class="post-card__title">Cik maksā SEO Latvijā 2026. gadā</span><span class="post-card__excerpt">Cik maksā SEO Latvijā 2026. gadā? Manas cenas: SEO audits no 150 €, ikmēneša SEO no 300 €/mēn. Skaidroju, kas ietekmē cenu un ko Jūs par to saņemat.</span><span class="post-card__more">Lasīt rakstu →</span></span></a><a class="post-card" href="/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/"><img class="post-card__cover" src="/assets/covers/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">SEO pamati · 2026. gada 5. augusts</span><span class="post-card__title">Mana pirmā SEO kļūda un mācības, ko no tās ieguvu</span><span class="post-card__excerpt">URL maiņa, kas 4 dienas sūtīja Google reklāmas uz 404 lapu. Ko no tā iemācījos un kā tagad strādāju ar Search Console, E-E-A-T un AI Overview.</span><span class="post-card__more">Lasīt rakstu →</span></span></a><a class="post-card" href="/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/"><img class="post-card__cover" src="/assets/covers/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap.jpg" alt="" width="1200" height="630" loading="lazy"><span class="post-card__body"><span class="post-card__meta">Mājaslapu izstrāde · 2026. gada 4. augusts</span><span class="post-card__title">Kāpēc SEO jāsāk jau pirms mājaslapas izstrādes</span><span class="post-card__excerpt">Kāpēc par SEO jādomā jau pirms mājaslapas izstrādes: atslēgvārdi, struktūra, ātrums un URL. Mana pieredze un tas, ko iebūvēju katrā Jūsu mājaslapā.</span><span class="post-card__more">Lasīt rakstu →</span></span></a></div></div></section>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="/" class="header__logo" aria-label="LatSEO"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40" loading="lazy"></a>
+        <p class="footer__brand-text">Mājaslapu izstrāde ar iebūvētu SEO un SEO pakalpojumi esošām mājaslapām. Rīga un visa Latvija.</p>
+        <p class="footer__legal">Baltic SEO, SIA · Reģ. nr. 40203749304<br>PVN: LV40203749304<br>Kārklu iela 4, Odukalns, Ķekavas nov., LV-2123</p>
+      </div>
+      <div><div class="footer__heading">Mājaslapas</div><ul class="footer__links"><li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a></li><li><a href="/majaslapas-izstrade/#kalkulators">Cenu kalkulators</a></li><li><a href="/blogs/cik-maksa-majaslapa/">Cik maksā mājaslapa</a></li><li><a href="/projekti/">Projekti</a></li></ul></div><div><div class="footer__heading">SEO</div><ul class="footer__links"><li><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a></li><li><a href="/tehniskais-seo/">Tehniskais SEO un audits</a></li><li><a href="/lokalais-seo/">Lokālais SEO</a></li><li><a href="/bezmaksas-audits/">Bezmaksas video audits</a></li><li><a href="/pakalpojumi-un-cenas/">Cenas</a></li></ul></div>
+      <div>
+        <div class="footer__heading">Saziņa</div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+37124424434">+371 24424434</a></div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:sales@latseo.com">sales@latseo.com</a></div>
+        <div class="footer__contact-item"><svg class="footer__contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg><a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a></div>
+        <ul class="footer__links footer__links--more"><li><a href="/par-mani/">Par mani</a></li><li><a href="/kontakti/">Kontakti</a></li></ul>
       </div>
     </div>
-  </header>
-  <!-- SITE-HEADER:END -->
-  <main id="main-content"><article class="section section--light" style="padding-top:calc(var(--header-height) + var(--sp-2xl))"><div class="container" style="max-width:800px;margin:0 auto">
-    <nav style="margin-bottom:var(--sp-lg);font-size:var(--fs-sm);color:var(--clr-text-muted)"><a href="/" style="color:var(--clr-text-muted);text-decoration:none">Sākums</a> &rsaquo; <a href="/blogs/" style="color:var(--clr-text-muted);text-decoration:none">Blogs</a> &rsaquo; <span style="color:var(--clr-text-secondary)">Video audits: Kāpēc es vispirms skatos title un description, nevis rīkus</span></nav>
-    <div style="font-size:var(--fs-xs);color:var(--clr-accent-text);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:var(--sp-sm)">SEO Pamati &bull; 2026. gada 6. augusts</div>
-    <h1 class="section__title" style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:var(--sp-lg)">Video audits: Kāpēc es vispirms skatos title un description, nevis rīkus</h1>
-    <div style="display:flex;align-items:center;gap:var(--sp-sm);margin-bottom:var(--sp-xl);font-size:var(--fs-sm);color:var(--clr-text-secondary)"><span>Autors: <strong>Adrians Stankevičs</strong></span><span>&bull;</span><span>~3 min lasīšanai</span></div>
-    <figure style="margin-bottom:var(--sp-xl)"><img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg" alt="SEO video audit meta title description Ahrefs toolbar backlinks" style="width:100%;height:auto;border-radius:var(--br-lg)" loading="eager"><figcaption style="font-size:var(--fs-xs);color:var(--clr-text-muted);text-align:center;margin-top:var(--sp-xs)">SEO video audit meta title description Ahrefs toolbar backlinks</figcaption></figure>
-    <div class="blog-content" style="font-size:var(--fs-base);line-height:1.8;color:var(--clr-text-primary)"><h2>Pirmais, ko es pamani klienta video</h2>
-
-<p>Es veicu video auditus pats un sūtu tos klientiem. Pirmā lieta, ko parasti pamanu, ir neoptimizēts meta title un description. Tie ir paši SEO pamati, un par to arī es cilvēkiem pasaku un mēģinu ieteikt, kā būtu labāk. Kāpēc tieši tas? Jo, ja jau pašā sākumā title un description nav sakārtoti, tad viss pārējais, visticamāk, arī klibo.</p>
-
-<p>Un tieši tāpēc es vienmēr sāku ar šiem elementiem. Piemēram, ja makšķernieku veikala title ir "Labākās pīckas Latvijā", tad to vajag nomainīt uz "Labākās makšķeres Latvijā" vai tamlīdzīgi. Tas ir vienkāršs, bet būtisks labojums, ko var izdarīt uzreiz.</p>
-
-<h3>Kāpēc rīki neredz keyword strength</h3>
-
-<p>Rīki nevar parādīt keyword strength līmeni tiešā veidā, jo tas ir daļēji subjektīvi. Es tos pamanu, tā kā man šķiet, ka būtu pareizi. Tas nozīmē, ka, lai gan Ahrefs vai citi rīki parāda atslēgvārdu apjomu un konkurenci, tie nevar novērtēt, vai konkrētais atslēgvārds patiešām atbilst tavai lapai un mērķauditorijai.</p>
-
-<p>Lūk, ko es no tā iemācījos: cilvēka acs un pieredze joprojām ir nenovērtējama. Rīki dod datus, bet es sniedzu kontekstu un rekomendācijas, kuras rīki nespēj.</p>
-
-<h2>Kā es izmantoju Ahrefs toolbar video auditā</h2>
-
-<p>Video auditā es izmantoju Ahrefs toolbar, lai redzētu visu tehnisko SEO pamatus ātri un bez liekas čakarēšanās. Tas man ļauj uzreiz redzēt title, description, H1, canonical, un citus tehniskos elementus, kas ir būtiski SEO. Ar šo rīku es varu ātri identificēt problēmas un ieteikt risinājumus.</p>
-
-<p>Bet ar to viss nebeidzas. Ahrefs toolbar ir lielisks, lai iegūtu tehnisko ainu, bet tas neaizstāj manu analīzi par satura atbilstību un atslēgvārdu stiprumu. Piemēram, ja title ir tehniski pareizs, bet atslēgvārds nav atbilstošs, es to pamanīšu un ieteikšu izmaiņas.</p>
-
-<h3>Backlinks: vienmēr grūti izskaidrojami</h3>
-
-<p>Visbiežāk klienti nesaprot par backlinks, un to man nākas skaidrot dziļāk. Backlinks ir viena no tām tēmām, kas šķiet vienkārša, bet patiesībā ir sarežģīta. Klienti bieži domā, ka vairāk backlinks automātiski nozīmē labāku SEO, bet patiesībā svarīga ir kvalitāte un atbilstība.</p>
-
-<p>Vēl vairāk, es bieži skaidroju, ka backlinks ir kā balsojumi no citām vietnēm, bet ne visi balsojumi ir vienādi. Piemēram, saite no autoritatīva portāla ir daudz vērtīgāka nekā simts saites no zemas kvalitātes direktorijiem. Un tieši tāpēc es video auditā vienmēr parādu, kuri backlinks ir vērtīgi un kuri būtu jāizvairās.</p>
-
-<h2>Ko tu vari darīt līdzīgi</h2>
-
-<p>Ja vēlies pats sākt ar pamatiem, iesaku sākt ar meta title un description pārbaudi. Pārliecinies, ka tie ir unikāli, satur atslēgvārdus un ir atbilstoši saturam. Pēc tam izmanto Ahrefs toolbar vai līdzīgu rīku, lai redzētu tehniskos elementus, un pievērs uzmanību backlinku kvalitātei.</p>
-
-<p>Bet, ja vēlies, lai kāds profesionālis to izdara tavā vietā, mēs LatSEO esam gatavi palīdzēt. Mūsu video auditi sniedz pilnu ieskatu par tavas vietnes SEO veselību, un mēs izskaidrojam visu saprotami.</p>
-
-<h3>Izmanto mūsu pieredzi</h3>
-
-<p>Es personīgi veicu video auditus, un tas nozīmē, ka tu saņem manus personīgos ieteikumus, nevis tikai rīku izvadus. Mēs piedāvājam arī citus <a href="/pakalpojumi-un-cenas/">SEO pakalpojumus</a>, kas palīdzēs tev sasniegt augstākas pozīcijas.</p>
-
-<p>Lai sāktu, apmeklē mūsu <a href="/kontakti/">kontaktu lapu</a> un piesaki savu video auditu. Mēs palīdzēsim tev saprast, kas jāuzlabo, un kopā izstrādāsim plānu, kā to izdarīt.</p></div>
-    <div style="margin-top:var(--sp-xl);padding:var(--sp-lg);background:var(--clr-bg-secondary);border-radius:var(--br-lg)"><h3 style="font-size:var(--fs-lg);margin-bottom:var(--sp-md)">Saistītie SEO pakalpojumi</h3>
-      <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-sm)">
-        <li><a href="/lokalais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📍 Lokālais SEO</a></li>
-        <li><a href="/tehniskais-seo/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">⚙️ Tehniskais SEO</a></li>
-        <li><a href="/satura-strategija/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">📝 Satura stratēģija</a></li>
-        <li><a href="/pakalpojumi-un-cenas/" style="display:inline-block;padding:var(--sp-xs) var(--sp-md);background:var(--clr-bg);border-radius:var(--br-md);font-size:var(--fs-sm);text-decoration:none;color:var(--clr-text-primary);border:1px solid var(--clr-border)">💼 Visi pakalpojumi</a></li>
-      </ul></div>
-    <div style="margin-top:var(--sp-2xl);padding-top:var(--sp-lg);border-top:1px solid var(--clr-border)"><a href="/blogs/" class="service-card__link" style="font-size:var(--fs-base)">&larr; Atpakaļ uz blogu</a></div>
-  </div></article></main>
-  <!-- SITE-FOOTER:START -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <a href="/" class="header__logo" aria-label="LatSEO">
-            <img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44" loading="lazy">
-          </a>
-          <p class="footer__brand-text">Mājaslapu izstrāde ar iebūvētu SEO un SEO pakalpojumi Rīgā.</p>
-          <p style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin-top:var(--sp-sm);line-height:1.6">
-            Baltic SEO, SIA &middot; Reģ. nr. 40203749304<br>
-            PVN: LV40203749304<br>
-            Kārklu iela 4, Odukalns, Ķekavas nov., LV-2123
-          </p>
-        </div>
-
-        <div>
-          <div class="footer__heading">Mājaslapu izstrāde</div>
-          <ul class="footer__links">
-            <li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a></li>
-            <li><a href="/majaslapas-izstrade/#kalkulators">Cenu kalkulators</a></li>
-            <li><a href="/projekti/">Projekti</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer__heading">SEO pakalpojumi</div>
-          <ul class="footer__links">
-            <li><a href="/seo-pakalpojumi-riga/">SEO pakalpojumi Rīgā</a></li>
-            <li><a href="/tehniskais-seo/">Tehniskais SEO un audits</a></li>
-            <li><a href="/lokalais-seo/">Lokālais SEO</a></li>
-            <li><a href="/bezmaksas-audits/">Bezmaksas video audits</a></li>
-            <li><a href="/pakalpojumi-un-cenas/">Cenas</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer__heading">Saziņa</div>
-          <div class="footer__contact-item">
-            <svg class="footer__contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:sales@latseo.com">sales@latseo.com</a>
-          </div>
-          <div class="footer__contact-item">
-            <svg class="footer__contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+37124424434">+371 24424434</a>
-          </div>
-          <div class="footer__contact-item">
-            <svg class="footer__contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            <a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; 2026 LatSEO. Visas tiesības aizsargātas.</p>
-      </div>
-    </div>
-  </footer>
-  <!-- SITE-FOOTER:END -->
-  <script src="/js/main.js" defer></script>
-  <button class="scroll-top" aria-label="Uz augšu">↑</button>
-</body></html>
+    <div class="footer__bottom"><p>© 2026 LatSEO · Baltic SEO, SIA</p><p>Cenas norādītas bez PVN.</p></div>
+  </div>
+</footer>
+<div class="floating-ctas" aria-label="Ātrā saziņa">
+  <a href="tel:+37124424434" class="floating-cta floating-cta--call" aria-label="Zvanīt +371 24424434"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="floating-cta__label">Zvanīt</span></a>
+  <a href="https://wa.me/37124424434" class="floating-cta floating-cta--whatsapp" aria-label="Rakstīt WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span class="floating-cta__label">WhatsApp</span></a>
+</div>
+<script src="/js/main.js?v=2026-10-23" defer></script>
+</body>
+</html>

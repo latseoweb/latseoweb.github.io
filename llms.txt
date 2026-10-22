@@ -1,0 +1,28 @@
+# LatSEO
+
+> LatSEO (Baltic SEO, SIA) is Adrians Stankevičs' web development and SEO business in Riga, Latvia. It builds websites with built-in SEO and provides SEO services for existing websites, mainly in Latvian. All prices exclude VAT.
+
+## Services and prices
+- Website development with built-in SEO: one-page website (vizītkartes lapa) from €449, business website from €799, online store from €1,299. Code and domain belong to the client. Hosting and maintenance €10/month (online store €15/month), .lv domain €20/year, changes €25/hour.
+- Built-in SEO in every website: clean code and fast loading (Core Web Vitals), mobile version, clear URL structure, correct heading hierarchy, SSL certificate.
+- SEO services: free video SEO audit within 24 hours; full SEO audit from €150; monthly SEO from €300/month (technical SEO, content optimisation, link building, monitoring, monthly report).
+- Platforms: WordPress, Shopify, Wix (client can edit content) or custom code (HTML, CSS, JavaScript).
+
+## Key pages (Latvian)
+- [Mājaslapu izstrāde ar SEO](https://latseo.com/majaslapas-izstrade/): packages, price calculator, projects, FAQ
+- [SEO pakalpojumi Rīgā](https://latseo.com/seo-pakalpojumi-riga/): SEO audit, monthly SEO, method
+- [Cenas](https://latseo.com/pakalpojumi-un-cenas/): all prices and add-ons
+- [SEO audits un tehniskais SEO](https://latseo.com/tehniskais-seo/)
+- [Lokālais SEO](https://latseo.com/lokalais-seo/): Google Business Profile and Google Maps
+- [Projekti](https://latseo.com/projekti/): portfolio with Google Search Console click data
+- [Cik maksā mājaslapa 2026](https://latseo.com/blogs/cik-maksa-majaslapa/): pricing guide with worked examples
+- [Par mani](https://latseo.com/par-mani/) · [Kontakti](https://latseo.com/kontakti/)
+
+## English
+- [Website development](https://latseo.com/en/majaslapas-izstrade/) · [SEO services](https://latseo.com/en/seo-pakalpojumi-riga/) · [Pricing](https://latseo.com/en/pakalpojumi-un-cenas/)
+
+## Portfolio
+Built from scratch: tehnologijuakademija.lv, lazergriezeji.lv, cncfrezes.lv, 3dpakalpojumi.lv, bratus.lv, cncpakalpojumi.lv, ploteris.lv; landing page maropro.lv. SEO clients: autoestetika.lv, relive.lv, e-car.lv.
+
+## Contact
+Phone/WhatsApp +371 24424434 · sales@latseo.com · Riga and all of Latvia

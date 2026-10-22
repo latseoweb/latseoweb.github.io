@@ -6,6 +6,8 @@
 
 (function () {
   'use strict';
+  document.documentElement.classList.add('js');
+  var EN = document.documentElement.lang === 'en';
 
   /* ==========================================================
      DOM READY
@@ -57,12 +59,14 @@
 
   function openMobileMenu(toggle, menu) {
     toggle.classList.add('header__mobile-toggle--open');
+    toggle.setAttribute('aria-expanded', 'true');
     menu.classList.add('header__mobile-menu--open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMobileMenu(toggle, menu) {
     toggle.classList.remove('header__mobile-toggle--open');
+    toggle.setAttribute('aria-expanded', 'false');
     menu.classList.remove('header__mobile-menu--open');
     document.body.style.overflow = '';
   }
@@ -222,7 +226,7 @@
           var now = Date.now();
           if (lastSubmit && (now - parseInt(lastSubmit, 10)) < COOLDOWN_MS) {
             var remain = Math.ceil((COOLDOWN_MS - (now - parseInt(lastSubmit, 10))) / 1000);
-            showStatus(form, 'Lūdzu, uzgaidiet ' + remain + ' s un mēģiniet vēlreiz.', 'error');
+            showStatus(form, EN ? 'Please wait ' + remain + ' s and try again.' : 'Lūdzu, uzgaidiet ' + remain + ' s un mēģiniet vēlreiz.', 'error');
             return;
           }
         } catch (_) { /* localStorage unavailable — allow */ }
@@ -230,7 +234,7 @@
         // ── TIME CHECK: too fast = bot ──
         var fillTime = Date.now() - formStartTime;
         if (fillTime < MIN_FILL_TIME) {
-          showStatus(form, 'Lūdzu, pārbaudiet laukus un nospiediet pogu vēlreiz.', 'error');
+          showStatus(form, EN ? 'Please check the fields and press the button again.' : 'Lūdzu, pārbaudiet laukus un nospiediet pogu vēlreiz.', 'error');
           return;
         }
 
@@ -270,7 +274,7 @@
         // Submit button UI feedback
         var submitBtn = form.querySelector('.contact-form__submit');
         var originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Notiek nosūtīšana...';
+        submitBtn.textContent = EN ? 'Sending…' : 'Notiek nosūtīšana…';
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.7';
 
@@ -321,13 +325,13 @@
           } else {
             form.reset();
             formStartTime = Date.now();
-            showStatus(form, 'Paldies, pieprasījums nosūtīts. Atbildēšu 24 stundu laikā.', 'ok');
+            showStatus(form, EN ? 'Thank you, your request has been sent. I will reply within 24 hours.' : 'Paldies, pieprasījums nosūtīts. Atbildēšu 24 stundu laikā.', 'ok');
           }
         })
         .catch(function () {
           // Ļauj mēģināt vēlreiz uzreiz
           try { localStorage.removeItem('latseo_form_ts'); } catch (_) {}
-          showStatus(form, 'Neizdevās nosūtīt. Lūdzu, zvaniet +371 24424434 vai rakstiet sales@latseo.com.', 'error');
+          showStatus(form, EN ? 'Sending failed. Please call +371 24424434 or email sales@latseo.com.' : 'Neizdevās nosūtīt. Lūdzu, zvaniet +371 24424434 vai rakstiet sales@latseo.com.', 'error');
         })
         .finally(function () {
           if (!sent || !form.getAttribute('data-redirect')) {

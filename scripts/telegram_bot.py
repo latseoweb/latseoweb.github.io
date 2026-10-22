@@ -544,21 +544,13 @@ async def publish_command(update, context):
         clone_url = f"https://x-access-token:{GITHUB_TOKEN}@github.com/{GITHUB_REPO}.git"
         repo = Repo.clone_from(clone_url, repo_dir, branch=GITHUB_BRANCH)
 
-        # Write LV blog post
-        lv_dir = repo_dir / "blogs" / lv_slug
-        lv_dir.mkdir(parents=True, exist_ok=True)
-        lv_html = build_full_blog_html(lv_content["title"], lv_content["metaDescription"], lv_slug, topic["category"], today_lv, today_en, lv_content["content"], image_src, lv_content.get("imageQuery","SEO"), "lv", en_slug, lv_slug)
-        (lv_dir / "index.html").write_text(lv_html, encoding="utf-8")
-
-        # Write EN blog post
-        en_dir = repo_dir / "en" / "blogs" / en_slug
-        en_dir.mkdir(parents=True, exist_ok=True)
-        en_html = build_full_blog_html(en_content["title"], en_content["metaDescription"], en_slug, topic["category"], today_lv, today_en, en_content["content"], image_src, en_content.get("imageQuery","SEO"), "en", en_slug, lv_slug)
-        (en_dir / "index.html").write_text(en_html, encoding="utf-8")
-
-        # Update blog index pages
-        update_index(repo_dir / "blogs" / "index.html", lv_content["title"], lv_slug, lv_content["metaDescription"], topic["category"], today_lv, image_src, lv_content.get("imageQuery","SEO"), "lv")
-        update_index(repo_dir / "en" / "blogs" / "index.html", en_content["title"], en_slug, en_content["metaDescription"], topic["category"], today_en, image_src, en_content.get("imageQuery","SEO"), "en")
+        # Write blog post sources and rebuild the site (scripts/build.py renders
+        # src/blog/*.html and src/en/blog/*.html with the current site design).
+        write_post_source(repo_dir, "lv", lv_slug, lv_content["title"], lv_content["metaDescription"],
+                          topic["category"], lv_content["content"], f"/en/blogs/{en_slug}/")
+        write_post_source(repo_dir, "en", en_slug, en_content["title"], en_content["metaDescription"],
+                          topic["category"], en_content["content"], f"/blogs/{lv_slug}/")
+        subprocess.run([sys.executable, "scripts/build.py"], cwd=str(repo_dir), check=True)
 
         # Update progress
         progress_path = repo_dir / "scripts" / ".blog-progress.json"
@@ -590,6 +582,21 @@ async def publish_command(update, context):
 
     except Exception as e:
         await update.message.reply_text(f"❌ Kļūda publicējot: {str(e)}")
+
+
+def write_post_source(repo_dir, lang, slug, title, meta_desc, category, content, pair_path):
+    """Write a blog post as a build source file (see scripts/build.py)."""
+    import json as _json
+    path = f"/blogs/{slug}/" if lang == "lv" else f"/en/blogs/{slug}/"
+    meta = {"path": path, "title": f"{title} | LatSEO", "description": meta_desc, "h1": title,
+            "category": category, "date": date.today().isoformat(), "cta": "audit",
+            ("en" if lang == "lv" else "lv"): pair_path}
+    if lang == "en":
+        meta["lang"] = "en"
+    folder = repo_dir / "_src" / ("blog" if lang == "lv" else "en/blog")
+    folder.mkdir(parents=True, exist_ok=True)
+    body = "<!--meta\n" + _json.dumps(meta, ensure_ascii=False, indent=2) + "\n-->\n" + content.strip() + "\n"
+    (folder / f"{slug}.html").write_text(body, encoding="utf-8")
 
 
 def build_full_blog_html(title, meta_desc, slug, category, date_lv, date_en, content, image_src, image_alt, lang, en_slug, lv_slug):
