@@ -503,7 +503,7 @@ def build_blog_html(
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{base_path}css/style.css">
-  <script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"Organization","@id":"{SITE_URL}/#org","name":"{COMPANY}","alternateName":"LatSEO","url":"{SITE_URL}/","logo":"/assets/images/LatSEO%20logo%20black.png","taxID":"LV40203749304","vatID":"LV40203749304","address":{{"@type":"PostalAddress","streetAddress":"Kārklu iela 4, Odukalns","addressLocality":"Ķekavas novads","addressCountry":"LV","postalCode":"LV-2123"}},"email":"sales@latseo.com","telephone":"+37124424434","founder":{{"@type":"Person","name":"{author}","jobTitle":"Dibinātājs un SEO stratēģis"}}}},{{"@type":"Article","@id":"{page_url}#article","headline":"{title}","description":"{meta_description}","author":{{"@type":"Person","name":"{author}","url":"{SITE_URL}{canonical_base}/"}},"publisher":{{"@id":"{SITE_URL}/#org"}},"datePublished":"{date.today().isoformat()}","dateModified":"{date.today().isoformat()}","image":"{image_src}","inLanguage":"{lang_attr}","mainEntityOfPage":{{"@type":"WebPage","@id":"{page_url}"}}}},{{"@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"{home_label}","item":"{SITE_URL}{canonical_base}/"}},{{"@type":"ListItem","position":2,"name":"{blog_label}","item":"{SITE_URL}{canonical_base}/blogs/"}},{{"@type":"ListItem","position":3,"name":"{title}","item":"{page_url}"}}]}}]}}</script>
+  <script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"Organization","@id":"{SITE_URL}/#org","name":"{COMPANY}","alternateName":"LatSEO","url":"{SITE_URL}/","logo":"https://latseo.com/assets/images/latseo-logo.png","taxID":"LV40203749304","vatID":"LV40203749304","address":{{"@type":"PostalAddress","streetAddress":"Kārklu iela 4, Odukalns","addressLocality":"Ķekavas novads","addressCountry":"LV","postalCode":"LV-2123"}},"email":"sales@latseo.com","telephone":"+37124424434","founder":{{"@type":"Person","name":"{author}","jobTitle":"Dibinātājs un SEO stratēģis"}}}},{{"@type":"Article","@id":"{page_url}#article","headline":"{title}","description":"{meta_description}","author":{{"@type":"Person","name":"{author}","url":"{SITE_URL}{canonical_base}/"}},"publisher":{{"@id":"{SITE_URL}/#org"}},"datePublished":"{date.today().isoformat()}","dateModified":"{date.today().isoformat()}","image":"{image_src}","inLanguage":"{lang_attr}","mainEntityOfPage":{{"@type":"WebPage","@id":"{page_url}"}}}},{{"@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"{home_label}","item":"{SITE_URL}{canonical_base}/"}},{{"@type":"ListItem","position":2,"name":"{blog_label}","item":"{SITE_URL}{canonical_base}/blogs/"}},{{"@type":"ListItem","position":3,"name":"{title}","item":"{page_url}"}}]}}]}}</script>
   <meta name="date" content="{date.today().isoformat()}">
   <meta name="author" content="{author}, {COMPANY}">
   <!-- Google tag (gtag.js) -->
@@ -521,7 +521,7 @@ def build_blog_html(
   <header class="site-header" role="banner">
     <div class="header__inner">
       <a href="{home_url}" class="header__logo" aria-label="LatSEO - {home_label}">
-        <img src="/assets/images/LatSEO%20logo%20black.png" alt="LatSEO" class="header__logo-img" width="140" height="38">
+        <img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44">
       </a>
       <nav class="header__nav" role="navigation" aria-label="{nav_label}">
         <ul class="header__nav-list">
@@ -636,7 +636,7 @@ def build_blog_html(
       <div class="footer__grid">
         <div>
           <a href="{home_url}" class="header__logo" aria-label="LatSEO">
-            <img src="/assets/images/LatSEO%20logo%20black.png" alt="LatSEO" class="header__logo-img" width="140" height="38">
+            <img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="50" height="44">
           </a>
           <p class="footer__brand-text">{footer_brand}</p>
         </div>

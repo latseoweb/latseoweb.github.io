@@ -174,7 +174,7 @@ h1,h2,h3,h4,h5,h6{
 .header__logo{
   display:flex;align-items:center;flex-shrink:0;z-index:1001
 }
-.header__logo-img{height:38px;width:auto}
+.header__logo-img{height:44px;width:auto}
 
 /* Desktop Navigation */
 .header__nav{display:flex;align-items:center;gap:var(--sp-sm)}
@@ -875,4 +875,50 @@ h1,h2,h3,h4,h5,h6{
 /* Adjust scroll-to-top above floating CTAs on desktop */
 @media(min-width:769px){
   .scroll-top{bottom:140px;right:var(--sp-lg);left:auto}
+}
+
+/* ============================================================
+   2026-10 pārveide: jaunie komponenti
+   ============================================================ */
+.services-grid--2{grid-template-columns:repeat(2,1fr)}
+.price-list{list-style:none;padding:0;margin:var(--sp-sm) 0;border-top:1px solid var(--clr-border)}
+.price-list li{display:flex;justify-content:space-between;gap:var(--sp-sm);padding:var(--sp-xs) 0;border-bottom:1px solid var(--clr-border);font-size:var(--fs-sm);color:var(--clr-text-secondary)}
+.price-list strong{color:var(--clr-accent-text);font-weight:var(--fw-semibold);white-space:nowrap}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg)}
+.proof-card{display:flex;flex-direction:column;gap:var(--sp-xs);background:var(--clr-surface);border:1px solid var(--clr-border);padding:var(--sp-sm);color:inherit;text-decoration:none;transition:border-color var(--transition-fast)}
+.proof-card:hover{border-color:var(--clr-accent-text)}
+.proof-card img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block}
+.proof-card__name{font-family:var(--ff-heading);font-weight:var(--fw-medium);color:var(--clr-text-primary)}
+.proof-card__metric{font-family:var(--ff-heading);font-size:var(--fs-lg);font-weight:var(--fw-semibold);color:var(--clr-accent-text)}
+.proof-card__tag{font-size:var(--fs-xs);color:var(--clr-text-muted)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2xl)}
+.checklist{list-style:none;padding:0;margin:var(--sp-md) 0 0}
+.checklist li{position:relative;padding:var(--sp-xs) 0 var(--sp-xs) 1.75rem;color:var(--clr-text-secondary);border-bottom:1px solid var(--clr-border)}
+.checklist li::before{content:"✓";position:absolute;left:0;color:var(--clr-accent-text);font-weight:var(--fw-semibold)}
+.steps{padding-left:1.25rem;margin:var(--sp-md) 0 0;color:var(--clr-text-secondary)}
+.steps li{padding:var(--sp-xs) 0;line-height:var(--lh-relaxed)}
+.steps strong{color:var(--clr-text-primary);font-weight:var(--fw-medium)}
+.about-card{display:flex;gap:var(--sp-xl);align-items:center;max-width:860px}
+.about-card__photo{width:160px;height:160px;object-fit:cover;border-radius:50%;flex-shrink:0}
+.faq details{border-top:1px solid var(--clr-border);padding:var(--sp-md) 0}
+.faq details:last-child{border-bottom:1px solid var(--clr-border)}
+.faq summary{font-family:var(--ff-heading);font-size:var(--fs-base);font-weight:var(--fw-medium);color:var(--clr-text-primary);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:var(--sp-sm)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--clr-accent-text);font-size:var(--fs-xl);line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding-top:var(--sp-sm);font-size:var(--fs-sm);color:var(--clr-text-secondary);line-height:var(--lh-relaxed)}
+.contact-form__label{display:block;font-size:var(--fs-xs);color:var(--clr-text-muted);margin-bottom:2px}
+select.contact-form__input{appearance:auto;background:transparent}
+.contact-form__status{margin-top:var(--sp-sm);font-size:var(--fs-sm)}
+.contact-form__status--error{color:#B91C1C}
+.contact-form__status--ok{color:#047857}
+.header__mobile-menu .btn{margin-top:var(--sp-sm);text-align:center}
+@media (max-width:900px){
+  .services-grid--2,.proof-grid,.two-col{grid-template-columns:1fr}
+  .about-card{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:600px){
+  .hero__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-sm);margin-top:var(--sp-xl)}
+  .hero__stat-value{font-size:var(--fs-xl)}
+  .hero__stat-label{font-size:var(--fs-xs);line-height:1.35}
 }

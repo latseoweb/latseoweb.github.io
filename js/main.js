@@ -221,16 +221,8 @@
           var lastSubmit = localStorage.getItem('latseo_form_ts');
           var now = Date.now();
           if (lastSubmit && (now - parseInt(lastSubmit, 10)) < COOLDOWN_MS) {
-            var submitBtn = form.querySelector('.contact-form__submit');
             var remain = Math.ceil((COOLDOWN_MS - (now - parseInt(lastSubmit, 10))) / 1000);
-            submitBtn.textContent = 'Uzgaidi ' + remain + 's...';
-            submitBtn.style.background = '#F59E0B';
-            submitBtn.style.opacity = '1';
-            setTimeout(function () {
-              submitBtn.textContent = 'Sūtīt Pieprasījumu';
-              submitBtn.style.background = '';
-              submitBtn.style.opacity = '';
-            }, 2000);
+            showStatus(form, 'Lūdzu, uzgaidiet ' + remain + ' s un mēģiniet vēlreiz.', 'error');
             return;
           }
         } catch (_) { /* localStorage unavailable — allow */ }
@@ -238,15 +230,7 @@
         // ── TIME CHECK: too fast = bot ──
         var fillTime = Date.now() - formStartTime;
         if (fillTime < MIN_FILL_TIME) {
-          var submitBtn2 = form.querySelector('.contact-form__submit');
-          submitBtn2.textContent = 'Pārāk ātri!';
-          submitBtn2.style.background = '#EF4444';
-          submitBtn2.style.opacity = '1';
-          setTimeout(function () {
-            submitBtn2.textContent = 'Sūtīt Pieprasījumu';
-            submitBtn2.style.background = '';
-            submitBtn2.style.opacity = '';
-          }, 2000);
+          showStatus(form, 'Lūdzu, pārbaudiet laukus un nospiediet pogu vēlreiz.', 'error');
           return;
         }
 
@@ -311,59 +295,46 @@
         data._src = window.location.href;
 
         // Send to Make.com webhook (URL encoded in code)
+        var sent = false;
         fetch(WEBHOOK, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: JSON.stringify(data),
+          keepalive: true
         })
         .then(function (response) {
-          if (response.ok) {
-            submitBtn.textContent = '✓ Nosūtīts!';
-            submitBtn.style.background = '#10B981';
-            submitBtn.style.opacity = '1';
-            submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.3)';
-            // Google Ads: reģistrē konversiju pēc veiksmīgas formas nosūtīšanas
-            if (typeof gtag === 'function') {
-              gtag('event', 'conversion', { 'send_to': 'AW-18351723640/d5EGCK2B59YcEPio5K5E' });
-            }
-            var redirectTarget = form.getAttribute('data-redirect');
-            // GA4: track successful form submission
-            if (typeof gtag === 'function') {
-              gtag('event', 'form_submit', {
-                'event_category': 'lead',
-                'event_label': data.website || window.location.href,
-                'value': 1,
-                'event_callback': function () {
-                  if (redirectTarget) window.location.href = redirectTarget;
-                }
-              });
-            }
-            if (redirectTarget) {
-              // Fallback in case GA4 is unavailable
-              setTimeout(function () { window.location.href = redirectTarget; }, 1500);
-            } else {
-              form.reset();
-              formStartTime = Date.now(); // reset timer
-            }
+          if (!response.ok) throw new Error('HTTP ' + response.status);
+          sent = true;
+          var redirectTarget = form.getAttribute('data-redirect');
+          var go = function () { if (redirectTarget) window.location.href = redirectTarget; };
+          // Konversijas tikai pēc veiksmīgas nosūtīšanas
+          if (typeof gtag === 'function') {
+            gtag('event', 'conversion', { 'send_to': 'AW-18351723640/d5EGCK2B59YcEPio5K5E' });
+            gtag('event', 'generate_lead', {
+              'lead_source': data.page_source || window.location.pathname,
+              'need': data.need || '',
+              'event_callback': go
+            });
+          }
+          if (redirectTarget) {
+            setTimeout(go, 1200); // ja GA4 nav pieejams
           } else {
-            submitBtn.textContent = 'Kļūda! Mēģini vēlreiz';
-            submitBtn.style.background = '#EF4444';
-            submitBtn.style.opacity = '1';
+            form.reset();
+            formStartTime = Date.now();
+            showStatus(form, 'Paldies, pieprasījums nosūtīts. Atbildēšu 24 stundu laikā.', 'ok');
           }
         })
         .catch(function () {
-          submitBtn.textContent = 'Kļūda! Mēģini vēlreiz';
-          submitBtn.style.background = '#EF4444';
-          submitBtn.style.opacity = '1';
+          // Ļauj mēģināt vēlreiz uzreiz
+          try { localStorage.removeItem('latseo_form_ts'); } catch (_) {}
+          showStatus(form, 'Neizdevās nosūtīt. Lūdzu, zvaniet +371 24424434 vai rakstiet sales@latseo.com.', 'error');
         })
         .finally(function () {
-          setTimeout(function () {
+          if (!sent || !form.getAttribute('data-redirect')) {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            submitBtn.style.background = '';
             submitBtn.style.opacity = '';
-            submitBtn.style.boxShadow = '';
-          }, 3000);
+          }
         });
       });
 
@@ -375,6 +346,17 @@
         });
       });
     });
+  }
+
+  function showStatus(form, text, type) {
+    var el = form.querySelector('.contact-form__status');
+    if (!el) {
+      el = document.createElement('p');
+      el.setAttribute('role', 'status');
+      form.appendChild(el);
+    }
+    el.className = 'contact-form__status contact-form__status--' + type;
+    el.textContent = text;
   }
 
   /* ==========================================================
@@ -497,15 +479,11 @@
   }
 
   /* ==========================================================
-     GOOGLE ADS CONVERSION — WhatsApp + Phone clicks
+     GOOGLE ADS — zvana/WhatsApp klikšķi NEtiek skaitīti kā formas
+     konversija (agrāk tie izmantoja to pašu konversijas ID un
+     uzpūta pieteikumu skaitu). Ja vajag, izveidot atsevišķu
+     konversijas darbību Google Ads un ielikt tās ID šeit.
      ========================================================== */
-  function initAdConversionTracking() {
-    if (typeof gtag !== 'function') return;
-    document.querySelectorAll('a[href^="tel:"], a[href*="wa.me"]').forEach(function (a) {
-      a.addEventListener('click', function () {
-        gtag('event', 'conversion', { 'send_to': 'AW-18351723640/d5EGCK2B59YcEPio5K5E' });
-      });
-    });
-  }
+  function initAdConversionTracking() {}
 
 })();

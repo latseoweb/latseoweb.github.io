@@ -18,7 +18,7 @@
   <meta property="og:description" content="Saņem personalizētu video SEO auditu 24 stundu laikā. Uzzini, kāpēc tava mājaslapa neparādās Google augšgalā.">
   <meta property="og:url" content="https://latseo.com/bezmaksas-audits/">
   <meta property="og:site_name" content="LatSEO">
-  <meta property="og:image" content="https://latseo.com/wp-content/uploads/2026/02/SEO-photo-in-office.jpeg">
+  <meta property="og:image" content="https://latseo.com/assets/images/og-latseo.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Canonical & Hreflang -->
@@ -105,19 +105,20 @@
 
       <!-- Lead Capture Form (same backend as /kontakti/) -->
       <div class="lp-form-wrapper" id="lp-form-wrapper">
-        <form class="contact-form lp-form" action="#" method="POST" data-form-init="0" id="lp-audit-form" autocomplete="off">
+        <form class="contact-form lp-form" action="#" method="POST" data-form-init="0" id="lp-audit-form" data-redirect="/paldies/">
+          <input type="hidden" name="page_source" value="Bezmaksas audits (Ads lapa)">
           <div class="lp-form-fields">
             <div class="contact-form__group lp-field">
               <input type="text" name="name" class="contact-form__input" placeholder="Jūsu vārds: *" required autocomplete="name">
             </div>
             <div class="contact-form__group lp-field">
-              <input type="tel" name="phone" class="contact-form__input" placeholder="Jūsu tālrunis: *" required autocomplete="tel">
+              <input type="tel" name="phone" class="contact-form__input" placeholder="Jūsu tālrunis (nav obligāti)" autocomplete="tel">
             </div>
             <div class="contact-form__group lp-field">
               <input type="email" name="email" class="contact-form__input" placeholder="Jūsu e-pasts: *" required autocomplete="email">
             </div>
             <div class="contact-form__group lp-field">
-              <input type="text" name="website" class="contact-form__input" placeholder="Jūsu mājaslapa: *" required autocomplete="organization">
+              <input type="text" name="website" class="contact-form__input" placeholder="Jūsu mājaslapa: *" required autocomplete="url" inputmode="url">
             </div>
           </div>
           <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
@@ -305,28 +306,6 @@
   <!-- ============================================================
        URGENCY CTA — Limited-time consultation offer
        ============================================================ -->
-  <section class="lp-section lp-urgency-cta" id="urgency">
-    <div class="lp-container">
-      <div class="lp-urgency-card">
-        <div class="lp-urgency-badge" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Ierobežots laiks
-        </div>
-        <h2 class="lp-urgency-title">
-          Bezmaksas online konsultācija līdz 31. augustam
-        </h2>
-        <p class="lp-urgency-text">
-          Papildus video auditam — saņem <strong>30 minūšu bezmaksas online konsultāciju</strong> ar SEO speciālistu, kurā pārrunāsim tavas mājaslapas izaugsmes stratēģiju. Piedāvājums spēkā tikai līdz augusta beigām.
-        </p>
-        <a href="#hero" class="lp-btn-primary lp-btn-lg">
-          <span>Saņemt bezmaksas auditu</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- ============================================================
        FINAL CTA — Repeat Button (Second chance to convert)
@@ -359,35 +338,6 @@
 
   <!-- Shared JS (contact form handler + nav, etc.) -->
   <script src="../js/main.js"></script>
-
-  <!-- Redirect to /paldies/ after form success (conversion tracking) -->
-  <script>
-    (function () {
-      var form = document.querySelector('.contact-form');
-      if (!form) return;
-
-      // Also save name on each keystroke as fallback
-      var nameInput = form.querySelector('input[name="name"]');
-      if (nameInput) {
-        nameInput.addEventListener('input', function () {
-          try { sessionStorage.setItem('lp_name', nameInput.value.trim()); } catch(e) {}
-        });
-      }
-
-      form.addEventListener('submit', function () {
-        // Capture name now (before main.js resets the form)
-        var firstName = '';
-        if (nameInput) {
-          firstName = nameInput.value.trim().split(' ')[0];
-          try { sessionStorage.setItem('lp_name', firstName); } catch(e) {}
-        }
-        // Redirect after short delay (webhook fires in background)
-        setTimeout(function () {
-          window.location.href = '../paldies/';
-        }, 1800);
-      });
-    })();
-  </script>
 
 
 
