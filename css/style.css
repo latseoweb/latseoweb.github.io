@@ -548,6 +548,13 @@ h1,h2,h3,h4,h5,h6{
 }
 .service-card:hover{border-top-color:var(--clr-accent-text)}
 
+/* Vienāds attēlu ratio blogu sarakstā */
+#blog-posts-container .service-card img{
+  aspect-ratio:16/9;
+  object-fit:cover;
+  display:block
+}
+
 .service-card__icon{
   width:48px;height:48px;
   display:flex;align-items:center;justify-content:center;
