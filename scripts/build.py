@@ -30,7 +30,7 @@ PHONE_H = "+371 24424434"
 EMAIL = "sales@latseo.com"
 LINKEDIN = "https://www.linkedin.com/in/adrians-stankevics/"
 PHOTO = "/assets/images/adrians-stankevics.webp"
-FONTS = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700&display=swap"
 TODAY = dt.date.today().isoformat()
 ARROW = '<span class="arrow" aria-hidden="true">→</span>'
 
@@ -74,7 +74,7 @@ T = {
     "lv": dict(
         home="/", nav=[
             ("/majaslapas-izstrade/", "Mājaslapu izstrāde"),
-            ("SEO pakalpojumi", [("/seo-pakalpojumi-riga/", "SEO pakalpojumi Rīgā"), ("/tehniskais-seo/", "Tehniskais SEO un audits"),
+            ("SEO pakalpojumi", [("/seo-pakalpojumi-riga/", "SEO optimizācija"), ("/tehniskais-seo/", "Tehniskais SEO un audits"),
                                  ("/lokalais-seo/", "Lokālais SEO"), ("/satura-strategija/", "Satura stratēģija"),
                                  ("/saisu-veidosana/", "Saišu veidošana")]),
             ("/pakalpojumi-un-cenas/", "Cenas"), ("/projekti/", "Projekti"), ("/blogs/", "Blogs"),
@@ -86,7 +86,7 @@ T = {
         foot_legal="Baltic SEO, SIA · Reģ. nr. 40203749304<br>PVN: LV40203749304<br>Kārklu iela 4, Odukalns, Ķekavas nov., LV-2123",
         foot_cols=[("Mājaslapas", [("/majaslapas-izstrade/", "Mājaslapu izstrāde"), ("/majaslapas-izstrade/#kalkulators", "Cenu kalkulators"),
                                    ("/blogs/cik-maksa-majaslapa/", "Cik maksā mājaslapa"), ("/projekti/", "Projekti")]),
-                   ("SEO", [("/seo-pakalpojumi-riga/", "SEO pakalpojumi Rīgā"), ("/tehniskais-seo/", "Tehniskais SEO un audits"),
+                   ("SEO", [("/seo-pakalpojumi-riga/", "SEO optimizācija"), ("/tehniskais-seo/", "Tehniskais SEO un audits"),
                             ("/lokalais-seo/", "Lokālais SEO"), ("/bezmaksas-audits/", "Bezmaksas video audits"),
                             ("/pakalpojumi-un-cenas/", "Cenas")])],
         foot_contact="Saziņa", foot_more=[("/par-mani/", "Par mani"), ("/kontakti/", "Kontakti")],
@@ -115,7 +115,7 @@ T = {
     "en": dict(
         home="/en/", nav=[
             ("/en/majaslapas-izstrade/", "Website development"),
-            ("SEO services", [("/en/seo-pakalpojumi-riga/", "SEO services in Riga"), ("/en/tehniskais-seo/", "Technical SEO & audit"),
+            ("SEO services", [("/en/seo-pakalpojumi-riga/", "SEO optimisation"), ("/en/tehniskais-seo/", "Technical SEO & audit"),
                               ("/en/lokalais-seo/", "Local SEO"), ("/en/satura-strategija/", "Content strategy"),
                               ("/en/saisu-veidosana/", "Link building")]),
             ("/en/pakalpojumi-un-cenas/", "Pricing"), ("/en/projekti/", "Projects"), ("/en/blogs/", "Blog"),
@@ -127,7 +127,7 @@ T = {
         foot_legal="Baltic SEO, SIA · Reg. no. 40203749304<br>VAT: LV40203749304<br>Kārklu iela 4, Odukalns, Ķekava Municipality, LV-2123",
         foot_cols=[("Websites", [("/en/majaslapas-izstrade/", "Website development"), ("/en/majaslapas-izstrade/#calculator", "Price calculator"),
                                  ("/en/blogs/how-much-does-a-website-cost/", "How much a website costs"), ("/en/projekti/", "Projects")]),
-                   ("SEO", [("/en/seo-pakalpojumi-riga/", "SEO services in Riga"), ("/en/tehniskais-seo/", "Technical SEO & audit"),
+                   ("SEO", [("/en/seo-pakalpojumi-riga/", "SEO optimisation"), ("/en/tehniskais-seo/", "Technical SEO & audit"),
                             ("/en/lokalais-seo/", "Local SEO"), ("/en/kontakti/", "Free video audit"),
                             ("/en/pakalpojumi-un-cenas/", "Pricing")])],
         foot_contact="Contact", foot_more=[("/en/par-mani/", "About"), ("/en/kontakti/", "Contact")],
@@ -337,7 +337,7 @@ def head(meta, graph):
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#F6F4EE">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -370,8 +370,14 @@ def project_card(key, lang):
 
 def browser(key, lang, cls=""):
     url, img, name, *_ = PROJECTS[key]
-    return (f'<figure class="browser {cls}"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">{name}</span></div>'
-            f'<img src="/assets/images/{img}" alt="{name} {T[lang]["shot_alt"]}" width="960" height="600"{" fetchpriority=\"high\"" if cls == "first" else " loading=\"lazy\""}></figure>')
+    return (f'<figure class="shot {cls}"><img src="/assets/images/{img}" alt="{name} {T[lang]["shot_alt"]}" width="960" height="600"{" fetchpriority=\"high\"" if cls == "first" else " loading=\"lazy\""}>'
+            f'<figcaption class="shot__cap">{name}</figcaption></figure>')
+
+
+def hero_shot(key, caption, lang):
+    url, img, name, *_ = PROJECTS[key]
+    return (f'<figure class="hero-shot"><img src="/assets/images/{img}" alt="{name} {T[lang]["shot_alt"]}" width="960" height="600" fetchpriority="high">'
+            f'<figcaption>{caption}</figcaption></figure>')
 
 
 def form(prefix, source, lang, first=None, button=None):
@@ -417,6 +423,7 @@ def expand_tokens(body, lang):
         first["done"] = True
         return browser(m.group(1), lang, cls)
     body = re.sub(r"\{\{browser:(\w+)\}\}", _browser, body)
+    body = re.sub(r"\{\{shot:(\w+)\|(.*?)\}\}", lambda m: hero_shot(m.group(1), m.group(2), lang), body)
     body = re.sub(r"\{\{form:([\w-]+)\|([^|}]+)(?:\|([^|}]+))?(?:\|([^|}]+))?\}\}",
                   lambda m: form(m.group(1), m.group(2), lang, m.group(3), m.group(4)), body)
     body = label_tables(body)
@@ -516,9 +523,8 @@ def render_post(m, posts):
     m["body"] = f'''<article>
 <header class="article-head container">
   {{{{breadcrumbs}}}}
-  <p class="eyebrow">{esc(m["category"])}</p>
   <h1>{m["h1"]}</h1>
-  <p class="article-meta"><span>{t["author"]}: <a href="{about_href}">Adrians Stankevičs</a></span><span>{t["published"]}: <time datetime="{m["date"]}">{fmt_date(m["date"], lang)}</time></span>{upd}<span>{mins} {t["read"]}</span></p>
+  <p class="article-meta"><span>{esc(m["category"])}</span><span>{t["author"]}: <a href="{about_href}">Adrians Stankevičs</a></span><span>{t["published"]}: <time datetime="{m["date"]}">{fmt_date(m["date"], lang)}</time></span>{upd}<span>{mins} {t["read"]}</span></p>
 </header>
 <div class="container"><img class="article-cover" src="{cover}" alt="{esc(strip_tags(m["h1"]))}" width="1200" height="630"></div>
 <div class="container article-layout">

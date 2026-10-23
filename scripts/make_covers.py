@@ -10,26 +10,23 @@ OUT = ROOT / "assets" / "covers"
 OUT.mkdir(parents=True, exist_ok=True)
 
 TPL = """<!doctype html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;box-sizing:border-box}
-body{width:1200px;height:630px;font-family:Inter,sans-serif;background:%(bg)s;color:%(fg)s;position:relative;overflow:hidden}
-.grid{position:absolute;inset:0;background-image:linear-gradient(%(line)s 1px,transparent 1px),linear-gradient(90deg,%(line)s 1px,transparent 1px);background-size:60px 60px;opacity:.55}
-.bar{position:absolute;left:0;top:0;bottom:0;width:14px;background:#2E6A4E}
-.wrap{position:absolute;left:92px;right:92px;top:78px;bottom:70px;display:flex;flex-direction:column}
-.tag{align-self:flex-start;font-weight:600;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:%(tag)s;border:1.5px solid %(tag)s;border-radius:999px;padding:8px 18px}
-h1{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:%(size)spx;line-height:1.08;letter-spacing:-.03em;margin-top:42px;max-width:960px}
-.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-size:22px;color:%(muted)s}
-.brand{display:flex;align-items:center;gap:14px;font-family:"Plus Jakarta Sans";font-weight:700;font-size:28px;color:%(fg)s;letter-spacing:.06em}
-.dot{width:16px;height:16px;border-radius:50%%;background:#2E6A4E}
-</style></head><body><div class="grid"></div><div class="bar"></div>
+body{width:1200px;height:630px;font-family:"IBM Plex Mono",monospace;background:%(bg)s;color:%(fg)s;position:relative;overflow:hidden}
+.wrap{position:absolute;left:80px;right:80px;top:72px;bottom:64px;display:flex;flex-direction:column}
+.tag{font-size:22px;letter-spacing:.02em;color:%(tag)s;padding-bottom:22px;border-bottom:2px solid %(line)s}
+h1{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:%(size)spx;line-height:1.06;letter-spacing:-.03em;margin-top:44px;max-width:1000px}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-size:21px;color:%(muted)s;padding-top:22px;border-top:2px solid %(line)s}
+.brand{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:28px;color:%(fg)s;letter-spacing:.04em}
+</style></head><body>
 <div class="wrap"><span class="tag">%(tag_text)s</span><h1>%(title)s</h1>
-<div class="foot"><span class="brand"><span class="dot"></span>LATSEO</span><span>%(sub)s</span></div></div></body></html>"""
+<div class="foot"><span class="brand">LATSEO</span><span>%(sub)s</span></div></div></body></html>"""
 
 THEMES = [
-    dict(bg="#F6F4EE", fg="#17140F", line="#E6E1D5", tag="#2E6A4E", muted="#6B6357"),
-    dict(bg="#17140F", fg="#F3F0E8", line="#25211A", tag="#9FCDB3", muted="#B5AE9F"),
-    dict(bg="#E3EDE6", fg="#17140F", line="#D3E1D7", tag="#1C4733", muted="#3A342B"),
+    dict(bg="#FFFFFF", fg="#121614", line="#121614", tag="#1F6045", muted="#5A6560"),
+    dict(bg="#121614", fg="#F1F4F2", line="#3A433E", tag="#9CC9B0", muted="#AEB8B3"),
+    dict(bg="#F1F3F2", fg="#121614", line="#B7C0BB", tag="#153E2D", muted="#2D3430"),
 ]
 
 
