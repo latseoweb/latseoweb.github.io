@@ -1,0 +1,14 @@
+[Unit]
+Description=LatSEO automātiskais bloga raksts
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/latseo-autoblog/site
+EnvironmentFile=/etc/latseo-autoblog.env
+Environment=AUTOBLOG_RESET=1
+Environment=AUTOBLOG_FONTS=/opt/latseo-autoblog/fonts
+Environment="GIT_SSH_COMMAND=ssh -i /opt/latseo-autoblog/deploy_key -o IdentitiesOnly=yes"
+ExecStart=/opt/latseo-autoblog/.venv/bin/python scripts/autoblog.py
+TimeoutStartSec=30min

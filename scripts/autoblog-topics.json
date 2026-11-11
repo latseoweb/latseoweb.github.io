@@ -1,0 +1,281 @@
+{
+  "_comment": "Rinda scripts/autoblog.py: katru dienu tiek paņemta pirmā tēma bez \"done\". Apmēram 3 no 4 tēmām ir par mājaslapu izveidi. Var brīvi pievienot, dzēst un pārkārtot. Kad rinda beidzas, skripts pats paprasa Claude jaunas tēmas.",
+  "topics": [
+    {
+      "title": "Kā notiek mājaslapas izstrāde: posmi no pirmās sarunas līdz palaišanai",
+      "keyword": "mājaslapas izstrādes process",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "WordPress, Shopify vai mājaslapa no nulles: ko izvēlēties mazam uzņēmumam",
+      "keyword": "wordpress vai shopify",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Interneta veikala izveide: kas jāizlemj pirms darba sākuma",
+      "keyword": "interneta veikala izveide",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Kā pareizi uzrakstīt title tag un meta aprakstu, lai Google rezultātos klikšķina",
+      "keyword": "meta apraksts",
+      "category": "SEO pamati",
+      "cta": "audit"
+    },
+    {
+      "title": "Kas jāiekļauj uzņēmuma mājaslapā: obligāto lapu saraksts",
+      "keyword": "uzņēmuma mājaslapa",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājas lapu dizains: kas padara mājaslapu uzticamu klienta acīs",
+      "keyword": "mājas lapu dizains",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Wix, Tilda vai izstrādātāja veidota mājaslapa: godīgs salīdzinājums",
+      "keyword": "wix vai tilda",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Kāpēc mājaslapa neparādās Google un kā to salabot",
+      "keyword": "mājaslapa neparādās google",
+      "category": "Tehniskais SEO",
+      "cta": "audit"
+    },
+    {
+      "title": "Kā izvēlēties mājaslapu izstrādātāju: jautājumi, ko uzdot pirms līguma",
+      "keyword": "mājaslapu izstrādātājs",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Vizītkartes mājaslapa: kad ar vienu lapu pietiek un kad nē",
+      "keyword": "vizītkartes mājaslapa",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Domēns un hostings: kā izvēlēties .lv domēnu un kur turēt mājaslapu",
+      "keyword": "lv domēns",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Google Search Console iesācējiem: kā pievienot mājaslapu un ko skatīties vispirms",
+      "keyword": "google search console",
+      "category": "Tehniskais SEO",
+      "cta": "audit"
+    },
+    {
+      "title": "Bezmaksas mājas lapa: ko iegūstat un ko zaudējat",
+      "keyword": "bezmaksas mājas lapa",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Kā sagatavot tekstus un bildes pirms mājaslapas izstrādes",
+      "keyword": "mājaslapas teksti un bildes",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Cik ilgā laikā var izveidot mājaslapu: reāli termiņi",
+      "keyword": "cik ilgi veido mājaslapu",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Atslēgvārdu izpēte iesācējiem: kā atrast frāzes, ko klienti tiešām meklē",
+      "keyword": "atslēgvārdu izpēte",
+      "category": "SEO pamati",
+      "cta": "audit"
+    },
+    {
+      "title": "Mājas lapas uzturēšana: kas jādara pēc palaišanas un cik tas maksā",
+      "keyword": "mājas lapas uzturēšana",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājaslapa jaunam uzņēmumam: ar ko sākt un ko atlikt uz vēlāku",
+      "keyword": "mājaslapa jaunam uzņēmumam",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "E-veikala platformas Latvijā: Shopify, WooCommerce un citas iespējas",
+      "keyword": "e-veikala platforma",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "SEO vai Google Ads: kur ieguldīt pirmo mārketinga budžetu",
+      "keyword": "seo vai google ads",
+      "category": "SEO cenas",
+      "cta": "audit"
+    },
+    {
+      "title": "Kad mājaslapu labāk pārtaisīt, nevis labot",
+      "keyword": "jauna mājaslapa vai pārtaisīt",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Landing lapa reklāmai: kā tā atšķiras no parastas mājaslapas",
+      "keyword": "landing lapa",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Sākumlapas teksts, kas pārdod: kā uzrakstīt pirmo ekrānu",
+      "keyword": "sākumlapas teksts",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Iekšējās saites: kā sasaistīt mājaslapas lapas, lai Google tās saprot",
+      "keyword": "iekšējās saites",
+      "category": "SEO pamati",
+      "cta": "audit"
+    },
+    {
+      "title": "Kontaktforma, zvana poga un WhatsApp: kā mājaslapa pārvērš apmeklētājus pieteikumos",
+      "keyword": "kontaktforma mājaslapā",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Kas pieder Jums pēc mājaslapas izstrādes: domēns, kods un piekļuves",
+      "keyword": "mājaslapas īpašumtiesības",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājaslapa restorānam vai kafejnīcai: kas tajā obligāti jābūt",
+      "keyword": "mājaslapa restorānam",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Google atsauksmes: kā tās iegūt un vai tās ietekmē vietu kartē",
+      "keyword": "google atsauksmes",
+      "category": "Lokālais SEO",
+      "cta": "audit"
+    },
+    {
+      "title": "Mājaslapa būvniecības un remonta uzņēmumam: ko klients meklē",
+      "keyword": "mājaslapa būvniecības uzņēmumam",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājaslapa skaistumkopšanas salonam: pakalpojumi, cenas un pieraksts",
+      "keyword": "mājaslapa skaistumkopšanas salonam",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājaslapa ražotājam un B2B uzņēmumam: kā runāt ar iepirkumu speciālistu",
+      "keyword": "b2b mājaslapa",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Cik ilgā laikā SEO dod rezultātus: reāls laika grafiks",
+      "keyword": "cik ilgi strādā seo",
+      "category": "SEO pamati",
+      "cta": "audit"
+    },
+    {
+      "title": "Mobilajam telefonam draudzīga mājaslapa: ko pārbaudīt savā lapā",
+      "keyword": "mobilā versija mājaslapai",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājaslapas ātrums: kāpēc lēna lapa zaudē klientus",
+      "keyword": "mājaslapas ātrums",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājaslapas drošība: atjauninājumi, rezerves kopijas un SSL",
+      "keyword": "mājaslapas drošība",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Google AI Overview un SEO: kā panākt, lai AI atbildēs piemin Jūsu uzņēmumu",
+      "keyword": "ai overview seo",
+      "category": "SEO pamati",
+      "cta": "audit"
+    },
+    {
+      "title": "Divvalodu mājaslapa: latviešu un angļu versija bez kļūdām",
+      "keyword": "divvalodu mājaslapa",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājaslapas pārbūve bez apmeklētāju zaudēšanas: URL un pāradresācijas",
+      "keyword": "mājaslapas pārbūve",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Sīkdatnes un privātuma politika mājaslapā: kas jāzina uzņēmējam",
+      "keyword": "sīkdatņu paziņojums mājaslapā",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Kas ir sitemap.xml un robots.txt un kā tos pārbaudīt",
+      "keyword": "sitemap xml",
+      "category": "Tehniskais SEO",
+      "cta": "audit"
+    },
+    {
+      "title": "Projektu un portfolio lapa: kā parādīt savus darbus mājaslapā",
+      "keyword": "portfolio lapa",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Kontrolsaraksts pirms mājaslapas palaišanas: 20 lietas, ko pārbaudīt",
+      "keyword": "mājaslapas palaišana",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Tehniskā specifikācija mājaslapai: kā aprakstīt, ko Jūs vēlaties",
+      "keyword": "mājaslapas tehniskā specifikācija",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "SEO kļūdas, ko visbiežāk redzu mazo uzņēmumu mājaslapās",
+      "keyword": "seo kļūdas",
+      "category": "SEO pamati",
+      "cta": "audit"
+    },
+    {
+      "title": "Interneta veikals Latvijā: maksājumi, piegāde un noteikumi",
+      "keyword": "interneta veikals latvijā",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Google Business Profile kategorijas un pakalpojumi: kā tos aizpildīt",
+      "keyword": "google business profile kategorijas",
+      "category": "Lokālais SEO",
+      "cta": "audit"
+    }
+  ]
+}

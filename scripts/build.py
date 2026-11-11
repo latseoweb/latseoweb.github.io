@@ -17,6 +17,7 @@ Run from the repo root:  python3 scripts/build.py
 Blog covers / OG images:  ~/.local/share/claude-seo/.venv/bin/python scripts/make_covers.py
 """
 import datetime as dt
+import hashlib
 import html
 import json
 import pathlib
@@ -32,6 +33,8 @@ LINKEDIN = "https://www.linkedin.com/in/adrians-stankevics/"
 PHOTO = "/assets/images/adrians-stankevics.webp"
 FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700&display=swap"
 TODAY = dt.date.today().isoformat()
+# Cache-busting by content, so a daily blog build does not rewrite every page
+ASSET_V = {f: hashlib.md5((ROOT / f).read_bytes()).hexdigest()[:8] for f in ("css/style.css", "js/main.js")}
 ARROW = '<span class="arrow" aria-hidden="true">→</span>'
 
 ORG = {
@@ -344,7 +347,7 @@ def head(meta, graph):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="{FONTS}" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="{FONTS}"></noscript>
-  <link rel="stylesheet" href="/css/style.css?v={TODAY}">{meta.get("head_extra", "")}
+  <link rel="stylesheet" href="/css/style.css?v={ASSET_V["css/style.css"]}">{meta.get("head_extra", "")}
   <script type="application/ld+json">
 {schema}
   </script>
@@ -464,7 +467,7 @@ def render(meta, schema_extra=()):
         body = body.replace("{{breadcrumbs}}", breadcrumbs_html(crumbs, lang))
     body = expand_tokens(body, lang)
     hdr = header(meta) if meta.get("chrome", "full") == "full" else landing_header(meta)
-    scripts = f'<script src="/js/main.js?v={TODAY}" defer></script>' + meta.get("scripts", "")
+    scripts = f'<script src="/js/main.js?v={ASSET_V["js/main.js"]}" defer></script>' + meta.get("scripts", "")
     page = head(meta, graph) + hdr + '\n<main id="main-content">\n' + body.strip() + "\n</main>\n" + footer(lang) + "\n" + scripts + "\n</body>\n</html>\n"
     f = out_file(path)
     f.parent.mkdir(parents=True, exist_ok=True)

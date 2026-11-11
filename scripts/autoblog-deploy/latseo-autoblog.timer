@@ -1,0 +1,10 @@
+[Unit]
+Description=LatSEO bloga raksts katru dienu 09:00 (Rīga)
+
+[Timer]
+OnCalendar=*-*-* 09:00:00 Europe/Riga
+RandomizedDelaySec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
