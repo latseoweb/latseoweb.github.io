@@ -19,12 +19,12 @@
 
   var PACKAGES = EN ? {
     vizitkarte: { name: 'One-page website', price: 449, includes: 'Custom design, up to 5 sections, mobile version, built-in basic SEO, SSL certificate', audience: 'Small businesses and sole traders', time: '3–5 working days' },
-    bizness: { name: 'Business website', price: 799, includes: 'Custom design, unlimited sections, mobile version, built-in basic SEO, SSL certificate', audience: 'Small and medium-sized businesses', time: '2–4 weeks' },
-    veikals: { name: 'Online store', price: 1299, includes: 'Product catalogue, cart and checkout, payment integration, mobile version, built-in basic SEO, SSL certificate', audience: 'Businesses that want to sell online', time: 'agreed based on products and features' }
+    bizness: { name: 'Business website', price: 890, includes: 'Custom design, unlimited sections, mobile version, built-in basic SEO, SSL certificate', audience: 'Small and medium-sized businesses', time: '2–4 weeks' },
+    veikals: { name: 'Online store', price: 1390, includes: 'Product catalogue, cart and checkout, payment integration, mobile version, built-in basic SEO, SSL certificate', audience: 'Businesses that want to sell online', time: 'agreed based on products and features' }
   } : {
     vizitkarte: { name: 'Vizītkartes lapa', price: 449, includes: 'Pielāgots dizains, līdz 5 sadaļām, mobilā versija, iebūvēts pamata SEO, SSL sertifikāts', audience: 'Maziem uzņēmumiem un pašnodarbinātajiem', time: '3–5 darba dienas' },
-    bizness: { name: 'Uzņēmuma mājaslapa', price: 799, includes: 'Pielāgots dizains, neierobežots sadaļu skaits, mobilā versija, iebūvēts pamata SEO, SSL sertifikāts', audience: 'Maziem un vidējiem uzņēmumiem', time: '2–4 nedēļas' },
-    veikals: { name: 'Interneta veikals', price: 1299, includes: 'Preču katalogs, grozs un pasūtīšana, maksājumu integrācija, mobilā versija, iebūvēts pamata SEO, SSL sertifikāts', audience: 'Uzņēmumiem, kas vēlas tirgoties tiešsaistē', time: 'precizējam pēc preču skaita un funkcijām' }
+    bizness: { name: 'Uzņēmuma mājaslapa', price: 890, includes: 'Pielāgots dizains, neierobežots sadaļu skaits, mobilā versija, iebūvēts pamata SEO, SSL sertifikāts', audience: 'Maziem un vidējiem uzņēmumiem', time: '2–4 nedēļas' },
+    veikals: { name: 'Interneta veikals', price: 1390, includes: 'Preču katalogs, grozs un pasūtīšana, maksājumu integrācija, mobilā versija, iebūvēts pamata SEO, SSL sertifikāts', audience: 'Uzņēmumiem, kas vēlas tirgoties tiešsaistē', time: 'precizējam pēc preču skaita un funkcijām' }
   };
   var INCLUDED = { veikals: ['eveikals'] };
 
