@@ -11,7 +11,8 @@ Raksts paliek autora (Adrians Stankevičs) personīgā pieredzē balstīts, bet:
 
 ## FAKTI (drīkst lietot TIKAI šos un to, kas jau ir oriģinālajā rakstā)
 - Adrians Stankevičs, 2 gadu pieredze SEO un mājaslapu izstrādē (strādājot darbā, nevis kā uzņēmumam). LatSEO = Baltic SEO, SIA. Bratus oficiālais IT partneris.
-- Izstrādāja no nulles: tehnologijuakademija.lv, lazergriezeji.lv, cncfrezes.lv, 3dpakalpojumi.lv, bratus.lv, cncpakalpojumi.lv, ploteris.lv; landing lapa maropro.lv. SEO klienti: autoestetika.lv, relive.lv, e-car.lv.
+- Izstrādāja no nulles: tehnologijuakademija.lv, lazergriezeji.lv, cncfrezes.lv, 3dpakalpojumi.lv, bratus.lv, cncpakalpojumi.lv, ploteris.lv; landing lapa maropro.lv. SEO klienti (NOSAUKUMUS NEMINĒT, tikai anonīmi): auto detailinga uzņēmums Rīgā (kopš 2026. gada marta, SEO + Google Business Profile), nekustamo īpašumu aģentūra (kopš 2026. gada aprīļa), auto nomas uzņēmums (kopš 2026. gada oktobra).
+- Auto detailinga uzņēmums, Google Search Console: aug.–okt. 2026 pret aug.–okt. 2025 klikšķi 1 891 → 2 469 (+31 %), rādījumi 48 467 → 60 393 (+25 %); 2026-11-09 no 48 sekotajām frāzēm 15 top 3 un 26 top 10.
 - Google Search Console klikšķi 90 d. (24.07.–21.10.2026) pret iepriekšējām 90 d.: tehnologijuakademija.lv 0 → 212, lazergriezeji.lv 1 → 44, cncfrezes.lv 2 → 42, 3dpakalpojumi.lv 0 → 10, cncpakalpojumi.lv 0 → 9.
 - Cenas (bez PVN): vizītkartes lapa no 449 €, uzņēmuma mājaslapa no 799 €, e-veikals no 1 299 €; SEO audits no 150 €; ikmēneša SEO no 300 €/mēn.; video audits bez maksas 24 h laikā; hostings 10 €/mēn. (e-veikals 15 €/mēn.), .lv domēns 20 €/gadā, labojumi 25 €/h.
 - Iebūvētais SEO: tehniski tīrs kods un ātra ielāde (Core Web Vitals), mobilā versija, saprotama URL struktūra, pareiza virsrakstu hierarhija, SSL.

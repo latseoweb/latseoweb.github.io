@@ -164,9 +164,10 @@ PROJECTS = {
     "bratus": ("https://bratus.lv/", "work/bratus.webp", "bratus.lv", ("Pilna izstrāde · e-veikals (Shopify) · oficiālais IT partneris", "Full build · online store (Shopify) · official IT partner"), None),
     "ploteris": ("https://ploteris.lv/", "work/ploteri.webp", "ploteris.lv", ("Pilna izstrāde · plotergriezēju tirdzniecība", "Full build · cutting plotter retailer"), None),
     "maropro": ("https://maropro.lv/", "work/maropro.webp", "maropro.lv", ("Landing lapa · DTF un UV printeri", "Landing page · DTF and UV printers"), None),
-    "autoestetika": ("https://www.autoestetika.lv/", "work/autoestetika.webp", "autoestetika.lv", ("SEO klients · auto detailing Rīgā", "SEO client · car detailing in Riga"), None),
-    "relive": ("https://relive.lv/", "work/relive.webp", "relive.lv", ("SEO klients · nekustamo īpašumu aģentūra", "SEO client · real estate agency"), None),
-    "ecar": ("https://e-car.lv/", "work/ecar.webp", "e-car.lv", ("SEO klients kopš 2026. gada oktobra · auto noma", "SEO client since October 2026 · car rental"), None),
+    # SEO clients are shown anonymously (no name, link or screenshot) at the owner's request
+    "autoestetika": (None, None, ("Auto detailinga uzņēmums", "Car detailing company"), ("SEO un Google Business Profile · Rīga · kopš 2026. gada marta", "SEO and Google Business Profile · Riga · since March 2026"), ("+31 %", ("klikšķi no Google, aug.–okt. 2026 pret 2025", "Google clicks, Aug–Oct 2026 vs 2025"))),
+    "relive": (None, None, ("Nekustamo īpašumu aģentūra", "Real estate agency"), ("SEO klients kopš 2026. gada aprīļa", "SEO client since April 2026"), None),
+    "ecar": (None, None, ("Auto nomas uzņēmums", "Car rental company"), ("SEO klients kopš 2026. gada oktobra", "SEO client since October 2026"), None),
 }
 
 ICON = {
@@ -364,12 +365,19 @@ def head(meta, graph):
 def project_card(key, lang):
     url, img, name, tags, metric = PROJECTS[key]
     t = T[lang]
-    tag = tags[0] if lang == "lv" else tags[1]
-    m = f'<span class="proof-card__metric">{metric} {t["metric"]}<small>{t["metric_sub"]}</small></span>' if metric else ""
+    i = 0 if lang == "lv" else 1
+    name = name[i] if isinstance(name, tuple) else name
+    tag = tags[i]
+    if isinstance(metric, tuple):
+        m = f'<span class="proof-card__metric">{metric[0]}<small>{metric[1][i]}</small></span>'
+    else:
+        m = f'<span class="proof-card__metric">{metric} {t["metric"]}<small>{t["metric_sub"]}</small></span>' if metric else ""
+    if not url:
+        return (f'<div class="proof-card proof-card--text"><span class="proof-card__name">{name}</span>'
+                f'<span class="proof-card__tag">{tag}</span>{m}</div>')
     return (f'<a class="proof-card" href="{url}" target="_blank" rel="noopener">'
             f'<img src="/assets/images/{img}" alt="{name} {t["shot_alt"]}" width="960" height="600" loading="lazy">'
             f'<span class="proof-card__body"><span class="proof-card__name">{name}</span><span class="proof-card__tag">{tag}</span>{m}</span></a>')
-
 
 def browser(key, lang, cls=""):
     url, img, name, *_ = PROJECTS[key]
