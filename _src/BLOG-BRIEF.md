@@ -66,6 +66,6 @@ Raksts paliek autora (Adrians Stankevičs) personīgā pieredzē balstīts, bet:
 
 ## Īpašas piezīmes
 - `lokalais-seo-kas-tas-ir` Google rāda 5. vietā vaicājumam „lokālais seo” — saglabāt struktūru, H2 tēmas un garumu; mainīt tonis uz „Jūs”, izņemt nepamatoto „46 %” statistiku un šablonfrāzes. Title saglabāt tuvu oriģinālam: „Lokālais SEO: kas tas ir un vai Jūsu biznesam to vajag? | LatSEO”.
-- `kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie` — pārveidot par rakstu „Cik maksā SEO Latvijā 2026. gadā”: ar LatSEO cenām tabulā, faktoriem (mājaslapas lielums, nišas konkurence, darbu apjoms) un sadaļu par AI meklēšanu no oriģināla. Kategorija „SEO cenas”.
+- `kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie` — (2026-11-14) raksts par to, kāpēc SEO projekti atšķiras (faktori + MI meklēšana). Title/H1 NEMĒRĶĒ uz „SEO optimizācijas cena” / „cik maksā SEO”: šīs frāzes pieder /pakalpojumi-un-cenas/, uz kuru raksts saista ar enkuru „SEO optimizācijas cena”. Kategorija „SEO cenas”.
 - `7-seo-pamati…` — tēma „Kāpēc SEO jāsāk jau pirms mājaslapas izstrādes”; cta "web"; saite uz `/majaslapas-izstrade/`.
 - Oriģinālo rakstu teksts: `blogs/<slug>/index.html` (lasīt tikai `<article>`/raksta saturu).
