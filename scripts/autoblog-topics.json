@@ -26,26 +26,14 @@
       "path": "/blogs/interneta-veikala-izveide/"
     },
     {
-      "title": "Kā pareizi uzrakstīt title tag un meta aprakstu, lai Google rezultātos klikšķina",
-      "keyword": "meta apraksts",
-      "category": "SEO pamati",
-      "cta": "audit"
-    },
-    {
-      "title": "Kas jāiekļauj uzņēmuma mājaslapā: obligāto lapu saraksts",
-      "keyword": "uzņēmuma mājaslapa",
+      "title": "Kā izvēlēties mājaslapu izstrādātāju: jautājumi, ko uzdot pirms līguma",
+      "keyword": "mājaslapu izstrādātājs",
       "category": "Mājaslapu izstrāde",
       "cta": "web"
     },
     {
-      "title": "Mājas lapu dizains: kas padara mājaslapu uzticamu klienta acīs",
-      "keyword": "mājas lapu dizains",
-      "category": "Mājaslapu izstrāde",
-      "cta": "web"
-    },
-    {
-      "title": "Wix, Tilda vai izstrādātāja veidota mājaslapa: godīgs salīdzinājums",
-      "keyword": "wix vai tilda",
+      "title": "Vizītkartes mājaslapa: kad ar vienu lapu pietiek un kad nē",
+      "keyword": "vizītkartes mājaslapa",
       "category": "Mājaslapu izstrāde",
       "cta": "web"
     },
@@ -56,14 +44,38 @@
       "cta": "audit"
     },
     {
-      "title": "Kā izvēlēties mājaslapu izstrādātāju: jautājumi, ko uzdot pirms līguma",
-      "keyword": "mājaslapu izstrādātājs",
+      "title": "Kas jāiekļauj uzņēmuma mājaslapā: obligāto lapu saraksts",
+      "keyword": "uzņēmuma mājaslapa",
       "category": "Mājaslapu izstrāde",
       "cta": "web"
     },
     {
-      "title": "Vizītkartes mājaslapa: kad ar vienu lapu pietiek un kad nē",
-      "keyword": "vizītkartes mājaslapa",
+      "title": "Google atsauksmes: kā tās iegūt un vai tās ietekmē vietu kartē",
+      "keyword": "google atsauksmes",
+      "category": "Lokālais SEO",
+      "cta": "audit"
+    },
+    {
+      "title": "Cik ilgā laikā var izveidot mājaslapu: reāli termiņi",
+      "keyword": "cik ilgi veido mājaslapu",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Mājas lapu dizains: kas padara mājaslapu uzticamu klienta acīs",
+      "keyword": "mājas lapu dizains",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web"
+    },
+    {
+      "title": "Kā pareizi uzrakstīt title tag un meta aprakstu, lai Google rezultātos klikšķina",
+      "keyword": "meta apraksts",
+      "category": "SEO pamati",
+      "cta": "audit"
+    },
+    {
+      "title": "Wix, Tilda vai izstrādātāja veidota mājaslapa: godīgs salīdzinājums",
+      "keyword": "wix vai tilda",
       "category": "Mājaslapu izstrāde",
       "cta": "web"
     },
@@ -88,12 +100,6 @@
     {
       "title": "Kā sagatavot tekstus un bildes pirms mājaslapas izstrādes",
       "keyword": "mājaslapas teksti un bildes",
-      "category": "Mājaslapu izstrāde",
-      "cta": "web"
-    },
-    {
-      "title": "Cik ilgā laikā var izveidot mājaslapu: reāli termiņi",
-      "keyword": "cik ilgi veido mājaslapu",
       "category": "Mājaslapu izstrāde",
       "cta": "web"
     },
@@ -168,12 +174,6 @@
       "keyword": "mājaslapa restorānam",
       "category": "Mājaslapu izstrāde",
       "cta": "web"
-    },
-    {
-      "title": "Google atsauksmes: kā tās iegūt un vai tās ietekmē vietu kartē",
-      "keyword": "google atsauksmes",
-      "category": "Lokālais SEO",
-      "cta": "audit"
     },
     {
       "title": "Mājaslapa būvniecības un remonta uzņēmumam: ko klients meklē",
