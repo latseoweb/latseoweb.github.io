@@ -22,4 +22,4 @@ systemctl disable --now latseo-autoblog.timer   # apturēt
 
 Tēmas maina, rediģējot `scripts/autoblog-topics.json` repozitorijā: secība = publicēšanas secība.
 Kad rinda beidzas, skripts pats paprasa Claude 30 jaunas tēmas.
-Lokāli pirms izmaiņām vienmēr `git pull`, jo serveris katru dienu pievieno commit.
+Lokāli pirms izmaiņām vienmēr `git pull`, jo serveris P, T un Pk pievieno commit.

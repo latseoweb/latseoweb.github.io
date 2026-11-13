@@ -1,8 +1,8 @@
 [Unit]
-Description=LatSEO bloga raksts katru dienu 09:00 (Rīga)
+Description=LatSEO bloga raksts P, T, Pk 09:00 (Rīga)
 
 [Timer]
-OnCalendar=*-*-* 09:00:00 Europe/Riga
+OnCalendar=Mon,Wed,Fri *-*-* 09:00:00 Europe/Riga
 RandomizedDelaySec=15min
 Persistent=true
 
