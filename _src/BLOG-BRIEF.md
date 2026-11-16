@@ -49,6 +49,9 @@ Raksts paliek autora (Adrians Stankevičs) personīgā pieredzē balstīts, bet:
 - Beigās viena rindkopa ar aicinājumu (bez izsaukuma zīmēm).
 - Ja rakstā ir BUJ, lieto `<div class="faq"><details data-faq><summary>Jautājums?</summary><div><p>Atbilde.</p></div></details>…</div>` (builds no tā ģenerē FAQPage shēmu).
 - Garums: 700–1 200 vārdi. Saglabāt oriģinālā raksta galveno tēmu un stāstu.
+- Neatkārtot vienus un tos pašus stāstus (2026-11 audits: 404 reklāmas stāsts bija 10 no 13 rakstiem, „sitemap 10 no 40” — 6). Personīgos stāstus no FAKTI (404 reklāmas, LatSEO paša audits, lazergriezeji.lv, pirmais klients) pēc noklusējuma NELIETOT; lietot tikai, ja raksta tēma ir tieši par to (piem. URL maiņa, indeksācija). Labāk viens konkrēts fakts, kas attiecas tieši uz raksta tēmu.
+- Pakešu cenu bloku (449 / 799 / 1 299 €) ielikt tikai rakstos, kuru tēma ir cena vai izmaksas; citos rakstos — viena saite uz `/pakalpojumi-un-cenas/` vai `/blogs/cik-maksa-majaslapa/`.
+- Struktūru izvēlēties pēc tēmas, nevis vienu šablonu: soļi, salīdzinājuma tabula, kontrolsaraksts, jautājumi un atbildes, kļūdu saraksts. H2 secība nedrīkst atkārtot iepriekšējā raksta secību.
 
 ## Rakstu tabula
 | slug | datums | EN pāris |

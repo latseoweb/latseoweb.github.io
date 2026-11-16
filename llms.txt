@@ -1,6 +1,6 @@
 # LatSEO
 
-> LatSEO (Baltic SEO, SIA) is Adrians Stankevičs' web development and SEO business in Riga, Latvia. It builds websites with built-in SEO and provides SEO services for existing websites, mainly in Latvian. All prices exclude VAT.
+> LatSEO (Baltic SEO, SIA) is Adrians Stankevičs' web development and SEO business in Riga, Latvia (Baltic SEO, SIA, reg. no. 40203749304; not affiliated with SIA "LatSeo" or other similarly named companies). It builds websites with built-in SEO and provides SEO services for existing websites, mainly in Latvian. All prices exclude VAT.
 
 ## Services and prices
 - Website development with built-in SEO: one-page website (vizītkartes lapa) from €449, business website from €799, online store from €1,299. Code and domain belong to the client. Hosting and maintenance €10/month (online store €15/month), .lv domain €20/year, changes €25/hour.
@@ -14,6 +14,7 @@
 - [Cenas](https://latseo.com/pakalpojumi-un-cenas/): all prices and add-ons
 - [SEO audits un tehniskais SEO](https://latseo.com/tehniskais-seo/)
 - [Lokālais SEO](https://latseo.com/lokalais-seo/): Google Business Profile and Google Maps
+- [Lokālais SEO: kas tas ir](https://latseo.com/blogs/lokalais-seo-kas-tas-ir/): what local SEO is and where to start
 - [Projekti](https://latseo.com/projekti/): portfolio with Google Search Console click data
 - [Cik maksā mājaslapa 2026](https://latseo.com/blogs/cik-maksa-majaslapa/): pricing guide with worked examples
 - [Par mani](https://latseo.com/par-mani/) · [Kontakti](https://latseo.com/kontakti/)
