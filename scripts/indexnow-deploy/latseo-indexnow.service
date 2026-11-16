@@ -1,0 +1,13 @@
+[Unit]
+Description=LatSEO: paziņot IndexNow par mainītajām lapām
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/latseo-indexnow/site
+Environment="GIT_SSH_COMMAND=ssh -i /opt/latseo-autoblog/deploy_key -o IdentitiesOnly=yes"
+ExecStartPre=/usr/bin/git fetch -q origin
+ExecStartPre=/usr/bin/git reset -q --hard origin/main
+ExecStart=/usr/bin/python3 scripts/indexnow.py --state /var/lib/latseo-indexnow/last-commit
+TimeoutStartSec=5min
