@@ -491,3 +491,63 @@
   function initAdConversionTracking() {}
 
 })();
+
+/* ============================================================
+   Sīkdatņu piekrišana (Google Consent Mode v2)
+   Izvēle: localStorage "latseo-consent" = {a: analītika, m: reklāma, t: datums}.
+   Noklusējums (build.py <head>) ir viss "denied"; šeit tikai banneris un update.
+   ============================================================ */
+(function () {
+  'use strict';
+  var KEY = 'latseo-consent';
+  var EN = document.documentElement.lang === 'en';
+  var TXT = EN ? {
+    text: 'We use cookies to measure visits (Google Analytics, Microsoft Clarity) and ad results (Google Ads) — only if you agree.',
+    accept: 'Accept all', reject: 'Necessary only', more: 'Privacy policy', href: '/en/privacy-policy/', label: 'Cookie consent'
+  } : {
+    text: 'Izmantojam sīkdatnes apmeklējuma mērīšanai (Google Analytics, Microsoft Clarity) un reklāmas rezultātiem (Google Ads) — tikai ar Jūsu piekrišanu.',
+    accept: 'Pieņemt visas', reject: 'Tikai nepieciešamās', more: 'Privātuma politika', href: '/privatuma-politika/', label: 'Sīkdatņu piekrišana'
+  };
+
+  function read() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
+
+  function save(all) {
+    var v = all ? 'granted' : 'denied';
+    try { localStorage.setItem(KEY, JSON.stringify({ a: all ? 1 : 0, m: all ? 1 : 0, t: new Date().toISOString().slice(0, 10) })); } catch (e) {}
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', { analytics_storage: v, ad_storage: v, ad_user_data: v, ad_personalization: v });
+    }
+    if (all && window.latseoClarity) window.latseoClarity();
+    if (!all && window.clarity) window.clarity('consent', false);
+  }
+
+  function show() {
+    if (document.getElementById('consent')) return;
+    var hasPolicy = !!document.querySelector('.footer__legal-links a[href="' + TXT.href + '"]');
+    var box = document.createElement('div');
+    box.id = 'consent';
+    box.className = 'consent';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-label', TXT.label);
+    box.innerHTML = '<p class="consent__text">' + TXT.text +
+      (hasPolicy ? ' <a href="' + TXT.href + '">' + TXT.more + '</a>' : '') + '</p>' +
+      '<div class="consent__btns"><button type="button" class="btn btn--dark consent__btn" data-c="0">' + TXT.reject + '</button>' +
+      '<button type="button" class="btn btn--primary consent__btn" data-c="1">' + TXT.accept + '</button></div>';
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-c]');
+      if (!b) return;
+      save(b.getAttribute('data-c') === '1');
+      box.remove();
+      document.documentElement.classList.remove('has-consent-bar');
+    });
+    document.body.appendChild(box);
+    document.documentElement.classList.add('has-consent-bar');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!read()) show();
+    document.querySelectorAll('[data-consent-open]').forEach(function (b) {
+      b.addEventListener('click', function () { show(); });
+    });
+  });
+})();

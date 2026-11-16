@@ -44,6 +44,8 @@ def render(page, title, tag, sub, out, theme):
     page.screenshot(path=str(png))
     subprocess.run(["magick", str(png), "-quality", "82", "-strip", str(out)], check=True)
     png.unlink()
+    for v in out.parent.glob(out.stem + "*.webp"):     # build.py re-creates the WebP variants
+        v.unlink()
 
 
 with sync_playwright() as pw:
@@ -61,4 +63,9 @@ with sync_playwright() as pw:
         render(page, "Mājaslapu izstrāde ar iebūvētu SEO", "Rīga · Latvija", "Mājaslapas no 449 € · SEO no 300 €/mēn.",
                ROOT / "assets" / "images" / "og-latseo.jpg", THEMES[1])
         print("og image")
+    if len(sys.argv) == 1 or "og-en" in sys.argv[1:]:
+        # English pages: English text and no prices
+        render(page, "Website development with built-in SEO", "Riga · Latvia", "Adrians Stankevičs · latseo.com",
+               ROOT / "assets" / "images" / "og-latseo-en.jpg", THEMES[1])
+        print("og image (en)")
     b.close()

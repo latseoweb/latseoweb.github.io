@@ -5,8 +5,25 @@
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>1.0</priority>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/bezmaksas-audits/</loc>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/kontakti/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/kontakti/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/kontakti/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/kontakti/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/lokalais-seo/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/lokalais-seo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/lokalais-seo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/lokalais-seo/"/>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/majaslapas-izstrade/</loc>
@@ -14,7 +31,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/majaslapas-izstrade/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/majaslapas-izstrade/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://latseo.com/pakalpojumi-un-cenas/</loc>
@@ -22,44 +38,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/pakalpojumi-un-cenas/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/pakalpojumi-un-cenas/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/seo-pakalpojumi-riga/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/seo-pakalpojumi-riga/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/seo-pakalpojumi-riga/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/seo-pakalpojumi-riga/"/>
-    <lastmod>2026-11-14</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/bezmaksas-audits/</loc>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/blogs/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/kontakti/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/kontakti/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/kontakti/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/kontakti/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/lokalais-seo/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/lokalais-seo/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/lokalais-seo/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/lokalais-seo/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://latseo.com/par-mani/</loc>
@@ -67,7 +45,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/par-mani/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/par-mani/"/>
     <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://latseo.com/privatuma-politika/</loc>
@@ -75,39 +52,48 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/privacy-policy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/privatuma-politika/"/>
     <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://latseo.com/projekti/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/projekti/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/projekti/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/projekti/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/saisu-veidosana/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/saisu-veidosana/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/saisu-veidosana/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/saisu-veidosana/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/satura-strategija/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/satura-strategija/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/satura-strategija/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/satura-strategija/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/seo-pakalpojumi-riga/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/seo-pakalpojumi-riga/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/seo-pakalpojumi-riga/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/seo-pakalpojumi-riga/"/>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/tehniskais-seo/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/tehniskais-seo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/tehniskais-seo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/tehniskais-seo/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/blogs/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/"/>
     <lastmod>2026-11-16</lastmod>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/</loc>
@@ -115,7 +101,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/the-biggest-seo-mistake-i-see-clients-make-before-building-a-website/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/</loc>
@@ -123,7 +108,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/cik-maksa-majaslapa/</loc>
@@ -131,7 +115,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/how-much-does-a-website-cost/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/cik-maksa-majaslapa/"/>
     <lastmod>2026-11-16</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/google-business-profile-ka-izveidot/</loc>
@@ -139,12 +122,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/google-business-profile-how-to-create/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/google-business-profile-ka-izveidot/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/interneta-veikala-izveide/</loc>
     <lastmod>2026-11-13</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/</loc>
@@ -152,7 +133,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/</loc>
@@ -160,7 +140,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/why-ai-visibility-is-changing-seo-pricing-in-latvia-and-what-it-means-for-you/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/"/>
     <lastmod>2026-11-14</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/</loc>
@@ -168,7 +147,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/lokalais-seo-kas-tas-ir/</loc>
@@ -176,17 +154,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/local-seo-what-is-it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/lokalais-seo-kas-tas-ir/"/>
     <lastmod>2026-11-14</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/majaslapas-izstrades-process-posmi/</loc>
     <lastmod>2026-11-11</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/majaslapu-izstradatajs-ka-izveleties/</loc>
     <lastmod>2026-11-16</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam/</loc>
@@ -194,132 +169,45 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/why-seo-is-not-just-about-keywords-lessons-from-my-first-client-project/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/blogs/wordpress-vai-shopify/</loc>
     <lastmod>2026-11-12</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://latseo.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/google-business-profile-how-to-create/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/google-business-profile-ka-izveidot/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/google-business-profile-how-to-create/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/google-business-profile-ka-izveidot/"/>
     <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/how-much-does-a-website-cost/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/cik-maksa-majaslapa/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/how-much-does-a-website-cost/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/cik-maksa-majaslapa/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/local-seo-what-is-it/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/lokalais-seo-kas-tas-ir/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/local-seo-what-is-it/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/lokalais-seo-kas-tas-ir/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/the-biggest-seo-mistake-i-see-clients-make-before-building-a-website/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/the-biggest-seo-mistake-i-see-clients-make-before-building-a-website/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/why-ai-visibility-is-changing-seo-pricing-in-latvia-and-what-it-means-for-you/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/why-ai-visibility-is-changing-seo-pricing-in-latvia-and-what-it-means-for-you/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://latseo.com/en/blogs/why-seo-is-not-just-about-keywords-lessons-from-my-first-client-project/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/why-seo-is-not-just-about-keywords-lessons-from-my-first-client-project/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam/"/>
-    <lastmod>2026-10-23</lastmod>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://latseo.com/en/kontakti/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/kontakti/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/kontakti/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/kontakti/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/lokalais-seo/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/lokalais-seo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/lokalais-seo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/lokalais-seo/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/majaslapas-izstrade/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/majaslapas-izstrade/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/majaslapas-izstrade/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/majaslapas-izstrade/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/pakalpojumi-un-cenas/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/pakalpojumi-un-cenas/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/pakalpojumi-un-cenas/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/pakalpojumi-un-cenas/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/par-mani/</loc>
@@ -327,7 +215,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/par-mani/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/par-mani/"/>
     <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://latseo.com/en/privacy-policy/</loc>
@@ -335,46 +222,110 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/privacy-policy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/privatuma-politika/"/>
     <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://latseo.com/en/projekti/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/projekti/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/projekti/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/projekti/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/saisu-veidosana/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/saisu-veidosana/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/saisu-veidosana/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/saisu-veidosana/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/satura-strategija/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/satura-strategija/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/satura-strategija/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/satura-strategija/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/seo-pakalpojumi-riga/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/seo-pakalpojumi-riga/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/seo-pakalpojumi-riga/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/seo-pakalpojumi-riga/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-10-23</lastmod>
   </url>
   <url>
     <loc>https://latseo.com/en/tehniskais-seo/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/tehniskais-seo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/tehniskais-seo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/tehniskais-seo/"/>
-    <lastmod>2026-11-16</lastmod>
-    <priority>0.5</priority>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/google-business-profile-how-to-create/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/google-business-profile-ka-izveidot/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/google-business-profile-how-to-create/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/google-business-profile-ka-izveidot/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/google-indexing-delays-lessons-from-a-seasons-biggest-miss/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/how-much-does-a-website-cost/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/cik-maksa-majaslapa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/how-much-does-a-website-cost/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/cik-maksa-majaslapa/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/local-seo-what-is-it/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/lokalais-seo-kas-tas-ir/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/local-seo-what-is-it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/lokalais-seo-kas-tas-ir/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/my-first-seo-mistakes-lessons-from-the-trenches/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/ko-es-iemacijos-par-seo-pamatiem-no-nulles-lidz-pirmajiem/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/the-biggest-seo-mistake-i-see-clients-make-before-building-a-website/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/the-biggest-seo-mistake-i-see-clients-make-before-building-a-website/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/what-my-video-seo-audits-reveal-the-first-mistake-i-always-spot/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/why-ai-visibility-is-changing-seo-pricing-in-latvia-and-what-it-means-for-you/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/why-ai-visibility-is-changing-seo-pricing-in-latvia-and-what-it-means-for-you/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/"/>
+    <lastmod>2026-10-23</lastmod>
+  </url>
+  <url>
+    <loc>https://latseo.com/en/blogs/why-seo-is-not-just-about-keywords-lessons-from-my-first-client-project/</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://latseo.com/blogs/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://latseo.com/en/blogs/why-seo-is-not-just-about-keywords-lessons-from-my-first-client-project/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://latseo.com/blogs/mits-seo-ir-tikai-atslegvardi-kapec-sis-uzskats-ir-bistam/"/>
+    <lastmod>2026-10-23</lastmod>
   </url>
 </urlset>

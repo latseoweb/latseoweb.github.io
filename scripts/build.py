@@ -31,7 +31,23 @@ PHONE_H = "+371 24424434"
 EMAIL = "sales@latseo.com"
 LINKEDIN = "https://www.linkedin.com/in/adrians-stankevics/"
 PHOTO = "/assets/images/adrians-stankevics.webp"
-FONTS = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700&display=swap"
+FONT_PRELOAD = ()
+GA4, ADS, CLARITY = "G-MF7Q1R9722", "AW-18351723640", "xx3mt1i3hw"
+# Consent Mode v2: everything denied until the visitor chooses (stored in localStorage "latseo-consent").
+# gtag.js loads on the first interaction or when the browser is idle after load (not during page load),
+# Clarity only with analytics consent. The banner itself is in js/main.js.
+TAGS = ("<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
+        "(function(){var c=null;try{c=JSON.parse(localStorage.getItem('latseo-consent'))}catch(e){}"
+        "var a=c&&c.a?'granted':'denied',m=c&&c.m?'granted':'denied';"
+        "gtag('consent','default',{analytics_storage:a,ad_storage:m,ad_user_data:m,ad_personalization:m});"
+        f"gtag('js',new Date());gtag('config','{GA4}');gtag('config','{ADS}');"
+        "window.latseoClarity=function(){if(window.clarity)return;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};"
+        f"t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}})(window,document,'clarity','script','{CLARITY}');}};"
+        "var d=false;function l(){if(d)return;d=true;var s=document.createElement('script');s.async=1;"
+        f"s.src='https://www.googletagmanager.com/gtag/js?id={GA4}';document.head.appendChild(s);if(c&&c.a)window.latseoClarity();}}"
+        "['scroll','pointerdown','keydown','touchstart'].forEach(function(e){addEventListener(e,l,{once:true,passive:true});});"
+        "addEventListener('load',function(){setTimeout(function(){(window.requestIdleCallback||setTimeout)(l,{timeout:2000});},6000);});"
+        "})();</script>")
 TODAY = dt.date.today().isoformat()
 # Cache-busting by content, so a daily blog build does not rewrite every page
 ASSET_V = {f: hashlib.md5((ROOT / f).read_bytes()).hexdigest()[:8] for f in ("css/style.css", "js/main.js")}
@@ -93,8 +109,8 @@ T = {
                             ("/lokalais-seo/", "Lokālais SEO"), ("/bezmaksas-audits/", "Bezmaksas video audits"),
                             ("/pakalpojumi-un-cenas/", "Cenas")])],
         foot_contact="Saziņa", foot_more=[("/par-mani/", "Par mani"), ("/kontakti/", "Kontakti")],
-        foot_vat="Cenas norādītas bez PVN.", quick="Ātrā saziņa", call="Zvanīt", wa_aria="Rakstīt WhatsApp",
-        og_locale="lv_LV",
+        foot_vat="Cenas norādītas bez PVN.", privacy=("/privatuma-politika/", "Privātuma politika"), cookie_settings="Sīkdatņu iestatījumi", quick="Ātrā saziņa", call="Zvanīt", wa_aria="Rakstīt WhatsApp",
+        og_locale="lv_LV", og_alt="LatSEO — mājaslapu izstrāde ar iebūvētu SEO, Rīga",
         # form
         f_name="Vārds *", f_phone="Tālrunis", f_email="E-pasts *", f_need="Kas Jums vajadzīgs?",
         f_site="Esošā mājaslapa (ja ir)", f_site_ph="piemērs.lv", f_msg="Īsi par projektu", f_send="Nosūtīt pieprasījumu",
@@ -134,8 +150,8 @@ T = {
                             ("/en/lokalais-seo/", "Local SEO"), ("/en/kontakti/", "Free video audit"),
                             ("/en/pakalpojumi-un-cenas/", "Pricing")])],
         foot_contact="Contact", foot_more=[("/en/par-mani/", "About"), ("/en/kontakti/", "Contact")],
-        foot_vat="Prices exclude VAT.", quick="Quick contact", call="Call", wa_aria="Message on WhatsApp",
-        og_locale="en_GB",
+        foot_vat="Prices exclude VAT.", privacy=("/en/privacy-policy/", "Privacy policy"), cookie_settings="Cookie settings", quick="Quick contact", call="Call", wa_aria="Message on WhatsApp",
+        og_locale="en_GB", og_alt="LatSEO — website development with built-in SEO, Riga",
         f_name="Name *", f_phone="Phone", f_email="Email *", f_need="What do you need?",
         f_site="Current website (if any)", f_site_ph="example.com", f_msg="About your project", f_send="Send request",
         f_hint="I reply within 24 hours. No obligation.", thanks="/en/thank-you/",
@@ -199,10 +215,93 @@ def read_source(p, lang):
     return meta
 
 
+# ---------------------------------------------------------------- lastmod
+# sitemap <lastmod> and JSON-LD dateModified change only when a page's own content changes
+# (title, description, h1, body source), never on a template/CSS change or a rebuild.
+# Stored in _src/lastmod.json: {path: {"hash": ..., "lastmod": "YYYY-MM-DD"}}.
+LASTMOD_FILE = SRC / "lastmod.json"
+LASTMOD = json.loads(LASTMOD_FILE.read_text(encoding="utf-8")) if LASTMOD_FILE.exists() else {}
+_seen = set()
+
+
+def _git_date(p):
+    """Date of the last commit touching a file (used only to seed a page missing from lastmod.json)."""
+    import subprocess
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(p)], cwd=ROOT,
+                             capture_output=True, text=True, check=True).stdout.strip()
+        return out or None
+    except Exception:
+        return None
+
+
+def content_lastmod(path, content, seed=None):
+    """Last content change date for `path`; `content` is what the page says (no template)."""
+    h = hashlib.sha256(content.encode("utf-8")).hexdigest()[:16]
+    _seen.add(path)
+    rec = LASTMOD.get(path)
+    if rec and rec["hash"] == h:
+        return rec["lastmod"]
+    date = TODAY if rec else (seed or TODAY)
+    LASTMOD[path] = {"hash": h, "lastmod": date}
+    return date
+
+
+def page_lastmod(meta):
+    content = "\n".join([meta["title"], meta["description"], meta.get("h1", ""), meta["body"].strip()])
+    seed = meta.get("modified") or meta.get("date") or _git_date(meta["src"])
+    return content_lastmod(meta["path"], content, seed)
+
+
+def write_lastmod():
+    for k in [k for k in LASTMOD if k not in _seen]:     # pages that no longer exist
+        del LASTMOD[k]
+    LASTMOD_FILE.write_text(json.dumps(dict(sorted(LASTMOD.items())), ensure_ascii=False, indent=1) + "\n",
+                            encoding="utf-8")
+
+
 def out_file(path):
     if path.endswith(".html"):
         return ROOT / path.lstrip("/")
     return ROOT / path.strip("/") / "index.html" if path != "/" else ROOT / "index.html"
+
+
+# ---------------------------------------------------------------- images
+# Smaller WebP variants next to the original: x.webp -> x-480.webp, cover.jpg -> cover.webp + cover-640.webp.
+# Made with Pillow when available (ThinkPad autoblog venv, claude-seo venv); without Pillow only
+# variants that already exist are used, so the build never breaks.
+def _variant(src, width, suffix):
+    """Path (site-relative) of a WebP variant of `src`, creating it if possible; None if unavailable."""
+    f = ROOT / src.lstrip("/")
+    out = f.with_name(f"{f.stem}{suffix}.webp")
+    if not out.exists():                # make_covers.py deletes stale variants
+        try:
+            from PIL import Image
+        except ImportError:
+            return "/" + out.relative_to(ROOT).as_posix() if out.exists() else None
+        with Image.open(f) as im:
+            if width and im.width > width:
+                im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
+            im.save(out, "WEBP", quality=80, method=6)
+    return "/" + out.relative_to(ROOT).as_posix()
+
+
+def srcset(src, widths, full_width):
+    """(src, srcset) for an <img>: WebP original/full size plus smaller variants."""
+    full = src if src.endswith(".webp") else _variant(src, None, "") or src
+    parts = [f"{v} {w}w" for w in widths if (v := _variant(src, w, f"-{w}"))]
+    if not parts:
+        return full, ""
+    return full, ", ".join(parts + [f"{full} {full_width}w"])
+
+
+def img_attrs(src, widths, full_width, sizes):
+    full, ss = srcset(src, widths, full_width)
+    return f'src="{full}"' + (f' srcset="{ss}" sizes="{sizes}"' if ss else "")
+
+
+CARD_SIZES = "(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px"
+WIDE_SIZES = "(max-width: 1240px) calc(100vw - 32px), 1200px"
 
 
 # ---------------------------------------------------------------- chrome
@@ -236,7 +335,7 @@ def header(meta):
           f'<a href="{en_url}" class="header__lang-btn{"" if lv_on else " header__lang-btn--active"}" hreflang="en" lang="en"{"" if lv_on else " aria-current=\"true\""}>EN</a>')
     return f'''<header class="site-header" role="banner">
   <div class="header__inner">
-    <a href="{t["home"]}" class="header__logo" aria-label="{t["logo_aria"]}"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40"></a>
+    <a href="{t["home"]}" class="header__logo" aria-label="{t["logo_aria"]}"><img src="/assets/images/latseo-logo-92.webp" alt="LatSEO" class="header__logo-img" width="46" height="40"></a>
     <nav class="header__nav" aria-label="{t["nav_aria"]}">
       <ul class="header__nav-list">{"".join(items)}</ul>
       <div class="header__lang-switch" role="group" aria-label="{t["lang_aria"]}">{sw}</div>
@@ -255,8 +354,19 @@ def header(meta):
 def landing_header(meta):
     t = T[meta["lang"]]
     return (f'<header class="site-header" role="banner"><div class="header__inner">'
-            f'<a href="{t["home"]}" class="header__logo" aria-label="{t["logo_aria"]}"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40"></a>'
+            f'<a href="{t["home"]}" class="header__logo" aria-label="{t["logo_aria"]}"><img src="/assets/images/latseo-logo-92.webp" alt="LatSEO" class="header__logo-img" width="46" height="40"></a>'
             f'<a href="tel:{PHONE}" class="header__cta">{PHONE_H}</a></div></header>')
+
+
+def has_page(path):
+    """True if some _src page renders `path` (so the footer never links to a 404)."""
+    if not hasattr(has_page, "paths"):
+        has_page.paths = set()
+        for f in SRC.glob("**/pages/*.html"):
+            m = re.search(r'"path":\s*"([^"]+)"', f.read_text(encoding="utf-8")[:2000])
+            if m:
+                has_page.paths.add(m.group(1))
+    return path in has_page.paths
 
 
 def footer(lang):
@@ -266,11 +376,14 @@ def footer(lang):
         + "".join(f'<li><a href="{u}">{esc(n)}</a></li>' for u, n in links) + "</ul></div>"
         for h, links in t["foot_cols"])
     more = "".join(f'<li><a href="{u}">{esc(n)}</a></li>' for u, n in t["foot_more"])
+    priv_href, priv_txt = t["privacy"]
+    legal = (f'<a href="{priv_href}">{priv_txt}</a> · ' if has_page(priv_href) else "") + \
+        f'<button type="button" class="footer__cookie-btn" data-consent-open>{t["cookie_settings"]}</button>'
     return f'''<footer class="site-footer" role="contentinfo">
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a href="{t["home"]}" class="header__logo" aria-label="LatSEO"><img src="/assets/images/latseo-logo.png" alt="LatSEO" class="header__logo-img" width="46" height="40" loading="lazy"></a>
+        <a href="{t["home"]}" class="header__logo" aria-label="LatSEO"><img src="/assets/images/latseo-logo-92.webp" alt="LatSEO" class="header__logo-img" width="46" height="40" loading="lazy"></a>
         <p class="footer__brand-text">{t["foot_brand"]}</p>
         <p class="footer__legal">{t["foot_legal"]}</p>
       </div>
@@ -283,7 +396,7 @@ def footer(lang):
         <ul class="footer__links footer__links--more">{more}</ul>
       </div>
     </div>
-    <div class="footer__bottom"><p>© 2026 LatSEO · Baltic SEO, SIA</p><p>{t["foot_vat"]}</p></div>
+    <div class="footer__bottom"><p>© 2026 LatSEO · Baltic SEO, SIA</p><p class="footer__legal-links">{legal}</p><p>{t["foot_vat"]}</p></div>
   </div>
 </footer>
 <div class="floating-ctas" aria-label="{t["quick"]}">
@@ -316,7 +429,9 @@ def head(meta, graph):
         alt = (f'\n  <link rel="alternate" hreflang="lv" href="{SITE}{lv_url}">'
                f'\n  <link rel="alternate" hreflang="en" href="{SITE}{en_url}">'
                f'\n  <link rel="alternate" hreflang="x-default" href="{SITE}{lv_url}">')
-    og = meta.get("og_image", f"{SITE}/assets/images/og-latseo.jpg")
+    default_og = "/assets/images/og-latseo.jpg" if meta["lang"] == "lv" else "/assets/images/og-latseo-en.jpg"
+    og = meta.get("og_image", default_og)
+    og_alt = meta.get("og_alt") or (strip_tags(meta["h1"]) if meta.get("og_image") and meta.get("h1") else t["og_alt"])
     if og.startswith("/"):
         og = SITE + og
     robots = meta.get("robots", "index, follow, max-image-preview:large, max-snippet:-1")
@@ -340,21 +455,16 @@ def head(meta, graph):
   <meta property="og:image" content="{og}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{esc(og_alt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="{FONTS}" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="{FONTS}"></noscript>
-  <link rel="stylesheet" href="/css/style.css?v={ASSET_V["css/style.css"]}">{meta.get("head_extra", "")}
+{"".join(f'  <link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' + chr(10) for f in FONT_PRELOAD)}  <link rel="stylesheet" href="/css/style.css?v={ASSET_V["css/style.css"]}">{meta.get("head_extra", "")}
   <script type="application/ld+json">
 {schema}
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MF7Q1R9722"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-MF7Q1R9722');gtag('config','AW-18351723640');</script>
-  <script>(function(){{var d=false;function l(){{if(d)return;d=true;(function(c,l,a,r,i,t,y){{c[a]=c[a]||function(){{(c[a].q=c[a].q||[]).push(arguments)}};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}})(window,document,"clarity","script","xx3mt1i3hw");}}['scroll','pointerdown','keydown','touchstart'].forEach(function(e){{addEventListener(e,l,{{once:true,passive:true}});}});setTimeout(l,4000);}})();</script>
+  {TAGS}
 </head>
 <body{body_class}>
 <a href="#main-content" class="skip-link">{t["skip"]}</a>
@@ -376,18 +486,18 @@ def project_card(key, lang):
         return (f'<div class="proof-card proof-card--text"><span class="proof-card__name">{name}</span>'
                 f'<span class="proof-card__tag">{tag}</span>{m}</div>')
     return (f'<a class="proof-card" href="{url}" target="_blank" rel="noopener">'
-            f'<img src="/assets/images/{img}" alt="{name} {t["shot_alt"]}" width="960" height="600" loading="lazy">'
+            f'<img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {t["shot_alt"]}" width="960" height="600" loading="lazy">'
             f'<span class="proof-card__body"><span class="proof-card__name">{name}</span><span class="proof-card__tag">{tag}</span>{m}</span></a>')
 
 def browser(key, lang, cls=""):
     url, img, name, *_ = PROJECTS[key]
-    return (f'<figure class="shot {cls}"><img src="/assets/images/{img}" alt="{name} {T[lang]["shot_alt"]}" width="960" height="600"{" fetchpriority=\"high\"" if cls == "first" else " loading=\"lazy\""}>'
+    return (f'<figure class="shot {cls}"><img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {T[lang]["shot_alt"]}" width="960" height="600"{" data-hero" if cls == "first" else " loading=\"lazy\""}>'
             f'<figcaption class="shot__cap">{name}</figcaption></figure>')
 
 
 def hero_shot(key, caption, lang):
     url, img, name, *_ = PROJECTS[key]
-    return (f'<figure class="hero-shot"><img src="/assets/images/{img}" alt="{name} {T[lang]["shot_alt"]}" width="960" height="600" fetchpriority="high">'
+    return (f'<figure class="hero-shot"><img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {T[lang]["shot_alt"]}" width="960" height="600" data-hero>'
             f'<figcaption>{caption}</figcaption></figure>')
 
 
@@ -474,6 +584,14 @@ def render(meta, schema_extra=()):
     if crumbs:
         body = body.replace("{{breadcrumbs}}", breadcrumbs_html(crumbs, lang))
     body = expand_tokens(body, lang)
+    hero = re.search(r'<img ([^>]*?) data-hero', body)
+    if hero:
+        a = dict(re.findall(r'(\w+)="([^"]*)"', hero.group(1)))
+        extra = (f' imagesrcset="{a["srcset"]}" imagesizes="{a["sizes"]}"' if a.get("srcset") else "")
+        meta["head_extra"] = meta.get("head_extra", "") + (
+            f'\n  <link rel="preload" as="image" href="{a["src"]}"{extra} media="(min-width: 1001px)" fetchpriority="high">')
+        body = body.replace(" data-hero", "", 1)
+    body = body.replace(" data-hero", ' loading="lazy"')
     hdr = header(meta) if meta.get("chrome", "full") == "full" else landing_header(meta)
     scripts = f'<script src="/js/main.js?v={ASSET_V["js/main.js"]}" defer></script>' + meta.get("scripts", "")
     page = head(meta, graph) + hdr + '\n<main id="main-content">\n' + body.strip() + "\n</main>\n" + footer(lang) + "\n" + scripts + "\n</body>\n</html>\n"
@@ -506,7 +624,7 @@ def cover_of(p):
 def post_card(p, feature=False):
     t = T[p["lang"]]
     return (f'<a class="post-card{" post-card--feature" if feature else ""}" href="{p["path"]}">'
-            f'<img class="post-card__cover" src="{cover_of(p)}" alt="" width="1200" height="630" loading="lazy">'
+            f'<img class="post-card__cover" {img_attrs(cover_of(p), (640,), 1200, CARD_SIZES)} alt="" width="1200" height="630" loading="lazy">'
             f'<span class="post-card__body"><span class="post-card__meta">{esc(p["category"])} · {fmt_date(p["date"], p["lang"])}</span>'
             f'<span class="post-card__title">{p["h1"]}</span><span class="post-card__excerpt">{esc(p["description"])}</span>'
             f'<span class="post-card__more">{t["read_more"]}</span></span></a>')
@@ -528,7 +646,7 @@ def render_post(m, posts):
     related = [p for p in posts if p["path"] in rel_paths] or [p for p in posts if p["path"] != m["path"]][:3]
     rel = "".join(post_card(p) for p in related[:3])
     title, text, href, btn = t["cta_web"] if m.get("cta", "web") == "web" else t["cta_audit"]
-    dmod = m.get("modified", m["date"])
+    dmod = max(m["date"], m.get("modified") or m["date"])
     upd = f'<span>{t["updated"]}: <time datetime="{dmod}">{fmt_date(dmod, lang)}</time></span>' if dmod != m["date"] else ""
     about_href, about_txt = t["about_link"]
     m["body"] = f'''<article>
@@ -537,7 +655,7 @@ def render_post(m, posts):
   <h1>{m["h1"]}</h1>
   <p class="article-meta"><span>{esc(m["category"])}</span><span>{t["author"]}: <a href="{about_href}">Adrians Stankevičs</a></span><span>{t["published"]}: <time datetime="{m["date"]}">{fmt_date(m["date"], lang)}</time></span>{upd}<span>{mins} {t["read"]}</span></p>
 </header>
-<div class="container"><img class="article-cover" src="{cover}" alt="{esc(strip_tags(m["h1"]))}" width="1200" height="630"></div>
+<div class="container"><img class="article-cover" {img_attrs(cover, (640,), 1200, WIDE_SIZES)} alt="{esc(strip_tags(m["h1"]))}" width="1200" height="630" fetchpriority="high"></div>
 <div class="container article-layout">
   <div class="article-body">
 {body.strip()}
@@ -571,6 +689,9 @@ def render_blog_index(posts, lang):
         meta["en"] = "/en/blogs/"
     else:
         meta["lv"] = "/blogs/"
+    listing = "\n".join(f'{p["path"]}|{p["h1"]}|{p["description"]}|{p["date"]}' for p in posts)
+    meta["modified"] = content_lastmod(t["blog"], "\n".join([t["blog_title"], t["blog_desc"], t["blog_lead"], listing]),
+                                       max(p["date"] for p in posts))
     return render(meta, [{"@type": "ItemList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "url": SITE + p["path"]} for i, p in enumerate(posts)]}])
 
@@ -608,25 +729,19 @@ def write_sitemap():
         if not can or can.group(1) != SITE + "/" + rel[: -len("index.html")]:
             continue
         alts = re.findall(r'<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"', s)
-        mod = re.search(r'"dateModified":\s*"([\d-]+)"', s)
-        urls.append((can.group(1), alts, mod.group(1) if mod else TODAY))
+        path = can.group(1)[len(SITE):]
+        if path not in LASTMOD:
+            raise SystemExit(f"{path}: no lastmod (page not built from _src?)")
+        urls.append((can.group(1), alts, LASTMOD[path]["lastmod"]))
 
-    def prio(u):
-        if u in (SITE + "/",):
-            return "1.0"
-        if u.endswith(("/majaslapas-izstrade/", "/seo-pakalpojumi-riga/", "/pakalpojumi-un-cenas/")) and "/en/" not in u:
-            return "0.9"
-        if "/en/" in u:
-            return "0.5"
-        if "/blogs/" in u and not u.endswith("/blogs/"):
-            return "0.6"
-        return "0.7"
+    def order(u):        # home, main service pages, LV, then EN
+        return (u != SITE + "/", "/en/" in u, "/blogs/" in u, u)
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    for u, alts, mod in sorted(urls, key=lambda x: (-float(prio(x[0])), x[0])):
+    for u, alts, mod in sorted(urls, key=lambda x: order(x[0])):
         lines.append(f"  <url>\n    <loc>{u}</loc>")
         lines += [f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{h}"/>' for hl, h in alts]
-        lines.append(f"    <lastmod>{mod}</lastmod>\n    <priority>{prio(u)}</priority>\n  </url>")
+        lines.append(f"    <lastmod>{mod}</lastmod>\n  </url>")
     lines.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
     return len(urls)
@@ -637,14 +752,18 @@ def main():
     for lang, base in (("lv", SRC), ("en", SRC / "en")):
         for src in sorted((base / "pages").glob("*.html")):
             m = read_source(src, lang)
+            m["modified"] = page_lastmod(m)
             built.append(render(m, faq_schema(m["body"])))
         posts = [read_source(p, lang) for p in sorted((base / "blog").glob("*.html"))]
+        for p in posts:
+            p["modified"] = page_lastmod(p)
         posts.sort(key=lambda m: m["date"], reverse=True)
         for p in posts:
             built.append(render_post(p, posts))
         if posts:
             built.append(render_blog_index(posts, lang))
     n = write_sitemap()
+    write_lastmod()
     for f in built:
         print("  built", f.relative_to(ROOT))
     print(f"{len(built)} pages, sitemap {n} URLs")
