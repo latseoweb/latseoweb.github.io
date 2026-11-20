@@ -1,0 +1,74 @@
+<!--meta
+{
+  "path": "/blogs/majaslapa-neparadas-google/",
+  "title": "Mājaslapa neparādās Google: iemesli un risinājumi | LatSEO",
+  "description": "Mājaslapa neparādās Google? Pārbaudiet indeksāciju, noindex, robots.txt un sitemap ar Search Console. Biežākie iemesli un risinājumi soli pa solim.",
+  "h1": "Kāpēc mājaslapa neparādās Google un kā to salabot",
+  "category": "Tehniskais SEO",
+  "date": "2026-11-20",
+  "modified": "2026-11-20",
+  "cta": "audit",
+  "related_paths": [
+    "/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/",
+    "/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/",
+    "/blogs/7-seo-pamati-ko-katram-uznemejam-butu-jazina-pirms-majaslap/"
+  ]
+}
+-->
+<p class="lead">Ja mājaslapa neparādās Google, iemesls parasti ir viens no trim: lapa nav indeksēta, tai ir aizliegums indeksēties, vai tā ir indeksēta, bet atrodas pārāk tālu meklēšanas rezultātos. Pirmais solis ir pārbaude Google Search Console, nevis jaunu tekstu rakstīšana. Zemāk ir secība, kādā es to pārbaudu.</p>
+
+<h2 id="kas-nozime-neparadas">Vispirms noskaidrojiet, ko Jums nozīmē „neparādās”</h2>
+<p>Uzņēmēji ar šo frāzi saprot dažādas situācijas, un katrai risinājums ir atšķirīgs. Ja sajaucat gadījumus, var tērēt laiku nepareizām izmaiņām.</p>
+<ul>
+<li><strong>Lapa nav indeksēta.</strong> Google to nav pievienojis savai datubāzei, tāpēc to nevar atrast pat pēc precīza uzņēmuma nosaukuma.</li>
+<li><strong>Lapa ir indeksēta, bet neranžējas.</strong> Pēc uzņēmuma nosaukuma vietne atrodas, bet pēc pakalpojuma frāzes — nē.</li>
+<li><strong>Atrodas cita lapa vai cits formāts.</strong> Piemēram, tiek rādīts katalogs, sociālā tīkla profils vai vecā adrese.</li>
+</ul>
+<p>Pirmais gadījums ir tehnisks un parasti labojams ātri. Otrais prasa saturu, struktūru un laiku.</p>
+
+<h2 id="ka-parbaudit-indeksaciju">Kā pārbaudīt, vai mājaslapa ir Google indeksā</h2>
+<p>Pārbaudei nav vajadzīgi maksas rīki. Es katru rītu atveru Google Search Console, un tā ir vieta, kur sāku arī šo diagnostiku.</p>
+<ol>
+<li>Google meklētājā ievadiet <strong>site:jusudomens.lv</strong>. Ja rezultātu nav nevienas lapas, vietne, visticamāk, nav indeksēta.</li>
+<li>Search Console augšējā laukā ievadiet konkrētas lapas adresi un izmantojiet URL pārbaudi. Tā parāda, vai lapa ir Google indeksā un kāpēc nav.</li>
+<li>Atveriet atskaiti par lapu indeksēšanu. Tur redzams, kuras lapas ir indeksētas un kuras izslēgtas ar iemeslu.</li>
+<li>Pārbaudiet sadaļu par manuālām darbībām un drošības problēmām. Tai jābūt tukšai.</li>
+</ol>
+<p>Ja Search Console vēl nav pieslēgta, sāciet ar to. Bez tās Jūs neredzat, ko Google par vietni zina, un nākas minēt. Kā indeksācija darbojas kopumā, es esmu aprakstījis rakstā <a href="/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/">par indeksāciju kā pirmo SEO soli</a>.</p>
+
+<h2 id="biezakie-iemesli">Biežākie iemesli, kāpēc mājaslapa neparādās Google</h2>
+<p>Tabulā ir iemesli, kurus pārbaudu pēc kārtas. Pirmie divi ir vienkārši un tomēr bieži paliek nepamanīti.</p>
+<div class="table-wrap"><table class="table">
+<thead><tr><th>Iemesls</th><th>Kā to atpazīt</th><th>Ko darīt</th></tr></thead>
+<tbody>
+<tr><td>Noindex aizliegums</td><td>URL pārbaude norāda, ka lapa izslēgta ar noindex</td><td>Noņemiet noindex no lapas koda vai no CMS iestatījumiem</td></tr>
+<tr><td>robots.txt bloķē vietni</td><td>Failā ir rinda <em>Disallow: /</em></td><td>Izlabojiet failu un atkārtoti pārbaudiet adresi</td></tr>
+<tr><td>Lapa atgriež kļūdu vai novirza</td><td>Statusa kods nav 200 (piemēram, 404)</td><td>Atjaunojiet lapu vai ieklājiet pareizu 301 novirzīšanu</td></tr>
+<tr><td>Canonical norāda uz citu adresi</td><td>URL pārbaudē norādīta cita kanoniskā lapa</td><td>Uzstādiet canonical uz pašu lapu</td></tr>
+<tr><td>Google lapu atradis, bet neindeksē</td><td>Statuss „atklāta” vai „pārmeklēta”, bet „nav indeksēta”</td><td>Pievienojiet iekšējās saites un uzlabojiet satura kvalitāti</td></tr>
+<tr><td>Nav sitemap.xml</td><td>Search Console nav iesniegta vietnes karte</td><td>Izveidojiet sitemap un iesniedziet to Search Console</td></tr>
+</tbody></table></div>
+<p>Šādas pārbaudes ietilpst <a href="/tehniskais-seo/">tehniskā SEO audita</a> pamatdaļā, jo tās ietekmē visu pārējo darbu.</p>
+
+<h2 id="noindex-un-robots">Aizliegums indeksēties, kas palicis pēc izstrādes</h2>
+<p>Izstrādes laikā vietni parasti slēdz no meklētājiem, lai nepabeigts variants neparādītos publiski. Pēc palaišanas šis aizliegums dažkārt paliek ieslēgts. Tā ir viena no pirmajām lietām, ko pārbaudu, ja jauna vietne neparādās vispār.</p>
+<p>WordPress vidē tas ir iestatījums sadaļā „Lasīšana”, kur ir izvēles rūtiņa „Atturēt meklētājprogrammas indeksēt šo vietni”. Citās sistēmās aizliegums var būt lapas kodā vai servera iestatījumos. Ja neesat pārliecināts, pārbaudiet lapas pirmkodu un meklējiet vārdu „noindex”.</p>
+
+<h2 id="indeksēta-bet-nav-redzama">Ja lapa ir indeksā, bet pēc frāzes neatrodas</h2>
+<p>Šeit tehniska kļūda parasti nav iemesls. Google lapu zina, bet neuzskata to par atbilstošāko atbildi konkrētajam vaicājumam. Biežāk redzu divas problēmas: lapa neatbild uz to, ko cilvēks meklē, vai vienā lapā mēģināts aptvert pārāk daudz pakalpojumu.</p>
+<p>Palīdz tas, ka katram pakalpojumam ir sava lapa ar skaidru virsrakstu, aprakstu un saturu, kas atbild uz klienta jautājumiem. Par to, kā plānot tekstus, rakstu sadaļā <a href="/satura-strategija/">par SEO satura stratēģiju</a>.</p>
+<p>Ja meklējat vietējos klientus, pārbaudiet arī Google Business Profile. Daudziem vietējiem uzņēmumiem tieši profils ir tas, kas parādās kartē un meklēšanā pirmais, un to aptver <a href="/lokalais-seo/">lokālais SEO</a>.</p>
+
+<h2 id="jauna-vietne">Jauna vietne: kad jāgaida un kad jārīkojas</h2>
+<p>Jaunai vietnei Google vajag laiku, lai to atrastu un novērtētu, un konkrētu termiņu apsolīt nevar. Gaidīt var tikai tad, ja esat pārliecinājies, ka aizliegumu nav, sitemap ir iesniegta un lapas atgriež kodu 200. Ja Search Console pēc iesniegšanas neko neuzrāda, problēma ir jāmeklē, nevis jāgaida.</p>
+<p>Labāk šīs pārbaudes veikt jau pirms palaišanas. Ja plānojat pasūtīt <a href="/majaslapas-izstrade/">mājaslapas izveidi</a>, palūdziet izstrādātājam pirms publicēšanas pārbaudīt noindex, robots.txt, sitemap un pārvirzījumus no vecās adreses.</p>
+
+<h2 id="buj">Biežākie jautājumi</h2>
+<div class="faq">
+<details data-faq><summary>Kā uzzināt, vai mana mājaslapa ir Google indeksā?</summary><div><p>Meklētājā ievadiet site: un sava domēna nosaukumu. Precīzāku atbildi dod Google Search Console URL pārbaude, kas par katru adresi parāda indeksācijas statusu un iemeslu, ja lapa nav indeksēta.</p></div></details>
+<details data-faq><summary>Vai Google pats atradīs jauno mājaslapu?</summary><div><p>Parasti jā, ja uz vietni ved saites vai tā ir pieslēgta Search Console ar sitemap. Cik ātri tas notiks, nevar droši paredzēt, tāpēc labāk pašam iesniegt vietnes karti un pārbaudīt statusu.</p></div></details>
+<details data-faq><summary>Kāpēc mājaslapa atrodas pēc nosaukuma, bet ne pēc pakalpojuma?</summary><div><p>Tas nozīmē, ka vietne ir indeksēta, bet nav pietiekami atbilstoša meklētajai frāzei. Jāpārbauda, vai katram pakalpojumam ir sava lapa, vai virsraksti un teksti atbilst meklēšanas nolūkam un vai lapas ir saistītas savā starpā.</p></div></details>
+<details data-faq><summary>Vai pietiek ar Google Business Profile, ja mājaslapa neparādās?</summary><div><p>Vietējiem uzņēmumiem profils palīdz tikt atrastiem kartē un meklēšanā, bet tas neaizstāj mājaslapu. Mājaslapa ļauj aprakstīt pakalpojumus sīkāk un aptvert vairāk meklēšanas frāžu.</p></div></details>
+</div>
+
+<p>Ja nezināt, kurš no šiem iemesliem attiecas uz Jūsu vietni, es varu to pārbaudīt Jūsu vietā. Pieprasiet <a href="/bezmaksas-audits/">bezmaksas SEO auditu</a>, un 24 stundu laikā saņemsiet video ar konkrētām problēmām un labojumu secību.</p>
