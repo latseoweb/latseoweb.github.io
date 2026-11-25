@@ -676,3 +676,6 @@ input[type=checkbox],input[type=radio]{border-radius:0;accent-color:var(--accent
 .breadcrumbs a{display:inline-flex;align-items:center;min-height:44px}
 .header__lang-btn{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
 .toc a{display:block;padding-top:.6rem;padding-bottom:.6rem}
+/* Turnstile (shown only if Cloudflare asks for a check) */
+.contact-form__captcha{margin:0 0 .75rem}
+.contact-form__captcha:empty{display:none}

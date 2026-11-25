@@ -24,7 +24,9 @@
     <p>Kad aizpildāt pieteikuma formu, saņemu Jūsu vārdu, tālruni, e-pastu, mājaslapas adresi un ziņu. Šos datus izmantoju tikai, lai atbildētu uz Jūsu pieprasījumu un sagatavotu piedāvājumu vai bezmaksas auditu.</p>
     <ul>
       <li><strong>Tiesiskais pamats:</strong> pasākumi pirms līguma noslēgšanas pēc Jūsu pieprasījuma (VDAR 6. panta 1. punkta b) apakšpunkts).</li>
-      <li><strong>Kā dati tiek nosūtīti:</strong> forma datus nodod automatizācijas rīkam Make.com (datu centrs ES), kas tos pārsūta uz manu e-pastu.</li>
+      <li><strong>Kā dati tiek nosūtīti:</strong> forma datus vispirms nosūta uz Cloudflare (Cloudflare, Inc.) serveri, kas tos pārbauda un pārsūta tālāk, bet neglabā. Pēc tam dati nonāk automatizācijas rīkā Make.com (datu centrs ES), kas tos pārsūta uz manu e-pastu.</li>
+      <li><strong>Aizsardzība pret robotiem:</strong> formu sargā Cloudflare Turnstile. Tas ielādējas tikai tad, kad sākat aizpildīt formu. Lai atšķirtu cilvēku no robota, Cloudflare apstrādā tehniskos datus (IP adresi un pārlūka datus). Tā ir nepieciešama drošības funkcija (leģitīmās intereses, VDAR 6. panta 1. punkta f) apakšpunkts), tāpēc tā nav atkarīga no piekrišanas sīkdatnēm. Turnstile neizmanto reklāmas sīkdatnes.</li>
+      <li><strong>Iesniegumu skaita ierobežojums:</strong> lai novērstu ļaunprātīgu izmantošanu, Jūsu IP adresi uz laiku līdz 1 stundai izmanto, lai ierobežotu iesniegumu skaitu (ne vairāk kā 5 stundā).</li>
       <li><strong>Cik ilgi glabāju:</strong> ja sadarbība nesākas, pieprasījumu dzēšu ne vēlāk kā 12 mēnešus pēc pēdējās saziņas. Ja sadarbība sākas, datus glabāju līguma darbības laikā un tik ilgi, cik to prasa normatīvie akti (piemēram, grāmatvedības dokumentiem).</li>
     </ul>
     <p>Ja sazināties pa tālruni, WhatsApp vai e-pastu, šos datus izmantoju tādā pašā nolūkā un glabāju tikpat ilgi.</p>
@@ -46,6 +48,7 @@
     <h2 id="sanemeji">Kas vēl var piekļūt datiem</h2>
     <ul>
       <li><strong>Google</strong> (Google Analytics, Google Ads) un <strong>Microsoft</strong> (Clarity) — kā analītikas pakalpojumu sniedzēji, ja esat izvēlējies „Pieņemt visas”.</li>
+      <li><strong>Cloudflare</strong> — pieteikuma formas pārbaudei, aizsardzībai pret robotiem un pārsūtīšanai (dati netiek glabāti).</li>
       <li><strong>Make.com</strong> — pieteikuma formas datu pārsūtīšanai.</li>
       <li><strong>GitHub</strong> — vietnes hostings. Kā jebkurš serveris, tas tehniski apstrādā Jūsu IP adresi, lai lapu parādītu.</li>
     </ul>

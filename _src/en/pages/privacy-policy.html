@@ -25,7 +25,9 @@
     <p>When you fill in the contact form, I receive your name, phone number, email, website address and message. I use this data only to reply to your request and to prepare an offer or a free audit.</p>
     <ul>
       <li><strong>Legal basis:</strong> steps taken at your request before entering into a contract (GDPR Article 6(1)(b)).</li>
-      <li><strong>How the data is sent:</strong> the form passes the data to the automation tool Make.com (EU data centre), which forwards it to my email.</li>
+      <li><strong>How the data is sent:</strong> the form first sends the data to a Cloudflare (Cloudflare, Inc.) server, which checks it and forwards it without storing it. The data then goes to the automation tool Make.com (EU data centre), which forwards it to my email.</li>
+      <li><strong>Bot protection:</strong> the form is protected by Cloudflare Turnstile, which loads only when you start filling in the form. To tell a person from a bot, Cloudflare processes technical data (IP address and browser data). This is a necessary security function (legitimate interest, GDPR Article 6(1)(f)), so it does not depend on cookie consent. Turnstile does not use advertising cookies.</li>
+      <li><strong>Submission limit:</strong> to prevent abuse, your IP address is used temporarily, for up to 1 hour, to limit the number of submissions (no more than 5 per hour).</li>
       <li><strong>Retention:</strong> if we do not start working together, I delete the request no later than 12 months after our last contact. If we do, I keep the data for the duration of the contract and as long as required by law (for example, for accounting records).</li>
     </ul>
     <p>If you contact me by phone, WhatsApp or email, I use that data for the same purpose and keep it for the same period.</p>
@@ -47,6 +49,7 @@
     <h2 id="recipients">Who else may access the data</h2>
     <ul>
       <li><strong>Google</strong> (Google Analytics, Google Ads) and <strong>Microsoft</strong> (Clarity) — as analytics providers, if you have chosen “Accept all”.</li>
+      <li><strong>Cloudflare</strong> — to check, protect from bots and forward contact form data (the data is not stored).</li>
       <li><strong>Make.com</strong> — to forward contact form data.</li>
       <li><strong>GitHub</strong> — website hosting. Like any server, it technically processes your IP address to deliver the page.</li>
     </ul>

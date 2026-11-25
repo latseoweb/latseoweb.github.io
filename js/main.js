@@ -184,12 +184,67 @@
 
   /* ==========================================================
      CONTACT FORM — SECURE SUBMISSION
-     Webhook URL is encoded to prevent scraping from public repo.
-     Protections: honeypot, rate-limit, time-check, encoded URL.
+     Form -> Cloudflare Worker (scripts/form-worker) -> Make.com.
+     The Make URL is only in the Worker's secrets. The Worker checks
+     Origin, Cloudflare Turnstile, honeypot, field lengths and a per-IP limit.
+     Turnstile loads only when someone starts filling a form.
      ========================================================== */
+  var FORM_ENDPOINT = 'https://latseo-forma.adrians-79c.workers.dev/';
+  var TURNSTILE_SITEKEY = '0x4AAAAAAGSRUIroV_qiy2QQ';
+  var tsLoading = null;
+
+  function loadTurnstile() {
+    if (tsLoading) return tsLoading;
+    tsLoading = new Promise(function (resolve, reject) {
+      window.latseoTurnstileReady = function () { resolve(window.turnstile); };
+      var s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=latseoTurnstileReady';
+      s.async = true;
+      s.onerror = function () { tsLoading = null; reject(new Error('turnstile')); };
+      document.head.appendChild(s);
+    });
+    return tsLoading;
+  }
+
+  // One invisible-unless-needed Turnstile widget per form; resolves with a fresh token.
+  function protectForm(form) {
+    var st = { id: null, token: '', waiters: [] };
+    var box = document.createElement('div');
+    box.className = 'contact-form__captcha';
+    var submit = form.querySelector('.contact-form__submit');
+    form.insertBefore(box, submit);
+    function render() {
+      if (st.id !== null) return;
+      st.id = 'pending';
+      loadTurnstile().then(function (ts) {
+        st.id = ts.render(box, {
+          sitekey: TURNSTILE_SITEKEY, appearance: 'interaction-only', size: 'flexible',
+          language: EN ? 'en' : 'lv', 'response-field': false,
+          callback: function (t) { st.token = t; st.waiters.splice(0).forEach(function (w) { w(t); }); },
+          'expired-callback': function () { st.token = ''; },
+          'error-callback': function () { st.token = ''; }
+        });
+      }).catch(function () { st.id = null; });
+    }
+    form.addEventListener('focusin', render, { once: true });
+    form.addEventListener('pointerdown', render, { once: true });
+    return {
+      token: function () {
+        render();
+        if (st.token) return Promise.resolve(st.token);
+        return new Promise(function (resolve, reject) {
+          st.waiters.push(resolve);
+          setTimeout(function () { reject(new Error('captcha-timeout')); }, 15000);
+        });
+      },
+      reset: function () {
+        st.token = '';
+        if (window.turnstile && st.id && st.id !== 'pending') { try { window.turnstile.reset(st.id); } catch (_) {} }
+      }
+    };
+  }
+
   function initContactForm() {
-    // Decode webhook URL (base64 encoded to hide from scrapers)
-    var WEBHOOK = atob('aHR0cHM6Ly9ob29rLmV1MS5tYWtlLmNvbS9vbWJmb2pkcWhzY3NwcnM1ODg3bjJuZjd1Y2RjM2dsNw==');
 
     var COOLDOWN_MS = 30000;    // 30 seconds between submissions
     var MIN_FILL_TIME = 3000;   // form must take at least 3 seconds to fill
@@ -197,6 +252,7 @@
     var forms = document.querySelectorAll('.contact-form');
 
     forms.forEach(function (form) {
+      var captcha = protectForm(form);
       // Track when user starts interacting with the form
       var formStartTime = Date.now();
       var fields = form.querySelectorAll('input:not([type="hidden"]):not([name="_honey"]), textarea');
@@ -298,15 +354,22 @@
         data._t = Date.now();
         data._src = window.location.href;
 
-        // Send to Make.com webhook (URL encoded in code)
+        // Turnstile token, then send to the Worker
         var sent = false;
-        fetch(WEBHOOK, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-          keepalive: true
+        submitBtn.textContent = EN ? 'Checking…' : 'Notiek pārbaude…';
+        captcha.token()
+        .then(function (token) {
+          data['cf-turnstile-response'] = token;
+          submitBtn.textContent = EN ? 'Sending…' : 'Notiek nosūtīšana…';
+          return fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+            keepalive: true
+          });
         })
         .then(function (response) {
+          captcha.reset();     // a token works only once
           if (!response.ok) throw new Error('HTTP ' + response.status);
           sent = true;
           var redirectTarget = form.getAttribute('data-redirect');
@@ -330,6 +393,7 @@
         })
         .catch(function () {
           // Ļauj mēģināt vēlreiz uzreiz
+          captcha.reset();
           try { localStorage.removeItem('latseo_form_ts'); } catch (_) {}
           showStatus(form, EN ? 'Sending failed. Please call +371 24424434 or email sales@latseo.com.' : 'Neizdevās nosūtīt. Lūdzu, zvaniet +371 24424434 vai rakstiet sales@latseo.com.', 'error');
         })
