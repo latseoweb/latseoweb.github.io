@@ -180,10 +180,9 @@ PROJECTS = {
     "bratus": ("https://bratus.lv/", "work/bratus.webp", "bratus.lv", ("Pilna izstrāde · e-veikals (Shopify) · oficiālais IT partneris", "Full build · online store (Shopify) · official IT partner"), None),
     "ploteris": ("https://ploteris.lv/", "work/ploteri.webp", "ploteris.lv", ("Pilna izstrāde · plotergriezēju tirdzniecība", "Full build · cutting plotter retailer"), None),
     "maropro": ("https://maropro.lv/", "work/maropro.webp", "maropro.lv", ("Landing lapa · DTF un UV printeri", "Landing page · DTF and UV printers"), None),
-    # SEO clients are shown anonymously (no name, link or screenshot) at the owner's request
-    "autoestetika": (None, None, ("Auto detailinga uzņēmums", "Car detailing company"), ("SEO un Google Business Profile · Rīga · kopš 2026. gada marta", "SEO and Google Business Profile · Riga · since March 2026"), ("+31 %", ("klikšķi no Google, aug.–okt. 2026 pret 2025", "Google clicks, Aug–Oct 2026 vs 2025"))),
-    "relive": (None, None, ("Nekustamo īpašumu aģentūra", "Real estate agency"), ("SEO klients kopš 2026. gada aprīļa", "SEO client since April 2026"), None),
-    "ecar": (None, None, ("Auto nomas uzņēmums", "Car rental company"), ("SEO klients kopš 2026. gada oktobra", "SEO client since October 2026"), None),
+    "autoestetika": ("https://www.autoestetika.lv/", "work/autoestetika.webp", "autoestetika.lv", ("SEO un Google Business Profile · auto detailing Rīgā · kopš 2026. gada marta", "SEO and Google Business Profile · car detailing in Riga · since March 2026"), ("+31 %", ("klikšķi no Google, aug.–okt. 2026 pret 2025", "Google clicks, Aug–Oct 2026 vs 2025"))),
+    "relive": ("https://relive.lv/", "work/relive.webp", "relive.lv", ("SEO klients kopš 2026. gada aprīļa · nekustamo īpašumu aģentūra", "SEO client since April 2026 · real estate agency"), None),
+    "ecar": ("https://e-car.lv/", "work/ecar.webp", "e-car.lv", ("SEO klients kopš 2026. gada oktobra · auto noma", "SEO client since October 2026 · car rental"), None),
 }
 
 ICON = {
