@@ -51,7 +51,7 @@ TAGS = ("<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer
 TODAY = dt.date.today().isoformat()
 # Cache-busting by content, so a daily blog build does not rewrite every page
 ASSET_V = {f: hashlib.md5((ROOT / f).read_bytes()).hexdigest()[:8] for f in ("css/style.css", "js/main.js")}
-ARROW = '<span class="arrow" aria-hidden="true">→</span>'
+ARROW = ''  # no decorative arrows on buttons/links; {{arrow}} in old sources renders as nothing
 
 ORG = {
     "@type": ["ProfessionalService", "LocalBusiness"],
@@ -121,7 +121,7 @@ T = {
         metric="klikšķi", metric_sub="no Google 90 dienās", shot_alt="sākumlapa",
         # blog
         blog="/blogs/", blog_label="Blogs", author="Autors", published="Publicēts", updated="Atjaunināts",
-        read="min lasīšanai", toc="Saturs", more_posts="Citi raksti", read_more="Lasīt rakstu →", aside_aria="Papildinformācija",
+        read="min lasīšanai", toc="Saturs", more_posts="Citi raksti", read_more="Lasīt rakstu", aside_aria="Papildinformācija",
         bio="Izstrādā mājaslapas ar iebūvētu SEO un strādā ar SEO esošām mājaslapām. 2 gadu pieredze SEO un mājaslapu izstrādē.",
         about_link=("/par-mani/", "Par mani"),
         cta_web=("Vajag jaunu mājaslapu?", "Vizītkartes lapa no 449 €, uzņēmuma mājaslapa no 799 € (bez PVN). Iebūvēts pamata SEO.", "/majaslapas-izstrade/#kalkulators", "Aprēķināt cenu"),
@@ -159,7 +159,7 @@ T = {
                "Local SEO / Google Business Profile", "Other question"],
         metric="clicks", metric_sub="from Google in 90 days", shot_alt="homepage",
         blog="/en/blogs/", blog_label="Blog", author="Author", published="Published", updated="Updated",
-        read="min read", toc="Contents", more_posts="More articles", read_more="Read article →", aside_aria="Related",
+        read="min read", toc="Contents", more_posts="More articles", read_more="Read article", aside_aria="Related",
         bio="Builds websites with built-in SEO and works on SEO for existing websites. 2 years of experience in SEO and web development.",
         about_link=("/en/par-mani/", "About me"),
         cta_web=("Need a new website?", "One-page site from €449, business website from €799 (excl. VAT). Basic SEO built in.", "/en/majaslapas-izstrade/#calculator", "Calculate price"),
@@ -338,7 +338,7 @@ def header(meta):
     <nav class="header__nav" aria-label="{t["nav_aria"]}">
       <ul class="header__nav-list">{"".join(items)}</ul>
       <div class="header__lang-switch" role="group" aria-label="{t["lang_aria"]}">{sw}</div>
-      <a href="{t["calc"]}" class="header__cta">{t["cta"]} {ARROW}</a>
+      <a href="{t["calc"]}" class="header__cta">{t["cta"]}</a>
     </nav>
     <button class="header__mobile-toggle" aria-label="{t["menu_open"]}" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
@@ -478,15 +478,15 @@ def project_card(key, lang):
     name = name[i] if isinstance(name, tuple) else name
     tag = tags[i]
     if isinstance(metric, tuple):
-        m = f'<span class="proof-card__metric">{metric[0]}<small>{metric[1][i]}</small></span>'
+        m = f'<span class="proof__metric">{metric[0]}<small>{metric[1][i]}</small></span>'
     else:
-        m = f'<span class="proof-card__metric">{metric} {t["metric"]}<small>{t["metric_sub"]}</small></span>' if metric else ""
+        m = f'<span class="proof__metric">{metric} {t["metric"]}<small>{t["metric_sub"]}</small></span>' if metric else ""
     if not url:
-        return (f'<div class="proof-card proof-card--text"><span class="proof-card__name">{name}</span>'
-                f'<span class="proof-card__tag">{tag}</span>{m}</div>')
-    return (f'<a class="proof-card" href="{url}" target="_blank" rel="noopener">'
+        return (f'<div class="proof proof--text"><span class="proof__name">{name}</span>'
+                f'<span class="proof__tag">{tag}</span>{m}</div>')
+    return (f'<a class="proof" href="{url}" target="_blank" rel="noopener">'
             f'<img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {t["shot_alt"]}" width="960" height="600" loading="lazy">'
-            f'<span class="proof-card__body"><span class="proof-card__name">{name}</span><span class="proof-card__tag">{tag}</span>{m}</span></a>')
+            f'<span class="proof__body"><span class="proof__name">{name}</span><span class="proof__tag">{tag}</span>{m}</span></a>')
 
 def browser(key, lang, cls=""):
     url, img, name, *_ = PROJECTS[key]
@@ -514,7 +514,7 @@ def form(prefix, source, lang, first=None, button=None):
 <div class="contact-form__group"><label class="contact-form__label" for="{prefix}-site">{t["f_site"]}</label><input id="{prefix}-site" type="text" name="website" class="contact-form__input" autocomplete="url" inputmode="url" placeholder="{t["f_site_ph"]}"></div>
 <div class="contact-form__group"><label class="contact-form__label" for="{prefix}-msg">{t["f_msg"]}</label><textarea id="{prefix}-msg" name="message" class="contact-form__textarea"></textarea></div>
 <input type="text" name="_honey" class="contact-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-<button type="submit" class="contact-form__submit">{button or t["f_send"]} {ARROW}</button>
+<button type="submit" class="contact-form__submit">{button or t["f_send"]}</button>
 <p class="contact-form__hint">{t["f_hint"]}</p></form>'''
 
 
@@ -547,7 +547,7 @@ def expand_tokens(body, lang):
     body = re.sub(r"\{\{form:([\w-]+)\|([^|}]+)(?:\|([^|}]+))?(?:\|([^|}]+))?\}\}",
                   lambda m: form(m.group(1), m.group(2), lang, m.group(3), m.group(4)), body)
     body = label_tables(body)
-    for k, v in {"{{arrow}}": ARROW, "{{phone}}": PHONE, "{{phone_h}}": PHONE_H, "{{email}}": EMAIL,
+    for k, v in {" {{arrow}}": ARROW, "{{arrow}}": ARROW, "{{phone}}": PHONE, "{{phone_h}}": PHONE_H, "{{email}}": EMAIL,
                  "{{photo}}": PHOTO, "{{linkedin}}": LINKEDIN}.items():
         body = body.replace(k, v)
     return body
@@ -622,11 +622,11 @@ def cover_of(p):
 
 def post_card(p, feature=False):
     t = T[p["lang"]]
-    return (f'<a class="post-card{" post-card--feature" if feature else ""}" href="{p["path"]}">'
-            f'<img class="post-card__cover" {img_attrs(cover_of(p), (640,), 1200, CARD_SIZES)} alt="" width="1200" height="630" loading="lazy">'
-            f'<span class="post-card__body"><span class="post-card__meta">{esc(p["category"])} · {fmt_date(p["date"], p["lang"])}</span>'
-            f'<span class="post-card__title">{p["h1"]}</span><span class="post-card__excerpt">{esc(p["description"])}</span>'
-            f'<span class="post-card__more">{t["read_more"]}</span></span></a>')
+    return (f'<a class="post-item{" post-item--feature" if feature else ""}" href="{p["path"]}">'
+            f'<img class="post-item__cover" {img_attrs(cover_of(p), (640,), 1200, CARD_SIZES)} alt="" width="1200" height="630" loading="lazy">'
+            f'<span class="post-item__body"><span class="post-item__meta">{esc(p["category"])} · {fmt_date(p["date"], p["lang"])}</span>'
+            f'<span class="post-item__title">{p["h1"]}</span><span class="post-item__excerpt">{esc(p["description"])}</span>'
+            f'<span class="post-item__more">{t["read_more"]}</span></span></a>')
 
 
 def render_post(m, posts):
@@ -661,8 +661,8 @@ def render_post(m, posts):
     <div class="author-box"><img src="{PHOTO}" alt="Adrians Stankevičs" width="64" height="64" loading="lazy"><div><strong>Adrians Stankevičs</strong><p>{t["bio"]} <a href="{about_href}">{about_txt}</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a></p></div></div>
   </div>
   <aside class="article-aside" aria-label="{t["aside_aria"]}">
-    {f'<div class="aside-card"><p class="aside-card__title">{t["toc"]}</p><ol class="toc">{toc}</ol></div>' if len(heads) > 2 else ""}
-    <div class="aside-card aside-card--ink"><p class="aside-card__title">{title}</p><p>{text}</p><a class="btn btn--primary" href="{href}">{btn}</a></div>
+    {f'<div class="aside-block"><p class="aside-block__title">{t["toc"]}</p><ol class="toc">{toc}</ol></div>' if len(heads) > 2 else ""}
+    <div class="aside-block aside-block--ink"><p class="aside-block__title">{title}</p><p>{text}</p><a class="btn btn--primary" href="{href}">{btn}</a></div>
   </aside>
 </div>
 </article>

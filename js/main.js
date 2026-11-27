@@ -1,7 +1,7 @@
 /* ============================================================
    LatSEO - Main JavaScript
    Handles: Navigation, Language Switcher, Scroll Effects,
-   Mobile Menu, Form Handling, Animations
+   Mobile Menu, Form Handling
    ============================================================ */
 
 (function () {
@@ -15,7 +15,6 @@
   document.addEventListener('DOMContentLoaded', function () {
     initMobileMenu();
     initScrollEffects();
-    initScrollReveal();
     initSmoothScroll();
     initContactForm();
     initCurrentPageHighlight();
@@ -117,43 +116,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
-  }
-
-  /* ==========================================================
-     SCROLL REVEAL ANIMATIONS
-     ========================================================== */
-  function initScrollReveal() {
-    var revealElements = document.querySelectorAll('.reveal');
-    var staggerContainers = document.querySelectorAll('.reveal-stagger');
-
-    if (revealElements.length === 0 && staggerContainers.length === 0) return;
-
-    var observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.1
-    };
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          if (entry.target.classList.contains('reveal-stagger')) {
-            entry.target.classList.add('reveal-stagger--visible');
-          } else {
-            entry.target.classList.add('reveal--visible');
-          }
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    revealElements.forEach(function (el) {
-      observer.observe(el);
-    });
-
-    staggerContainers.forEach(function (el) {
-      observer.observe(el);
-    });
   }
 
   /* ==========================================================
@@ -446,58 +408,6 @@
       }
     });
   }
-
-  /* ==========================================================
-     COUNTER ANIMATION (for stat numbers)
-     ========================================================== */
-  function animateCounter(el, target, duration) {
-    var start = 0;
-    var startTime = null;
-    var hasPercent = target.toString().includes('%');
-    var numericTarget = parseInt(target, 10);
-
-    if (isNaN(numericTarget)) {
-      el.textContent = target;
-      return;
-    }
-
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      // Ease out cubic
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var current = Math.floor(eased * numericTarget);
-
-      el.textContent = hasPercent ? current + '%' : current;
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        el.textContent = target;
-      }
-    }
-
-    window.requestAnimationFrame(step);
-  }
-
-  // Initialize counter animations when visible
-  var counterObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var target = el.getAttribute('data-count');
-        if (target && !el.dataset.counted) {
-          el.dataset.counted = 'true';
-          animateCounter(el, target, 2000);
-        }
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('[data-count]').forEach(function (el) {
-    counterObserver.observe(el);
-  });
 
   /* ==========================================================
      GA4 EVENT TRACKING — WhatsApp, Phone, Form
