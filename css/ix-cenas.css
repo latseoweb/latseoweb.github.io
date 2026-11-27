@@ -1,0 +1,85 @@
+/* Cenu lapa: tāmes grozs (sānjosla / apakšējā josla) un "Kas ietekmē cenu" rotaļa. Kvadrāti, punktēta kontūra, viens akcents. */
+
+/* ---- rindu izvēle tabulās ---- */
+.ix-cell{display:flex;align-items:flex-start;gap:.5rem}
+.ix-cell__t{flex:1;min-width:0}
+.ix-pick{flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:-.75rem 0 -.75rem -.65rem;cursor:pointer}
+.ix-pick input{appearance:none;-webkit-appearance:none;width:20px;height:20px;margin:0;border:1.5px solid var(--ink);background:var(--paper);cursor:pointer;display:grid;place-content:center}
+.ix-pick input::after{content:"";width:10px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.ix-pick input:checked{background:var(--accent);border-color:var(--accent)}
+.ix-pick input:checked::after{opacity:1}
+.ix-pick input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ix-row{cursor:pointer}
+.ix-row:hover td{background:var(--paper-2)}
+.ix-row.is-picked td{background:var(--accent-soft)}
+@media (max-width:719px){
+  .table:not(.table--kv) .ix-row td:first-child{padding-left:0}
+  .table:not(.table--kv) .ix-row td:first-child .ix-pick{margin-top:-.4rem}
+}
+
+/* ---- tāmes panelis ---- */
+.ix-est{margin-top:var(--sp-md);padding:var(--sp-sm);outline:1px dashed var(--line-strong);outline-offset:-1px;background:var(--paper);font-size:var(--fs-sm);color:var(--ink-2)}
+.ix-est [hidden]{display:none!important}
+.ix-est__bar{display:none}
+.ix-est__h{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-md);color:var(--ink);line-height:1.25;margin:0 0 .5rem}
+.ix-est__n{font-family:var(--ff-mono);font-size:var(--fs-sm);font-weight:400;color:var(--muted)}
+.ix-est__hint{margin:0;color:var(--muted)}
+.ix-est__list{list-style:none;margin:0;padding:0;max-height:11rem;overflow:auto;border-top:1px solid var(--line)}
+.ix-est__list li{display:flex;gap:.5rem;align-items:baseline;padding:.35rem 0;border-bottom:1px solid var(--line)}
+.ix-est__list li>span:first-child{flex:1;min-width:0;line-height:1.3}
+.ix-est__p{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ix-est__list button{flex:none;width:28px;height:28px;margin:-.2rem -.35rem -.2rem 0;border:0;background:none;color:var(--muted);font-size:1.15rem;line-height:1;cursor:pointer}
+.ix-est__list button:hover{color:var(--ink)}
+.ix-est__list button:focus-visible,.ix-est__clear:focus-visible,.ix-est__bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ix-est__warn{margin:.5rem 0 0;font-size:var(--fs-xs);color:var(--muted)}
+.ix-est__tot{margin:.6rem 0 0;display:grid;gap:.25rem}
+.ix-est__tot>div{display:flex;justify-content:space-between;gap:.75rem;align-items:baseline}
+.ix-est__tot dt{color:var(--muted)}
+.ix-est__tot dd{margin:0;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.ix-est__vat{margin:.35rem 0 0;font-size:var(--fs-xs);color:var(--muted)}
+.ix-est__act{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:.8rem;flex-wrap:wrap}
+.ix-est__act .btn{padding:.7rem 1rem;min-height:44px}
+.ix-est__clear{min-height:44px;padding:0 .25rem;border:0;background:none;color:var(--muted);font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.ix-est__clear:hover{color:var(--ink)}
+
+/* mobilais: apakšējā josla, kas atveras par lapu */
+@media (max-width:1179px){
+  .ix-est{position:fixed;left:0;right:0;bottom:0;z-index:90;margin:0;padding:0;outline:0;border-top:1px solid var(--ink);box-shadow:0 -4px 16px rgba(18,22,20,.12)}
+  .ix-est.is-empty{display:none}
+  .ix-est__bar{display:flex;width:100%;min-height:52px;align-items:center;justify-content:space-between;gap:.75rem;padding:.5rem clamp(16px,4vw,32px);border:0;background:var(--paper);color:var(--ink);font:inherit;font-weight:600;cursor:pointer;text-align:left}
+  .ix-est__bar-s{font-weight:400;font-variant-numeric:tabular-nums;color:var(--ink-2);font-size:var(--fs-xs);text-align:right}
+  .ix-est__body{display:none;padding:.25rem clamp(16px,4vw,32px) 1rem;max-height:65vh;overflow:auto}
+  .ix-est.is-open .ix-est__body{display:block}
+  .ix-est__list{max-height:none;overflow:visible}
+  body.ix-has-est{padding-bottom:56px}
+}
+
+/* ---- "Kas ietekmē cenu" rotaļa (tumšā josla) ---- */
+.ix-f{margin-top:var(--sp-xl);padding:var(--sp-md);outline:1px dashed #4F5B55;outline-offset:-1px;color:var(--on-ink-muted)}
+.ix-f[hidden]{display:none}
+.ix-f__title{margin:0 0 .25rem;font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-md);color:var(--on-ink)}
+.ix-f__intro{margin:0 0 var(--sp-md);font-size:var(--fs-sm);max-width:60ch}
+.ix-f__grid{display:grid;gap:var(--sp-md)}
+.ix-f__grp{border:0;margin:0;padding:0;min-width:0}
+.ix-f__grp legend{padding:0;margin-bottom:.5rem;font-family:var(--ff-mono);font-size:var(--fs-xs);letter-spacing:.04em;text-transform:uppercase;color:var(--on-ink-muted)}
+.ix-f__btns{display:flex;flex-wrap:wrap;gap:.5rem}
+.ix-f__btn{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;min-height:44px;padding:.5rem .8rem;border:1px solid rgba(255,255,255,.3);background:transparent;color:var(--on-ink);font:inherit;font-size:var(--fs-sm);cursor:pointer;text-align:left;transition:background .15s,color .15s,border-color .15s}
+.ix-f__btn b{font-weight:400;font-variant-numeric:tabular-nums;font-size:var(--fs-xs);color:var(--on-ink-muted)}
+.ix-f__btn:hover{border-color:var(--on-ink)}
+.ix-f__btn[aria-pressed="true"]{background:var(--on-ink);border-color:var(--on-ink);color:var(--ink)}
+.ix-f__btn[aria-pressed="true"] b{color:var(--ink-2)}
+.ix-f__btn:focus-visible,.ix-f__out .btn:focus-visible{outline:2px solid #9FCDB3;outline-offset:2px}
+.ix-f__out{margin-top:var(--sp-md);padding-top:var(--sp-sm);border-top:1px solid #4F5B55;min-height:11rem;max-width:34rem}
+.ix-f__list{list-style:none;margin:0;padding:0;font-size:var(--fs-sm)}
+.ix-f__list li{display:flex;justify-content:space-between;gap:1rem;padding:.2rem 0;color:var(--on-ink)}
+.ix-f__list .ix-est__p{color:var(--on-ink)}
+.ix-f__list .ix-f__none{color:var(--on-ink-muted)}
+.ix-f__tot{margin:.6rem 0 0;display:grid;gap:.2rem;font-size:var(--fs-sm)}
+.ix-f__tot>div{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid #4F5B55;padding-top:.3rem}
+.ix-f__tot dt{color:var(--on-ink-muted)}
+.ix-f__tot dd{margin:0;color:var(--on-ink);font-weight:600;font-variant-numeric:tabular-nums}
+.ix-f__out .btn{margin-top:var(--sp-sm);min-height:44px}
+.ix-f__out .btn:disabled{opacity:.45;cursor:default}
+.ix-f__note{margin:var(--sp-sm) 0 0;font-size:var(--fs-xs);max-width:60ch}
+@media (min-width:720px){.ix-f__grid{grid-template-columns:repeat(3,auto);justify-content:start;gap:var(--sp-lg)}}
+@media (prefers-reduced-motion:reduce){.ix-f__btn{transition:none}}
