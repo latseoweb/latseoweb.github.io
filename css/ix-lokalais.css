@@ -1,0 +1,54 @@
+/* Lokālais SEO: shematiska karte + "kartes pakas" rotaļu modelis (rasējuma stils) */
+.ixl{margin-top:var(--sp-lg);display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-lg);align-items:start}
+@media (min-width:960px){.ixl{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:var(--sp-xl)}}
+.ixl__tag{display:inline-block;padding:.25rem .6rem;font-size:var(--fs-xs);font-weight:600;background:var(--ink);color:#fff;margin-bottom:var(--sp-xs)}
+.ixl__map{position:relative;border:1px solid var(--ink);background:#FAFBFA}
+.ixl__svg{display:block;width:100%;height:auto;aspect-ratio:3/2;touch-action:pan-y}
+.ixl__svg text{font-family:var(--ff-body);fill:var(--ink);paint-order:stroke;stroke:#FAFBFA;stroke-width:4px;stroke-linejoin:round}
+.ixl__st{fill:none;stroke:#DDE3E0;stroke-width:3}
+.ixl__st--m{stroke:#C6CFCA;stroke-width:5}
+.ixl__river{fill:none;stroke:var(--line-strong);stroke-width:34;stroke-linecap:butt}
+.ixl__river2{fill:none;stroke:#FAFBFA;stroke-width:30}
+.ixl__pin rect{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.ixl__pin text{font-size:20px;font-weight:600;text-anchor:middle;stroke:none;paint-order:normal}
+.ixl__pin--x rect{stroke-dasharray:5 4;fill:var(--paper-2)}
+.ixl__pin.is-top rect{fill:var(--accent-soft);stroke:var(--accent)}
+.ixl__you{cursor:grab;touch-action:none}
+.ixl__you:active{cursor:grabbing}
+.ixl__you .ixl__body{fill:var(--accent);stroke:var(--accent-ink);stroke-width:2}
+.ixl__you .ixl__hit{fill:transparent;stroke:none}
+.ixl__you text.ixl__lbl{font-size:18px;font-weight:600;text-anchor:middle}
+.ixl__you:focus{outline:none}
+.ixl__you:focus-visible .ixl__ring{stroke:var(--ink);stroke-width:2.5;stroke-dasharray:6 4;fill:none}
+.ixl__ring{fill:none;stroke:none}
+.ixl__link{stroke:var(--accent);stroke-width:2;stroke-dasharray:7 5}
+.ixl__sp{stroke:var(--ink);stroke-width:2;fill:none}
+.ixl__spt{font-size:17px}
+.ixl__cap{margin-top:var(--sp-xs);font-size:var(--fs-xs);color:var(--muted);max-width:64ch}
+.ixl__panel>*+*{margin-top:var(--sp-md)}
+.ixl__panel[hidden]{display:none}
+.ixl__ctl label{display:flex;justify-content:space-between;gap:1rem;font-size:var(--fs-sm);font-weight:600;color:var(--ink)}
+.ixl__ctl output{font-family:var(--ff-mono);font-weight:400}
+.ixl__ctl input[type=range]{width:100%;height:44px;margin:0;accent-color:var(--accent);cursor:pointer}
+.ixl__sw{display:flex;align-items:center;gap:.75rem;width:100%;min-height:48px;padding:0 .75rem;background:var(--paper);color:var(--ink);border:1px dashed var(--ink);font:inherit;font-size:var(--fs-sm);text-align:left;cursor:pointer}
+.ixl__sw i{position:relative;width:44px;height:22px;border:1px solid var(--ink);flex:none}
+.ixl__sw i::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;background:var(--ink)}
+.ixl__sw[aria-pressed="true"] i{background:var(--accent);border-color:var(--accent)}
+.ixl__sw[aria-pressed="true"] i::after{left:24px;background:#fff}
+.ixl__sw:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ixl__h{font-size:var(--fs-xs);font-weight:600;color:var(--muted);margin:0 0 .35rem}
+.ixl__pack{list-style:none;margin:0;padding:0;border:1px solid var(--ink);background:var(--paper)}
+.ixl__pack li{display:grid;grid-template-columns:1.5rem minmax(0,1fr) 3.2rem;gap:.5rem;align-items:center;padding:.5rem .7rem;border-bottom:1px solid var(--line);font-size:var(--fs-sm)}
+.ixl__pack li:last-child{border-bottom:0}
+.ixl__pack li.is-you{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent);font-weight:600}
+.ixl__pack em{font-style:normal;font-family:var(--ff-mono);font-size:.8125rem;text-align:right}
+.ixl__pack span{font-family:var(--ff-mono);color:var(--muted)}
+.ixl__rank{font-size:var(--fs-sm);color:var(--ink);margin-top:.5rem}
+.ixl__bars{display:grid;gap:.5rem}
+.ixl__bar{display:grid;grid-template-columns:7rem minmax(0,1fr) 2.4rem;gap:.6rem;align-items:center;font-size:var(--fs-sm)}
+.ixl__bar b{font-weight:400}
+.ixl__bar i{display:block;height:12px;border:1px solid var(--ink);background:var(--paper);position:relative}
+.ixl__bar i::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--v,0%);background:var(--accent)}
+.ixl__bar span{font-family:var(--ff-mono);font-size:.8125rem;text-align:right}
+.ixl__note{font-size:var(--fs-xs);color:var(--muted);max-width:56ch}
+@media (max-width:480px){.ixl__bar{grid-template-columns:5.6rem minmax(0,1fr) 2.2rem}}
