@@ -513,6 +513,8 @@ def project_card(key, lang):
     if isinstance(metric, tuple):
         mod = f" proof__metric--{metric[2]}" if len(metric) > 2 else ""
         big = metric[0][i] if isinstance(metric[0], tuple) else metric[0]
+        if "since" in mod:
+            big = big.replace(" ", "\u00a0")
         m = f'<span class="proof__metric{mod}">{big}<small>{metric[1][i]}</small></span>'
     else:
         m = f'<span class="proof__metric">{metric} {t["metric"]}<small>{t["metric_sub"]}</small></span>' if metric else ""
