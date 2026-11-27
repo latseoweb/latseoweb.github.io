@@ -98,6 +98,7 @@ section.ix-panel[data-ix=monthly] .ix-cyc__ring{background-color:var(--ix-night-
 .ix-cmp--spec .ix-cmp__c{border-top:2px solid var(--mint)}
 .ix-cmp__dot{position:absolute;left:0;top:-5px;width:9px;height:9px;margin-left:-4px;border-radius:50%;background:var(--sig);box-shadow:0 0 0 3px rgba(242,104,63,.28);opacity:0}
 .ix-cmp--spec .ix-cmp__dot{background:var(--mint);box-shadow:0 0 0 3px rgba(134,201,142,.28);top:-5.5px}
+.ix-cmp--spec .ix-cmp__flow{max-width:34rem;margin-inline:auto}
 .ix-cmp__meter{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.5rem;padding-top:.5rem;border-top:1px dashed rgba(147,180,211,.35)}
 .ix-cmp__meter b{font-size:var(--fs-md);font-weight:500}
 .ix-cmp__sheet .ix-live{min-height:3.2rem;margin-top:.5rem}

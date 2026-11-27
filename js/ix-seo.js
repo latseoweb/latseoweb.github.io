@@ -23,7 +23,7 @@
     tg: ["SEO speciālists", "SEO aģentūra"],
     cmpA: "Ziņa pāriet no vienas lomas citai, līdz sasniedz to, kurš veic darbu. Ilustrācija — lomas aģentūrās atšķiras.",
     cmpS: "Tiešā līnija: Jūs runājat ar cilvēku, kurš veic darbu.",
-    hops: "Starpnieki starp Jums un darbu"
+    hops: "Posmi, kuriem ziņa iet cauri"
   };
   function h(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; }
   var RM = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches;
