@@ -1,0 +1,301 @@
+{
+ "site": "latseo.com",
+ "source": "Google Search Console (Search results, web), weekly sums; partial first/last weeks flagged by days<7",
+ "exported": "2026-11-28",
+ "weeks": [
+  {
+   "week_start": "2026-02-13",
+   "clicks": 0,
+   "impressions": 0,
+   "avg_position": null,
+   "days": 3
+  },
+  {
+   "week_start": "2026-02-16",
+   "clicks": 0,
+   "impressions": 2,
+   "avg_position": 1.0,
+   "days": 7
+  },
+  {
+   "week_start": "2026-02-23",
+   "clicks": 3,
+   "impressions": 4,
+   "avg_position": 1.0,
+   "days": 7
+  },
+  {
+   "week_start": "2026-03-02",
+   "clicks": 2,
+   "impressions": 5,
+   "avg_position": 6.6,
+   "days": 7
+  },
+  {
+   "week_start": "2026-03-09",
+   "clicks": 1,
+   "impressions": 2,
+   "avg_position": 3.5,
+   "days": 7
+  },
+  {
+   "week_start": "2026-03-16",
+   "clicks": 3,
+   "impressions": 6,
+   "avg_position": 1.2,
+   "days": 7
+  },
+  {
+   "week_start": "2026-03-23",
+   "clicks": 3,
+   "impressions": 27,
+   "avg_position": 26.7,
+   "days": 7
+  },
+  {
+   "week_start": "2026-03-30",
+   "clicks": 1,
+   "impressions": 64,
+   "avg_position": 34.8,
+   "days": 7
+  },
+  {
+   "week_start": "2026-04-06",
+   "clicks": 0,
+   "impressions": 174,
+   "avg_position": 25.4,
+   "days": 7
+  },
+  {
+   "week_start": "2026-04-13",
+   "clicks": 2,
+   "impressions": 211,
+   "avg_position": 39.9,
+   "days": 7
+  },
+  {
+   "week_start": "2026-04-20",
+   "clicks": 1,
+   "impressions": 382,
+   "avg_position": 29.3,
+   "days": 7
+  },
+  {
+   "week_start": "2026-04-27",
+   "clicks": 0,
+   "impressions": 345,
+   "avg_position": 28.1,
+   "days": 7
+  },
+  {
+   "week_start": "2026-05-04",
+   "clicks": 3,
+   "impressions": 413,
+   "avg_position": 31.3,
+   "days": 7
+  },
+  {
+   "week_start": "2026-05-11",
+   "clicks": 1,
+   "impressions": 325,
+   "avg_position": 48.5,
+   "days": 7
+  },
+  {
+   "week_start": "2026-05-18",
+   "clicks": 0,
+   "impressions": 350,
+   "avg_position": 49.6,
+   "days": 7
+  },
+  {
+   "week_start": "2026-05-25",
+   "clicks": 4,
+   "impressions": 454,
+   "avg_position": 41.0,
+   "days": 7
+  },
+  {
+   "week_start": "2026-06-01",
+   "clicks": 1,
+   "impressions": 372,
+   "avg_position": 40.4,
+   "days": 7
+  },
+  {
+   "week_start": "2026-06-08",
+   "clicks": 1,
+   "impressions": 329,
+   "avg_position": 41.1,
+   "days": 7
+  },
+  {
+   "week_start": "2026-06-15",
+   "clicks": 2,
+   "impressions": 779,
+   "avg_position": 34.6,
+   "days": 7
+  },
+  {
+   "week_start": "2026-06-22",
+   "clicks": 0,
+   "impressions": 887,
+   "avg_position": 38.2,
+   "days": 7
+  },
+  {
+   "week_start": "2026-06-29",
+   "clicks": 2,
+   "impressions": 932,
+   "avg_position": 36.2,
+   "days": 7
+  },
+  {
+   "week_start": "2026-07-06",
+   "clicks": 2,
+   "impressions": 987,
+   "avg_position": 36.5,
+   "days": 7
+  },
+  {
+   "week_start": "2026-07-13",
+   "clicks": 1,
+   "impressions": 882,
+   "avg_position": 34.4,
+   "days": 7
+  },
+  {
+   "week_start": "2026-07-20",
+   "clicks": 3,
+   "impressions": 826,
+   "avg_position": 35.1,
+   "days": 7
+  },
+  {
+   "week_start": "2026-07-27",
+   "clicks": 4,
+   "impressions": 1414,
+   "avg_position": 27.8,
+   "days": 7
+  },
+  {
+   "week_start": "2026-08-03",
+   "clicks": 2,
+   "impressions": 1409,
+   "avg_position": 30.8,
+   "days": 7
+  },
+  {
+   "week_start": "2026-08-10",
+   "clicks": 1,
+   "impressions": 1807,
+   "avg_position": 26.8,
+   "days": 7
+  },
+  {
+   "week_start": "2026-08-17",
+   "clicks": 2,
+   "impressions": 2234,
+   "avg_position": 18.4,
+   "days": 7
+  },
+  {
+   "week_start": "2026-08-24",
+   "clicks": 1,
+   "impressions": 2282,
+   "avg_position": 17.6,
+   "days": 7
+  },
+  {
+   "week_start": "2026-08-31",
+   "clicks": 1,
+   "impressions": 2034,
+   "avg_position": 16.5,
+   "days": 7
+  },
+  {
+   "week_start": "2026-09-07",
+   "clicks": 0,
+   "impressions": 2026,
+   "avg_position": 16.7,
+   "days": 7
+  },
+  {
+   "week_start": "2026-09-14",
+   "clicks": 2,
+   "impressions": 2051,
+   "avg_position": 12.8,
+   "days": 7
+  },
+  {
+   "week_start": "2026-09-21",
+   "clicks": 1,
+   "impressions": 1019,
+   "avg_position": 13.8,
+   "days": 7
+  },
+  {
+   "week_start": "2026-09-28",
+   "clicks": 4,
+   "impressions": 913,
+   "avg_position": 20.4,
+   "days": 7
+  },
+  {
+   "week_start": "2026-10-05",
+   "clicks": 2,
+   "impressions": 1226,
+   "avg_position": 17.7,
+   "days": 7
+  },
+  {
+   "week_start": "2026-10-12",
+   "clicks": 2,
+   "impressions": 1594,
+   "avg_position": 21.3,
+   "days": 7
+  },
+  {
+   "week_start": "2026-10-19",
+   "clicks": 2,
+   "impressions": 1907,
+   "avg_position": 24.4,
+   "days": 7
+  },
+  {
+   "week_start": "2026-10-26",
+   "clicks": 4,
+   "impressions": 2165,
+   "avg_position": 25.1,
+   "days": 7
+  },
+  {
+   "week_start": "2026-11-02",
+   "clicks": 4,
+   "impressions": 2071,
+   "avg_position": 27.9,
+   "days": 7
+  },
+  {
+   "week_start": "2026-11-09",
+   "clicks": 6,
+   "impressions": 2413,
+   "avg_position": 29.2,
+   "days": 7
+  },
+  {
+   "week_start": "2026-11-16",
+   "clicks": 3,
+   "impressions": 3135,
+   "avg_position": 28.7,
+   "days": 7
+  },
+  {
+   "week_start": "2026-11-23",
+   "clicks": 5,
+   "impressions": 1876,
+   "avg_position": 37.1,
+   "days": 4
+  }
+ ]
+}
