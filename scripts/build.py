@@ -345,6 +345,8 @@ def header(meta):
             cur = ' header__nav-link--active" aria-current="page' if href == path else ""
             items.append(f'<li><a href="{href}" class="header__nav-link{cur}">{esc(label)}</a></li>')
             mobile.append(f'<a href="{href}">{esc(label)}</a>')
+    # the current page in the phone menu gets the same signal mark as the desktop nav (css/ix-theme.css)
+    mobile = [m.replace(f'<a href="{path}">', f'<a href="{path}" aria-current="page">', 1) for m in mobile]
     lv_on = meta["lang"] == "lv"
     sw = (f'<a href="{lv_url}" class="header__lang-btn{" header__lang-btn--active" if lv_on else ""}" hreflang="lv" lang="lv"{" aria-current=\"true\"" if lv_on else ""}>LV</a>'
           f'<a href="{en_url}" class="header__lang-btn{"" if lv_on else " header__lang-btn--active"}" hreflang="en" lang="en"{"" if lv_on else " aria-current=\"true\""}>EN</a>')
@@ -615,10 +617,11 @@ def after_form(variant, lang):
             f'<span class="plan__note" style="left:5%;top:max(calc(3% + 1.55rem),calc(21% - 1.6rem))">{n2}</span>'
             f'<span class="plan__note" style="right:3%;bottom:6%">{n3}</span>{DRAWING}</div>'
             f'<figcaption>{cap}</figcaption></figure></div>'
-            # the drawing is only a filler: drop it when it would make the column taller than the form next to it
+            # the full sheet when the column beside the form has room; otherwise the compact sketch (a short strip),
+            # dropped only if even that would run far past the form. One column (phones): always the compact sketch.
             '<script>(function(a){var s=a.querySelector(".after__sheet");'
-            'function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8}'
-            'if(o()){s.classList.add("after__sheet--sm");if(o())s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}'
+            'function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom-p.getBoundingClientRect().bottom}'
+            'if(matchMedia("(max-width:899px)").matches)s.classList.add("after__sheet--sm");else if(o()>8){s.classList.add("after__sheet--sm");if(o()>120)s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}'
             'document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>')
 
 

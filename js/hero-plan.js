@@ -16,7 +16,10 @@
   var cfg = JSON.parse(hero.getAttribute("data-plan"));
   var mq = function (q) { return window.matchMedia(q).matches; };
   var reduced = mq("(prefers-reduced-motion: reduce)");
-  var used = false, pos = 100, onPos = null;
+  var used = false, pos = 100, onPos = null, notes = [];
+  // tablets/phones: the drawing never lies over the H1 or the intro. It is confined to the chart block below the
+  // text (--plan-top), where the line splits the finished chart from its drawing.
+  function narrow() { return mq("(max-width:1000px)"); }
 
   function setPos(v) {
     v = Math.max(0, Math.min(100, v)); pos = v;
@@ -24,19 +27,29 @@
     // the 3D mode cuts the real content at the line (container is narrower than the hero)
     var cut = hero.clientWidth * v / 100 - box.offsetLeft;
     hero.style.setProperty("--cut-r", Math.max(-40, box.clientWidth - cut) + "px");
+    // a label cut by the line is hidden: every visible label is whole
+    var lx = hero.clientWidth * v / 100;
+    notes.forEach(function (n) { n.el.style.visibility = n.l < lx + 2 && n.r > lx ? "hidden" : ""; });
     if (onPos) onPos(v);
   }
   function markUsed() { if (!used) { used = true; hero.classList.add("is-used"); } }
 
   // where the line rests: in the gap between the text and the facts column (desktop); phones/tablets: right edge
   function restPos() {
-    if (mq("(max-width:1000px)")) return 100;
+    if (narrow()) return 60;
     var h = hero.getBoundingClientRect(), c = content.getBoundingClientRect(), a = aside.getBoundingClientRect();
     return ((c.right + a.left) / 2 - h.left) / h.width * 100;
   }
   // grip + hint sit in the empty band between row 1 and the chart caption
   function placeGrip() {
     var h = hero.getBoundingClientRect(), a = aside.getBoundingClientRect(), c = chart.getBoundingClientRect();
+    if (narrow() && gsc) {
+      var top = Math.round(gsc.getBoundingClientRect().top - h.top);
+      hero.style.setProperty("--plan-top", top + "px");
+      hero.style.setProperty("--grip-y", (top + 22) + "px");
+      return;
+    }
+    hero.style.setProperty("--plan-top", "0px");
     hero.style.setProperty("--grip-y", Math.round((Math.max(a.bottom, content.getBoundingClientRect().bottom) + c.top) / 2 - h.top) + "px");
   }
 
@@ -91,6 +104,7 @@
       });
     });
     plan.appendChild(tb);
+    notes = [].map.call(plan.querySelectorAll(".plan__note"), function (n) { return { el: n, l: n.offsetLeft, r: n.offsetLeft + n.offsetWidth }; });
     placeGrip();
     setPos(pos);
   }
@@ -130,18 +144,17 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { annotate(); if (!used && reduced) setPos(restPos()); });
 
   // one sweep on load: the drawing slides in from the right edge. Desktop: it rests in the gap beside the facts.
-  // Phones/tablets: it peeks in to show the chart's drawing and returns to the edge, so the text stays whole.
+  // Phones/tablets: it slides over the right part of the chart only (the text above is never covered).
   if (reduced) setPos(restPos());
   else {
     setPos(100);
     window.addEventListener("load", function () {
-      var s = null, end = restPos(), peek = end > 99;
+      var s = null, end = restPos();
       function step(now) {
         if (used) return;
         if (s === null) s = now;
-        var k = Math.min(1, (now - s) / (peek ? 2600 : 1600)), e;
-        if (peek) { e = Math.sin(Math.PI * Math.min(1, k * 1.15)); e = e * e * (3 - 2 * e); setPos(100 - 30 * e); }
-        else { e = 1 - Math.pow(1 - k, 3); setPos(100 + (end - 100) * e); }
+        var k = Math.min(1, (now - s) / 1600), e = 1 - Math.pow(1 - k, 3);
+        setPos(100 + (end - 100) * e);
         if (k < 1) requestAnimationFrame(step);
       }
       setTimeout(function () { requestAnimationFrame(step); }, 350);
@@ -150,7 +163,7 @@
 
   /* ---------------- optional 3D layer ---------------- */
   var conn = navigator.connection || {};
-  if (!gsc || reduced || conn.saveData || hero.clientWidth < 768 || mq("(pointer: coarse) and (max-width: 1024px)") || !mq("(min-width: 768px)")) return;
+  if (!gsc || reduced || conn.saveData || narrow() || mq("(pointer: coarse) and (max-width: 1024px)") || !mq("(min-width: 768px)")) return;
   var probe = document.createElement("canvas");
   if (!window.WebGLRenderingContext || !(probe.getContext("webgl2") || probe.getContext("webgl"))) return;
 
@@ -274,7 +287,7 @@
       var x = Math.round(W * pos / 100);
       R.setViewport(0, 0, W, H);
       R.setScissor(0, 0, W, H); R.setClearColor(0x000000, 0); R.clear();
-      if (x >= W) return;
+      if (x >= W || narrow()) return;
       R.setScissor(x, 0, W - x, H); R.setClearColor(NIGHT, 1); R.clear();
       R.render(scene, cam);
     }
