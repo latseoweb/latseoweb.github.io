@@ -124,6 +124,7 @@
 .header__nav-link--active{color:var(--ink)}
 .header__nav-link--active::after{transform:scaleX(1)}
 .header__lang-btn--active{box-shadow:inset 0 -2px 0 var(--ix-signal)}
+.header__mobile-menu>a[aria-current="page"]{box-shadow:inset 3px 0 0 var(--ix-signal);padding-left:.85rem}
 
 /* in-text links: marker underline on hover */
 main p a:not(.btn):hover,main li a:not(.btn):hover{text-decoration-color:var(--ix-signal)}

@@ -83,7 +83,9 @@
       var kv = m.split(":"), v = kv[1].split(",").map(Number);
       var box = el("span", "pf__box", bp);
       box.style.left = v[0] + "%"; box.style.top = v[1] + "%"; box.style.width = v[2] + "%"; box.style.height = v[3] + "%";
-      el("span", "pf__note", box, NAMES[kv[0]] || kv[0]);
+      var note = el("span", "pf__note", box, NAMES[kv[0]] || kv[0]);
+      // a box at the very bottom of the screenshot gets its label above it, so the frame never clips the label
+      if (v[1] + v[3] > 92) { note.style.top = "auto"; note.style.bottom = "100%"; }
       if (kv[0] === "nav") navBottom = v[1] + v[3];
     });
     var dim = el("span", "pf__dim", bp);

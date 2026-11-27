@@ -31,4 +31,6 @@
 .after__sheet--sm .sheet__shot{aspect-ratio:16/10}
 .after__sheet--sm .after__draw[hidden]{display:block}
 .after__sheet--sm figcaption{font-size:.75rem;line-height:1.35}
+/* one column: the compact sketch closes the "what happens next" steps (style.css hides the full sheet here) */
+@media (max-width:899px){.after__sheet--sm:not([hidden]){display:grid;max-width:none;margin-top:var(--sp-sm);grid-template-columns:6.5rem 1fr;align-items:center}}
 @media (prefers-reduced-motion:reduce){.after__draw g{transition:none}.after__draw g.is-drawing > *{animation:none!important;stroke-dasharray:none;stroke-dashoffset:0}}

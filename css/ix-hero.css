@@ -96,13 +96,26 @@
 .hero--3d .plan .gsc__line,.hero--3d .plan .gsc__area{opacity:0;transition:opacity .6s}
 .hero--3d>.container{clip-path:inset(-40px var(--cut-r,0px) -40px -40px)}
 
-/* ---------- tablet & phone: one column; the drawing waits behind a pull tab at the right edge ---------- */
+/* ---------- tablet & phone: one column; the drawing lives only in the chart block below the text ----------
+   --plan-top (set by hero-plan.js) = top of the chart. Above it nothing is drawn, so the H1 and intro are never
+   covered. A 2.75rem band above the plot holds the grip, the hint and the two tags. */
 @media (max-width:1000px){
   .hero--plan .hero__grid{grid-template-columns:1fr;grid-template-areas:"content" "aside" "chart";row-gap:var(--sp-lg)}
   .hero--plan .hero__stats{flex-direction:row;flex-wrap:wrap;gap:1rem 2.5rem}
   .hero--plan .hero__proof{margin-top:1.25rem}
+  .hero--plan .gsc{padding-top:2.75rem}
+  .hero--plan .plan{clip-path:inset(var(--plan-top,100%) 0 0 var(--pos))}
+  .hero--plan .plan__line{top:var(--plan-top,100%)}
+  .plan__grip{top:22px;left:-44px;margin-top:-22px}
+  .plan__tag{top:calc(var(--grip-y,0px) - .8rem);transition:opacity .3s}
+  .plan__tag--site{right:calc(100% - var(--pos) + 52px)}
+  .plan__tag--plan{left:calc(var(--pos) + .6rem)}
+  .plan__hint{left:auto;right:calc(100% - var(--pos) + 52px)}
   .hero--plan:not(.is-used) .plan__tag{opacity:0}
-  .plan__tag{transition:opacity .3s}
+  .hero--3d>.container{clip-path:none}
+  .hero__gl{display:none}
+  .hero--3d .plan{background-color:var(--ix-night)}
+  .hero--3d .plan .gsc__line,.hero--3d .plan .gsc__area{opacity:1}
 }
 @media (max-width:700px){
   .hero--plan{padding:2rem 0 1.25rem}
@@ -112,8 +125,6 @@
   .gsc__plot{height:150px}
   .gsc__m:nth-child(even){border-left-style:none;color:transparent}
   .gsc__y{font-size:.6875rem}
-  .plan__grip{left:-44px;margin-top:-22px}
-  .plan__hint{left:auto;right:calc(100% - var(--pos) + 52px)}
   .plan__note{font-size:.6875rem}
 }
 @media (prefers-reduced-motion:reduce){.plan__grip,.hero__gl,.plan__hint{transition:none}}
