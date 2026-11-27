@@ -100,7 +100,8 @@
           var v = Math.max(0, Math.min(40, parseInt(inp.value, 10) || 0));
           r.qty = v; r.on = v > 0; update();
         });
-        lab.appendChild(sw); lab.appendChild(txtWrap); lab.appendChild(inp);
+        var u = document.createElement('span'); u.className = 'ix-u'; u.textContent = 'h'; u.setAttribute('aria-hidden', 'true');
+        lab.appendChild(sw); lab.appendChild(txtWrap); lab.appendChild(inp); lab.appendChild(u);
       } else {
         var cb = document.createElement('input');
         cb.type = 'checkbox'; cb.checked = r.on; cb.className = 'ix-cb';

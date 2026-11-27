@@ -43,59 +43,180 @@
     el._n = to;
   }
 
-  var CODE = '<b>&lt;head&gt;</b>\n  &lt;title&gt;…&lt;/title&gt;\n  &lt;meta name="description" content="…"&gt;\n  &lt;link rel="canonical" href="https://…"&gt;\n  &lt;meta name="viewport" …&gt;\n  &lt;script type="application/ld+json"&gt;\n<b>&lt;/head&gt;</b>\n&lt;body&gt;\n  &lt;nav&gt;&lt;a href="/"&gt;…&lt;/a&gt;&lt;/nav&gt;\n  &lt;h1&gt;…&lt;/h1&gt;\n  &lt;h2&gt;…&lt;/h2&gt;\n  &lt;img src="…" alt="…" width height&gt;\n  &lt;p&gt;…&lt;/p&gt;&lt;p&gt;…&lt;/p&gt;\n  &lt;footer&gt;…&lt;/footer&gt;';
+  /* koda iekrāsošana inspektoram: HTML (tagi, atribūti, vērtības), JSON, HTTP, teksts */
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function hl(src, lang) {
+    var s = esc(src);
+    if (lang === 'txt') return s.replace(/\b(h[1-3])\b/g, '<span class=t>$1</span>');
+    if (lang === 'http') return s.replace(/^(GET|POST) (.*)$/gm, '<span class=t>$1</span> $2')
+      .replace(/^(\d{3}) (.*)$/gm, '<span class=s>$1 $2</span>')
+      .replace(/^([\w-]+):( .*)$/gm, '<span class=a>$1</span>:<span class=v>$2</span>');
+    if (lang === 'json') s = s.replace(/("[^"\n]*")(\s*:)/g, '<span class=a>$1</span>$2')
+      .replace(/(:\s*)("[^"\n]*")/g, '$1<span class=v>$2</span>');
+    else s = s.replace(/([\w:-]+)=("[^"]*")/g, '<span class=a>$1</span>=<span class=v>$2</span>');
+    return s.replace(/(&lt;\/?)([a-zA-Z][\w-]*)/g, '<span class=t>$1$2</span>').replace(/(\/?&gt;)/g, '<span class=t>$1</span>')
+      .replace(/^(@media.*|\s+\.[\w-]+ \{.*|\})$/gm, '<span class=c>$1</span>');
+  }
 
   /* ---------- X-ray ---------- */
   function initXray(root) {
     var view = root.querySelector('.xray__view');
+    var page = root.querySelector('.xray__page');
+    var bp = root.querySelector('.xray__bp');
     var lens = root.querySelector('.xray__lens');
-    var read = root.querySelector('[data-read]');
-    var boxes = [].slice.call(root.querySelectorAll('.xr-box'));
+    var all = root.querySelector('.xray__all');
+    var legend = root.querySelector('.xray__legend');
     var hint = root.getAttribute('data-hint');
-    var w = 0, h = 0, r = 90, x = 0, y = 0, cur = null;
+    var I = {
+      path: root.querySelector('.xi__path'), tag: root.querySelector('.xi__tag'), name: root.querySelector('.xi__name [data-name]'),
+      ok: root.querySelector('.xi__ok'), read: root.querySelector('.xray__read'), serp: root.querySelector('.xi__serp'),
+      code: root.querySelector('.xi__code'), checks: root.querySelector('.xi__checks')
+    };
+    var data = {};
+    [].forEach.call(root.querySelectorAll('.xr-data [data-k]'), function (d) { data[d.getAttribute('data-k')] = d; });
+    var targets = [].slice.call(page.querySelectorAll('[data-x]'));
 
-    function measure() {
-      var b = view.getBoundingClientRect();
-      w = b.width; h = b.height;
-      r = Math.max(56, Math.min(110, w * 0.17));
+    /* rentgena slānis = tās pašas lapas kopija "caurspīdīgā" stilā + rāmji ap elementiem */
+    var ghost = page.cloneNode(true);
+    ghost.classList.add('xr-ghost');
+    [].forEach.call(ghost.querySelectorAll('[data-x]'), function (e) { e.removeAttribute('data-x'); });
+    var layer = document.createElement('div'); layer.className = 'xr-boxes';
+    bp.appendChild(ghost); bp.appendChild(layer);
+    var seen = {};
+    var boxes = targets.map(function (t) {
+      var k = t.getAttribute('data-x'), d = data[k], b = document.createElement('span'), tg = document.createElement('i');
+      b.className = 'xr-box' + (d && d.getAttribute('data-ok') ? ' is-ok' : '');
+      b.setAttribute('data-k', k);
+      tg.className = 'xr-tag'; tg.textContent = d ? d.getAttribute('data-tag') : k;
+      b.appendChild(tg); layer.appendChild(b);
+      /* otrā rinda rāmja apakšā: atribūti tieši pie elementa (alt, izmēri, schema lauki) */
+      var sub = d && d.getAttribute('data-sub'), sb = null;
+      if (sub && !seen[k]) { sb = document.createElement('i'); sb.className = 'xr-sub'; sb.textContent = sub; b.appendChild(sb); }
+      seen[k] = 1;
+      return { t: t, k: k, el: b, tag: tg, sub: sb, x: 0, y: 0, w: 0, h: 0, vis: true };
+    });
+
+    var w = 0, h = 0, r = 100, x = 0, y = 0, cur = null, mode = 'lens';
+
+    function layout() {
+      var v = view.getBoundingClientRect();
+      w = v.width; h = v.height;
+      r = Math.max(64, Math.min(130, w * 0.17));
       view.style.setProperty('--r', r + 'px');
-    }
-    function pick() {
-      var best = null, bd = 1e9;
-      boxes.forEach(function (bx) {
-        var l = bx.offsetLeft, t = bx.offsetTop, rr = l + bx.offsetWidth, bb = t + bx.offsetHeight;
-        var dx = Math.max(l - x, 0, x - rr), dy = Math.max(t - y, 0, y - bb);
-        var d = Math.sqrt(dx * dx + dy * dy);
-        if (d < bd) { bd = d; best = bx; }
+      bp.style.setProperty('--h', h + 'px');
+      var placed = [];
+      boxes.forEach(function (b) {
+        var q = b.t.getBoundingClientRect(), p = 3;
+        b.vis = q.width > 0 && q.height > 0;
+        b.el.style.display = b.vis ? '' : 'none';
+        if (!b.vis) return;
+        b.x = q.left - v.left - p; b.y = q.top - v.top - p; b.w = q.width + p * 2; b.h = q.height + p * 2;
+        b.el.style.cssText = 'left:' + b.x + 'px;top:' + b.y + 'px;width:' + b.w + 'px;height:' + b.h + 'px';
+        if (b.sub) b.sub.style.display = (b.h >= 34 && b.w >= 150) ? '' : 'none';
       });
-      if (bd > r * 0.9) best = null;
-      if (best !== cur) {
-        if (cur) cur.classList.remove('is-on');
-        cur = best;
-        if (cur) cur.classList.add('is-on');
-        read.textContent = cur ? cur.getAttribute('data-d') : hint;
-      }
+      /* birkas: virs, iekšā, zem, labajā pusē — pirmā vieta, kas nepārklājas ar citām */
+      /* šaurā skatā birkas tikai iebūvētajiem elementiem, lai tās nesaplūst */
+      boxes.forEach(function (b) { b.tag.style.display = (w < 520 && !b.el.classList.contains('is-ok')) ? 'none' : ''; });
+      boxes.filter(function (b) { return b.vis && b.tag.style.display !== 'none'; }).sort(function (a, c) { return a.y - c.y || a.x - c.x; }).forEach(function (b) {
+        var tw = b.tag.offsetWidth, th = b.tag.offsetHeight, best = null;
+        var c = [[b.x, b.y - th], [b.x + 3, b.y + 3], [b.x, b.y + b.h], [b.x + b.w - tw, b.y - th], [b.x + b.w - tw - 3, b.y + 3], [b.x + b.w - tw, b.y + b.h]];
+        function free(cx, cy, list) { return !list.some(function (o) { return cx < o[0] + o[2] + 2 && cx + tw + 2 > o[0] && cy < o[1] + o[3] + 1 && cy + th + 1 > o[1]; }); }
+        /* vispirms vieta, kas neaizsedz ne citas birkas, ne citus rāmjus; tad — tikai ne birkas */
+        var others = boxes.filter(function (o) { return o !== b && o.vis; }).map(function (o) { return [o.x + 1, o.y + 1, o.w - 2, o.h - 2]; });
+        [placed.concat(others), placed].forEach(function (list) {
+          for (var i = 0; i < c.length && !best; i++) {
+            var cx = Math.max(1, Math.min(w - tw - 1, c[i][0])), cy = Math.max(1, Math.min(h - th - 1, c[i][1]));
+            if (free(cx, cy, list)) best = [cx, cy];
+          }
+        });
+        if (!best) best = [Math.max(1, Math.min(w - tw - 1, b.x)), Math.max(1, b.y - th)];
+        placed.push([best[0], best[1], tw, th]);
+        b.tag.style.left = (best[0] - b.x) + 'px'; b.tag.style.top = (best[1] - b.y) + 'px';
+      });
+    }
+
+    function show(k) {
+      if (k === cur) return;
+      cur = k;
+      boxes.forEach(function (b) { b.el.classList.toggle('is-on', b.k === k); });
+      [].forEach.call(root.querySelectorAll('[data-go]'), function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-go') === k ? 'true' : 'false'); });
+      var d = k && data[k];
+      if (!d) { I.tag.textContent = ''; I.name.textContent = ''; I.ok.hidden = true; I.serp.hidden = true; I.code.innerHTML = ''; I.checks.innerHTML = ''; I.read.textContent = hint; I.path.textContent = ''; return; }
+      I.path.textContent = d.getAttribute('data-path') || '';
+      I.tag.textContent = d.getAttribute('data-tag');
+      I.name.textContent = d.getAttribute('data-name');
+      I.ok.hidden = !d.getAttribute('data-ok');
+      I.read.textContent = d.getAttribute('data-d');
+      I.serp.hidden = !d.getAttribute('data-serp');
+      var pre = d.querySelector('pre');
+      I.code.innerHTML = pre ? hl(pre.textContent, d.getAttribute('data-lang') || 'html') : '';
+      I.code.scrollTop = 0;
+      var ul = d.querySelector('ul');
+      I.checks.innerHTML = ul ? ul.innerHTML : '';
+    }
+
+    function boxAt(px, py, reach) {
+      var best = null, bd = 1e9;
+      boxes.forEach(function (b) {
+        if (!b.vis) return;
+        var dx = Math.max(b.x - px, 0, px - b.x - b.w), dy = Math.max(b.y - py, 0, py - b.y - b.h), d = Math.sqrt(dx * dx + dy * dy);
+        if (!d) d = -1 / (b.w * b.h); /* iekšā: mazākais rāmis uzvar */
+        if (d < bd) { bd = d; best = b; }
+      });
+      return bd <= reach ? best : null;
     }
     function set(nx, ny) {
       x = Math.max(0, Math.min(w, nx));
       y = Math.max(0, Math.min(h, ny));
       view.style.setProperty('--x', x + 'px');
       view.style.setProperty('--y', y + 'px');
-      pick();
+      if (mode === 'lens') { var b = boxAt(x, y, r * 0.6); if (b) show(b.k); }
     }
     function local(e) {
       var b = view.getBoundingClientRect();
       return [e.clientX - b.left, e.clientY - b.top];
     }
 
-    var bp = root.querySelector('.xray__bp');
-    if (bp) { var pre = document.createElement('pre'); pre.className = 'xr-code'; pre.setAttribute('aria-hidden', 'true'); pre.innerHTML = CODE; bp.insertBefore(pre, bp.firstChild); }
-    measure();
+    /* inspektora saraksts "iebūvētais SEO": klikšķis aizved lēcu pie elementa */
+    [].forEach.call(root.querySelectorAll('[data-go]'), function (g) {
+      g.addEventListener('click', function () {
+        var k = g.getAttribute('data-go'), b = boxes.filter(function (o) { return o.k === k && o.vis; })[0];
+        if (!b) return;
+        root.classList.remove('is-idle'); stopInertia();
+        if (mode === 'lens') set(b.x + Math.min(b.w / 2, r * 0.8), b.y + b.h / 2);
+        show(k);
+      });
+    });
     root.classList.add('is-on');
+    if (legend) { legend.textContent = hint; legend.classList.add('ix-hint'); }
+    layout();
     if (!reduce) root.classList.add('is-idle');
-    set(w * 0.3, h * 0.34);
-    if ('ResizeObserver' in window) {
-      new ResizeObserver(function () { var fx = x / (w || 1), fy = y / (h || 1); measure(); set(fx * w, fy * h); }).observe(view);
+    var h1 = boxes.filter(function (b) { return b.k === 'h1' && b.vis; })[0];
+    set(h1 ? h1.x + Math.min(h1.w * 0.35, r) : w * 0.3, h1 ? h1.y + h1.h / 2 : h * 0.3);
+    function relayout() { var fx = x / (w || 1), fy = y / (h || 1); layout(); set(fx * w, fy * h); }
+    if ('ResizeObserver' in window) new ResizeObserver(relayout).observe(view);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+
+    /* "Rādīt visu kodu": lēcas aplis izplešas pa visu lapu; elementus izvēlas ar klikšķi vai kursoru */
+    if (all) {
+      all.hidden = false;
+      all.addEventListener('click', function () {
+        mode = mode === 'lens' ? 'all' : 'lens';
+        all.setAttribute('aria-pressed', mode === 'all' ? 'true' : 'false');
+        root.classList.remove('is-idle');
+        if (!reduce) { root.classList.add('is-sweep'); setTimeout(function () { root.classList.remove('is-sweep'); }, 800); }
+        root.classList.toggle('is-all', mode === 'all');
+        if (mode === 'lens') { var b = boxAt(x, y, r * 0.6); if (b) show(b.k); }
+      });
+      layer.addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('.xr-box');
+        if (mode === 'all' && b) show(b.getAttribute('data-k'));
+      });
+      if (fine) view.addEventListener('pointermove', function (e) {
+        if (mode !== 'all') return;
+        var p = local(e), b = boxAt(p[0], p[1], 0);
+        if (b) show(b.k);
+      });
     }
 
     var drag = false, vx = 0, vy = 0, lx = 0, ly = 0, lt = 0, raf = 0;
@@ -109,7 +230,7 @@
       raf = (Math.abs(vx) + Math.abs(vy) > 0.35) ? requestAnimationFrame(glide) : 0;
     }
     function down(e) {
-      if (e.button) return;
+      if (e.button || mode !== 'lens') return;
       stopInertia(); vx = vy = 0; lt = 0;
       root.classList.remove('is-idle');
       view.classList.add('is-drag');
@@ -140,10 +261,11 @@
     var tx = null;
     view.addEventListener('touchstart', function (e) { tx = [e.touches[0].clientX, e.touches[0].clientY]; }, { passive: true });
     view.addEventListener('touchend', function (e) {
-      if (!tx || e.target === lens || lens.contains(e.target)) { tx = null; return; }
+      if (!tx || mode !== 'lens' || e.target === lens || lens.contains(e.target)) { tx = null; return; }
       var t = e.changedTouches[0];
       if (Math.abs(t.clientX - tx[0]) < 8 && Math.abs(t.clientY - tx[1]) < 8) {
         var b = view.getBoundingClientRect();
+        root.classList.remove('is-idle');
         set(t.clientX - b.left, t.clientY - b.top);
       }
       tx = null;

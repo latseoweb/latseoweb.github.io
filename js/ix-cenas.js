@@ -195,6 +195,7 @@
   });
 
   panel.hidden = false; draw();
+  var hn = document.querySelector('.ix-pick-hint'); if (hn) hn.hidden = false;
   lift(panel, 0);
 
   /* ---- "Kas ietekme cenu" ---- */
@@ -226,6 +227,7 @@
   fa.addEventListener('click', function () {
     fs.forEach(function (k) { if (sel.indexOf(k) < 0) set(k, true, fa); });
   });
+  if (data['pkg-card']) fs = ['pkg-card']; /* sāk ar vienu ieslēgtu faktoru, lai uzreiz redz, kā tas darbojas */
   f.hidden = false; fdraw();
   lift(f, 2);
   /* faktora poga: pop-animācija */
