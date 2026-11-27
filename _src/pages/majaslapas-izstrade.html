@@ -384,10 +384,10 @@ Strict-Transport-Security: max-age=31536000</pre><ul><li data-ok>HTTP → HTTPS<
       <div data-k="tel" data-tag="tel:" data-name="Zvana poga" data-path="body › header › a" data-d="Telefonā zvans ar vienu pieskārienu. Tas pats numurs ir arī strukturētajos datos lapas apakšā."><pre>&lt;a href="tel:+371…" class="call"&gt;
   Zvanīt 24/7
 &lt;/a&gt;</pre><ul><li>numurs = schema.org telephone<b>sakrīt</b></li></ul></div>
-      <div data-k="h1" data-tag="&lt;h1&gt;" data-name="Galvenais virsraksts" data-path="body › main › section › h1" data-ok="1" data-d="Pareiza virsrakstu hierarhija: viens H1 katrā lapā, un tas pasaka, par ko ir lapa."><pre>&lt;h1&gt;Santehniķis Rīgā — atbraucam
+      <div data-k="h1" data-sub="1 × h1 · 44 zīmes" data-tag="&lt;h1&gt;" data-name="Galvenais virsraksts" data-path="body › main › section › h1" data-ok="1" data-d="Pareiza virsrakstu hierarhija: viens H1 katrā lapā, un tas pasaka, par ko ir lapa."><pre>&lt;h1&gt;Santehniķis Rīgā — atbraucam
     tajā pašā dienā&lt;/h1&gt;</pre><ul><li data-ok>H1 lapā<b>1</b></li><li>atslēgvārds<b>santehniķis Rīgā</b></li></ul></div>
       <div data-k="cta" data-tag="INP" data-name="Poga — reakcija uz klikšķi" data-path="body › main › section › a.btn" data-ok="1" data-d="Tehniski tīrs kods: poga reaģē uzreiz. INP ir Core Web Vitals rādītājs, kas mēra reakciju uz klikšķi."><pre>&lt;a href="/pieteikt/" class="btn"&gt;Pieteikt meistaru&lt;/a&gt;</pre><ul><li data-ok>INP, Google robeža „labs”<b>≤ 200 ms</b></li></ul></div>
-      <div data-k="lcp" data-tag="LCP &lt;img&gt;" data-name="Lielākais elements ekrānā" data-path="body › main › section › img" data-ok="1" data-d="Ātra ielāde: galvenais attēls ielādējas pirmais, un tā vieta ir rezervēta. LCP un CLS ir Core Web Vitals rādītāji."><pre>&lt;img src="/img/meistars-1200.avif"
+      <div data-k="lcp" data-sub="alt=&quot;Santehniķis nomaina jaucējkrānu vannas istabā&quot; · 1200×800 · fetchpriority=high" data-tag="LCP &lt;img&gt;" data-name="Lielākais elements ekrānā" data-path="body › main › section › img" data-ok="1" data-d="Ātra ielāde: galvenais attēls ielādējas pirmais, un tā vieta ir rezervēta. LCP un CLS ir Core Web Vitals rādītāji."><pre>&lt;img src="/img/meistars-1200.avif"
      srcset="/img/meistars-600.avif 600w,
              /img/meistars-1200.avif 1200w"
      sizes="(max-width: 600px) 100vw, 50vw"
@@ -401,20 +401,20 @@ Strict-Transport-Security: max-age=31536000</pre><ul><li data-ok>HTTP → HTTPS<
 │  ├─ h3  Cauruļu nomaiņa
 │  └─ h3  Kanalizācijas tīrīšana
 └─ h2  Atsauksmes</pre><ul><li data-ok>līmeņi pēc kārtas<b>h1 › h2 › h3</b></li></ul></div>
-      <div data-k="h3" data-tag="&lt;h3&gt; × 4" data-name="Pakalpojumu kartītes" data-path="body › main › section › article" data-d="Katram pakalpojumam savs H3 un saite uz atsevišķu lapu. Dekoratīvai ikonai alt ir tukšs."><pre>&lt;article&gt;
+      <div data-k="h3" data-sub="4 × &lt;h3&gt;&lt;a href=&quot;/pakalpojumi/…&quot;&gt; · ikonām alt=&quot;&quot;" data-tag="&lt;h3&gt; × 4" data-name="Pakalpojumu kartītes" data-path="body › main › section › article" data-d="Katram pakalpojumam savs H3 un saite uz atsevišķu lapu. Dekoratīvai ikonai alt ir tukšs."><pre>&lt;article&gt;
   &lt;img src="/ikonas/krans.svg" alt=""
        width="40" height="40" loading="lazy"&gt;
   &lt;h3&gt;&lt;a href="/pakalpojumi/avarijas-izsaukums/"&gt;
     Avārijas izsaukums&lt;/a&gt;&lt;/h3&gt;
 &lt;/article&gt;</pre><ul><li>dekoratīva ikona<b>alt=""</b></li><li>saites uz pakalpojumu lapām<b>4</b></li></ul></div>
-      <div data-k="lazy" data-tag="loading=lazy" data-name="Attēli zem ekrāna malas" data-path="body › main › section › img" data-d="Attēli, kas nav redzami uzreiz, ielādējas tikai tad, kad lietotājs līdz tiem ritina."><pre>&lt;img src="/atsauksmes/inese.webp" alt="Inese"
+      <div data-k="lazy" data-sub="3 × loading=&quot;lazy&quot; decoding=&quot;async&quot;" data-tag="loading=lazy" data-name="Attēli zem ekrāna malas" data-path="body › main › section › img" data-d="Attēli, kas nav redzami uzreiz, ielādējas tikai tad, kad lietotājs līdz tiem ritina."><pre>&lt;img src="/atsauksmes/inese.webp" alt="Inese"
      width="48" height="48"
      loading="lazy" decoding="async"&gt;</pre><ul><li>loading="lazy"<b>3 / 3</b></li></ul></div>
       <div data-k="ext" data-tag="rel=noopener" data-name="Saite uz citu vietni" data-path="body › main › section › a" data-d="Saite uz atsauksmēm Google atveras jaunā cilnē un neatdod piekļuvi šai lapai."><pre>&lt;a href="https://maps.google.com/…"
    target="_blank" rel="noopener"&gt;
   Visas atsauksmes Google
 &lt;/a&gt;</pre><ul><li>rel<b>noopener</b></li></ul></div>
-      <div data-k="schema" data-tag="JSON-LD LocalBusiness" data-name="Strukturētie dati (schema.org)" data-path="body › footer › script" data-lang="json" data-d="Nosaukums, tālrunis, adrese un darba laiks mašīnlasāmā formā — Google tos saprot bez minēšanas."><pre>&lt;script type="application/ld+json"&gt;
+      <div data-k="schema" data-sub="&quot;@type&quot;: &quot;Plumber&quot; · name · telephone · address · openingHours" data-tag="JSON-LD LocalBusiness" data-name="Strukturētie dati (schema.org)" data-path="body › footer › script" data-lang="json" data-d="Nosaukums, tālrunis, adrese un darba laiks mašīnlasāmā formā — Google tos saprot bez minēšanas."><pre>&lt;script type="application/ld+json"&gt;
 {
   "@context": "https://schema.org",
   "@type": "Plumber",

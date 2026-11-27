@@ -130,6 +130,8 @@
 .xr-tag{position:absolute;left:-1px;bottom:100%;padding:3px 5px;font:500 10.5px/1 var(--ff-mono);font-style:normal;white-space:nowrap;color:var(--ix-line);background:var(--ix-night);border:1px solid currentColor;transition:background .2s,color .2s}
 .xr-tag.is-in{bottom:auto;top:1px;left:1px}
 .xr-tag.is-below{bottom:auto;top:100%}
+.xr-sub{position:absolute;left:3px;bottom:3px;max-width:calc(100% - 6px);padding:1px 4px;background:var(--ix-night);font:400 9.5px/1.3 var(--ff-mono);font-style:normal;color:var(--ix-muted-on);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xr-box.is-on .xr-sub{color:var(--ix-marker)}
 .xr-box.is-ok .xr-tag{color:var(--ix-mint)}
 .xr-box[data-k=lcp] .xr-tag{color:var(--ix-signal)}
 .xr-box.is-on .xr-tag{color:var(--ix-night);background:var(--ix-marker);border-color:var(--ix-marker)}

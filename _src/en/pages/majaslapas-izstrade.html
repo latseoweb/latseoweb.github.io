@@ -375,10 +375,10 @@ Strict-Transport-Security: max-age=31536000</pre><ul><li data-ok>HTTP → HTTPS<
       <div data-k="tel" data-tag="tel:" data-name="Call button" data-path="body › header › a" data-d="On a phone it calls with one tap. The same number is also in the structured data at the bottom of the page."><pre>&lt;a href="tel:+371…" class="call"&gt;
   Call 24/7
 &lt;/a&gt;</pre><ul><li>number = schema.org telephone<b>matches</b></li></ul></div>
-      <div data-k="h1" data-tag="&lt;h1&gt;" data-name="Main heading" data-path="body › main › section › h1" data-ok="1" data-d="Correct heading hierarchy: one H1 on each page, and it says what the page is about."><pre>&lt;h1&gt;Plumber in Riga — same-day
+      <div data-k="h1" data-sub="1 × h1 · 36 characters" data-tag="&lt;h1&gt;" data-name="Main heading" data-path="body › main › section › h1" data-ok="1" data-d="Correct heading hierarchy: one H1 on each page, and it says what the page is about."><pre>&lt;h1&gt;Plumber in Riga — same-day
     call-outs&lt;/h1&gt;</pre><ul><li data-ok>H1 on the page<b>1</b></li><li>keyword<b>plumber in Riga</b></li></ul></div>
       <div data-k="cta" data-tag="INP" data-name="Button — response to a click" data-path="body › main › section › a.btn" data-ok="1" data-d="Technically clean code: the button responds instantly. INP is the Core Web Vitals metric that measures the response to a click."><pre>&lt;a href="/en/book/" class="btn"&gt;Book a plumber&lt;/a&gt;</pre><ul><li data-ok>INP, Google “good” threshold<b>≤ 200 ms</b></li></ul></div>
-      <div data-k="lcp" data-tag="LCP &lt;img&gt;" data-name="Largest element on screen" data-path="body › main › section › img" data-ok="1" data-d="Fast loading: the main image loads first and its space is reserved. LCP and CLS are Core Web Vitals metrics."><pre>&lt;img src="/img/plumber-1200.avif"
+      <div data-k="lcp" data-sub="alt=&quot;Plumber replacing a mixer tap in a bathroom&quot; · 1200×800 · fetchpriority=high" data-tag="LCP &lt;img&gt;" data-name="Largest element on screen" data-path="body › main › section › img" data-ok="1" data-d="Fast loading: the main image loads first and its space is reserved. LCP and CLS are Core Web Vitals metrics."><pre>&lt;img src="/img/plumber-1200.avif"
      srcset="/img/plumber-600.avif 600w,
              /img/plumber-1200.avif 1200w"
      sizes="(max-width: 600px) 100vw, 50vw"
@@ -392,20 +392,20 @@ Strict-Transport-Security: max-age=31536000</pre><ul><li data-ok>HTTP → HTTPS<
 │  ├─ h3  Pipe replacement
 │  └─ h3  Drain cleaning
 └─ h2  Reviews</pre><ul><li data-ok>levels in order<b>h1 › h2 › h3</b></li></ul></div>
-      <div data-k="h3" data-tag="&lt;h3&gt; × 4" data-name="Service cards" data-path="body › main › section › article" data-d="Each service has its own H3 and a link to a separate page. A decorative icon has empty alt text."><pre>&lt;article&gt;
+      <div data-k="h3" data-sub="4 × &lt;h3&gt;&lt;a href=&quot;/en/services/…&quot;&gt; · icons alt=&quot;&quot;" data-tag="&lt;h3&gt; × 4" data-name="Service cards" data-path="body › main › section › article" data-d="Each service has its own H3 and a link to a separate page. A decorative icon has empty alt text."><pre>&lt;article&gt;
   &lt;img src="/icons/tap.svg" alt=""
        width="40" height="40" loading="lazy"&gt;
   &lt;h3&gt;&lt;a href="/en/services/emergency-call-out/"&gt;
     Emergency call-out&lt;/a&gt;&lt;/h3&gt;
 &lt;/article&gt;</pre><ul><li>decorative icon<b>alt=""</b></li><li>links to service pages<b>4</b></li></ul></div>
-      <div data-k="lazy" data-tag="loading=lazy" data-name="Images below the fold" data-path="body › main › section › img" data-d="Images that are not visible straight away load only when the visitor scrolls down to them."><pre>&lt;img src="/reviews/inese.webp" alt="Inese"
+      <div data-k="lazy" data-sub="3 × loading=&quot;lazy&quot; decoding=&quot;async&quot;" data-tag="loading=lazy" data-name="Images below the fold" data-path="body › main › section › img" data-d="Images that are not visible straight away load only when the visitor scrolls down to them."><pre>&lt;img src="/reviews/inese.webp" alt="Inese"
      width="48" height="48"
      loading="lazy" decoding="async"&gt;</pre><ul><li>loading="lazy"<b>3 / 3</b></li></ul></div>
       <div data-k="ext" data-tag="rel=noopener" data-name="Link to another site" data-path="body › main › section › a" data-d="The link to the Google reviews opens in a new tab safely and does not give that tab access to this page."><pre>&lt;a href="https://maps.google.com/…"
    target="_blank" rel="noopener"&gt;
   All reviews on Google
 &lt;/a&gt;</pre><ul><li>rel<b>noopener</b></li></ul></div>
-      <div data-k="schema" data-tag="JSON-LD LocalBusiness" data-name="Structured data (schema.org)" data-path="body › footer › script" data-lang="json" data-d="Name, phone, address and opening hours in machine-readable form — Google understands them without guessing."><pre>&lt;script type="application/ld+json"&gt;
+      <div data-k="schema" data-sub="&quot;@type&quot;: &quot;Plumber&quot; · name · telephone · address · openingHours" data-tag="JSON-LD LocalBusiness" data-name="Structured data (schema.org)" data-path="body › footer › script" data-lang="json" data-d="Name, phone, address and opening hours in machine-readable form — Google understands them without guessing."><pre>&lt;script type="application/ld+json"&gt;
 {
   "@context": "https://schema.org",
   "@type": "Plumber",

@@ -82,13 +82,18 @@
     [].forEach.call(ghost.querySelectorAll('[data-x]'), function (e) { e.removeAttribute('data-x'); });
     var layer = document.createElement('div'); layer.className = 'xr-boxes';
     bp.appendChild(ghost); bp.appendChild(layer);
+    var seen = {};
     var boxes = targets.map(function (t) {
       var k = t.getAttribute('data-x'), d = data[k], b = document.createElement('span'), tg = document.createElement('i');
       b.className = 'xr-box' + (d && d.getAttribute('data-ok') ? ' is-ok' : '');
       b.setAttribute('data-k', k);
       tg.className = 'xr-tag'; tg.textContent = d ? d.getAttribute('data-tag') : k;
       b.appendChild(tg); layer.appendChild(b);
-      return { t: t, k: k, el: b, tag: tg, x: 0, y: 0, w: 0, h: 0, vis: true };
+      /* otrā rinda rāmja apakšā: atribūti tieši pie elementa (alt, izmēri, schema lauki) */
+      var sub = d && d.getAttribute('data-sub'), sb = null;
+      if (sub && !seen[k]) { sb = document.createElement('i'); sb.className = 'xr-sub'; sb.textContent = sub; b.appendChild(sb); }
+      seen[k] = 1;
+      return { t: t, k: k, el: b, tag: tg, sub: sb, x: 0, y: 0, w: 0, h: 0, vis: true };
     });
 
     var w = 0, h = 0, r = 100, x = 0, y = 0, cur = null, mode = 'lens';
@@ -107,6 +112,7 @@
         if (!b.vis) return;
         b.x = q.left - v.left - p; b.y = q.top - v.top - p; b.w = q.width + p * 2; b.h = q.height + p * 2;
         b.el.style.cssText = 'left:' + b.x + 'px;top:' + b.y + 'px;width:' + b.w + 'px;height:' + b.h + 'px';
+        if (b.sub) b.sub.style.display = (b.h >= 34 && b.w >= 150) ? '' : 'none';
       });
       /* birkas: virs, iekšā, zem, labajā pusē — pirmā vieta, kas nepārklājas ar citām */
       /* šaurā skatā birkas tikai iebūvētajiem elementiem, lai tās nesaplūst */
