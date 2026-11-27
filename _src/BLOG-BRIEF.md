@@ -10,14 +10,22 @@ Raksts paliek autora (Adrians Stankevičs) personīgā pieredzē balstīts, bet:
 - teikumi 10–22 vārdi, rindkopās 2–4 teikumi; pareiza latviešu pareizrakstība, pēdiņas „…”, domuzīme ar atstarpēm ( — ).
 
 ## FAKTI (drīkst lietot TIKAI šos un to, kas jau ir oriģinālajā rakstā)
-- Adrians Stankevičs, 2 gadu pieredze SEO un mājaslapu izstrādē (strādājot darbā, nevis kā uzņēmumam). LatSEO = Baltic SEO, SIA. Bratus oficiālais IT partneris.
-- Izstrādāja no nulles: tehnologijuakademija.lv, lazergriezeji.lv, cncfrezes.lv, 3dpakalpojumi.lv, bratus.lv, cncpakalpojumi.lv, ploteris.lv; landing lapa maropro.lv. SEO klienti (NOSAUKUMUS NEMINĒT, tikai anonīmi): auto detailinga uzņēmums Rīgā (kopš 2026. gada marta, SEO + Google Business Profile), nekustamo īpašumu aģentūra (kopš 2026. gada aprīļa), auto nomas uzņēmums (kopš 2026. gada oktobra).
+### Noteikumi v2 (2026-11-27, Adriana lēmums: tikai īsti dati)
+- Dati un skaitļi tikai no DATI bloka. Autoblogs (`scripts/autoblog.py`) modelim iedod DATI: rindas ieraksta `data_keys` no `blog-stats.json` (CRM agregāti), `facts` ar avotu, izlasi (n) un periodu. Pirms publicēšanas skripts pārbauda katru skaitli title, description, h1, h2, tekstā un tabulās; ja skaitlis nav DATI, cenās, gados 2024–2027 vai 0–10, raksts netiek publicēts.
+- Skaitļi no šīs FAKTI sadaļas autoblogā drīkst parādīties tikai tad, ja tie ir ieraksta DATI/`facts`. Rakstot ar roku, tie jāņem tikai no šejienes vai no oriģinālā raksta.
+- CRM pārbaudes datus citēt kopā ar izlasi un periodu: „Rīgas un apkārtnes uzņēmumu lapas no N nozarēm, pārbaudītas <periods>”. Nekad „Latvijā”, „Latvijas uzņēmumi”, „visi uzņēmumi”, „nozarē kopumā”. PageSpeed = „Google PageSpeed tests (laboratorijas mērījums)”, nevis reālu apmeklētāju dati.
+- Personīgie stāsti tikai ar konkrētu piemēru no šīs sadaļas (kas, kad, kāds skaitlis). Vispārīgas frāzes „mana pieredze rāda”, „pieredze rāda”, „no pieredzes zinu” — aizliegtas.
+- Klientu un projektu nosaukumus un domēnus rakstos NEMINĒT (tikai portfolio kartiņās lapā /projekti/; saraksts `PROJECTS` failā `scripts/build.py`). Grandem un tā klientus nepieminēt.
+
+### Fakti
+- Adrians Stankevičs, 2 gadu pieredze SEO un mājaslapu izstrādē (strādājot darbā, nevis kā uzņēmumam). LatSEO = Baltic SEO, SIA. Oficiālais IT partneris vienam e-veikalam (nosaukumu neminēt).
+- Izstrādāja no nulles 7 mājaslapas un vienu landing lapu (inženierijas apmācības, lāzeriekārtu, CNC frēžu un plotergriezēju tirdzniecība, 3D printēšanas un CNC frēzēšanas pakalpojumi, e-veikals; nosaukumi tikai portfolio /projekti/). SEO klienti (NOSAUKUMUS NEMINĒT, tikai anonīmi): auto detailinga uzņēmums Rīgā (kopš 2026. gada marta, SEO + Google Business Profile), nekustamo īpašumu aģentūra (kopš 2026. gada aprīļa), auto nomas uzņēmums (kopš 2026. gada oktobra).
 - Auto detailinga uzņēmums, Google Search Console: aug.–okt. 2026 pret aug.–okt. 2025 klikšķi 1 891 → 2 469 (+31 %), rādījumi 48 467 → 60 393 (+25 %); 2026-11-09 no 48 sekotajām frāzēm 15 top 3 un 26 top 10.
-- Google Search Console klikšķi 90 d. (24.07.–21.10.2026) pret iepriekšējām 90 d.: tehnologijuakademija.lv 0 → 212, lazergriezeji.lv 1 → 44, cncfrezes.lv 2 → 42, 3dpakalpojumi.lv 0 → 10, cncpakalpojumi.lv 0 → 9.
-- Cenas (bez PVN): vizītkartes lapa no 449 €, uzņēmuma mājaslapa no 799 €, e-veikals no 1 299 €; SEO audits no 150 €; ikmēneša SEO no 300 €/mēn.; video audits bez maksas 24 h laikā; hostings 10 €/mēn. (e-veikals 15 €/mēn.), .lv domēns 20 €/gadā, labojumi 25 €/h.
+- Google Search Console klikšķi 90 d. (24.07.–21.10.2026) pret iepriekšējām 90 d. manis izstrādātām lapām (anonīmi, pēc nozares): inženierijas apmācības 0 → 212, lāzeriekārtu tirdzniecība 1 → 44, CNC frēžu tirdzniecība 2 → 42, 3D printēšanas pakalpojumi 0 → 10, CNC frēzēšanas pakalpojumi 0 → 9.
+- Cenas (bez PVN): vizītkartes lapa no 449 €, uzņēmuma mājaslapa no 799 €, e-veikals no 1 299 €; SEO audits no 150 €; ikmēneša SEO no 300 €/mēn.; video audits bez maksas 24 h laikā; hostings 10 €/mēn. (e-veikals 15 €/mēn.), .lv domēns 20 €/gadā, labojumi 25 €/h. Avots: /pakalpojumi-un-cenas/ (autoblogs cenas nolasa no turienes).
 - Iebūvētais SEO: tehniski tīrs kods un ātra ielāde (Core Web Vitals), mobilā versija, saprotama URL struktūra, pareiza virsrakstu hierarhija, SSL.
 - Rīki: Google Search Console (atver katru rītu), Google Keyword Planner, Screaming Frog, Ahrefs (toolbar).
-- Personīgā pieredze (no oriģinālajiem rakstiem): URL maiņa → Google reklāmas 4 dienas veda uz 404 lapu, zaudēts reklāmas budžets; lazergriezeji.lv mazāk nekā mēneša laikā sāka saņemt organiskos apmeklētājus un zvanus; pirmais klients bija uzņēmums, kurā autors iepriekš strādāja; pēc AI Overview ieviešanas sāka optimizēt arī GEO.
+- Personīgā pieredze (no oriģinālajiem rakstiem): URL maiņa → Google reklāmas 4 dienas veda uz 404 lapu, zaudēts reklāmas budžets; viena no manis izstrādātajām lapām (lāzeriekārtu tirdzniecība) mazāk nekā mēneša laikā sāka saņemt organiskos apmeklētājus un zvanus; pirmais klients bija uzņēmums, kurā autors iepriekš strādāja; pēc AI Overview ieviešanas sāka optimizēt arī GEO.
 - LatSEO paša audits (2026-10): sitemap bija 10 no 40 lapām; 6 iekšējās saites uz 404; vaicājumam „seo pakalpojumi” 1 674 rādījumi un 0 klikšķu 90 dienās.
 - NEDRĪKST izdomāt: klientu atsauksmes, citātus, statistiku bez avota (piem., „46 % meklējumu” — izņemt, ja nav avota oriģinālā; „93 %” — izņemt), rezultātus, garantijas, termiņus, sertifikātus, „komandu”.
 - Vispārīgus, plaši zināmus faktus par Google (piem., kas ir indeksācija, ka Google Business Profile ir bezmaksas) drīkst skaidrot, bet bez skaitļiem, kurus nevar pārbaudīt.
@@ -49,7 +57,7 @@ Raksts paliek autora (Adrians Stankevičs) personīgā pieredzē balstīts, bet:
 - Beigās viena rindkopa ar aicinājumu (bez izsaukuma zīmēm).
 - Ja rakstā ir BUJ, lieto `<div class="faq"><details data-faq><summary>Jautājums?</summary><div><p>Atbilde.</p></div></details>…</div>` (builds no tā ģenerē FAQPage shēmu).
 - Garums: 700–1 200 vārdi. Saglabāt oriģinālā raksta galveno tēmu un stāstu.
-- Neatkārtot vienus un tos pašus stāstus (2026-11 audits: 404 reklāmas stāsts bija 10 no 13 rakstiem, „sitemap 10 no 40” — 6). Personīgos stāstus no FAKTI (404 reklāmas, LatSEO paša audits, lazergriezeji.lv, pirmais klients) pēc noklusējuma NELIETOT; lietot tikai, ja raksta tēma ir tieši par to (piem. URL maiņa, indeksācija). Labāk viens konkrēts fakts, kas attiecas tieši uz raksta tēmu.
+- Neatkārtot vienus un tos pašus stāstus (2026-11 audits: 404 reklāmas stāsts bija 10 no 13 rakstiem, „sitemap 10 no 40” — 6). Personīgos stāstus no FAKTI (404 reklāmas, LatSEO paša audits, lāzeriekārtu tirdzniecības lapa, pirmais klients) pēc noklusējuma NELIETOT; lietot tikai, ja raksta tēma ir tieši par to (piem. URL maiņa, indeksācija). Labāk viens konkrēts fakts, kas attiecas tieši uz raksta tēmu.
 - Pakešu cenu bloku (449 / 799 / 1 299 €) ielikt tikai rakstos, kuru tēma ir cena vai izmaksas; citos rakstos — viena saite uz `/pakalpojumi-un-cenas/` vai `/blogs/cik-maksa-majaslapa/`.
 - Struktūru izvēlēties pēc tēmas, nevis vienu šablonu: soļi, salīdzinājuma tabula, kontrolsaraksts, jautājumi un atbildes, kļūdu saraksts. H2 secība nedrīkst atkārtot iepriekšējā raksta secību.
 

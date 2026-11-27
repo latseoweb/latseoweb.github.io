@@ -1,5 +1,5 @@
 {
-  "_comment": "Rinda scripts/autoblog.py: katru dienu tiek paņemta pirmā tēma bez \"done\". Apmēram 3 no 4 tēmām ir par mājaslapu izveidi. Var brīvi pievienot, dzēst un pārkārtot. Kad rinda beidzas, skripts pats paprasa Claude jaunas tēmas.",
+  "_comment": "v1 tēmu rinda (arhīvs). Autoblogs v2 to vairs neizmanto: tēmas ņem no scripts/autoblog-queue.json un pats jaunas tēmas neizdomā.",
   "topics": [
     {
       "title": "Kā notiek mājaslapas izstrāde: posmi no pirmās sarunas līdz palaišanai",

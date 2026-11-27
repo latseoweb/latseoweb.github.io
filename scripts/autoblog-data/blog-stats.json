@@ -1,0 +1,2456 @@
+{
+ "izveidots": "2026-11-27T20:52:08+00:00",
+ "avots": "LatSEO CRM: automātiskā sākumlapas pārbaude uzņēmumiem no zl.lv katalogā izvēlētām nišām (galvenokārt Rīga un apkārtne) + Google PageSpeed (mobilais).",
+ "min_grupas_lielums": 10,
+ "lapu_parbaudes": {
+  "periods": [
+   "2026-11-11",
+   "2026-11-27"
+  ],
+  "n_parbauditas_lapas": 207,
+  "n_neatvērās": 10,
+  "n_bez_mājaslapas": 12,
+  "visas": {
+   "n_lapas": 207,
+   "atradumi": [
+    {
+     "rādītājs": "Lapa atveras bez HTTPS",
+     "n": 207,
+     "skaits": 12,
+     "procenti": 5.8,
+     "id": "nav_https"
+    },
+    {
+     "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+     "n": 207,
+     "skaits": 10,
+     "procenti": 4.8,
+     "id": "nav_viewport"
+    },
+    {
+     "rādītājs": "Sākumlapai nav virsraksta (title)",
+     "n": 207,
+     "skaits": 3,
+     "procenti": 1.4,
+     "id": "nav_title"
+    },
+    {
+     "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+     "n": 207,
+     "skaits": 38,
+     "procenti": 18.4,
+     "id": "title_iss"
+    },
+    {
+     "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+     "n": 207,
+     "skaits": 18,
+     "procenti": 8.7,
+     "id": "title_gars"
+    },
+    {
+     "rādītājs": "Nav meta apraksta (meta description)",
+     "n": 207,
+     "skaits": 46,
+     "procenti": 22.2,
+     "id": "nav_meta"
+    },
+    {
+     "rādītājs": "Sākumlapā nav H1 virsraksta",
+     "n": 207,
+     "skaits": 53,
+     "procenti": 25.6,
+     "id": "nav_h1"
+    },
+    {
+     "rādītājs": "Sākumlapā vairāk par vienu H1",
+     "n": 207,
+     "skaits": 37,
+     "procenti": 17.9,
+     "id": "vairaki_h1"
+    },
+    {
+     "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+     "n": 189,
+     "skaits": 64,
+     "procenti": 33.9,
+     "id": "alt_puse"
+    },
+    {
+     "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+     "n": 207,
+     "skaits": 6,
+     "procenti": 2.9,
+     "id": "lena_html"
+    },
+    {
+     "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+     "n": 207,
+     "skaits": 26,
+     "procenti": 12.6,
+     "id": "maz_teksta"
+    },
+    {
+     "rādītājs": "Nav sitemap.xml",
+     "n": 207,
+     "skaits": 35,
+     "procenti": 16.9,
+     "id": "nav_sitemap"
+    },
+    {
+     "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+     "n": 207,
+     "skaits": 90,
+     "procenti": 43.5,
+     "id": "nav_schema"
+    },
+    {
+     "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+     "n": 207,
+     "skaits": 62,
+     "procenti": 30.0,
+     "id": "nav_og"
+    },
+    {
+     "rādītājs": "Nav canonical saites",
+     "n": 207,
+     "skaits": 49,
+     "procenti": 23.7,
+     "id": "nav_canonical"
+    },
+    {
+     "rādītājs": "Nav norādīta lapas valoda (html lang)",
+     "n": 207,
+     "skaits": 26,
+     "procenti": 12.6,
+     "id": "nav_lang"
+    },
+    {
+     "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+     "n": 109,
+     "skaits": 20,
+     "procenti": 18.3,
+     "id": "veca_kajene"
+    },
+    {
+     "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+     "n": 207,
+     "skaits": 28,
+     "procenti": 13.5,
+     "id": "psi_zem_50"
+    },
+    {
+     "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+     "n": 207,
+     "skaits": 32,
+     "procenti": 15.5,
+     "id": "psi_90_plus"
+    },
+    {
+     "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+     "n": 207,
+     "skaits": 184,
+     "procenti": 88.9,
+     "id": "lcp_virs_2_5"
+    },
+    {
+     "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+     "n": 207,
+     "skaits": 155,
+     "procenti": 74.9,
+     "id": "lcp_virs_4"
+    },
+    {
+     "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+     "n": 207,
+     "skaits": 28,
+     "procenti": 13.5,
+     "id": "cls_virs_0_1"
+    }
+   ],
+   "mediānas": {
+    "psi_score": {
+     "rādītājs": "Google PageSpeed mobilais (0–100)",
+     "mediāna": 69,
+     "n": 207
+    },
+    "lcp_s": {
+     "rādītājs": "LCP telefonā, sekundes",
+     "mediāna": 7.0,
+     "n": 207
+    },
+    "html_atbilde_s": {
+     "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+     "mediāna": 0.4,
+     "n": 207
+    },
+    "html_kb": {
+     "rādītājs": "Sākumlapas HTML izmērs, KB",
+     "mediāna": 137,
+     "n": 207
+    },
+    "vardi": {
+     "rādītājs": "Vārdu skaits sākumlapā",
+     "mediāna": 427,
+     "n": 207
+    },
+    "problemas": {
+     "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+     "mediāna": 3,
+     "n": 207
+    }
+   },
+   "cms_pec_generator": {
+    "n_ar_generator": 102,
+    "n_bez_generator": 105,
+    "sadalījums": {
+     "WordPress": 42,
+     "Wix": 38,
+     "cits": 18,
+     "Joomla": 2,
+     "Webflow": 2
+    },
+    "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+   },
+   "pagespeed_pec_cms": {
+    "nav norādīts": {
+     "n": 105,
+     "psi_mediāna": 69,
+     "n_psi": 105,
+     "lcp_s_mediāna": 7.0,
+     "n_lcp": 105
+    },
+    "WordPress": {
+     "n": 42,
+     "psi_mediāna": 66.0,
+     "n_psi": 42,
+     "lcp_s_mediāna": 8.7,
+     "n_lcp": 42
+    },
+    "Wix": {
+     "n": 38,
+     "psi_mediāna": 74.0,
+     "n_psi": 38,
+     "lcp_s_mediāna": 6.3,
+     "n_lcp": 38
+    },
+    "cits": {
+     "n": 18,
+     "psi_mediāna": 63.0,
+     "n_psi": 18,
+     "lcp_s_mediāna": 9.0,
+     "n_lcp": 18
+    }
+   },
+   "kajenes_gads": {
+    "n_ar_gadu": 109,
+    "n_bez_gada": 98,
+    "sadalījums": {
+     "2026": 80,
+     "2025": 9,
+     "2023–2024": 10,
+     "2021–2022": 1,
+     "2020 vai vecāks": 9
+    },
+    "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+   }
+  },
+  "pa_nisam": {
+   "Zobārstniecība": {
+    "n_lapas": 34,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 34,
+      "skaits": 1,
+      "procenti": 2.9,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 34,
+      "skaits": 1,
+      "procenti": 2.9,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 34,
+      "skaits": 1,
+      "procenti": 2.9,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 34,
+      "skaits": 1,
+      "procenti": 2.9,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 34,
+      "skaits": 4,
+      "procenti": 11.8,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 34,
+      "skaits": 4,
+      "procenti": 11.8,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 34,
+      "skaits": 8,
+      "procenti": 23.5,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 34,
+      "skaits": 7,
+      "procenti": 20.6,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 31,
+      "skaits": 9,
+      "procenti": 29.0,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 34,
+      "skaits": 2,
+      "procenti": 5.9,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 34,
+      "skaits": 5,
+      "procenti": 14.7,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 34,
+      "skaits": 3,
+      "procenti": 8.8,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 34,
+      "skaits": 10,
+      "procenti": 29.4,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 34,
+      "skaits": 7,
+      "procenti": 20.6,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 34,
+      "skaits": 4,
+      "procenti": 11.8,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 34,
+      "skaits": 2,
+      "procenti": 5.9,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 17,
+      "skaits": 3,
+      "procenti": 17.6,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 34,
+      "skaits": 5,
+      "procenti": 14.7,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 34,
+      "skaits": 6,
+      "procenti": 17.6,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 34,
+      "skaits": 32,
+      "procenti": 94.1,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 34,
+      "skaits": 23,
+      "procenti": 67.6,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 34,
+      "skaits": 7,
+      "procenti": 20.6,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 67.5,
+      "n": 34
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 6.3,
+      "n": 34
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.3,
+      "n": 34
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 183.0,
+      "n": 34
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 386.5,
+      "n": 34
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 3.0,
+      "n": 34
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 17,
+     "n_bez_generator": 17,
+     "sadalījums": {
+      "Wix": 9,
+      "WordPress": 6,
+      "cits": 2
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {
+     "nav norādīts": {
+      "n": 17,
+      "psi_mediāna": 69,
+      "n_psi": 17,
+      "lcp_s_mediāna": 5.0,
+      "n_lcp": 17
+     }
+    },
+    "kajenes_gads": {
+     "n_ar_gadu": 17,
+     "n_bez_gada": 17,
+     "sadalījums": {
+      "2026": 13,
+      "2025": 1,
+      "2023–2024": 1,
+      "2021–2022": 0,
+      "2020 vai vecāks": 2
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Auto remonts": {
+    "n_lapas": 22,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 22,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 22,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 22,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 22,
+      "skaits": 3,
+      "procenti": 13.6,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 22,
+      "skaits": 1,
+      "procenti": 4.5,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 22,
+      "skaits": 4,
+      "procenti": 18.2,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 22,
+      "skaits": 6,
+      "procenti": 27.3,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 22,
+      "skaits": 4,
+      "procenti": 18.2,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 20,
+      "skaits": 5,
+      "procenti": 25.0,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 22,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 22,
+      "skaits": 5,
+      "procenti": 22.7,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 22,
+      "skaits": 3,
+      "procenti": 13.6,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 22,
+      "skaits": 6,
+      "procenti": 27.3,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 22,
+      "skaits": 4,
+      "procenti": 18.2,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 22,
+      "skaits": 4,
+      "procenti": 18.2,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 22,
+      "skaits": 3,
+      "procenti": 13.6,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 12,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 22,
+      "skaits": 2,
+      "procenti": 9.1,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 22,
+      "skaits": 3,
+      "procenti": 13.6,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 22,
+      "skaits": 19,
+      "procenti": 86.4,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 22,
+      "skaits": 16,
+      "procenti": 72.7,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 22,
+      "skaits": 2,
+      "procenti": 9.1,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 74.5,
+      "n": 22
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 6.1,
+      "n": 22
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.3,
+      "n": 22
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 362.5,
+      "n": 22
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 291.5,
+      "n": 22
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 2.0,
+      "n": 22
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 15,
+     "n_bez_generator": 7,
+     "sadalījums": {
+      "Wix": 11,
+      "WordPress": 3,
+      "cits": 1
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {
+     "Wix": {
+      "n": 11,
+      "psi_mediāna": 76,
+      "n_psi": 11,
+      "lcp_s_mediāna": 6.0,
+      "n_lcp": 11
+     }
+    },
+    "kajenes_gads": {
+     "n_ar_gadu": 12,
+     "n_bez_gada": 10,
+     "sadalījums": {
+      "2026": 11,
+      "2025": 1,
+      "2023–2024": 0,
+      "2021–2022": 0,
+      "2020 vai vecāks": 0
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Renovācija": {
+    "n_lapas": 20,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 20,
+      "skaits": 2,
+      "procenti": 10.0,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 20,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 20,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 20,
+      "skaits": 6,
+      "procenti": 30.0,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 20,
+      "skaits": 4,
+      "procenti": 20.0,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 20,
+      "skaits": 3,
+      "procenti": 15.0,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 20,
+      "skaits": 1,
+      "procenti": 5.0,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 20,
+      "skaits": 5,
+      "procenti": 25.0,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 19,
+      "skaits": 10,
+      "procenti": 52.6,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 20,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 20,
+      "skaits": 2,
+      "procenti": 10.0,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 20,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 20,
+      "skaits": 8,
+      "procenti": 40.0,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 20,
+      "skaits": 3,
+      "procenti": 15.0,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 20,
+      "skaits": 3,
+      "procenti": 15.0,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 20,
+      "skaits": 5,
+      "procenti": 25.0,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 8,
+      "skaits": 1,
+      "procenti": 12.5,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 20,
+      "skaits": 3,
+      "procenti": 15.0,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 20,
+      "skaits": 1,
+      "procenti": 5.0,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 20,
+      "skaits": 19,
+      "procenti": 95.0,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 20,
+      "skaits": 18,
+      "procenti": 90.0,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 20,
+      "skaits": 3,
+      "procenti": 15.0,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 71.5,
+      "n": 20
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 7.1,
+      "n": 20
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.3,
+      "n": 20
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 222.0,
+      "n": 20
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 371.0,
+      "n": 20
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 2.5,
+      "n": 20
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 8,
+     "n_bez_generator": 12,
+     "sadalījums": {
+      "Wix": 5,
+      "WordPress": 3
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {
+     "nav norādīts": {
+      "n": 12,
+      "psi_mediāna": 70.0,
+      "n_psi": 12,
+      "lcp_s_mediāna": 8.1,
+      "n_lcp": 12
+     }
+    },
+    "kajenes_gads": {
+     "n_ar_gadu": 8,
+     "n_bez_gada": 12,
+     "sadalījums": {
+      "2026": 7,
+      "2025": 0,
+      "2023–2024": 0,
+      "2021–2022": 0,
+      "2020 vai vecāks": 1
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Logi": {
+    "n_lapas": 19,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 19,
+      "skaits": 4,
+      "procenti": 21.1,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 19,
+      "skaits": 6,
+      "procenti": 31.6,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 19,
+      "skaits": 8,
+      "procenti": 42.1,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 19,
+      "skaits": 4,
+      "procenti": 21.1,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 19,
+      "skaits": 11,
+      "procenti": 57.9,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 19,
+      "skaits": 5,
+      "procenti": 26.3,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 19,
+      "skaits": 6,
+      "procenti": 31.6,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 8,
+      "skaits": 1,
+      "procenti": 12.5,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 19,
+      "skaits": 4,
+      "procenti": 21.1,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 19,
+      "skaits": 18,
+      "procenti": 94.7,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 19,
+      "skaits": 15,
+      "procenti": 78.9,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 65,
+      "n": 19
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 10.3,
+      "n": 19
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.5,
+      "n": 19
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 85,
+      "n": 19
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 533,
+      "n": 19
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 4,
+      "n": 19
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 7,
+     "n_bez_generator": 12,
+     "sadalījums": {
+      "WordPress": 3,
+      "Webflow": 2,
+      "cits": 2
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {
+     "nav norādīts": {
+      "n": 12,
+      "psi_mediāna": 70.0,
+      "n_psi": 12,
+      "lcp_s_mediāna": 8.4,
+      "n_lcp": 12
+     }
+    },
+    "kajenes_gads": {
+     "n_ar_gadu": 8,
+     "n_bez_gada": 11,
+     "sadalījums": {
+      "2026": 7,
+      "2025": 0,
+      "2023–2024": 1,
+      "2021–2022": 0,
+      "2020 vai vecāks": 0
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Interjera dizains": {
+    "n_lapas": 19,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 19,
+      "skaits": 5,
+      "procenti": 26.3,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 17,
+      "skaits": 5,
+      "procenti": 29.4,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 19,
+      "skaits": 4,
+      "procenti": 21.1,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 19,
+      "skaits": 6,
+      "procenti": 31.6,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 19,
+      "skaits": 4,
+      "procenti": 21.1,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 19,
+      "skaits": 5,
+      "procenti": 26.3,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 11,
+      "skaits": 2,
+      "procenti": 18.2,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 19,
+      "skaits": 18,
+      "procenti": 94.7,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 19,
+      "skaits": 16,
+      "procenti": 84.2,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 69,
+      "n": 19
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 7.3,
+      "n": 19
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.4,
+      "n": 19
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 128,
+      "n": 19
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 393,
+      "n": 19
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 3,
+      "n": 19
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 12,
+     "n_bez_generator": 7,
+     "sadalījums": {
+      "WordPress": 5,
+      "Wix": 4,
+      "cits": 3
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {},
+    "kajenes_gads": {
+     "n_ar_gadu": 11,
+     "n_bez_gada": 8,
+     "sadalījums": {
+      "2026": 8,
+      "2025": 1,
+      "2023–2024": 1,
+      "2021–2022": 0,
+      "2020 vai vecāks": 1
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Siltumsūkņi": {
+    "n_lapas": 19,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 19,
+      "skaits": 8,
+      "procenti": 42.1,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 17,
+      "skaits": 5,
+      "procenti": 29.4,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 19,
+      "skaits": 1,
+      "procenti": 5.3,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 19,
+      "skaits": 5,
+      "procenti": 26.3,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 19,
+      "skaits": 6,
+      "procenti": 31.6,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 13,
+      "skaits": 3,
+      "procenti": 23.1,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 19,
+      "skaits": 4,
+      "procenti": 21.1,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 19,
+      "skaits": 18,
+      "procenti": 94.7,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 19,
+      "skaits": 13,
+      "procenti": 68.4,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 71,
+      "n": 19
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 5.4,
+      "n": 19
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.7,
+      "n": 19
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 230,
+      "n": 19
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 884,
+      "n": 19
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 3,
+      "n": 19
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 9,
+     "n_bez_generator": 10,
+     "sadalījums": {
+      "WordPress": 4,
+      "cits": 3,
+      "Wix": 2
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {
+     "nav norādīts": {
+      "n": 10,
+      "psi_mediāna": 72.0,
+      "n_psi": 10,
+      "lcp_s_mediāna": 4.2,
+      "n_lcp": 10
+     }
+    },
+    "kajenes_gads": {
+     "n_ar_gadu": 13,
+     "n_bez_gada": 6,
+     "sadalījums": {
+      "2026": 9,
+      "2025": 1,
+      "2023–2024": 2,
+      "2021–2022": 1,
+      "2020 vai vecāks": 0
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Auto detailing": {
+    "n_lapas": 19,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 19,
+      "skaits": 7,
+      "procenti": 36.8,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 19,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 19,
+      "skaits": 7,
+      "procenti": 36.8,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 19,
+      "skaits": 10,
+      "procenti": 52.6,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 17,
+      "skaits": 4,
+      "procenti": 23.5,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 19,
+      "skaits": 8,
+      "procenti": 42.1,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 19,
+      "skaits": 14,
+      "procenti": 73.7,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 19,
+      "skaits": 11,
+      "procenti": 57.9,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 19,
+      "skaits": 8,
+      "procenti": 42.1,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 10,
+      "skaits": 2,
+      "procenti": 20.0,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 19,
+      "skaits": 3,
+      "procenti": 15.8,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 19,
+      "skaits": 18,
+      "procenti": 94.7,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 19,
+      "skaits": 15,
+      "procenti": 78.9,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 19,
+      "skaits": 2,
+      "procenti": 10.5,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 68,
+      "n": 19
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 8.0,
+      "n": 19
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.6,
+      "n": 19
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 80,
+      "n": 19
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 443,
+      "n": 19
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 5,
+      "n": 19
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 8,
+     "n_bez_generator": 11,
+     "sadalījums": {
+      "WordPress": 4,
+      "cits": 2,
+      "Joomla": 2
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {
+     "nav norādīts": {
+      "n": 11,
+      "psi_mediāna": 69,
+      "n_psi": 11,
+      "lcp_s_mediāna": 8.0,
+      "n_lcp": 11
+     }
+    },
+    "kajenes_gads": {
+     "n_ar_gadu": 10,
+     "n_bez_gada": 9,
+     "sadalījums": {
+      "2026": 7,
+      "2025": 1,
+      "2023–2024": 1,
+      "2021–2022": 0,
+      "2020 vai vecāks": 1
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Arhitekti": {
+    "n_lapas": 16,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 16,
+      "skaits": 1,
+      "procenti": 6.2,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 16,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 16,
+      "skaits": 1,
+      "procenti": 6.2,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 16,
+      "skaits": 4,
+      "procenti": 25.0,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 16,
+      "skaits": 3,
+      "procenti": 18.8,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 16,
+      "skaits": 8,
+      "procenti": 50.0,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 16,
+      "skaits": 3,
+      "procenti": 18.8,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 16,
+      "skaits": 4,
+      "procenti": 25.0,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 12,
+      "skaits": 5,
+      "procenti": 41.7,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 16,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 16,
+      "skaits": 5,
+      "procenti": 31.2,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 16,
+      "skaits": 3,
+      "procenti": 18.8,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 16,
+      "skaits": 10,
+      "procenti": 62.5,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 16,
+      "skaits": 8,
+      "procenti": 50.0,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 16,
+      "skaits": 3,
+      "procenti": 18.8,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 16,
+      "skaits": 1,
+      "procenti": 6.2,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 9,
+      "skaits": 5,
+      "procenti": 55.6,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 16,
+      "skaits": 3,
+      "procenti": 18.8,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 16,
+      "skaits": 4,
+      "procenti": 25.0,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 16,
+      "skaits": 11,
+      "procenti": 68.8,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 16,
+      "skaits": 10,
+      "procenti": 62.5,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 16,
+      "skaits": 2,
+      "procenti": 12.5,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 70.0,
+      "n": 16
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 7.2,
+      "n": 16
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.4,
+      "n": 16
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 87.5,
+      "n": 16
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 322.0,
+      "n": 16
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 4.5,
+      "n": 16
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 10,
+     "n_bez_generator": 6,
+     "sadalījums": {
+      "WordPress": 7,
+      "cits": 2,
+      "Wix": 1
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {},
+    "kajenes_gads": {
+     "n_ar_gadu": 9,
+     "n_bez_gada": 7,
+     "sadalījums": {
+      "2026": 4,
+      "2025": 0,
+      "2023–2024": 3,
+      "2021–2022": 0,
+      "2020 vai vecāks": 2
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Jumti": {
+    "n_lapas": 15,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 15,
+      "skaits": 2,
+      "procenti": 13.3,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 15,
+      "skaits": 1,
+      "procenti": 6.7,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 15,
+      "skaits": 3,
+      "procenti": 20.0,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 15,
+      "skaits": 4,
+      "procenti": 26.7,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 15,
+      "skaits": 1,
+      "procenti": 6.7,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 14,
+      "skaits": 5,
+      "procenti": 35.7,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 15,
+      "skaits": 1,
+      "procenti": 6.7,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 15,
+      "skaits": 4,
+      "procenti": 26.7,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 15,
+      "skaits": 6,
+      "procenti": 40.0,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 15,
+      "skaits": 4,
+      "procenti": 26.7,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 15,
+      "skaits": 4,
+      "procenti": 26.7,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 12,
+      "skaits": 3,
+      "procenti": 25.0,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 15,
+      "skaits": 3,
+      "procenti": 20.0,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 15,
+      "skaits": 12,
+      "procenti": 80.0,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 15,
+      "skaits": 11,
+      "procenti": 73.3,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 15,
+      "skaits": 2,
+      "procenti": 13.3,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 64,
+      "n": 15
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 9.9,
+      "n": 15
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.4,
+      "n": 15
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 103,
+      "n": 15
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 512,
+      "n": 15
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 3,
+      "n": 15
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 7,
+     "n_bez_generator": 8,
+     "sadalījums": {
+      "WordPress": 5,
+      "cits": 1,
+      "Wix": 1
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {},
+    "kajenes_gads": {
+     "n_ar_gadu": 12,
+     "n_bez_gada": 3,
+     "sadalījums": {
+      "2026": 8,
+      "2025": 1,
+      "2023–2024": 1,
+      "2021–2022": 0,
+      "2020 vai vecāks": 2
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   },
+   "Nekustamie īpašumi": {
+    "n_lapas": 15,
+    "atradumi": [
+     {
+      "rādītājs": "Lapa atveras bez HTTPS",
+      "n": 15,
+      "skaits": 2,
+      "procenti": 13.3,
+      "id": "nav_https"
+     },
+     {
+      "rādītājs": "Nav mobilās versijas iestatījuma (viewport)",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_viewport"
+     },
+     {
+      "rādītājs": "Sākumlapai nav virsraksta (title)",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "nav_title"
+     },
+     {
+      "rādītājs": "Virsraksts (title) īsāks par 20 zīmēm",
+      "n": 15,
+      "skaits": 6,
+      "procenti": 40.0,
+      "id": "title_iss"
+     },
+     {
+      "rādītājs": "Virsraksts (title) garāks par 70 zīmēm (Google nogriež)",
+      "n": 15,
+      "skaits": 1,
+      "procenti": 6.7,
+      "id": "title_gars"
+     },
+     {
+      "rādītājs": "Nav meta apraksta (meta description)",
+      "n": 15,
+      "skaits": 5,
+      "procenti": 33.3,
+      "id": "nav_meta"
+     },
+     {
+      "rādītājs": "Sākumlapā nav H1 virsraksta",
+      "n": 15,
+      "skaits": 4,
+      "procenti": 26.7,
+      "id": "nav_h1"
+     },
+     {
+      "rādītājs": "Sākumlapā vairāk par vienu H1",
+      "n": 15,
+      "skaits": 1,
+      "procenti": 6.7,
+      "id": "vairaki_h1"
+     },
+     {
+      "rādītājs": "Vismaz pusei attēlu nav ALT apraksta (lapām ar ≥4 attēliem)",
+      "n": 14,
+      "skaits": 5,
+      "procenti": 35.7,
+      "id": "alt_puse"
+     },
+     {
+      "rādītājs": "Sākumlapas HTML atbilde ilgāka par 3 s",
+      "n": 15,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "lena_html"
+     },
+     {
+      "rādītājs": "Sākumlapā mazāk par 150 vārdiem teksta",
+      "n": 15,
+      "skaits": 1,
+      "procenti": 6.7,
+      "id": "maz_teksta"
+     },
+     {
+      "rādītājs": "Nav sitemap.xml",
+      "n": 15,
+      "skaits": 3,
+      "procenti": 20.0,
+      "id": "nav_sitemap"
+     },
+     {
+      "rādītājs": "Nav strukturēto datu (Schema.org JSON-LD)",
+      "n": 15,
+      "skaits": 8,
+      "procenti": 53.3,
+      "id": "nav_schema"
+     },
+     {
+      "rādītājs": "Nav Open Graph (kā lapa izskatās, daloties sociālajos tīklos)",
+      "n": 15,
+      "skaits": 5,
+      "procenti": 33.3,
+      "id": "nav_og"
+     },
+     {
+      "rādītājs": "Nav canonical saites",
+      "n": 15,
+      "skaits": 4,
+      "procenti": 26.7,
+      "id": "nav_canonical"
+     },
+     {
+      "rādītājs": "Nav norādīta lapas valoda (html lang)",
+      "n": 15,
+      "skaits": 1,
+      "procenti": 6.7,
+      "id": "nav_lang"
+     },
+     {
+      "rādītājs": "Kājenē 2+ gadus vecs gads (©)",
+      "n": 6,
+      "skaits": 0,
+      "procenti": 0.0,
+      "id": "veca_kajene"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) zem 50/100",
+      "n": 15,
+      "skaits": 3,
+      "procenti": 20.0,
+      "id": "psi_zem_50"
+     },
+     {
+      "rādītājs": "Google PageSpeed (mobilais) 90/100 vai vairāk",
+      "n": 15,
+      "skaits": 3,
+      "procenti": 20.0,
+      "id": "psi_90_plus"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 2,5 s (LCP, Google robeža “labs”)",
+      "n": 15,
+      "skaits": 12,
+      "procenti": 80.0,
+      "id": "lcp_virs_2_5"
+     },
+     {
+      "rādītājs": "Galvenais saturs telefonā parādās vēlāk par 4 s (LCP, Google robeža “slikts”)",
+      "n": 15,
+      "skaits": 11,
+      "procenti": 73.3,
+      "id": "lcp_virs_4"
+     },
+     {
+      "rādītājs": "Lapa ielādējoties “lēkā” (CLS > 0,1)",
+      "n": 15,
+      "skaits": 3,
+      "procenti": 20.0,
+      "id": "cls_virs_0_1"
+     }
+    ],
+    "mediānas": {
+     "psi_score": {
+      "rādītājs": "Google PageSpeed mobilais (0–100)",
+      "mediāna": 71,
+      "n": 15
+     },
+     "lcp_s": {
+      "rādītājs": "LCP telefonā, sekundes",
+      "mediāna": 8.5,
+      "n": 15
+     },
+     "html_atbilde_s": {
+      "rādītājs": "Sākumlapas HTML atbildes laiks, sekundes",
+      "mediāna": 0.3,
+      "n": 15
+     },
+     "html_kb": {
+      "rādītājs": "Sākumlapas HTML izmērs, KB",
+      "mediāna": 128,
+      "n": 15
+     },
+     "vardi": {
+      "rādītājs": "Vārdu skaits sākumlapā",
+      "mediāna": 421,
+      "n": 15
+     },
+     "problemas": {
+      "rādītājs": "Atrasto problēmu skaits vienai lapai (no mūsu pārbaudes saraksta)",
+      "mediāna": 3,
+      "n": 15
+     }
+    },
+    "cms_pec_generator": {
+     "n_ar_generator": 8,
+     "n_bez_generator": 7,
+     "sadalījums": {
+      "Wix": 5,
+      "WordPress": 2,
+      "cits": 1
+     },
+     "piezīme": "Tikai lapas, kas pašas norāda generator meta tagu; pārējām CMS nav zināms."
+    },
+    "pagespeed_pec_cms": {},
+    "kajenes_gads": {
+     "n_ar_gadu": 6,
+     "n_bez_gada": 9,
+     "sadalījums": {
+      "2026": 3,
+      "2025": 3,
+      "2023–2024": 0,
+      "2021–2022": 0,
+      "2020 vai vecāks": 0
+     },
+     "piezīme": "Lielākais © gads lapas tekstā. Gads, kas tiek atjaunots automātiski, izskatās kā šī gada — tas nepierāda, ka lapa kopta."
+    }
+   }
+  },
+  "n_neparadītas_mazās_grupās": 9
+ },
+ "nav_datu": [
+  "Google Business Profile (Google kartes profils): CRM to nepārbauda — nav datu.",
+  "Cik uzņēmumu nišā vispār nav mājaslapas: CRM glabā tikai atlasītos leadus, ne visu katalogu, tāpēc īpatsvaru nevar aprēķināt.",
+  "Tikai sākumlapa: apakšlapas nav pārbaudītas.",
+  "CMS zināms tikai lapām ar generator meta tagu."
+ ],
+ "_piezime": "Repo kopija no CRM agregātiem (2026-11-27), bez aukstie_epasti un google_pozicija. Rezerves avots, ja serverī nav /var/lib/latseo/blog-stats.json."
+}

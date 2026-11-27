@@ -1,0 +1,118 @@
+{
+  "_comment": "Autoblogs v2 (scripts/autoblog.py). Katrā palaišanā (P un C) tiek paņemts pirmais ieraksts, kas nav publicēts un negaida pārskatīšanu. Rakstā drīkst būt tikai skaitļi no data_keys (blog-stats.json ceļi), facts, cenu lapas un izlases/perioda. {ceļš} virsrakstā aizvieto ar vērtību no datiem būvēšanas brīdī. review: true → raksts aiziet uz zaru autoblog-review/<slug>, nevis main; publicē, kad cilvēks pārliek review uz false vai apvieno zaru. Kad rinda beidzas, nekas netiek publicēts (žurnālā 'rinda tukša'). Lauki done/status/path aizpilda skripts.",
+  "queue": [
+    {
+      "slug": "ko-atradu-rigas-uznemumu-majaslapas",
+      "title": "Ko atradu {lapu_parbaudes.n_parbauditas_lapas} Rīgas uzņēmumu mājaslapās",
+      "keyword": "mājaslapas audits",
+      "category": "Tehniskais SEO",
+      "cta": "audit",
+      "angle": "Raksts parāda, kādas tehniskās un SEO kļūdas biežāk atradu automātiskajā sākumlapu pārbaudē Rīgas un apkārtnes uzņēmumiem: H1, meta apraksts, strukturētie dati, sitemap, ALT, canonical, mobilais skats un Google PageSpeed. Katram atradumam skaitlis ar n no DATI un īss skaidrojums, ko tas nozīmē uzņēmumam un kā to pārbaudīt pašam. Nišu salīdzinājums tikai trim nišām ar vismaz 20 lapām, uzmanīgi, jo izlase ir maza. Godīgi pateikt, ka pārbaudīta tikai sākumlapa un ka izlase nav visa Latvija.",
+      "data_keys": [
+        "lapu_parbaudes.n_neatvērās",
+        "lapu_parbaudes.n_bez_mājaslapas",
+        "lapu_parbaudes.visas.atradumi",
+        "lapu_parbaudes.visas.mediānas",
+        "lapu_parbaudes.pa_nisam.Zobārstniecība.n_lapas",
+        "lapu_parbaudes.pa_nisam.Zobārstniecība.atradumi[id=nav_h1,nav_meta,nav_schema,nav_sitemap,alt_puse,nav_og]",
+        "lapu_parbaudes.pa_nisam.Auto remonts.n_lapas",
+        "lapu_parbaudes.pa_nisam.Auto remonts.atradumi[id=nav_h1,nav_meta,nav_schema,nav_sitemap,alt_puse,nav_og]",
+        "lapu_parbaudes.pa_nisam.Renovācija.n_lapas",
+        "lapu_parbaudes.pa_nisam.Renovācija.atradumi[id=nav_h1,nav_meta,nav_schema,nav_sitemap,alt_puse,nav_og]"
+      ],
+      "facts": [
+        {"text": "Pārbaudīta tikai katra uzņēmuma sākumlapa; apakšlapas netika pārbaudītas.", "source": "LatSEO CRM agregātu apraksts (autoblogs-dati/README.md)"},
+        {"text": "Bezmaksas video audits: personalizēts ekrāna ieraksts 24 h laikā, 0 €.", "source": "latseo.com/pakalpojumi-un-cenas/"}
+      ],
+      "links": ["/bezmaksas-audits/", "/tehniskais-seo/", "/blogs/aiz-kadra-5-lietas-ko-parbaudu-katra-seo-audita-video-un-k/"],
+      "review": true
+    },
+    {
+      "slug": "pagespeed-rigas-uznemumu-majaslapas",
+      "title": "Cik ātras ir Rīgas uzņēmumu mājaslapas: PageSpeed dati",
+      "keyword": "pagespeed",
+      "category": "Tehniskais SEO",
+      "cta": "audit",
+      "angle": "Raksts parāda Google PageSpeed testa (laboratorijas mērījums telefonam) rezultātus pārbaudītajām lapām: rezultāta mediānu, LCP mediānu, cik lapām LCP pārsniedz 2,5 s un 4 s, cik lapu ir zem 50 un 90 vai vairāk, CLS. Paskaidrot, ka tie nav reālu apmeklētāju dati (CrUX) un ka katra lapa mērīta vienu reizi. Īss salīdzinājums pa CMS un trim lielākajām nišām, bez secinājumiem par visu nozari. Beigās, ko uzņēmums var pārbaudīt pats.",
+      "data_keys": [
+        "lapu_parbaudes.visas.mediānas",
+        "lapu_parbaudes.visas.atradumi[id=psi_zem_50,psi_90_plus,lcp_virs_2_5,lcp_virs_4,cls_virs_0_1,lena_html]",
+        "lapu_parbaudes.visas.pagespeed_pec_cms",
+        "lapu_parbaudes.pa_nisam.Zobārstniecība.mediānas",
+        "lapu_parbaudes.pa_nisam.Auto remonts.mediānas",
+        "lapu_parbaudes.pa_nisam.Renovācija.mediānas"
+      ],
+      "facts": [
+        {"text": "Vaicājumu „pagespeed” Latvijā Google meklē vidēji 390 reizes mēnesī (12 mēneši līdz 2026-10).", "source": "DataForSEO / Google Ads meklējumu apjoms, pieprasīts 2026-11-27 (autoblogs-temas.md #2)"}
+      ],
+      "links": ["/tehniskais-seo/", "/bezmaksas-audits/", "/blogs/majaslapa-neparadas-google/"],
+      "review": false
+    },
+    {
+      "slug": "ka-izveleties-seo-specialistu",
+      "title": "Kā izvēlēties SEO speciālistu: 7 jautājumi, ko uzdot",
+      "keyword": "seo speciālists",
+      "category": "SEO pamati",
+      "cta": "audit",
+      "angle": "Raksts palīdz uzņēmējam, kurš meklē SEO speciālistu vai aģentūru, saprast, ko jautāt pirms līguma: kas iekļauts ikmēneša darbā, kā izskatās atskaite, kas notiek pirmajos mēnešos, kā tiek mērīti rezultāti un kāpēc garantētas pozīcijas ir sarkanais karogs. Kā konkrētu piemēru izmantot manas publicētās cenas un to, kas tajās iekļauts. GSC pieprasījuma skaitļus drīkst minēt tikai kā latseo.com Search Console datus. Konkurentu cenas nesalīdzināt (nav avota).",
+      "data_keys": [],
+      "facts": [
+        {"text": "latseo.com Google Search Console, 90 dienas līdz 2026-11-26: „seo speciālists” 830 rādījumi (vidējā pozīcija 18), „seo aģentūra” 580 (pozīcija 40), „seo firma” 211 (pozīcija 8), „seo eksperts” 201, „seo uzņēmums” 105, „seo konsultācijas” 46 + 54.", "source": "SEO rīka GSC dati, project_id=1 (autoblogs-temas.md #5)"},
+        {"text": "LatSEO ikmēneša SEO no 300 €/mēn. (bez PVN): tehniskais SEO, satura optimizācija, saišu veidošana, monitorings un ikmēneša atskaite.", "source": "latseo.com/pakalpojumi-un-cenas/"},
+        {"text": "LatSEO SEO audits no 150 € (bez PVN): pilna mājaslapas tehniskā, satura un saišu profila analīze ar rekomendāciju sarakstu. Video audits 24 h laikā — 0 €.", "source": "latseo.com/pakalpojumi-un-cenas/"}
+      ],
+      "links": ["/seo-pakalpojumi-riga/", "/pakalpojumi-un-cenas/", "/blogs/kas-ietekme-seo-pakalpojumu-cenu-latvija-5-faktori-ko-lie/"],
+      "review": false
+    },
+    {
+      "slug": "google-search-console-iesacejiem",
+      "title": "Google Search Console iesācējam: ko skatīties pirmo",
+      "keyword": "google search console",
+      "category": "SEO pamati",
+      "cta": "audit",
+      "angle": "Raksts paskaidro, ko uzņēmējam skatīties Search Console (rādījumi, klikšķi, vidējā pozīcija, vaicājumi, indeksācija), izmantojot latseo.com paša datus kā godīgu piemēru: daudz rādījumu, bet maz klikšķu, un ko tas nozīmē. Tikai latseo.com dati, nekādu klientu datu. Skaitļi tikai no facts.",
+      "data_keys": [],
+      "facts": [
+        {"text": "latseo.com blogs, pēdējās 28 dienas līdz 2026-11-27: 2 174 rādījumi Google meklēšanā, 3 klikšķi.", "source": "latseo.com Google Search Console (autoblogs-temas.md #6)"},
+        {"text": "Vaicājums „lokālais seo”: 1 482 rādījumi 90 dienās, vidējā pozīcija 9,1, 0 klikšķu.", "source": "latseo.com Google Search Console, 90 dienas līdz 2026-11-26 (autoblogs-temas.md #6, #15)"},
+        {"text": "Audita vaicājumi 90 dienās: „seo audits” 957 rādījumi, „bezmaksas seo audits” 738 + 182, „mājaslapas audits” 317; vidējā pozīcija 12–20, 0 klikšķu.", "source": "latseo.com Google Search Console, 90 dienas līdz 2026-11-26 (autoblogs-temas.md #1)"},
+        {"text": "Vaicājumu „google search console” Latvijā meklē vidēji 4 400 reizes mēnesī; 12 mēnešos pieprasījums audzis no 3 600 līdz 6 600 (okt. 2026).", "source": "DataForSEO / Google Ads, pieprasīts 2026-11-27 (autoblogs-temas.md #6)"}
+      ],
+      "links": ["/blogs/ka-notiek-google-meklesana-patiesiba-indeksacija-rangi-un/", "/blogs/majaslapa-neparadas-google/", "/tehniskais-seo/"],
+      "review": false
+    },
+    {
+      "slug": "wix-vai-wordpress-rigas-uznemumi",
+      "title": "Wix vai WordPress: ko izmanto Rīgas uzņēmumu lapas",
+      "keyword": "wix vai wordpress",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web",
+      "angle": "Raksts parāda, kurš CMS norādīts pārbaudīto Rīgas un apkārtnes uzņēmumu sākumlapās un kāds ir to Google PageSpeed testa rezultāts pa CMS. Skaidri pateikt, ka CMS zināms tikai apmēram pusei lapu (tikai tām, kas to norāda generator tagā). Pēc tam praktisks salīdzinājums uzņēmuma lapai: ko katra izvēle nozīmē uzturēšanai, ātrumam un SEO, bez apgalvojumiem, kas nav DATI. Par e-veikalu platformām nerakstīt.",
+      "data_keys": [
+        "lapu_parbaudes.visas.cms_pec_generator",
+        "lapu_parbaudes.visas.pagespeed_pec_cms"
+      ],
+      "facts": [
+        {"text": "Latvijā Google meklē „wix” vidēji 1 900 reizes mēnesī un „wordpress” 1 600 reizes mēnesī (12 mēneši līdz 2026-10). Daļa ir zīmolu un esošo lietotāju meklējumi, ne izvēle.", "source": "DataForSEO / Google Ads meklējumu apjoms, pieprasīts 2026-11-27 (autoblogs-temas.md #3)"}
+      ],
+      "avoid": ["shopify"],
+      "links": ["/tehniskais-seo/", "/blogs/majaslapu-izstradatajs-ka-izveleties/", "/pakalpojumi-un-cenas/"],
+      "review": false
+    },
+    {
+      "slug": "vecs-gads-majaslapas-kajene",
+      "title": "Vecs gads kājenē: ko tas saka par uzņēmuma mājaslapu",
+      "keyword": "mājaslapas atjaunošana",
+      "category": "Mājaslapu izstrāde",
+      "cta": "web",
+      "angle": "Raksts parāda, kāds © gads redzams pārbaudīto lapu kājenē, un paskaidro, ko tas var un ko nevar pateikt par lapas kopšanu (automātiski atjaunots gads neko nepierāda). Praktisks saraksts, ko pārbaudīt savā lapā pēc gada maiņas, un kad pietiek ar labojumu, bet kad jādomā par jaunu lapu.",
+      "data_keys": [
+        "lapu_parbaudes.visas.kajenes_gads",
+        "lapu_parbaudes.visas.atradumi[id=veca_kajene]"
+      ],
+      "facts": [],
+      "links": ["/blogs/uznemuma-majaslapa-obligatas-lapas/", "/pakalpojumi-un-cenas/", "/bezmaksas-audits/"],
+      "review": false
+    }
+  ]
+}
