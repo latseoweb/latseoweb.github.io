@@ -36,4 +36,25 @@
 @keyframes ixcp-ring{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
 @media (prefers-reduced-motion:reduce){.ix-clk__led,.ix-clk__fill,.ix-copy.is-done,.ix-copy.is-done::after{animation:none}.ix-copy.is-done svg{animation:none;stroke-dashoffset:0}.ix-copy,.ix-copy::before{transition:none}.ix-clk__fill{transform:none}}
 .ix-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:420px){.ix-crow>a{flex-direction:column;gap:.1rem}.ix-crow>a strong{text-align:left}}
+
+/* ---------- kontaktu saraksts: vienāda kolonna vērtībām, etiķetes mono ---------- */
+.about-block__photo{box-shadow:10px 10px 0 -1px var(--paper),10px 10px 0 0 var(--ix-night)}
+.contact-list{border-top:2px solid var(--ix-night)}
+.contact-list span{font-family:var(--ff-mono);font-size:var(--fs-xs);letter-spacing:.01em}
+.contact-list>*,.ix-crow{align-items:center;min-height:4.25rem}
+.contact-list>a,.ix-crow>a{transition:background-color .2s}
+.contact-list>a:hover,.ix-crow>a:hover{background:var(--paper-2)}
+.ix-crow>a{padding:0;min-height:0;border:0}
+/* etiķete virs vērtības, vērtības vienā kreisajā kolonnā, kopēšana labajā malā */
+.contact-list>a,.contact-list>div:not(.ix-crow),.ix-crow>a{flex-direction:column;align-items:flex-start;justify-content:center;gap:.15rem}
+.contact-list strong{text-align:left;font-size:var(--fs-md)}
+
+/* ---------- rekvizīti: virsgrāmata ar kopēšanu ---------- */
+.kt-req{margin:0;border-top:1px solid var(--line)}
+.kt-req>div{display:grid;grid-template-columns:1fr auto;column-gap:.75rem;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.kt-req dt{grid-column:1;font-family:var(--ff-mono);font-size:var(--fs-xs);color:var(--muted)}
+.kt-req dd{grid-column:1;margin:0;font-size:var(--fs-sm);color:var(--ink);font-variant-numeric:tabular-nums}
+.kt-req .kt-req__name{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-base)}
+.kt-req .ix-copy{grid-column:2;grid-row:1/span 2;min-height:40px}
+.kt-req>div:not(.has-copy) dd{padding-right:0}
+.kt-req dt.ix-sr+dd{grid-row:auto}

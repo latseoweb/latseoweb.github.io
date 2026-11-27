@@ -26,14 +26,15 @@
 <section class="section section--white">
   <div class="container split">
     <div class="split__sticky">
-      <div class="facts facts--2" data-facts data-hint="Tap a figure to see where it appears in the text.">
-        <div data-go="pm-sakums" data-l="See in the text: How I started"><strong>2 years</strong><span>of experience in SEO and website development</span></div>
-        <div data-go="pm-links" data-l="See in the text: Projects"><strong>7</strong><span>websites built from scratch</span></div>
-        <div data-go="pm-links" data-l="See in the text: Projects"><strong>3</strong><span>SEO clients</span></div>
-        <div data-go="pm-offer" data-l="See in the text: What I offer"><strong>24 h</strong><span>video audit turnaround</span></div>
+      <div class="facts facts--2 pm-facts" data-facts data-hint="Tap a figure to see where it appears in the text.">
+        <div data-go="pm-sakums" data-l="See in the text: How I started"><strong>2 years</strong><span>of experience in SEO and website development</span><small class="pm-ctx">Counted from my first client: the company I used to work for.</small></div>
+        <div data-go="pm-links" data-l="See in the text: Projects"><strong>7</strong><span>websites built from scratch</span><small class="pm-ctx">Plus 1 landing page. All listed with Google click data under Projects.</small></div>
+        <div data-go="pm-links" data-l="See in the text: Projects"><strong>3</strong><span>SEO clients</span><small class="pm-ctx">Car detailing (since March), real estate (since April), car rental (since October). As of November 2026.</small>
+          <span class="pm-tl" aria-hidden="true"><span class="pm-tl__c" style="--m:0"></span><span class="pm-tl__c" style="--m:1.9"></span><span class="pm-tl__c" style="--m:7"></span><b>Mar</b><b>Nov 2026</b></span></div>
+        <div data-go="pm-offer" data-l="See in the text: What I offer"><strong>24 h</strong><span>video audit turnaround</span><small class="pm-ctx">From your request to the video in your inbox. Free, no strings attached.</small></div>
       </div>
     </div>
-    <div class="prose">
+    <div class="prose pm-prose">
       <h2>How I started</h2>
       <p id="pm-sakums">My first client was a company I used to work for. I built websites for it and, quite naturally, learned SEO along the way — because a website that Google does not show brings a business no customers. Today I am an official IT partner of Bratus.</p>
       <h2>The mistake that changed my approach</h2>
@@ -67,13 +68,22 @@
       <h2>How I work day to day</h2>
       <p>Every morning I open Google Search Console. I care about impressions and clicks for the whole domain, not just the position of a single keyword. I research keywords with Google Keyword Planner and look for technical errors with Screaming Frog and Ahrefs.</p>
       <p>When Google introduced AI Overviews, I started optimising pages so that they are also understandable to AI-generated answers (GEO).</p>
+      <figure class="pm-gsc" data-gsc data-src="/assets/data/latseo-gsc-weekly.json" hidden
+        data-l-imp="impressions" data-l-clk="clicks" data-l-pos="avg. position" data-l-wk="Week of" data-l-part="partial week" data-loc="en-GB"
+        data-months="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec">
+        <figcaption class="pm-gsc__h"><strong>What I see every morning: latseo.com in Search Console</strong><span>Bars: weekly impressions in Google Search, 16 Feb – 26 Nov 2026. Dots below the axis: clicks in the same week (bigger dot, more clicks). Exact figures and average position are in the line below the chart.</span></figcaption>
+        <p class="ix-hint pm-gsc__hint">Drag across the chart or use the arrow keys to pick a week.</p>
+        <div class="pm-gsc__plot" data-plot tabindex="0" role="img" aria-label="Bar chart: latseo.com impressions in Google Search per week from 16 Feb 2026 to 26 Nov 2026; from 2 impressions in February to 3,135 in the week of 16 Nov 2026."></div>
+        <p class="pm-gsc__read" aria-live="polite" data-read></p>
+        <p class="pm-gsc__src">Source: latseo.com, Google Search Console, weekly data, 2026. The last week is partial (4 days).</p>
+      </figure>
       <h2>What I offer</h2>
-      <ul>
-        <li><a href="/en/majaslapas-izstrade/">Website development with SEO</a> — from €449 (excl. VAT)</li>
-        <li><a href="/en/seo-pakalpojumi-riga/">SEO services</a> — audit from €150, monthly SEO from €300/month</li>
-        <li id="pm-offer"><a href="/en/kontakti/">Request a free video audit</a> — within 24 hours</li>
+      <ul class="pm-offer">
+        <li><a href="/en/majaslapas-izstrade/">Website development with SEO</a> <span class="pm-p"><span class="pm-dash">— </span>from €449 (excl. VAT)</span></li>
+        <li><a href="/en/seo-pakalpojumi-riga/">SEO services</a> <span class="pm-p"><span class="pm-dash">— </span>audit from €150, monthly SEO from €300/month</span></li>
+        <li id="pm-offer"><a href="/en/kontakti/">Request a free video audit</a> <span class="pm-p"><span class="pm-dash">— </span>within 24 hours</span></li>
       </ul>
-      <p id="pm-links"><a href="{{linkedin}}" target="_blank" rel="noopener">LinkedIn profile</a> · <a href="/en/projekti/">Projects</a> · <a href="/en/kontakti/">Contact</a></p>
+      <p id="pm-links" class="pm-links"><a href="{{linkedin}}" target="_blank" rel="noopener">LinkedIn profile</a> · <a href="/en/projekti/">Projects</a> · <a href="/en/kontakti/">Contact</a></p>
     </div>
   </div>
 </section>
