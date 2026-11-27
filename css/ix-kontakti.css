@@ -1,36 +1,36 @@
 /* Kontakti: atbildes termiņš un kopēšanas pogas (js/ix-kontakti.js) */
 .ix-reply{min-height:1.65em;margin-bottom:1rem;font-family:var(--ff-mono);font-size:var(--fs-sm);color:var(--accent-ink);padding-left:.6rem;box-shadow:inset 2px 0 0 var(--accent)}
 .ix-reply:empty{display:none}
-.ix-reply--live{--n:var(--ix-night,#0B1F33);--ln:var(--ix-line,#8FB8DE);--mk:var(--ix-marker,#FFD84D);--mint:var(--ix-mint,#3DDC97);--on:var(--ix-ink-on,#EAF2FA);
-  padding:.75rem .9rem;box-shadow:none;color:var(--on);border:1px solid rgba(143,184,222,.35);
-  background:linear-gradient(var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/20px 20px,var(--n)}
+.ix-reply--live{--n:var(--ix-night,#10243A);--ln:var(--ix-line,#93B4D3);--mk:var(--ix-marker,#FFC65C);--mint:var(--ix-mint,#86C98E);--on:var(--ix-ink-on,#EEF3F8);
+  padding:.75rem .9rem;box-shadow:none;color:var(--on);border:1px solid rgba(147,180,211,.35);
+  background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/20px 20px,var(--n)}
 .ix-clk{display:block;margin-bottom:.6rem}
 .ix-clk__row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-.ix-clk__led{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(61,220,151,.25);animation:ixclk-led 1.6s ease-in-out infinite}
+.ix-clk__led{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(134,201,142,.25);animation:ixclk-led 1.6s ease-in-out infinite}
 .ix-clk__lab{font-size:.75rem;color:var(--ln);letter-spacing:.03em}
 .ix-clk__lab--r{margin-left:auto;color:var(--mint)}
 .ix-clk__time{font-weight:500;font-size:1.35rem;line-height:1;color:var(--mk);font-variant-numeric:tabular-nums}
 .ix-clk__track{position:relative;display:block;height:14px;margin-top:.55rem;border-left:1px solid var(--ln);border-right:2px solid var(--mint);
-  background:repeating-linear-gradient(90deg,rgba(143,184,222,.55) 0 1px,transparent 1px calc(100%/24)) bottom/100% 7px no-repeat,linear-gradient(var(--ln),var(--ln)) bottom/100% 1px no-repeat}
-.ix-clk__fill{position:absolute;left:0;bottom:1px;top:3px;width:100%;transform-origin:left;background:linear-gradient(90deg,rgba(61,220,151,0),rgba(61,220,151,.4));animation:ixclk-sweep 6s cubic-bezier(.5,0,.3,1) infinite}
-.ix-clk__fill::after{content:"";position:absolute;right:-5px;bottom:-3px;width:10px;height:10px;border-radius:50%;background:var(--mk);box-shadow:0 0 0 3px rgba(255,216,77,.3)}
+  background:repeating-linear-gradient(90deg,rgba(147,180,211,.55) 0 1px,transparent 1px calc(100%/24)) bottom/100% 7px no-repeat,linear-gradient(var(--ln),var(--ln)) bottom/100% 1px no-repeat}
+.ix-clk__fill{position:absolute;left:0;bottom:1px;top:3px;width:100%;transform-origin:left;background:linear-gradient(90deg,rgba(134,201,142,0),rgba(134,201,142,.4));animation:ixclk-sweep 6s cubic-bezier(.5,0,.3,1) infinite}
+.ix-clk__fill::after{content:"";position:absolute;right:-5px;bottom:-3px;width:10px;height:10px;border-radius:50%;background:var(--mk);box-shadow:0 0 0 3px rgba(255,198,92,.3)}
 .ix-reply__t{display:block;font-family:var(--ff-body,inherit);color:var(--on)}
 @keyframes ixclk-sweep{0%{transform:scaleX(0);opacity:1}80%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
 @keyframes ixclk-led{50%{opacity:.35}}
 .ix-crow{display:flex;align-items:center;gap:.75rem}
 .ix-crow>a{flex:1;min-width:0;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
 .ix-crow>a:hover strong{color:var(--accent)}
-.ix-copy{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.4rem;flex:none;min-width:6.2rem;min-height:44px;padding:0 .75rem;border:1.5px solid var(--ix-night,#0B1F33);background:var(--paper);color:var(--ink);font-family:var(--ff-mono);font-size:.75rem;cursor:pointer;z-index:0;transition:color .25s,border-color .25s,transform .3s cubic-bezier(.34,1.8,.64,1)}
-.ix-copy::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ix-night,#0B1F33);transform:translateX(-101%);transition:transform .3s cubic-bezier(.3,.8,.3,1)}
+.ix-copy{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.4rem;flex:none;min-width:6.2rem;min-height:44px;padding:0 .75rem;border:1.5px solid var(--ix-night,#10243A);background:var(--paper);color:var(--ink);font-family:var(--ff-mono);font-size:.75rem;cursor:pointer;z-index:0;transition:color .25s,border-color .25s,transform .3s cubic-bezier(.34,1.8,.64,1)}
+.ix-copy::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ix-night,#10243A);transform:translateX(-101%);transition:transform .3s cubic-bezier(.3,.8,.3,1)}
 .ix-copy:hover::before,.ix-copy:focus-visible::before{transform:none}
-.ix-copy:hover,.ix-copy:focus-visible{color:var(--ix-marker,#FFD84D)}
+.ix-copy:hover,.ix-copy:focus-visible{color:var(--ix-marker,#FFC65C)}
 .ix-copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .ix-copy:active{transform:scale(.93)}
 .ix-copy svg{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:square;stroke-dasharray:1;stroke-dashoffset:1}
-.ix-copy.is-done{border-color:var(--ix-mint,#3DDC97);color:var(--ix-night,#0B1F33);animation:ixcp-pop .5s cubic-bezier(.34,1.8,.64,1)}
-.ix-copy.is-done::before{background:var(--ix-mint,#3DDC97);transform:none}
+.ix-copy.is-done{border-color:var(--ix-mint,#86C98E);color:var(--ix-night,#10243A);animation:ixcp-pop .5s cubic-bezier(.34,1.8,.64,1)}
+.ix-copy.is-done::before{background:var(--ix-mint,#86C98E);transform:none}
 .ix-copy.is-done svg{animation:ixcp-draw .4s .08s ease-out forwards}
-.ix-copy.is-done::after{content:"";position:absolute;inset:0;border:2px solid var(--ix-mint,#3DDC97);animation:ixcp-ring .6s ease-out forwards}
+.ix-copy.is-done::after{content:"";position:absolute;inset:0;border:2px solid var(--ix-mint,#86C98E);animation:ixcp-ring .6s ease-out forwards}
 @keyframes ixcp-draw{to{stroke-dashoffset:0}}
 @keyframes ixcp-pop{0%{transform:scale(.88)}100%{transform:scale(1)}}
 @keyframes ixcp-ring{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}

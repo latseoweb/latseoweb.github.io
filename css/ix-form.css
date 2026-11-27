@@ -1,8 +1,8 @@
 /* Sketches over the contact-block sheet (js/ix-form.js): a cyanotype drawing that redraws itself line by line when
    the need changes. Night paper, blueprint lines, marker / signal / mint accents. */
-.after__draw{--n:var(--ix-night,#0B1F33);--ln:var(--ix-line,#8FB8DE);--sig:var(--ix-signal,#FF5B2E);--mk:var(--ix-marker,#FFD84D);--mt:var(--ix-mint,#3DDC97);
+.after__draw{--n:var(--ix-night,#10243A);--ln:var(--ix-line,#93B4D3);--sig:var(--ix-signal,#F2683F);--mk:var(--ix-marker,#FFC65C);--mt:var(--ix-mint,#86C98E);
   position:absolute;inset:0;width:100%;height:100%;
-  background:linear-gradient(var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/16px 16px,var(--n)}
+  background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/16px 16px,var(--n)}
 .after__draw[hidden]{display:none}
 /* all four sketches stack; the active one fades up, the others fade out */
 .after__draw g{opacity:0;transition:opacity .25s;fill:none;stroke:var(--ln);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:square}

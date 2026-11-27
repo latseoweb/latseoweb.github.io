@@ -1,9 +1,9 @@
 /* Build-stage scrubber (js/ix-stages.js): homepage "Kā notiek darbs" and /majaslapas-izstrade/.
    The page sketch is a cyanotype instrument (night + grid) on both the light and the dark band; each stage draws in
    with a signal scan line, the live stage turns mint. Tokens from css/ix-theme.css with inline fallbacks. */
-.build,.section--ink .build{--n:var(--ix-night,#0B1F33);--ln:var(--ix-line,#8FB8DE);--sig:var(--ix-signal,#FF5B2E);--mk:var(--ix-marker,#FFD84D);--mt:var(--ix-mint,#3DDC97);--on:var(--ix-ink-on,#EAF2FA);
+.build,.section--ink .build{--n:var(--ix-night,#10243A);--ln:var(--ix-line,#93B4D3);--sig:var(--ix-signal,#F2683F);--mk:var(--ix-marker,#FFC65C);--mt:var(--ix-mint,#86C98E);--on:var(--ix-ink-on,#EEF3F8);
   position:relative;padding:12px;border:1px solid var(--ln);box-shadow:0 18px 30px -22px rgba(11,31,51,.65);
-  background:linear-gradient(var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n)}
+  background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n)}
 .build-top{display:grid;grid-template-columns:1fr minmax(0,380px);gap:var(--sp-md) var(--sp-xl);align-items:end;margin-bottom:var(--sp-md)}
 .build-top .section__header{margin-bottom:0}
 .build__hint{margin-top:.5rem;font-size:var(--fs-sm);color:var(--muted)}
@@ -14,16 +14,16 @@
 .build .b-frame{fill:var(--n);stroke:var(--ln)}
 .build .b-line{stroke:var(--ln)}
 .build .b-dot{fill:none;stroke:var(--ln)}
-.build .b-url{fill:none;stroke:rgba(143,184,222,.5)}
+.build .b-url{fill:none;stroke:rgba(147,180,211,.5)}
 .build .b-wire rect,.build .b-wire path{fill:none;stroke:var(--ln);stroke-dasharray:3 3}
-.build .b-block rect{fill:rgba(143,184,222,.16)}
-.build .b-block .b-strong{fill:rgba(143,184,222,.34)}
+.build .b-block rect{fill:rgba(147,180,211,.16)}
+.build .b-block .b-strong{fill:rgba(147,180,211,.34)}
 .build .b-ink{fill:var(--on)}
-.build .b-mute{fill:rgba(143,184,222,.55)}
+.build .b-mute{fill:rgba(147,180,211,.55)}
 .build .b-acc{fill:var(--mk);transition:fill .3s}
 .build[data-s="4"] .b-acc{fill:var(--mt)}
-.build .b-pale{fill:rgba(143,184,222,.14)}
-.build .b-pic{fill:none;stroke:rgba(143,184,222,.6);stroke-width:1.5}
+.build .b-pale{fill:rgba(147,180,211,.14)}
+.build .b-pic{fill:none;stroke:rgba(147,180,211,.6);stroke-width:1.5}
 .build .b-lock{fill:none;stroke:var(--mt)}
 .build .b-live text{font-size:6px;fill:var(--on);font-family:var(--ff-mono,"IBM Plex Mono",monospace)}
 /* each stage draws in: wireframe and blocks wipe in left to right, content top down, live urls from the centre */
@@ -37,26 +37,26 @@
 .build .b-scan{stroke:var(--sig);stroke-width:1.5;opacity:0;pointer-events:none}
 .build[data-a] .b-scan{animation:ix-bscan .7s cubic-bezier(.45,.05,.2,1) both}
 @keyframes ix-bscan{0%{transform:translateX(0);opacity:1}85%{opacity:1}100%{transform:translateX(320px);opacity:0}}
-.build__tag{position:absolute;left:-1px;bottom:-1px;transform:translateY(100%);padding:.2rem .6rem;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:var(--fs-xs);font-weight:600;color:var(--ix-night,#0B1F33);background:var(--ix-marker,#FFD84D);transition:background .3s}
-.build[data-s="4"] .build__tag{background:var(--ix-mint,#3DDC97)}
+.build__tag{position:absolute;left:-1px;bottom:-1px;transform:translateY(100%);padding:.2rem .6rem;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:var(--fs-xs);font-weight:600;color:var(--ix-night,#10243A);background:var(--ix-marker,#FFC65C);transition:background .3s}
+.build[data-s="4"] .build__tag{background:var(--ix-mint,#86C98E)}
 .build__ctl{padding:var(--sp-lg) 12.5% 0;margin-bottom:var(--sp-sm)}
 /* slider: fill runs to the thumb in signal, thumb is a signal block that pops on every snap */
 .build__range{--p:0;display:block;width:100%;height:44px;margin:0;-webkit-appearance:none;appearance:none;background:transparent;cursor:ew-resize;touch-action:pan-y}
-.build__range::-webkit-slider-runnable-track{height:3px;background:linear-gradient(90deg,var(--ix-signal,#FF5B2E) calc(22px + (100% - 44px)*var(--p)),var(--ix-line,#8FB8DE) 0);opacity:1}
-.build__range::-moz-range-track{height:3px;background:linear-gradient(90deg,var(--ix-signal,#FF5B2E) calc(22px + (100% - 44px)*var(--p)),var(--ix-line,#8FB8DE) 0)}
-.build__range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;margin-top:-20px;border:0;border-radius:0;background:var(--ix-signal,#FF5B2E) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%230B1F33' stroke-width='2'/%3E%3C/svg%3E") center no-repeat;box-shadow:0 8px 14px -8px rgba(11,31,51,.7)}
-.build__range::-moz-range-thumb{width:44px;height:44px;border:0;border-radius:0;background:var(--ix-signal,#FF5B2E) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%230B1F33' stroke-width='2'/%3E%3C/svg%3E") center no-repeat}
+.build__range::-webkit-slider-runnable-track{height:3px;background:linear-gradient(90deg,var(--ix-signal,#F2683F) calc(22px + (100% - 44px)*var(--p)),var(--ix-line,#93B4D3) 0);opacity:1}
+.build__range::-moz-range-track{height:3px;background:linear-gradient(90deg,var(--ix-signal,#F2683F) calc(22px + (100% - 44px)*var(--p)),var(--ix-line,#93B4D3) 0)}
+.build__range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;margin-top:-20px;border:0;border-radius:0;background:var(--ix-signal,#F2683F) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%230B1F33' stroke-width='2'/%3E%3C/svg%3E") center no-repeat;box-shadow:0 8px 14px -8px rgba(11,31,51,.7)}
+.build__range::-moz-range-thumb{width:44px;height:44px;border:0;border-radius:0;background:var(--ix-signal,#F2683F) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%230B1F33' stroke-width='2'/%3E%3C/svg%3E") center no-repeat}
 .build__range.is-snap::-webkit-slider-thumb{animation:ix-snap .32s cubic-bezier(.2,.9,.3,1.4)}
 .build__range.is-snap::-moz-range-thumb{animation:ix-snap .32s cubic-bezier(.2,.9,.3,1.4)}
 @keyframes ix-snap{0%{transform:scale(.82)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
-.build__range:focus-visible{outline:3px solid var(--ix-signal,#FF5B2E);outline-offset:4px}
+.build__range:focus-visible{outline:3px solid var(--ix-signal,#F2683F);outline-offset:4px}
 .steps.is-scrub li{cursor:pointer;transition:border-color .2s,color .2s}
 .steps.is-scrub li:not(.is-on){border-top-color:var(--line-strong);color:var(--muted)}
-.steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#FF5B2E);border-top-width:3px}
+.steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#F2683F);border-top-width:3px}
 @media (max-width:1000px){.build-top{grid-template-columns:1fr}.build{max-width:420px}.build__ctl{padding:var(--sp-xl) 0 0}}
 @media (prefers-reduced-motion:reduce){.build g,.steps.is-scrub li,.build .b-acc{transition:none}.build[data-a] g,.build[data-a] .b-scan{animation:none!important}.build__range.is-snap::-webkit-slider-thumb,.build__range.is-snap::-moz-range-thumb{animation:none}}
 
 /* dark band: only text colours differ, the instrument itself is identical */
 .section--ink .build__hint{color:var(--on-ink-muted)}
 .section--ink .steps.is-scrub li:not(.is-on){border-top-color:rgba(255,255,255,.3);color:var(--on-ink-muted)}
-.section--ink .steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#FF5B2E);color:var(--on-ink)}
+.section--ink .steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#F2683F);color:var(--on-ink)}

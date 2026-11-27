@@ -1,17 +1,17 @@
 /* Homepage instruments (js/ix-home.js): Google result builder in "Kāpēc SEO…" and the impressions timeline.
    Both are night-palette instruments on grid paper; tokens from css/ix-theme.css with inline fallbacks. */
-.serp,.trend__plot{--n:var(--ix-night,#0B1F33);--n2:var(--ix-night-2,#12304D);--ln:var(--ix-line,#8FB8DE);--sig:var(--ix-signal,#FF5B2E);--mk:var(--ix-marker,#FFD84D);--mt:var(--ix-mint,#3DDC97);--on:var(--ix-ink-on,#EAF2FA)}
+.serp,.trend__plot{--n:var(--ix-night,#10243A);--n2:var(--ix-night-2,#1B3753);--ln:var(--ix-line,#93B4D3);--sig:var(--ix-signal,#F2683F);--mk:var(--ix-marker,#FFC65C);--mt:var(--ix-mint,#86C98E);--on:var(--ix-ink-on,#EEF3F8)}
 
 /* ---------- Google result builder ---------- */
 .serp{min-width:0;margin-top:var(--sp-xl);padding:var(--sp-md);color:var(--on);border:1px solid var(--ln);
-  background:linear-gradient(var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n);
+  background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n);
   box-shadow:0 18px 32px -24px rgba(11,31,51,.6)}
 .serp__head{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-md);color:var(--on);margin-bottom:var(--sp-sm)}
 .serp__hint{margin:-.35rem 0 var(--sp-sm);font-size:var(--fs-xs);color:var(--ln)}
 .serp__fields{display:grid;grid-template-columns:1.25fr 1.25fr 1fr;gap:var(--sp-sm)}
 .serp__fields label{display:flex;flex-direction:column;gap:.3rem;font-size:var(--fs-xs);font-weight:600;color:var(--on)}
 .serp__fields small{font-size:inherit;font-weight:400;color:var(--ln)}
-.serp__fields input,.serp__fields textarea{width:100%;min-height:44px;padding:.55rem .7rem;font-size:1rem;font-weight:400;color:var(--on);background:var(--n2);border:1px solid rgba(143,184,222,.45);border-radius:0;transition:border-color .2s,background .2s}
+.serp__fields input,.serp__fields textarea{width:100%;min-height:44px;padding:.55rem .7rem;font-size:1rem;font-weight:400;color:var(--on);background:var(--n2);border:1px solid rgba(147,180,211,.45);border-radius:0;transition:border-color .2s,background .2s}
 .serp__fields input:hover,.serp__fields textarea:hover{border-color:var(--ln)}
 .serp__fields textarea{resize:vertical;line-height:1.45}
 .serp__fields input:focus-visible,.serp__fields textarea:focus-visible{outline:2px solid var(--mk);outline-offset:0;border-color:var(--mk);background:#163a5c}
@@ -32,7 +32,7 @@
 /* the live ruler: a marker-yellow bar measured against the signal cut-off */
 .serp__ruler{display:grid;gap:.75rem;margin-top:var(--sp-md)}
 .serp__row{display:grid;grid-template-columns:9.5rem 1fr 10.5rem;align-items:center;gap:.75rem;font-size:var(--fs-xs);color:var(--on)}
-.serp__bar{position:relative;height:18px;border-bottom:1px solid var(--ln);background:repeating-linear-gradient(90deg,rgba(143,184,222,.55) 0 1px,transparent 1px 10%) 0 100%/100% 5px no-repeat}
+.serp__bar{position:relative;height:18px;border-bottom:1px solid var(--ln);background:repeating-linear-gradient(90deg,rgba(147,180,211,.55) 0 1px,transparent 1px 10%) 0 100%/100% 5px no-repeat}
 .serp__bar::before,.serp__bar::after{content:"";position:absolute;bottom:-5px;height:10px;border-left:1px solid var(--ln)}
 .serp__bar::before{left:0}
 .serp__bar::after{right:0}
@@ -58,14 +58,14 @@
 .trend{margin-top:var(--sp-xl)}
 .trend__cap{margin-bottom:var(--sp-sm);font-size:var(--fs-sm);color:var(--on-ink-muted);max-width:60ch}
 .trend__plot{position:relative;border:1px solid var(--ln);box-shadow:0 18px 32px -24px rgba(0,0,0,.7);
-  background:linear-gradient(var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n)}
+  background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n)}
 .trend__plot img{display:block;width:100%;aspect-ratio:8/3;object-fit:fill;filter:invert(.85) hue-rotate(180deg)}
 .is-live .trend__plot img{visibility:hidden}
 .trend__cur,.trend__dot,.trend__range,.trend__axis,.trend__draw{display:none}
 .is-live .trend__draw{display:block;position:absolute;inset:0;pointer-events:none}
 .trend__draw svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .trend__draw path{vector-effect:non-scaling-stroke}
-.trend__area{fill:rgba(143,184,222,.09)}
+.trend__area{fill:rgba(147,180,211,.09)}
 .trend__base{fill:none;stroke:var(--ln);stroke-opacity:.5;stroke-width:2}
 .trend__done{fill:none;stroke:var(--mk);stroke-width:3}
 .trend__top{transition:clip-path .22s cubic-bezier(.2,.8,.2,1)}
@@ -79,7 +79,7 @@
 .trend__range::-moz-range-thumb{width:0;height:100%;border:0}
 .trend__plot:has(.trend__range:focus-visible){outline:3px solid var(--mk);outline-offset:3px}
 .is-live .trend__axis{display:flex;justify-content:space-between;margin-top:.35rem;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:var(--fs-xs);color:var(--ln)}
-.trend__read{margin-top:.5rem;min-height:2.9em;padding-left:.75rem;font-size:var(--fs-sm);color:var(--on-ink);box-shadow:inset 3px 0 0 var(--ix-marker,#FFD84D)}
+.trend__read{margin-top:.5rem;min-height:2.9em;padding-left:.75rem;font-size:var(--fs-sm);color:var(--on-ink);box-shadow:inset 3px 0 0 var(--ix-marker,#FFC65C)}
 @media (max-width:700px){.trend__plot img{aspect-ratio:16/9}}
 @media (prefers-reduced-motion:reduce){.trend__draw.is-draw{animation:none}.serp__bar i,.serp__bar s,.is-live .trend__cur,.is-live .trend__dot,.trend__top{transition:none}.serp__cut.is-hit{animation:none}}
 
