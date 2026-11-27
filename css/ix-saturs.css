@@ -22,7 +22,7 @@
 .ixs__gbar{display:flex;align-items:center;justify-content:space-between;height:36px}
 .ixs__menu{display:grid;gap:3px;width:16px}
 .ixs__menu i{display:block;height:2px;background:var(--muted)}
-.ixs__logo{font-family:var(--ff-heading);font-size:1.3rem;font-weight:500;letter-spacing:-.02em;color:var(--ink)}
+.ixs__logo{font-family:var(--ff-heading);font-size:1.3rem;font-weight:500;letter-spacing:0;color:var(--ink)}
 .ixs__avatar{width:24px;height:24px;border-radius:50%;background:color-mix(in srgb,var(--c-mint) 55%,var(--paper));border:2px solid var(--paper);box-shadow:0 0 0 1px var(--line-strong)}
 .ixs__pill{display:flex;align-items:center;gap:9px;height:40px;margin-top:4px;padding:0 14px;border-radius:20px;background:var(--paper);box-shadow:0 1px 5px rgba(16,36,58,.22);font-size:.8125rem;color:var(--ink)}
 .ixs__pill svg{flex:none;color:var(--muted)}
@@ -120,7 +120,7 @@
 .ixb__q code{display:block;padding:.7rem .9rem;border:1px solid var(--c-night);background:var(--c-night);font-family:var(--ff-mono);font-size:var(--fs-sm);color:var(--c-mark);overflow-wrap:anywhere}
 .ixb__q code::before{content:"> ";color:var(--c-sig)}
 .ixb__bl{list-style:none;margin:0;padding:0;counter-reset:b;display:grid;gap:.5rem;align-content:start}
-.ixb__bl li{counter-increment:b;display:flex;align-items:center;gap:.6rem;min-height:48px;padding:.4rem .7rem;border:1px solid var(--line-strong);border-left:4px solid var(--c-line);background:var(--paper);font-size:var(--fs-sm);color:var(--ink)}
+.ixb__bl li{counter-increment:b;display:flex;align-items:center;gap:.6rem;min-height:48px;padding:.4rem .7rem;border:1px solid var(--line-strong);background:var(--paper);font-size:var(--fs-sm);color:var(--ink)}
 .ixb__bl li::before{content:counter(b,decimal-leading-zero);font-family:var(--ff-mono);font-size:var(--fs-xs);color:var(--accent-ink);font-weight:600}
 .ixb__bl li.is-cta{border-color:var(--c-night);border-left-color:var(--c-sig);background:var(--c-night);color:var(--c-on);font-weight:600}
 .ixb__bl li.is-cta::before{color:var(--c-mark)}

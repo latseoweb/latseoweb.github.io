@@ -245,7 +245,7 @@
   .pick__body{grid-template-columns:1fr;transform:none}
   .pick__b{padding:.4rem .2rem}
   .pick__b b{font-size:var(--fs-xs)}
-  .pick__svg .w-tx{font-size:13.4px;letter-spacing:-.03em}
+  .pick__svg .w-tx{font-size:13.4px;letter-spacing:0}
   .item.is-picked{outline-offset:6px}
 }
 @media (prefers-reduced-motion:reduce){

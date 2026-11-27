@@ -55,7 +55,7 @@
 .pm-facts>[data-go].is-on{background:rgba(255,198,92,.14);border-color:var(--line)}
 .pm-facts>[data-go].is-on::after,.pm-facts>[data-go]:hover::after{transform:none}
 .pm-facts>[data-go]>*{grid-column:2}
-.pm-facts>[data-go]>strong{grid-column:1;grid-row:1 / span 3;align-self:start;font-size:clamp(1.6rem,1.2rem + 1.2vw,2.25rem);letter-spacing:-.01em;white-space:nowrap}
+.pm-facts>[data-go]>strong{grid-column:1;grid-row:1 / span 3;align-self:start;font-size:clamp(1.6rem,1.2rem + 1.2vw,2.25rem);letter-spacing:0;white-space:nowrap}
 .pm-facts span{display:block;font-size:var(--fs-base);color:var(--ink);line-height:1.35}
 .pm-facts>[data-go]>span:first-of-type{margin-top:.7rem}
 .pm-facts .pm-ctx{display:block;margin-top:.3rem;font-size:var(--fs-xs);line-height:1.5;color:var(--muted)}
