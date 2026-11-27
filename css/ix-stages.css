@@ -1,63 +1,62 @@
-/* Build-stage scrubber (js/ix-stages.js): homepage "Kā notiek darbs" and /majaslapas-izstrade/ (dark band). */
-.build{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' fill='none' stroke='%23DDE3E0'/%3E%3C/svg%3E") #FAFBFA}
+/* Build-stage scrubber (js/ix-stages.js): homepage "Kā notiek darbs" and /majaslapas-izstrade/.
+   The page sketch is a cyanotype instrument (night + grid) on both the light and the dark band; each stage draws in
+   with a signal scan line, the live stage turns mint. Tokens from css/ix-theme.css with inline fallbacks. */
+.build,.section--ink .build{--n:var(--ix-night,#0B1F33);--ln:var(--ix-line,#8FB8DE);--sig:var(--ix-signal,#FF5B2E);--mk:var(--ix-marker,#FFD84D);--mt:var(--ix-mint,#3DDC97);--on:var(--ix-ink-on,#EAF2FA);
+  position:relative;padding:12px;border:1px solid var(--ln);box-shadow:0 18px 30px -22px rgba(11,31,51,.65);
+  background:linear-gradient(var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n)}
 .build-top{display:grid;grid-template-columns:1fr minmax(0,380px);gap:var(--sp-md) var(--sp-xl);align-items:end;margin-bottom:var(--sp-md)}
 .build-top .section__header{margin-bottom:0}
 .build__hint{margin-top:.5rem;font-size:var(--fs-sm);color:var(--muted)}
-.build{position:relative;padding:12px;border:1px solid var(--line-strong)}
-.build svg{width:100%;height:auto}
+.build svg{width:100%;height:auto;overflow:hidden}
 .build g{opacity:0;transition:opacity .25s}
 .build[data-s="1"] .b-wire,.build[data-s="2"] .b-block,.build[data-s="3"] .b-content,.build[data-s="4"] .b-content,.build[data-s="4"] .b-live{opacity:1}
-.b-frame{fill:#fff;stroke:var(--ink)}
-.b-line{stroke:var(--ink)}
-.b-dot{fill:none;stroke:var(--ink)}
-.b-url{fill:none;stroke:var(--line-strong)}
-.b-wire rect,.b-wire path{fill:none;stroke:var(--ink);stroke-dasharray:3 3}
-.b-block rect{fill:var(--line)}
-.b-block .b-strong{fill:var(--line-strong)}
-.b-ink{fill:var(--ink)}
-.b-mute{fill:var(--line-strong)}
-.b-acc{fill:var(--accent)}
-.b-pale{fill:var(--paper-2)}
-.b-pic{fill:none;stroke:var(--line-strong);stroke-width:1.5}
-.b-lock{fill:none;stroke:var(--accent)}
-.b-live text{font-size:6px;fill:var(--ink);font-family:var(--ff-body)}
-.build__tag{position:absolute;left:-1px;bottom:-1px;transform:translateY(100%);padding:.2rem .6rem;font-size:var(--fs-xs);font-weight:600;color:#fff;background:var(--ink)}
-.build[data-s="4"] .build__tag{background:var(--accent)}
+/* blueprint colours */
+.build .b-frame{fill:var(--n);stroke:var(--ln)}
+.build .b-line{stroke:var(--ln)}
+.build .b-dot{fill:none;stroke:var(--ln)}
+.build .b-url{fill:none;stroke:rgba(143,184,222,.5)}
+.build .b-wire rect,.build .b-wire path{fill:none;stroke:var(--ln);stroke-dasharray:3 3}
+.build .b-block rect{fill:rgba(143,184,222,.16)}
+.build .b-block .b-strong{fill:rgba(143,184,222,.34)}
+.build .b-ink{fill:var(--on)}
+.build .b-mute{fill:rgba(143,184,222,.55)}
+.build .b-acc{fill:var(--mk);transition:fill .3s}
+.build[data-s="4"] .b-acc{fill:var(--mt)}
+.build .b-pale{fill:rgba(143,184,222,.14)}
+.build .b-pic{fill:none;stroke:rgba(143,184,222,.6);stroke-width:1.5}
+.build .b-lock{fill:none;stroke:var(--mt)}
+.build .b-live text{font-size:6px;fill:var(--on);font-family:var(--ff-mono,"IBM Plex Mono",monospace)}
+/* each stage draws in: wireframe and blocks wipe in left to right, content top down, live urls from the centre */
+.build[data-a="1"] .b-wire{animation:ix-bw .75s cubic-bezier(.45,.05,.2,1) both}
+.build[data-a="2"] .b-block{animation:ix-bw .6s cubic-bezier(.45,.05,.2,1) both}
+.build[data-a="3"] .b-content{animation:ix-bh .7s cubic-bezier(.45,.05,.2,1) both}
+.build[data-a="4"] .b-live{animation:ix-bc .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ix-bw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes ix-bh{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes ix-bc{from{clip-path:inset(0 50% 0 50%)}to{clip-path:inset(0 0 0 0)}}
+.build .b-scan{stroke:var(--sig);stroke-width:1.5;opacity:0;pointer-events:none}
+.build[data-a] .b-scan{animation:ix-bscan .7s cubic-bezier(.45,.05,.2,1) both}
+@keyframes ix-bscan{0%{transform:translateX(0);opacity:1}85%{opacity:1}100%{transform:translateX(320px);opacity:0}}
+.build__tag{position:absolute;left:-1px;bottom:-1px;transform:translateY(100%);padding:.2rem .6rem;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:var(--fs-xs);font-weight:600;color:var(--ix-night,#0B1F33);background:var(--ix-marker,#FFD84D);transition:background .3s}
+.build[data-s="4"] .build__tag{background:var(--ix-mint,#3DDC97)}
 .build__ctl{padding:var(--sp-lg) 12.5% 0;margin-bottom:var(--sp-sm)}
-.build__range{display:block;width:100%;height:44px;margin:0;-webkit-appearance:none;appearance:none;background:transparent;cursor:ew-resize;touch-action:pan-y}
-.build__range::-webkit-slider-runnable-track{height:2px;background:var(--ink)}
-.build__range::-moz-range-track{height:2px;background:var(--ink)}
-.build__range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;margin-top:-21px;border:0;border-radius:0;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") center no-repeat}
-.build__range::-moz-range-thumb{width:44px;height:44px;border:0;border-radius:0;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") center no-repeat}
-.build__range:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+/* slider: fill runs to the thumb in signal, thumb is a signal block that pops on every snap */
+.build__range{--p:0;display:block;width:100%;height:44px;margin:0;-webkit-appearance:none;appearance:none;background:transparent;cursor:ew-resize;touch-action:pan-y}
+.build__range::-webkit-slider-runnable-track{height:3px;background:linear-gradient(90deg,var(--ix-signal,#FF5B2E) calc(22px + (100% - 44px)*var(--p)),var(--ix-line,#8FB8DE) 0);opacity:1}
+.build__range::-moz-range-track{height:3px;background:linear-gradient(90deg,var(--ix-signal,#FF5B2E) calc(22px + (100% - 44px)*var(--p)),var(--ix-line,#8FB8DE) 0)}
+.build__range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;margin-top:-20px;border:0;border-radius:0;background:var(--ix-signal,#FF5B2E) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%230B1F33' stroke-width='2'/%3E%3C/svg%3E") center no-repeat;box-shadow:0 8px 14px -8px rgba(11,31,51,.7)}
+.build__range::-moz-range-thumb{width:44px;height:44px;border:0;border-radius:0;background:var(--ix-signal,#FF5B2E) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='14'%3E%3Cpath d='M3 0v14M7 0v14' stroke='%230B1F33' stroke-width='2'/%3E%3C/svg%3E") center no-repeat}
+.build__range.is-snap::-webkit-slider-thumb{animation:ix-snap .32s cubic-bezier(.2,.9,.3,1.4)}
+.build__range.is-snap::-moz-range-thumb{animation:ix-snap .32s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes ix-snap{0%{transform:scale(.82)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+.build__range:focus-visible{outline:3px solid var(--ix-signal,#FF5B2E);outline-offset:4px}
 .steps.is-scrub li{cursor:pointer;transition:border-color .2s,color .2s}
 .steps.is-scrub li:not(.is-on){border-top-color:var(--line-strong);color:var(--muted)}
-.steps.is-scrub li.is-on{border-top-color:var(--accent)}
+.steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#FF5B2E);border-top-width:3px}
 @media (max-width:1000px){.build-top{grid-template-columns:1fr}.build{max-width:420px}.build__ctl{padding:var(--sp-xl) 0 0}}
-@media (prefers-reduced-motion:reduce){.build g,.steps.is-scrub li{transition:none}}
+@media (prefers-reduced-motion:reduce){.build g,.steps.is-scrub li,.build .b-acc{transition:none}.build[data-a] g,.build[data-a] .b-scan{animation:none!important}.build__range.is-snap::-webkit-slider-thumb,.build__range.is-snap::-moz-range-thumb{animation:none}}
 
-/* dark band */
-.section--ink .build{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' fill='none' stroke='%23fff' stroke-opacity='.08'/%3E%3C/svg%3E") var(--ink);border-color:rgba(255,255,255,.3)}
-.section--ink .b-frame{fill:var(--ink);stroke:var(--on-ink)}
-.section--ink .b-line{stroke:var(--on-ink)}
-.section--ink .b-dot{stroke:var(--on-ink)}
-.section--ink .b-url{stroke:var(--on-ink-muted)}
-.section--ink .b-wire rect,.section--ink .b-wire path{stroke:var(--on-ink)}
-.section--ink .b-block rect{fill:rgba(255,255,255,.14)}
-.section--ink .b-block .b-strong{fill:rgba(255,255,255,.3)}
-.section--ink .b-ink{fill:var(--on-ink)}
-.section--ink .b-mute{fill:var(--on-ink-muted)}
-.section--ink .b-acc{fill:#9FCDB3}
-.section--ink .b-pale{fill:rgba(255,255,255,.1)}
-.section--ink .b-pic{stroke:var(--on-ink-muted)}
-.section--ink .b-lock{stroke:#9FCDB3}
-.section--ink .b-live text{fill:var(--on-ink)}
-.section--ink .build__tag{color:var(--ink);background:var(--on-ink)}
-.section--ink .build[data-s="4"] .build__tag{background:#9FCDB3}
-.section--ink .build__range::-webkit-slider-runnable-track{background:var(--on-ink)}
-.section--ink .build__range::-moz-range-track{background:var(--on-ink)}
-.section--ink .build__range:focus-visible{outline-color:var(--on-ink)}
+/* dark band: only text colours differ, the instrument itself is identical */
 .section--ink .build__hint{color:var(--on-ink-muted)}
 .section--ink .steps.is-scrub li:not(.is-on){border-top-color:rgba(255,255,255,.3);color:var(--on-ink-muted)}
-.section--ink .steps.is-scrub li.is-on{border-top-color:#9FCDB3;color:var(--on-ink)}
-
+.section--ink .steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#FF5B2E);color:var(--on-ink)}

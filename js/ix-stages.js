@@ -17,8 +17,22 @@
     var tag = frame.querySelector(".build__tag"), names = frame.getAttribute("data-names").split("|");
     if (!range || steps.length !== 4) return;
     steps[0].parentNode.classList.add("is-scrub");
+    var RM = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches, cur = 0;
+    var svg = frame.querySelector("svg"), NS = "http://www.w3.org/2000/svg";
+    var scan = document.createElementNS(NS, "line");
+    scan.setAttribute("class", "b-scan"); scan.setAttribute("x1", 0); scan.setAttribute("x2", 0);
+    scan.setAttribute("y1", 17); scan.setAttribute("y2", 200);
+    if (svg) svg.appendChild(scan);
     function set(v) {
       v = Math.max(1, Math.min(4, Math.round(v)));
+      range.style.setProperty("--p", ((v - 1) / 3).toFixed(4));
+      if (v !== cur && !RM) {
+        // the new stage draws itself in, a signal line sweeps across; the slider thumb pops
+        frame.removeAttribute("data-a"); void frame.offsetWidth;
+        if (v > cur) frame.setAttribute("data-a", v);
+        if (cur) { range.classList.remove("is-snap"); void range.offsetWidth; range.classList.add("is-snap"); }
+      }
+      cur = v;
       frame.setAttribute("data-s", v); tag.textContent = names[v - 1]; range.value = v;
       steps.forEach(function (li, i) { li.classList.toggle("is-on", i === v - 1); });
       range.setAttribute("aria-valuetext", v + ". " + steps[v - 1].querySelector("strong").textContent + " — " + names[v - 1].toLowerCase());

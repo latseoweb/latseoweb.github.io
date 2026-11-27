@@ -1,21 +1,34 @@
-/* Sketches over the contact-block sheet (js/ix-form.js). Same drawing language as the hero: thin ink lines, dashed outlines. */
-.after__draw{position:absolute;inset:0;width:100%;height:100%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' fill='none' stroke='%23DDE3E0'/%3E%3C/svg%3E") #FAFBFA}
+/* Sketches over the contact-block sheet (js/ix-form.js): a cyanotype drawing that redraws itself line by line when
+   the need changes. Night paper, blueprint lines, marker / signal / mint accents. */
+.after__draw{--n:var(--ix-night,#0B1F33);--ln:var(--ix-line,#8FB8DE);--sig:var(--ix-signal,#FF5B2E);--mk:var(--ix-marker,#FFD84D);--mt:var(--ix-mint,#3DDC97);
+  position:absolute;inset:0;width:100%;height:100%;
+  background:linear-gradient(var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,var(--ix-grid,rgba(143,184,222,.16)) 1px,transparent 1px) 0 0/16px 16px,var(--n)}
 .after__draw[hidden]{display:none}
-.after__draw g{display:none;fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke}
+/* all four sketches stack; the active one fades up, the others fade out */
+.after__draw g{opacity:0;transition:opacity .25s;fill:none;stroke:var(--ln);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:square}
 .after__draw *{vector-effect:non-scaling-stroke}
 .after__sheet[data-m="web"] g[data-m="web"],.after__sheet[data-m="seo"] g[data-m="seo"],
-.after__sheet[data-m="audit"] g[data-m="audit"],.after__sheet[data-m="other"] g[data-m="other"]{display:block}
-.after__draw g[data-m="web"] rect,.after__draw g[data-m="web"] path:nth-of-type(n+3){stroke-dasharray:3 3}
-.after__draw .a{stroke:var(--accent);stroke-width:1.5}
+.after__sheet[data-m="audit"] g[data-m="audit"],.after__sheet[data-m="other"] g[data-m="other"]{opacity:1}
+.after__draw .a{stroke:var(--mk);stroke-width:1.75}
 .after__draw .s{stroke-width:1.25}
-.after__draw .g{stroke:var(--line-strong);stroke-dasharray:2 3}
-.after__draw .p{fill:var(--accent);stroke:none}
-.after__draw g[data-m="seo"] .a{animation:ix-draw .6s ease-out both;stroke-dasharray:300;stroke-dashoffset:0}
-@keyframes ix-draw{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
+.after__draw .g{stroke:var(--ln);stroke-opacity:.5;stroke-dasharray:2 3}
+.after__draw .p{fill:var(--sig);stroke:none}
+/* per-sketch accents */
+.after__draw g[data-m="web"] rect:nth-of-type(2),.after__draw g[data-m="web"] path:nth-of-type(3){stroke:var(--mk)}
+.after__draw g[data-m="seo"] .a{stroke:var(--mt)}
+.after__draw g[data-m="audit"] .a{stroke:var(--mk)}
+.after__draw g[data-m="other"] path:nth-of-type(1),.after__draw g[data-m="other"] path:nth-of-type(2){stroke:var(--mk)}
+/* line draw: JS sets pathLength=1 and --i (stagger) on every shape of the active sketch */
+.after__draw g.is-drawing > *:not(.g):not(.p){stroke-dasharray:1;stroke-dashoffset:1;animation:ix-form-draw .7s calc(var(--i,0) * 55ms) cubic-bezier(.45,.05,.2,1) forwards}
+.after__draw g.is-drawing > .g{animation:ix-form-fade .4s calc(var(--i,0) * 55ms + .3s) both}
+.after__draw g.is-drawing > .p{transform-box:fill-box;transform-origin:center;animation:ix-form-pop .45s calc(var(--i,0) * 55ms + .35s) cubic-bezier(.2,.9,.3,1.5) both}
+@keyframes ix-form-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes ix-form-fade{from{opacity:0}to{opacity:1}}
+@keyframes ix-form-pop{from{transform:scale(0)}to{transform:scale(1)}}
 /* compact variant: used when the column beside the form is too short for the full sheet */
 .after__sheet--sm{padding:.3rem;grid-template-columns:7rem 1fr;gap:.6rem;max-width:22rem}
 .after__sheet--sm .sheet__shot>img,.after__sheet--sm .plan__box,.after__sheet--sm .plan__note{display:none}
 .after__sheet--sm .sheet__shot{aspect-ratio:16/10}
 .after__sheet--sm .after__draw[hidden]{display:block}
 .after__sheet--sm figcaption{font-size:.75rem;line-height:1.35}
-@media (prefers-reduced-motion:reduce){.after__draw g[data-m="seo"] .a{animation:none}}
+@media (prefers-reduced-motion:reduce){.after__draw g{transition:none}.after__draw g.is-drawing > *{animation:none!important;stroke-dasharray:none;stroke-dashoffset:0}}
