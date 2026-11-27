@@ -11,23 +11,42 @@
         timeZone: 'Europe/Riga', weekday: 'long', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
       });
     } catch (e) { fmt = null; }
-    var clk = document.createElement('span'), tm = document.createElement('span'), txt = document.createElement('span');
-    clk.className = 'ix-clk'; clk.setAttribute('aria-hidden', 'true'); txt.className = 'ix-reply__t';
-    clk.innerHTML = '<span class="ix-clk__row"><span class="ix-clk__led"></span><span class="ix-clk__lab">' + (lv ? 'Rīgā tagad' : 'Riga now') + '</span><b class="ix-clk__time"></b><span class="ix-clk__lab ix-clk__lab--r">+24 h</span></span><span class="ix-clk__track"><i class="ix-clk__fill"></i></span>';
-    line.textContent = ''; line.appendChild(clk); line.appendChild(txt); line.classList.add('ix-reply--live');
-    var tEl = clk.querySelector('.ix-clk__time'), nowF;
-    try { nowF = new Intl.DateTimeFormat('lv-LV', { timeZone: 'Europe/Riga', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' }); } catch (e) { nowF = null; }
-    var sec = function () { if (nowF) tEl.textContent = nowF.format(new Date()); };
-    sec(); setInterval(sec, 1000);
+    var hero = document.querySelector('[data-kt-now]');
+    var txt = document.createElement('span'), led = document.createElement('span');
+    txt.className = 'ix-reply__t'; led.className = 'ix-clk__led'; led.setAttribute('aria-hidden', 'true');
+    line.textContent = ''; line.appendChild(led); line.appendChild(txt); line.classList.add('ix-reply--live');
+    var nowF, dayF, partF;
+    try {
+      nowF = new Intl.DateTimeFormat('lv-LV', { timeZone: 'Europe/Riga', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
+      dayF = new Intl.DateTimeFormat(lv ? 'lv-LV' : 'en-GB', { timeZone: 'Europe/Riga', weekday: 'long', day: 'numeric', month: 'long' });
+      partF = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Riga', hour: 'numeric', minute: 'numeric', second: 'numeric', hourCycle: 'h23' });
+    } catch (e) { nowF = null; }
+    var q = function (s) { return hero ? hero.querySelector(s) : null; };
+    var tEl = q('[data-kt-time]'), dEl = q('[data-kt-day]'), byEl = q('[data-kt-by]'), preEl = q('[data-kt-pre]'), scale = q('.kt-now__scale');
+    if (preEl) preEl.textContent = lv ? 'Ja rakstīsiet tagad, atbildēšu ne vēlāk kā' : 'If you write now, I will reply by';
+    var sec = function () {
+      if (!nowF) return;
+      var d = new Date();
+      if (tEl) tEl.textContent = nowF.format(d);
+      if (scale && partF) {
+        var p = {}; partF.formatToParts(d).forEach(function (x) { p[x.type] = +x.value; });
+        var h = (p.hour % 24) + p.minute / 60 + p.second / 3600;
+        scale.style.setProperty('--kt-now', (h / 48 * 100).toFixed(3) + '%');
+        scale.style.setProperty('--kt-by', ((h + 24) / 48 * 100).toFixed(3) + '%');
+      }
+    };
     var tick = function () {
       var p = {};
       fmt.formatToParts(new Date(Date.now() + 24 * 3600 * 1000)).forEach(function (x) { p[x.type] = x.value; });
       if (!p.weekday || !p.hour) return;
-      var t = p.hour + ':' + p.minute;
-      txt.textContent = lv ? 'Ja rakstīsiet tagad, atbildēšu ne vēlāk kā ' + p.weekday + ', ' + t + '.'
-        : 'If you write now, I will reply by ' + p.weekday + ', ' + t + ' (Riga time).';
+      var t = p.weekday + ', ' + p.hour + ':' + p.minute;
+      txt.textContent = lv ? 'Atbilde ne vēlāk kā ' + t + ' (Rīgas laiks).' : 'Reply by ' + t + ' (Riga time).';
+      if (byEl) byEl.textContent = t;
+      if (dEl && dayF) dEl.textContent = dayF.format(new Date());
     };
+    sec(); setInterval(sec, 1000);
     if (fmt) { tick(); setInterval(tick, 60000); }
+    if (hero) hero.classList.add('is-live');
   }
 
   /* ---------- kopēt ---------- */

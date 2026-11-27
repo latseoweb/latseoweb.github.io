@@ -22,7 +22,7 @@
     var devS = document.getElementById('dev-title'), seoS = document.getElementById('seo-title');
     if (!box || !devS || !seoS) return;
     devS = devS.closest('section'); seoS = seoS.closest('section');
-    var defs = [['all', T.all], ['dev', T.dev], ['seo', T.seo]], btns = [];
+    var defs = [['all', T.all], ['dev', T.dev], ['seo', T.seo]], btns = [], ov = document.querySelector('[data-pj-ix]');
     var grp = el('div', 'ix-chips'); grp.setAttribute('role', 'group'); grp.setAttribute('aria-label', T.group);
     var status = el('p', 'ix-sr'); status.setAttribute('role', 'status');
     var cnt = function (s) { return s.querySelectorAll('.proof:not(.proof--next)').length; },
@@ -32,6 +32,10 @@
       b.appendChild(el('span', 'ix-chip__n', String(counts[d[0]])));
       b.setAttribute('aria-pressed', d[0] === 'all' ? 'true' : 'false');
       b.addEventListener('click', function () { apply(d[0]); });
+      /* čipa priekšskatījums hero pārskatā: kuri projekti paliks redzami */
+      var peek = function () { if (ov) ov.setAttribute('data-show', d[0]); }, unpeek = function () { if (ov) ov.setAttribute('data-show', cur); };
+      b.addEventListener('pointerenter', peek); b.addEventListener('pointerleave', unpeek);
+      b.addEventListener('focus', peek); b.addEventListener('blur', unpeek);
       btns.push(b); grp.appendChild(b);
     });
     box.appendChild(grp); box.appendChild(status);
@@ -60,6 +64,7 @@
         }
       });
       cur = k;
+      if (ov) ov.setAttribute('data-show', k);
       btns.forEach(function (b, i) { b.setAttribute('aria-pressed', defs[i][0] === k ? 'true' : 'false'); });
       var n = 0;
       [devS, seoS].forEach(function (s, i) {
@@ -141,6 +146,15 @@
     }, {threshold: 0.25}).observe(f);
   }
 
+  /* hero pārskats: klikšķu joslas izaug pēc ielādes */
+  function heroBars() {
+    var ov = document.querySelector('[data-pj-ix]');
+    if (!ov || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    ov.classList.add('is-pre');
+    setTimeout(function () { ov.classList.remove('is-pre'); }, 250);
+  }
+
+  heroBars();
   filters();
   tryCard();
   caseFig();

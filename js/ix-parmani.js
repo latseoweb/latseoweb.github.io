@@ -79,7 +79,7 @@
     };
     var plot = gsc.querySelector('[data-plot]'), read = gsc.querySelector('[data-read]');
     gsc.hidden = false;
-    var VW = Math.round(Math.max(320, Math.min(600, plot.clientWidth || 600))), VH = VW < 450 ? 210 : 230, L = 40, R = 6, T = 10, B = 44; /* B: x ass + klikšķu josla */
+    var VW = Math.round(Math.max(320, Math.min(600, plot.clientWidth || 600))), VH = VW < 450 ? 210 : 230, L = 50, R = 6, T = 10, B = 44; /* B: x ass + klikšķu josla */
     var max = 0; W.forEach(function (w) { max = Math.max(max, w.impressions); });
     var step = 1000, top = Math.ceil(max / step) * step;
     var pw = VW - L - R, ph = VH - T - B, bw = pw / W.length;

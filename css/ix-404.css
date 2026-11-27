@@ -22,7 +22,7 @@
 .pz__pc .l{fill:none;stroke:var(--ln);stroke-width:1.5;vector-effect:non-scaling-stroke}
 .pz__pc .f{fill:var(--mk)}
 .pz__pc .d{fill:none;stroke:rgba(147,180,211,.6);vector-effect:non-scaling-stroke}
-.pz__pc em{position:absolute;left:4px;top:2px;font:500 10px/1 var(--ff-mono);font-style:normal;color:var(--mk);background:rgba(11,31,51,.75);padding:1px 3px}
+.pz__pc em{position:absolute;left:4px;top:2px;font:500 12px/1 var(--ff-mono);font-style:normal;color:var(--mk);background:rgba(11,31,51,.75);padding:1px 3px}
 .pz__pc.is-set em{color:var(--mint)}
 .pz__pc[data-k=btn]{background:var(--sig);border-color:var(--sig)}
 .pz__pc[data-k=btn].is-set{background:var(--mint);border-color:var(--mint)}
@@ -46,13 +46,13 @@
 .pz em{font-style:normal}
 
 /* pārlūka josla ar pieprasīto adresi un 404 statusu; paplāte apakšā */
-.pz__bar{position:absolute;left:0;right:0;top:0;height:7.5%;display:flex;align-items:center;gap:.5rem;padding:0 .6rem;border-bottom:1px solid rgba(147,180,211,.4);background:var(--n2);font:500 .6875rem/1 var(--ff-mono);color:var(--ln)}
+.pz__bar{position:absolute;left:0;right:0;top:0;height:7.5%;display:flex;align-items:center;gap:.5rem;padding:0 .6rem;border-bottom:1px solid rgba(147,180,211,.4);background:var(--n2);font:500 .75rem/1 var(--ff-mono);color:var(--ln)}
 .pz__bar i{flex:none;width:7px;height:7px;background:var(--sig)}
 .pz__bar span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pz__bar em{flex:none;padding:2px 5px;background:var(--sig);color:var(--n);font-weight:600}
 .pz__stage.is-won .pz__bar i,.pz__stage.is-won .pz__bar em{background:var(--mint)}
 .pz__tray{position:absolute;left:0;right:0;top:60%;bottom:0;border-top:1px dashed rgba(147,180,211,.45);background:rgba(6,18,31,.35);pointer-events:none}
-.pz__tray{font:500 .625rem/1 var(--ff-mono);color:rgba(147,180,211,.75);padding:4px 6px;text-align:left;letter-spacing:.04em}
+.pz__tray{font:500 .75rem/1 var(--ff-mono);color:rgba(147,180,211,.75);padding:4px 6px;text-align:left;letter-spacing:.04em}
 .pz__stage.is-won .pz__tray{border-top-color:transparent;color:transparent}
 .pz__il{margin:.25rem 0 0;font:var(--fs-xs)/1.2 var(--ff-mono);color:var(--muted)}
 .nf .ty-box{padding-top:0}
