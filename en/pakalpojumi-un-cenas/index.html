@@ -25,6 +25,7 @@
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
+  <link rel="stylesheet" href="/css/ix-cenas.css">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -138,7 +139,7 @@
    "about": {
     "@id": "https://latseo.com/#org"
    },
-   "dateModified": "2026-11-27",
+   "dateModified": "2026-11-28",
    "breadcrumb": {
     "@id": "https://latseo.com/en/pakalpojumi-un-cenas/#breadcrumb"
    }
@@ -312,6 +313,16 @@
     <li><a href="#pec-palaisanas">Costs after launch</a></li>
     <li><a href="#kas-ietekme">What affects the price</a></li>
   </ol>
+  <div class="ix-est" id="ix-est" hidden>
+    <button type="button" class="ix-est__bar" aria-expanded="false" aria-controls="ix-est-body"><span class="ix-est__bar-t">Your estimate</span><span class="ix-est__bar-s" data-ix="barsum"></span></button>
+    <div class="ix-est__body" id="ix-est-body">
+      <p class="ix-est__h">Your estimate <span class="ix-est__n" data-ix="count">0</span></p>
+      <p class="ix-est__hint" data-ix="hint">Tick rows in the tables and they will appear here.</p>
+      <ul class="ix-est__list" data-ix="list"></ul>
+      <dl class="ix-est__tot" data-ix="tot" aria-live="polite"></dl><p class="ix-est__vat" data-ix="vat">excl. VAT</p>
+      <div class="ix-est__act"><a class="btn btn--dark" href="#pieteikties" data-ix="send"></a><button type="button" class="ix-est__clear" data-ix="clear"></button></div>
+    </div>
+  </div>
   <a class="rail__calc sheet" href="/en/majaslapas-izstrade/#calculator" data-nosnippet><span class="rail__calc-title">An approximate price in under a minute</span><span class="rail__calc-text">Choose a package and add-ons, and the calculator adds up the total.</span><span class="post-item__more">Open the calculator</span></a>
 </div></aside>
 
@@ -323,9 +334,9 @@
       <table class="table">
         <thead><tr><th>Service</th><th>What is included</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td data-label="Service"><strong>Video audit</strong></td><td data-label="What is included">Personal screen recording within 24 h: main technical errors, keyword opportunities, a look at competitors</td><td data-label="Price" class="num"><strong>€0</strong></td></tr>
-          <tr><td data-label="Service"><strong>SEO audit</strong></td><td data-label="What is included">Full technical, content and link profile analysis of the website with a detailed list of recommendations</td><td data-label="Price" class="num"><strong>from €150</strong></td></tr>
-          <tr><td data-label="Service"><strong>Monthly SEO</strong></td><td data-label="What is included">Technical SEO, content optimisation, link building, monitoring and a monthly report</td><td data-label="Price" class="num"><strong>from €300/month</strong></td></tr>
+          <tr data-k="seo-video"><td><strong>Video audit</strong></td><td>Personal screen recording within 24 h: main technical errors, keyword opportunities, a look at competitors</td><td class="num"><strong>€0</strong></td></tr>
+          <tr data-k="seo-audit"><td><strong>SEO audit</strong></td><td>Full technical, content and link profile analysis of the website with a detailed list of recommendations</td><td class="num"><strong>from €150</strong></td></tr>
+          <tr data-k="seo-month"><td><strong>Monthly SEO</strong></td><td>Technical SEO, content optimisation, link building, monitoring and a monthly report</td><td class="num"><strong>from €300/month</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -341,9 +352,9 @@
       <table class="table">
         <thead><tr><th>Package</th><th>What is included</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td data-label="Package"><strong>One-page website</strong><br><span class="muted small">3–5 working days</span></td><td data-label="What is included">Custom design, up to 5 sections</td><td data-label="Price" class="num"><strong>from €449</strong></td></tr>
-          <tr><td data-label="Package"><strong>Business website</strong><br><span class="muted small">2–4 weeks</span></td><td data-label="What is included">Custom design, unlimited number of sections</td><td data-label="Price" class="num"><strong>from €799</strong></td></tr>
-          <tr><td data-label="Package"><strong>Online store</strong><br><span class="muted small">timeline depends on scope</span></td><td data-label="What is included">Product catalogue, cart and ordering, payment integration</td><td data-label="Price" class="num"><strong>from €1,299</strong></td></tr>
+          <tr data-k="pkg-card"><td><strong>One-page website</strong><br><span class="muted small">3–5 working days</span></td><td>Custom design, up to 5 sections</td><td class="num"><strong>from €449</strong></td></tr>
+          <tr data-k="pkg-biz"><td><strong>Business website</strong><br><span class="muted small">2–4 weeks</span></td><td>Custom design, unlimited number of sections</td><td class="num"><strong>from €799</strong></td></tr>
+          <tr data-k="pkg-shop"><td><strong>Online store</strong><br><span class="muted small">timeline depends on scope</span></td><td>Product catalogue, cart and ordering, payment integration</td><td class="num"><strong>from €1,299</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -359,23 +370,23 @@
       <table class="table table--kv">
         <thead><tr><th>Option</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td data-label="Option">Logo design (3 options)</td><td data-label="Price" class="num">€289</td></tr>
-          <tr><td data-label="Option">Online store core features (catalogue, cart, ordering, payments)</td><td data-label="Price" class="num">€599</td></tr>
-          <tr><td data-label="Option">Customer accounts and registration</td><td data-label="Price" class="num">€299</td></tr>
-          <tr><td data-label="Option">Product filters and sorting</td><td data-label="Price" class="num">€169</td></tr>
-          <tr><td data-label="Option">Discount module</td><td data-label="Price" class="num">€69</td></tr>
-          <tr><td data-label="Option">Homepage slideshow</td><td data-label="Price" class="num">€45</td></tr>
-          <tr><td data-label="Option">Multi-language support</td><td data-label="Price" class="num">€42</td></tr>
-          <tr><td data-label="Option">Blog / news section</td><td data-label="Price" class="num">€42</td></tr>
-          <tr><td data-label="Option">Reviews section</td><td data-label="Price" class="num">€42</td></tr>
-          <tr><td data-label="Option">Survey</td><td data-label="Price" class="num">€42</td></tr>
-          <tr><td data-label="Option">On-site search</td><td data-label="Price" class="num">€42</td></tr>
-          <tr><td data-label="Option">Video gallery</td><td data-label="Price" class="num">€39</td></tr>
-          <tr><td data-label="Option">Photo gallery</td><td data-label="Price" class="num">€35</td></tr>
-          <tr><td data-label="Option">Newsletter sign-up</td><td data-label="Price" class="num">€35</td></tr>
-          <tr><td data-label="Option">Contact form</td><td data-label="Price" class="num">€25</td></tr>
-          <tr><td data-label="Option">Social media integration</td><td data-label="Price" class="num">€25</td></tr>
-          <tr><td data-label="Option">Sitemap</td><td data-label="Price" class="num">€25</td></tr>
+          <tr data-k="ad-logo"><td>Logo design (3 options)</td><td class="num">€289</td></tr>
+          <tr data-k="ad-shop"><td>Online store core features (catalogue, cart, ordering, payments)</td><td class="num">€599</td></tr>
+          <tr data-k="ad-accounts"><td>Customer accounts and registration</td><td class="num">€299</td></tr>
+          <tr data-k="ad-filters"><td>Product filters and sorting</td><td class="num">€169</td></tr>
+          <tr data-k="ad-discount"><td>Discount module</td><td class="num">€69</td></tr>
+          <tr data-k="ad-slider"><td>Homepage slideshow</td><td class="num">€45</td></tr>
+          <tr data-k="ad-lang"><td>Multi-language support</td><td class="num">€42</td></tr>
+          <tr data-k="ad-blog"><td>Blog / news section</td><td class="num">€42</td></tr>
+          <tr data-k="ad-reviews"><td>Reviews section</td><td class="num">€42</td></tr>
+          <tr data-k="ad-survey"><td>Survey</td><td class="num">€42</td></tr>
+          <tr data-k="ad-search"><td>On-site search</td><td class="num">€42</td></tr>
+          <tr data-k="ad-video"><td>Video gallery</td><td class="num">€39</td></tr>
+          <tr data-k="ad-photo"><td>Photo gallery</td><td class="num">€35</td></tr>
+          <tr data-k="ad-news"><td>Newsletter sign-up</td><td class="num">€35</td></tr>
+          <tr data-k="ad-form"><td>Contact form</td><td class="num">€25</td></tr>
+          <tr data-k="ad-social"><td>Social media integration</td><td class="num">€25</td></tr>
+          <tr data-k="ad-sitemap"><td>Sitemap</td><td class="num">€25</td></tr>
         </tbody>
       </table>
     </div>
@@ -389,10 +400,10 @@
       <table class="table table--kv">
         <thead><tr><th>Item</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td data-label="Item">Hosting and maintenance — website</td><td data-label="Price" class="num">€10/month</td></tr>
-          <tr><td data-label="Item">Hosting and maintenance — online store</td><td data-label="Price" class="num">€15/month</td></tr>
-          <tr><td data-label="Item">Domain registration (.lv)</td><td data-label="Price" class="num">€20/year</td></tr>
-          <tr><td data-label="Item">Edits and changes after hand-over</td><td data-label="Price" class="num">€25/h</td></tr>
+          <tr data-k="run-host"><td>Hosting and maintenance — website</td><td class="num">€10/month</td></tr>
+          <tr data-k="run-shop"><td>Hosting and maintenance — online store</td><td class="num">€15/month</td></tr>
+          <tr data-k="run-domain"><td>Domain registration (.lv)</td><td class="num">€20/year</td></tr>
+          <tr data-k="run-hour"><td>Edits and changes after hand-over</td><td class="num">€25/h</td></tr>
         </tbody>
       </table>
     </div>
@@ -424,6 +435,19 @@
       <p class="small" style="margin-top:1.25rem"><a class="text-link" href="/en/blogs/how-much-does-a-website-cost/">How much does a website cost in 2026: a detailed explanation</a></p>
     </div>
   </div>
+  <div class="container">
+    <div class="ix-f" id="ix-f" hidden data-nosnippet>
+      <p class="ix-f__title">Try it: what each factor adds to the price list</p>
+      <p class="ix-f__intro">Switch a factor on to see which price-list lines it adds. The amounts come only from the tables above.</p>
+      <div class="ix-f__grid">
+        <fieldset class="ix-f__grp" data-single="1"><legend>Package type</legend><div class="ix-f__btns"><button type="button" class="ix-f__btn" data-k="pkg-card" aria-pressed="false"><span>One-page site</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="pkg-biz" aria-pressed="false"><span>Business website</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="pkg-shop" aria-pressed="false"><span>Online store</span><b data-ix="p"></b></button></div></fieldset>
+        <fieldset class="ix-f__grp" data-single="0"><legend>Add-ons</legend><div class="ix-f__btns"><button type="button" class="ix-f__btn" data-k="ad-lang" aria-pressed="false"><span>Languages</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="ad-blog" aria-pressed="false"><span>Blog</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="ad-filters" aria-pressed="false"><span>Filters</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="ad-accounts" aria-pressed="false"><span>Customer accounts</span><b data-ix="p"></b></button></div></fieldset>
+        <fieldset class="ix-f__grp" data-single="0"><legend>Scope of work (SEO)</legend><div class="ix-f__btns"><button type="button" class="ix-f__btn" data-k="seo-video" aria-pressed="false"><span>Video audit</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="seo-audit" aria-pressed="false"><span>SEO audit</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="seo-month" aria-pressed="false"><span>Monthly SEO</span><b data-ix="p"></b></button></div></fieldset>
+      </div>
+      <div class="ix-f__out" aria-live="polite"><ul class="ix-f__list" data-ix="flist"></ul><dl class="ix-f__tot" data-ix="ftot"></dl><button type="button" class="btn btn--ghost" data-ix="fadd">Add to my estimate</button></div>
+      <p class="ix-f__note">Website size and niche competition have no separate line in the price list: for SEO I send the exact amount after a call or an audit.</p>
+    </div>
+  </div>
 </section>
 
 <section class="section section--white" aria-labelledby="faq-title">
@@ -447,7 +471,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Get an exact quote</h2>
       <p class="lead">Describe what you need. I will reply within 24 hours with an exact price or the questions that determine it.</p>
-      <div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Reply within 24 hours</strong>With first recommendations or an invitation to a short call.</li><li><strong>A short call</strong>We clarify your needs, scope and timeline.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;if(a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8)s.hidden=true}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
+      <link rel="stylesheet" href="/css/ix-form.css"><script src="/js/ix-form.js" defer></script><div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Reply within 24 hours</strong>With first recommendations or an invitation to a short call.</li><li><strong>A short call</strong>We clarify your needs, scope and timeline.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true" data-m="web" data-draw="[&quot;Illustration: a new website drawing — structure before design.&quot;, &quot;Illustration: SEO for an existing website — the goal is a rising line, no figures promised.&quot;, &quot;Illustration: an audit — a magnifier over a page.&quot;, &quot;Illustration: a blank page with dimension lines — tell me what you need.&quot;]"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span><svg class="after__draw" viewBox="0 0 160 100" hidden focusable="false"><g data-m="web"><rect x="10" y="8" width="140" height="84"/><path d="M10 20H150"/><path d="M16 14h22"/><rect x="16" y="26" width="128" height="30"/><path d="M16 26l128 30M144 26L16 56"/><rect x="16" y="62" width="38" height="24"/><rect x="61" y="62" width="38" height="24"/><rect x="106" y="62" width="38" height="24"/></g><g data-m="seo"><path class="s" d="M18 10V86H148"/><path d="M18 62H148M18 38H148" class="g"/><path class="a" d="M22 80L50 70L74 74L100 48L124 38L146 18"/><rect class="p" x="143" y="15" width="6" height="6"/></g><g data-m="audit"><rect x="26" y="8" width="70" height="84"/><path d="M34 22h40M34 32h54M34 42h48M34 52h54M34 62h30"/><circle class="a" cx="102" cy="58" r="22"/><path class="a" d="M118 74L144 92"/></g><g data-m="other"><rect x="26" y="24" width="108" height="60"/><path d="M26 14H134M26 10v8M134 10v8"/><path d="M14 24V84M10 24h8M10 84h8"/><path d="M26 92H134" class="g"/></g></svg></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8}if(o()){s.classList.add("after__sheet--sm");if(o())s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
     </div>
     <div class="form-panel"><form class="contact-form" action="#" method="POST" data-redirect="/en/thank-you/"><input type="hidden" name="page_source" value="Pricing page">
 <div class="contact-form__row">
@@ -463,6 +487,8 @@
 <p class="contact-form__hint">I reply within 24 hours. No obligation.</p></form></div>
   </div>
 </section>
+
+<script src="/js/ix-cenas.js" defer></script>
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">

@@ -25,6 +25,7 @@
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
+  <link rel="stylesheet" href="/css/ix-lokalais.css">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -144,7 +145,7 @@
    "about": {
     "@id": "https://latseo.com/#org"
    },
-   "dateModified": "2026-11-27",
+   "dateModified": "2026-11-28",
    "breadcrumb": {
     "@id": "https://latseo.com/en/lokalais-seo/#breadcrumb"
    }
@@ -270,16 +271,65 @@
   </div>
 </section>
 
+<section class="section section--muted" aria-labelledby="ixl-title">
+  <div class="container">
+    <div class="section__header">
+<h2 class="section__title" id="ixl-title">Try it: what shapes your place on the map</h2>
+      <p class="section__description">For local results Google names three factors: relevance, distance and prominence. Drag your business around the map and change the number of reviews.</p>
+    </div>
+    <div class="ixl" data-ixl data-lang="en">
+      <div>
+        <p class="ixl__tag">Illustration — Google does not publish its exact formula</p>
+        <div class="ixl__map">
+          <svg class="ixl__svg" viewBox="0 0 600 400" role="img" aria-label="Stylised map with a street grid and a river: a search point, five competitor markers and a draggable marker for your business. Not a real map." xmlns="http://www.w3.org/2000/svg">
+            <g class="ixl__st"><path d="M0 40H600"/><path d="M0 95H600"/><path d="M0 150H600"/><path d="M0 205H600"/><path d="M0 260H600"/><path d="M0 315H600"/><path d="M0 365H600"/><path d="M45 0V400"/><path d="M105 0V400"/><path d="M170 0V400"/><path d="M235 0V400"/><path d="M300 0V400"/><path d="M365 0V400"/><path d="M430 0V400"/><path d="M495 0V400"/><path d="M555 0V400"/></g>
+            <g class="ixl__st ixl__st--m"><path d="M0 330L260 0"/><path d="M600 40L330 400"/></g>
+            <path class="ixl__river" d="M-10 255C110 200 200 310 320 255S520 130 610 175"/>
+            <path class="ixl__river2" d="M-10 255C110 200 200 310 320 255S520 130 610 175"/>
+            <line class="ixl__link" data-link x1="300" y1="200" x2="250" y2="235"/>
+            <g class="ixl__pin" data-c="A" data-x="210" data-y="150" data-r="120" data-m="1" transform="translate(210 150)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">A</text></g><g class="ixl__pin" data-c="B" data-x="400" data-y="120" data-r="45" data-m="1" transform="translate(400 120)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">B</text></g><g class="ixl__pin" data-c="C" data-x="330" data-y="290" data-r="160" data-m="1" transform="translate(330 290)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">C</text></g><g class="ixl__pin ixl__pin--x" data-c="D" data-x="160" data-y="280" data-r="30" data-m="0" transform="translate(160 280)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">D</text></g><g class="ixl__pin" data-c="E" data-x="470" data-y="240" data-r="80" data-m="1" transform="translate(470 240)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">E</text></g>
+            <g data-sp data-x="300" data-y="200"><path class="ixl__sp" d="M280 200H320M300 180V220"/><circle class="ixl__sp" cx="300" cy="200" r="7"/><text class="ixl__spt" x="318" y="180">Search point</text></g>
+            <g class="ixl__you" data-you data-x="250" data-y="235" role="button" aria-roledescription="draggable marker" aria-label="Your business on the map. Move it with the arrow keys or by dragging." transform="translate(250 235)"><circle class="ixl__hit" r="40"/><circle class="ixl__ring" r="30"/><rect class="ixl__body" x="-19" y="-19" width="38" height="38"/><text class="ixl__lbl" y="42" style="fill:var(--accent-ink)">Your business</text></g>
+          </svg>
+        </div>
+        <p class="ixl__cap">A schematic drawing, not a real map. The review counts and categories of competitors A–E are made up. D has a category that does not match the search (dashed frame).</p>
+      </div>
+      <div class="ixl__panel" data-panel hidden>
+        <div class="ixl__ctl">
+          <label for="ixl-rev-en"><span>Number of reviews</span><output data-rev-out>10</output></label>
+          <input type="range" id="ixl-rev-en" data-rev min="0" max="200" step="1" value="10">
+        </div>
+        <button type="button" class="ixl__sw" data-cat aria-pressed="true"><i></i><span>Category matches the search: <span data-cat-v>yes</span></span></button>
+        <div>
+          <p class="ixl__h">Map pack (top 3)</p>
+          <ol class="ixl__pack" data-pack></ol>
+          <p class="ixl__rank" data-rank aria-live="polite"></p>
+        </div>
+        <div>
+          <p class="ixl__h">Your business factors (0–100)</p>
+          <div class="ixl__bars">
+            <div class="ixl__bar"><b>Relevance</b><i data-b="rel"></i><span>0</span></div>
+            <div class="ixl__bar"><b>Distance</b><i data-b="dist"></i><span>0</span></div>
+            <div class="ixl__bar"><b>Prominence</b><i data-b="prom"></i><span>0</span></div>
+            <div class="ixl__bar"><b>Total</b><i data-b="tot"></i><span>0</span></div>
+          </div>
+        </div>
+        <p class="ixl__note">Toy model: total = (relevance + distance + prominence) / 3, equal weights. Relevance: category matches — 100, does not — 35. Distance falls with the gap from the search point. Prominence grows with the number of reviews, but ever more slowly. The numbers are assumptions for teaching.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section section--ink" aria-labelledby="process-title">
   <div class="container">
     <div class="section__header">
 <h2 class="section__title" id="process-title">How local SEO is implemented</h2>
     </div>
-    <ol class="steps steps--row">
-      <li><strong>Market and competitor audit</strong>I find your main competitors on Google Maps and analyse their reviews and keywords in your region.</li>
-      <li><strong>Profile and website optimisation</strong>I restructure your Google Business Profile and make changes to the website content.</li>
-      <li><strong>Directories and reviews</strong>I register the business in local directories with consistent details and set up review collection.</li>
-      <li><strong>Monitoring</strong>I track visibility across different parts of the city and send a report every month.</li>
+    <ol class="steps steps--row" data-ixt data-lang="en">
+      <li><strong>Market and competitor audit</strong><span class="ixt__t" id="ixt-en-0">I find your main competitors on Google Maps and analyse their reviews and keywords in your region.</span><div class="ixt__bp" aria-hidden="true"><p class="ixt__tag">Illustration</p><div class="ixt__tbl"><span></span><span>reviews</span><span>category</span><b class="">Competitor A</b><i class="ixt__bar" style="--w:90%"></i><i class="ixt__ck"></i><b class="">Competitor B</b><i class="ixt__bar" style="--w:60%"></i><i class="ixt__ck"></i><b class="">Competitor C</b><i class="ixt__bar" style="--w:30%"></i><i class="ixt__ck is-no"></i><b class="is-you">Your business</b><i class="ixt__bar is-you" style="--w:30%"></i><i class="ixt__ck"></i></div></div></li>
+      <li><strong>Profile and website optimisation</strong><span class="ixt__t" id="ixt-en-1">I restructure your Google Business Profile and make changes to the website content.</span><div class="ixt__bp" aria-hidden="true"><p class="ixt__tag">Illustration</p><div class="ixt__two"><div class="ixt__box"><span>Google Business Profile</span><ul><li>category</li><li>services</li><li>photos</li><li>opening hours</li></ul></div><div class="ixt__box"><span>Website</span><ul><li>service + place</li><li>heading</li><li>address, map</li></ul></div></div></div></li>
+      <li><strong>Directories and reviews</strong><span class="ixt__t" id="ixt-en-2">I register the business in local directories with consistent details and set up review collection.</span><div class="ixt__bp" aria-hidden="true"><p class="ixt__tag">Illustration</p><div class="ixt__cat"><div class="ixt__box"><span>Directory 1</span><ul><li>Name</li><li>Address</li><li>Phone</li></ul></div><div class="ixt__box"><span>Directory 2</span><ul><li>Name</li><li>Address</li><li>Phone</li></ul></div><div class="ixt__box"><span>Directory 3</span><ul><li>Name</li><li>Address</li><li>Phone</li></ul></div></div><p class="ixt__eq">identical everywhere</p><div class="ixt__rev"><span>reviews:</span><b>email</b><b>SMS</b><b>QR</b></div></div></li>
+      <li><strong>Monitoring</strong><span class="ixt__t" id="ixt-en-3">I track visibility across different parts of the city and send a report every month.</span><div class="ixt__bp" aria-hidden="true"><p class="ixt__tag">Illustration</p><div class="ixt__zones" role="presentation"><i class="is-on"></i><i class="is-on"></i><i class=""></i><i class="is-on"></i><i class="is-on"></i><i class=""></i><i class=""></i><i class="is-on"></i><i class=""></i></div><p class="ixt__lg">city zones — visible / not visible</p><p class="ixt__lg">monthly report</p></div></li>
     </ol>
   </div>
 </section>
@@ -289,9 +339,15 @@
     <div>
 <h2 class="section__title" id="client-title">A car detailing company in Riga</h2>
       <p class="lead">Since March 2026 I have been fixing the website's technical foundation and its Google Business Profile. In August–October, Google clicks were 31% higher than in the same months a year earlier (2,469 vs 1,891).</p>
+            <div class="ixc" data-ixc data-lang="en" data-prev="1,891" data-now="2,469" data-dnow="+31% vs the same months a year earlier" data-dprev="the same months a year earlier — the baseline">
+        <p class="ixc__h">Google clicks, August–October</p>
+        <div class="ixc__seg" role="group" aria-label="Comparison period" hidden><button type="button" data-y="prev" aria-pressed="false">A year earlier</button><button type="button" data-y="now" aria-pressed="true">Now</button></div>
+        <div class="ixc__bar" style="--w:100%;--m:76.6%"><i class="ixc__fill"></i><i class="ixc__mk"><span>a year earlier: 1,891</span></i></div>
+        <p class="ixc__v" aria-live="polite"><b data-val>2,469</b> clicks <span data-d>+31% vs the same months a year earlier</span></p>
+      </div>
       <p style="margin-top:1rem"><a href="/en/projekti/" class="text-link">All projects</a></p>
     </div>
-    <div><a class="proof" href="https://www.autoestetika.lv/" target="_blank" rel="noopener"><img src="/assets/images/work/autoestetika.webp" srcset="/assets/images/work/autoestetika-480.webp 480w, /assets/images/work/autoestetika.webp 960w" sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px" alt="autoestetika.lv homepage" width="960" height="600" loading="lazy"><span class="proof__body"><span class="proof__name">autoestetika.lv</span><span class="proof__tag">SEO and Google Business Profile · car detailing in Riga · since March 2026</span><span class="proof__metric">+31 %<small>Google clicks, Aug–Oct 2026 vs 2025</small></span></span></a></div>
+    <div><div class="pf" data-pf><a class="proof" href="https://www.autoestetika.lv/" target="_blank" rel="noopener"><span class="pf__frame"><span class="pf__stage"><img src="/assets/images/work/autoestetika.webp" srcset="/assets/images/work/autoestetika-480.webp 480w, /assets/images/work/autoestetika.webp 960w" sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px" alt="autoestetika.lv homepage" width="960" height="600" loading="lazy"></span></span><span class="proof__body"><span class="proof__name">autoestetika.lv</span><span class="proof__tag">SEO and Google Business Profile · car detailing in Riga · since March 2026</span><span class="proof__metric">+31 %<small>Google clicks, Aug–Oct 2026 vs 2025</small></span></span></a></div></div>
   </div>
 </section>
 
@@ -316,7 +372,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Local visibility audit</h2>
       <p class="lead">Enter your business name and city in the “About your project” field. I will check your Google Business Profile, your competitors on the map and your website's local content.</p>
-      <div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Video audit within 24 hours</strong>A screen recording with your website&#x27;s main errors and recommendations.</li><li><strong>A short call</strong>If you want to continue, we discuss what to do first.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;if(a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8)s.hidden=true}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
+      <link rel="stylesheet" href="/css/ix-form.css"><script src="/js/ix-form.js" defer></script><div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Video audit within 24 hours</strong>A screen recording with your website&#x27;s main errors and recommendations.</li><li><strong>A short call</strong>If you want to continue, we discuss what to do first.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true" data-m="web" data-draw="[&quot;Illustration: a new website drawing — structure before design.&quot;, &quot;Illustration: SEO for an existing website — the goal is a rising line, no figures promised.&quot;, &quot;Illustration: an audit — a magnifier over a page.&quot;, &quot;Illustration: a blank page with dimension lines — tell me what you need.&quot;]"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span><svg class="after__draw" viewBox="0 0 160 100" hidden focusable="false"><g data-m="web"><rect x="10" y="8" width="140" height="84"/><path d="M10 20H150"/><path d="M16 14h22"/><rect x="16" y="26" width="128" height="30"/><path d="M16 26l128 30M144 26L16 56"/><rect x="16" y="62" width="38" height="24"/><rect x="61" y="62" width="38" height="24"/><rect x="106" y="62" width="38" height="24"/></g><g data-m="seo"><path class="s" d="M18 10V86H148"/><path d="M18 62H148M18 38H148" class="g"/><path class="a" d="M22 80L50 70L74 74L100 48L124 38L146 18"/><rect class="p" x="143" y="15" width="6" height="6"/></g><g data-m="audit"><rect x="26" y="8" width="70" height="84"/><path d="M34 22h40M34 32h54M34 42h48M34 52h54M34 62h30"/><circle class="a" cx="102" cy="58" r="22"/><path class="a" d="M118 74L144 92"/></g><g data-m="other"><rect x="26" y="24" width="108" height="60"/><path d="M26 14H134M26 10v8M134 10v8"/><path d="M14 24V84M10 24h8M10 84h8"/><path d="M26 92H134" class="g"/></g></svg></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8}if(o()){s.classList.add("after__sheet--sm");if(o())s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
     </div>
     <div class="form-panel"><form class="contact-form" action="#" method="POST" data-redirect="/en/thank-you/"><input type="hidden" name="page_source" value="Local SEO">
 <div class="contact-form__row">
@@ -332,6 +388,7 @@
 <p class="contact-form__hint">I reply within 24 hours. No obligation.</p></form></div>
   </div>
 </section>
+<script src="/js/ix-lokalais.js" defer></script>
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">

@@ -17,7 +17,7 @@
 .rd__svg .t{font:500 10px var(--ff-mono);fill:var(--ink)}
 .rd__no,.rd__yes{display:none}
 .rd[data-m="0"] .rd__no,.rd[data-m="1"] .rd__yes{display:inline}
-.rd__cap{margin:.6rem 0 0;font-family:var(--ff-mono);font-size:var(--fs-sm);border-left:2px solid var(--accent);padding-left:.75rem;min-height:3em}
+.rd__cap{margin:.6rem 0 0;font-family:var(--ff-mono);font-size:var(--fs-sm);min-height:3em}
 .rd__il{margin:.3rem 0 0;font:var(--fs-xs)/1.2 var(--ff-mono);color:var(--muted)}
 
 .facts [data-go]{cursor:pointer;padding:.5rem .6rem .6rem;margin:-.5rem -.6rem;border:1px dashed transparent;min-height:44px}

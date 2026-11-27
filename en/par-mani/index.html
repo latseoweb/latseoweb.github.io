@@ -25,6 +25,7 @@
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
+  <link rel="stylesheet" href="/css/ix-parmani.css">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -138,7 +139,7 @@
    "about": {
     "@id": "https://latseo.com/#org"
    },
-   "dateModified": "2026-11-16",
+   "dateModified": "2026-11-28",
    "breadcrumb": {
     "@id": "https://latseo.com/en/par-mani/#breadcrumb"
    }
@@ -183,18 +184,44 @@
 <section class="section section--white">
   <div class="container split">
     <div class="split__sticky">
-      <div class="facts facts--2">
-        <div><strong>2 years</strong><span>of experience in SEO and website development</span></div>
-        <div><strong>7</strong><span>websites built from scratch</span></div>
-        <div><strong>3</strong><span>SEO clients</span></div>
-        <div><strong>24 h</strong><span>video audit turnaround</span></div>
+      <div class="facts facts--2" data-facts data-hint="Tap a figure to see where it appears in the text.">
+        <div data-go="pm-sakums" data-l="See in the text: How I started"><strong>2 years</strong><span>of experience in SEO and website development</span></div>
+        <div data-go="pm-links" data-l="See in the text: Projects"><strong>7</strong><span>websites built from scratch</span></div>
+        <div data-go="pm-links" data-l="See in the text: Projects"><strong>3</strong><span>SEO clients</span></div>
+        <div data-go="pm-offer" data-l="See in the text: What I offer"><strong>24 h</strong><span>video audit turnaround</span></div>
       </div>
     </div>
     <div class="prose">
       <h2>How I started</h2>
-      <p>My first client was a company I used to work for. I built websites for it and, quite naturally, learned SEO along the way — because a website that Google does not show brings a business no customers. Today I am an official IT partner of Bratus.</p>
+      <p id="pm-sakums">My first client was a company I used to work for. I built websites for it and, quite naturally, learned SEO along the way — because a website that Google does not show brings a business no customers. Today I am an official IT partner of Bratus.</p>
       <h2>The mistake that changed my approach</h2>
       <p>I once changed a website's URL structure but did not notice that Google Ads were pointing to the old addresses. For four days the ads sent people to a 404 page, and the money paid for those clicks was spent without a single customer. Since then, before any technical change, I check every channel that leads to the site, and I plan every website so that its addresses will not need to change later.</p>
+      <figure class="rd" data-rd hidden>
+        <div class="rd__ctl" role="group" aria-label="Switch illustration">
+          <button type="button" class="rd__b" data-m="0" aria-pressed="true">Without redirects</button>
+          <button type="button" class="rd__b" data-m="1" aria-pressed="false">With redirects</button>
+        </div>
+        <svg class="rd__svg" viewBox="0 0 360 120" aria-hidden="true">
+          <rect class="n" x="6" y="30" width="72" height="34"/><text class="t" x="42" y="51" text-anchor="middle">Ad</text>
+          <path class="l" d="M78 47H106"/>
+          <rect class="n" x="106" y="30" width="84" height="34"/><text class="t" x="148" y="51" text-anchor="middle">Old URL</text>
+          <g class="rd__no">
+            <path class="l d" d="M190 47H218"/>
+            <rect class="n d" x="218" y="30" width="72" height="34"/><text class="t" x="254" y="51" text-anchor="middle">404</text>
+            <path class="s d" d="M214 26L294 68"/>
+            <path class="b" d="M218 84H290M218 80V88M254 80V88M290 80V88"/>
+            <text class="t" x="254" y="102" text-anchor="middle">four days</text>
+          </g>
+          <g class="rd__yes">
+            <path class="l a" d="M190 47H208"/>
+            <rect class="n a" x="208" y="34" width="34" height="26"/><text class="t" x="225" y="51" text-anchor="middle">301</text>
+            <path class="l a" d="M242 47H258"/>
+            <rect class="n a" x="258" y="30" width="96" height="34"/><text class="t" x="306" y="51" text-anchor="middle">New page</text>
+          </g>
+        </svg>
+        <figcaption class="rd__cap" aria-live="polite" data-c0="The ads sent people to a 404 page for four days." data-c1="With a 301 redirect the old address leads to the new page.">The ads sent people to a 404 page for four days.</figcaption>
+        <p class="rd__il">illustration</p>
+      </figure>
       <h2>How I work day to day</h2>
       <p>Every morning I open Google Search Console. I care about impressions and clicks for the whole domain, not just the position of a single keyword. I research keywords with Google Keyword Planner and look for technical errors with Screaming Frog and Ahrefs.</p>
       <p>When Google introduced AI Overviews, I started optimising pages so that they are also understandable to AI-generated answers (GEO).</p>
@@ -202,12 +229,13 @@
       <ul>
         <li><a href="/en/majaslapas-izstrade/">Website development with SEO</a> — from €449 (excl. VAT)</li>
         <li><a href="/en/seo-pakalpojumi-riga/">SEO services</a> — audit from €150, monthly SEO from €300/month</li>
-        <li><a href="/en/kontakti/">Request a free video audit</a> — within 24 hours</li>
+        <li id="pm-offer"><a href="/en/kontakti/">Request a free video audit</a> — within 24 hours</li>
       </ul>
-      <p><a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn profile</a> · <a href="/en/projekti/">Projects</a> · <a href="/en/kontakti/">Contact</a></p>
+      <p id="pm-links"><a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn profile</a> · <a href="/en/projekti/">Projects</a> · <a href="/en/kontakti/">Contact</a></p>
     </div>
   </div>
 </section>
+<script src="/js/ix-parmani.js" defer></script>
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">

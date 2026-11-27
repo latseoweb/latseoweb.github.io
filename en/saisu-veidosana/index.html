@@ -25,6 +25,7 @@
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
+  <link rel="stylesheet" href="/css/ix-saites.css">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -144,7 +145,7 @@
    "about": {
     "@id": "https://latseo.com/#org"
    },
-   "dateModified": "2026-11-27",
+   "dateModified": "2026-11-28",
    "breadcrumb": {
     "@id": "https://latseo.com/en/saisu-veidosana/#breadcrumb"
    }
@@ -248,6 +249,24 @@
       <article class="item"><h3 class="item__title">Local directories</h3><p class="item__text">Consistent business details in Latvian directories — this also helps local SEO.</p></article>
       <article class="item"><h3 class="item__title">A report on every link</h3><p class="item__text">Every month you receive a list of the links earned, their metrics and their impact on rankings.</p></article>
     </div>
+    <div class="ixk" data-ixk data-lang="en">
+      <div>
+        <p class="ixk__tag">Illustration</p>
+        <div class="ixk__box">
+          <svg class="ixk__svg" viewBox="0 0 600 380" role="img" aria-label="Schematic link network: your page in the centre, sources linking to it around it. Switchable between quality links and spam links. Not real data." xmlns="http://www.w3.org/2000/svg">
+            <g class="ixk__grid"><path d="M0 95H600M0 190H600M0 285H600M100 0V380M200 0V380M300 0V380M400 0V380M500 0V380"/></g>
+            <g data-layer></g>
+            <g class="ixk__me" data-me tabindex="0" role="button" aria-label="Your page. Move with the arrow keys or by dragging." transform="translate(300 190)"><circle class="ixk__hit" r="36"/><rect x="-22" y="-22" width="44" height="44"/><text y="42">Your page</text></g>
+          </svg>
+        </div>
+        <p class="ixk__cap">Drag the nodes. Illustration: source names are generic and the numbers are only the count of nodes in the drawing, not measurements. A quality network has a few relevant sources with thick links; a spam network has many tiny unrelated sources with tangled thin links.</p>
+      </div>
+      <div class="ixk__side" data-ctl hidden>
+        <div class="ixk__seg" role="group" aria-label="Link type"><button type="button" data-mode="q" aria-pressed="true">Quality links</button><button type="button" data-mode="s" aria-pressed="false">Spam links</button></div>
+        <dl class="ixk__out"><dt>Sources drawn</dt><dd data-v>5</dd><dt>Industry relevance</dt><dd data-v>—</dd><dt>Risk</dt><dd data-v>—</dd></dl>
+        <p class="ixk__status" data-status aria-live="polite"></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -261,6 +280,45 @@
       <p>Before building new links, I check which links the website already has. For example, in October 2026 the LatSEO website had links from more than 2,300 domains, mostly from automatically generated, unrelated sites. Links like these add no value, so the number of links on its own says nothing.</p>
       <p>Link profile analysis is part of a <a href="/en/tehniskais-seo/">full SEO audit</a> (from €150), while building new links is part of <a href="/en/seo-pakalpojumi-riga/">monthly SEO</a> (from €300/month).</p>
     </div>
+  </div>
+  <div class="container ixi" data-ixi data-lang="en">
+    <div class="ixi__head"><h3 class="ixi__h">Try a sample: keep or disavow?</h3><span class="ixi__tag">Illustration</span></div>
+    <p class="ixi__intro">Six made-up examples. Choose a decision for each link — then you will see how it would be judged in an audit.</p>
+    <ul class="ixi__list" aria-label="Link review list">
+      <li class="ixi__row" data-ans="keep">
+        <div><p class="ixi__dom">directory.example.lv</p><p class="ixi__d">Industry directory: business name, address and phone match your details, link from the business profile page.</p></div>
+        <div class="ixi__pick" role="group" aria-label="directory.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+        <p class="ixi__why"><span data-res></span><b>Keep.</b> The source fits the industry, the details match, and the link sits in a natural place.</p>
+      </li>
+      <li class="ixi__row" data-ans="keep">
+        <div><p class="ixi__dom">local-portal.example.lv</p><p class="ixi__d">An article on a local news portal that mentions the business with a link to the website.</p></div>
+        <div class="ixi__pick" role="group" aria-label="local-portal.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+        <p class="ixi__why"><span data-res></span><b>Keep.</b> A real mention in local media is exactly what Google looks for.</p>
+      </li>
+      <li class="ixi__row" data-ans="dis">
+        <div><p class="ixi__dom">forum-8812.example.lv</p><p class="ixi__d">Unrelated forum: hundreds of identical comments using the same keyword as the link text.</p></div>
+        <div class="ixi__pick" role="group" aria-label="forum-8812.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+        <p class="ixi__why"><span data-res></span><b>Disavow.</b> No connection to the industry and repeated anchor text — a typical sign of link spam.</p>
+      </li>
+      <li class="ixi__row" data-ans="keep">
+        <div><p class="ixi__dom">partner.example.lv</p><p class="ixi__d">A supplier's website: your business is listed in the partners section.</p></div>
+        <div class="ixi__pick" role="group" aria-label="partner.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+        <p class="ixi__why"><span data-res></span><b>Keep.</b> A genuine business relationship that also makes sense to a reader.</p>
+      </li>
+      <li class="ixi__row" data-ans="dis">
+        <div><p class="ixi__dom">links-for-money.example.lv</p><p class="ixi__d">A site that openly sells links, referenced by hundreds of unrelated businesses.</p></div>
+        <div class="ixi__pick" role="group" aria-label="links-for-money.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+        <p class="ixi__why"><span data-res></span><b>Disavow.</b> Links bought to influence rankings go against Google's spam policy.</p>
+      </li>
+      <li class="ixi__row" data-ans="dis">
+        <div><p class="ixi__dom">auto-texts.example.lv</p><p class="ixi__d">An auto-generated site with randomly assembled text and links to hundreds of unrelated pages.</p></div>
+        <div class="ixi__pick" role="group" aria-label="auto-texts.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+        <p class="ixi__why"><span data-res></span><b>Disavow.</b> The content is not made for people, and the link is not a real recommendation.</p>
+      </li>
+    </ul>
+    <div class="ixi__foot"><span class="ixi__score" data-score aria-live="polite"></span><button type="button" class="ixi__reset" data-reset hidden>Start again</button></div>
+    <p class="ixi__final" data-final hidden>This is how I review a link profile in an audit: each source is judged by industry relevance, context and whether the link looks natural.</p>
+    <p class="ixi__note">Illustration: the domains are made up. The disavow tool is meant for rare cases — Google ignores most obviously worthless links by itself, so it is used only when there are many of them or a manual action has been received.</p>
   </div>
 </section>
 
@@ -283,7 +341,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Check your link profile</h2>
       <p class="lead">Enter your website — I will include a competitor comparison in the free video audit too.</p>
-      <div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Video audit within 24 hours</strong>A screen recording with your website&#x27;s main errors and recommendations.</li><li><strong>A short call</strong>If you want to continue, we discuss what to do first.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;if(a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8)s.hidden=true}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
+      <link rel="stylesheet" href="/css/ix-form.css"><script src="/js/ix-form.js" defer></script><div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Video audit within 24 hours</strong>A screen recording with your website&#x27;s main errors and recommendations.</li><li><strong>A short call</strong>If you want to continue, we discuss what to do first.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true" data-m="web" data-draw="[&quot;Illustration: a new website drawing — structure before design.&quot;, &quot;Illustration: SEO for an existing website — the goal is a rising line, no figures promised.&quot;, &quot;Illustration: an audit — a magnifier over a page.&quot;, &quot;Illustration: a blank page with dimension lines — tell me what you need.&quot;]"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span><svg class="after__draw" viewBox="0 0 160 100" hidden focusable="false"><g data-m="web"><rect x="10" y="8" width="140" height="84"/><path d="M10 20H150"/><path d="M16 14h22"/><rect x="16" y="26" width="128" height="30"/><path d="M16 26l128 30M144 26L16 56"/><rect x="16" y="62" width="38" height="24"/><rect x="61" y="62" width="38" height="24"/><rect x="106" y="62" width="38" height="24"/></g><g data-m="seo"><path class="s" d="M18 10V86H148"/><path d="M18 62H148M18 38H148" class="g"/><path class="a" d="M22 80L50 70L74 74L100 48L124 38L146 18"/><rect class="p" x="143" y="15" width="6" height="6"/></g><g data-m="audit"><rect x="26" y="8" width="70" height="84"/><path d="M34 22h40M34 32h54M34 42h48M34 52h54M34 62h30"/><circle class="a" cx="102" cy="58" r="22"/><path class="a" d="M118 74L144 92"/></g><g data-m="other"><rect x="26" y="24" width="108" height="60"/><path d="M26 14H134M26 10v8M134 10v8"/><path d="M14 24V84M10 24h8M10 84h8"/><path d="M26 92H134" class="g"/></g></svg></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8}if(o()){s.classList.add("after__sheet--sm");if(o())s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
     </div>
     <div class="form-panel"><form class="contact-form" action="#" method="POST" data-redirect="/en/thank-you/"><input type="hidden" name="page_source" value="Link building">
 <div class="contact-form__row">
@@ -299,6 +357,7 @@
 <p class="contact-form__hint">I reply within 24 hours. No obligation.</p></form></div>
   </div>
 </section>
+<script src="/js/ix-saites.js" defer></script>
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">

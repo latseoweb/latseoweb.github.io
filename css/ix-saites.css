@@ -52,7 +52,7 @@
 .ixi__pick button:focus-visible{outline:3px solid var(--on-ink);outline-offset:3px}
 .ixi__pick button[aria-pressed="true"]{background:var(--on-ink);color:var(--ink);border-style:solid}
 .ixi__pick button:disabled:not([aria-pressed="true"]){opacity:.45;cursor:default}
-.ixi__why{margin:0;padding:.6rem .8rem;border-left:3px solid var(--on-ink-muted);background:#1A211D;font-size:var(--fs-sm);max-width:70ch}
+.ixi__why{margin:0;padding:.6rem .8rem;background:#1A211D;font-size:var(--fs-sm);max-width:70ch}
 .ixi__why b{color:var(--on-ink)}
 .ixi__row.is-ok .ixi__why{border-left-color:#9FCDB3}
 .ixi__row.is-bad .ixi__why{border-left-style:dashed}

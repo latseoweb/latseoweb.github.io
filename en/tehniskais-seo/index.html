@@ -25,6 +25,7 @@
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
+  <link rel="stylesheet" href="/css/ix-check.css">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -144,7 +145,7 @@
    "about": {
     "@id": "https://latseo.com/#org"
    },
-   "dateModified": "2026-11-27",
+   "dateModified": "2026-11-28",
    "breadcrumb": {
     "@id": "https://latseo.com/en/tehniskais-seo/#breadcrumb"
    }
@@ -273,6 +274,40 @@
   </div>
 </section>
 
+<!-- Hidden until the latseo-check Worker is live (remove hidden) --><section class="section section--muted ixc" id="check" aria-labelledby="ixc-title" hidden>
+  <div class="container ixc__grid" data-ixc data-lang="en">
+    <div class="ixc__intro">
+<h2 class="section__title" id="ixc-title">Check your page in 10 seconds</h2>
+      <p class="lead">Enter your domain and I will measure six basic things on your homepage that Google sees first.</p>
+      <form class="ixc__form" action="/en/kontakti/" method="get" novalidate>
+        <label class="ixc__label" for="ixc-domain">Domain</label>
+        <div class="ixc__row">
+          <input class="ixc__input" id="ixc-domain" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" maxlength="253" placeholder="example.com" aria-describedby="ixc-msg">
+          <button class="btn btn--primary ixc__run" type="submit">Check</button>
+        </div>
+        <div class="ixc__captcha"></div>
+        <p class="ixc__msg small muted" id="ixc-msg" role="status" aria-live="polite">Only the public homepage, sitemap.xml and robots.txt are read. The domain is not stored.</p>
+      </form>
+    </div>
+    <div class="ixc__sheet sheet" data-nosnippet>
+      <div class="ixc__head"><span>Object</span><span class="ixc__obj">—</span><span>Checks</span><span>6</span></div>
+      <ol class="ixc__list">
+        <li data-k="h1"><span class="ixc__n">1</span><span class="ixc__k">H1 heading</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="description"><span class="ixc__n">2</span><span class="ixc__k">Meta description</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="title"><span class="ixc__n">3</span><span class="ixc__k">&lt;title&gt;</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="https"><span class="ixc__n">4</span><span class="ixc__k">HTTPS</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="sitemap"><span class="ixc__n">5</span><span class="ixc__k">sitemap.xml</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="schema"><span class="ixc__n">6</span><span class="ixc__k">Schema.org JSON-LD</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+      </ol>
+      <div class="ixc__cta">
+        <p class="small">These are only six basic checks. In a video audit I go through the whole site and record my screen with the main errors.</p>
+        <a href="/en/kontakti/" class="btn btn--primary">Request a free video audit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section class="section section--white" aria-labelledby="checks-title">
   <div class="container split">
     <div class="split__sticky">
@@ -362,7 +397,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Start with a free video audit</h2>
       <p class="lead">Enter your website address. Within 24 hours I will send a recording with the main errors. If you need a full audit, choose it in the “What do you need?” field.</p>
-      <div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Video audit within 24 hours</strong>A screen recording with your website&#x27;s main errors and recommendations.</li><li><strong>A short call</strong>If you want to continue, we discuss what to do first.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;if(a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8)s.hidden=true}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
+      <link rel="stylesheet" href="/css/ix-form.css"><script src="/js/ix-form.js" defer></script><div class="after" data-nosnippet><p class="after__title">What happens after you send it</p><ol class="after__steps"><li><strong>Video audit within 24 hours</strong>A screen recording with your website&#x27;s main errors and recommendations.</li><li><strong>A short call</strong>If you want to continue, we discuss what to do first.</li><li><strong>Exact price</strong>I send the exact amount after a call or an audit.</li></ol><figure class="after__sheet sheet" aria-hidden="true" data-m="web" data-draw="[&quot;Illustration: a new website drawing — structure before design.&quot;, &quot;Illustration: SEO for an existing website — the goal is a rising line, no figures promised.&quot;, &quot;Illustration: an audit — a magnifier over a page.&quot;, &quot;Illustration: a blank page with dimension lines — tell me what you need.&quot;]"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 characters</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 per page</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span><svg class="after__draw" viewBox="0 0 160 100" hidden focusable="false"><g data-m="web"><rect x="10" y="8" width="140" height="84"/><path d="M10 20H150"/><path d="M16 14h22"/><rect x="16" y="26" width="128" height="30"/><path d="M16 26l128 30M144 26L16 56"/><rect x="16" y="62" width="38" height="24"/><rect x="61" y="62" width="38" height="24"/><rect x="106" y="62" width="38" height="24"/></g><g data-m="seo"><path class="s" d="M18 10V86H148"/><path d="M18 62H148M18 38H148" class="g"/><path class="a" d="M22 80L50 70L74 74L100 48L124 38L146 18"/><rect class="p" x="143" y="15" width="6" height="6"/></g><g data-m="audit"><rect x="26" y="8" width="70" height="84"/><path d="M34 22h40M34 32h54M34 42h48M34 52h54M34 62h30"/><circle class="a" cx="102" cy="58" r="22"/><path class="a" d="M118 74L144 92"/></g><g data-m="other"><rect x="26" y="24" width="108" height="60"/><path d="M26 14H134M26 10v8M134 10v8"/><path d="M14 24V84M10 24h8M10 84h8"/><path d="M26 92H134" class="g"/></g></svg></div><figcaption>3dpakalpojumi.lv, homepage. Measured 27.11.2026: 5 of 5 images have alt text.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8}if(o()){s.classList.add("after__sheet--sm");if(o())s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
     </div>
     <div class="form-panel"><form class="contact-form" action="#" method="POST" data-redirect="/en/thank-you/"><input type="hidden" name="page_source" value="Technical SEO audit">
 <div class="contact-form__row">
@@ -378,6 +413,7 @@
 <p class="contact-form__hint">I reply within 24 hours. No obligation.</p></form></div>
   </div>
 </section>
+<script src="/js/ix-check.js" defer></script>
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">
