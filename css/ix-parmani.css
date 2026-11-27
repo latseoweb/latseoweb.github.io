@@ -1,0 +1,28 @@
+/* Par mani: pāradresāciju shēma + skaitļu atsauces */
+.rd{margin:var(--sp-md) 0;max-width:560px}
+.rd[hidden]{display:none}
+.rd__ctl{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink)}
+.rd__b{min-height:48px;padding:.4rem .5rem;background:var(--paper);color:var(--ink);border:0;border-right:1px solid var(--ink);font:500 var(--fs-sm)/1.2 var(--ff-body);cursor:pointer}
+.rd__b:last-child{border-right:0}
+.rd__b[aria-pressed=true]{background:var(--ink);color:var(--on-ink)}
+.rd__b:focus-visible{outline:3px solid var(--accent);outline-offset:-5px}
+.rd__b[aria-pressed=true]:focus-visible{outline-color:var(--on-ink)}
+.rd__svg{display:block;width:100%;height:auto;aspect-ratio:3/1;margin-top:var(--sp-xs);background:#FAFBFA;border:1px solid var(--line-strong)}
+.rd__svg .n{fill:var(--paper);stroke:var(--ink);stroke-width:1}
+.rd__svg .l,.rd__svg .b{fill:none;stroke:var(--ink);stroke-width:1.5}
+.rd__svg .b{stroke:var(--muted);stroke-width:1}
+.rd__svg .s{fill:none;stroke:var(--ink);stroke-width:1.5}
+.rd__svg .d{stroke-dasharray:4 3}
+.rd__svg .a{stroke:var(--accent)}
+.rd__svg .t{font:500 10px var(--ff-mono);fill:var(--ink)}
+.rd__no,.rd__yes{display:none}
+.rd[data-m="0"] .rd__no,.rd[data-m="1"] .rd__yes{display:inline}
+.rd__cap{margin:.6rem 0 0;font-family:var(--ff-mono);font-size:var(--fs-sm);border-left:2px solid var(--accent);padding-left:.75rem;min-height:3em}
+.rd__il{margin:.3rem 0 0;font:var(--fs-xs)/1.2 var(--ff-mono);color:var(--muted)}
+
+.facts [data-go]{cursor:pointer;padding:.5rem .6rem .6rem;margin:-.5rem -.6rem;border:1px dashed transparent;min-height:44px}
+.facts [data-go]:hover{border-color:var(--line-strong)}
+.facts [data-go].is-on{border-color:var(--accent)}
+.facts [data-go]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.facts__note{grid-column:1/-1;margin:0;font:var(--fs-xs)/1.4 var(--ff-mono);color:var(--muted)}
+.pm-hit{outline:2px dashed var(--accent);outline-offset:6px}
