@@ -34,6 +34,8 @@
   var form = root.querySelector(".ixc__form"), input = root.querySelector(".ixc__input"), btn = root.querySelector(".ixc__run");
   var msg = root.querySelector(".ixc__msg"), obj = root.querySelector(".ixc__obj"), sheet = root.querySelector(".ixc__sheet");
   var rows = {};
+  var scan = document.createElement("i"); scan.className = "ixc__scan"; scan.setAttribute("aria-hidden", "true"); sheet.insertBefore(scan, sheet.firstChild);
+  var scanT = 0;
   root.querySelectorAll(".ixc__list li").forEach(function (li) { rows[li.getAttribute("data-k")] = li; });
 
   /* Turnstile, as in main.js; reuses window.turnstile if the contact form already loaded it */
@@ -115,7 +117,7 @@
     out.push(["sitemap", c.sitemap.status, c.sitemap.status === "pass" ? T.sm[c.sitemap.source] : T.none, c.sitemap.url]);
     out.push(["schema", c.schema.status, c.schema.valid ? c.schema.valid + " JSON-LD" : c.schema.blocks ? c.schema.blocks + " " + T.invalid : T.none,
       c.schema.types && c.schema.types.length ? T.types + ": " + c.schema.types.join(", ") : ""]);
-    out.forEach(function (r, i) { setTimeout(function () { set(r[0], r[1], r[2], r[3]); }, reduce ? 0 : i * 140); });
+    out.forEach(function (r, i) { setTimeout(function () { set(r[0], r[1], r[2], r[3]); }, reduce ? 0 : i * 230); });
     msg.textContent = T.ok + d.host + ".";
   }
 
@@ -126,7 +128,7 @@
     input.removeAttribute("aria-invalid");
     clear();
     obj.textContent = h;
-    btn.disabled = true; root.classList.add("is-busy"); msg.textContent = T.run;
+    btn.disabled = true; root.classList.add("is-busy"); clearTimeout(scanT); if (!reduce) sheet.classList.add("is-scan"); msg.textContent = T.run;
     var ctl = "AbortController" in window ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 30000);
     token().then(function (k) {
@@ -140,7 +142,7 @@
       else if (d.error === "unreachable" || d.error === "status") fallback(T.open);
       else fallback(T.down);
     }).catch(function () { fallback(T.down); }).then(function () {
-      clearTimeout(timer); btn.disabled = false; root.classList.remove("is-busy"); resetTs();
+      clearTimeout(timer); scanT = setTimeout(function () { sheet.classList.remove("is-scan"); }, 6 * 230 + 500); btn.disabled = false; root.classList.remove("is-busy"); resetTs();
     });
   }
 
