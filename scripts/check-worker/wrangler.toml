@@ -1,0 +1,15 @@
+# Template — no secrets here. Secret: `wrangler secret put TURNSTILE_SECRET`.
+name = "latseo-check"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGINS = "https://latseo.com,https://www.latseo.com"
+ALLOWED_HOSTNAMES = "latseo.com,www.latseo.com"
+
+# Rate limit (5 checks / hour / IP). Create with: wrangler kv namespace create RL
+# and paste the printed id below. The form Worker's namespace can be reused (keys are prefixed "chk:").
+[[kv_namespaces]]
+binding = "RL"
+id = "PASTE_KV_NAMESPACE_ID"
