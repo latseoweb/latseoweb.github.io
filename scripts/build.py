@@ -181,8 +181,8 @@ PROJECTS = {
     "ploteris": ("https://ploteris.lv/", "work/ploteri.webp", "ploteris.lv", ("Pilna izstrāde · plotergriezēju tirdzniecība", "Full build · cutting plotter retailer"), None),
     "maropro": ("https://maropro.lv/", "work/maropro.webp", "maropro.lv", ("Landing lapa · DTF un UV printeri", "Landing page · DTF and UV printers"), None),
     "autoestetika": ("https://www.autoestetika.lv/", "work/autoestetika.webp", "autoestetika.lv", ("SEO un Google Business Profile · auto detailing Rīgā · kopš 2026. gada marta", "SEO and Google Business Profile · car detailing in Riga · since March 2026"), ("+31 %", ("klikšķi no Google, aug.–okt. 2026 pret 2025", "Google clicks, Aug–Oct 2026 vs 2025"))),
-    "relive": ("https://relive.lv/", "work/relive.webp", "relive.lv", ("SEO klients kopš 2026. gada aprīļa · nekustamo īpašumu aģentūra", "SEO client since April 2026 · real estate agency"), None),
-    "ecar": ("https://e-car.lv/", "work/ecar.webp", "e-car.lv", ("SEO klients kopš 2026. gada oktobra · auto noma", "SEO client since October 2026 · car rental"), None),
+    "relive": ("https://relive.lv/", "work/relive.webp", "relive.lv", ("SEO klients · nekustamo īpašumu aģentūra", "SEO client · real estate agency"), (("kopš 04.2026", "since 04.2026"), ("SEO darba sākums", "start of SEO work"), "since")),
+    "ecar": ("https://e-car.lv/", "work/ecar.webp", "e-car.lv", ("SEO klients · auto noma", "SEO client · car rental"), (("kopš 10.2026", "since 10.2026"), ("SEO darba sākums", "start of SEO work"), "since")),
 }
 
 ICON = {
@@ -478,7 +478,9 @@ def project_card(key, lang):
     name = name[i] if isinstance(name, tuple) else name
     tag = tags[i]
     if isinstance(metric, tuple):
-        m = f'<span class="proof__metric">{metric[0]}<small>{metric[1][i]}</small></span>'
+        mod = f" proof__metric--{metric[2]}" if len(metric) > 2 else ""
+        big = metric[0][i] if isinstance(metric[0], tuple) else metric[0]
+        m = f'<span class="proof__metric{mod}">{big}<small>{metric[1][i]}</small></span>'
     else:
         m = f'<span class="proof__metric">{metric} {t["metric"]}<small>{t["metric_sub"]}</small></span>' if metric else ""
     if not url:
@@ -498,6 +500,108 @@ def hero_shot(key, caption, lang):
     url, img, name, *_ = PROJECTS[key]
     return (f'<figure class="hero-shot"><img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {T[lang]["shot_alt"]}" width="960" height="600" data-hero>'
             f'<figcaption>{caption}</figcaption></figure>')
+
+
+# ---------------------------------------------------------------- drawing ("rasējums") blocks
+# The hero blueprint language reused around the site: grid paper, dashed outlines, green notes.
+# Every number on a drawing is measured, never estimated. MEASURED = curl of the live homepage, 27.11.2026.
+MEASURED = {"key": "3dpakalpojumi", "date": "27.11.2026", "title": 50, "h1": 1, "img": (5, 5),
+            "schema": "Organization, FAQPage, Service"}
+
+AFTER = {
+    "lv": dict(
+        title="Kas notiek pēc pieteikuma",
+        web=[("Atbilde 24 stundu laikā", "Ar pirmajiem ieteikumiem vai aicinājumu uz īsu sarunu."),
+             ("Īsa saruna", "Precizējam vajadzības, apjomu un termiņu."),
+             ("Precīza cena", "Precīzu summu nosūtu pēc sarunas vai audita.")],
+        audit=[("Video audits 24 stundu laikā", "Ekrāna ieraksts ar Jūsu mājaslapas galvenajām kļūdām un ieteikumiem."),
+               ("Īsa saruna", "Ja vēlaties turpināt, izrunājam, ko darīt vispirms."),
+               ("Precīza cena", "Precīzu summu nosūtu pēc sarunas vai audita.")],
+        notes=("<title> · {title} zīmes", "<h1> · {h1} lapā", "JSON-LD: {schema}"),
+        cap="{name}, sākumlapa. Mērīts {date}: {a} no {b} attēliem ar alt tekstu.",
+        ask=("Jautājiet tieši", "Nav atbildes? Jautājiet tieši", "Adrians Stankevičs, LatSEO", "Tālrunis", "Rakstīt"),
+        next_web=("Nākamā vieta — Jūsu lapa", "Aprēķināt cenu kalkulatorā"),
+        next_post=("Jautājums bez raksta?", "Uzrakstiet, un atbildēšu", "/kontakti/"),
+        sheet=("ekrānšāviņš 16:10", "<h1>", "klikšķi no Google"),
+        sheet_post=("vāks 1200 × 630", "<h1>", "Jūsu jautājums"),
+    ),
+    "en": dict(
+        title="What happens after you send it",
+        web=[("Reply within 24 hours", "With first recommendations or an invitation to a short call."),
+             ("A short call", "We clarify your needs, scope and timeline."),
+             ("Exact price", "I send the exact amount after a call or an audit.")],
+        audit=[("Video audit within 24 hours", "A screen recording with your website's main errors and recommendations."),
+               ("A short call", "If you want to continue, we discuss what to do first."),
+               ("Exact price", "I send the exact amount after a call or an audit.")],
+        notes=("<title> · {title} characters", "<h1> · {h1} per page", "JSON-LD: {schema}"),
+        cap="{name}, homepage. Measured {date}: {a} of {b} images have alt text.",
+        ask=("Ask directly", "No answer here? Ask me directly", "Adrians Stankevičs, LatSEO", "Phone", "Write"),
+        next_web=("Next spot — your website", "Calculate the price"),
+        next_post=("A question with no article yet?", "Write to me and I will answer", "/en/kontakti/"),
+        sheet=("screenshot 16:10", "<h1>", "clicks from Google"),
+        sheet_post=("cover 1200 × 630", "<h1>", "your question"),
+    ),
+}
+
+
+def after_form(variant, lang):
+    """Left column under a contact form: the next steps promised elsewhere on the site + one measured drawing of a project."""
+    a = AFTER[lang]
+    steps = "".join(f"<li><strong>{esc(t)}</strong>{esc(x)}</li>" for t, x in a[variant])
+    m = MEASURED
+    url, img, name, *_ = PROJECTS[m["key"]]
+    n1, n2, n3 = (esc(n.format(**m)) for n in a["notes"])
+    cap = esc(a["cap"].format(name=name, date=m["date"], a=m["img"][0], b=m["img"][1]))
+    return (f'<div class="after" data-nosnippet><p class="after__title">{esc(a["title"])}</p><ol class="after__steps">{steps}</ol>'
+            f'<figure class="after__sheet sheet" aria-hidden="true"><div class="sheet__shot">'
+            f'<img src="/assets/images/{img.replace(".webp", "-480.webp")}" alt="" width="480" height="300" loading="lazy">'
+            f'<span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span>'
+            f'<span class="plan__note" style="left:3%;top:3%">{n1}</span>'
+            f'<span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">{n2}</span>'
+            f'<span class="plan__note" style="right:3%;bottom:6%">{n3}</span></div>'
+            f'<figcaption>{cap}</figcaption></figure></div>'
+            # the drawing is only a filler: drop it when it would make the column taller than the form next to it
+            '<script>(function(a){var s=a.querySelector(".after__sheet");'
+            'function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;if(a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8)s.hidden=true}'
+            'document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>')
+
+
+def ask_aside(lang):
+    """Sticky card next to a FAQ: the person who answers, phone and WhatsApp."""
+    label, title, who, phone, write = AFTER[lang]["ask"]
+    return (f'<aside class="ask" aria-label="{label}" data-nosnippet><div class="ask__in sheet">'
+            f'<img src="{PHOTO}" alt="" width="72" height="72" loading="lazy">'
+            f'<p class="ask__title">{title}</p><p class="ask__who">{who}</p>'
+            f'<a class="ask__link" href="tel:{PHONE}"><span>{phone}</span><strong>{PHONE_H}</strong></a>'
+            f'<a class="ask__link" href="https://wa.me/37124424434" target="_blank" rel="noopener"><span>WhatsApp</span><strong>{write}</strong></a>'
+            f'</div></aside>')
+
+
+def blank_sheet(lang, ratio, labels="sheet"):
+    """An empty drawing: dashed frame and labels, no content."""
+    s1, s2, s3 = (esc(x) for x in AFTER[lang][labels])
+    return (f'<span class="sheet sheet--blank" style="aspect-ratio:{ratio}" aria-hidden="true">'
+            f'<span class="plan__note" style="left:6%;top:8%">{s1}</span>'
+            f'<span class="plan__box" style="left:8%;top:34%;width:58%;height:26%"></span>'
+            f'<span class="plan__note" style="left:8%;top:calc(34% - 1.6rem)">{s2}</span>'
+            f'<span class="plan__note" style="right:6%;bottom:8%">{s3}</span></span>')
+
+
+def next_spot(lang):
+    """Last cell of a project grid. CSS shows it only while the last row is incomplete."""
+    t = T[lang]
+    name, more = AFTER[lang]["next_web"]
+    return (f'<a class="proof proof--next" href="{t["calc"]}" data-nosnippet>{blank_sheet(lang, "16/10")}'
+            f'<span class="proof__body"><span class="proof__name">{esc(name)}</span>'
+            f'<span class="post-item__more">{esc(more)}</span></span></a>')
+
+
+def next_post(lang):
+    """Last cell of the blog index grid, shown only while the last row is incomplete."""
+    title, more, href = AFTER[lang]["next_post"]
+    return (f'<a class="post-item post-item--next" href="{href}" data-nosnippet>{blank_sheet(lang, "1200/630", "sheet_post")}'
+            f'<span class="post-item__body"><span class="post-item__title">{esc(title)}</span>'
+            f'<span class="post-item__more">{esc(more)}</span></span></a>')
 
 
 def form(prefix, source, lang, first=None, button=None):
@@ -537,6 +641,8 @@ def label_tables(body):
 
 def expand_tokens(body, lang):
     body = re.sub(r"\{\{project:(\w+)\}\}", lambda m: project_card(m.group(1), lang), body)
+    body = re.sub(r"\{\{after:(web|audit)\}\}", lambda m: after_form(m.group(1), lang), body)
+    body = body.replace("{{ask}}", ask_aside(lang)).replace("{{next-spot}}", next_spot(lang))
     first = {"done": False}
     def _browser(m):
         cls = "" if first["done"] else "first"
@@ -677,7 +783,7 @@ def render_post(m, posts):
 
 def render_blog_index(posts, lang):
     t = T[lang]
-    cards = post_card(posts[0], True) + "".join(post_card(p) for p in posts[1:])
+    cards = post_card(posts[0], True) + "".join(post_card(p) for p in posts[1:]) + next_post(lang)
     meta = {"lang": lang, "path": t["blog"], "title": t["blog_title"], "description": t["blog_desc"],
             "crumbs": [(t["home"], t["home_label"]), (t["blog"], t["blog_label"])], "page_type": "CollectionPage",
             "body": f'''<section class="page-hero"><div class="container">{{{{breadcrumbs}}}}

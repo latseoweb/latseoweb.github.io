@@ -242,9 +242,9 @@ strong{color:var(--ink);font-weight:600}
 .plan__dim::before{top:0}
 .plan__dim::after{bottom:0}
 .plan__tb{position:absolute;right:clamp(16px,3vw,40px);top:1rem;display:grid;grid-template-columns:auto auto;font-size:.75rem;color:var(--ink);background:#FAFBFA;border:1px solid var(--ink)}
-.plan__tb span{padding:.3rem .6rem;border-bottom:1px solid var(--ink)}
-.plan__tb span:nth-child(odd){border-right:1px solid var(--ink);color:#5A6560}
-.plan__tb span:nth-last-child(-n+2){border-bottom:0}
+.plan__tb span,.titleblock span{padding:.3rem .6rem;border-bottom:1px solid var(--ink)}
+.plan__tb span:nth-child(odd),.titleblock span:nth-child(odd){border-right:1px solid var(--ink);color:#5A6560}
+.plan__tb span:nth-last-child(-n+2),.titleblock span:nth-last-child(-n+2){border-bottom:0}
 .plan__line{position:absolute;top:0;bottom:0;left:var(--pos);width:0;z-index:3}
 .plan__line::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:var(--accent)}
 .plan__grip{position:absolute;top:50%;left:-22px;width:44px;height:44px;margin-top:-22px;background:var(--accent);display:grid;place-items:center;cursor:ew-resize;touch-action:none}
@@ -660,3 +660,98 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 /* Turnstile (shown only if Cloudflare asks for a check) */
 .contact-form__captcha{margin:0 0 .75rem}
 .contact-form__captcha:empty{display:none}
+
+/* ============================================================
+   DRAWING BLOCKS (2026-11): the hero blueprint as the site's signature.
+   Grid paper, a dashed frame and green notes (.plan__box / .plan__note reused).
+   Numbers on a drawing are measured (see MEASURED in scripts/build.py), never estimated.
+   ============================================================ */
+.sheet{position:relative;display:block;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' fill='none' stroke='%23DDE3E0'/%3E%3C/svg%3E") #FAFBFA;outline:1px dashed var(--line-strong);outline-offset:-1px}
+.sheet .plan__note{font-size:.75rem}
+.sheet--blank{width:100%}
+.titleblock{display:grid;grid-template-columns:auto auto;font-size:.8125rem;color:var(--ink);background:#FAFBFA;border:1px solid var(--ink)}
+
+/* contact form: the left column says what happens next and ends level with the form */
+.two-col:has(>div>.after){align-items:stretch}
+.two-col>div:has(>.after){display:flex;flex-direction:column}
+.two-col:has(>div>.after)>.form-panel{align-self:start}
+.after{display:flex;flex-direction:column;flex:1;margin-top:var(--sp-lg)}
+.after__title{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-md);color:var(--ink);margin-bottom:var(--sp-sm)}
+.after__steps{counter-reset:after;position:relative;display:grid;gap:var(--sp-sm);margin-bottom:var(--sp-md)}
+.after__steps li{counter-increment:after;position:relative;padding-left:2.75rem;font-size:var(--fs-sm);color:var(--ink-2);max-width:48ch}
+.after__steps li::before{content:counter(after);position:absolute;left:0;top:-.05rem;width:1.75rem;height:1.75rem;display:grid;place-items:center;font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-sm);color:var(--accent);background:#FAFBFA;box-shadow:inset 0 0 0 1px var(--accent)}
+.after__steps li:not(:last-child)::after{content:"";position:absolute;left:.875rem;top:1.75rem;bottom:calc(-1 * var(--sp-sm));border-left:1px dashed var(--accent)}
+.after__steps strong{display:block;font-family:var(--ff-heading);font-size:var(--fs-base)}
+.after__sheet{margin:auto 0 0;padding:.6rem;max-width:30rem;display:grid;grid-template-columns:13rem 1fr;gap:.9rem;align-items:end}
+.after__sheet .plan__note{font-size:.6875rem}
+.after__sheet .sheet__shot span:nth-of-type(4){display:none}
+.after__sheet[hidden]{display:none}
+.sheet__shot .plan__box{border-color:#9FCDB3}
+.sheet__shot{position:relative}
+.sheet__shot img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.after__sheet figcaption{padding-top:0;font-size:var(--fs-xs);color:var(--muted);line-height:1.45}
+@media (max-width:899px){.after__sheet{display:none}}
+
+/* FAQ: who answers when the list does not */
+.container--narrow:has(>.ask){position:relative}
+.ask{display:none}
+.ask__in{position:sticky;top:calc(var(--header-height) + 24px);display:grid;gap:.2rem;padding:var(--sp-md)}
+.ask__in img{width:72px;height:72px;object-fit:cover;margin-bottom:.6rem}
+.ask__title{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-md);color:var(--ink);line-height:1.25}
+.ask__who{font-size:var(--fs-xs);color:var(--muted);margin-bottom:.4rem}
+.ask__link{display:flex;justify-content:space-between;align-items:center;gap:.75rem;min-height:44px;font-size:var(--fs-sm)}
+.ask__link span{color:var(--muted)}
+.ask__link strong{font-family:var(--ff-heading);color:var(--accent);white-space:nowrap}
+.ask__link:hover strong{text-decoration:underline;text-underline-offset:3px}
+@media (min-width:1240px){.ask{display:block;position:absolute;top:0;bottom:0;left:calc(100% + 1rem);width:15.5rem}}
+
+/* price page: contents and the calculator follow the tables */
+.rail{max-width:var(--max-width);margin:0 auto;padding:0 clamp(16px,4vw,32px) var(--sp-lg)}
+.rail__calc{display:grid;gap:.4rem;margin-top:var(--sp-md);padding:var(--sp-md)}
+.rail__calc-title{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-md);color:var(--ink);line-height:1.25}
+.rail__calc-text{font-size:var(--fs-sm);color:var(--ink-2)}
+.rail__calc:hover .rail__calc-title{color:var(--accent)}
+@media (min-width:1180px){
+  .rail-wrap{position:relative}
+  .rail{position:absolute;top:0;bottom:0;right:max(32px,calc((100% - var(--max-width)) / 2 + 32px));width:16rem;margin:0;padding:8rem 0 var(--sp-xl)}
+  .rail__in{position:sticky;top:calc(var(--header-height) + 24px)}
+}
+.tally{margin-top:var(--sp-lg);max-width:26rem;padding:var(--sp-md);outline:1px dashed #4F5B55;outline-offset:-1px}
+.tally__title{font-size:var(--fs-sm);font-weight:600;color:var(--on-ink);margin-bottom:.6rem}
+.tally dl{display:grid;gap:.35rem;font-size:var(--fs-sm)}
+.tally dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.tally dd{color:var(--on-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tally__sum{margin-top:.3rem;padding-top:.5rem;border-top:1px solid var(--on-ink-muted)}
+.tally__sum dt,.tally__sum dd{color:var(--on-ink);font-weight:600}
+.tally .text-link{margin-top:var(--sp-sm)}
+.ink-fact{margin-top:var(--sp-lg);max-width:32ch}
+.ink-fact strong{display:block;font-family:var(--ff-heading);font-size:var(--fs-2xl);line-height:1.1;color:var(--on-ink)}
+.ink-fact span{display:block;margin-top:.5rem;font-size:var(--fs-sm);color:var(--on-ink-muted)}
+
+/* grids: an empty drawing fills the last row only while it is incomplete (3 columns, then 2, none on phones) */
+.proof__metric--since{color:var(--ink)}
+.proof--next .sheet,.post-item--next .sheet{transition:outline-color .15s}
+.proof--next:hover .sheet,.post-item--next:hover .sheet{outline-color:var(--accent)}
+.post-item--next .post-item__title{color:var(--ink)}
+.proof-grid:has(>.proof--next),.blog-grid:has(>.post-item--next){grid-template-columns:1fr 1fr 1fr}
+.proof--next:nth-child(3n+1),.post-item--next:nth-child(3n+2){display:none}
+@media (max-width:1000px){
+  .proof-grid:has(>.proof--next),.blog-grid:has(>.post-item--next){grid-template-columns:1fr 1fr}
+  .proof--next:nth-child(n),.post-item--next:nth-child(n){display:flex}
+  .proof--next:nth-child(2n+1),.post-item--next:nth-child(2n){display:none}
+}
+@media (max-width:700px){
+  .proof-grid:has(>.proof--next),.blog-grid:has(>.post-item--next){grid-template-columns:1fr}
+  .proof--next:nth-child(n),.post-item--next:nth-child(n){display:none}
+}
+
+/* home: author strip with a drawing title block */
+.section--join{padding-bottom:0}
+.about-row{display:grid;grid-template-columns:1fr auto;gap:var(--sp-xl);align-items:center}
+@media (max-width:1000px){.about-row{grid-template-columns:1fr}.titleblock{justify-self:start}}
+@media (max-width:700px){.titleblock{display:none}}
+/* home hero on phones: the background note stays clear of the proof link and the grip */
+@media (max-width:700px){.hero--plan{padding-bottom:8.5rem}.hero__bgnote{max-width:calc(74% - 2.5rem)}}
+
+/* privacy policy: text starts at the H1's left edge, like the other inner pages */
+.container.prose{max-width:calc(68ch + 2 * clamp(16px,4vw,32px));margin-left:max(0px,calc((100% - var(--max-width)) / 2));margin-right:auto}

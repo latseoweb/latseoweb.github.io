@@ -35,11 +35,18 @@
 <section class="page-hero">
   <div class="container">
     {{breadcrumbs}}
+    <div class="page-hero__grid">
+      <div>
 <h1 class="page-title">Saišu veidošana un atpakaļsaites</h1>
-    <p class="lead">Saites no citām mājaslapām ir viens no signāliem, pēc kuriem Google vērtē, vai lapai var uzticēties. Svarīgs ir nevis saišu skaits, bet tas, no kurienes tās nāk un vai tās atbilst Jūsu nozarei.</p>
-    <div class="page-hero__actions">
-      <a href="#pieteikties" class="btn btn--primary btn--lg">Pieteikt saišu auditu</a>
-      <a href="/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">SEO optimizācija</a>
+        <p class="lead">Saites no citām mājaslapām ir viens no signāliem, pēc kuriem Google vērtē, vai lapai var uzticēties. Svarīgs ir nevis saišu skaits, bet tas, no kurienes tās nāk un vai tās atbilst Jūsu nozarei.</p>
+        <div class="page-hero__actions">
+          <a href="#pieteikties" class="btn btn--primary btn--lg">Pieteikt saišu auditu</a>
+          <a href="/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">SEO optimizācija</a>
+        </div>
+      </div>
+      <aside class="page-hero__aside" aria-label="Saišu veidošanas cenas">
+        <dl><div><dt>Saišu profila analīze</dt><dd>no 150 €<small>daļa no pilna SEO audita</small></dd></div><div><dt>Jaunu saišu veidošana</dt><dd>no 300 €/mēn.<small>daļa no ikmēneša SEO</small></dd></div><div><dt>Video audits</dt><dd>0 €<small>ar konkurentu salīdzinājumu, 24 h laikā</small></dd></div></dl>
+      </aside>
     </div>
   </div>
 </section>
@@ -65,6 +72,7 @@
   <div class="container two-col">
     <div>
 <h2 class="section__title" id="audit-title">Vispirms — esošo saišu pārbaude</h2>
+      <p class="ink-fact" data-nosnippet><strong>vairāk nekā 2 300</strong><span>domēnu ar saitēm uz latseo.com 2026. gada oktobrī — lielākoties automātiski radītas, nesaistītas vietnes</span></p>
     </div>
     <div class="prose">
       <p>Pirms jaunu saišu veidošanas pārbaudu, kādas saites mājaslapai jau ir. Piemēram, LatSEO mājaslapai 2026. gada oktobrī bija saites no vairāk nekā 2 300 domēniem, lielākoties no automātiski radītām, nesaistītām vietnēm. Šādas saites vērtību nedod, tāpēc saišu skaits pats par sevi neko neizsaka.</p>
@@ -83,6 +91,7 @@
       <details data-faq><summary>Vai saites var nopirkt?</summary><div><p>Saites, kas pirktas, lai ietekmētu pozīcijas, ir pretrunā ar Google surogātpasta politiku un var kaitēt mājaslapai. Strādāju tikai ar partnerībām un saturu.</p></div></details>
       <details data-faq><summary>Cik saišu vajag?</summary><div><p>Universāla skaita nav. To nosaka konkurentu saišu profils Jūsu nišā — to salīdzinu auditā.</p></div></details>
     </div>
+    {{ask}}
   </div>
 </section>
 
@@ -91,6 +100,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Pārbaudiet savu saišu profilu</h2>
       <p class="lead">Norādiet mājaslapu — bezmaksas video auditā iekļaušu arī konkurentu salīdzinājumu.</p>
+      {{after:audit}}
     </div>
     <div class="form-panel">{{form:links|Saišu veidošana|Pilns SEO audits}}</div>
   </div>

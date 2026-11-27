@@ -35,11 +35,18 @@
 <section class="page-hero">
   <div class="container">
     {{breadcrumbs}}
+    <div class="page-hero__grid">
+      <div>
 <h1 class="page-title">SEO satura stratēģija un SEO teksti</h1>
-    <p class="lead">Dizains piesaista uzmanību, bet saturs nosaka, vai Google lapu parāda un vai apmeklētājs piesakās. Satura stratēģija sāk ar to, ko Jūsu klienti ievada meklētājā, un beidz ar lapu, kas uz to atbild.</p>
-    <div class="page-hero__actions">
-      <a href="#pieteikties" class="btn btn--primary btn--lg">Pieteikt konsultāciju</a>
-      <a href="/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">SEO optimizācija</a>
+        <p class="lead">Dizains piesaista uzmanību, bet saturs nosaka, vai Google lapu parāda un vai apmeklētājs piesakās. Satura stratēģija sāk ar to, ko Jūsu klienti ievada meklētājā, un beidz ar lapu, kas uz to atbild.</p>
+        <div class="page-hero__actions">
+          <a href="#pieteikties" class="btn btn--primary btn--lg">Pieteikt konsultāciju</a>
+          <a href="/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">SEO optimizācija</a>
+        </div>
+      </div>
+      <aside class="page-hero__aside" aria-label="Satura stratēģijas cenas">
+        <dl><div><dt>Satura optimizācija</dt><dd>no 300 €/mēn.<small>daļa no ikmēneša SEO</small></dd></div><div><dt>SEO audits</dt><dd>no 150 €<small>tehniskā, satura un saišu analīze</small></dd></div><div><dt>Video audits</dt><dd>0 €<small>ekrāna ieraksts 24 h laikā</small></dd></div></dl>
+      </aside>
     </div>
   </div>
 </section>
@@ -64,6 +71,7 @@
   <div class="container two-col">
     <div>
 <h2 class="section__title" id="example-title">Kāpēc rādījumi bez klikšķiem ir satura problēma</h2>
+      <p class="ink-fact" data-nosnippet><strong>1 674 rādījumi, 0 klikšķu</strong><span>vaicājums „seo pakalpojumi”, latseo.com, 90 dienas (24.07.–21.10.2026)</span></p>
     </div>
     <div class="prose">
       <p>Search Console dati LatSEO mājaslapai 90 dienās (24.07.–21.10.2026): vaicājumam „seo pakalpojumi” — 1 674 rādījumi un vidējā pozīcija 7,7, bet 0 klikšķu. Google lapu jau rādīja pirmajā lapā, taču virsraksts un apraksts nepārliecināja noklikšķināt.</p>
@@ -83,6 +91,7 @@
       <details data-faq><summary>Vai satura stratēģija ietilpst ikmēneša SEO?</summary><div><p>Jā, satura optimizācija ir daļa no <a href="/seo-pakalpojumi-riga/">ikmēneša SEO</a>, kas maksā no 300 € mēnesī.</p></div></details>
       <details data-faq><summary>Kā tiek vērtēta satura kvalitāte?</summary><div><p>Pēc Google noderīga satura (Helpful Content) vadlīnijām: vai saturs atbild uz lietotāja jautājumu, vai tajā ir reāla pieredze un vai lapa ir ērti lietojama.</p></div></details>
     </div>
+    {{ask}}
   </div>
 </section>
 
@@ -91,6 +100,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Sāciet ar bezmaksas video auditu</h2>
       <p class="lead">Auditā parādīšu, kuras Jūsu lapas Google jau rāda, kurām trūkst satura un kādus atslēgvārdus konkurenti izmanto.</p>
+      {{after:audit}}
     </div>
     <div class="form-panel">{{form:content|Satura stratēģija|SEO esošai mājaslapai}}</div>
   </div>

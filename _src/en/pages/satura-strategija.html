@@ -14,11 +14,18 @@
 <section class="page-hero">
   <div class="container">
     {{breadcrumbs}}
+    <div class="page-hero__grid">
+      <div>
 <h1 class="page-title">SEO content strategy and SEO copywriting</h1>
-    <p class="lead">Design attracts attention, but content decides whether Google shows the page and whether the visitor gets in touch. A content strategy starts with what your customers type into the search engine and ends with a page that answers it.</p>
-    <div class="page-hero__actions">
-      <a href="#get-quote" class="btn btn--primary btn--lg">Request a consultation</a>
-      <a href="/en/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">All SEO services</a>
+        <p class="lead">Design attracts attention, but content decides whether Google shows the page and whether the visitor gets in touch. A content strategy starts with what your customers type into the search engine and ends with a page that answers it.</p>
+        <div class="page-hero__actions">
+          <a href="#get-quote" class="btn btn--primary btn--lg">Request a consultation</a>
+          <a href="/en/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">All SEO services</a>
+        </div>
+      </div>
+      <aside class="page-hero__aside" aria-label="Content strategy prices">
+        <dl><div><dt>Content optimisation</dt><dd>from €300/month<small>part of monthly SEO</small></dd></div><div><dt>SEO audit</dt><dd>from €150<small>technical, content and link analysis</small></dd></div><div><dt>Video audit</dt><dd>€0<small>screen recording within 24 h</small></dd></div></dl>
+      </aside>
     </div>
   </div>
 </section>
@@ -43,6 +50,7 @@
   <div class="container two-col">
     <div>
 <h2 class="section__title" id="example-title">Why impressions without clicks are a content problem</h2>
+      <p class="ink-fact" data-nosnippet><strong>1,674 impressions, 0 clicks</strong><span>query “seo pakalpojumi”, latseo.com, 90 days (24 Jul–21 Oct 2026)</span></p>
     </div>
     <div class="prose">
       <p>Search Console data for the LatSEO website over 90 days (24 Jul–21 Oct 2026): for the query “seo pakalpojumi” (SEO services) — 1,674 impressions and an average position of 7.7, but 0 clicks. Google was already showing the page on the first page, but the title and description did not persuade people to click.</p>
@@ -62,6 +70,7 @@
       <details data-faq><summary>Is content strategy part of monthly SEO?</summary><div><p>Yes, content optimisation is part of <a href="/en/seo-pakalpojumi-riga/">monthly SEO</a>, which costs from €300/month.</p></div></details>
       <details data-faq><summary>How is content quality assessed?</summary><div><p>According to Google's helpful content guidelines: whether the content answers the user's question, whether it contains real experience and whether the page is easy to use.</p></div></details>
     </div>
+    {{ask}}
   </div>
 </section>
 
@@ -70,6 +79,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Start with a free video audit</h2>
       <p class="lead">In the audit I will show which of your pages Google already shows, which lack content and which keywords your competitors use.</p>
+      {{after:audit}}
     </div>
     <div class="form-panel">{{form:content|Content strategy|SEO for an existing website}}</div>
   </div>

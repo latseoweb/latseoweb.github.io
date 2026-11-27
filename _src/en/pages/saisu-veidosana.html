@@ -14,11 +14,18 @@
 <section class="page-hero">
   <div class="container">
     {{breadcrumbs}}
+    <div class="page-hero__grid">
+      <div>
 <h1 class="page-title">Link building and backlinks</h1>
-    <p class="lead">Links from other websites are one of the signals Google uses to judge whether a page can be trusted. What matters is not the number of links, but where they come from and whether they are relevant to your industry.</p>
-    <div class="page-hero__actions">
-      <a href="#get-quote" class="btn btn--primary btn--lg">Request a link audit</a>
-      <a href="/en/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">All SEO services</a>
+        <p class="lead">Links from other websites are one of the signals Google uses to judge whether a page can be trusted. What matters is not the number of links, but where they come from and whether they are relevant to your industry.</p>
+        <div class="page-hero__actions">
+          <a href="#get-quote" class="btn btn--primary btn--lg">Request a link audit</a>
+          <a href="/en/seo-pakalpojumi-riga/" class="btn btn--ghost btn--lg">All SEO services</a>
+        </div>
+      </div>
+      <aside class="page-hero__aside" aria-label="Link building prices">
+        <dl><div><dt>Link profile analysis</dt><dd>from €150<small>part of a full SEO audit</small></dd></div><div><dt>Building new links</dt><dd>from €300/month<small>part of monthly SEO</small></dd></div><div><dt>Video audit</dt><dd>€0<small>with a competitor comparison, within 24 h</small></dd></div></dl>
+      </aside>
     </div>
   </div>
 </section>
@@ -44,6 +51,7 @@
   <div class="container two-col">
     <div>
 <h2 class="section__title" id="audit-title">First — checking your existing links</h2>
+      <p class="ink-fact" data-nosnippet><strong>more than 2,300</strong><span>domains linking to latseo.com in October 2026 — mostly automatically generated, unrelated sites</span></p>
     </div>
     <div class="prose">
       <p>Before building new links, I check which links the website already has. For example, in October 2026 the LatSEO website had links from more than 2,300 domains, mostly from automatically generated, unrelated sites. Links like these add no value, so the number of links on its own says nothing.</p>
@@ -62,6 +70,7 @@
       <details data-faq><summary>Can links be bought?</summary><div><p>Links bought to influence rankings go against Google's spam policies and can harm a website. I work only with partnerships and content.</p></div></details>
       <details data-faq><summary>How many links do you need?</summary><div><p>There is no universal number. It depends on your competitors' link profiles in your niche — I compare them in the audit.</p></div></details>
     </div>
+    {{ask}}
   </div>
 </section>
 
@@ -70,6 +79,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Check your link profile</h2>
       <p class="lead">Enter your website — I will include a competitor comparison in the free video audit too.</p>
+      {{after:audit}}
     </div>
     <div class="form-panel">{{form:links|Link building|Full SEO audit}}</div>
   </div>
