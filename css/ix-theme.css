@@ -1,0 +1,138 @@
+/* ix-theme: "cyanotype drafting table, lit with markers". Shared tokens + instrument primitives, loaded on every page
+   (after style.css). Text sections stay white; only instruments sit on --ix-night. Helpers live in js/ix-theme.js.
+
+   Palette = dusk over water. In nature the deep blue of dusk water carries the last warm light: an ember sun low on
+   the horizon and its amber reflection (warm analogous pair, ~15° and ~40° hue), set against the complementary blue
+   (~210°). The cool partner is young leaf / moss on the shore (~125°), an analogous lighter neighbour of the brand
+   green #1F6045 (~155°) rather than a synthetic mint. Proportion 60-30-10: white paper 60, dusk night 30 (only
+   instruments), warm accents 10 (ember = the thing you touch, amber = measured values, at most two at once).
+   Contrast on --ix-night (WCAG): ink-on 14.1, muted-on 8.1, line 7.3, marker 10.1, mint 8.1, signal 5.1;
+   night text on signal 5.1 (so active chips use night text, not white); signal on white 3.1 (UI/large only). */
+:root{
+  --ix-night:#10243A;     /* dusk water */
+  --ix-night-2:#1B3753;   /* raised surface: shallower water */
+  --ix-line:#93B4D3;      /* reflected sky: blueprint line */
+  --ix-grid:rgba(147,180,211,.16);
+  --ix-grid-hot:rgba(147,180,211,.42);
+  --ix-signal:#F2683F;    /* sunset ember */
+  --ix-marker:#FFC65C;    /* amber light */
+  --ix-mint:#86C98E;      /* young leaf / moss: pass, after */
+  --ix-ink-on:#EEF3F8;    /* moonlit white */
+  --ix-muted-on:#A9BDD0;
+  --ix-cell:24px;
+  --ix-major:120px;
+  --ix-spring:cubic-bezier(.34,1.56,.64,1);
+  --ix-out:cubic-bezier(.16,1,.3,1);
+  --ix-dur:.45s;
+}
+
+::selection{background:var(--ix-marker);color:var(--ink)}
+
+/* ---------- panel: night + grid paper; grid lights up around the pointer (--ix-mx/--ix-my set by ix-theme.js) ---------- */
+.ix-panel{
+  --ix-mx:50%;--ix-my:50%;--ix-rx:0deg;--ix-ry:0deg;
+  position:relative;isolation:isolate;color:var(--ix-ink-on);
+  background-color:var(--ix-night);
+  background-image:
+    linear-gradient(var(--ix-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--ix-grid) 1px,transparent 1px),
+    linear-gradient(rgba(147,180,211,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(147,180,211,.07) 1px,transparent 1px);
+  background-size:var(--ix-major) var(--ix-major),var(--ix-major) var(--ix-major),var(--ix-cell) var(--ix-cell),var(--ix-cell) var(--ix-cell);
+  background-position:-1px -1px;
+}
+.ix-panel::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s var(--ix-out);
+  background-image:linear-gradient(var(--ix-grid-hot) 1px,transparent 1px),linear-gradient(90deg,var(--ix-grid-hot) 1px,transparent 1px);
+  background-size:var(--ix-cell) var(--ix-cell);background-position:-1px -1px;
+  -webkit-mask:radial-gradient(180px circle at var(--ix-mx) var(--ix-my),#000,transparent 70%);
+          mask:radial-gradient(180px circle at var(--ix-mx) var(--ix-my),#000,transparent 70%);
+}
+.ix-panel.is-lit::before{opacity:1}
+.ix-panel :where(h2,h3,h4,strong){color:var(--ix-ink-on)}
+.ix-panel :where(p,li,small,figcaption){color:var(--ix-muted-on)}
+.ix-panel :where(a:not(.btn)){color:var(--ix-ink-on);text-decoration-color:var(--ix-line)}
+
+/* tilt (pointer, fine pointers only; values from ix-theme.js, max 5deg) */
+[data-ix-tilt]{transform:perspective(1100px) rotateX(var(--ix-rx,0deg)) rotateY(var(--ix-ry,0deg));transition:transform .6s var(--ix-spring);will-change:transform}
+[data-ix-tilt].is-tilting{transition:transform .12s linear}
+
+/* full-width night band for an instrument section; two bands in a row: the second goes white again */
+.ix-band{padding:var(--sp-2xl) 0}
+.ix-band.ix-panel+.ix-band.ix-panel{background:var(--paper);color:var(--ink-2)}
+
+/* ---------- hint: one line telling what to do ---------- */
+.ix-hint{display:inline-flex;align-items:center;gap:.5rem;margin:0;font-family:var(--ff-mono);font-size:.8125rem;line-height:1.3;color:var(--muted)}
+.ix-hint::before{content:"";flex:none;width:8px;height:8px;background:var(--ix-signal)}
+.ix-panel .ix-hint{color:var(--ix-line)}
+
+/* ---------- readout: a measured value ---------- */
+.ix-readout{font-family:var(--ff-mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink);background:linear-gradient(transparent 55%,rgba(255,198,92,.75) 55%);padding:0 .15em}
+.ix-panel .ix-readout{color:var(--ix-marker);background:none;padding:0}
+.ix-readout--lg{font-size:var(--fs-2xl);line-height:1}
+
+/* ---------- chips & toggles ---------- */
+.ix-chip{
+  --c-fg:var(--ink);--c-bd:var(--line-strong);--c-bg:transparent;
+  display:inline-flex;align-items:center;gap:.45rem;min-height:40px;padding:.45rem .8rem;
+  font:500 var(--fs-sm)/1.2 var(--ff-body);color:var(--c-fg);background:var(--c-bg);border:1px solid var(--c-bd);
+  cursor:pointer;transition:transform .35s var(--ix-spring),background .2s,border-color .2s,color .2s;
+}
+.ix-chip:hover{--c-bd:var(--ink);transform:translateY(-1px)}
+.ix-chip:active{transform:translateY(0) scale(.97)}
+.ix-chip[aria-pressed="true"],.ix-chip[aria-checked="true"],.ix-chip.is-on,input:checked+.ix-chip{--c-bg:var(--ink);--c-fg:#fff;--c-bd:var(--ink)}
+.ix-panel .ix-chip{--c-fg:var(--ix-ink-on);--c-bd:rgba(147,180,211,.45)}
+.ix-panel .ix-chip:hover{--c-bd:var(--ix-line);--c-bg:var(--ix-night-2)}
+.ix-panel .ix-chip[aria-pressed="true"],.ix-panel .ix-chip[aria-checked="true"],.ix-panel .ix-chip.is-on,.ix-panel input:checked+.ix-chip{--c-bg:var(--ix-signal);--c-fg:var(--ix-night);--c-bd:var(--ix-signal)}
+.ix-chip--pass[aria-pressed="true"],.ix-chip--pass.is-on{--c-bg:var(--ix-mint);--c-fg:var(--ix-night);--c-bd:var(--ix-mint)}
+
+.ix-toggle{position:relative;display:inline-block;flex:none;width:44px;height:24px;background:var(--line-strong);border:0;padding:0;cursor:pointer;transition:background .2s}
+.ix-toggle::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;background:#fff;transition:transform .45s var(--ix-spring)}
+.ix-toggle[aria-checked="true"],.ix-toggle[aria-pressed="true"],input:checked+.ix-toggle{background:var(--ix-signal)}
+.ix-toggle[aria-checked="true"]::after,.ix-toggle[aria-pressed="true"]::after,input:checked+.ix-toggle::after{transform:translateX(20px)}
+.ix-panel .ix-toggle{background:var(--ix-night-2);box-shadow:inset 0 0 0 1px rgba(147,180,211,.45)}
+.ix-panel .ix-toggle[aria-checked="true"],.ix-panel .ix-toggle[aria-pressed="true"],.ix-panel input:checked+.ix-toggle{background:var(--ix-signal);box-shadow:none}
+
+/* range inputs inside instruments */
+.ix-panel input[type="range"]{accent-color:var(--ix-signal)}
+
+/* status colours */
+.ix-pass{color:var(--ix-mint)}
+.ix-fail{color:var(--ix-signal)}
+
+/* draw-line helper target (ix-theme.js sets the dash values) */
+[data-ix-draw]{transition:stroke-dashoffset .9s var(--ix-out)}
+
+/* ---------- focus ---------- */
+.ix-panel :focus-visible,.ix-chip:focus-visible,.ix-toggle:focus-visible{outline:2px solid var(--ix-marker);outline-offset:2px}
+.ix-chip:not(.ix-panel *):focus-visible,.ix-toggle:not(.ix-panel *):focus-visible{outline-color:var(--ix-signal)}
+
+/* ---------- site-wide accents (no text changes) ---------- */
+/* buttons: lift on hover, a signal-orange edge on primary, press on click */
+.btn{transition:background .15s,color .15s,border-color .15s,transform .4s var(--ix-spring),box-shadow .25s var(--ix-out)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98);transition-duration:.08s}
+.btn--primary:hover{box-shadow:inset 0 -3px 0 var(--ix-signal)}
+.btn--ghost:hover,.btn--secondary:hover{box-shadow:inset 0 -3px 0 var(--ix-marker)}
+.ix-panel .btn--ghost,.ix-panel .btn--secondary{color:var(--ix-ink-on);border-color:rgba(147,180,211,.45)}
+.ix-panel .btn--ghost:hover,.ix-panel .btn--secondary:hover{border-color:var(--ix-line)}
+
+/* header: active page marked with a signal-orange bar; hover draws the bar in */
+.header__nav-link{position:relative}
+.header__nav-link::after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:.2rem;height:2px;background:var(--ix-signal);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ix-out)}
+.header__nav-link:hover::after{transform:scaleX(.5)}
+.header__nav-link--active{color:var(--ink)}
+.header__nav-link--active::after{transform:scaleX(1)}
+.header__lang-btn--active{box-shadow:inset 0 -2px 0 var(--ix-signal)}
+
+/* in-text links: marker underline on hover */
+main p a:not(.btn):hover,main li a:not(.btn):hover{text-decoration-color:var(--ix-signal)}
+
+/* ---------- reduced motion: no tilt, no springs, instant states ---------- */
+@media (prefers-reduced-motion:reduce){
+  [data-ix-tilt]{transform:none!important;transition:none}
+  .ix-panel::before{display:none}
+  .ix-chip,.ix-toggle,.ix-toggle::after,.btn,[data-ix-draw],.header__nav-link::after{transition:none!important}
+  .btn:hover,.ix-chip:hover{transform:none}
+}
+@media (hover:none){[data-ix-tilt]{transform:none}.ix-panel::before{display:none}}
