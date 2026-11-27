@@ -5,7 +5,8 @@
   "lv": "/",
   "title": "Website development & SEO services in Riga | LatSEO",
   "description": "Website development in Riga with built-in SEO: one-page site from €449, business website from €799 (excl. VAT). SEO services and a free 24h video audit.",
-  "page_type": "WebPage"
+  "page_type": "WebPage",
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-portfolio.css\">\n  <link rel=\"stylesheet\" href=\"/css/ix-home.css\">"
 }
 -->
 <section class="hero hero--plan" aria-labelledby="hero-title" data-plan="{&quot;notes&quot;: {&quot;h1&quot;: &quot;&lt;h1&gt; · {px} px · one per page&quot;, &quot;desc&quot;: &quot;intro: what, where, for whom&quot;, &quot;cta&quot;: &quot;2 actions&quot;, &quot;meta&quot;: &quot;terms visible up front&quot;, &quot;stats&quot;: &quot;facts in numbers&quot;, &quot;proof&quot;: &quot;source: Google Search Console&quot;}, &quot;tb&quot;: [[&quot;Project&quot;, &quot;latseo.com&quot;], [&quot;Page&quot;, &quot;home page&quot;], [&quot;&lt;title&gt;&quot;, &quot;{tl} characters&quot;], [&quot;Schema&quot;, &quot;{schema}&quot;], [&quot;Built by&quot;, &quot;LatSEO&quot;]]}">
@@ -124,14 +125,53 @@
         <li><strong>SSL certificate</strong> — a secure connection (https) in all packages.</li>
       </ul>
       <p class="small muted" style="margin-top:1rem">If you want to actively grow your rankings after launch, monthly SEO costs from €300/month.</p>
+      <div class="serp" data-serp data-nosnippet data-l="{&quot;dom&quot;: &quot;.lv&quot;, &quot;px&quot;: &quot;≈ {w} px of ~580 px&quot;, &quot;ch&quot;: &quot;{n} characters of ~160&quot;, &quot;def&quot;: &quot;{s} {c}. {b} — get in touch for prices and available times.&quot;, &quot;ok&quot;: &quot;The title fits on one line — Google can show it in full.&quot;, &quot;long&quot;: &quot;The title is too long: Google will most likely cut it off with “...”. Shorten the service or the name.&quot;, &quot;dlong&quot;: &quot;The description is longer than ~160 characters, so its end may not be shown.&quot;, &quot;dok&quot;: &quot;The description length is fine.&quot;}">
+        <p class="serp__head">See how your page could look in Google</p>
+        <div class="serp__fields">
+          <label>Company name<input name="b" value="Your company" maxlength="80" autocomplete="organization"></label>
+          <label>Service<input name="s" value="Car repair" maxlength="80"></label>
+          <label>City<input name="c" value="in Riga" maxlength="40"></label>
+          <label class="serp__wide"><span>Description <small>(optional)</small></span><textarea name="d" rows="2" maxlength="320"></textarea></label>
+        </div>
+        <div class="serp__shot"><div class="serp__g">
+          <div class="serp__site"><span class="serp__fav" aria-hidden="true"></span><span><span class="serp__sname">Your company</span><span class="serp__url">https://your-company.lv</span></span></div>
+          <div class="serp__title">Car repair in Riga | Your company</div>
+          <div class="serp__desc">Car repair in Riga. Your company — get in touch for prices and available times.</div>
+        </div></div>
+        <div class="serp__ruler">
+          <div class="serp__row"><span>Title width</span><span class="serp__bar" data-bar="t"><i></i><b></b></span><output class="serp__val" data-val="t">—</output></div>
+          <div class="serp__row"><span>Description length</span><span class="serp__bar" data-bar="d"><i></i><b></b></span><output class="serp__val" data-val="d">—</output></div>
+        </div>
+        <p class="serp__msg" aria-live="polite"></p>
+        <p class="serp__fine">The measurement is approximate: the title width is measured in your browser in Arial 20 px, the font Google uses for titles on desktop. Google may also rewrite the title and description itself.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section section--muted" aria-labelledby="process-title">
   <div class="container">
+    <div class="build-top">
     <div class="section__header">
 <h2 class="section__title" id="process-title">How the work goes</h2>
+      <p class="build__hint" data-nosnippet>Move the slider through the stages and watch the page take shape. Illustration.</p>
+    </div>
+    <div class="build" data-build data-s="1" data-names="Sketch|Layout|Content|Live" aria-hidden="true">
+      <svg viewBox="0 0 320 200" width="320" height="200" focusable="false">
+        <rect class="b-frame" x=".5" y=".5" width="319" height="199"/><path class="b-line" d="M0 16.5H320"/>
+        <rect class="b-dot" x="6" y="6" width="4" height="4"/><rect class="b-dot" x="13" y="6" width="4" height="4"/><rect class="b-dot" x="20" y="6" width="4" height="4"/>
+        <rect class="b-url" x="60.5" y="4.5" width="200" height="8"/>
+        <g class="b-wire"><rect x="12" y="24" width="296" height="10"/><rect x="12" y="46" width="150" height="22"/><rect x="12" y="74" width="130" height="16"/><rect x="12" y="98" width="56" height="12"/><rect x="180" y="46" width="128" height="64"/><path d="M180 46L308 110M308 46L180 110"/><rect x="12" y="124" width="92" height="62"/><rect x="114" y="124" width="92" height="62"/><rect x="216" y="124" width="92" height="62"/></g>
+        <g class="b-block"><rect x="12" y="24" width="296" height="10"/><rect x="12" y="46" width="150" height="22"/><rect x="12" y="74" width="130" height="16"/><rect class="b-strong" x="12" y="98" width="56" height="12"/><rect x="180" y="46" width="128" height="64"/><rect x="12" y="124" width="92" height="62"/><rect x="114" y="124" width="92" height="62"/><rect x="216" y="124" width="92" height="62"/></g>
+        <g class="b-content"><rect class="b-ink" x="12" y="26" width="26" height="6"/><rect class="b-mute" x="200" y="28" width="18" height="2"/><rect class="b-mute" x="224" y="28" width="18" height="2"/><rect class="b-mute" x="248" y="28" width="18" height="2"/><rect class="b-acc" x="276" y="25" width="32" height="8"/><rect class="b-ink" x="12" y="47" width="140" height="8"/><rect class="b-ink" x="12" y="59" width="96" height="8"/><rect class="b-mute" x="12" y="75" width="130" height="3"/><rect class="b-mute" x="12" y="81" width="120" height="3"/><rect class="b-mute" x="12" y="87" width="84" height="3"/><rect class="b-acc" x="12" y="98" width="56" height="12"/><rect class="b-pale" x="180" y="46" width="128" height="64"/><path class="b-pic" d="M186 104l30-30 22 20 16-12 48 22"/><circle class="b-pic" cx="284" cy="62" r="7"/><rect class="b-pale" x="12" y="124" width="92" height="36"/><rect class="b-pale" x="114" y="124" width="92" height="36"/><rect class="b-pale" x="216" y="124" width="92" height="36"/><rect class="b-ink" x="12" y="166" width="70" height="4"/><rect class="b-ink" x="114" y="166" width="62" height="4"/><rect class="b-ink" x="216" y="166" width="74" height="4"/><rect class="b-mute" x="12" y="176" width="86" height="2"/><rect class="b-mute" x="114" y="176" width="80" height="2"/><rect class="b-mute" x="216" y="176" width="84" height="2"/></g>
+        <g class="b-live"><path class="b-lock" d="M66 11V8.5h4V11zM67 8.5V7a1 1 0 0 1 2 0v1.5"/><text x="75" y="11">https://</text><rect class="b-acc" x="230" y="5" width="30" height="7"/></g>
+      </svg>
+      <span class="build__tag">Sketch</span>
+    </div>
+    </div>
+    <div class="build__ctl" data-nosnippet>
+      <label class="sr-only" for="build-range">Work stage</label>
+      <input id="build-range" class="build__range" type="range" min="1" max="4" step="1" value="1" aria-valuetext="1. Call and requirements — sketch">
     </div>
     <ol class="steps steps--row">
       <li><strong>Call and requirements</strong>We discuss your goals, audience and the functionality you need, and agree on scope and deadline.</li>
@@ -189,3 +229,5 @@
     </div>
   </div>
 </section>
+<script src="/js/ix-portfolio.js" defer></script>
+<script src="/js/ix-home.js" defer></script>

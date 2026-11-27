@@ -471,6 +471,20 @@ def head(meta, graph):
 
 
 # ---------------------------------------------------------------- reusable blocks
+# "Rasējums" overlay on portfolio screenshots (js/ix-portfolio.js): element boxes read off each 960x600
+# screenshot by eye, as left,top,width,height in % of the image. Labels only (nav / h1 / cta), no values.
+PF_MARKS = {
+    "tehnologijuakademija": "nav:0,0,100,6.5;h1:15,26.5,37,21.5;cta:15.4,57.5,34,6.5",
+    "lazergriezeji": "nav:0,0,100,7;h1:4,24,46.5,45;cta:4.2,83.5,35,5.8",
+    "cncfrezes": "nav:0,4,100,7;h1:31,31.5,38,20;cta:36.8,70,26.6,6",
+    "3dpakalpojumi": "nav:0,0,100,7.5;h1:4.5,23,48,59;cta:4.5,94.5,33.5,5.5",
+    "cncpakalpojumi": "nav:0,0,100,8;h1:10,15,38,29;cta:10,74,28,7.5",
+    "bratus": "nav:0,0,100,12;cta:36,83.5,28,6.5",
+    "ploteris": "nav:0,0,100,7.5;h1:4.5,35,50.5,35.5;cta:4.5,83,33,7",
+    "maropro": "nav:0,0,100,10;h1:9.5,20,37.5,24;cta:9.5,58,33.5,7",
+}
+
+
 def project_card(key, lang):
     url, img, name, tags, metric = PROJECTS[key]
     t = T[lang]
@@ -486,13 +500,15 @@ def project_card(key, lang):
     if not url:
         return (f'<div class="proof proof--text"><span class="proof__name">{name}</span>'
                 f'<span class="proof__tag">{tag}</span>{m}</div>')
-    return (f'<a class="proof" href="{url}" target="_blank" rel="noopener">'
-            f'<img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {t["shot_alt"]}" width="960" height="600" loading="lazy">'
-            f'<span class="proof__body"><span class="proof__name">{name}</span><span class="proof__tag">{tag}</span>{m}</span></a>')
+    marks = f' data-pf-marks="{PF_MARKS[key]}"' if key in PF_MARKS else ""
+    return (f'<div class="pf" data-pf{marks}><a class="proof" href="{url}" target="_blank" rel="noopener">'
+            f'<span class="pf__frame"><span class="pf__stage"><img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {t["shot_alt"]}" width="960" height="600" loading="lazy"></span></span>'
+            f'<span class="proof__body"><span class="proof__name">{name}</span><span class="proof__tag">{tag}</span>{m}</span></a></div>')
 
 def browser(key, lang, cls=""):
     url, img, name, *_ = PROJECTS[key]
-    return (f'<figure class="shot {cls}"><img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {T[lang]["shot_alt"]}" width="960" height="600"{" data-hero" if cls == "first" else " loading=\"lazy\""}>'
+    marks = f' data-pf-marks="{PF_MARKS[key]}"' if key in PF_MARKS else ""
+    return (f'<figure class="shot pf {cls}" data-pf{marks}><span class="pf__frame"><span class="pf__stage"><img {img_attrs("/assets/images/" + img, (480,), 960, CARD_SIZES)} alt="{name} {T[lang]["shot_alt"]}" width="960" height="600"{" data-hero" if cls == "first" else " loading=\"lazy\""}></span></span>'
             f'<figcaption class="shot__cap">{name}</figcaption></figure>')
 
 

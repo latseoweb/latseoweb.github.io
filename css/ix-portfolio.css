@@ -1,0 +1,27 @@
+/* Portfolio cards as device frames (js/ix-portfolio.js): hover / horizontal drag zooms and pans the screenshot
+   inside the frame; the "Rasējums" toggle overlays element boxes in the hero's blueprint style. */
+.pf{position:relative;min-width:0}
+.pf__frame{display:block;position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--paper-2);outline:1px solid var(--line);outline-offset:-1px;touch-action:pan-y;cursor:zoom-in}
+.pf__stage{display:block;position:absolute;inset:0;transform-origin:var(--ox,50%) var(--oy,0%);transition:transform .3s var(--ease)}
+.pf__frame img,.shot .pf__frame img{width:100%;height:100%;aspect-ratio:auto;outline:0}
+.pf.is-zoom .pf__stage{transform:scale(1.75)}
+.pf.is-zoom .pf__frame{cursor:zoom-out}
+.pf.is-zoom .proof__name{color:var(--accent)}
+
+/* blueprint overlay: grid paper over a faded screenshot, dashed boxes, green notes */
+.pf__bp{display:none;position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' fill='none' stroke='%23C6CFCA'/%3E%3C/svg%3E") rgba(250,251,250,.8)}
+.pf.is-bp .pf__bp{display:block}
+.pf.is-bp img{filter:grayscale(1)}
+.pf__box{position:absolute;border:1px dashed var(--accent)}
+.pf__note{position:absolute;left:-1px;top:-1px;font-size:.6875rem;line-height:1.2;color:var(--accent-ink);background:#FAFBFA;padding:.1rem .35rem;white-space:nowrap;box-shadow:inset 2px 0 0 var(--accent)}
+.pf__dim{position:absolute;left:3%;right:3%;height:0;border-top:1px solid var(--ink)}
+.pf__dim::before,.pf__dim::after{content:"";position:absolute;top:-6px;height:12px;border-left:1px solid var(--ink)}
+.pf__dim::before{left:0}
+.pf__dim::after{right:0}
+.pf__dim span{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);font-size:.6875rem;line-height:1.2;color:var(--ink);background:#FAFBFA;padding:0 .35rem;white-space:nowrap}
+
+.pf__btn{position:absolute;top:.5rem;right:.5rem;z-index:2;min-height:44px;padding:0 .8rem;font-size:var(--fs-xs);font-weight:600;color:#fff;background:var(--ink);cursor:pointer}
+.pf__btn:hover{background:var(--ink-2)}
+.pf__btn[aria-pressed="true"]{background:var(--accent)}
+.pf__btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.pf__stage{transition:none}}
