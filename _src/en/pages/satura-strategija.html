@@ -8,7 +8,8 @@
   "crumbs": [["/en/", "Home"], ["/en/seo-pakalpojumi-riga/", "SEO services"], ["/en/satura-strategija/", "Content strategy"]],
   "schema": [
     {"@type": "Service", "@id": "https://latseo.com/en/satura-strategija/#service", "name": "SEO content strategy", "serviceType": "SEO content strategy", "provider": {"@id": "https://latseo.com/#org"}, "areaServed": {"@type": "Country", "name": "Latvia"}}
-  ]
+  ],
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-saturs.css\">"
 }
 -->
 <section class="page-hero">
@@ -57,6 +58,34 @@
       <p>These are exactly the pages a content audit finds: the ranking is there, but a specific offer, a price or an answer to the question is missing right in the search result.</p>
     </div>
   </div>
+
+  <div class="container ixs" data-ixs data-lang="en">
+    <div class="ixs__wrap">
+      <div class="ixs__phone" aria-hidden="true" data-nosnippet>
+        <div class="ixs__page">
+          <div class="ixs__search"><span>service in Riga</span></div>
+          <div class="ixs__blk ixs__ai" data-ai hidden><b>AI overview</b><span class="ixs__sk"></span><span class="ixs__sk ixs__sk--m"></span><span class="ixs__sk"></span><span class="ixs__sk ixs__sk--s"></span><span class="ixs__sk ixs__sk--m"></span><div class="ixs__chips"><i></i><i></i><i></i></div></div>
+          <div class="ixs__blk ixs__map" data-ai hidden><b>Places</b><div class="ixs__mapimg"><i style="left:22%;top:30%"></i><i style="left:55%;top:55%"></i><i style="left:74%;top:25%"></i></div><div class="ixs__li">Company D<span>4.6 ★ · open</span></div><div class="ixs__li">Company E<span>4.6 ★ · open</span></div></div>
+          <div class="ixs__blk ixs__paa" data-ai hidden><b>People also ask</b><span class="ixs__q">How much does the service cost?</span><span class="ixs__q">How to choose a company?</span><span class="ixs__q">How long does it take?</span><span class="ixs__q">What is included in the price?</span></div>
+          <div class="ixs__r"><small>company-a.example</small><strong>Company A — service</strong><span class="ixs__sk"></span><span class="ixs__sk ixs__sk--m"></span></div>
+          <div class="ixs__r"><small>company-b.example</small><strong>Company B — service</strong><span class="ixs__sk"></span><span class="ixs__sk ixs__sk--m"></span></div>
+          <div class="ixs__r ixs__r--you"><em>Your page</em><small>your-page.example</small><strong>Your company — service</strong><span class="ixs__sk"></span><span class="ixs__sk ixs__sk--m"></span></div>
+          <div class="ixs__r"><small>company-c.example</small><strong>Company C — service</strong><span class="ixs__sk"></span><span class="ixs__sk ixs__sk--m"></span></div>
+          <div class="ixs__ghost" hidden><span>without AI overview</span></div>
+          <div class="ixs__veil"></div>
+          <div class="ixs__fold"><span>screen edge</span></div>
+        </div>
+      </div>
+      <span class="ixs__dim" aria-hidden="true"></span><span class="ixs__dimlab" aria-hidden="true"></span>
+    </div>
+    <div class="ixs__side">
+      <p><span class="ixs__tag">Illustration</span></p>
+      <button type="button" class="ixs__sw" data-sw aria-pressed="false" hidden><i></i><span>AI overview: <span data-sw-label>off</span></span></button>
+      <dl class="ixs__out"><dt>Your page</dt><dd data-v-top>220 px</dd><dt>Screen edge</dt><dd>470 px</dd><dt>State</dt><dd data-v-state>on the first screen</dd></dl>
+      <p class="ixs__status" data-status aria-live="polite">AI overview off. Your page is 220 px from the top of the page — on the first screen.</p>
+      <p class="ixs__note">Illustration: companies, addresses and ratings are made up, the layout is simplified, and the Google results page differs for every search. A page can rank well, but when other blocks sit above it, there is an impression and no click.</p>
+    </div>
+  </div>
 </section>
 
 <section class="section" aria-labelledby="faq-title">
@@ -84,3 +113,4 @@
     <div class="form-panel">{{form:content|Content strategy|SEO for an existing website}}</div>
   </div>
 </section>
+<script src="/js/ix-saturs.js" defer></script>

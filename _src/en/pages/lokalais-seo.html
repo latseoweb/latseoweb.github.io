@@ -15,7 +15,8 @@
       "provider": {"@id": "https://latseo.com/#org"},
       "areaServed": {"@type": "Country", "name": "Latvia"}
     }
-  ]
+  ],
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-lokalais.css\">"
 }
 -->
 <section class="page-hero">
@@ -53,6 +54,55 @@
       <article class="item"><h3 class="item__title">NAP in directories</h3><p class="item__text">The same name, address and phone number (NAP) in all local directories and databases.</p></article>
       <article class="item"><h3 class="item__title">Local links</h3><p class="item__text">Links from regional media, blogs and partners that confirm the business's connection to the region.</p></article>
       <article class="item"><h3 class="item__title">Localised content</h3><p class="item__text">Website pages that match local search intent — the service and the location on one page.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--muted" aria-labelledby="ixl-title">
+  <div class="container">
+    <div class="section__header">
+<h2 class="section__title" id="ixl-title">Try it: what shapes your place on the map</h2>
+      <p class="section__description">For local results Google names three factors: relevance, distance and prominence. Drag your business around the map and change the number of reviews.</p>
+    </div>
+    <div class="ixl" data-ixl data-lang="en">
+      <div>
+        <p class="ixl__tag">Illustration — Google does not publish its exact formula</p>
+        <div class="ixl__map">
+          <svg class="ixl__svg" viewBox="0 0 600 400" role="img" aria-label="Stylised map with a street grid and a river: a search point, five competitor markers and a draggable marker for your business. Not a real map." xmlns="http://www.w3.org/2000/svg">
+            <g class="ixl__st"><path d="M0 40H600"/><path d="M0 95H600"/><path d="M0 150H600"/><path d="M0 205H600"/><path d="M0 260H600"/><path d="M0 315H600"/><path d="M0 365H600"/><path d="M45 0V400"/><path d="M105 0V400"/><path d="M170 0V400"/><path d="M235 0V400"/><path d="M300 0V400"/><path d="M365 0V400"/><path d="M430 0V400"/><path d="M495 0V400"/><path d="M555 0V400"/></g>
+            <g class="ixl__st ixl__st--m"><path d="M0 330L260 0"/><path d="M600 40L330 400"/></g>
+            <path class="ixl__river" d="M-10 255C110 200 200 310 320 255S520 130 610 175"/>
+            <path class="ixl__river2" d="M-10 255C110 200 200 310 320 255S520 130 610 175"/>
+            <line class="ixl__link" data-link x1="300" y1="200" x2="250" y2="235"/>
+            <g class="ixl__pin" data-c="A" data-x="210" data-y="150" data-r="120" data-m="1" transform="translate(210 150)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">A</text></g><g class="ixl__pin" data-c="B" data-x="400" data-y="120" data-r="45" data-m="1" transform="translate(400 120)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">B</text></g><g class="ixl__pin" data-c="C" data-x="330" data-y="290" data-r="160" data-m="1" transform="translate(330 290)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">C</text></g><g class="ixl__pin ixl__pin--x" data-c="D" data-x="160" data-y="280" data-r="30" data-m="0" transform="translate(160 280)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">D</text></g><g class="ixl__pin" data-c="E" data-x="470" data-y="240" data-r="80" data-m="1" transform="translate(470 240)"><rect x="-17" y="-17" width="34" height="34"/><text y="7">E</text></g>
+            <g data-sp data-x="300" data-y="200"><path class="ixl__sp" d="M280 200H320M300 180V220"/><circle class="ixl__sp" cx="300" cy="200" r="7"/><text class="ixl__spt" x="318" y="180">Search point</text></g>
+            <g class="ixl__you" data-you data-x="250" data-y="235" role="button" aria-roledescription="draggable marker" aria-label="Your business on the map. Move it with the arrow keys or by dragging." transform="translate(250 235)"><circle class="ixl__hit" r="40"/><circle class="ixl__ring" r="30"/><rect class="ixl__body" x="-19" y="-19" width="38" height="38"/><text class="ixl__lbl" y="42" style="fill:var(--accent-ink)">Your business</text></g>
+          </svg>
+        </div>
+        <p class="ixl__cap">A schematic drawing, not a real map. The review counts and categories of competitors A–E are made up. D has a category that does not match the search (dashed frame).</p>
+      </div>
+      <div class="ixl__panel" data-panel hidden>
+        <div class="ixl__ctl">
+          <label for="ixl-rev-en"><span>Number of reviews</span><output data-rev-out>10</output></label>
+          <input type="range" id="ixl-rev-en" data-rev min="0" max="200" step="1" value="10">
+        </div>
+        <button type="button" class="ixl__sw" data-cat aria-pressed="true"><i></i><span>Category matches the search: <span data-cat-v>yes</span></span></button>
+        <div>
+          <p class="ixl__h">Map pack (top 3)</p>
+          <ol class="ixl__pack" data-pack></ol>
+          <p class="ixl__rank" data-rank aria-live="polite"></p>
+        </div>
+        <div>
+          <p class="ixl__h">Your business factors (0–100)</p>
+          <div class="ixl__bars">
+            <div class="ixl__bar"><b>Relevance</b><i data-b="rel"></i><span>0</span></div>
+            <div class="ixl__bar"><b>Distance</b><i data-b="dist"></i><span>0</span></div>
+            <div class="ixl__bar"><b>Prominence</b><i data-b="prom"></i><span>0</span></div>
+            <div class="ixl__bar"><b>Total</b><i data-b="tot"></i><span>0</span></div>
+          </div>
+        </div>
+        <p class="ixl__note">Toy model: total = (relevance + distance + prominence) / 3, equal weights. Relevance: category matches — 100, does not — 35. Distance falls with the gap from the search point. Prominence grows with the number of reviews, but ever more slowly. The numbers are assumptions for teaching.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -108,3 +158,4 @@
     <div class="form-panel">{{form:local|Local SEO|Local SEO / Google Business Profile|Request an audit}}</div>
   </div>
 </section>
+<script src="/js/ix-lokalais.js" defer></script>
