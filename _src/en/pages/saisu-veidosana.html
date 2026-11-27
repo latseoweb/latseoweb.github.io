@@ -56,9 +56,10 @@
             <g class="ixk__me" data-me tabindex="0" role="button" aria-label="Your page. Move with the arrow keys or by dragging." transform="translate(300 190)"><circle class="ixk__hit" r="36"/><rect x="-22" y="-22" width="44" height="44"/><text y="42">Your page</text></g>
           </svg>
         </div>
-        <p class="ixk__cap">Drag the nodes. Illustration: source names are generic and the numbers are only the count of nodes in the drawing, not measurements. A quality network has a few relevant sources with thick links; a spam network has many tiny unrelated sources with tangled thin links.</p>
+        <p class="ixk__cap">Source names are generic and the numbers are only the count of nodes in the drawing, not measurements. A quality network has a few relevant sources with thick links; a spam network has many tiny unrelated sources with tangled thin links.</p>
       </div>
       <div class="ixk__side" data-ctl hidden>
+        <p class="ixk__title">Two link profiles for one page</p>
         <div class="ixk__seg" role="group" aria-label="Link type"><button type="button" data-mode="q" aria-pressed="true">Quality links</button><button type="button" data-mode="s" aria-pressed="false">Spam links</button></div>
         <dl class="ixk__out"><dt>Sources drawn</dt><dd data-v>5</dd><dt>Industry relevance</dt><dd data-v>—</dd><dt>Risk</dt><dd data-v>—</dd></dl>
         <p class="ixk__status" data-status aria-live="polite"></p>
@@ -67,11 +68,11 @@
   </div>
 </section>
 
-<section class="section section--ink" aria-labelledby="audit-title">
+<section class="section section--white ixs-band" aria-labelledby="audit-title">
   <div class="container two-col">
     <div>
 <h2 class="section__title" id="audit-title">First — checking your existing links</h2>
-      <p class="ink-fact" data-nosnippet><strong>more than 2,300</strong><span>domains linking to latseo.com in October 2026 — mostly automatically generated, unrelated sites</span></p>
+      <p class="ink-fact" data-nosnippet><strong>more than 2,300</strong><span>domains linking to latseo.com in October 2026 — mostly automatically generated, unrelated sites</span><small class="ixs-src">Source: LatSEO's own link profile check, latseo.com, October 2026.</small></p>
     </div>
     <div class="prose">
       <p>Before building new links, I check which links the website already has. For example, in October 2026 the LatSEO website had links from more than 2,300 domains, mostly from automatically generated, unrelated sites. Links like these add no value, so the number of links on its own says nothing.</p>
@@ -79,43 +80,45 @@
     </div>
   </div>
   <div class="container ixi" data-ixi data-lang="en">
-    <div class="ixi__head"><h3 class="ixi__h">Try a sample: keep or disavow?</h3><span class="ixi__tag">Illustration</span></div>
-    <p class="ixi__intro">Six made-up examples. Choose a decision for each link — then you will see how it would be judged in an audit.</p>
-    <ul class="ixi__list" aria-label="Link review list">
-      <li class="ixi__row" data-ans="keep">
-        <div><p class="ixi__dom">directory.example.lv</p><p class="ixi__d">Industry directory: business name, address and phone match your details, link from the business profile page.</p></div>
-        <div class="ixi__pick" role="group" aria-label="directory.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
-        <p class="ixi__why"><span data-res></span><b>Keep.</b> The source fits the industry, the details match, and the link sits in a natural place.</p>
-      </li>
-      <li class="ixi__row" data-ans="keep">
-        <div><p class="ixi__dom">local-portal.example.lv</p><p class="ixi__d">An article on a local news portal that mentions the business with a link to the website.</p></div>
-        <div class="ixi__pick" role="group" aria-label="local-portal.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
-        <p class="ixi__why"><span data-res></span><b>Keep.</b> A real mention in local media is exactly what Google looks for.</p>
-      </li>
-      <li class="ixi__row" data-ans="dis">
-        <div><p class="ixi__dom">forum-8812.example.lv</p><p class="ixi__d">Unrelated forum: hundreds of identical comments using the same keyword as the link text.</p></div>
-        <div class="ixi__pick" role="group" aria-label="forum-8812.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
-        <p class="ixi__why"><span data-res></span><b>Disavow.</b> No connection to the industry and repeated anchor text — a typical sign of link spam.</p>
-      </li>
-      <li class="ixi__row" data-ans="keep">
-        <div><p class="ixi__dom">partner.example.lv</p><p class="ixi__d">A supplier's website: your business is listed in the partners section.</p></div>
-        <div class="ixi__pick" role="group" aria-label="partner.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
-        <p class="ixi__why"><span data-res></span><b>Keep.</b> A genuine business relationship that also makes sense to a reader.</p>
-      </li>
-      <li class="ixi__row" data-ans="dis">
-        <div><p class="ixi__dom">links-for-money.example.lv</p><p class="ixi__d">A site that openly sells links, referenced by hundreds of unrelated businesses.</p></div>
-        <div class="ixi__pick" role="group" aria-label="links-for-money.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
-        <p class="ixi__why"><span data-res></span><b>Disavow.</b> Links bought to influence rankings go against Google's spam policy.</p>
-      </li>
-      <li class="ixi__row" data-ans="dis">
-        <div><p class="ixi__dom">auto-texts.example.lv</p><p class="ixi__d">An auto-generated site with randomly assembled text and links to hundreds of unrelated pages.</p></div>
-        <div class="ixi__pick" role="group" aria-label="auto-texts.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
-        <p class="ixi__why"><span data-res></span><b>Disavow.</b> The content is not made for people, and the link is not a real recommendation.</p>
-      </li>
-    </ul>
-    <div class="ixi__foot"><span class="ixi__score" data-score aria-live="polite"></span><button type="button" class="ixi__reset" data-reset hidden>Start again</button></div>
-    <p class="ixi__final" data-final hidden>This is how I review a link profile in an audit: each source is judged by industry relevance, context and whether the link looks natural.</p>
-    <p class="ixi__note">Illustration: the domains are made up. The disavow tool is meant for rare cases — Google ignores most obviously worthless links by itself, so it is used only when there are many of them or a manual action has been received.</p>
+    <div class="ixi__panel ix-panel">
+      <div class="ixi__head"><h3 class="ixi__h">Try a sample: keep or disavow?</h3><span class="ixi__tag">Illustration</span></div>
+      <p class="ixi__intro">Six made-up examples. Choose a decision for each link — then you will see how it would be judged in an audit.</p>
+      <ul class="ixi__list" aria-label="Link review list">
+        <li class="ixi__row" data-ans="keep">
+          <div><p class="ixi__dom">directory.example.lv</p><p class="ixi__d">Industry directory: business name, address and phone match your details, link from the business profile page.</p></div>
+          <div class="ixi__pick" role="group" aria-label="directory.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+          <p class="ixi__why"><span data-res></span><b>Keep.</b> The source fits the industry, the details match, and the link sits in a natural place.</p>
+        </li>
+        <li class="ixi__row" data-ans="keep">
+          <div><p class="ixi__dom">local-portal.example.lv</p><p class="ixi__d">An article on a local news portal that mentions the business with a link to the website.</p></div>
+          <div class="ixi__pick" role="group" aria-label="local-portal.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+          <p class="ixi__why"><span data-res></span><b>Keep.</b> A real mention in local media is exactly what Google looks for.</p>
+        </li>
+        <li class="ixi__row" data-ans="dis">
+          <div><p class="ixi__dom">forum-8812.example.lv</p><p class="ixi__d">Unrelated forum: hundreds of identical comments using the same keyword as the link text.</p></div>
+          <div class="ixi__pick" role="group" aria-label="forum-8812.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+          <p class="ixi__why"><span data-res></span><b>Disavow.</b> No connection to the industry and repeated anchor text — a typical sign of link spam.</p>
+        </li>
+        <li class="ixi__row" data-ans="keep">
+          <div><p class="ixi__dom">partner.example.lv</p><p class="ixi__d">A supplier's website: your business is listed in the partners section.</p></div>
+          <div class="ixi__pick" role="group" aria-label="partner.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+          <p class="ixi__why"><span data-res></span><b>Keep.</b> A genuine business relationship that also makes sense to a reader.</p>
+        </li>
+        <li class="ixi__row" data-ans="dis">
+          <div><p class="ixi__dom">links-for-money.example.lv</p><p class="ixi__d">A site that openly sells links, referenced by hundreds of unrelated businesses.</p></div>
+          <div class="ixi__pick" role="group" aria-label="links-for-money.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+          <p class="ixi__why"><span data-res></span><b>Disavow.</b> Links bought to influence rankings go against Google's spam policy.</p>
+        </li>
+        <li class="ixi__row" data-ans="dis">
+          <div><p class="ixi__dom">auto-texts.example.lv</p><p class="ixi__d">An auto-generated site with randomly assembled text and links to hundreds of unrelated pages.</p></div>
+          <div class="ixi__pick" role="group" aria-label="auto-texts.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Keep</button><button type="button" data-pick="dis" aria-pressed="false">Disavow</button></div>
+          <p class="ixi__why"><span data-res></span><b>Disavow.</b> The content is not made for people, and the link is not a real recommendation.</p>
+        </li>
+      </ul>
+      <div class="ixi__foot"><span class="ixi__score" data-score aria-live="polite"></span><button type="button" class="ixi__reset" data-reset hidden>Start again</button></div>
+      <p class="ixi__final" data-final hidden>This is how I review a link profile in an audit: each source is judged by industry relevance, context and whether the link looks natural.</p>
+      <p class="ixi__note">Illustration: the domains are made up. The disavow tool is meant for rare cases — Google ignores most obviously worthless links by itself, so it is used only when there are many of them or a manual action has been received.</p>
+    </div>
   </div>
 </section>
 

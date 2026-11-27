@@ -2,13 +2,13 @@
 (function () {
   var EN = document.documentElement.lang === "en";
   var T = EN ? {
-    cycle: "Repeats every month", wfHint: "Select a part to see what that work touches. Illustration.", wfCap: "Illustration: parts of a website",
+    cycle: "Repeats every month", cycHint: "Pick a number on the ring to see each part of the monthly work.", wfHint: "Select a part of the page to see what that work touches.", wfCap: "Illustration: parts of a website, not a real page",
     wf: [["tech", "Technical SEO", "Touches: indexing, Core Web Vitals, page speed and security: whether Google can read the pages."],
          ["content", "Content", "Touches: keyword research, page structure by search intent and updating existing pages."],
          ["links", "Links", "Touches: topically relevant links from other websites."],
          ["local", "Local SEO", "Touches: Google Business Profile, business details in directories and reviews."]]
   } : {
-    cycle: "Atkārtojas katru mēnesi", wfHint: "Izvēlieties daļu, lai redzētu, ko šis darbs skar. Ilustrācija.", wfCap: "Ilustrācija: mājaslapas daļas",
+    cycle: "Atkārtojas katru mēnesi", cycHint: "Izvēlieties numuru uz apļa, lai redzētu katru ikmēneša darbu.", wfHint: "Izvēlieties lapas daļu, lai redzētu, ko šis darbs skar.", wfCap: "Ilustrācija: mājaslapas daļas, nevis reāla lapa",
     wf: [["tech", "Tehniskais SEO", "Skar: indeksāciju, Core Web Vitals, lapas ātrumu un drošību — vai Google lapas var nolasīt."],
          ["content", "Saturs", "Skar: atslēgvārdu izpēti, lapu struktūru pēc meklēšanas nolūka un esošo lapu atjaunināšanu."],
          ["links", "Saites", "Skar: tematiski atbilstošas saites no citām mājaslapām."],
@@ -67,7 +67,8 @@
       while (li.firstChild) t.appendChild(li.firstChild);
       l.append(i, b, t); li.appendChild(l); i.addEventListener("change", upd);
     });
-    var pre = h("p", "small muted", T.pre); pre.style.marginBottom = ".5rem"; ul.before(pre);
+    var pre = h("p", "ix-hint ix-choose__hint", T.pre), right = h("div", "ix-choose__list"), left = ul.parentNode.firstElementChild;
+    ul.before(right); right.append(pre, ul);
     var g = h("div", "ix-gauge ix-panel"), row = h("div", "ix-gauge__row"), num = h("span", "ix-gauge__n ix-readout"),
         live = h("p", "ix-live"), lit = [];
     g.setAttribute("data-ix-tilt", ""); live.setAttribute("aria-live", "polite");
@@ -86,7 +87,7 @@
     sv("line", { x1: CX, y1: CY, x2: CX - R + 18, y2: CY, "class": "ix-dial__arm" }, nd);
     sv("circle", { cx: CX, cy: CY, r: 7, "class": "ix-dial__hub" }, svg);
     var big = sv("text", { x: CX, y: CY - 36, "text-anchor": "middle", "class": "ix-dial__big" }, svg); big.textContent = "0";
-    g.append(row, dial, live); ul.after(g); tilt(g);
+    g.append(row, dial, live); (left && left !== right ? left : right).appendChild(g); tilt(g);
     var prev = 0;
     function upd() {
       var c = ul.querySelectorAll("input:checked").length;
@@ -107,7 +108,7 @@
       while (nd) { rest += nd.nodeType === 3 ? nd.textContent : nd.outerHTML; nd = nd.nextSibling; }
       return { t: st.textContent, rest: rest };
     });
-    var N = data.length, w = h("div", "ix-cyc"), ring = h("div", "ix-cyc__ring ix-panel"), tr = h("div", "ix-cyc__track"), pn = h("div", "ix-cyc__panel ix-readout"), btns = [], ang = 0, cur = -1;
+    var N = data.length, w = h("div", "ix-cyc"), ring = h("div", "ix-cyc__ring ix-panel"), tr = h("div", "ix-cyc__track"), pn = h("div", "ix-cyc__panel"), btns = [], ang = 0, cur = -1;
     ring.setAttribute("data-ix-tilt", "");
     tr.setAttribute("role", "tablist"); pn.setAttribute("role", "tabpanel"); pn.setAttribute("aria-live", "polite");
     var svg = sv("svg", { viewBox: "0 0 100 100", "aria-hidden": "true", focusable: "false", "class": "ix-cyc__svg" }, ring);
@@ -140,13 +141,16 @@
       btns.forEach(function (b, j) { b.setAttribute("aria-selected", j === i); b.tabIndex = j === i ? 0 : -1; b.classList.toggle("is-past", j < i); });
       midN.textContent = ("0" + (i + 1)).slice(-2); midT.textContent = data[i].t;
       pn.setAttribute("aria-labelledby", "ix-cyc-" + i);
-      pn.innerHTML = ""; pn.appendChild(h("strong", "", data[i].t)); pn.insertAdjacentHTML("beforeend", data[i].rest);
+      pn.innerHTML = ""; pn.appendChild(h("strong", "", data[i].t)); pn.insertAdjacentHTML("beforeend", data[i].rest.replace(/^\s*—\s*/, ""));
       if (focus) btns[i].focus();
     }
     ring.append(tr, mid);
-    var side = h("div", "ix-cyc__side"); side.append(h("span", "ix-cap", T.cycle), pn);
-    w.append(ring, side);
-    ul.after(w); ul.style.display = "none"; sel(0, false); tilt(ring);
+    var side = h("div", "ix-cyc__side"), hint = h("p", "ix-hint", T.cycHint), left = ul.parentNode.firstElementChild;
+    side.append(h("span", "ix-cap", T.cycle), pn, hint);
+    w.append(ring);
+    ul.after(w); ul.style.display = "none";
+    if (left && left !== ul) left.appendChild(side); else w.appendChild(side);
+    sel(0, false); tilt(ring);
   });
 
   /* 3. compare: role diagram (LV page) */
@@ -190,18 +194,36 @@
   /* 4. what is SEO: wireframe zones */
   lazy('[data-ix="what"]', function (sec) {
     var pr = sec.querySelector(".prose"); if (!pr) return;
-    var w = h("div", "ix-wf"), sheet = h("div", "ix-wf__sheet ix-panel"), live = h("p", "ix-live", T.wfHint), cap = h("span", "ix-cap", T.wfCap), zs = [];
+    var w = h("div", "ix-wf"), win = h("div", "ix-wf__win ix-panel"), bar = h("div", "ix-wf__bar"), sheet = h("div", "ix-wf__sheet"),
+        hint = h("p", "ix-hint", T.wfHint), live = h("p", "ix-live"), cap = h("span", "ix-cap", T.wfCap), zs = [];
     live.setAttribute("aria-live", "polite"); cap.style.marginTop = ".4rem";
+    bar.setAttribute("aria-hidden", "true"); bar.append(h("i"), h("i"), h("i"), h("span", "ix-wf__url", "https://"));
+    /* skeleton drawing inside each zone: what that part of a page looks like (decorative) */
+    var SK = {
+      tech: ["c", "&lt;title&gt;", "c", "meta description", "c", "schema.org", "c", "sitemap.xml"],
+      content: ["h1", "", "t", "", "t", "", "t2", "", "btn", ""],
+      links: ["l", "", "l", "", "l", ""],
+      local: ["pin", "", "t", "", "t2", ""]
+    };
+    function skel(k) {
+      var s = h("span", "ix-wf__sk ix-wf__sk--" + k), a = SK[k];
+      s.setAttribute("aria-hidden", "true");
+      for (var j = 0; j < a.length; j += 2) { var e = h("i", "ix-wf__" + a[j]); if (a[j + 1]) e.innerHTML = a[j + 1]; s.appendChild(e); }
+      return s;
+    }
+    function pick(i) {
+      zs.forEach(function (x, j) { x.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+      sheet.classList.add("has-on"); live.textContent = T.wf[i][2];
+    }
     T.wf.forEach(function (z, i) {
-      var b = h("button", "ix-wf__z ix-wf__z--" + z[0]); b.type = "button"; b.setAttribute("aria-pressed", "false");
-      b.append(h("small", "", ("0" + (i + 1)).slice(-2)), document.createTextNode(z[1]));
-      b.addEventListener("click", function () {
-        var on = b.getAttribute("aria-pressed") !== "true";
-        zs.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
-        sheet.classList.toggle("has-on", on); b.setAttribute("aria-pressed", on); live.textContent = on ? z[2] : T.wfHint;
-      });
+      var b = h("button", "ix-wf__z ix-wf__z--" + z[0]), tag = h("span", "ix-wf__tag");
+      b.type = "button"; b.setAttribute("aria-pressed", "false");
+      tag.append(h("small", "", ("0" + (i + 1)).slice(-2)), document.createTextNode(z[1]));
+      b.append(tag, skel(z[0]));
+      b.addEventListener("click", function () { pick(i); });
       zs.push(b); sheet.appendChild(b);
     });
-    w.append(sheet, live, cap); pr.appendChild(w); tilt(sheet);
+    win.append(bar, sheet);
+    w.append(hint, win, live, cap); pr.appendChild(w); pick(0); tilt(win);
   });
 })();

@@ -156,3 +156,49 @@
     io.observe(root);
   } else init();
 })();
+
+/* Audit band: real weekly Search Console chart (static SVG in the HTML). Pointer / arrow keys move a crosshair
+   and the readout shows that week's impressions, clicks and average position. Data comes from data-w. */
+(function () {
+  var fig = document.querySelector("[data-ixa]");
+  if (!fig) return;
+  var EN = document.documentElement.lang === "en";
+  var plot = fig.querySelector(".ixa__plot"), svg = fig.querySelector(".ixa__svg"), read = fig.querySelector(".ixa__read");
+  var cx = svg.querySelector(".ixa__x"), dot = svg.querySelector(".ixa__dot");
+  var W = fig.getAttribute("data-w").split(";").map(function (r) { var a = r.split(","); return { d: a[0], i: +a[1], c: +a[2], p: a[3] === "None" ? null : +a[3] }; });
+  var X0 = 84, X1 = 704, Y0 = 318, Y1 = 40, YMAX = 3500, n = W.length, t0 = Date.parse(W[0].d), t1 = Date.parse(W[n - 1].d);
+  function xa(w) { return X0 + (Date.parse(w.d) - t0) / (t1 - t0) * (X1 - X0); }
+  function ya(w) { return Y0 - w.i / YMAX * (Y0 - Y1); }
+  function nf(v) { return EN ? v.toLocaleString("en-GB") : String(v).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function dd(s) { var p = s.split("-"); return EN ? +p[2] + " " + ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][+p[1] - 1] + " " + p[0] : p[2] + "." + p[1] + "." + p[0]; }
+  function pos(p) { return p == null ? "—" : EN ? p.toFixed(1) : p.toFixed(1).replace(".", ","); }
+  var cur = n - 1;
+  function show(k) {
+    cur = Math.max(0, Math.min(n - 1, k));
+    var w = W[cur], x = xa(w), y = ya(w);
+    cx.setAttribute("x1", x.toFixed(1)); cx.setAttribute("x2", x.toFixed(1));
+    dot.setAttribute("cx", x.toFixed(1)); dot.setAttribute("cy", y.toFixed(1));
+    read.innerHTML = "";
+    function el(tag, cls, txt, to) { var e = document.createElement(tag); e.className = cls; e.textContent = txt; (to || read).appendChild(e); return e; }
+    el("span", "ixa__rw", (EN ? "Week of " : "Nedēļa no ") + dd(w.d));
+    var big = el("span", "ixa__rb", "");
+    el("b", "ixa__rn", nf(w.i), big); el("span", "", EN ? " impressions" : " parādījumi", big);
+    var sm = el("span", "ixa__rs", "");
+    el("span", "", EN ? "Clicks " : "Klikšķi ", sm); el("b", "", String(w.c), sm);
+    el("span", "", EN ? ", avg. position " : ", vid. pozīcija ", sm); el("b", "", pos(w.p), sm);
+  }
+  function at(clientX) {
+    var r = svg.getBoundingClientRect(), vx = (clientX - r.left) / r.width * 720, best = 0, bd = 1e9;
+    W.forEach(function (w, j) { var d = Math.abs(xa(w) - vx); if (d < bd) { bd = d; best = j; } });
+    show(best);
+  }
+  plot.tabIndex = 0;
+  plot.addEventListener("pointermove", function (e) { at(e.clientX); });
+  plot.addEventListener("pointerdown", function (e) { at(e.clientX); });
+  plot.addEventListener("pointerleave", function () { show(n - 1); });
+  plot.addEventListener("keydown", function (e) {
+    var k = e.key === "ArrowRight" ? cur + 1 : e.key === "ArrowLeft" ? cur - 1 : e.key === "Home" ? 0 : e.key === "End" ? n - 1 : null;
+    if (k === null) return; e.preventDefault(); show(k);
+  });
+  show(n - 1);
+})();
