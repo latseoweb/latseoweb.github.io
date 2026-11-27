@@ -25,8 +25,11 @@
     var defs = [['all', T.all], ['dev', T.dev], ['seo', T.seo]], btns = [];
     var grp = el('div', 'ix-chips'); grp.setAttribute('role', 'group'); grp.setAttribute('aria-label', T.group);
     var status = el('p', 'ix-sr'); status.setAttribute('role', 'status');
+    var cnt = function (s) { return s.querySelectorAll('.proof:not(.proof--next)').length; },
+      nDev = cnt(devS), nSeo = cnt(seoS), counts = {all: nDev + nSeo, dev: nDev, seo: nSeo};
     defs.forEach(function (d) {
       var b = el('button', 'ix-chip', d[1]); b.type = 'button'; b.setAttribute('data-k', d[0]);
+      b.appendChild(el('span', 'ix-chip__n', String(counts[d[0]])));
       b.setAttribute('aria-pressed', d[0] === 'all' ? 'true' : 'false');
       b.addEventListener('click', function () { apply(d[0]); });
       btns.push(b); grp.appendChild(b);
@@ -125,6 +128,20 @@
     host.addEventListener('pointerleave', function () { e.style.setProperty('--ix-rx', '0deg'); e.style.setProperty('--ix-ry', '0deg'); });
   }
 
+  /* ---------- gadījuma izpēte: joslas izaug un frāžu kvadrāti parādās, kad attēls ir redzams ---------- */
+  function caseFig() {
+    var f = document.querySelector('[data-ixq]');
+    if (!f || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    [].forEach.call(f.querySelectorAll('.ixq__dots i'), function (d, i) { d.style.transitionDelay = (i * 14) + 'ms'; });
+    f.classList.add('is-pre');
+    new IntersectionObserver(function (e, o) {
+      if (!e[0].isIntersecting) return;
+      o.disconnect();
+      requestAnimationFrame(function () { requestAnimationFrame(function () { f.classList.remove('is-pre'); }); });
+    }, {threshold: 0.25}).observe(f);
+  }
+
   filters();
   tryCard();
+  caseFig();
 })();
