@@ -219,6 +219,8 @@ strong{color:var(--ink);font-weight:600}
 /* hero: the hero itself as an engineering drawing. Right of the line = blueprint of this very section. */
 .hero--plan{--pos:58%;position:relative;overflow:hidden;display:flex;align-items:center;min-height:min(84vh,780px);padding:clamp(3.5rem,8vw,6.5rem) 0 clamp(3rem,6vw,5rem);touch-action:pan-y}
 .hero--plan>.container{width:100%}
+.hero--plan{background:url(/assets/images/hero-impressions.svg) left bottom/100% 64% no-repeat}
+.hero__bgnote{position:absolute;left:clamp(16px,3vw,40px);bottom:.9rem;z-index:1;margin:0;font-size:.75rem;color:var(--muted);max-width:60ch}
 .hero--plan .hero__grid{grid-template-columns:1.35fr .65fr;align-items:end;gap:clamp(2rem,6vw,6rem)}
 .hero--plan .hero__title{font-size:clamp(2.7rem,1.1rem + 4.6vw,5.1rem);line-height:1;margin-bottom:var(--sp-lg)}
 .hero--plan .hero__stats{flex-direction:column;gap:var(--sp-md);margin:0}
@@ -255,7 +257,7 @@ strong{color:var(--ink);font-weight:600}
 .hero--plan.is-dragging{cursor:ew-resize;user-select:none}
 @media (max-width:1360px){.plan__tb{display:none}}
 @media (max-width:1000px){.hero--plan .hero__grid{grid-template-columns:1fr}.hero--plan .hero__stats{flex-direction:row;flex-wrap:wrap;gap:var(--sp-md) var(--sp-lg)}.plan__tb{display:none}}
-@media (max-width:700px){.hero--plan{min-height:0;padding-top:4.25rem}.plan__grip{top:auto;bottom:14px;margin-top:0}.plan__note--minor{display:none}.plan__note{font-size:.75rem}}
+@media (max-width:700px){.hero--plan{min-height:0;padding-top:4.25rem;padding-bottom:3.5rem;background-size:100% 38%}.plan__grip{top:auto;bottom:14px;margin-top:0}.plan__note--minor{display:none}.plan__note{font-size:.75rem}}
 
 /* hero screenshot: one real project, plain frame, caption below */
 .hero-shot{margin:0}
