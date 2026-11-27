@@ -5,7 +5,9 @@
   "title": "Kontakti — mājaslapu izstrāde un SEO Rīgā | LatSEO",
   "description": "Sazinieties ar LatSEO: tālrunis +371 24424434, e-pasts sales@latseo.com, WhatsApp. Atbilde 24 stundu laikā. Mājaslapu izstrāde un SEO pakalpojumi visā Latvijā.",
   "crumbs": [["/", "Sākums"], ["/kontakti/", "Kontakti"]],
-  "page_type": "ContactPage"
+  "page_type": "ContactPage",
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-kontakti.css\">",
+  "scripts": "<script src=\"/js/ix-kontakti.js\" defer></script>"
 }
 -->
 <section class="page-hero">
@@ -38,6 +40,7 @@
     </div>
     <div class="form-panel">
       <h2 style="font-size:var(--fs-xl);margin-bottom:1rem">Rakstiet</h2>
+      <p class="ix-reply" data-ix-reply></p>
       {{form:contact|Kontaktu lapa}}
     </div>
   </div>

@@ -14,7 +14,8 @@
       "Mājaslapu izstrāde"
     ]
   ],
-  "scripts": "<script src=\"/js/calculator.js?v=2\" defer></script>",
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-izmaksas.css\">",
+  "scripts": "<script src=\"/js/calculator.js?v=2\" defer></script><script src=\"/js/ix-izmaksas.js\" defer></script>",
   "schema": [
     {
       "@type": "Service",
@@ -292,6 +293,7 @@
         </tbody>
       </table>
     </div>
+    <div class="ix-cost" data-ix-cost></div>
     <p class="small" style="margin-top:1rem">Kā veidojas mājaslapas cena un kas to sadārdzina — rakstā <a class="link" href="/blogs/cik-maksa-majaslapa/">„Cik maksā mājaslapa 2026. gadā”</a>.</p>
   </div>
 </section>
