@@ -12,6 +12,21 @@
   }
 
   var LIM = 580, TMAX = 700, DLIM = 160, DMAX = 200;
+  var RM = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var EN = (document.documentElement.lang || "").slice(0, 2) === "en";
+
+  /* count a displayed number towards its target (user-driven values only; instant with reduced motion) */
+  function tween(state, to, draw) {
+    if (RM) { state.v = to; draw(to); return; }
+    state.to = to;
+    if (state.raf) return;
+    (function step() {
+      var d = state.to - state.v;
+      state.v = Math.abs(d) < 0.5 ? state.to : state.v + d * 0.3;
+      draw(Math.round(state.v));
+      state.raf = Math.abs(state.to - state.v) < 0.5 ? 0 : requestAnimationFrame(step);
+    })();
+  }
 
   function serp(box) {
     var L = JSON.parse(box.getAttribute("data-l"));
@@ -27,6 +42,12 @@
     var cut = document.createElement("span"); cut.className = "serp__cut"; cut.setAttribute("aria-hidden", "true");
     cut.innerHTML = "<span>~580 px</span>"; g.appendChild(cut);
 
+    var hint = document.createElement("p"); hint.className = "serp__hint";
+    hint.textContent = EN ? "Type in the fields: the yellow bar measures the title against the orange cut-off."
+                          : "Rakstiet laukos: dzeltenā josla mēra virsraksta platumu pret oranžo robežu.";
+    var head = box.querySelector(".serp__head"); if (head) head.after(hint);
+    var wasOver = false, cnt = { t: { v: 0 }, d: { v: 0 } };
+
     var bars = {};
     ["t", "d"].forEach(function (k) {
       var bar = box.querySelector('[data-bar="' + k + '"]'), over = document.createElement("s");
@@ -37,7 +58,8 @@
     function setBar(k, val, lim, max, text) {
       var b = bars[k], a = Math.min(val, lim) / max * 100, o = Math.max(0, Math.min(val, max) - lim) / max * 100;
       b.i.style.width = a + "%"; b.s.style.left = a + "%"; b.s.style.width = o + "%";
-      b.v.textContent = text; b.v.classList.toggle("is-over", val > lim);
+      b.v.classList.toggle("is-over", val > lim);
+      tween(cnt[k], val, function (n) { b.v.textContent = text(n); });
     }
 
     function slug(s) {
@@ -56,8 +78,11 @@
       var dshown = desc.length > DLIM ? desc.slice(0, DLIM - 4).replace(/\s+\S*$/, "") + " ..." : desc;
       out.t.textContent = shown; out.d.textContent = dshown;
       out.n.textContent = b || "—"; out.u.textContent = "https://" + slug(b) + L.dom;
-      setBar("t", tw, LIM, TMAX, L.px.replace("{w}", tw));
-      setBar("d", desc.length, DLIM, DMAX, L.ch.replace("{n}", desc.length));
+      setBar("t", tw, LIM, TMAX, function (n) { return L.px.replace("{w}", n); });
+      setBar("d", desc.length, DLIM, DMAX, function (n) { return L.ch.replace("{n}", n); });
+      var over = tw > LIM;
+      if (over && !wasOver && !RM) { cut.classList.remove("is-hit"); void cut.offsetWidth; cut.classList.add("is-hit"); }
+      wasOver = over;
       msg.textContent = (tw > LIM ? L.long : L.ok) + " " + (desc.length > DLIM ? L.dlong : L.dok);
       msg.classList.toggle("is-over", tw > LIM || desc.length > DLIM);
     }
@@ -98,9 +123,29 @@
       function set(i) {
         i = Math.max(0, Math.min(last, i)); rg.value = i;
         cur.style.left = dot.style.left = pts[i][0] / 16 + "%"; dot.style.top = pts[i][1] / 6 + "%";
+        top.style.clipPath = "inset(0 " + (100 - pts[i][0] / 16) + "% 0 0)";
         var t = L.wk.replace("{n}", i + 1).replace("{t}", last + 1) + " · " + L.from.replace("{d}", fmt(i));
         if (i === last) t += " · " + L.peak; else if (i === 0) t += " · " + L.first;
         read.textContent = t; rg.setAttribute("aria-valuetext", t);
+      }
+      /* own drawing of the curve on the night panel: dim full line + area, a bright marker-yellow part up to the cursor */
+      var NS = "http://www.w3.org/2000/svg", line = ds[ds.length - 1], area = ds[0];
+      function mk(cls, d) {
+        var s = document.createElementNS(NS, "svg"); s.setAttribute("viewBox", "0 0 1600 600"); s.setAttribute("preserveAspectRatio", "none");
+        s.setAttribute("aria-hidden", "true"); s.setAttribute("focusable", "false");
+        d.forEach(function (x) { var p = document.createElementNS(NS, "path"); p.setAttribute("d", x[0]); p.setAttribute("class", x[1]); s.appendChild(p); });
+        if (cls) s.setAttribute("class", cls); return s;
+      }
+      var wrap = document.createElement("span"); wrap.className = "trend__draw";
+      var top = mk("trend__top", [[line, "trend__done"]]);
+      wrap.appendChild(mk("", [[area, "trend__area"], [line, "trend__base"]])); wrap.appendChild(top);
+      img.after(wrap);
+      if (!RM && "IntersectionObserver" in window) {
+        wrap.classList.add("is-wait");
+        var vio = new IntersectionObserver(function (es) {
+          if (es[0].isIntersecting) { vio.disconnect(); wrap.classList.remove("is-wait"); wrap.classList.add("is-draw"); }
+        }, { threshold: 0.4 });
+        vio.observe(plot);
       }
       fig.classList.add("is-live"); read.setAttribute("aria-live", "polite");
       rg.addEventListener("input", function () { set(+rg.value); });
