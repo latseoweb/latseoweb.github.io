@@ -64,6 +64,7 @@
     }
 
     function fit() {
+      if (window.matchMedia("(max-width:700px)").matches) { g.style.transform = ""; g.style.marginBottom = ""; return; } // reflows in CSS at full size
       var k = Math.min(1, (shot.clientWidth - parseFloat(getComputedStyle(shot).paddingLeft) * 2) / 600);
       g.style.transform = "scale(" + k + ")";
       g.style.marginBottom = (g.offsetHeight * (k - 1)) + "px";
@@ -91,6 +92,41 @@
     set(+range.value);
   }
 
+  /* 3) Impressions timeline: knots of the real Search Console curve in assets/images/hero-impressions.svg
+        (weekly points, 2026-02-16 + 7 days each, peak 3135). Only the date/week is shown, no per-week values. */
+  function trend(fig) {
+    var L = JSON.parse(fig.getAttribute("data-l")), plot = fig.querySelector(".trend__plot"),
+        img = plot.querySelector("img"), read = fig.querySelector(".trend__read");
+    fetch(img.getAttribute("src")).then(function (r) { return r.text(); }).then(function (txt) {
+      var ds = txt.match(/ d="([^"]+)"/g).map(function (x) { return x.slice(4, -1); });
+      var n = ds[ds.length - 1].match(/-?\d+\.?\d*/g).map(Number), pts = [[n[0], n[1]]];
+      for (var i = 2; i + 5 < n.length; i += 6) pts.push([n[i + 4], n[i + 5]]);
+      var last = pts.length - 1, start = Date.UTC(2026, 1, 16);
+      var cur = document.createElement("span"), dot = document.createElement("span");
+      cur.className = "trend__cur"; dot.className = "trend__dot"; plot.appendChild(cur); plot.appendChild(dot);
+      var rg = document.createElement("input"); rg.type = "range"; rg.min = 0; rg.max = last; rg.value = last; rg.step = 1;
+      rg.className = "trend__range"; rg.setAttribute("aria-label", L.label); plot.appendChild(rg);
+      function fmt(i) {
+        var d = new Date(start + i * 7 * 864e5), D = d.getUTCDate(), M = d.getUTCMonth(), Y = d.getUTCFullYear();
+        if (L.fmt === "en") return D + " " + ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][M] + " " + Y;
+        return (D < 10 ? "0" : "") + D + "." + L.m[M] + "." + Y;
+      }
+      var ax = document.createElement("p"); ax.className = "trend__axis"; ax.setAttribute("aria-hidden", "true");
+      ax.innerHTML = "<span>" + fmt(0) + "</span><span>" + fmt(last) + "</span>"; plot.after(ax);
+      function set(i) {
+        i = Math.max(0, Math.min(last, i)); rg.value = i;
+        cur.style.left = dot.style.left = pts[i][0] / 16 + "%"; dot.style.top = pts[i][1] / 6 + "%";
+        var t = L.wk.replace("{n}", i + 1).replace("{t}", last + 1) + " · " + L.from.replace("{d}", fmt(i));
+        if (i === last) t += " · " + L.peak; else if (i === 0) t += " · " + L.first;
+        read.textContent = t; rg.setAttribute("aria-valuetext", t);
+      }
+      fig.classList.add("is-live"); read.setAttribute("aria-live", "polite");
+      rg.addEventListener("input", function () { set(+rg.value); });
+      set(last);
+    }).catch(function () {});
+  }
+
+  lazy(document.querySelector("[data-trend]"), trend);
   lazy(document.querySelector("[data-serp]"), serp);
   lazy(document.querySelector("[data-build]"), build);
 })();

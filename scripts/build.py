@@ -524,8 +524,24 @@ def hero_shot(key, caption, lang):
 MEASURED = {"key": "3dpakalpojumi", "date": "27.11.2026", "title": 50, "h1": 1, "img": (5, 5),
             "schema": "Organization, FAQPage, Service"}
 
+# Sketches shown over the sheet by js/ix-form.js when the "need" select changes (hidden until then; no numbers).
+DRAWING = ('<svg class="after__draw" viewBox="0 0 160 100" hidden focusable="false">'
+           '<g data-m="web"><rect x="10" y="8" width="140" height="84"/><path d="M10 20H150"/><path d="M16 14h22"/>'
+           '<rect x="16" y="26" width="128" height="30"/><path d="M16 26l128 30M144 26L16 56"/>'
+           '<rect x="16" y="62" width="38" height="24"/><rect x="61" y="62" width="38" height="24"/><rect x="106" y="62" width="38" height="24"/></g>'
+           '<g data-m="seo"><path class="s" d="M18 10V86H148"/><path d="M18 62H148M18 38H148" class="g"/>'
+           '<path class="a" d="M22 80L50 70L74 74L100 48L124 38L146 18"/><rect class="p" x="143" y="15" width="6" height="6"/></g>'
+           '<g data-m="audit"><rect x="26" y="8" width="70" height="84"/><path d="M34 22h40M34 32h54M34 42h48M34 52h54M34 62h30"/>'
+           '<circle class="a" cx="102" cy="58" r="22"/><path class="a" d="M118 74L144 92"/></g>'
+           '<g data-m="other"><rect x="26" y="24" width="108" height="60"/><path d="M26 14H134M26 10v8M134 10v8"/>'
+           '<path d="M14 24V84M10 24h8M10 84h8"/><path d="M26 92H134" class="g"/></g></svg>')
+
 AFTER = {
     "lv": dict(
+        draw=["Ilustrācija: jaunas mājaslapas rasējums — struktūra pirms dizaina.",
+              "Ilustrācija: SEO esošai mājaslapai — mērķis ir augoša līkne, skaitļi nav solīti.",
+              "Ilustrācija: audits — lupa uz lapu.",
+              "Ilustrācija: tukša lapa ar izmēru līnijām — pastāstiet, ko vēlaties."],
         title="Kas notiek pēc pieteikuma",
         web=[("Atbilde 24 stundu laikā", "Ar pirmajiem ieteikumiem vai aicinājumu uz īsu sarunu."),
              ("Īsa saruna", "Precizējam vajadzības, apjomu un termiņu."),
@@ -542,6 +558,10 @@ AFTER = {
         sheet_post=("vāks 1200 × 630", "<h1>", "Jūsu jautājums"),
     ),
     "en": dict(
+        draw=["Illustration: a new website drawing — structure before design.",
+              "Illustration: SEO for an existing website — the goal is a rising line, no figures promised.",
+              "Illustration: an audit — a magnifier over a page.",
+              "Illustration: a blank page with dimension lines — tell me what you need."],
         title="What happens after you send it",
         web=[("Reply within 24 hours", "With first recommendations or an invitation to a short call."),
              ("A short call", "We clarify your needs, scope and timeline."),
@@ -568,17 +588,20 @@ def after_form(variant, lang):
     url, img, name, *_ = PROJECTS[m["key"]]
     n1, n2, n3 = (esc(n.format(**m)) for n in a["notes"])
     cap = esc(a["cap"].format(name=name, date=m["date"], a=m["img"][0], b=m["img"][1]))
-    return (f'<div class="after" data-nosnippet><p class="after__title">{esc(a["title"])}</p><ol class="after__steps">{steps}</ol>'
-            f'<figure class="after__sheet sheet" aria-hidden="true"><div class="sheet__shot">'
+    draw = esc(json.dumps(a["draw"], ensure_ascii=False))
+    return (f'<link rel="stylesheet" href="/css/ix-form.css"><script src="/js/ix-form.js" defer></script>'
+            f'<div class="after" data-nosnippet><p class="after__title">{esc(a["title"])}</p><ol class="after__steps">{steps}</ol>'
+            f'<figure class="after__sheet sheet" aria-hidden="true" data-m="web" data-draw="{draw}"><div class="sheet__shot">'
             f'<img src="/assets/images/{img.replace(".webp", "-480.webp")}" alt="" width="480" height="300" loading="lazy">'
             f'<span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span>'
             f'<span class="plan__note" style="left:3%;top:3%">{n1}</span>'
             f'<span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">{n2}</span>'
-            f'<span class="plan__note" style="right:3%;bottom:6%">{n3}</span></div>'
+            f'<span class="plan__note" style="right:3%;bottom:6%">{n3}</span>{DRAWING}</div>'
             f'<figcaption>{cap}</figcaption></figure></div>'
             # the drawing is only a filler: drop it when it would make the column taller than the form next to it
             '<script>(function(a){var s=a.querySelector(".after__sheet");'
-            'function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;if(a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8)s.hidden=true}'
+            'function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8}'
+            'if(o()){s.classList.add("after__sheet--sm");if(o())s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}'
             'document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>')
 
 

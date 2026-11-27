@@ -80,3 +80,27 @@
 .steps.is-scrub li.is-on{border-top-color:var(--accent)}
 @media (max-width:1000px){.build-top{grid-template-columns:1fr}.build{max-width:420px}.build__ctl{padding:var(--sp-xl) 0 0}}
 @media (prefers-reduced-motion:reduce){.build g,.steps.is-scrub li{transition:none}}
+
+/* ---------- impressions timeline (dark band) ---------- */
+.trend{margin-top:var(--sp-xl)}
+.trend__cap{margin-bottom:var(--sp-sm);font-size:var(--fs-sm);color:var(--on-ink-muted);max-width:60ch}
+.trend__plot{position:relative;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' fill='none' stroke='%23DDE3E0'/%3E%3C/svg%3E") #FAFBFA;border:1px solid var(--line-strong)}
+.trend__plot img{display:block;width:100%;aspect-ratio:8/3;object-fit:fill}
+.trend__cur,.trend__dot,.trend__range,.trend__axis{display:none}
+.is-live .trend__cur{display:block;position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--ink);pointer-events:none}
+.is-live .trend__dot{display:block;position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;background:var(--accent);box-shadow:0 0 0 2px #fff;pointer-events:none}
+.is-live .trend__range{display:block;position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y;-webkit-appearance:none;appearance:none;background:transparent}
+.trend__range::-webkit-slider-thumb{-webkit-appearance:none;width:0;height:100%}
+.trend__range::-moz-range-thumb{width:0;height:100%;border:0}
+.trend__plot:has(.trend__range:focus-visible){outline:3px solid var(--on-ink);outline-offset:3px}
+.is-live .trend__axis{display:flex;justify-content:space-between;margin-top:.35rem;font-size:var(--fs-xs);color:var(--on-ink-muted)}
+.trend__read{margin-top:.5rem;min-height:2.9em;padding-left:.75rem;font-size:var(--fs-sm);color:var(--on-ink);box-shadow:inset 2px 0 0 #9FCDB3}
+@media (max-width:700px){.trend__plot img{aspect-ratio:16/9}}
+
+/* ---------- Google result builder on narrow screens: reflow at full size instead of scaling ---------- */
+@media (max-width:700px){
+  .serp__g{width:auto}
+  .serp__title{white-space:normal;overflow:visible;overflow-wrap:anywhere}
+  .serp__cut{display:none}
+  .serp__bar b{display:none}
+}
