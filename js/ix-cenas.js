@@ -16,6 +16,56 @@
   var panel = document.getElementById('ix-est');
   if (!rows.length || !panel) return;
 
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function lift(el, max) {
+    if (window.IX || reduce || !fine || !el) return;
+    el.addEventListener('pointermove', function (e) {
+      var b = el.getBoundingClientRect(), px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
+      el.style.setProperty('--mx', (px * 100) + '%'); el.style.setProperty('--my', (py * 100) + '%');
+      if (max) { el.style.setProperty('--ix-rx', ((px - .5) * max * 2).toFixed(2) + 'deg'); el.style.setProperty('--ix-ry', ((.5 - py) * max * 2).toFixed(2) + 'deg'); }
+    });
+    el.addEventListener('pointerleave', function () { el.style.setProperty('--ix-rx', '0deg'); el.style.setProperty('--ix-ry', '0deg'); });
+  }
+  /* summas skaitļi saskaitās līdz jaunajai vērtībai (pēc dt iezīmes) */
+  function countDd(dl) {
+    var memo = dl._memo = dl._memo || {};
+    [].forEach.call(dl.querySelectorAll('div'), function (d) {
+      var dd = d.querySelector('dd'), key = d.querySelector('dt').textContent, str = dd.textContent;
+      var m = str.match(/\d(?:[\d\s\u00a0,.]*\d)?/);
+      if (!m) return;
+      var to = parseInt(m[0].replace(/[\s\u00a0,.]/g, ''), 10), from = memo[key];
+      memo[key] = to;
+      if (reduce || from == null || from === to) return;
+      var sep = EN ? ',' : '\u00a0', pre = str.slice(0, m.index), post = str.slice(m.index + m[0].length), t0 = performance.now();
+      dd.classList.add('is-bump');
+      (function tick(t) {
+        var k = Math.min(1, (t - t0) / 600), e = 1 - Math.pow(1 - k, 3);
+        dd.textContent = pre + String(Math.round(from + (to - from) * e)).replace(/\B(?=(\d{3})+(?!\d))/g, sep) + post;
+        if (k < 1) requestAnimationFrame(tick); else { dd.textContent = str; dd.classList.remove('is-bump'); }
+      })(t0);
+    });
+  }
+  /* priekšmets "aizlido" no rindas uz tāmes paneli */
+  function fly(from, k) {
+    if (reduce || !from || !from.getBoundingClientRect) return;
+    var a = from.getBoundingClientRect(), tgt = getComputedStyle(bar).display === 'none' ? panel : bar;
+    var b = tgt.getBoundingClientRect(), it = data[k];
+    if (!b.width) b = { left: window.innerWidth / 2 - 60, top: window.innerHeight - 60 };
+    var vh = window.innerHeight, ty = Math.max(8, Math.min(vh - 40, b.top + 14)), tx = Math.max(8, b.left + 24);
+    var c = document.createElement('div');
+    c.className = 'ix-fly'; c.setAttribute('aria-hidden', 'true');
+    c.innerHTML = '<span>' + it.name + '</span><b>' + it.text + '</b>';
+    c.style.left = Math.max(8, a.left) + 'px'; c.style.top = (a.top + Math.min(a.height, 40) / 2 - 16) + 'px';
+    document.body.appendChild(c);
+    var dx = tx - Math.max(8, a.left), dy = ty - (a.top + Math.min(a.height, 40) / 2 - 16);
+    var an = c.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1 },
+      { transform: 'translate(' + dx * .55 + 'px,' + (dy * .55 - 30) + 'px) scale(.9)', opacity: 1, offset: .55 },
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.45)', opacity: .1 }
+    ], { duration: 620, easing: 'cubic-bezier(.5,0,.3,1)' });
+    an.onfinish = function () { c.remove(); };
+  }
   function grp(n, sep) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep); }
   function money(n) { return EN ? '€' + grp(n, ',') : grp(n, ' ') + ' €'; }
   function q(root, k) { return root.querySelector('[data-ix="' + k + '"]'); }
@@ -55,9 +105,10 @@
     if (r.y[0]) row(S.yr, tot(r.y, S.yu));
     r.h.forEach(function (it) { row(S.hr, it.text); });
     dl.innerHTML = h;
+    countDd(dl);
   }
   function li(it, rm) {
-    return '<li><span>' + it.name + '</span><span class="ix-est__p">' + it.text + '</span>' +
+    return '<li data-k="' + it.k + '"><span>' + it.name + '</span><span class="ix-est__p">' + it.text + '</span>' +
       (rm ? '<button type="button" data-rm="' + it.k + '" aria-label="' + S.rm + it.name.replace(/"/g, '') + '">×</button>' : '') + '</li>';
   }
 
@@ -78,9 +129,11 @@
     cb.addEventListener('change', function () { set(k, cb.checked); });
   });
 
-  function set(k, on) {
+  var lastKeys = [];
+  function set(k, on, src) {
     var i = sel.indexOf(k);
     if (on && i < 0) {
+      fly(src || data[k].tr.children[0], k);
       if (k.indexOf('pkg-') === 0) sel = sel.filter(function (x) { return x.indexOf('pkg-') !== 0; });
       sel.push(k);
     } else if (!on && i >= 0) sel.splice(i, 1);
@@ -95,15 +148,21 @@
       var on = sel.indexOf(k) >= 0; boxes[k].checked = on; data[k].tr.classList.toggle('is-picked', on);
     });
     panel.classList.toggle('is-empty', !n);
-    cnt.textContent = n ? '· ' + n : '';
+    cnt.textContent = n ? String(n) : '';
     hint.hidden = !!n; list.hidden = dl.hidden = q(panel, "vat").hidden = !n; send.parentNode.hidden = !n;
     list.innerHTML = keys.map(function (k) { return li(data[k], true); }).join('');
+    if (!reduce) keys.forEach(function (k) {
+      if (lastKeys.indexOf(k) < 0 && lastKeys !== null) { var e = list.querySelector('[data-k="' + k + '"]'); if (e) e.classList.add('is-new'); }
+    });
+    lastKeys = keys;
     fillTot(dl, keys);
     if (n && sel.indexOf('pkg-shop') >= 0 && sel.indexOf('ad-shop') >= 0) list.insertAdjacentHTML('afterend', '<p class="ix-est__warn" data-w>' + S.shop + '</p>');
     var r = totals(keys), b = [];
     if (r.o[0]) b.push(tot(r.o, '')); if (r.m[0]) b.push(tot(r.m, S.mu));
     sum.textContent = n ? (b.join(' + ') || money(0)) + ' · ' + n : '';
     document.body.classList.toggle('ix-has-est', !!n);
+    if (n !== draw.n) { sum.classList.remove('is-bump'); void sum.offsetWidth; if (!reduce) sum.classList.add('is-bump'); }
+    draw.n = n;
     if (!n) { panel.classList.remove('is-open'); bar.setAttribute('aria-expanded', 'false'); }
   }
 
@@ -136,6 +195,7 @@
   });
 
   panel.hidden = false; draw();
+  lift(panel, 0);
 
   /* ---- "Kas ietekme cenu" ---- */
   var f = document.getElementById('ix-f');
@@ -164,7 +224,13 @@
     fdraw();
   });
   fa.addEventListener('click', function () {
-    fs.forEach(function (k) { if (sel.indexOf(k) < 0) set(k, true); });
+    fs.forEach(function (k) { if (sel.indexOf(k) < 0) set(k, true, fa); });
   });
   f.hidden = false; fdraw();
+  lift(f, 2);
+  /* faktora poga: pop-animācija */
+  f.addEventListener('click', function (e) {
+    var b = e.target.closest('.ix-f__btn'); if (!b || reduce) return;
+    b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop');
+  });
 })();

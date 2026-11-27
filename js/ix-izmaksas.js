@@ -17,6 +17,23 @@
   var table = root.parentNode.querySelector('table.table');
   if (!table) return;
   var started = false;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* skaitlis saskaitās līdz jaunajai vērtībai */
+  function tween(el, to, fmt, pre) {
+    var from = el._v == null ? to : el._v;
+    if (el._raf) cancelAnimationFrame(el._raf);
+    el._v = to;
+    if (reduce || from === to) { el.textContent = fmt(to); return; }
+    var t0 = performance.now(), dur = 600;
+    (function tick(t) {
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = fmt(from + (to - from) * e);
+      if (k < 1) el._raf = requestAnimationFrame(tick);
+    })(t0);
+    el.classList.remove('is-bump'); void el.offsetWidth; if (!reduce) el.classList.add('is-bump');
+  }
 
   function money(n) {
     var s = n.toLocaleString(L.loc, { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
@@ -26,6 +43,7 @@
   function init() {
     if (started) return;
     started = true;
+    table.classList.add('ix-tbl');
     var rows = [], i, tr, tds, txt, m, unit;
     var trs = table.querySelectorAll('tbody tr');
     for (i = 0; i < trs.length; i++) {
@@ -39,7 +57,7 @@
     }
     if (!rows.length) return;
     var seenM = false;
-    var bar, rl, outA, outY;
+    var bar, rl, rlv, outA, outY;
 
     function update() {
       var rec = 0, once = 0, segs = [];
@@ -49,20 +67,20 @@
         r.tr.classList.toggle('is-off', off);
         if (off) return;
         if (r.unit === 'h') once += a; else rec += a;
-        segs.push({ cls: r.cls, v: a });
+        segs.push({ r: r, cls: r.cls, v: a });
       });
       var tot = rec + once;
-      bar.innerHTML = '';
       bar.classList.toggle('is-empty', !tot);
-      segs.forEach(function (s) {
-        var e = document.createElement('span');
-        e.className = 'ix-seg ix-seg--' + s.cls; e.style.flexGrow = s.v;
-        e.textContent = s.cls === 'host' ? L.host : s.cls === 'dom' ? L.dom : L.edit;
-        bar.appendChild(e);
+      rows.forEach(function (r) {
+        var on = segs.some(function (s) { return s.r === r; });
+        var v = on ? segs.filter(function (s) { return s.r === r; })[0].v : 0;
+        r.seg.style.flexGrow = v;
+        r.seg.classList.toggle('is-on', on);
       });
-      rl.textContent = tot ? L.yr + money(tot) : L.empty;
-      outA.textContent = money(Math.round(rec / 12 * 100) / 100);
-      outY.textContent = money(tot);
+      if (tot) tween(rlv, tot, function (n) { return L.yr + money(Math.round(n * 100) / 100); });
+      else { rlv._v = 0; rl.textContent = L.empty; }
+      tween(outA, Math.round(rec / 12 * 100) / 100, function (n) { return money(Math.round(n * 100) / 100); });
+      tween(outY, tot, function (n) { return money(Math.round(n * 100) / 100); });
     }
 
     rows.forEach(function (r) {
@@ -104,8 +122,24 @@
     root.querySelector('.ix-cost__cap').textContent = L.cap;
     root.querySelector('.ix-cost__hint').textContent = L.hint;
     var dts = root.querySelectorAll('dt'); dts[0].textContent = L.avg; dts[1].textContent = L.y1;
-    bar = root.querySelector('.ix-bar'); rl = root.querySelector('.ix-ruler span');
+    bar = root.querySelector('.ix-bar'); rl = root.querySelector('.ix-ruler span'); rlv = rl;
+    rows.forEach(function (r) {
+      var e = document.createElement('span');
+      e.className = 'ix-seg ix-seg--' + r.cls;
+      e.textContent = r.cls === 'host' ? L.host : r.cls === 'dom' ? L.dom : L.edit;
+      bar.appendChild(e); r.seg = e;
+    });
     outA = root.querySelector('[data-a]'); outY = root.querySelector('[data-y]');
+    root.classList.add('ix-panel');
+    root.setAttribute('data-ix-tilt', '');
+    if (!window.IX && !reduce && fine) {
+      root.addEventListener('pointermove', function (e) {
+        var b = root.getBoundingClientRect(), px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
+        root.style.setProperty('--mx', (px * 100) + '%'); root.style.setProperty('--my', (py * 100) + '%');
+        root.style.setProperty('--ix-rx', ((px - .5) * 5).toFixed(2) + 'deg'); root.style.setProperty('--ix-ry', ((.5 - py) * 5).toFixed(2) + 'deg');
+      });
+      root.addEventListener('pointerleave', function () { root.style.setProperty('--ix-rx', '0deg'); root.style.setProperty('--ix-ry', '0deg'); });
+    }
     update();
   }
 
