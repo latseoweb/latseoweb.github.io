@@ -1,6 +1,7 @@
 <!--meta
 {
   "path": "/en/tehniskais-seo/",
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-check.css\">",
   "lang": "en",
   "lv": "/tehniskais-seo/",
   "title": "SEO audit & technical SEO — audit from €150 | LatSEO",
@@ -44,6 +45,40 @@
     </div>
   </div>
 </section>
+
+<section class="section section--muted ixc" id="check" aria-labelledby="ixc-title">
+  <div class="container ixc__grid" data-ixc data-lang="en">
+    <div class="ixc__intro">
+<h2 class="section__title" id="ixc-title">Check your page in 10 seconds</h2>
+      <p class="lead">Enter your domain and I will measure six basic things on your homepage that Google sees first.</p>
+      <form class="ixc__form" action="/en/kontakti/" method="get" novalidate>
+        <label class="ixc__label" for="ixc-domain">Domain</label>
+        <div class="ixc__row">
+          <input class="ixc__input" id="ixc-domain" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" maxlength="253" placeholder="example.com" aria-describedby="ixc-msg">
+          <button class="btn btn--primary ixc__run" type="submit">Check</button>
+        </div>
+        <div class="ixc__captcha"></div>
+        <p class="ixc__msg small muted" id="ixc-msg" role="status" aria-live="polite">Only the public homepage, sitemap.xml and robots.txt are read. The domain is not stored.</p>
+      </form>
+    </div>
+    <div class="ixc__sheet sheet" data-nosnippet>
+      <div class="ixc__head"><span>Object</span><span class="ixc__obj">—</span><span>Checks</span><span>6</span></div>
+      <ol class="ixc__list">
+        <li data-k="h1"><span class="ixc__n">01</span><span class="ixc__k">H1 heading</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="description"><span class="ixc__n">02</span><span class="ixc__k">Meta description</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="title"><span class="ixc__n">03</span><span class="ixc__k">&lt;title&gt;</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="https"><span class="ixc__n">04</span><span class="ixc__k">HTTPS</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="sitemap"><span class="ixc__n">05</span><span class="ixc__k">sitemap.xml</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="schema"><span class="ixc__n">06</span><span class="ixc__k">Schema.org JSON-LD</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+      </ol>
+      <div class="ixc__cta">
+        <p class="small">These are only six basic checks. In a video audit I go through the whole site and record my screen with the main errors.</p>
+        <a href="/en/kontakti/" class="btn btn--primary">Request a free video audit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="section section--white" aria-labelledby="checks-title">
   <div class="container split">
@@ -139,3 +174,4 @@
     <div class="form-panel">{{form:tech|Technical SEO audit|Free video audit|Request an audit}}</div>
   </div>
 </section>
+<script src="/js/ix-check.js" defer></script>

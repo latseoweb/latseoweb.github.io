@@ -1,6 +1,7 @@
 <!--meta
 {
   "path": "/tehniskais-seo/",
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-check.css\">",
   "en": "/en/tehniskais-seo/",
   "title": "SEO audits un tehniskais SEO — no 150 € | LatSEO",
   "description": "Mājaslapas SEO audits: indeksācija, Core Web Vitals, mobilā versija, koda kļūdas un strukturētie dati. Pilns audits no 150 €, bezmaksas video audits 24 h laikā.",
@@ -73,6 +74,40 @@
     </div>
   </div>
 </section>
+
+<section class="section section--muted ixc" id="parbaude" aria-labelledby="ixc-title">
+  <div class="container ixc__grid" data-ixc>
+    <div class="ixc__intro">
+<h2 class="section__title" id="ixc-title">Pārbaudiet savu lapu 10 sekundēs</h2>
+      <p class="lead">Ierakstiet domēnu, un sākumlapā izmērīšu sešas pamata lietas, ko Google redz pirmās.</p>
+      <form class="ixc__form" action="/bezmaksas-audits/" method="get" novalidate>
+        <label class="ixc__label" for="ixc-domain">Domēns</label>
+        <div class="ixc__row">
+          <input class="ixc__input" id="ixc-domain" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" maxlength="253" placeholder="piemers.lv" aria-describedby="ixc-msg">
+          <button class="btn btn--primary ixc__run" type="submit">Pārbaudīt</button>
+        </div>
+        <div class="ixc__captcha"></div>
+        <p class="ixc__msg small muted" id="ixc-msg" role="status" aria-live="polite">Pārbaudu tikai publisku sākumlapu, sitemap.xml un robots.txt. Domēnu nesaglabāju.</p>
+      </form>
+    </div>
+    <div class="ixc__sheet sheet" data-nosnippet>
+      <div class="ixc__head"><span>Objekts</span><span class="ixc__obj">—</span><span>Pārbaudes</span><span>6</span></div>
+      <ol class="ixc__list">
+        <li data-k="h1"><span class="ixc__n">01</span><span class="ixc__k">H1 virsraksts</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="description"><span class="ixc__n">02</span><span class="ixc__k">Meta description</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="title"><span class="ixc__n">03</span><span class="ixc__k">&lt;title&gt;</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="https"><span class="ixc__n">04</span><span class="ixc__k">HTTPS</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="sitemap"><span class="ixc__n">05</span><span class="ixc__k">sitemap.xml</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+        <li data-k="schema"><span class="ixc__n">06</span><span class="ixc__k">Schema.org JSON-LD</span><span class="ixc__v">—</span><span class="ixc__s"></span></li>
+      </ol>
+      <div class="ixc__cta">
+        <p class="small">Šīs ir tikai sešas pamata pārbaudes. Video auditā izeju cauri visai lapai un ierakstu ekrānu ar galvenajām kļūdām.</p>
+        <a href="/bezmaksas-audits/" class="btn btn--primary">Bezmaksas video audits</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="section section--white" aria-labelledby="checks-title">
   <div class="container split">
@@ -168,3 +203,4 @@
     <div class="form-panel">{{form:tech|Tehniskais SEO audits|Bezmaksas video audits|Pieteikt auditu}}</div>
   </div>
 </section>
+<script src="/js/ix-check.js" defer></script>
