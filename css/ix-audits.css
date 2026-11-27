@@ -79,5 +79,5 @@
 .af__grid span.on{background:var(--ix-night);border-color:var(--ix-night)}
 @media (max-width:480px){.af li{grid-template-columns:5rem 1fr}}
 .ax-sec .steps--row li{border-top-color:rgba(147,180,211,.35)}
-@media (max-width:480px){.ax__svg .t{font-size:12px}.ax-sec .ax__fig{padding:12px 8px}.ax-sec .ax__fig figcaption{margin:0 -8px -12px}}
+@media (max-width:480px){.ax__svg .t{font:500 15px var(--ff-body)}.ax__svg .t.big{font-size:34px}.ax__fig::before{font-size:.75rem}.ax-sec .ax__fig{padding:12px 8px}.ax-sec .ax__fig figcaption{margin:0 -8px -12px}}
 @media (prefers-reduced-motion:reduce){.ax,.ax__g,.ax__line i,.ax__svg .ph,.ax__n{transition:none}.ax__g.is-cur .b,.ax__g.is-cur .l,.ax__g.is-cur .s,.ax__g.is-cur .t{animation:none}}

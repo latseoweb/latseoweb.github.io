@@ -47,8 +47,8 @@
   var root = document.querySelector('[data-ixl]');
   lazy(root, function () {
     var T = {
-      lv: {areas: [['CENTRS', 470, 30], ['PĀRDAUGAVA', 70, 392], ['DAUGAVA', 540, 196]], you: 'Jūsu uzņēmums', comp: 'Konkurents ', yes: 'jā', no: 'nē', dist: 'attālums ', place: function (n, t) { return 'Jūsu vieta: ' + n + '. no ' + t + (n <= 3 ? ' — kartes pakā' : ' — ārpus kartes pakas'); }},
-      en: {areas: [['CENTRE', 470, 30], ['PĀRDAUGAVA', 70, 392], ['DAUGAVA', 540, 196]], you: 'Your business', comp: 'Competitor ', yes: 'yes', no: 'no', dist: 'distance ', place: function (n, t) { return 'Your rank: ' + n + ' of ' + t + (n <= 3 ? ' — in the map pack' : ' — outside the map pack'); }}
+      lv: {areas: [['CENTRS', 470, 30], ['PĀRDAUGAVA', 84, 392], ['DAUGAVA', 540, 196]], you: 'Jūsu uzņēmums', comp: 'Konkurents ', yes: 'jā', no: 'nē', dist: 'attālums ', place: function (n, t) { return 'Jūsu vieta: ' + n + '. no ' + t + (n <= 3 ? ' — kartes pakā' : ' — ārpus kartes pakas'); }},
+      en: {areas: [['CENTRE', 470, 30], ['PĀRDAUGAVA', 84, 392], ['DAUGAVA', 540, 196]], you: 'Your business', comp: 'Competitor ', yes: 'yes', no: 'no', dist: 'distance ', place: function (n, t) { return 'Your rank: ' + n + ' of ' + t + (n <= 3 ? ' — in the map pack' : ' — outside the map pack'); }}
     }[root.getAttribute('data-lang') || 'lv'];
     var W = 600, H = 400, DMAX = 320, REV_MAX = 200;
     var $ = function (s) { return root.querySelector(s); };
@@ -71,7 +71,7 @@
       if (w < 14 || h < 14) continue;
       el('rect', {x: x0, y: y0, width: w, height: h, 'class': parks[xi + ',' + yi] ? 'ixl__park' : 'ixl__blk'}, bk);
     }
-    var D = T.areas; D.forEach(function (a) { var t = el('text', {'class': 'ixl__area', x: a[1], y: a[2]}, bk); t.textContent = a[0]; });
+    var D = T.areas; D.forEach(function (a, i) { var t = el('text', {'class': 'ixl__area ixl__area--' + i, x: a[1], y: a[2]}, bk); t.textContent = a[0]; });
     var river = $('.ixl__river2');
     if (river) { var fl = el('path', {'class': 'ixl__flow', d: river.getAttribute('d')}); river.parentNode.insertBefore(fl, river.nextSibling); }
     var radius = el('circle', {'class': 'ixl__radius', cx: spx, cy: spy, r: 0}); link.parentNode.insertBefore(radius, link);
@@ -80,7 +80,7 @@
       var k = el('g', {'class': 'ixl__rk'}, c.g);
       el('circle', {cx: 16, cy: -16, r: 9}, k); var t = el('text', {'class': 'ixl__rkt', x: 16, y: -11.5}, k); c.rk = t;
     });
-    var spt = sp.querySelector('.ixl__spt'); if (spt) { spt.setAttribute('x', spx); spt.setAttribute('y', spy - 26); spt.style.textAnchor = 'middle'; }
+    var spt = sp.querySelector('.ixl__spt'); if (spt) { spt.setAttribute('x', spx + 16); spt.setAttribute('y', spy - 14); spt.style.textAnchor = 'start'; }
     el('circle', {'class': 'ixl__pulse', r: 24}, you).setAttribute('pointer-events', 'none');
     you.insertBefore(you.lastChild, you.firstChild.nextSibling);
     if (!calm) {
@@ -127,7 +127,7 @@
     function draw(mine) {
       var d = Math.hypot(me.x - spx, me.y - spy);
       you.setAttribute('transform', 'translate(' + me.x.toFixed(1) + ' ' + me.y.toFixed(1) + ')');
-      var left = me.x > 420; if (left !== lblLeft) { lblLeft = left; lbl.setAttribute('x', left ? -28 : 28); lbl.setAttribute('y', 6); lbl.style.textAnchor = left ? 'end' : 'start'; }
+      var left = me.x > 390; if (left !== lblLeft) { lblLeft = left; lbl.setAttribute('x', left ? -28 : 28); lbl.setAttribute('y', 6); lbl.style.textAnchor = left ? 'end' : 'start'; }
       link.setAttribute('x2', me.x); link.setAttribute('y2', me.y);
       radius.setAttribute('r', d.toFixed(1));
       dl.setAttribute('x', ((me.x + spx) / 2).toFixed(1)); dl.setAttribute('y', ((me.y + spy) / 2 - 8).toFixed(1));

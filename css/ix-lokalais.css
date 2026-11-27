@@ -85,6 +85,16 @@
 .ixl__bar:last-child i::before{background:var(--c-mark)}
 .ixl__bar span{font-family:var(--ff-mono);font-size:.875rem;text-align:right;color:var(--c-mark)}
 .ixl__note{font-size:var(--fs-xs);color:var(--c-dim);max-width:56ch}
+/* telefonā karte ir ~0,54 no viewBox mēroga: teksti viewBox vienībās palielināti, lai ekrānā būtu ≥ 12 px; upes nosaukums paslēpts */
+@media (max-width:600px){
+  .ixl__pin text{font-size:24px}
+  .ixl__rk circle{r:13px;cx:17px;cy:-19px}
+  .ixl__pin text.ixl__rkt{font-size:21px}
+  .ixl__you text.ixl__lbl,.ixl__spt{font-size:24px}
+  .ixl__svg text.ixl__dl{font-size:22px}
+  .ixl__svg text.ixl__area{font-size:22px;letter-spacing:.06em}
+  .ixl__svg text.ixl__area--2{display:none}
+}
 @media (max-width:480px){.ixl{padding:var(--sp-sm)}.ixl__bar{grid-template-columns:5.6rem minmax(0,1fr) 2.2rem}}
 @media (prefers-reduced-motion:no-preference){
   .ixl--draw .ixl__st path,.ixl--draw .ixl__river,.ixl--draw .ixl__river2{stroke-dasharray:1;stroke-dashoffset:1;animation:ixl-draw 1.2s var(--ease) forwards;animation-delay:calc(var(--d,0)*55ms)}
