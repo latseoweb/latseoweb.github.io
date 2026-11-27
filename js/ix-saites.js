@@ -41,9 +41,13 @@
     var $ = function (s) { return net.querySelector(s); };
     var svg = $('.ixk__svg'), layer = $('[data-layer]'), meG = $('[data-me]'), st = $('[data-status]'),
       btns = net.querySelectorAll('[data-mode]'), vals = net.querySelectorAll('[data-v]');
-    var W = 600, H = 380, C = {x: 300, y: 190}, seed = 7;
+    var W = 600, H = 380, seed = 7;
+    /* šaurā ekrānā zīmējums netiek samazināts: koordinātas = ekrāna pikseļi, lai nosaukumi ir lasāmi (≥ 12 px) un nekur netiek nogriezti */
+    var sw = svg.getBoundingClientRect().width;
+    if (sw && sw < 520) { W = Math.round(sw); H = Math.round(sw * 1.08); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.style.aspectRatio = W + ' / ' + H; net.classList.add('is-narrow'); }
+    var C = {x: W / 2, y: H / 2};
     function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
-    var Q = [[110, 80], [490, 85], [75, 265], [515, 275], [300, 330]].map(function (p, i) { return {hx: p[0], hy: p[1], l: T.q[i]}; });
+    var Q = [[110, 80], [490, 85], [75, 265], [515, 275], [300, 330]].map(function (p, i) { return {hx: p[0] / 600 * W, hy: p[1] / 380 * H, l: T.q[i]}; });
     var S = [], i;
     for (i = 0; i < 26; i++) {
       var x, y;
@@ -66,10 +70,13 @@
         el('circle', {r: m === 'q' ? 28 : 14, 'class': 'ixk__hit'}, g);
         if (m === 'q') { el('circle', {r: 16, 'class': 'ixk__c'}, inn); el('circle', {r: 5, 'class': 'ixk__dot'}, inn); }
         else el('circle', {r: 5.5, 'class': 'ixk__c'}, inn);
-        if (d.l) { var tx = el('text', {y: (m === 'q' ? 16 : 5.5) + 16}, g); tx.textContent = d.l; }
+        var tx = null;
+        if (d.l) { tx = el('text', {y: (m === 'q' ? 16 : 5.5) + 16}, g); tx.textContent = d.l; }
         if (m === 'q') { g.setAttribute('tabindex', '0'); g.setAttribute('role', 'button'); g.setAttribute('aria-label', d.l); }
         var ang = rnd() * 6.283, rr = 6 + rnd() * 14;
-        var n = {x: C.x + Math.cos(ang) * rr, y: C.y + Math.sin(ang) * rr, vx: 0, vy: 0, hx: d.hx, hy: d.hy, m: 1, g: g, ph: rnd() * 6.283, pad: d.l ? 62 : 16};
+        var n = {x: C.x + Math.cos(ang) * rr, y: C.y + Math.sin(ang) * rr, vx: 0, vy: 0, hx: d.hx, hy: d.hy, m: 1, g: g, ph: rnd() * 6.283, pad: 16};
+        /* mezgls nevar pietuvoties malai tuvāk par pusi no sava nosaukuma platuma */
+        if (tx) { var tl = 0; try { tl = tx.getComputedTextLength(); } catch (_) {} n.pad = Math.max(m === 'q' ? 30 : 16, (tl || 120) / 2 + 6); }
         if (calm) { n.x = n.hx; n.y = n.hy; }
         P.push(n);
         E.push({a: 0, b: P.length - 1, l: Math.hypot(d.hx - C.x, d.hy - C.y), k: m === 'q' ? 0.035 : 0.03, q: 1});

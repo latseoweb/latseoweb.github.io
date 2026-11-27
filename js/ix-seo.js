@@ -2,13 +2,13 @@
 (function () {
   var EN = document.documentElement.lang === "en";
   var T = EN ? {
-    cycle: "Repeats every month", cycHint: "Pick a number on the ring to see each part of the monthly work.", wfHint: "Select a part of the page to see what that work touches.", wfCap: "Illustration: parts of a website, not a real page",
+    cycle: "Repeats every month", cycHint: "Pick a step on the ring or in the list to see what it includes.", wfHint: "Select a part of the page to see what that work touches.", wfCap: "Illustration: parts of a website, not a real page",
     wf: [["tech", "Technical SEO", "Touches: indexing, Core Web Vitals, page speed and security: whether Google can read the pages."],
          ["content", "Content", "Touches: keyword research, page structure by search intent and updating existing pages."],
          ["links", "Links", "Touches: topically relevant links from other websites."],
          ["local", "Local SEO", "Touches: Google Business Profile, business details in directories and reviews."]]
   } : {
-    cycle: "Atkārtojas katru mēnesi", cycHint: "Izvēlieties numuru uz apļa, lai redzētu katru ikmēneša darbu.", wfHint: "Izvēlieties lapas daļu, lai redzētu, ko šis darbs skar.", wfCap: "Ilustrācija: mājaslapas daļas, nevis reāla lapa",
+    cycle: "Atkārtojas katru mēnesi", cycHint: "Izvēlieties darbu uz apļa vai sarakstā, lai redzētu, ko tas ietver.", wfHint: "Izvēlieties lapas daļu, lai redzētu, ko šis darbs skar.", wfCap: "Ilustrācija: mājaslapas daļas, nevis reāla lapa",
     wf: [["tech", "Tehniskais SEO", "Skar: indeksāciju, Core Web Vitals, lapas ātrumu un drošību — vai Google lapas var nolasīt."],
          ["content", "Saturs", "Skar: atslēgvārdu izpēti, lapu struktūru pēc meklēšanas nolūka un esošo lapu atjaunināšanu."],
          ["links", "Saites", "Skar: tematiski atbilstošas saites no citām mājaslapām."],
@@ -108,7 +108,7 @@
       while (nd) { rest += nd.nodeType === 3 ? nd.textContent : nd.outerHTML; nd = nd.nextSibling; }
       return { t: st.textContent, rest: rest };
     });
-    var N = data.length, w = h("div", "ix-cyc"), ring = h("div", "ix-cyc__ring ix-panel"), tr = h("div", "ix-cyc__track"), pn = h("div", "ix-cyc__panel"), btns = [], ang = 0, cur = -1;
+    var N = data.length, w = h("div", "ix-cyc"), ring = h("div", "ix-cyc__ring ix-panel"), tr = h("div", "ix-cyc__track"), pn = h("div", "ix-cyc__panel"), btns = [], lgs = [], ang = 0, cur = -1;
     ring.setAttribute("data-ix-tilt", "");
     tr.setAttribute("role", "tablist"); pn.setAttribute("role", "tabpanel"); pn.setAttribute("aria-live", "polite");
     var svg = sv("svg", { viewBox: "0 0 100 100", "aria-hidden": "true", focusable: "false", "class": "ix-cyc__svg" }, ring);
@@ -139,15 +139,27 @@
       arm.style.transform = "rotate(" + ang + "deg)";
       prog.style.strokeDasharray = ((i + 1) / N * 100) + " 100";
       btns.forEach(function (b, j) { b.setAttribute("aria-selected", j === i); b.tabIndex = j === i ? 0 : -1; b.classList.toggle("is-past", j < i); });
+      lgs.forEach(function (b, j) { b.classList.toggle("is-on", j === i); b.classList.toggle("is-past", j < i); });
       midN.textContent = ("0" + (i + 1)).slice(-2); midT.textContent = data[i].t;
       pn.setAttribute("aria-labelledby", "ix-cyc-" + i);
       pn.innerHTML = ""; pn.appendChild(h("strong", "", data[i].t)); pn.insertAdjacentHTML("beforeend", data[i].rest.replace(/^\s*—\s*/, ""));
       if (focus) btns[i].focus();
     }
     ring.append(tr, mid);
+    /* leģenda: visu darbu nosaukumi redzami uzreiz; klikšķis dara to pašu, ko numurs uz apļa
+       (ekrāna lasītājiem nosaukumus jau dod apļa pogas, tāpēc leģenda tiem ir paslēpta) */
+    var lg = h("ol", "ix-cyc__legend");
+    lg.setAttribute("aria-hidden", "true");
+    data.forEach(function (d, i) {
+      var li = h("li"), b = h("button", "ix-cyc__lg");
+      b.type = "button"; b.tabIndex = -1;
+      b.append(h("span", "ix-cyc__lgn", ("0" + (i + 1)).slice(-2)), h("span", "ix-cyc__lgt", d.t));
+      b.addEventListener("click", function () { sel(i, false); });
+      li.appendChild(b); lg.appendChild(li); lgs.push(b);
+    });
     var side = h("div", "ix-cyc__side"), hint = h("p", "ix-hint", T.cycHint), left = ul.parentNode.firstElementChild;
     side.append(h("span", "ix-cap", T.cycle), pn, hint);
-    w.append(ring);
+    w.append(ring, lg);
     ul.after(w); ul.style.display = "none";
     if (left && left !== ul) left.appendChild(side); else w.appendChild(side);
     sel(0, false); tilt(ring);

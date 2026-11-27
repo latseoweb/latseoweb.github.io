@@ -72,8 +72,11 @@
       ok: root.querySelector('.xi__ok'), read: root.querySelector('.xray__read'), serp: root.querySelector('.xi__serp'),
       code: root.querySelector('.xi__code'), checks: root.querySelector('.xi__checks')
     };
-    var data = {};
-    [].forEach.call(root.querySelectorAll('.xr-data [data-k]'), function (d) { data[d.getAttribute('data-k')] = d; });
+    /* izdomātā uzņēmuma kods un teksti nav lapas teksts: tie glabājas <script type="text/plain"> un tiek nolasīti atsevišķā, neievietotā elementā */
+    var data = {}, src = document.createElement('div'), srcEl = root.querySelector('.xr-src');
+    src.innerHTML = srcEl ? srcEl.textContent : '';
+    [].forEach.call(src.querySelectorAll('[data-k]'), function (d) { data[d.getAttribute('data-k')] = d; });
+    var serpSrc = src.querySelector('[data-serp-src]');
     var targets = [].slice.call(page.querySelectorAll('[data-x]'));
 
     /* rentgena slānis = tās pašas lapas kopija "caurspīdīgā" stilā + rāmji ap elementiem */
@@ -81,17 +84,19 @@
     ghost.classList.add('xr-ghost');
     [].forEach.call(ghost.querySelectorAll('[data-x]'), function (e) { e.removeAttribute('data-x'); });
     var layer = document.createElement('div'); layer.className = 'xr-boxes';
+    var leads = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); leads.setAttribute('class', 'xr-leads');
+    layer.appendChild(leads);
     bp.appendChild(ghost); bp.appendChild(layer);
     var seen = {};
     var boxes = targets.map(function (t) {
       var k = t.getAttribute('data-x'), d = data[k], b = document.createElement('span'), tg = document.createElement('i');
       b.className = 'xr-box' + (d && d.getAttribute('data-ok') ? ' is-ok' : '');
       b.setAttribute('data-k', k);
-      tg.className = 'xr-tag'; tg.textContent = d ? d.getAttribute('data-tag') : k;
+      tg.className = 'xr-tag'; tg.setAttribute('data-l', d ? d.getAttribute('data-tag') : k);
       b.appendChild(tg); layer.appendChild(b);
       /* otrā rinda rāmja apakšā: atribūti tieši pie elementa (alt, izmēri, schema lauki) */
       var sub = d && d.getAttribute('data-sub'), sb = null;
-      if (sub && !seen[k]) { sb = document.createElement('i'); sb.className = 'xr-sub'; sb.textContent = sub; b.appendChild(sb); }
+      if (sub && !seen[k]) { sb = document.createElement('i'); sb.className = 'xr-sub'; sb.setAttribute('data-l', sub); b.appendChild(sb); }
       seen[k] = 1;
       return { t: t, k: k, el: b, tag: tg, sub: sb, x: 0, y: 0, w: 0, h: 0, vis: true };
     });
@@ -112,34 +117,107 @@
         if (!b.vis) return;
         b.x = q.left - v.left - p; b.y = q.top - v.top - p; b.w = q.width + p * 2; b.h = q.height + p * 2;
         b.el.style.cssText = 'left:' + b.x + 'px;top:' + b.y + 'px;width:' + b.w + 'px;height:' + b.h + 'px';
-        if (b.sub) b.sub.style.display = (b.h >= 34 && b.w >= 150) ? '' : 'none';
+        if (b.sub) b.sub.style.display = (b.h >= (w < 520 ? 60 : 34) && b.w >= 150) ? '' : 'none';
+        /* elementa saturs (teksts, ikonas): birka drīkst stāvēt rāmī tikai tur, kur tā nekā neaizsedz */
+        b.c = [].map.call(b.t.querySelectorAll('m-t,svg,.mk-q i'), function (e) { var o = e.getBoundingClientRect(); return [o.left - v.left, o.top - v.top, o.width, o.height]; });
+        if (!b.c.length) b.c = [[b.x, b.y, b.w, b.h]];
       });
-      /* birkas: virs, iekšā, zem, labajā pusē — pirmā vieta, kas nepārklājas ar citām */
-      /* šaurā skatā birkas tikai iebūvētajiem elementiem, lai tās nesaplūst */
-      boxes.forEach(function (b) { b.tag.style.display = (w < 520 && !b.el.classList.contains('is-ok')) ? 'none' : ''; });
-      boxes.filter(function (b) { return b.vis && b.tag.style.display !== 'none'; }).sort(function (a, c) { return a.y - c.y || a.x - c.x; }).forEach(function (b) {
-        var tw = b.tag.offsetWidth, th = b.tag.offsetHeight, best = null;
-        var c = [[b.x, b.y - th], [b.x + 3, b.y + 3], [b.x, b.y + b.h], [b.x + b.w - tw, b.y - th], [b.x + b.w - tw - 3, b.y + 3], [b.x + b.w - tw, b.y + b.h]];
-        function free(cx, cy, list) { return !list.some(function (o) { return cx < o[0] + o[2] + 2 && cx + tw + 2 > o[0] && cy < o[1] + o[3] + 1 && cy + th + 1 > o[1]; }); }
-        /* vispirms vieta, kas neaizsedz ne citas birkas, ne citus rāmjus; tad — tikai ne birkas */
-        var others = boxes.filter(function (o) { return o !== b && o.vis; }).map(function (o) { return [o.x + 1, o.y + 1, o.w - 2, o.h - 2]; });
-        [placed.concat(others), placed].forEach(function (list) {
-          for (var i = 0; i < c.length && !best; i++) {
-            var cx = Math.max(1, Math.min(w - tw - 1, c[i][0])), cy = Math.max(1, Math.min(h - th - 1, c[i][1]));
-            if (free(cx, cy, list)) best = [cx, cy];
+      /* birkas: katrai meklē tuvāko brīvo vietu — blakus rāmim, tad pakāpieniem augstāk/zemāk un uz sāniem.
+         Ja birka nav blakus savam rāmim, to savieno vadlīnija. Vieta, kas aizsedz citu rāmi, maksā vairāk;
+         vieta, kas pārklāj citu birku, nav atļauta. Ja labas vietas nav, birka paliek paslēpta (izņemot iebūvētos). */
+      var NS = 'http://www.w3.org/2000/svg';
+      while (leads.firstChild) leads.removeChild(leads.firstChild);
+      var texts = [].map.call(page.querySelectorAll('m-t'), function (e) { var o = e.getBoundingClientRect(); return [o.left - v.left, o.top - v.top, o.width, o.height]; });
+      boxes.forEach(function (b) {
+        if (!b.vis) return;
+        b.tag.style.display = ''; b.tag.style.left = '0px'; b.tag.style.top = '0px';
+        if (!b.sub || b.sub.style.display === 'none') return;
+        /* otrā rinda: rāmja apakšā vai tieši zem tā — tur, kur tā neaizsedz nekādu tekstu; ja tādas vietas nav, to nerāda */
+        b.sub.style.top = ''; b.sub.style.bottom = '';
+        var sw = Math.min(b.sub.offsetWidth, b.w - 6), sh = b.sub.offsetHeight;
+        var opts = [[b.x + 3, b.y + b.h - 3 - sh, 0], [b.x + b.w - 3 - sw, b.y + b.h - 3 - sh, 0], [b.x + 3, b.y + b.h + 2, 1]];
+        var sr = null;
+        for (var i = 0; i < opts.length && !sr; i++) {
+          var o = [opts[i][0], opts[i][1], sw, sh], hit = texts.some(function (t) { return area(o, t) > 0; }) ||
+            (opts[i][2] && boxes.some(function (q) { return q !== b && q.vis && area(o, [q.x, q.y, q.w, q.h]) > 0; }));
+          if (!hit) { sr = o; b.sub.style.left = (o[0] - b.x) + 'px'; b.sub.style.top = (o[1] - b.y) + 'px'; b.sub.style.bottom = 'auto'; }
+        }
+        if (!sr) { b.sub.style.display = 'none'; return; }
+        placed.push(sr);
+      });
+      function ov(a, o, g) { return a[0] < o[0] + o[2] + g && a[0] + a[2] + g > o[0] && a[1] < o[1] + o[3] + g && a[1] + a[3] + g > o[1]; }
+      function area(a, o) { return Math.max(0, Math.min(a[0] + a[2], o[0] + o[2]) - Math.max(a[0], o[0])) * Math.max(0, Math.min(a[1] + a[3], o[1] + o[3]) - Math.max(a[1], o[1])); }
+      function gap(a, o) { var dx = Math.max(o[0] - a[0] - a[2], 0, a[0] - o[0] - o[2]), dy = Math.max(o[1] - a[1] - a[3], 0, a[1] - o[1] - o[3]); return Math.sqrt(dx * dx + dy * dy); }
+      var G = 4;
+      boxes.filter(function (b) { return b.vis; }).sort(function (a, c) {
+        var oa = a.el.classList.contains('is-ok') ? 0 : 1, oc = c.el.classList.contains('is-ok') ? 0 : 1;
+        return oa - oc || a.y - c.y || a.x - c.x;
+      }).forEach(function (b) {
+        var tw = b.tag.offsetWidth, th = b.tag.offsetHeight, me = [b.x, b.y, b.w, b.h];
+        var others = boxes.filter(function (o) {
+          return o !== b && o.vis && !(o.x <= b.x && o.y <= b.y && o.x + o.w >= b.x + b.w && o.y + o.h >= b.y + b.h);
+        }).map(function (o) { return [o.x + 1, o.y + 1, o.w - 2, o.h - 2]; });
+        var c = [[b.x, b.y - th, 0], [b.x + b.w - tw, b.y - th, 0], [b.x, b.y + b.h, 0], [b.x + b.w - tw, b.y + b.h, 0],
+          [b.x + 3, b.y + 3, 3], [b.x + b.w - tw - 3, b.y + 3, 3], [b.x + b.w - tw - 4, b.y + (b.h - th) / 2, 1], [b.x + b.w + G, b.y + (b.h - th) / 2, 2], [b.x - tw - G, b.y + (b.h - th) / 2, 2]];
+        for (var k = 0; k <= 4; k++) for (var dx = -192; dx <= 192; dx += 16) {
+          c.push([b.x + dx, b.y + b.h + G + k * (th + G), 0]);
+          c.push([b.x + dx, b.y - th - G - k * (th + G), 0]);
+        }
+        var best = null, bs = Infinity, fall = null, fs = Infinity;
+        c.forEach(function (p) {
+          var cx = Math.max(1, Math.min(w - tw - 1, p[0])), cy = Math.max(1, Math.min(h - th - 1, p[1])), rc = [cx, cy, tw, th];
+          /* sava elementa satura (teksta, ikonu) aizsegšana arī maksā; tukša vieta rāmī — nē */
+          var s = gap(rc, me) * 1.1 + p[2], own = 0;
+          b.c.forEach(function (o) { own += area(rc, o); });
+          if (own) s += 30 + own / (tw * th) * 40;
+          /* vadlīnija nedrīkst šķērsot jau novietotu birku */
+          var lx = Math.max(b.x, Math.min(b.x + b.w, cx + tw / 2)), ly = Math.max(b.y, Math.min(b.y + b.h, cy + th / 2));
+          for (var t = 0.15; t < 1; t += 0.14) {
+            var sx = cx + tw / 2 + (lx - cx - tw / 2) * t, sy = cy + th / 2 + (ly - cy - th / 2) * t;
+            if (placed.some(function (o) { return sx > o[0] && sx < o[0] + o[2] && sy > o[1] && sy < o[1] + o[3]; })) { s += 60; break; }
           }
+          others.forEach(function (o) { var a = area(rc, o); if (a) s += 26 + a / (tw * th) * 70; });
+          if (s < fs) { fs = s; fall = rc; }
+          if (placed.some(function (o) { return ov(rc, o, 3); })) return;
+          if (s < bs) { bs = s; best = rc; }
         });
-        if (!best) best = [Math.max(1, Math.min(w - tw - 1, b.x)), Math.max(1, b.y - th)];
-        placed.push([best[0], best[1], tw, th]);
+        var keep = b.el.classList.contains('is-ok');
+        if (!best || (!keep && bs > (w < 520 ? 70 : 120))) {
+          if (!keep) { b.tag.style.display = 'none'; return; }
+          best = best || fall;
+        }
+        placed.push(best);
         b.tag.style.left = (best[0] - b.x) + 'px'; b.tag.style.top = (best[1] - b.y) + 'px';
+        if (gap(best, me) > 3) {
+          /* vadlīnija: no birkas tuvākā punkta līdz rāmja tuvākajam punktam */
+          var mx = best[0] + best[2] / 2, my = best[1] + best[3] / 2;
+          var px = Math.max(b.x, Math.min(b.x + b.w, mx)), py = Math.max(b.y, Math.min(b.y + b.h, my));
+          var qx = Math.max(best[0], Math.min(best[0] + best[2], px)), qy = Math.max(best[1], Math.min(best[1] + best[3], py));
+          var g = document.createElementNS(NS, 'g'), ln = document.createElementNS(NS, 'path'), dot = document.createElementNS(NS, 'rect');
+          g.setAttribute('class', 'xr-lead' + (b.el.classList.contains('is-ok') ? ' is-ok' : '') + (b.k === 'lcp' ? ' is-lcp' : '') + (b.k === cur ? ' is-on' : ''));
+          g.setAttribute('data-k', b.k);
+          ln.setAttribute('d', 'M' + qx.toFixed(1) + ' ' + qy.toFixed(1) + 'L' + px.toFixed(1) + ' ' + py.toFixed(1));
+          dot.setAttribute('x', (px - 2).toFixed(1)); dot.setAttribute('y', (py - 2).toFixed(1)); dot.setAttribute('width', 4); dot.setAttribute('height', 4);
+          g.appendChild(ln); g.appendChild(dot); leads.appendChild(g);
+        }
       });
     }
+
+    /* inspektora teksts parādās tikai pēc lietotāja darbības (ritināšana, kursors, taustiņš) —
+       robots, kas lapu tikai ielādē, izdomātā uzņēmuma kodu nesaņem kā lapas tekstu */
+    var gest = window.pageYOffset > 0;
+    function arm() { if (gest) return; gest = true; if (cur) fill(cur); }
+    ['scroll', 'pointerdown', 'pointermove', 'keydown', 'touchstart', 'wheel'].forEach(function (ev) { window.addEventListener(ev, arm, { once: true, passive: true }); });
 
     function show(k) {
       if (k === cur) return;
       cur = k;
       boxes.forEach(function (b) { b.el.classList.toggle('is-on', b.k === k); });
+      [].forEach.call(leads.childNodes, function (g) { g.classList.toggle('is-on', g.getAttribute('data-k') === k); });
       [].forEach.call(root.querySelectorAll('[data-go]'), function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-go') === k ? 'true' : 'false'); });
+      if (gest) fill(k);
+    }
+    function fill(k) {
       var d = k && data[k];
       if (!d) { I.tag.textContent = ''; I.name.textContent = ''; I.ok.hidden = true; I.serp.hidden = true; I.code.innerHTML = ''; I.checks.innerHTML = ''; I.read.textContent = hint; I.path.textContent = ''; return; }
       I.path.textContent = d.getAttribute('data-path') || '';
@@ -148,6 +226,7 @@
       I.ok.hidden = !d.getAttribute('data-ok');
       I.read.textContent = d.getAttribute('data-d');
       I.serp.hidden = !d.getAttribute('data-serp');
+      if (!I.serp.hidden && serpSrc && !I.serp.firstChild) I.serp.innerHTML = serpSrc.innerHTML;
       var pre = d.querySelector('pre');
       I.code.innerHTML = pre ? hl(pre.textContent, d.getAttribute('data-lang') || 'html') : '';
       I.code.scrollTop = 0;

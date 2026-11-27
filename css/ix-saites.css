@@ -52,6 +52,8 @@
 .ixk__status{max-width:52ch;color:var(--c-on);font-size:var(--fs-sm)}
 .ixk__side[hidden],.ixk [hidden]{display:none}
 @media (max-width:480px){.ixk{padding:var(--sp-sm)}.ixk__svg text{font-size:21px;stroke-width:6px}.ixk__n--s text{font-size:15px}.ixk__me text{font-size:22px}}
+/* šaurā ekrānā zīmējums ir 1:1 pikseļos (sk. ix-saites.js), tāpēc burtu izmēri ir īsti pikseļi */
+.ixk.is-narrow .ixk__svg text{font-size:13px;stroke-width:4px}.ixk.is-narrow .ixk__n--s text{font-size:12px}.ixk.is-narrow .ixk__me text{font-size:14px}
 @media (prefers-reduced-motion:no-preference){
   .ixk__flow{animation:ixk-flow 1.1s linear infinite}
   .ixk__me rect{animation:ixk-halo 2.4s ease-in-out infinite}
