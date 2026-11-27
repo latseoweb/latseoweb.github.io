@@ -45,3 +45,28 @@
     new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); init(); } }, {rootMargin: '300px'}).observe(root);
   } else init();
 })();
+
+/* Satura stratēģija: meklēšanas nolūks -> lapas veids un bloki (ilustrācija; teksts jau ir HTML) */
+(function () {
+  var root = document.querySelector('[data-ixb]');
+  if (!root) return;
+  function init() {
+    var ctl = root.querySelector('.ixb__ctl'), btns = [].slice.call(ctl.querySelectorAll('[data-i]')),
+      cards = [].slice.call(root.querySelectorAll('[data-bp]'));
+    function set(k) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-i') === k ? 'true' : 'false'); });
+      cards.forEach(function (c) { c.hidden = c.getAttribute('data-bp') !== k; });
+    }
+    btns.forEach(function (b, i) {
+      b.addEventListener('click', function () { set(b.getAttribute('data-i')); });
+      b.addEventListener('keydown', function (e) {
+        var k = e.key, j = k === 'ArrowRight' || k === 'ArrowDown' ? (i + 1) % btns.length : k === 'ArrowLeft' || k === 'ArrowUp' ? (i + btns.length - 1) % btns.length : -1;
+        if (j < 0) return; e.preventDefault(); btns[j].focus(); set(btns[j].getAttribute('data-i'));
+      });
+    });
+    root.classList.add('is-live'); ctl.hidden = false; set(btns[0].getAttribute('data-i'));
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); init(); } }, {rootMargin: '300px'}).observe(root);
+  } else init();
+})();

@@ -79,3 +79,47 @@
     new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); init(); } }, {rootMargin: '300px'}).observe(root);
   } else init();
 })();
+
+/* Lokālais SEO: klikšķināms soļu celiņš ar rasējumu un rezultāta salīdzinājums (tikai lapā jau esošie skaitļi) */
+(function () {
+  function lazy(root, init) {
+    if (!root) return;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); init(); } }, {rootMargin: '300px'}).observe(root);
+    else init();
+  }
+  var ol = document.querySelector('[data-ixt]');
+  lazy(ol, function () {
+    var lis = [].slice.call(ol.children), btns = [];
+    function open(n) {
+      lis.forEach(function (li, i) { li.classList.toggle('is-on', i === n); btns[i].setAttribute('aria-expanded', i === n ? 'true' : 'false'); });
+    }
+    lis.forEach(function (li, i) {
+      var s = li.querySelector('strong'), b = document.createElement('button');
+      b.type = 'button'; b.className = 'ixt__btn'; b.textContent = s.textContent;
+      b.setAttribute('aria-controls', li.querySelector('.ixt__t').id);
+      s.textContent = ''; s.appendChild(b); btns.push(b);
+      b.addEventListener('click', function () { open(i); });
+      b.addEventListener('keydown', function (e) {
+        var k = e.key, j = k === 'ArrowRight' || k === 'ArrowDown' ? (i + 1) % 4 : k === 'ArrowLeft' || k === 'ArrowUp' ? (i + 3) % 4 : k === 'Home' ? 0 : k === 'End' ? 3 : -1;
+        if (j < 0) return; e.preventDefault(); btns[j].focus(); open(j);
+      });
+    });
+    ol.classList.add('is-live'); open(0);
+  });
+
+  var cs = document.querySelector('[data-ixc]');
+  lazy(cs, function () {
+    var bar = cs.querySelector('.ixc__bar'), val = cs.querySelector('[data-val]'), d = cs.querySelector('[data-d]'),
+      seg = cs.querySelector('.ixc__seg'), b = [].slice.call(cs.querySelectorAll('[data-y]')), m = bar.style.getPropertyValue('--m');
+    function set(y) {
+      var now = y === 'now';
+      bar.style.setProperty('--w', now ? '100%' : m);
+      bar.classList.toggle('is-prev', !now);
+      val.textContent = cs.getAttribute(now ? 'data-now' : 'data-prev');
+      d.textContent = cs.getAttribute(now ? 'data-dnow' : 'data-dprev');
+      b.forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-y') === y ? 'true' : 'false'); });
+    }
+    b.forEach(function (x) { x.addEventListener('click', function () { set(x.getAttribute('data-y')); }); });
+    seg.hidden = false;
+  });
+})();
