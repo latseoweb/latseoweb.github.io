@@ -17,6 +17,13 @@
     var tag = frame.querySelector(".build__tag"), names = frame.getAttribute("data-names").split("|");
     if (!range || steps.length !== 4) return;
     steps[0].parentNode.classList.add("is-scrub");
+    // narrow screens: the steps stack, so the slider gets its own stage names underneath
+    var ticks = document.createElement("div"); ticks.className = "build__ticks"; ticks.setAttribute("aria-hidden", "true");
+    names.forEach(function (n, i) {
+      var t = document.createElement("span"); t.textContent = n; t.style.left = (i / 3 * 100) + "%";
+      t.addEventListener("click", function () { set(i + 1); }); ticks.appendChild(t);
+    });
+    range.parentNode.appendChild(ticks);
     var RM = window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches, cur = 0;
     var svg = frame.querySelector("svg"), NS = "http://www.w3.org/2000/svg";
     var scan = document.createElementNS(NS, "line");
@@ -35,6 +42,7 @@
       cur = v;
       frame.setAttribute("data-s", v); tag.textContent = names[v - 1]; range.value = v;
       steps.forEach(function (li, i) { li.classList.toggle("is-on", i === v - 1); });
+      [].forEach.call(ticks.children, function (t, i) { t.classList.toggle("is-on", i === v - 1); });
       range.setAttribute("aria-valuetext", v + ". " + steps[v - 1].querySelector("strong").textContent + " — " + names[v - 1].toLowerCase());
     }
     range.addEventListener("input", function () { set(+range.value); });

@@ -27,8 +27,11 @@
       </div>
       <p class="hero__proof"><strong>0 → 212</strong> klikšķi no Google 90 dienās mājaslapai, ko izstrādāju: <a href="/projekti/">tehnologijuakademija.lv</a></p>
     </div>
+    <figure class="hero__chart" data-nosnippet>
+      <figcaption class="hero__chart-cap"><strong>latseo.com rādījumi Google meklēšanā, pa nedēļām</strong><span>Avots: Google Search Console, nedēļas dati, 16.02.–16.11.2026</span><span class="sr-only">Rādījumu skaits nedēļā auga no 2 (16.02.2026) līdz 3 135 (16.11.2026).</span></figcaption>
+      {{gsc:hero}}
+    </figure>
   </div>
-  <p class="hero__bgnote" data-nosnippet>Fonā: latseo.com rādījumi Google meklēšanā pa nedēļām, 2026. gada februāris–novembris (no 2 līdz 3 135). Avots: Google Search Console.</p>
   <div class="plan" aria-hidden="true" data-nosnippet></div>
   <div class="plan__line" aria-hidden="true"><span class="plan__grip"></span></div>
   <span class="plan__tag plan__tag--site" aria-hidden="true">Mājaslapa</span><span class="plan__tag plan__tag--plan" aria-hidden="true">Rasējums</span><span class="ix-hint plan__hint" aria-hidden="true">Pavelciet līniju</span>
@@ -83,15 +86,18 @@
       <a href="/projekti/" class="btn btn--ghost">Visi projekti</a>
     </div>
     <div class="facts">
-      <div><strong>0 → 212</strong><span>tehnologijuakademija.lv</span></div>
-      <div><strong>1 → 44</strong><span>lazergriezeji.lv</span></div>
-      <div><strong>2 → 42</strong><span>cncfrezes.lv</span></div>
-      <div><strong>0 → 10</strong><span>3dpakalpojumi.lv</span></div>
+      <div><strong>0 → 212</strong><span>tehnologijuakademija.lv</span><span class="facts__bars" aria-hidden="true" style="--b:0.0%;--a:84.8%"><i></i><i></i></span><span class="facts__axis" aria-hidden="true"><span>0</span><span>100</span><span>200</span></span></div>
+      <div><strong>1 → 44</strong><span>lazergriezeji.lv</span><span class="facts__bars" aria-hidden="true" style="--b:0.4%;--a:17.6%"><i></i><i></i></span><span class="facts__axis" aria-hidden="true"><span>0</span><span>100</span><span>200</span></span></div>
+      <div><strong>2 → 42</strong><span>cncfrezes.lv</span><span class="facts__bars" aria-hidden="true" style="--b:0.8%;--a:16.8%"><i></i><i></i></span><span class="facts__axis" aria-hidden="true"><span>0</span><span>100</span><span>200</span></span></div>
+      <div><strong>0 → 10</strong><span>3dpakalpojumi.lv</span><span class="facts__bars" aria-hidden="true" style="--b:0.0%;--a:4.0%"><i></i><i></i></span><span class="facts__axis" aria-hidden="true"><span>0</span><span>100</span><span>200</span></span></div>
     </div>
-    <figure class="trend" data-trend data-l="{&quot;wk&quot;: &quot;{n}. nedēļa no {t}&quot;, &quot;from&quot;: &quot;sākas {d}&quot;, &quot;peak&quot;: &quot;maksimums — 3135 rādījumi nedēļā&quot;, &quot;first&quot;: &quot;sākums&quot;, &quot;label&quot;: &quot;Laika atzīme: velciet vai lietojiet bultiņu taustiņus&quot;, &quot;m&quot;: [&quot;01&quot;,&quot;02&quot;,&quot;03&quot;,&quot;04&quot;,&quot;05&quot;,&quot;06&quot;,&quot;07&quot;,&quot;08&quot;,&quot;09&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;], &quot;fmt&quot;: &quot;dmy&quot;}">
-      <figcaption class="trend__cap">Mana paša mājaslapa latseo.com: Google rādījumi pa nedēļām, 16.02.–16.11.2026 (Google Search Console). Velciet laika atzīmi — redzēsiet, kura nedēļa ir izvēlēta.</figcaption>
-      <div class="trend__plot"><img src="/assets/images/hero-impressions.svg" alt="Līnijas diagramma: latseo.com Google rādījumi pa nedēļām no 16.02.2026 līdz 16.11.2026, līkne aug no nulles līdz maksimumam 3135 rādījumi nedēļā." width="1600" height="600" loading="lazy"></div>
+    <p class="facts__src"><span class="facts__key facts__key--b">iepriekšējās 90 dienas</span><span class="facts__key facts__key--a">pēdējās 90 dienas (24.07.–21.10.2026)</span><span>Klikšķi; skala visiem četriem projektiem vienāda. Avots: Google Search Console, klikšķi no Google meklēšanas.</span></p>
+    <figure class="trend" data-trend data-l="{&quot;read&quot;: &quot;{n}. nedēļa no {t} · sākas {d} · &lt;b&gt;{v}&lt;/b&gt; rādījumi&quot;, &quot;peak&quot;: &quot;maksimums&quot;, &quot;first&quot;: &quot;sākums&quot;, &quot;label&quot;: &quot;Laika atzīme: velciet vai lietojiet bultiņu taustiņus&quot;, &quot;fmt&quot;: &quot;dmy&quot;}">
+      <figcaption class="trend__cap">Mana paša mājaslapa latseo.com: Google rādījumi pa nedēļām, 16.02.–16.11.2026 (Google Search Console). Velciet laika atzīmi — redzēsiet katras nedēļas rādījumus.</figcaption>
+      <div class="trend__plot">{{gsc:trend}}</div>
       <p class="trend__read">Maksimums — 3135 rādījumi nedēļā (nedēļa, kas sākas 16.11.2026).</p>
+      <p class="trend__src">Avots: latseo.com, Google Search Console, nedēļas dati, 2026. Pilnas nedēļas (pirmdiena–svētdiena).</p>
+      <p class="sr-only">Līnijas diagramma: latseo.com Google rādījumi pa nedēļām no 16.02.2026 līdz 16.11.2026, līkne aug no nulles līdz maksimumam 3135 rādījumi nedēļā.</p>
     </figure>
   </div>
 </section>

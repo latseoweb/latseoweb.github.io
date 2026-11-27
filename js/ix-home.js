@@ -99,60 +99,59 @@
     update(); fit();
   }
 
-  /* 2) Impressions timeline: knots of the real Search Console curve in assets/images/hero-impressions.svg
-        (weekly points, 2026-02-16 + 7 days each, peak 3135). Only the date/week is shown, no per-week values. */
+  /* 2) Impressions timeline: the chart is drawn at build time by scripts/build.py ({{gsc:trend}}) from
+        assets/data/latseo-gsc-weekly.json (full weeks 16.02.–16.11.2026). This adds the time marker: a range input
+        over the plot, a cursor line + point on the curve, the curve lit up to the selected week, and a readout with
+        that week's real impressions. */
   function trend(fig) {
-    var L = JSON.parse(fig.getAttribute("data-l")), plot = fig.querySelector(".trend__plot"),
-        img = plot.querySelector("img"), read = fig.querySelector(".trend__read");
-    fetch(img.getAttribute("src")).then(function (r) { return r.text(); }).then(function (txt) {
-      var ds = txt.match(/ d="([^"]+)"/g).map(function (x) { return x.slice(4, -1); });
-      var n = ds[ds.length - 1].match(/-?\d+\.?\d*/g).map(Number), pts = [[n[0], n[1]]];
-      for (var i = 2; i + 5 < n.length; i += 6) pts.push([n[i + 4], n[i + 5]]);
-      var last = pts.length - 1, start = Date.UTC(2026, 1, 16);
-      var cur = document.createElement("span"), dot = document.createElement("span");
-      cur.className = "trend__cur"; dot.className = "trend__dot"; plot.appendChild(cur); plot.appendChild(dot);
-      var rg = document.createElement("input"); rg.type = "range"; rg.min = 0; rg.max = last; rg.value = last; rg.step = 1;
-      rg.className = "trend__range"; rg.setAttribute("aria-label", L.label); plot.appendChild(rg);
-      function fmt(i) {
-        var d = new Date(start + i * 7 * 864e5), D = d.getUTCDate(), M = d.getUTCMonth(), Y = d.getUTCFullYear();
-        if (L.fmt === "en") return D + " " + ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][M] + " " + Y;
-        return (D < 10 ? "0" : "") + D + "." + L.m[M] + "." + Y;
-      }
-      var ax = document.createElement("p"); ax.className = "trend__axis"; ax.setAttribute("aria-hidden", "true");
-      ax.innerHTML = "<span>" + fmt(0) + "</span><span>" + fmt(last) + "</span>"; plot.after(ax);
-      function set(i) {
-        i = Math.max(0, Math.min(last, i)); rg.value = i;
-        cur.style.left = dot.style.left = pts[i][0] / 16 + "%"; dot.style.top = pts[i][1] / 6 + "%";
-        top.style.clipPath = "inset(0 " + (100 - pts[i][0] / 16) + "% 0 0)";
-        var t = L.wk.replace("{n}", i + 1).replace("{t}", last + 1) + " · " + L.from.replace("{d}", fmt(i));
-        if (i === last) t += " · " + L.peak; else if (i === 0) t += " · " + L.first;
-        read.textContent = t; rg.setAttribute("aria-valuetext", t);
-      }
-      /* own drawing of the curve on the night panel: dim full line + area, a bright marker-yellow part up to the cursor */
-      var NS = "http://www.w3.org/2000/svg", line = ds[ds.length - 1], area = ds[0];
-      function mk(cls, d) {
-        var s = document.createElementNS(NS, "svg"); s.setAttribute("viewBox", "0 0 1600 600"); s.setAttribute("preserveAspectRatio", "none");
-        s.setAttribute("aria-hidden", "true"); s.setAttribute("focusable", "false");
-        d.forEach(function (x) { var p = document.createElementNS(NS, "path"); p.setAttribute("d", x[0]); p.setAttribute("class", x[1]); s.appendChild(p); });
-        if (cls) s.setAttribute("class", cls); return s;
-      }
-      var wrap = document.createElement("span"); wrap.className = "trend__draw";
-      var top = mk("trend__top", [[line, "trend__done"]]);
-      wrap.appendChild(mk("", [[area, "trend__area"], [line, "trend__base"]])); wrap.appendChild(top);
-      img.after(wrap);
-      if (!RM && "IntersectionObserver" in window) {
-        wrap.classList.add("is-wait");
-        var vio = new IntersectionObserver(function (es) {
-          if (es[0].isIntersecting) { vio.disconnect(); wrap.classList.remove("is-wait"); wrap.classList.add("is-draw"); }
-        }, { threshold: 0.4 });
-        vio.observe(plot);
-      }
-      fig.classList.add("is-live"); read.setAttribute("aria-live", "polite");
-      rg.addEventListener("input", function () { set(+rg.value); });
-      set(last);
-    }).catch(function () {});
-  }
+    var L = JSON.parse(fig.getAttribute("data-l")), gsc = fig.querySelector(".gsc");
+    if (!gsc) return;
+    var plot = gsc.querySelector(".gsc__plot"), svg = plot.querySelector("svg"), read = fig.querySelector(".trend__read");
+    var V = gsc.getAttribute("data-v").split(",").map(Number), YMAX = +gsc.getAttribute("data-ymax") || 3500;
+    var p0 = gsc.getAttribute("data-start").split("-").map(Number), start = Date.UTC(p0[0], p0[1] - 1, p0[2]);
+    var last = V.length - 1, peak = V.indexOf(Math.max.apply(null, V));
+    var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    function fmt(i) {
+      var d = new Date(start + i * 7 * 864e5), D = d.getUTCDate(), M = d.getUTCMonth(), Y = d.getUTCFullYear();
+      if (L.fmt === "en") return D + " " + MON[M] + " " + Y;
+      return (D < 10 ? "0" : "") + D + "." + (M < 9 ? "0" : "") + (M + 1) + "." + Y;
+    }
+    function num(v) { return String(v).replace(/\B(?=(\d{3})+(?!\d))/g, L.fmt === "en" ? "," : " "); }
 
+    // the lit part of the curve: a copy of the line, clipped at the cursor
+    var NS = "http://www.w3.org/2000/svg", line = svg.querySelector(".gsc__line");
+    var lit = document.createElementNS(NS, "path");
+    lit.setAttribute("d", line.getAttribute("d")); lit.setAttribute("class", "gsc__lit"); svg.appendChild(lit);
+    var cur = document.createElement("span"), dot = document.createElement("span"), tip = document.createElement("span");
+    cur.className = "trend__cur"; dot.className = "trend__dot"; tip.className = "trend__tip";
+    plot.appendChild(cur); plot.appendChild(dot); plot.appendChild(tip);
+    var rg = document.createElement("input"); rg.type = "range"; rg.min = 0; rg.max = last; rg.value = peak; rg.step = 1;
+    rg.className = "trend__range"; rg.setAttribute("aria-label", L.label);
+    fig.querySelector(".trend__plot").appendChild(rg);
+
+    function set(i) {
+      i = Math.max(0, Math.min(last, i)); rg.value = i;
+      var x = i / last * 100, y = V[i] / YMAX * 100;
+      cur.style.left = dot.style.left = tip.style.left = x + "%";
+      dot.style.bottom = y + "%"; tip.style.bottom = y + "%";
+      tip.classList.toggle("is-left", x > 70);
+      tip.textContent = num(V[i]);
+      lit.style.clipPath = "inset(0 " + (100 - x) + "% 0 0)";
+      var t = L.read.replace("{n}", i + 1).replace("{t}", last + 1).replace("{d}", fmt(i)).replace("{v}", num(V[i]));
+      if (i === peak) t += " · " + L.peak; else if (i === 0) t += " · " + L.first;
+      read.innerHTML = t; rg.setAttribute("aria-valuetext", t.replace(/<[^>]+>/g, ""));
+    }
+    if (!RM && "IntersectionObserver" in window) {
+      fig.classList.add("is-wait");
+      var vio = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { vio.disconnect(); fig.classList.remove("is-wait"); fig.classList.add("is-draw"); }
+      }, { threshold: 0.4 });
+      vio.observe(plot);
+    }
+    fig.classList.add("is-live"); read.setAttribute("aria-live", "polite");
+    rg.addEventListener("input", function () { fig.classList.add("is-used"); set(+rg.value); });
+    set(peak);
+  }
   lazy(document.querySelector("[data-trend]"), trend);
   lazy(document.querySelector("[data-serp]"), serp);
 })();

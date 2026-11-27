@@ -612,7 +612,7 @@ def after_form(variant, lang):
             f'<img src="/assets/images/{img.replace(".webp", "-480.webp")}" alt="" width="480" height="300" loading="lazy">'
             f'<span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span>'
             f'<span class="plan__note" style="left:3%;top:3%">{n1}</span>'
-            f'<span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">{n2}</span>'
+            f'<span class="plan__note" style="left:5%;top:max(calc(3% + 1.55rem),calc(21% - 1.6rem))">{n2}</span>'
             f'<span class="plan__note" style="right:3%;bottom:6%">{n3}</span>{DRAWING}</div>'
             f'<figcaption>{cap}</figcaption></figure></div>'
             # the drawing is only a filler: drop it when it would make the column taller than the form next to it
@@ -695,7 +695,76 @@ def label_tables(body):
     return re.sub(r'<table class="table">.*?</table>', one, body, flags=re.S)
 
 
+# ---------------------------------------------------------------- Search Console chart ({{gsc:hero}}, {{gsc:trend}})
+# latseo.com weekly impressions from assets/data/latseo-gsc-weekly.json, full weeks only (16.02.–16.11.2026, 40 weeks).
+# Drawn at build time as an SVG with real axes (thousands, months), so it reads without JS. js/hero-plan.js (3D x-ray)
+# and js/ix-home.js (week scrubber) read the same numbers from data-v.
+GSC_MONTHS = {"lv": ["janv.", "febr.", "marts", "apr.", "maijs", "jūn.", "jūl.", "aug.", "sept.", "okt.", "nov.", "dec."],
+              "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+GSC_YMAX, GSC_TICKS = 3500, (0, 1000, 2000, 3000)
+
+
+def gsc_weeks():
+    data = json.loads((ROOT / "assets/data/latseo-gsc-weekly.json").read_text())
+    return [(dt.date.fromisoformat(w["week_start"]), w["impressions"]) for w in data["weeks"] if w["days"] == 7]
+
+
+def _monotone(pts):
+    """Fritsch-Carlson monotone cubic through pts -> SVG path (never overshoots below zero)."""
+    n = len(pts)
+    d = [(pts[i + 1][1] - pts[i][1]) / (pts[i + 1][0] - pts[i][0]) for i in range(n - 1)]
+    m = [d[0]] + [0 if d[i - 1] * d[i] <= 0 else (d[i - 1] + d[i]) / 2 for i in range(1, n - 1)] + [d[-1]]
+    for i in range(n - 1):
+        if d[i] == 0:
+            m[i] = m[i + 1] = 0
+            continue
+        a, b = m[i] / d[i], m[i + 1] / d[i]
+        s = a * a + b * b
+        if s > 9:
+            t = 3 / s ** .5
+            m[i], m[i + 1] = t * a * d[i], t * b * d[i]
+    f = lambda v: f"{v:.1f}".rstrip("0").rstrip(".")
+    out = [f"M{f(pts[0][0])} {f(pts[0][1])}"]
+    for i in range(n - 1):
+        (x0, y0), (x1, y1) = pts[i], pts[i + 1]
+        h = (x1 - x0) / 3
+        out.append(f"C{f(x0 + h)} {f(y0 + m[i] * h)} {f(x1 - h)} {f(y1 - m[i + 1] * h)} {f(x1)} {f(y1)}")
+    return "".join(out)
+
+
+def gsc_chart(kind, lang):
+    weeks = gsc_weeks()
+    n, start, end = len(weeks), weeks[0][0], weeks[-1][0]
+    span = (end - start).days
+    W, H = 1000, 300
+    pts = [(i * W / (n - 1), H - v / GSC_YMAX * H) for i, (_, v) in enumerate(weeks)]
+    line = _monotone(pts)
+    area = line + f"L{W} {H}L0 {H}Z"
+    grid = "".join(f"M0 {H - t / GSC_YMAX * H:.1f}H{W}" for t in GSC_TICKS[1:])
+    thou = (lambda v: f"{v:,}".replace(",", " ")) if lang == "en" else (lambda v: f"{v:,}".replace(",", " "))
+    unit = "rādījumi nedēļā" if lang == "lv" else "impressions per week"
+    ys = "".join(f'<span class="gsc__y" style="bottom:{t / GSC_YMAX * 100:.2f}%">{thou(t)}'
+                 f'{f" <i>{unit}</i>" if t == GSC_TICKS[-1] else ""}</span>' for t in GSC_TICKS)
+    xs = []
+    for mth in range(start.month + 1, end.month + 1):
+        d = dt.date(start.year, mth, 1)
+        xs.append(f'<span class="gsc__m" style="left:{(d - start).days / span * 100:.2f}%">{GSC_MONTHS[lang][mth - 1]}</span>')
+    peak_i = max(range(n), key=lambda i: weeks[i][1])
+    pv, pd = weeks[peak_i][1], weeks[peak_i][0]
+    pdate = f"{pd.day:02d}.{pd.month:02d}." if lang == "lv" else f"{pd.day} {GSC_MONTHS['en'][pd.month - 1]}"
+    vals = ",".join(str(v) for _, v in weeks)
+    svg = (f'<svg class="gsc__svg" viewBox="0 0 {W} {H}" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+           f'<path class="gsc__grid" d="{grid}"/><path class="gsc__area" d="{area}"/>'
+           f'<path class="gsc__line" d="{line}"/></svg>')
+    return (f'<div class="gsc gsc--{kind}" aria-hidden="true" data-v="{vals}" data-start="{start.isoformat()}" data-ymax="{GSC_YMAX}">'
+            f'<div class="gsc__plot">{svg}{ys}'
+            f'<span class="gsc__peak" style="left:{peak_i / (n - 1) * 100:.2f}%;bottom:{pv / GSC_YMAX * 100:.2f}%">'
+            f'<b>{thou(pv)}</b><small>{pdate}</small></span></div>'
+            f'<div class="gsc__x" aria-hidden="true">{"".join(xs)}</div></div>')
+
+
 def expand_tokens(body, lang):
+    body = re.sub(r"\{\{gsc:(hero|trend)\}\}", lambda m: gsc_chart(m.group(1), lang), body)
     body = re.sub(r"\{\{project:(\w+)\}\}", lambda m: project_card(m.group(1), lang), body)
     body = re.sub(r"\{\{after:(web|audit)\}\}", lambda m: after_form(m.group(1), lang), body)
     body = body.replace("{{ask}}", ask_aside(lang)).replace("{{next-spot}}", next_spot(lang))

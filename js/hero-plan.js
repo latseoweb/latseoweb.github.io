@@ -1,19 +1,22 @@
 /* Hero as an engineering drawing: a decorative clone of this hero is drawn as a blueprint on the right of a
    draggable line. Annotations are measured from the live page (font size, <title> length, schema type).
-   Optional 3D layer: on desktop/tablet with WebGL and no reduced motion, three.js (self-hosted, loaded with
-   import() only when the browser is idle after load or on the first pointer contact) draws the real Search Console
-   curve as a solid model. Left of the line it is the finished white object, right of the line an x-ray: edges,
-   weekly ribs and the measured marks, its layers pulled apart. The H1/text never depend on any of this. */
+   The Search Console chart (row 2, built by scripts/build.py with real axes) is part of the clone, so the drawing
+   shows it too. Optional 3D layer: on desktop/tablet with WebGL and no reduced motion, three.js (self-hosted, loaded
+   with import() only when the browser is idle after load or on the first pointer contact) turns the chart's curve
+   into an x-ray solid on the blueprint side: its front face is locked to the 2D axes (custom off-axis frustum), the
+   depth shows the weekly ribs and the floor. The H1/text never depend on any of this. */
 (function () {
   var hero = document.querySelector("[data-plan]");
   if (!hero) return;
   var THREE_URL = new URL("vendor/three.module.min.js", (document.currentScript && document.currentScript.src) || location.origin + "/js/").href;
-  var plan = hero.querySelector(".plan"), grip = hero.querySelector(".plan__grip"), range = hero.querySelector(".plan__range");
-  var box = hero.querySelector(".container");
+  var plan = hero.querySelector(".plan"), range = hero.querySelector(".plan__range"), grip = hero.querySelector(".plan__grip");
+  var box = hero.querySelector(".container"), grid = hero.querySelector(".hero__grid");
+  var chart = grid.querySelector(".hero__chart"), gsc = grid.querySelector(".gsc"), aside = grid.querySelector(".hero__aside");
+  var content = grid.querySelector(".hero__content");
   var cfg = JSON.parse(hero.getAttribute("data-plan"));
   var mq = function (q) { return window.matchMedia(q).matches; };
   var reduced = mq("(prefers-reduced-motion: reduce)");
-  var used = false, pos = +range.value, onPos = null;
+  var used = false, pos = 100, onPos = null;
 
   function setPos(v) {
     v = Math.max(0, Math.min(100, v)); pos = v;
@@ -24,6 +27,18 @@
     if (onPos) onPos(v);
   }
   function markUsed() { if (!used) { used = true; hero.classList.add("is-used"); } }
+
+  // where the line rests: in the gap between the text and the facts column (desktop); phones/tablets: right edge
+  function restPos() {
+    if (mq("(max-width:1000px)")) return 100;
+    var h = hero.getBoundingClientRect(), c = content.getBoundingClientRect(), a = aside.getBoundingClientRect();
+    return ((c.right + a.left) / 2 - h.left) / h.width * 100;
+  }
+  // grip + hint sit in the empty band between row 1 and the chart caption
+  function placeGrip() {
+    var h = hero.getBoundingClientRect(), a = aside.getBoundingClientRect(), c = chart.getBoundingClientRect();
+    hero.style.setProperty("--grip-y", Math.round((Math.max(a.bottom, content.getBoundingClientRect().bottom) + c.top) / 2 - h.top) + "px");
+  }
 
   function schemaType() {
     var out = "";
@@ -37,8 +52,9 @@
   }
 
   function clone() {
-    var c = hero.querySelector(".hero__grid").cloneNode(true);
+    var c = grid.cloneNode(true);
     c.querySelectorAll("[id]").forEach(function (n) { n.removeAttribute("id"); });
+    c.querySelectorAll(".sr-only").forEach(function (n) { n.remove(); });
     c.querySelectorAll("h1,a").forEach(function (n) {
       var r = document.createElement(n.tagName === "H1" ? "div" : "span");
       r.className = n.className; r.innerHTML = n.innerHTML; n.replaceWith(r);
@@ -58,17 +74,15 @@
     var c = clone(), pr = plan.getBoundingClientRect();
     var h1 = hero.querySelector(".hero__title"), px = Math.round(parseFloat(getComputedStyle(h1).fontSize));
     var map = [[".hero__title", "h1"], [".hero__description", "desc", "minor"], [".hero__actions", "cta"],
-               [".hero__meta", "meta", "minor"], [".hero__stats", "stats"], [".hero__proof", "proof", "minor"]];
+               [".hero__meta", "meta", "minor"], [".hero__stats", "stats"], [".hero__proof", "proof", "minor"], [".gsc__plot", "chart"]];
     map.forEach(function (m) {
       var t = c.querySelector(m[0]); if (!t) return;
       var r = t.getBoundingClientRect(), x = r.left - pr.left, y = r.top - pr.top;
       el("plan__box", { left: x - 6, top: y - 6, width: r.width + 12, height: r.height + 12 });
+      if (!cfg.notes[m[1]]) return;
       // labels sit at the right end of each box, so they stay on the blueprint side of the line
       var note = el("plan__note" + (m[2] ? " plan__note--minor" : ""), { right: pr.width - (x + r.width) - 6, top: y - 30 }, cfg.notes[m[1]].replace("{px}", px));
-      if (m[1] === "h1") {
-        el("plan__dim", { left: x - 22, top: y, height: r.height });
-        note.style.top = (y - 34) + "px";
-      }
+      if (m[1] === "h1") { el("plan__dim", { left: x - 22, top: y, height: r.height }); note.style.top = (y - 34) + "px"; }
     });
     var tb = document.createElement("div"); tb.className = "plan__tb";
     cfg.tb.forEach(function (row) {
@@ -77,6 +91,7 @@
       });
     });
     plan.appendChild(tb);
+    placeGrip();
     setPos(pos);
   }
 
@@ -88,10 +103,11 @@
     if (e.pointerType !== "mouse" && e.target !== grip) return; // on touch only the grip drags, so the page still scrolls
     markUsed(); cancelAnimationFrame(glide); hero.classList.add("is-dragging"); hero.setPointerCapture(e.pointerId);
     var lastX = fromEvent(e), lastT = performance.now(), vel = 0;
-    setPos(lastX);
+    if (e.target !== grip) setPos(lastX);
+    var off = e.target === grip ? pos - lastX : 0;
     function move(ev) {
       var x = fromEvent(ev), t = performance.now(), dt = Math.max(1, t - lastT);
-      vel = vel * .6 + (x - lastX) / dt * .4; lastX = x; lastT = t; setPos(x);
+      vel = vel * .6 + (x - lastX) / dt * .4; lastX = x; lastT = t; setPos(x + off);
     }
     function up() {
       hero.classList.remove("is-dragging"); hero.removeEventListener("pointermove", move); hero.removeEventListener("pointerup", up); hero.removeEventListener("pointercancel", up);
@@ -109,31 +125,32 @@
   });
   range.addEventListener("input", function () { markUsed(); setPos(+range.value); });
 
-  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(annotate, 150); });
+  var rt0; window.addEventListener("resize", function () { clearTimeout(rt0); rt0 = setTimeout(function () { annotate(); if (!used) setPos(restPos()); }, 150); });
   annotate();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(annotate);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { annotate(); if (!used && reduced) setPos(restPos()); });
 
-  // one sweep on load: the drawing slides in from the right edge to show the line can be moved
-  var end = mq("(max-width:700px)") ? 74 : +range.value;
-  if (reduced) setPos(end);
+  // one sweep on load: the drawing slides in from the right edge. Desktop: it rests in the gap beside the facts.
+  // Phones/tablets: it peeks in to show the chart's drawing and returns to the edge, so the text stays whole.
+  if (reduced) setPos(restPos());
   else {
     setPos(100);
     window.addEventListener("load", function () {
-      var s = null;
+      var s = null, end = restPos(), peek = end > 99;
       function step(now) {
         if (used) return;
         if (s === null) s = now;
-        var k = Math.min(1, (now - s) / 1600), e = 1 - Math.pow(1 - k, 3);
-        setPos(100 + (end - 100) * e);
+        var k = Math.min(1, (now - s) / (peek ? 2600 : 1600)), e;
+        if (peek) { e = Math.sin(Math.PI * Math.min(1, k * 1.15)); e = e * e * (3 - 2 * e); setPos(100 - 30 * e); }
+        else { e = 1 - Math.pow(1 - k, 3); setPos(100 + (end - 100) * e); }
         if (k < 1) requestAnimationFrame(step);
       }
-      setTimeout(function () { requestAnimationFrame(step); }, 250);
+      setTimeout(function () { requestAnimationFrame(step); }, 350);
     });
   }
 
   /* ---------------- optional 3D layer ---------------- */
   var conn = navigator.connection || {};
-  if (reduced || conn.saveData || hero.clientWidth < 768 || mq("(pointer: coarse) and (max-width: 1024px)") || !mq("(min-width: 768px)")) return;
+  if (!gsc || reduced || conn.saveData || hero.clientWidth < 768 || mq("(pointer: coarse) and (max-width: 1024px)") || !mq("(min-width: 768px)")) return;
   var probe = document.createElement("canvas");
   if (!window.WebGLRenderingContext || !(probe.getContext("webgl2") || probe.getContext("webgl"))) return;
 
@@ -148,15 +165,14 @@
     setTimeout(function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1) })(go, { timeout: 4000 }); }, 1200);
   });
 
-  // weekly Search Console impressions, normalised to the peak (3 135); same series as assets/images/hero-impressions.svg
-  var D = [0.001,0.001,0.002,0.001,0.002,0.009,0.02,0.056,0.067,0.122,0.11,0.132,0.104,0.112,0.145,0.119,0.105,0.249,0.283,0.297,
-           0.315,0.281,0.264,0.451,0.449,0.576,0.713,0.728,0.649,0.646,0.654,0.325,0.291,0.391,0.509,0.608,0.691,0.661,0.77,1.0];
-
   function start3D(T) {
+    // the same weekly impressions the 2D chart is drawn from (assets/data/latseo-gsc-weekly.json via build.py)
+    var D = gsc.getAttribute("data-v").split(",").map(Number), YMAX = +gsc.getAttribute("data-ymax") || 3500;
+    var plot = gsc.querySelector(".gsc__plot");
     var css = getComputedStyle(document.documentElement);
     function col(name, fb) { return new T.Color((css.getPropertyValue(name) || fb).trim() || fb); }
     var NIGHT = col("--ix-night", "#10243A"), LINE = col("--ix-line", "#93B4D3"), MARK = col("--ix-marker", "#FFC65C"),
-        INK = col("--ix-ink-on", "#EEF3F8"), GREEN = col("--accent", "#1F6045");
+        INK = col("--ix-ink-on", "#EEF3F8");
 
     var canvas = document.createElement("canvas");
     canvas.className = "hero__gl"; canvas.setAttribute("aria-hidden", "true");
@@ -167,138 +183,104 @@
     R.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
     R.autoClear = false; R.setScissorTest(true);
 
-    var scene = new T.Scene(), cam = new T.PerspectiveCamera(13, 1, 1, 400);
-    var world = new T.Group(); scene.add(world);
-    var solid = new T.Group(), xray = new T.Group(); world.add(solid, xray);
+    var scene = new T.Scene(), cam = new T.PerspectiveCamera(20, 1, .5, 200);
+    var xray = new T.Group(); scene.add(xray);
 
-    // geometry: 40 weeks along x, height = impressions, a slab 1.7 deep
-    var L = 16, Z = 2.2, HMAX = 3.6, BASE = .12, n = D.length;
-    var pts = D.map(function (v, i) { return new T.Vector2(-L / 2 + i * L / (n - 1), BASE + v * HMAX); });
+    // model units: x spans the 40 weeks (L), y = impressions on the chart's own scale (HM = YMAX), slab Z deep
+    var L = 16, HM = 4, Z = 2.2, n = D.length, ZF = Z / 2;
+    var pts = D.map(function (v, i) { return new T.Vector2(-L / 2 + i * L / (n - 1), v / YMAX * HM); });
     var shape = new T.Shape();
     shape.moveTo(-L / 2, 0); shape.lineTo(pts[0].x, pts[0].y); shape.splineThru(pts.slice(1)); shape.lineTo(L / 2, 0); shape.lineTo(-L / 2, 0);
     var geo = new T.ExtrudeGeometry(shape, { depth: Z, bevelEnabled: false, curveSegments: 6 });
-    geo.translate(0, 0, -Z / 2);
+    geo.translate(0, 0, -ZF);
     var top = new T.SplineCurve(pts).getPoints(n * 8);
-    function v3(p, z, dy) { return new T.Vector3(p.x, p.y + (dy || 0), z); }
-
-    // finished side: a pale solid with the brand-green data edge
-    solid.add(new T.Mesh(geo, new T.MeshLambertMaterial({ color: 0xffffff, emissive: 0xC4D1CA })));
-    var edge = new T.CatmullRomCurve3(top.map(function (p) { return v3(p, Z / 2 + .004); }));
-    solid.add(new T.Mesh(new T.TubeGeometry(edge, n * 8, .035, 6, false), new T.MeshBasicMaterial({ color: GREEN })));
-    var backEdge = new T.CatmullRomCurve3(top.map(function (p) { return v3(p, -Z / 2); }));
-    solid.add(new T.Mesh(new T.TubeGeometry(backEdge, n * 4, .012, 4, false), new T.MeshBasicMaterial({ color: GREEN, transparent: true, opacity: .35 })));
-    scene.add(new T.HemisphereLight(0xffffff, 0xB8C6BF, .8));
-    var sun = new T.DirectionalLight(0xffffff, 1.4); sun.position.set(-3, 8, 6); scene.add(sun);
-
+    function v3(p, z, dy) { return new T.Vector3(p.x, Math.max(0, p.y) + (dy || 0), z); }
     function lines(arr, color, opacity) {
-      var g = new T.BufferGeometry().setFromPoints(arr);
-      return new T.LineSegments(g, new T.LineBasicMaterial({ color: color, transparent: opacity < 1, opacity: opacity, depthWrite: false }));
+      return new T.LineSegments(new T.BufferGeometry().setFromPoints(arr), new T.LineBasicMaterial({ color: color, transparent: opacity < 1, opacity: opacity, depthWrite: false }));
     }
     function strip(arr, color, opacity) {
       return new T.Line(new T.BufferGeometry().setFromPoints(arr), new T.LineBasicMaterial({ color: color, transparent: opacity < 1, opacity: opacity }));
     }
 
-    // x-ray, layer 1 (middle): the body's edges, weekly ribs and drop lines
+    // layer 1 (body): edges, weekly ribs across the depth, drop lines to the floor
     var body = new T.Group(); xray.add(body);
-    body.add(new T.LineSegments(new T.EdgesGeometry(geo, 25), new T.LineBasicMaterial({ color: LINE, transparent: true, opacity: .6 })));
+    body.add(new T.Mesh(geo, new T.MeshBasicMaterial({ color: LINE, transparent: true, opacity: .07, depthWrite: false })));
+    body.add(new T.LineSegments(new T.EdgesGeometry(geo, 25), new T.LineBasicMaterial({ color: LINE, transparent: true, opacity: .55 })));
     var ribs = [], drops = [];
-    pts.forEach(function (p) {
-      ribs.push(v3(p, Z / 2), v3(p, -Z / 2));
-      drops.push(v3(p, Z / 2), new T.Vector3(p.x, 0, Z / 2));
-    });
-    body.add(lines(ribs, LINE, .45), lines(drops, LINE, .22));
+    pts.forEach(function (p) { ribs.push(v3(p, ZF), v3(p, -ZF)); drops.push(v3(p, -ZF), new T.Vector3(p.x, 0, -ZF)); });
+    body.add(lines(ribs, LINE, .5), lines(drops, LINE, .18));
 
-    // layer 2 (lifted): the surface skin, i.e. what the visitor sees, as a light ink outline
+    // layer 2 (skin, lifts off while the line is dragged): the surface the visitor sees, in ink, its back edge faint
     var skin = new T.Group(); xray.add(skin);
-    skin.add(strip(top.map(function (p) { return v3(p, Z / 2); }), INK, 1), strip(top.map(function (p) { return v3(p, -Z / 2); }), INK, .25));
-    var skinRibs = [];
-    pts.forEach(function (p, i) { if (i % 4 === 0 || i === n - 1) skinRibs.push(v3(p, Z / 2), v3(p, -Z / 2)); });
-    skin.add(lines(skinRibs, INK, .35));
+    skin.add(strip(top.map(function (p) { return v3(p, ZF); }), INK, 1), strip(top.map(function (p) { return v3(p, -ZF); }), INK, .3));
 
-    // layer 3 (lowered): the floor with measured marks: weekly ticks and the peak dimension
+    // layer 3 (floor, drops away while dragging): grid and weekly ticks in amber
     var floor = new T.Group(); xray.add(floor);
-    var grid = [];
-    for (var gx = -L / 2; gx <= L / 2 + .01; gx += L / (n - 1) * 4) grid.push(new T.Vector3(gx, 0, -Z / 2 - .6), new T.Vector3(gx, 0, Z / 2 + .6));
-    for (var gz = -Z / 2 - .6; gz <= Z / 2 + .61; gz += (Z + 1.2) / 4) grid.push(new T.Vector3(-L / 2 - .4, 0, gz), new T.Vector3(L / 2 + .4, 0, gz));
-    floor.add(lines(grid, LINE, .18));
+    var g = [], step = L / (n - 1);
+    for (var i = 0; i < n; i += 4) g.push(new T.Vector3(-L / 2 + i * step, 0, -ZF - .5), new T.Vector3(-L / 2 + i * step, 0, ZF));
+    for (var k = 0; k <= 3; k++) { var z = -ZF - .5 + k * (Z + .5) / 3; g.push(new T.Vector3(-L / 2, 0, z), new T.Vector3(L / 2, 0, z)); }
+    floor.add(lines(g, LINE, .22));
     var ticks = [];
-    pts.forEach(function (p, i) { var k = i % 4 === 0 ? .32 : .16; ticks.push(new T.Vector3(p.x, 0, Z / 2 + .6), new T.Vector3(p.x, 0, Z / 2 + .6 + k)); });
-    floor.add(lines(ticks, MARK, .9));
-    var peak = pts[n - 1], first = pts[0], dx = peak.x + .45;
-    var dim = [new T.Vector3(dx, 0, Z / 2), new T.Vector3(dx, peak.y, Z / 2),
-               new T.Vector3(dx - .15, 0, Z / 2), new T.Vector3(dx + .15, 0, Z / 2),
-               new T.Vector3(dx - .15, peak.y, Z / 2), new T.Vector3(dx + .15, peak.y, Z / 2),
-               new T.Vector3(peak.x, peak.y, Z / 2), new T.Vector3(dx + .15, peak.y, Z / 2)];
-    xray.add(lines(dim, MARK, 1));
-    function label(text, x, y, z, align) {
-      var c = document.createElement("canvas"), g = c.getContext("2d"), f = "500 44px 'IBM Plex Mono', ui-monospace, monospace";
-      g.font = f; var w = Math.ceil(g.measureText(text).width) + 24; c.width = w; c.height = 64;
-      g.font = f; g.fillStyle = "#" + MARK.getHexString(); g.textBaseline = "middle"; g.fillText(text, 12, 34);
-      var tex = new T.CanvasTexture(c); tex.colorSpace = T.SRGBColorSpace; tex.anisotropy = 4;
-      var s = new T.Sprite(new T.SpriteMaterial({ map: tex, transparent: true, depthTest: false }));
-      var h = .42; s.scale.set(h * w / 64, h, 1); s.center.set(align === "right" ? 1 : 0, .5); s.position.set(x, y, z);
-      return s;
-    }
-    var nums = (document.querySelector(".hero__bgnote") || {}).textContent || "";
-    var m = nums.match(/\(\D*?(\d+)\D+(\d[\d\s\u00a0,]*\d)\)/);   // "(no 2 līdz 3 135)" / "(from 2 to 3,135)"
-    xray.add(label(m ? m[2].replace(/[\s,]/g, "\u2009") : "3\u2009135", peak.x - .15, peak.y + .5, Z / 2, "right"));
-    xray.add(label(m ? m[1] : "2", first.x - .3, first.y + .35, Z / 2, "right"));
+    pts.forEach(function (p, i) { ticks.push(new T.Vector3(p.x, 0, -ZF), new T.Vector3(p.x, 0, -ZF - (i % 4 === 0 ? .45 : .2))); });
+    floor.add(lines(ticks, MARK, .85));
 
-    // camera: fit the 16-unit model to the hero width, model sits in the lower part like the 2D curve
-    var W = 0, H = 0;
+    // camera: off-axis frustum so that the slab's front face (z = ZF) lands exactly on the 2D plot rectangle;
+    // the camera sits above and to the right, so depth reads as perspective without moving the axes.
+    var W = 0, H = 0, P = { x: 0, y: 0, w: 1, h: 1 }, dist = 11;
     function size() {
       W = hero.clientWidth; H = hero.clientHeight;
       R.setSize(W, H, false);
-      var a = W / H, half = Math.tan(cam.fov * Math.PI / 360);
-      var d = Math.max(20, (L / 2 + 2.2) / (half * a));
-      cam.aspect = a; cam.updateProjectionMatrix();
-      var hh = d * half, pitch = .2;
-      var ty = hh * .62;
-      cam.position.set(0, ty + Math.sin(pitch) * d, Math.cos(pitch) * d);
-      cam.lookAt(0, ty, 0);
+      var hr = hero.getBoundingClientRect(), r = plot.getBoundingClientRect();
+      P = { x: r.left - hr.left, y: r.top - hr.top, w: r.width, h: r.height };
       dirty = true;
     }
+    function frustum(cx, cy) {
+      var sx = P.w / L, sy = P.h / HM, nr = cam.near;
+      var X = function (px) { return (px - P.x) / sx - L / 2; }, Y = function (py) { return (P.y + P.h - py) / sy; };
+      cam.position.set(cx, cy, ZF + dist); cam.rotation.set(0, 0, 0); cam.updateMatrixWorld(true);
+      var f = nr / dist;
+      cam.projectionMatrix.makePerspective((X(0) - cx) * f, (X(W) - cx) * f, (Y(0) - cy) * f, (Y(H) - cy) * f, nr, cam.far);
+      cam.projectionMatrixInverse.copy(cam.projectionMatrix).invert();
+    }
 
-    // springs: pointer tilt (max ~5 deg), layer separation (pulls apart more while the line is dragged)
+    // springs: pointer parallax (camera slides, the front face stays on the axes), layer separation while dragging
     function S(v) { return { x: v, v: 0, to: v }; }
-    var yaw = S(0), pit = S(0), ex = S(0), dirty = true, raf = 0, visible = true, last = 0;
+    var px_ = S(0), py_ = S(0), ex = S(0), dirty = true, raf = 0, visible = true, last = 0;
     function stepS(s, dt, k, c) { s.v += ((s.to - s.x) * k - s.v * c) * dt; s.x += s.v * dt; return Math.abs(s.to - s.x) > 1e-4 || Math.abs(s.v) > 1e-4; }
     hero.addEventListener("pointermove", function (e) {
       if (e.pointerType !== "mouse") return;
       var r = hero.getBoundingClientRect();
-      yaw.to = ((e.clientX - r.left) / r.width - .5) * .16; pit.to = ((e.clientY - r.top) / r.height - .5) * .07; kick();
+      px_.to = ((e.clientX - r.left) / r.width - .5) * 4; py_.to = -((e.clientY - r.top) / r.height - .5) * 2.4; kick();
     }, { passive: true });
-    hero.addEventListener("pointerleave", function () { yaw.to = 0; pit.to = 0; kick(); });
-    new MutationObserver(function () { ex.to = hero.classList.contains("is-dragging") ? 1.7 : 1; kick(); }).observe(hero, { attributes: true, attributeFilter: ["class"] });
+    hero.addEventListener("pointerleave", function () { px_.to = 0; py_.to = 0; kick(); });
+    new MutationObserver(function () { ex.to = hero.classList.contains("is-dragging") ? 1 : 0; kick(); }).observe(hero, { attributes: true, attributeFilter: ["class"] });
     onPos = function () { dirty = true; kick(); };
     if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) kick(); }).observe(hero);
-    var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { size(); kick(); }, 120); });
+    var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { size(); kick(); }, 160); });
 
     function frame(now) {
       raf = 0;
       var dt = Math.min(.033, (now - (last || now)) / 1000 || .016); last = now;
-      var moving = stepS(yaw, dt, 60, 12) | stepS(pit, dt, 60, 12) | stepS(ex, dt, 110, 11);
-      world.rotation.y = yaw.x; world.rotation.x = pit.x;
+      var moving = stepS(px_, dt, 40, 11) | stepS(py_, dt, 40, 11) | stepS(ex, dt, 110, 11);
+      frustum(3 + px_.x, HM * 1.45 + py_.x);
       var e = ex.x;
-      skin.position.set(0, e * .95, e * .35);
-      floor.position.set(0, -e * .55, 0);
-      body.position.set(0, 0, 0);
+      skin.position.set(0, e * .45, e * .9);
+      floor.position.set(0, -e * .5, -e * .4);
       draw();
       if ((moving || dirty) && visible) { dirty = false; kick(); } else last = 0;
     }
     function kick() { if (!raf && visible) raf = requestAnimationFrame(frame); }
     function draw() {
       var x = Math.round(W * pos / 100);
-      R.setScissor(0, 0, x, H); R.setViewport(0, 0, W, H);
-      R.setClearColor(0xffffff, 0); R.clear();
-      solid.visible = true; xray.visible = false; R.render(scene, cam);
-      R.setScissor(x, 0, W - x, H);
-      R.setClearColor(NIGHT, 1); R.clear();
-      solid.visible = false; xray.visible = true; R.render(scene, cam);
+      R.setViewport(0, 0, W, H);
+      R.setScissor(0, 0, W, H); R.setClearColor(0x000000, 0); R.clear();
+      if (x >= W) return;
+      R.setScissor(x, 0, W - x, H); R.setClearColor(NIGHT, 1); R.clear();
+      R.render(scene, cam);
     }
 
-    size(); draw();
+    size(); frustum(3, HM * 1.45); draw();
     hero.classList.add("hero--3d");
-    setTimeout(function () { ex.to = 1; kick(); }, 300);
+    kick();
   }
 })();

@@ -136,3 +136,12 @@ main p a:not(.btn):hover,main li a:not(.btn):hover{text-decoration-color:var(--i
   .btn:hover,.ix-chip:hover{transform:none}
 }
 @media (hover:none){[data-ix-tilt]{transform:none}.ix-panel::before{display:none}}
+
+/* ---------- dark bands (.section--ink / --dark from style.css) take the dusk night, not near-black ----------
+   Text tokens follow (ink-on 14.1:1, muted-on 8.1:1 on night). Instruments inside keep their own line frame. */
+.section--ink,.section--dark{--on-ink:var(--ix-ink-on);--on-ink-muted:var(--ix-muted-on);background:var(--ix-night);color:var(--ix-muted-on)}
+.section--ink .checklist li::before{background-color:var(--ix-night-2)}
+.section--ink .steps li::before{color:var(--ix-mint)}
+.section--ink :is(.btn--ghost,.btn--secondary){color:var(--ix-ink-on);border-color:rgba(147,180,211,.55)}
+.section--ink :is(.btn--ghost,.btn--secondary):hover{border-color:var(--ix-line);background:var(--ix-night-2)}
+.section--ink a:not(.btn){text-decoration-color:var(--ix-line)}
