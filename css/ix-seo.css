@@ -134,7 +134,7 @@ section.ix-panel[data-ix=monthly] .ix-cyc__ring{background-color:var(--ix-night-
 .ix-wf__sk{display:flex;flex-direction:column;gap:6px;pointer-events:none}
 .ix-wf__sk i{display:block;height:7px;background:rgba(147,180,211,.35)}
 .ix-wf__sk--tech{flex-direction:row;flex-wrap:wrap;gap:5px}
-.ix-wf__c{height:auto!important;padding:.1rem .4rem;font-family:var(--ff-mono);font-size:.6875rem;font-style:normal;line-height:1.4;color:var(--ln);background:transparent!important;border:1px solid rgba(147,180,211,.4)}
+.ix-wf__c{height:auto!important;padding:.1rem .4rem;font-family:var(--ff-mono);font-size:.75rem;font-style:normal;line-height:1.4;color:var(--ln);background:transparent!important;border:1px solid rgba(147,180,211,.4)}
 .ix-wf__h1{width:70%;height:13px!important;background:rgba(238,243,248,.75)!important}
 .ix-wf__t{width:92%}.ix-wf__t2{width:64%}
 .ix-wf__btn{width:5.5rem;height:18px!important;margin-top:4px;background:var(--accent)!important;box-shadow:inset 0 -2px 0 rgba(0,0,0,.25)}
@@ -152,4 +152,18 @@ section.ix-panel[data-ix=monthly] .ix-cyc__ring{background-color:var(--ix-night-
   .ix-dial__lit,.ix-dial__needle,.ix-cyc__prog,.ix-cyc__arm,.ix-cyc__no,.ix-tick__box,.ix-wf__z,.ix-tl{transition:none}
   .ix-cyc__orbit,.ix-wf__z[aria-pressed=true],.ix-wf__z[aria-pressed=true]::after{animation:none}
 }
-.ix-cyc__ring{width:min(100%,420px)}
+.ix-cyc__ring{width:min(100%,300px)}
+/* leģenda blakus aplim: numurs + darba nosaukums, aktīvais iezīmēts tāpat kā aplī */
+.ix-cyc__legend{list-style:none;margin:0;padding:0;display:grid;gap:2px;width:min(100%,340px);margin-inline:auto}
+.ix-cyc__lg{display:flex;align-items:center;gap:.75rem;width:100%;min-height:44px;padding:.3rem .6rem .3rem .35rem;border:0;border-left:2px solid transparent;background:none;color:var(--ix-ink-on);font:inherit;font-size:var(--fs-sm);line-height:1.25;text-align:left;cursor:pointer;transition:background-color .2s,border-color .2s}
+.ix-cyc__lgn{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ix-line);font:500 .75rem/1 var(--ff-mono);color:var(--ix-ink-on);transition:background-color .2s,border-color .2s,color .2s}
+.ix-cyc__lg:hover{background:color-mix(in srgb,var(--ix-line) 10%,transparent)}
+.ix-cyc__lg.is-past .ix-cyc__lgn{border-color:var(--ix-mint);color:var(--ix-mint)}
+.ix-cyc__lg.is-on{background:color-mix(in srgb,var(--ix-marker) 12%,transparent);border-left-color:var(--ix-marker)}
+.ix-cyc__lg.is-on .ix-cyc__lgn{background:var(--ix-marker);border-color:var(--ix-marker);color:var(--ix-night)}
+.ix-cyc__lg.is-on .ix-cyc__lgt{color:var(--ix-marker)}
+@media (min-width:1000px){
+  .ix-cyc{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:var(--sp-lg)}
+  .ix-cyc__ring{width:100%}
+  .ix-cyc__legend{width:100%}
+}

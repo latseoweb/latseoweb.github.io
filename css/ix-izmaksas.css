@@ -34,5 +34,5 @@
 .ix-tot dd{font-family:var(--ff-mono);font-weight:600;font-size:var(--fs-xl);color:var(--ix-marker);font-variant-numeric:tabular-nums;display:inline-block;transform-origin:left bottom}
 .ix-tot dd.is-bump{animation:ix-bump .45s var(--ease,ease-out)}
 @keyframes ix-bump{40%{transform:scale(1.07)}}
-@media (max-width:520px){.ix-tot dd{font-size:var(--fs-lg)}.ix-seg{font-size:.6875rem}.ix-seg.is-on{padding:0 .3rem}.ix-cost{transform:none}}
+@media (max-width:520px){.ix-tot dd{font-size:var(--fs-lg)}.ix-seg{font-size:.75rem}.ix-seg.is-on{padding:0 .3rem}.ix-cost{transform:none}}
 @media (prefers-reduced-motion:reduce){.ix-seg,.ix-cost,.ix-sw{transition:none}.ix-tot dd.is-bump{animation:none}}
