@@ -34,14 +34,15 @@
 <section class="section section--white">
   <div class="container split">
     <div class="split__sticky">
-      <div class="facts facts--2" data-facts data-hint="Pieskarieties skaitlim, lai redzētu, kur tekstā tas minēts.">
-        <div data-go="pm-sakums" data-l="Skatīt tekstā: Kā sāku"><strong>2 gadi</strong><span>pieredze SEO un mājaslapu izstrādē</span></div>
-        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>7</strong><span>mājaslapas izstrādātas no nulles</span></div>
-        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>3</strong><span>SEO klienti</span></div>
-        <div data-go="pm-offer" data-l="Skatīt tekstā: Ko piedāvāju"><strong>24 h</strong><span>video audita atbildes laiks</span></div>
+      <div class="facts facts--2 pm-facts" data-facts data-hint="Pieskarieties skaitlim, lai redzētu, kur tekstā tas minēts.">
+        <div data-go="pm-sakums" data-l="Skatīt tekstā: Kā sāku"><strong>2 gadi</strong><span>pieredze SEO un mājaslapu izstrādē</span><small class="pm-ctx">Skaitot no pirmā klienta: uzņēmuma, kurā iepriekš strādāju.</small></div>
+        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>7</strong><span>mājaslapas izstrādātas no nulles</span><small class="pm-ctx">Un vēl 1 landing lapa. Visas ar Google klikšķu datiem sadaļā Projekti.</small></div>
+        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>3</strong><span>SEO klienti</span><small class="pm-ctx">Auto detailings (kopš marta), nekustamie īpašumi (kopš aprīļa), auto noma (kopš oktobra). Stāvoklis 2026. gada novembrī.</small>
+          <span class="pm-tl" aria-hidden="true"><span class="pm-tl__c" style="--m:0"></span><span class="pm-tl__c" style="--m:1.9"></span><span class="pm-tl__c" style="--m:7"></span><b>mar</b><b>nov 2026</b></span></div>
+        <div data-go="pm-offer" data-l="Skatīt tekstā: Ko piedāvāju"><strong>24 h</strong><span>video audita atbildes laiks</span><small class="pm-ctx">No pieteikuma līdz video e-pastā. Bez maksas un bez saistībām.</small></div>
       </div>
     </div>
-    <div class="prose">
+    <div class="prose pm-prose">
       <h2>Kā sāku</h2>
       <p id="pm-sakums">Pirmais klients bija uzņēmums, kurā iepriekš strādāju. Veidoju tam mājaslapas un tādā dabiskā veidā iemācījos arī SEO — jo mājaslapa, ko Google nerāda, uzņēmumam klientus neatved. Šobrīd esmu Bratus oficiālais IT partneris.</p>
       <h2>Kļūda, kas mainīja manu pieeju</h2>
@@ -75,13 +76,22 @@
       <h2>Kā strādāju ikdienā</h2>
       <p>Katru rītu atveru Google Search Console. Mani interesē visa domēna rādījumi un klikšķi, ne tikai viena atslēgvārda pozīcija. Atslēgvārdus pētu ar Google Keyword Planner, tehniskās kļūdas meklēju ar Screaming Frog un Ahrefs.</p>
       <p>Kad Google ieviesa AI Overview, sāku optimizēt lapas arī tā, lai tās būtu saprotamas mākslīgā intelekta ģenerētajām atbildēm (GEO).</p>
+      <figure class="pm-gsc" data-gsc data-src="/assets/data/latseo-gsc-weekly.json" hidden
+        data-l-imp="rādījumi" data-l-clk="klikšķi" data-l-pos="vid. pozīcija" data-l-wk="Nedēļa no" data-l-part="nepilna nedēļa" data-loc="lv-LV"
+        data-months="jan,feb,mar,apr,mai,jūn,jūl,aug,sep,okt,nov,dec">
+        <figcaption class="pm-gsc__h"><strong>Tas, ko redzu katru rītu: latseo.com Search Console</strong><span>Stabiņi: rādījumi Google meklēšanā pa nedēļām, 16.02.–26.11.2026. Punkti zem ass: klikšķi tajā pašā nedēļā (lielāks punkts, vairāk klikšķu). Precīzi skaitļi un vidējā pozīcija ir rindā zem grafika.</span></figcaption>
+        <p class="ix-hint pm-gsc__hint">Pavelciet pāri grafikam vai lietojiet bultiņas, lai izvēlētos nedēļu.</p>
+        <div class="pm-gsc__plot" data-plot tabindex="0" role="img" aria-label="Stabiņu diagramma: latseo.com rādījumi Google meklēšanā pa nedēļām no 16.02.2026 līdz 26.11.2026; no 2 rādījumiem februārī līdz 3 135 nedēļā no 16.11.2026."></div>
+        <p class="pm-gsc__read" aria-live="polite" data-read></p>
+        <p class="pm-gsc__src">Avots: latseo.com, Google Search Console, nedēļas dati, 2026. Pēdējā nedēļa ir nepilna (4 dienas).</p>
+      </figure>
       <h2>Ko piedāvāju</h2>
-      <ul>
-        <li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde ar SEO</a> — no 449 € (bez PVN)</li>
-        <li><a href="/seo-pakalpojumi-riga/">SEO optimizācija</a> — audits no 150 €, ikmēneša SEO no 300 €/mēn.</li>
-        <li id="pm-offer"><a href="/bezmaksas-audits/">Bezmaksas video audits</a> — 24 stundu laikā</li>
+      <ul class="pm-offer">
+        <li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde ar SEO</a> <span class="pm-p"><span class="pm-dash">— </span>no 449 € (bez PVN)</span></li>
+        <li><a href="/seo-pakalpojumi-riga/">SEO optimizācija</a> <span class="pm-p"><span class="pm-dash">— </span>audits no 150 €, ikmēneša SEO no 300 €/mēn.</span></li>
+        <li id="pm-offer"><a href="/bezmaksas-audits/">Bezmaksas video audits</a> <span class="pm-p"><span class="pm-dash">— </span>24 stundu laikā</span></li>
       </ul>
-      <p id="pm-links"><a href="{{linkedin}}" target="_blank" rel="noopener">LinkedIn profils</a> · <a href="/projekti/">Projekti</a> · <a href="/kontakti/">Kontakti</a></p>
+      <p id="pm-links" class="pm-links"><a href="{{linkedin}}" target="_blank" rel="noopener">LinkedIn profils</a> · <a href="/projekti/">Projekti</a> · <a href="/kontakti/">Kontakti</a></p>
     </div>
   </div>
 </section>

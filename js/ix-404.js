@@ -4,12 +4,13 @@
   var root = document.getElementById('pz');
   if (!root) return;
   // [atslēga, nosaukums, mērķa x, y, platums, augstums, sākuma x, y] (procenti no skatuves)
+  // Augšā (10–58 %) lapas rāmis ar tukšām vietām, apakšā (62–98 %) paplāte ar sajauktiem gabaliem; 9. vērtība = sākuma slīpums
   var P = [
-    ['hdr', 'galvene', 4, 5, 92, 12, 4, 84],
-    ['h1', 'virsraksts', 4, 24, 50, 14, 46, 56],
-    ['img', 'attēls', 60, 24, 36, 34, 8, 44],
-    ['btn', 'poga', 4, 46, 20, 11, 74, 8],
-    ['txt', 'teksts', 4, 66, 50, 20, 44, 72]
+    ['hdr', 'galvene', 4, 12, 92, 8, 5, 89, -1.2],
+    ['h1', 'virsraksts', 4, 24, 42, 9, 3, 64, 2],
+    ['img', 'attēls', 62, 24, 34, 24, 63, 63, 2.6],
+    ['btn', 'poga', 4, 37, 18, 7, 47, 66, -3],
+    ['txt', 'teksts', 4, 48, 52, 10, 6, 77, -1.6]
   ];
   var ART = {
     hdr: '<rect class="f" x="3" y="35" width="14" height="30"/><path class="l" d="M60 50H70M76 50H86M90 50H96"/>',
@@ -18,9 +19,14 @@
     btn: '',
     txt: '<path class="l" d="M0 12H100M0 38H92M0 64H97M0 90H58"/>'
   };
-  root.innerHTML = '<div class="pz__cap"><span>Salieciet lapu</span><span>ilustrācija</span></div><div class="pz__stage"></div><div class="pz__btns" role="group" aria-label="Novietot gabalus ar pogām"></div><p class="pz__msg" aria-live="polite">Lapa ir izjaukta. Velciet gabalus uz raustītajiem rāmjiem vai lietojiet pogas.</p>';
+  var addr = /^https?:$/.test(location.protocol) ? location.host + location.pathname : 'latseo.com/…';
+  root.innerHTML = '<div class="pz__cap"><strong>Kamēr esat šeit: salieciet šo lapu atpakaļ</strong><span class="pz__cnt" aria-hidden="true"><b>0</b>/5</span></div>'
+    + '<p class="ix-hint pz__hint">Velciet gabalus no paplātes uz raustītajiem rāmjiem vai spiediet pogas zem attēla.</p>'
+    + '<div class="pz__stage"><div class="pz__bar" aria-hidden="true"><i></i><span></span><em>404</em></div><span class="pz__tray" aria-hidden="true">paplāte</span></div>'
+    + '<div class="pz__btns" role="group" aria-label="Novietot gabalus ar pogām"></div><p class="pz__msg" aria-live="polite">Lapa ir izjaukta: 5 gabali paplātē.</p><p class="pz__il">ilustrācija</p>';
+  root.querySelector('.pz__bar span').textContent = addr;
   root.hidden = false;
-  var stage = root.querySelector('.pz__stage'), btns = root.querySelector('.pz__btns'), msg = root.querySelector('.pz__msg');
+  var cnt = root.querySelector('.pz__cnt b'), stage = root.querySelector('.pz__stage'), btns = root.querySelector('.pz__btns'), msg = root.querySelector('.pz__msg');
   var done = 0, RM = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
   function pos(el, x, y) { el.style.setProperty('--x', x); el.style.setProperty('--y', y); }
   P.forEach(function (p) {
@@ -40,6 +46,7 @@
     el.innerHTML = '<svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none">' + ART[p[0]] + '</svg><em>' + p[1] + '</em>';
     el.setAttribute('data-k', p[0]);
     pos(el, p[6], p[7]);
+    el.style.setProperty('--r', p[8] + 'deg');
     stage.appendChild(el);
     b.type = 'button';
     b.setAttribute('aria-pressed', 'false');
@@ -61,7 +68,7 @@
         pos(el, x, y);
         el.style.setProperty('--r', (vx * 40).toFixed(2) + 'deg');
         if (Math.abs(vx) + Math.abs(vy) > .0006) raf = requestAnimationFrame(step);
-        else { el.style.setProperty('--r', '0deg'); raf = 0; }
+        else { raf = 0; }
       })(t0);
     }
     el.addEventListener('pointerdown', function (e) {
@@ -107,7 +114,7 @@
     winEl = document.createElementNS(NS, 'svg');
     winEl.setAttribute('class', 'pz__win'); winEl.setAttribute('viewBox', '0 0 160 100'); winEl.setAttribute('aria-hidden', 'true');
     winEl.setAttribute('preserveAspectRatio', 'none');
-    winEl.innerHTML = '<rect class="w1" x="1.5" y="1.5" width="157" height="97" pathLength="1"/><path class="w2" pathLength="1" d="M4 20H156"/><path class="w3" pathLength="1" d="M60 62L74 76L102 44"/>';
+    winEl.innerHTML = '<rect class="w1" x="1.5" y="1.5" width="157" height="97" pathLength="1"/><path class="w2" pathLength="1" d="M6 21.5H154"/><path class="w3" pathLength="1" d="M66 78L76 88L96 66"/>';
     stage.appendChild(winEl);
   }
   function place(it) {
@@ -124,12 +131,14 @@
     it.set = false;
     it.el.classList.remove('is-set');
     pos(it.el, it.p[6], it.p[7]);
+    it.el.style.setProperty('--r', it.p[8] + 'deg');
     it.b.setAttribute('aria-pressed', 'false');
     done--;
     update(null);
     win(false);
   }
   function update(it) {
+    cnt.textContent = done;
     msg.textContent = done === P.length
       ? 'Lapa salikta. Šī adrese gan paliek tukša: izvēlieties, kur doties tālāk.'
       : (it ? 'Vietā: ' + it.p[1] + '. Atlikuši ' + (P.length - done) + '.' : 'Atlikuši ' + (P.length - done) + ' gabali.');

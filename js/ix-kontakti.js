@@ -43,22 +43,32 @@
     if (ok) { b.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M2.5 8.5l3.5 3.5 7.5-8" pathLength="1"/></svg>'); }
     b.appendChild(document.createTextNode(txt));
   }
+  list.classList.add('has-copy');
   Array.prototype.forEach.call(list.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]'), function (a) {
     var val = a.getAttribute('href').replace(/^(tel|mailto):/, '');
     var human = a.querySelector('strong') ? a.querySelector('strong').textContent.trim() : val;
     var row = document.createElement('div'); row.className = 'ix-crow';
     a.parentNode.insertBefore(row, a); row.appendChild(a);
+    addCopy(row, val.indexOf('+') === 0 || /^\d/.test(val) ? human : val, human);
+  });
+  /* rekvizīti: reģ. nr. un PVN nr. grāmatvedībai */
+  Array.prototype.forEach.call(document.querySelectorAll('.kt-req [data-copy]'), function (dd) {
+    var dt = dd.parentNode.querySelector('dt');
+    addCopy(dd.parentNode, dd.getAttribute('data-copy'), (dt ? dt.textContent.replace(/:\s*$/, '') + ' ' : '') + dd.getAttribute('data-copy'));
+    dd.parentNode.classList.add('has-copy');
+  });
+  function addCopy(row, text, human) {
     var b = document.createElement('button'); b.type = 'button'; b.className = 'ix-copy';
     setBtn(b, T.btn, false); b.setAttribute('aria-label', T.aria + human);
     row.appendChild(b);
     b.addEventListener('click', function () {
-      navigator.clipboard.writeText(val.indexOf('+') === 0 || /^\d/.test(val) ? human : val).then(function () {
+      navigator.clipboard.writeText(text).then(function () {
         clearTimeout(timer);
-        Array.prototype.forEach.call(list.querySelectorAll('.ix-copy'), function (x) { setBtn(x, T.btn, false); x.classList.remove('is-done'); });
+        Array.prototype.forEach.call(document.querySelectorAll('.ix-copy'), function (x) { setBtn(x, T.btn, false); x.classList.remove('is-done'); });
         setBtn(b, T.done, true); b.classList.remove('is-done'); void b.offsetWidth; b.classList.add('is-done'); live.textContent = '';
         setTimeout(function () { live.textContent = human + ': ' + T.done; }, 30);
         timer = setTimeout(function () { setBtn(b, T.btn, false); b.classList.remove('is-done'); }, 2200);
       }, function () {});
     });
-  });
+  }
 })();

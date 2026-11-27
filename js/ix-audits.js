@@ -1,12 +1,16 @@
 /* Bezmaksas audits: trīs soļu celiņš. Teksts paliek HTML; šis tikai izceļ soli un rāda ilustrāciju. */
 (function () {
   'use strict';
+  /* atradumi: 40 lapu režģis, 10 iekļautas sitemap.xml */
+  var grid = document.querySelector('.af__grid');
+  if (grid) { var h = ''; for (var g = 0; g < 40; g++) h += '<span' + (g < 10 ? ' class="on"' : '') + '></span>'; grid.innerHTML = h; }
   var ax = document.querySelector('[data-ax]');
   if (!ax) return;
   function start() {
     var sec = ax.closest('section'), lis = [].slice.call(sec.querySelectorAll('.steps li'));
     var ns = [].slice.call(ax.querySelectorAll('.ax__n')), gs = [].slice.call(ax.querySelectorAll('.ax__g'));
     var next = ax.querySelector('.ax__next'), cur = -1, fig = ax.querySelector('.ax__fig');
+    var cap = fig.querySelector('figcaption');
     gs.forEach(function (g) {
       [].forEach.call(g.querySelectorAll('rect,path,text'), function (e, k) {
         e.style.setProperty('--d', (k * 0.09).toFixed(2) + 's');
@@ -32,6 +36,7 @@
       lis.forEach(function (l, k) { l.classList.toggle('is-cur', k === i); });
       ax.style.setProperty('--p', i * 50);
       fig.setAttribute('data-f', '0' + (i + 1));
+      if (cap && cap.getAttribute('data-c' + i)) cap.textContent = cap.getAttribute('data-c' + i);
       next.textContent = i < 2 ? 'Nākamais solis' : 'Atkārtot no 1. soļa';
       if (focus) ns[i].focus();
     }

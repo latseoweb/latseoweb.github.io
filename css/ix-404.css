@@ -1,10 +1,13 @@
 /* 404 — nakts rasējuma puzle: salikt lapu no pārvietojamiem gabaliem (inerce, magnēts, līniju uzvara) */
 .pz{--n:var(--ix-night,#10243A);--n2:var(--ix-night-2,#1B3753);--ln:var(--ix-line,#93B4D3);--sig:var(--ix-signal,#F2683F);--mk:var(--ix-marker,#FFC65C);--mint:var(--ix-mint,#86C98E);--on:var(--ix-ink-on,#EEF3F8);
-  margin:var(--sp-md) auto var(--sp-lg);max-width:520px;text-align:left}
+  margin:var(--sp-xl) auto 0;max-width:560px;text-align:left}
 .pz[hidden]{display:none}
-.pz__cap{display:flex;justify-content:space-between;gap:1rem;border-bottom:1.5px solid var(--n);padding-bottom:.4rem;margin-bottom:.6rem;font-family:var(--ff-mono);font-size:var(--fs-xs)}
-.pz__cap span:last-child{color:var(--muted)}
-.pz__stage{position:relative;aspect-ratio:16/10;border:1px solid rgba(147,180,211,.4);overflow:hidden;user-select:none;-webkit-user-select:none;
+.pz__cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;border-top:2px solid var(--n);padding-top:.75rem;margin-bottom:.35rem}
+.pz__cap strong{font-family:var(--ff-heading);font-size:var(--fs-md);line-height:1.3;color:var(--ink)}
+.pz__cnt{flex:none;font:500 var(--fs-sm)/1 var(--ff-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.pz__cnt b{font-weight:500;color:var(--ink);background:linear-gradient(transparent 55%,rgba(255,198,92,.75) 55%);padding:0 .15em}
+.pz__hint{margin:0 0 .75rem}
+.pz__stage{position:relative;aspect-ratio:4/3;border:1px solid rgba(147,180,211,.4);overflow:hidden;user-select:none;-webkit-user-select:none;
   background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n);
   box-shadow:0 18px 40px -24px rgba(11,31,51,.8)}
 .pz__slot,.pz__pc{position:absolute;box-sizing:border-box;left:calc(var(--x)*1%);top:calc(var(--y)*1%);width:calc(var(--w)*1%);height:calc(var(--h)*1%)}
@@ -41,3 +44,17 @@
 @keyframes pz-draw{to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion:reduce){.pz__pc.is-set,.pz__pc,.pz__btns button{transition:none;animation:none}.pz__win .w1,.pz__win .w2,.pz__win .w3{animation:none;stroke-dashoffset:0}}
 .pz em{font-style:normal}
+
+/* pārlūka josla ar pieprasīto adresi un 404 statusu; paplāte apakšā */
+.pz__bar{position:absolute;left:0;right:0;top:0;height:7.5%;display:flex;align-items:center;gap:.5rem;padding:0 .6rem;border-bottom:1px solid rgba(147,180,211,.4);background:var(--n2);font:500 .6875rem/1 var(--ff-mono);color:var(--ln)}
+.pz__bar i{flex:none;width:7px;height:7px;background:var(--sig)}
+.pz__bar span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pz__bar em{flex:none;padding:2px 5px;background:var(--sig);color:var(--n);font-weight:600}
+.pz__stage.is-won .pz__bar i,.pz__stage.is-won .pz__bar em{background:var(--mint)}
+.pz__tray{position:absolute;left:0;right:0;top:60%;bottom:0;border-top:1px dashed rgba(147,180,211,.45);background:rgba(6,18,31,.35);pointer-events:none}
+.pz__tray{font:500 .625rem/1 var(--ff-mono);color:rgba(147,180,211,.75);padding:4px 6px;text-align:left;letter-spacing:.04em}
+.pz__stage.is-won .pz__tray{border-top-color:transparent;color:transparent}
+.pz__il{margin:.25rem 0 0;font:var(--fs-xs)/1.2 var(--ff-mono);color:var(--muted)}
+.nf .ty-box{padding-top:0}
+.nf.ty-page{min-height:0;padding-top:clamp(2.5rem,6vw,4.5rem)}
+@media (max-width:480px){.pz__cap{flex-direction:column;gap:.35rem}.pz__stage{aspect-ratio:1/1}}

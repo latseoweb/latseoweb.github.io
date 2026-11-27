@@ -39,4 +39,45 @@
 .ax__next:active{transform:scale(.95)}
 .ax-on .steps li.is-cur{border-top-color:var(--ix-mint,#86C98E)}
 .ax-on .steps li.is-cur strong{color:var(--ix-mint,#86C98E)}
+
+/* ---------- soļu josla: krēslas ūdens (nevis melna), soļi pa kreisi, kadru lente pa labi ---------- */
+.ax-sec{background-color:var(--ix-night);color:var(--ix-muted-on);
+  background-image:linear-gradient(var(--ix-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ix-grid) 1px,transparent 1px);
+  background-size:var(--ix-major) var(--ix-major);background-position:-1px -1px}
+.ax-sec .section__title{color:var(--ix-ink-on)}
+.ax-sec .ax{background:var(--ix-night-2);border-color:rgba(147,180,211,.38);margin-top:0;max-width:none}
+.ax-sec .ax__fig{background:
+  repeating-linear-gradient(90deg,rgba(234,242,250,.2) 0 10px,transparent 10px 22px) 0 3px/100% 7px no-repeat,
+  repeating-linear-gradient(90deg,rgba(234,242,250,.2) 0 10px,transparent 10px 22px) 0 calc(100% - 3px)/100% 7px no-repeat,var(--ix-night)}
+.ax__svg .t.sb{fill:var(--ix-mint)}
+.ax-wrap{display:grid;gap:var(--sp-lg)}
+@media (min-width:900px){
+  .ax-wrap{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--sp-xl);align-items:start}
+  .ax-sec.ax-on .steps--row{grid-auto-flow:row;gap:0}
+  .ax-sec.ax-on .steps--row li{padding:1.1rem 0 1.2rem 3.25rem;border-top:1px solid rgba(147,180,211,.3);transition:background-color .25s}
+  .ax-sec.ax-on .steps--row li:last-child{border-bottom:1px solid rgba(147,180,211,.3)}
+  .ax-sec.ax-on .steps--row li::before{top:1.2rem;left:.9rem}
+}
+.ax-sec .steps li{color:var(--ix-muted-on)}
+.ax-sec .steps strong{color:var(--ix-ink-on)}
+.ax-sec .steps li::before{color:var(--ix-line)}
+.ax-sec.ax-on .steps li:hover{background:rgba(147,180,211,.06)}
+.ax-sec.ax-on .steps li.is-cur{border-top-color:var(--ix-marker);box-shadow:inset 3px 0 0 var(--ix-marker);background:rgba(255,198,92,.06)}
+.ax-sec.ax-on .steps li.is-cur strong,.ax-sec.ax-on .steps li.is-cur::before{color:var(--ix-marker)}
+@media (max-width:899px){.ax-sec.ax-on .steps li.is-cur{box-shadow:none}}
+
+/* ---------- atradumi paša lapā: skaitļi ar avotu ---------- */
+#who-title{font-size:var(--fs-xl)}
+.af-src{margin:-.35rem 0 .9rem;font-family:var(--ff-mono);font-size:var(--fs-xs);color:var(--muted)}
+.af{list-style:none;margin:0;padding:0;border-top:2px solid var(--ix-night)}
+.af li{display:grid;grid-template-columns:6.5rem 1fr;column-gap:1rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.af__n{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-2xl);line-height:1;color:var(--ix-signal);font-variant-numeric:tabular-nums;white-space:nowrap}
+.af__n small{font-size:.45em;font-weight:500;color:var(--muted);margin-left:.1em}
+.af li>span{color:var(--ink-2)}
+.af__grid{grid-column:2;display:grid;grid-template-columns:repeat(20,1fr);gap:3px;max-width:300px;margin-top:.55rem}
+.af__grid span{aspect-ratio:1;border:1px solid var(--ix-signal)}
+.af__grid span.on{background:var(--ix-night);border-color:var(--ix-night)}
+@media (max-width:480px){.af li{grid-template-columns:5rem 1fr}}
+.ax-sec .steps--row li{border-top-color:rgba(147,180,211,.35)}
+@media (max-width:480px){.ax__svg .t{font-size:12px}.ax-sec .ax__fig{padding:12px 8px}.ax-sec .ax__fig figcaption{margin:0 -8px -12px}}
 @media (prefers-reduced-motion:reduce){.ax,.ax__g,.ax__line i,.ax__svg .ph,.ax__n{transition:none}.ax__g.is-cur .b,.ax__g.is-cur .l,.ax__g.is-cur .s,.ax__g.is-cur .t{animation:none}}
