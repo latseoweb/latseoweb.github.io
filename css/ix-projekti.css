@@ -8,7 +8,9 @@
 .ix-chip:hover{transform:translateY(-2px);box-shadow:0 4px 0 -1px var(--cd)}
 .ix-chip:active{transform:scale(.96)}
 .ix-chip[aria-pressed="true"]{background:var(--ix-night,#10243A);color:var(--ix-ink-on,#EEF3F8);box-shadow:0 0 0 3px color-mix(in srgb,var(--cd) 35%,transparent)}
-.ix-chip[aria-pressed="true"]::before{transform:scale(1.35);box-shadow:0 0 8px var(--cd)}
+.ix-chip[aria-pressed="true"]::before{transform:scale(1.35);box-shadow:none}
+.ix-chip__n{font-family:var(--ff-mono);font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.ix-chip[aria-pressed="true"] .ix-chip__n{color:var(--ix-marker)}
 .ix-chip:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .ix-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
@@ -45,3 +47,39 @@
 .ix-try__input:focus-visible{outline:3px solid var(--ix-signal,#F2683F);outline-offset:0}
 .ix-try__note{font-size:var(--fs-xs);color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.proof--try .sheet,.ix-chip,.ix-chip::before{transition:none}.ix-sk__pen{display:none}.ix-sk.draw .ix-sk__ln,.ix-sk.draw .ix-sk__box,.ix-sk.draw .ix-sk__btn{animation:none}}
+
+
+/* gadījuma izpēte: klikšķi un rādījumi uz vienas ass ar skaitļiem + 48 frāžu pozīcijas (Google Search Console) */
+.ixq{margin:var(--sp-md) 0;padding:var(--sp-md)}
+.ixq__h{display:flex;flex-direction:column;gap:.25rem;margin:0 0 var(--sp-md)}
+.ixq__h b{font-size:var(--fs-sm);font-weight:600;color:var(--ix-ink-on)}
+.ixq .ixq__h span{font-size:var(--fs-xs);color:var(--ix-muted-on);max-width:72ch}
+.ixq__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-md)}
+@media (min-width:760px){.ixq__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ixq__m:last-child{grid-column:1/-1}}
+.ixq__m{padding-top:var(--sp-xs);border-top:1px solid rgba(147,180,211,.3)}
+.ixq .ixq__t{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:0 0 .7rem;font-size:var(--fs-sm);font-weight:600;color:var(--ix-ink-on)}
+.ixq__d{font-family:var(--ff-mono);font-size:var(--fs-md);color:var(--ix-mint);font-weight:600}
+.ixq__bars{display:grid;gap:.55rem;--lab:2.6rem;--num:4.4rem}
+.ixq__row,.ixq__axis{display:grid;grid-template-columns:var(--lab) minmax(0,1fr) var(--num);gap:.6rem;align-items:center}
+.ixq__lab{font-family:var(--ff-mono);font-size:.75rem;color:var(--ix-muted-on)}
+.ixq__track{position:relative;height:24px;background:rgba(7,22,38,.55)}
+.ixq__track i{position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--ix-line);transition:width .9s var(--ix-spring)}
+.ixq__row.is-now .ixq__track i{background:var(--ix-mint)}
+.ixq__row b{font-family:var(--ff-mono);font-variant-numeric:tabular-nums;font-size:var(--fs-sm);font-weight:600;color:var(--ix-ink-on);text-align:right;white-space:nowrap}
+.ixq__row.is-now b{color:var(--ix-marker)}
+.ixq__ticks{position:relative;height:1.1rem;border-top:1px solid rgba(147,180,211,.45)}
+.ixq__ticks i{position:absolute;top:3px;left:var(--t);transform:translateX(-50%);font-style:normal;font-family:var(--ff-mono);font-size:.6875rem;color:var(--ix-line);white-space:nowrap}
+.ixq__ticks i:first-child{transform:none}
+.ixq__dots{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:4px;max-width:44rem}
+@media (max-width:560px){.ixq__dots{grid-template-columns:repeat(12,minmax(0,1fr))}.ixq{padding:var(--sp-sm)}}
+.ixq__dots i,.ixq__lg i{display:block;aspect-ratio:1;border:1.5px solid rgba(147,180,211,.55);background:transparent}
+.ixq__dots i.t3,.ixq__lg i.t3{background:var(--ix-mint);border-color:var(--ix-mint)}
+.ixq__dots i.t10,.ixq__lg i.t10{background:var(--ix-line);border-color:var(--ix-line)}
+.ixq .ixq__lg{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;list-style:none;margin:.8rem 0 0;padding:0}
+.ixq .ixq__lg li{display:flex;align-items:center;gap:.45rem;font-size:var(--fs-xs);color:var(--ix-muted-on)}
+.ixq__lg i{width:12px}
+.ixq__lg b{font-family:var(--ff-mono);color:var(--ix-marker);font-weight:600}
+.ixq__dots i{transition:opacity .3s,transform .45s var(--ix-spring)}
+.ixq.is-pre .ixq__track i{width:0;transition:none}
+.ixq.is-pre .ixq__dots i{opacity:0;transform:scale(.3);transition:none}
+@media (prefers-reduced-motion:reduce){.ixq__track i,.ixq__dots i{transition:none}}

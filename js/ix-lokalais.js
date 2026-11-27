@@ -47,8 +47,8 @@
   var root = document.querySelector('[data-ixl]');
   lazy(root, function () {
     var T = {
-      lv: {you: 'Jūsu uzņēmums', comp: 'Konkurents ', yes: 'jā', no: 'nē', dist: 'attālums ', place: function (n, t) { return 'Jūsu vieta: ' + n + '. no ' + t + (n <= 3 ? ' — kartes pakā' : ' — ārpus kartes pakas'); }},
-      en: {you: 'Your business', comp: 'Competitor ', yes: 'yes', no: 'no', dist: 'distance ', place: function (n, t) { return 'Your rank: ' + n + ' of ' + t + (n <= 3 ? ' — in the map pack' : ' — outside the map pack'); }}
+      lv: {areas: [['CENTRS', 470, 30], ['PĀRDAUGAVA', 70, 392], ['DAUGAVA', 540, 196]], you: 'Jūsu uzņēmums', comp: 'Konkurents ', yes: 'jā', no: 'nē', dist: 'attālums ', place: function (n, t) { return 'Jūsu vieta: ' + n + '. no ' + t + (n <= 3 ? ' — kartes pakā' : ' — ārpus kartes pakas'); }},
+      en: {areas: [['CENTRE', 470, 30], ['PĀRDAUGAVA', 70, 392], ['DAUGAVA', 540, 196]], you: 'Your business', comp: 'Competitor ', yes: 'yes', no: 'no', dist: 'distance ', place: function (n, t) { return 'Your rank: ' + n + ' of ' + t + (n <= 3 ? ' — in the map pack' : ' — outside the map pack'); }}
     }[root.getAttribute('data-lang') || 'lv'];
     var W = 600, H = 400, DMAX = 320, REV_MAX = 200;
     var $ = function (s) { return root.querySelector(s); };
@@ -62,6 +62,16 @@
     var me = {x: +you.getAttribute('data-x'), y: +you.getAttribute('data-y')}, tgt = {x: me.x, y: me.y}, vel = {x: 0, y: 0};
 
     /* kartes rasējums: upes plūsma, rādiusa gredzens, reitinga nozīmītes, pulsējošs gredzens */
+    /* pilsētas kvartāli starp ielām, divi parki un rajonu nosaukumi (tikai zīmējums) */
+    var st0 = $('.ixl__st'), XS = [0, 45, 105, 170, 235, 300, 365, 430, 495, 555, 600], YS = [0, 40, 95, 150, 205, 260, 315, 365, 400];
+    var bk = el('g', {'class': 'ixl__blocks', 'aria-hidden': 'true'}); st0.parentNode.insertBefore(bk, st0);
+    var parks = {'1,6': 1, '8,6': 1, '6,1': 1};
+    for (var xi = 0; xi < XS.length - 1; xi++) for (var yi = 0; yi < YS.length - 1; yi++) {
+      var x0 = XS[xi] + 6, y0 = YS[yi] + 6, w = XS[xi + 1] - XS[xi] - 12, h = YS[yi + 1] - YS[yi] - 12;
+      if (w < 14 || h < 14) continue;
+      el('rect', {x: x0, y: y0, width: w, height: h, 'class': parks[xi + ',' + yi] ? 'ixl__park' : 'ixl__blk'}, bk);
+    }
+    var D = T.areas; D.forEach(function (a) { var t = el('text', {'class': 'ixl__area', x: a[1], y: a[2]}, bk); t.textContent = a[0]; });
     var river = $('.ixl__river2');
     if (river) { var fl = el('path', {'class': 'ixl__flow', d: river.getAttribute('d')}); river.parentNode.insertBefore(fl, river.nextSibling); }
     var radius = el('circle', {'class': 'ixl__radius', cx: spx, cy: spy, r: 0}); link.parentNode.insertBefore(radius, link);
@@ -117,11 +127,13 @@
     function draw(mine) {
       var d = Math.hypot(me.x - spx, me.y - spy);
       you.setAttribute('transform', 'translate(' + me.x.toFixed(1) + ' ' + me.y.toFixed(1) + ')');
+      var left = me.x > 420; if (left !== lblLeft) { lblLeft = left; lbl.setAttribute('x', left ? -28 : 28); lbl.setAttribute('y', 6); lbl.style.textAnchor = left ? 'end' : 'start'; }
       link.setAttribute('x2', me.x); link.setAttribute('y2', me.y);
       radius.setAttribute('r', d.toFixed(1));
       dl.setAttribute('x', ((me.x + spx) / 2).toFixed(1)); dl.setAttribute('y', ((me.y + spy) / 2 - 8).toFixed(1));
       dl.textContent = d > 70 ? T.dist + pct(mine.dist) : '';
     }
+    var lbl = you.querySelector('.ixl__lbl'), lblLeft = null;
     var want = null;
     function eased() {
       var more = false;
@@ -197,7 +209,17 @@
     function open(n) {
       ol.style.setProperty('--n', n);
       lis.forEach(function (li, i) { li.classList.toggle('is-on', i === n); btns[i].setAttribute('aria-expanded', i === n ? 'true' : 'false'); });
+      cur = n; fit();
     }
+    /* platā skatā aktīvā soļa saturs ir absolūti novietots zem virsrakstiem: rezervē tam vietu */
+    var cur = 0;
+    function fit() {
+      var li = lis[cur], t = li.querySelector('.ixt__t'), bp = li.querySelector('.ixt__bp');
+      if (getComputedStyle(t).position !== 'absolute') { ol.style.paddingBottom = ''; return; }
+      var gap = t.offsetTop - li.offsetHeight;
+      ol.style.paddingBottom = (gap + Math.max(t.offsetHeight, bp ? bp.offsetHeight : 0) + 8) + 'px';
+    }
+    window.addEventListener('resize', function () { if (lis.length) fit(); });
     lis.forEach(function (li, i) {
       var s = li.querySelector('strong'), b = document.createElement('button');
       b.type = 'button'; b.className = 'ixt__btn'; b.textContent = s.textContent;
@@ -212,26 +234,26 @@
     ol.classList.add('is-live'); open(0);
   });
 
-  /* 3) rezultāta salīdzinājums (tikai lapā jau esošie skaitļi) */
+  /* 3) rezultāta salīdzinājums: divas joslas uz vienas ass (tikai lapā jau esošie skaitļi) */
   var cs = document.querySelector('[data-ixc]');
+  if (cs && !calm) cs.classList.add('is-pre');
   lazy(cs, function () {
-    var bar = cs.querySelector('.ixc__bar'), val = cs.querySelector('[data-val]'), d = cs.querySelector('[data-d]'),
-      seg = cs.querySelector('.ixc__seg'), b = [].slice.call(cs.querySelectorAll('[data-y]')), m = bar.style.getPropertyValue('--m');
+    var val = cs.querySelector('[data-val]'), d = cs.querySelector('[data-d]'),
+      seg = cs.querySelector('.ixc__seg'), b = [].slice.call(cs.querySelectorAll('[data-y]'));
     var sepm = /\D/.exec(cs.getAttribute('data-now')), sep = sepm ? sepm[0] : '';
     function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep); }
     function num(s) { return parseInt(s.replace(/\D/g, ''), 10); }
     val.setAttribute('data-n', num(val.textContent));
     function set(y) {
       var now = y === 'now';
-      bar.style.setProperty('--w', now ? '100%' : m);
-      bar.classList.toggle('is-prev', !now);
+      cs.setAttribute('data-on', y);
       countTo(val, num(cs.getAttribute(now ? 'data-now' : 'data-prev')), 700, fmt);
       d.textContent = cs.getAttribute(now ? 'data-dnow' : 'data-dprev');
-      seg.setAttribute('data-on', y);
       b.forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-y') === y ? 'true' : 'false'); });
     }
     b.forEach(function (x) { x.addEventListener('click', function () { set(x.getAttribute('data-y')); }); });
-    seg.hidden = false; seg.setAttribute('data-on', 'now');
+    seg.hidden = false; cs.setAttribute('data-on', 'now');
+    requestAnimationFrame(function () { requestAnimationFrame(function () { cs.classList.remove('is-pre'); }); });
     glow(cs, false);
   });
 })();
