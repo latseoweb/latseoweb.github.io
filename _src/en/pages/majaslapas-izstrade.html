@@ -269,24 +269,159 @@
     </div>
   </div>
 <div class="container ix-xray-wrap">
-  <figure class="xray ix-panel" data-xray data-hint="Drag the lens across the page or move it with the arrow keys — it shows what is built in under the surface. Illustration: a schematic business homepage.">
-    <figcaption class="xray__cap"><span class="xray__t">X-ray: what Google sees on your page</span><span class="xray__il">illustration</span></figcaption>
-    <div class="xray__view">
-      <div class="xray__page" aria-hidden="true">
-        <div class="m-bar"><b></b><b></b><b></b><span class="m-url"><u></u>piemers.lv/pakalpojumi/</span></div>
-        <div class="m-nav"><span class="m-logo">Business name</span><span class="m-links"><i></i><i></i><i></i></span></div>
-        <div class="m-h1">A heading that matches the page content</div>
-        <div class="m-h2">Subheading</div>
-        <div class="m-btn">Button</div>
-        <div class="m-img"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0L100 100M100 0L0 100" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></div>
-        <div class="m-txt"><i></i><i></i><i></i><i></i></div>
-        <div class="m-phone"><i></i></div>
-      </div>
-      <div class="xray__bp" aria-hidden="true"><span class="xr-box" data-k="ssl" data-d="SSL certificate: a secure connection in all packages." style="left:10.5%;top:1.8%;width:12%;height:5.4%"><i class="xr-tag">https · SSL</i></span><span class="xr-box" data-k="url" data-d="Clear URL structure: addresses match the page content." style="left:24%;top:1.8%;width:52%;height:5.4%"><i class="xr-tag">/services/…</i></span><span class="xr-box" data-k="h1" data-d="Correct heading hierarchy: one H1 on each page." style="left:6%;top:22%;width:54%;height:15%"><i class="xr-tag">&lt;h1&gt;</i></span><span class="xr-box" data-k="h2" data-d="Subheadings (H2, H3) follow under a single H1 — a hierarchy in order." style="left:6%;top:39%;width:44%;height:6%"><i class="xr-tag">&lt;h2&gt;</i></span><span class="xr-box" data-k="img" data-d="Technically clean code and fast loading — Core Web Vitals metrics." style="left:62%;top:20%;width:32%;height:38%"><i class="xr-tag">Core Web Vitals</i></span><span class="xr-box" data-k="mob" data-d="Mobile version: the page adapts to phones and tablets." style="left:78%;top:63%;width:17%;height:33%"><i class="xr-tag">viewport</i></span></div>
-      <div class="xray__lens" tabindex="0" role="group" aria-label="X-ray lens. Arrow keys move the lens."><span></span></div>
-    </div>
-    <p class="xray__read" aria-live="polite" data-read>Drag the lens across the page or move it with the arrow keys — it shows what is built in under the surface. Illustration: a schematic business homepage.</p>
+  <figure class="xray ix-panel" data-xray data-nosnippet data-hint="Drag the red lens across the page or move it with the arrow keys — underneath you see the HTML that Google reads, and the inspector shows the code and checks for the selected element.">
+    <figcaption class="xray__cap"><span class="xray__t">X-ray: what Google sees on your page</span><span class="xray__il">illustration, fictional business</span><button type="button" class="xray__all ix-chip" aria-pressed="false" hidden>Show all code</button></figcaption>
     <p class="xray__legend small muted">The lens shows: URL structure, SSL, heading hierarchy, fast loading and the mobile version.</p>
+    <div class="xray__grid">
+      <div class="xray__view">
+        <div class="xray__page mk" aria-hidden="true">
+          <div class="mk-chrome">
+            <span class="mk-dots"><i></i><i></i><i></i></span>
+            <span class="mk-tab" data-x="title"><svg class="mk-fav" viewBox="0 0 20 24"><path d="M10 1S2 11 2 16a8 8 0 0 0 16 0C18 11 10 1 10 1z"/></svg><span>Plumber in Riga 24/7 — emergency call-outs | Strauts</span></span>
+          </div>
+          <div class="mk-addr">
+            <span class="mk-lock" data-x="ssl"><svg viewBox="0 0 12 14"><path d="M3 6V4a3 3 0 0 1 6 0v2"/><rect x="1.5" y="6" width="9" height="7"/></svg></span>
+            <span class="mk-url" data-x="canon">example.lv/en/</span>
+            <span class="mk-dev" data-x="viewport"><svg viewBox="0 0 26 16"><rect x="1" y="1" width="16" height="11"/><path d="M6 15h6"/><rect x="19" y="4" width="6" height="11"/></svg></span>
+          </div>
+          <div class="mk-hd">
+            <span class="mk-logo" data-x="logo"><svg viewBox="0 0 20 24"><path d="M10 1S2 11 2 16a8 8 0 0 0 16 0C18 11 10 1 10 1z"/><path class="mk-logo__w" d="M6 16.5q2-2 4 0t4 0"/></svg><b>Strauts</b><small>plumbing</small></span>
+            <span class="mk-nav" data-x="nav"><span>Services</span><span>Prices</span><span>Reviews</span><span>Contact</span></span>
+            <span class="mk-lang" data-x="hreflang"><span>LV</span><b>EN</b><span>RU</span></span>
+            <span class="mk-tel" data-x="tel"><svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>Call 24/7</span></span>
+            <span class="mk-burger"><i></i><i></i><i></i></span>
+          </div>
+          <div class="mk-hero">
+            <div class="mk-hero__t">
+              <span class="mk-h1" data-x="h1">Plumber in Riga — same-day call-outs</span>
+              <span class="mk-lead">Emergency call-outs, boiler installation and pipe replacement across Riga and its suburbs.</span>
+              <span class="mk-btns"><span class="mk-btn" data-x="cta">Book a plumber</span><span class="mk-btn mk-btn--2">See prices</span></span>
+              <span class="mk-trust"><span class="mk-stars">★★★★★</span>Google reviews</span>
+            </div>
+            <span class="mk-photo" data-x="lcp"><svg class="mk-ill" viewBox="0 0 480 340" preserveAspectRatio="xMidYMid slice"><rect class="i-wall" width="480" height="340"/><path class="i-tile" d="M0 46H480M0 92H480M0 138H480M0 184H480M48 0V230M96 0V230M144 0V230M192 0V230M240 0V230M288 0V230M336 0V230M384 0V230M432 0V230"/><path class="i-light" d="M216 24h48l58 146H158z"/><rect class="i-floor" y="230" width="480" height="110"/><rect class="i-mirror" x="176" y="30" width="128" height="100"/><path class="i-refl" d="M196 118l46-72M218 120l42-64"/><rect class="i-lamp" x="214" y="16" width="52" height="8"/><path class="i-pipe" d="M0 252H90V206H146M480 264H398V218H334"/><circle class="i-joint" cx="90" cy="252" r="7"/><circle class="i-joint" cx="90" cy="206" r="7"/><circle class="i-joint" cx="398" cy="218" r="7"/><circle class="i-joint" cx="398" cy="264" r="7"/><rect class="i-valve" x="80" y="224" width="20" height="9"/><rect class="i-shadow" x="150" y="280" width="184" height="9"/><rect class="i-cab" x="146" y="182" width="188" height="98"/><path class="i-door" d="M240 190v82M228 224v16M252 224v16"/><rect class="i-top" x="132" y="170" width="216" height="13"/><ellipse class="i-basin" cx="240" cy="168" rx="62" ry="9"/><path class="i-tap" d="M240 160v-18q0-8 9-8h12v9"/><rect class="i-box" x="30" y="290" width="116" height="38"/><rect class="i-lid" x="30" y="290" width="116" height="9"/><path class="i-handle" d="M68 290v-11h40v11"/><path class="i-wrench" d="M352 322l66-36"/><path class="i-wrench-h" d="M414 266a15 15 0 1 0 22 20l-9-3 1-10 9-4z"/></svg></span>
+          </div>
+          <div class="mk-svc">
+            <span class="mk-h2" data-x="h2">Services</span>
+            <span class="mk-cards" data-x="h3">
+              <span class="mk-card"><svg viewBox="0 0 24 24"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11zM12 10v4M12 16.5v.5"/></svg><b>Emergency call-out</b><small>Any time, day or night</small></span>
+              <span class="mk-card"><svg viewBox="0 0 24 24"><path d="M7 3h10v14H7zM10 17v4M14 17v4"/><circle cx="12" cy="12" r="2"/></svg><b>Boiler installation</b><small>Electric and gas</small></span>
+              <span class="mk-card"><svg viewBox="0 0 24 24"><path d="M3 8h9v10h9M3 5v6M21 15v6"/></svg><b>Pipe replacement</b><small>Water and heating</small></span>
+              <span class="mk-card"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 9h8M7 12h10M8 15h8"/></svg><b>Drain cleaning</b><small>Blockages and odours</small></span>
+            </span>
+          </div>
+          <div class="mk-rev">
+            <span class="mk-h2" data-x="h2">Reviews</span>
+            <span class="mk-quotes" data-x="lazy">
+              <span class="mk-q"><i>I</i><span>“Came the same evening and fixed it.”<small>Inese, Imanta</small></span></span>
+              <span class="mk-q"><i>M</i><span>“Fitted the boiler quickly and cleanly.”<small>Mārtiņš, Teika</small></span></span>
+              <span class="mk-q"><i>A</i><span>“A clear price already on the phone.”<small>Anna, Jūrmala</small></span></span>
+            </span>
+            <span class="mk-more" data-x="ext">All reviews on Google</span>
+          </div>
+          <div class="mk-ft" data-x="schema">
+            <span class="mk-ft__b"><b>Strauts</b>plumbing services</span>
+            <span>Riga, Latvia<br>Mon–Sun 0–24</span>
+            <span>© 2026 Strauts</span>
+          </div>
+        </div>
+        <div class="xray__bp" aria-hidden="true"></div>
+        <div class="xray__lens" tabindex="0" role="group" aria-label="X-ray lens. Arrow keys move the lens."><span></span></div>
+      </div>
+      <div class="xray__insp">
+        <p class="xi__path" data-path aria-hidden="true">example.lv</p>
+        <p class="xi__name"><code class="xi__tag" data-tag></code><span data-name></span><span class="xi__ok" data-ok hidden>In built-in SEO</span></p>
+        <p class="xray__read" aria-live="polite" data-read>Drag the red lens across the page or move it with the arrow keys — underneath you see the HTML that Google reads, and the inspector shows the code and checks for the selected element.</p>
+        <div class="xi__serp" data-serp hidden aria-hidden="true"><span class="xi__serp-u">example.lv › en</span><span class="xi__serp-t">Plumber in Riga 24/7 — emergency call-outs | Strauts</span><span class="xi__serp-d">Emergency call-outs, boiler installation and pipe replacement across Riga. Book a plumber online or call us at any time of day or night.</span></div>
+        <pre class="xi__code" data-code aria-hidden="true"></pre>
+        <ul class="xi__checks" data-checks></ul>
+        <div class="xi__sum"><p class="xi__sum-h">Built-in SEO on this page</p><button type="button" data-go="ssl" aria-pressed="false">SSL certificate<span>https://</span></button><button type="button" data-go="canon" aria-pressed="false">Clear URL structure<span>canonical</span></button><button type="button" data-go="h1" aria-pressed="false">Heading hierarchy<span>&lt;h1&gt;</span></button><button type="button" data-go="lcp" aria-pressed="false">Fast loading<span>LCP</span></button><button type="button" data-go="viewport" aria-pressed="false">Mobile version<span>viewport</span></button></div>
+      </div>
+    </div>
+    <div class="xr-data" hidden>
+      <div data-k="title" data-tag="&lt;title&gt; + meta" data-name="Title and description" data-path="html › head" data-serp="1" data-d="The title and description are what a person sees in Google results before they even open the page."><pre>&lt;title&gt;Plumber in Riga 24/7 — emergency call-outs | Strauts&lt;/title&gt;
+&lt;meta name="description" content="Emergency call-outs, boiler installation and pipe replacement across Riga. Book a plumber online or call us at any time of day or night."&gt;</pre><ul><li data-ok>title length<b>52 characters</b></li><li data-ok>description length<b>136 characters</b></li><li>keyword at the start of the title<b>plumber in Riga</b></li></ul></div>
+      <div data-k="ssl" data-tag="https://" data-name="Secure connection" data-path="HTTP response" data-ok="1" data-lang="http" data-d="SSL certificate: a secure connection in all packages. The browser shows no “Not secure” warning."><pre>GET http://example.lv/
+301 Moved Permanently
+Location: https://example.lv/
+
+GET https://example.lv/
+200 OK
+Strict-Transport-Security: max-age=31536000</pre><ul><li data-ok>HTTP → HTTPS<b>301</b></li><li data-ok>SSL certificate<b>valid</b></li></ul></div>
+      <div data-k="canon" data-tag="rel=canonical" data-name="Clear URL structure" data-path="html › head › link" data-ok="1" data-d="Clear URL structure: addresses match the page content, and every page has one main address."><pre>&lt;link rel="canonical" href="https://example.lv/en/"&gt;
+
+/en/services/emergency-call-out/
+/en/services/boiler-installation/
+/en/prices/
+/en/contact/</pre><ul><li data-ok>canonical<b>1 address</b></li><li data-ok>URL matches the content<b>/services/…</b></li></ul></div>
+      <div data-k="viewport" data-tag="viewport" data-name="Mobile version" data-path="html › head › meta" data-ok="1" data-d="Mobile version: the page adapts to phones and tablets. Google assesses a page by its mobile version."><pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+@media (max-width: 600px) {
+  .hero { grid-template-columns: 1fr; }
+}</pre><ul><li data-ok>viewport<b>width=device-width</b></li><li data-ok>buttons sized for a finger<b>≥ 44 px</b></li></ul></div>
+      <div data-k="hreflang" data-tag="hreflang" data-name="Language versions" data-path="html › head › link" data-d="Each language has its own address, so Google knows which version to show a Latvian speaker and which an English speaker."><pre>&lt;link rel="alternate" hreflang="lv" href="https://example.lv/"&gt;
+&lt;link rel="alternate" hreflang="en" href="https://example.lv/en/"&gt;
+&lt;link rel="alternate" hreflang="ru" href="https://example.lv/ru/"&gt;
+&lt;link rel="alternate" hreflang="x-default" href="https://example.lv/"&gt;</pre><ul><li>languages<b>lv, en, ru</b></li><li>x-default<b>/</b></li></ul></div>
+      <div data-k="logo" data-tag="&lt;img alt&gt;" data-name="Logo — link to the homepage" data-path="body › header › a" data-d="The logo leads to the homepage and has alt text that Google and screen readers can read."><pre>&lt;a href="/en/" aria-label="Strauts — home"&gt;
+  &lt;img src="/logo.svg" alt="Strauts plumbing"
+       width="132" height="36"&gt;
+&lt;/a&gt;</pre><ul><li>alt text<b>present</b></li><li>width / height<b>132 × 36</b></li></ul></div>
+      <div data-k="nav" data-tag="&lt;nav&gt; 4×&lt;a&gt;" data-name="Main navigation" data-path="body › header › nav" data-d="Plain links with href that Google can follow. The addresses match the page content."><pre>&lt;nav aria-label="Main menu"&gt;
+  &lt;a href="/en/services/"&gt;Services&lt;/a&gt;
+  &lt;a href="/en/prices/"&gt;Prices&lt;/a&gt;
+  &lt;a href="/en/reviews/"&gt;Reviews&lt;/a&gt;
+  &lt;a href="/en/contact/"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</pre><ul><li>links with href<b>4 / 4</b></li></ul></div>
+      <div data-k="tel" data-tag="tel:" data-name="Call button" data-path="body › header › a" data-d="On a phone it calls with one tap. The same number is also in the structured data at the bottom of the page."><pre>&lt;a href="tel:+371…" class="call"&gt;
+  Call 24/7
+&lt;/a&gt;</pre><ul><li>number = schema.org telephone<b>matches</b></li></ul></div>
+      <div data-k="h1" data-tag="&lt;h1&gt;" data-name="Main heading" data-path="body › main › section › h1" data-ok="1" data-d="Correct heading hierarchy: one H1 on each page, and it says what the page is about."><pre>&lt;h1&gt;Plumber in Riga — same-day
+    call-outs&lt;/h1&gt;</pre><ul><li data-ok>H1 on the page<b>1</b></li><li>keyword<b>plumber in Riga</b></li></ul></div>
+      <div data-k="cta" data-tag="INP" data-name="Button — response to a click" data-path="body › main › section › a.btn" data-ok="1" data-d="Technically clean code: the button responds instantly. INP is the Core Web Vitals metric that measures the response to a click."><pre>&lt;a href="/en/book/" class="btn"&gt;Book a plumber&lt;/a&gt;</pre><ul><li data-ok>INP, Google “good” threshold<b>≤ 200 ms</b></li></ul></div>
+      <div data-k="lcp" data-tag="LCP &lt;img&gt;" data-name="Largest element on screen" data-path="body › main › section › img" data-ok="1" data-d="Fast loading: the main image loads first and its space is reserved. LCP and CLS are Core Web Vitals metrics."><pre>&lt;img src="/img/plumber-1200.avif"
+     srcset="/img/plumber-600.avif 600w,
+             /img/plumber-1200.avif 1200w"
+     sizes="(max-width: 600px) 100vw, 50vw"
+     alt="Plumber replacing a mixer tap in a bathroom"
+     width="1200" height="800"
+     fetchpriority="high"&gt;</pre><ul><li data-ok>LCP, Google “good” threshold<b>≤ 2.5 s</b></li><li data-ok>CLS, Google “good” threshold<b>≤ 0.1</b></li><li>alt text<b>present</b></li></ul></div>
+      <div data-k="h2" data-tag="&lt;h2&gt;" data-name="Subheadings" data-path="body › main › section › h2" data-ok="1" data-lang="txt" data-d="Subheadings (H2, H3) follow under a single H1 — a hierarchy in order."><pre>h1  Plumber in Riga — same-day …
+├─ h2  Services
+│  ├─ h3  Emergency call-out
+│  ├─ h3  Boiler installation
+│  ├─ h3  Pipe replacement
+│  └─ h3  Drain cleaning
+└─ h2  Reviews</pre><ul><li data-ok>levels in order<b>h1 › h2 › h3</b></li></ul></div>
+      <div data-k="h3" data-tag="&lt;h3&gt; × 4" data-name="Service cards" data-path="body › main › section › article" data-d="Each service has its own H3 and a link to a separate page. A decorative icon has empty alt text."><pre>&lt;article&gt;
+  &lt;img src="/icons/tap.svg" alt=""
+       width="40" height="40" loading="lazy"&gt;
+  &lt;h3&gt;&lt;a href="/en/services/emergency-call-out/"&gt;
+    Emergency call-out&lt;/a&gt;&lt;/h3&gt;
+&lt;/article&gt;</pre><ul><li>decorative icon<b>alt=""</b></li><li>links to service pages<b>4</b></li></ul></div>
+      <div data-k="lazy" data-tag="loading=lazy" data-name="Images below the fold" data-path="body › main › section › img" data-d="Images that are not visible straight away load only when the visitor scrolls down to them."><pre>&lt;img src="/reviews/inese.webp" alt="Inese"
+     width="48" height="48"
+     loading="lazy" decoding="async"&gt;</pre><ul><li>loading="lazy"<b>3 / 3</b></li></ul></div>
+      <div data-k="ext" data-tag="rel=noopener" data-name="Link to another site" data-path="body › main › section › a" data-d="The link to the Google reviews opens in a new tab safely and does not give that tab access to this page."><pre>&lt;a href="https://maps.google.com/…"
+   target="_blank" rel="noopener"&gt;
+  All reviews on Google
+&lt;/a&gt;</pre><ul><li>rel<b>noopener</b></li></ul></div>
+      <div data-k="schema" data-tag="JSON-LD LocalBusiness" data-name="Structured data (schema.org)" data-path="body › footer › script" data-lang="json" data-d="Name, phone, address and opening hours in machine-readable form — Google understands them without guessing."><pre>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Plumber",
+  "name": "Strauts",
+  "url": "https://example.lv/en/",
+  "telephone": "+371…",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Riga",
+    "addressCountry": "LV"
+  },
+  "areaServed": "Riga",
+  "openingHours": "Mo-Su 00:00-23:59"
+}
+&lt;/script&gt;</pre><ul><li>@type<b>Plumber ⊂ LocalBusiness</b></li><li>name, phone, address<b>match the page</b></li></ul></div>
+    </div>
   </figure>
 </div>
 </section>
