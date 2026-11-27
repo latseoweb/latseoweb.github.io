@@ -1,7 +1,6 @@
 /* Homepage instruments (css/ix-home.css).
    1) Google result builder: the title is measured with canvas measureText in Arial 20px (Google's desktop
-      title font) against the ~580 px cut-off; the description is counted against ~160 characters.
-   2) Build-stage scrubber: a range input across the 4 "Kā notiek darbs" steps switches an SVG page sketch. */
+      title font) against the ~580 px cut-off; the description is counted against ~160 characters. */
 (function () {
   function lazy(node, fn) {
     if (!node) return;
@@ -75,24 +74,7 @@
     update(); fit();
   }
 
-  function build(frame) {
-    var range = document.getElementById("build-range");
-    var steps = frame.closest(".container").querySelectorAll(".steps > li");
-    var tag = frame.querySelector(".build__tag"), names = frame.getAttribute("data-names").split("|");
-    if (!range || steps.length !== 4) return;
-    steps[0].parentNode.classList.add("is-scrub");
-    function set(v) {
-      v = Math.max(1, Math.min(4, Math.round(v)));
-      frame.setAttribute("data-s", v); tag.textContent = names[v - 1]; range.value = v;
-      steps.forEach(function (li, i) { li.classList.toggle("is-on", i === v - 1); });
-      range.setAttribute("aria-valuetext", v + ". " + steps[v - 1].querySelector("strong").textContent + " — " + names[v - 1].toLowerCase());
-    }
-    range.addEventListener("input", function () { set(+range.value); });
-    steps.forEach(function (li, i) { li.addEventListener("click", function () { set(i + 1); }); });
-    set(+range.value);
-  }
-
-  /* 3) Impressions timeline: knots of the real Search Console curve in assets/images/hero-impressions.svg
+  /* 2) Impressions timeline: knots of the real Search Console curve in assets/images/hero-impressions.svg
         (weekly points, 2026-02-16 + 7 days each, peak 3135). Only the date/week is shown, no per-week values. */
   function trend(fig) {
     var L = JSON.parse(fig.getAttribute("data-l")), plot = fig.querySelector(".trend__plot"),
@@ -128,5 +110,4 @@
 
   lazy(document.querySelector("[data-trend]"), trend);
   lazy(document.querySelector("[data-serp]"), serp);
-  lazy(document.querySelector("[data-build]"), build);
 })();
