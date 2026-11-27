@@ -300,7 +300,6 @@ def img_attrs(src, widths, full_width, sizes):
 
 
 CARD_SIZES = "(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px"
-BUILD_SIZES = "(max-width: 1240px) calc(100vw - 32px), 1200px"
 WIDE_SIZES = "(max-width: 1240px) calc(100vw - 32px), 1200px"
 
 
@@ -501,67 +500,6 @@ def hero_shot(key, caption, lang):
             f'<figcaption>{caption}</figcaption></figure>')
 
 
-HERO_BUILD = {
-    "lv": {"plan": "Rasējums", "site": "Mājaslapa", "range": "Salīdzināt rasējumu ar gatavo mājaslapu",
-           "cap": "klikšķi no Google 90 dienās", "hint": "Velciet, lai redzētu, kā rasējums kļūst par mājaslapu.",
-           "nav": "izvēlne: 7 sadaļas + poga", "h1": "<h1> — viens lapā", "lead": "ievads: kas, kam, kur",
-           "cta": "2 darbības (CTA)", "img": "foto · alt teksts visiem 4 attēliem",
-           "facts": "fakti skaitļos", "tb": ["Projekts", "Lapa", "Shēma", "Izstrādāja"], "page": "sākumlapa"},
-    "en": {"plan": "Blueprint", "site": "Website", "range": "Compare the blueprint with the finished website",
-           "cap": "clicks from Google in 90 days", "hint": "Drag to see the blueprint turn into a website.",
-           "nav": "menu: 7 sections + button", "h1": "<h1> — one per page", "lead": "intro: what, for whom, where",
-           "cta": "2 actions (CTA)", "img": "photo · alt text on all 4 images",
-           "facts": "facts in numbers", "tb": ["Project", "Page", "Schema", "Built by"], "page": "home page"},
-}
-
-
-def hero_build(key, clicks, lang):
-    """Full-width hero: an engineering blueprint of a real site and the finished site, compared with a slider."""
-    url, img, name, *_ = PROJECTS[key]
-    d = {k: (esc(v) if isinstance(v, str) else v) for k, v in HERO_BUILD[lang].items()}
-    tb = d["tb"]
-    svg = f'''<svg viewBox="0 0 960 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="presentation">
-<defs><pattern id="bp-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" class="bp-gridline"/></pattern></defs>
-<rect width="960" height="600" class="bp-paper"/><rect width="960" height="600" fill="url(#bp-grid)"/>
-<g class="bp-ink">
-<path d="M0 40H960M0 568H960"/><circle cx="161" cy="19" r="9"/>
-<rect x="302" y="16" width="74" height="7"/><rect x="392" y="16" width="40" height="7"/><rect x="450" y="16" width="56" height="7"/><rect x="522" y="16" width="55" height="7"/><rect x="594" y="16" width="39" height="7"/><rect x="650" y="16" width="29" height="7"/><rect x="695" y="16" width="34" height="7"/>
-<rect x="742" y="7" width="68" height="25" class="bp-fill"/>
-<rect x="150" y="140" width="150" height="6" class="bp-dash"/>
-<rect x="150" y="166" width="344" height="38"/><rect x="150" y="206" width="318" height="38"/><rect x="150" y="246" width="246" height="38"/>
-<rect x="150" y="296" width="310" height="9"/><rect x="150" y="314" width="268" height="9"/>
-<rect x="150" y="348" width="200" height="31" class="bp-fill"/><rect x="360" y="348" width="112" height="31"/>
-<rect x="150" y="405" width="52" height="6"/><circle cx="219" cy="408" r="10"/><circle cx="244" cy="408" r="10"/><circle cx="269" cy="408" r="10"/>
-<rect x="696" y="80" width="234" height="230" class="bp-dash"/><path d="M696 80L930 310M930 80L696 310" class="bp-dash"/>
-<rect x="193" y="531" width="20" height="18"/><rect x="223" y="537" width="95" height="6"/><rect x="353" y="531" width="14" height="18"/><rect x="378" y="537" width="96" height="6"/><rect x="510" y="531" width="10" height="18"/><rect x="524" y="537" width="92" height="6"/><rect x="651" y="531" width="26" height="18"/><rect x="685" y="537" width="82" height="6"/>
-<path d="M132 166V284M126 166H138M126 284H138" class="bp-thin"/>
-</g>
-<g class="bp-ann">
-<path d="M440 40V58"/><text x="446" y="64">{d["nav"]}</text>
-<path d="M494 185H516"/><text x="522" y="190">{d["h1"]}</text>
-<path d="M460 300H516"/><text x="522" y="305" class="ann--minor">{d["lead"]}</text>
-<path d="M472 364H516"/><text x="522" y="369">{d["cta"]}</text>
-<text x="696" y="334" class="ann--minor">{d["img"]}</text>
-<path d="M193 524V510"/><text x="193" y="503" class="ann--minor">{d["facts"]}</text>
-</g>
-<g class="bp-titleblock"><rect x="664" y="392" width="272" height="104"/><path d="M664 418H936M664 444H936M664 470H936M748 392V496"/>
-<text x="672" y="410">{tb[0]}</text><text x="756" y="410">{name}</text>
-<text x="672" y="436">{tb[1]}</text><text x="756" y="436">{d["page"]}</text>
-<text x="672" y="462">{tb[2]}</text><text x="756" y="462">EducationalOrganization</text>
-<text x="672" y="488">{tb[3]}</text><text x="756" y="488">LatSEO</text></g>
-</svg>'''
-    return (f'<figure class="build" data-build style="--pos:50%">'
-            f'<div class="build__stage">'
-            f'<img class="build__site" {img_attrs("/assets/images/" + img, (480, 1920), 960, BUILD_SIZES)} alt="{name} {T[lang]["shot_alt"]}" width="960" height="600" data-hero>'
-            f'<div class="build__plan" aria-hidden="true">{svg}</div>'
-            f'<div class="build__handle" aria-hidden="true"><span></span></div>'
-            f'<span class="build__tag build__tag--plan" aria-hidden="true">{d["plan"]}</span><span class="build__tag build__tag--site" aria-hidden="true">{d["site"]}</span>'
-            f'<input type="range" class="build__range" min="0" max="100" value="50" aria-label="{d["range"]}">'
-            f'</div>'
-            f'<figcaption><span><strong>{clicks}</strong> {d["cap"]} · {name}</span><span class="build__hint">{d["hint"]}</span></figcaption>'
-            f'</figure><script src="/js/hero-build.js" defer></script>')
-
-
 def form(prefix, source, lang, first=None, button=None):
     t = T[lang]
     first = first or t["needs"][0]
@@ -606,7 +544,6 @@ def expand_tokens(body, lang):
         return browser(m.group(1), lang, cls)
     body = re.sub(r"\{\{browser:(\w+)\}\}", _browser, body)
     body = re.sub(r"\{\{shot:(\w+)\|(.*?)\}\}", lambda m: hero_shot(m.group(1), m.group(2), lang), body)
-    body = re.sub(r"\{\{herobuild:(\w+)\|(.*?)\}\}", lambda m: hero_build(m.group(1), m.group(2), lang), body)
     body = re.sub(r"\{\{form:([\w-]+)\|([^|}]+)(?:\|([^|}]+))?(?:\|([^|}]+))?\}\}",
                   lambda m: form(m.group(1), m.group(2), lang, m.group(3), m.group(4)), body)
     body = label_tables(body)
