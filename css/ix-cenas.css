@@ -61,7 +61,7 @@
 .ix-f__intro{margin:0 0 var(--sp-md);font-size:var(--fs-sm);max-width:60ch}
 .ix-f__grid{display:grid;gap:var(--sp-md)}
 .ix-f__grp{border:0;margin:0;padding:0;min-width:0}
-.ix-f__grp legend{padding:0;margin-bottom:.5rem;font-family:var(--ff-mono);font-size:var(--fs-xs);letter-spacing:.04em;text-transform:uppercase;color:var(--on-ink-muted)}
+.ix-f__grp legend{padding:0;margin-bottom:.5rem;font-family:var(--ff-mono);font-size:var(--fs-xs);color:var(--on-ink-muted)}
 .ix-f__btns{display:flex;flex-wrap:wrap;gap:.5rem}
 .ix-f__btn{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;min-height:44px;padding:.5rem .8rem;border:1px solid rgba(255,255,255,.3);background:transparent;color:var(--on-ink);font:inherit;font-size:var(--fs-sm);cursor:pointer;text-align:left;transition:background .15s,color .15s,border-color .15s}
 .ix-f__btn b{font-weight:400;font-variant-numeric:tabular-nums;font-size:var(--fs-xs);color:var(--on-ink-muted)}

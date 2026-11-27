@@ -110,3 +110,4 @@
 .ixc__v span{display:block;font-size:var(--fs-xs);color:var(--muted)}
 @media (prefers-reduced-motion:no-preference){.ixc__fill{transition:width .3s var(--ease)}}
 @media (max-width:480px){.ixc__mk span{transform:translateX(-80%)}}
+.ixl__pack em{font-style:normal}

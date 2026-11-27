@@ -1,7 +1,7 @@
 /* ix-seo: interactive instruments for /seo-pakalpojumi-riga/ (blueprint language, square, one accent) */
 .ix-cap{display:block;font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.02em;color:var(--muted)}
 .section--ink .ix-cap{color:var(--on-ink-muted)}
-.ix-live{min-height:3.6rem;margin-top:var(--sp-sm);padding:.6rem .8rem;border-left:2px solid var(--accent);background:var(--accent-soft);color:var(--accent-ink);font-size:var(--fs-sm)}
+.ix-live{min-height:3.6rem;margin-top:var(--sp-sm);padding:.6rem .8rem;border:1px dashed var(--line-strong);background:var(--accent-soft);color:var(--accent-ink);font-size:var(--fs-sm)}
 
 /* 1. choose: tickable checklist + gauge */
 .ix-choose .checklist li::before{display:none}
@@ -36,7 +36,7 @@
 .ix-cyc__btn[aria-selected=true] .ix-cyc__lab{color:var(--on-ink)}
 .ix-cyc__loop{height:14px;margin:.6rem 10% 0;border:1px dashed #56645C;border-top:0}
 .ix-cyc__loop+.ix-cap{text-align:center;margin-top:.35rem}
-.ix-cyc__panel{min-height:7.5rem;margin-top:var(--sp-md);padding:.9rem 1rem;border-left:2px solid #9FCDB3;background:#1B221E;color:var(--on-ink-muted)}
+.ix-cyc__panel{min-height:7.5rem;margin-top:var(--sp-md);padding:.9rem 1rem;border:1px dashed #4A5650;background:#1B221E;color:var(--on-ink-muted)}
 .ix-cyc__panel strong{color:var(--on-ink)}
 @media (min-width:640px){.ix-cyc__lab{display:block}.ix-cyc__panel{min-height:5.5rem}}
 
