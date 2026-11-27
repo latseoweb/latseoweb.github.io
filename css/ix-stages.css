@@ -4,7 +4,7 @@
 .build,.section--ink .build{--n:var(--ix-night,#10243A);--ln:var(--ix-line,#93B4D3);--sig:var(--ix-signal,#F2683F);--mk:var(--ix-marker,#FFC65C);--mt:var(--ix-mint,#86C98E);--on:var(--ix-ink-on,#EEF3F8);
   position:relative;padding:12px;border:1px solid var(--ln);box-shadow:0 18px 30px -22px rgba(11,31,51,.65);
   background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n)}
-.build-top{display:grid;grid-template-columns:1fr minmax(0,380px);gap:var(--sp-md) var(--sp-xl);align-items:end;margin-bottom:var(--sp-md)}
+.build-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:var(--sp-md) var(--sp-xl);align-items:start;margin-bottom:var(--sp-sm)}
 .build-top .section__header{margin-bottom:0}
 .build__hint{margin-top:.5rem;font-size:var(--fs-sm);color:var(--muted)}
 .build svg{width:100%;height:auto;overflow:hidden}
@@ -39,7 +39,12 @@
 @keyframes ix-bscan{0%{transform:translateX(0);opacity:1}85%{opacity:1}100%{transform:translateX(320px);opacity:0}}
 .build__tag{position:absolute;left:-1px;bottom:-1px;transform:translateY(100%);padding:.2rem .6rem;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:var(--fs-xs);font-weight:600;color:var(--ix-night,#10243A);background:var(--ix-marker,#FFC65C);transition:background .3s}
 .build[data-s="4"] .build__tag{background:var(--ix-mint,#86C98E)}
-.build__ctl{padding:var(--sp-lg) 12.5% 0;margin-bottom:var(--sp-sm)}
+/* the slider rides on the steps' top rule: thumb centres = column centres (4 columns, gap --sp-lg) */
+.build__ctl{position:relative;z-index:1;padding:var(--sp-lg) max(0px,calc((100% - 3 * var(--sp-lg)) / 8 - 22px)) 0;margin-bottom:-23px}
+.build__ticks{display:none}
+/* the rule continues the track edge to edge (the thumb only travels between the column centres) */
+.build__ctl::before{content:"";position:absolute;left:0;right:0;top:calc(var(--sp-lg) + 20.5px);height:3px;background:var(--ix-line,#93B4D3);opacity:.45;pointer-events:none}
+.build__range{position:relative}
 /* slider: fill runs to the thumb in signal, thumb is a signal block that pops on every snap */
 .build__range{--p:0;display:block;width:100%;height:44px;margin:0;-webkit-appearance:none;appearance:none;background:transparent;cursor:ew-resize;touch-action:pan-y}
 .build__range::-webkit-slider-runnable-track{height:3px;background:linear-gradient(90deg,var(--ix-signal,#F2683F) calc(22px + (100% - 44px)*var(--p)),var(--ix-line,#93B4D3) 0);opacity:1}
@@ -53,7 +58,15 @@
 .steps.is-scrub li{cursor:pointer;transition:border-color .2s,color .2s}
 .steps.is-scrub li:not(.is-on){border-top-color:var(--line-strong);color:var(--muted)}
 .steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#F2683F);border-top-width:3px}
-@media (max-width:1000px){.build-top{grid-template-columns:1fr}.build{max-width:420px}.build__ctl{padding:var(--sp-xl) 0 0}}
+@media (max-width:1000px){.build-top{grid-template-columns:1fr}.build{max-width:460px}
+  .build__ctl{padding:var(--sp-lg) 0 0;margin-bottom:var(--sp-lg)}
+  .build__ticks{display:block;position:relative;height:1.1rem;margin:.2rem 22px 0}
+  .build__ticks span{position:absolute;top:0;transform:translateX(-50%);font:500 var(--fs-xs)/1 var(--ff-mono);color:var(--muted);white-space:nowrap;cursor:pointer}
+  .build__ticks span:first-child{transform:translateX(-22px)}
+  .build__ticks span:last-child{transform:translateX(calc(-100% + 22px))}
+  .build__ticks span.is-on{color:var(--ink);font-weight:600}
+  .section--ink .build__ticks span{color:var(--on-ink-muted)}
+  .section--ink .build__ticks span.is-on{color:var(--on-ink)}}
 @media (prefers-reduced-motion:reduce){.build g,.steps.is-scrub li,.build .b-acc{transition:none}.build[data-a] g,.build[data-a] .b-scan{animation:none!important}.build__range.is-snap::-webkit-slider-thumb,.build__range.is-snap::-moz-range-thumb{animation:none}}
 
 /* dark band: only text colours differ, the instrument itself is identical */

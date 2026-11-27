@@ -1,56 +1,119 @@
-/* Homepage hero (js/hero-plan.js), cyanotype edition. Base layout stays in style.css; this file recolours it:
-   left of the line = the finished white page, right = its blueprint on --ix-night. With WebGL (desktop/tablet,
-   no reduced motion) a 3D model of the Search Console curve is drawn behind (.hero--3d), split at the same line. */
-.hero--plan{background:url(/assets/images/hero-impressions.svg) left bottom/100% 64% no-repeat var(--paper)}
+/* Homepage hero (js/hero-plan.js), cyanotype edition. Base rules stay in style.css; this file sets the composition:
+   row 1 = the page (H1, intro, actions | facts), row 2 = the Search Console chart with real axes (built by
+   scripts/build.py from assets/data/latseo-gsc-weekly.json). Nothing overlaps: the chart has its own row.
+   Left of the line = the finished white page, right = its blueprint on --ix-night. With WebGL (desktop/tablet, no
+   reduced motion) the chart's curve becomes a 3D x-ray on the blueprint side, locked to the same axes (.hero--3d). */
+.hero--plan{display:block;min-height:0;padding:clamp(2rem,3.4vw,2.9rem) 0 clamp(1.25rem,2.5vw,2rem);background:var(--paper)}
 .hero--plan>.container{position:relative;z-index:1}
+.hero--plan .hero__grid{grid-template-columns:minmax(0,1fr) 15rem;grid-template-areas:"content aside" "chart chart";align-items:end;column-gap:clamp(2rem,6vw,6rem);row-gap:clamp(1.75rem,3vw,2.6rem)}
+.hero--plan .hero__content{grid-area:content}
+.hero--plan .hero__aside{grid-area:aside;padding-bottom:.35rem}
+.hero--plan .hero__title{font-size:clamp(2.55rem,1.15rem + 3.9vw,4.6rem);line-height:1;text-wrap:balance;margin-bottom:var(--sp-md)}
+.hero--plan .hero__stats{gap:1.35rem}
+.hero--plan .hero__stat-value{font-size:clamp(1.75rem,1.2rem + 1.2vw,2.35rem);line-height:1.05;font-variant-numeric:tabular-nums}
+.hero--plan .hero__stat-label{max-width:none}
+.hero--plan .hero__proof{margin-top:2.4rem;padding-top:1rem;border-top:1px solid var(--line);max-width:none}
+.hero--plan .hero__proof strong{color:var(--accent);font-variant-numeric:tabular-nums}
 
-/* blueprint side */
+/* ---------- the chart (finished side): white paper, brand-green line, ink axes ---------- */
+.hero__chart{grid-area:chart;margin:0;min-width:0}
+.hero__chart-cap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.25rem 1.5rem;margin-bottom:.9rem;padding-top:.85rem;border-top:1px solid var(--ink)}
+.hero__chart-cap strong{font-family:var(--ff-heading);font-size:var(--fs-sm);font-weight:600;color:var(--ink)}
+.hero__chart-cap span{font-size:var(--fs-xs);color:var(--muted)}
+.gsc{position:relative}
+.gsc__plot{position:relative;height:clamp(150px,12vw,176px);border-bottom:1px solid var(--ink)}
+.gsc__svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.gsc__svg path{vector-effect:non-scaling-stroke}
+.gsc__grid{fill:none;stroke:var(--line-strong);stroke-width:1;stroke-dasharray:2 4}
+.gsc__area{fill:var(--accent-soft);opacity:.75}
+.gsc__line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round}
+.gsc__y{position:absolute;left:0;padding:0 .4rem .2rem 0;font-family:var(--ff-mono);font-size:.75rem;line-height:1;font-variant-numeric:tabular-nums;color:var(--muted);background:linear-gradient(var(--paper),var(--paper)) 0 0/100% calc(100% - .2rem) no-repeat;white-space:nowrap}
+.gsc__y i{font-style:normal}
+.gsc__peak{position:absolute;width:0;height:0}
+.gsc__peak::before{content:"";position:absolute;left:-5px;top:-5px;width:10px;height:10px;background:var(--accent);box-shadow:0 0 0 3px var(--paper)}
+.gsc__peak b,.gsc__peak small{position:absolute;right:14px;white-space:nowrap;font-family:var(--ff-mono);font-variant-numeric:tabular-nums;line-height:1}
+.gsc__peak b{top:-.55rem;font-size:.9375rem;font-weight:600;color:var(--ink)}
+.gsc__peak small{top:.6rem;font-size:.6875rem;color:var(--muted)}
+.gsc__x{position:relative;height:1.55rem}
+.gsc__m{position:absolute;top:0;padding:.4rem 0 0 .3rem;border-left:1px solid var(--ink);font-family:var(--ff-mono);font-size:.6875rem;line-height:1;color:var(--muted);white-space:nowrap;height:1.3rem}
+
+/* ---------- blueprint side (a decorative clone of the hero drawn by hero-plan.js) ---------- */
 .hero--plan .plan{
-  color:var(--ix-ink-on);
+  display:block;padding:inherit;color:var(--ix-ink-on);
   background-color:var(--ix-night);
   background-image:
     linear-gradient(rgba(147,180,211,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(147,180,211,.2) 1px,transparent 1px),
     linear-gradient(var(--ix-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ix-grid) 1px,transparent 1px);
   background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px;
 }
-/* the same Search Console curve, drawn in blueprint line (2D version) */
-.hero--plan .plan::before{content:"";position:absolute;left:0;right:0;bottom:0;height:64%;pointer-events:none;background:var(--ix-line);opacity:.4;
-  -webkit-mask:url(/assets/images/hero-impressions.svg) left bottom/100% 100% no-repeat;mask:url(/assets/images/hero-impressions.svg) left bottom/100% 100% no-repeat}
-.plan .hero__title,.plan .hero__stat-value,.plan .hero__proof strong{color:transparent;-webkit-text-stroke:1px var(--ix-ink-on)}
+.plan .hero__title{color:transparent;-webkit-text-stroke:1px var(--ix-ink-on)}
+/* measured values stay readable on the drawing: amber mono, the result in leaf green */
+.plan .hero__stat-value{color:var(--ix-marker);-webkit-text-stroke:0;font-family:var(--ff-mono);font-weight:500}
+.plan .hero__proof strong{color:var(--ix-mint);-webkit-text-stroke:0;font-family:var(--ff-mono);font-weight:500}
+.plan .hero__proof{border-top-color:rgba(147,180,211,.35)}
 .plan .hero__description,.plan .hero__meta,.plan .hero__stat-label,.plan .hero__proof,.plan .hero__proof a{color:var(--ix-muted-on)}
 .plan .hero__meta span+span::before{color:rgba(147,180,211,.5)}
 .plan .btn{background:transparent!important;color:var(--ix-ink-on)!important;border:1px dashed var(--ix-line)!important;box-shadow:none!important}
-.plan__box{border:1px dashed rgba(147,180,211,.75)}
+.plan .hero__chart-cap{border-top-color:var(--ix-line)}
+.plan .hero__chart-cap strong{color:var(--ix-ink-on)}
+.plan .hero__chart-cap span{color:var(--ix-muted-on)}
+.plan .gsc__plot{border-bottom-color:var(--ix-line)}
+.plan .gsc__grid{stroke:rgba(147,180,211,.45)}
+.plan .gsc__area{fill:rgba(147,180,211,.1);opacity:1}
+.plan .gsc__line{stroke:var(--ix-ink-on);stroke-width:1.25}
+.plan .gsc__y{color:var(--ix-marker);background:linear-gradient(var(--ix-night),var(--ix-night)) 0 0/100% calc(100% - .2rem) no-repeat}
+.plan .gsc__peak::before{background:var(--ix-signal);box-shadow:0 0 0 3px var(--ix-night)}
+.plan .gsc__peak b{color:var(--ix-marker)}
+.plan .gsc__peak small,.plan .gsc__m{color:var(--ix-muted-on)}
+.plan .gsc__m{border-left-color:var(--ix-line)}
+.plan__box{border:1px dashed rgba(147,180,211,.7)}
 .plan__note{font-family:var(--ff-mono);font-size:.75rem;letter-spacing:0;color:var(--ix-marker);background:var(--ix-night-2);box-shadow:inset 2px 0 0 var(--ix-marker);padding:.2rem .45rem}
 .plan__dim,.plan__dim::before,.plan__dim::after{border-color:var(--ix-marker)}
-.plan__tb{font-family:var(--ff-mono);color:var(--ix-ink-on);background:var(--ix-night-2);border-color:var(--ix-line)}
-.plan__tb span{border-color:rgba(147,180,211,.5)!important}
-.plan__tb span:nth-child(odd){color:var(--ix-muted-on)}
+/* title block: a narrow strip in the right page margin (wide screens only), label over value */
+.plan__tb{top:.75rem;right:max(8px,calc((100% - 1136px) / 4 - 72px));width:144px;grid-template-columns:1fr;font-family:var(--ff-mono);font-size:.6875rem;color:var(--ix-ink-on);background:var(--ix-night-2);border-color:var(--ix-line)}
+.plan__tb span{padding:.2rem .5rem;border-color:rgba(147,180,211,.5)!important;overflow-wrap:anywhere}
+.plan__tb span:nth-child(odd){border-right:0!important;border-bottom:0!important;padding-bottom:0;font-size:.625rem;color:var(--ix-muted-on)}
+.plan__tb span:nth-last-child(2){border-bottom:0}
+@media (max-width:1499px){.plan__tb{display:none}}
 .plan__tb span:nth-child(even){color:var(--ix-marker)}
 
-/* the line: signal orange, springy grip */
+/* ---------- the line: signal orange, springy grip; grip and hint sit in the empty gap above the chart ---------- */
 .plan__line::before{left:-1px;width:2px;background:var(--ix-signal)}
-.plan__grip{background:var(--ix-signal);transition:transform .45s var(--ix-spring),box-shadow .3s var(--ix-out)}
-.plan__grip::before{width:8px;height:16px;box-shadow:inset 2px 0 0 #fff,inset -2px 0 0 #fff}
+.plan__grip{top:var(--grip-y,50%);background:var(--ix-signal);transition:transform .45s var(--ix-spring),box-shadow .3s var(--ix-out)}
+.plan__grip::before{width:8px;height:16px;box-shadow:inset 2px 0 0 var(--ix-night),inset -2px 0 0 var(--ix-night)}
 .plan__grip:hover,.hero--plan.is-dragging .plan__grip{transform:scale(1.12);box-shadow:0 0 0 6px rgba(242,104,63,.22)}
 .hero--plan:has(.plan__range:focus-visible) .plan__grip{outline:2px solid var(--ix-marker);outline-offset:3px}
-.plan__tag{font-family:var(--ff-mono);font-weight:500;letter-spacing:0}
+.plan__tag{top:.75rem;font-family:var(--ff-mono);font-weight:500;letter-spacing:0}
 .plan__tag--site{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line-strong)}
 .plan__tag--plan{background:var(--ix-night-2);color:var(--ix-ink-on);box-shadow:inset 0 0 0 1px var(--ix-line)}
-.plan__hint{position:absolute;z-index:3;top:calc(50% + 34px);left:calc(var(--pos) + 14px);white-space:nowrap;pointer-events:none;color:var(--ix-line);transition:opacity .4s var(--ix-out)}
+.plan__hint{position:absolute;z-index:3;top:var(--grip-y,50%);left:calc(var(--pos) + 34px);transform:translateY(-50%);padding:.3rem .55rem;white-space:nowrap;pointer-events:none;color:var(--ix-ink-on);background:var(--ix-night-2);box-shadow:inset 0 0 0 1px rgba(147,180,211,.45);transition:opacity .4s var(--ix-out)}
 .hero--plan.is-used .plan__hint{opacity:0}
 
-/* stats on the finished side: measured values get the marker */
-.hero--plan .hero__proof strong{color:var(--accent)}
-
-/* 3D layer: the canvas takes over the curve and the night background; the real content is cut at the line */
+/* ---------- 3D layer: the canvas draws the night paper and the x-ray curve right of the line ---------- */
 .hero__gl{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .9s var(--ix-out)}
 .hero--3d .hero__gl{opacity:1}
-.hero--3d{background-image:none}
 .hero--3d .plan{background-color:transparent;background-image:linear-gradient(rgba(147,180,211,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(147,180,211,.1) 1px,transparent 1px);background-size:24px 24px}
-.hero--3d .plan::before{display:none}
+.hero--3d .plan .gsc__line,.hero--3d .plan .gsc__area{opacity:0;transition:opacity .6s}
 .hero--3d>.container{clip-path:inset(-40px var(--cut-r,0px) -40px -40px)}
-.hero--3d .hero__bgnote{z-index:1}
 
-@media (max-width:700px){.plan__hint{top:auto;bottom:66px;left:auto;right:calc(100% - var(--pos) + 14px)}}
-@media (prefers-reduced-motion:reduce){.plan__grip,.hero__gl{transition:none}}
+/* ---------- tablet & phone: one column; the drawing waits behind a pull tab at the right edge ---------- */
+@media (max-width:1000px){
+  .hero--plan .hero__grid{grid-template-columns:1fr;grid-template-areas:"content" "aside" "chart";row-gap:var(--sp-lg)}
+  .hero--plan .hero__stats{flex-direction:row;flex-wrap:wrap;gap:1rem 2.5rem}
+  .hero--plan .hero__proof{margin-top:1.25rem}
+  .hero--plan:not(.is-used) .plan__tag{opacity:0}
+  .plan__tag{transition:opacity .3s}
+}
+@media (max-width:700px){
+  .hero--plan{padding:2rem 0 1.25rem}
+  .hero--plan .hero__title{font-size:clamp(2.2rem,1.2rem + 4.6vw,2.7rem);line-height:1.04}
+  .hero--plan .hero__stats{gap:1rem 1.75rem}
+  .hero--plan .hero__stats>div{min-width:8.5rem}
+  .gsc__plot{height:150px}
+  .gsc__m:nth-child(even){border-left-style:none;color:transparent}
+  .gsc__y{font-size:.6875rem}
+  .plan__grip{left:-44px;margin-top:-22px}
+  .plan__hint{left:auto;right:calc(100% - var(--pos) + 52px)}
+  .plan__note{font-size:.6875rem}
+}
+@media (prefers-reduced-motion:reduce){.plan__grip,.hero__gl,.plan__hint{transition:none}}

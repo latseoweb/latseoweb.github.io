@@ -54,34 +54,64 @@
   .serp__bar{grid-column:1/-1;grid-row:2}
 }
 
+/* ---------- results band: before/after bars on one shared scale (0–250 clicks), axis + source line ---------- */
+.facts__bars{position:relative;display:grid;gap:3px;margin-top:1rem;padding:3px 0;border-left:1px solid var(--on-ink-muted);
+  background:linear-gradient(90deg,transparent calc(40% - .5px),rgba(174,184,179,.35) calc(40% - .5px) calc(40% + .5px),transparent 0),linear-gradient(90deg,transparent calc(80% - .5px),rgba(174,184,179,.35) calc(80% - .5px) calc(80% + .5px),transparent 0)}
+.facts__bars i{display:block;height:7px;background:var(--ix-line,#93B4D3);opacity:.55;width:var(--b);transform-origin:left;transition:transform .9s var(--ix-out,ease)}
+.facts__bars i+i{width:var(--a);background:var(--ix-mint,#86C98E);opacity:1}
+.facts__axis{position:relative;display:block;height:1rem;margin-top:.3rem}
+.section--ink .facts .facts__axis span,.facts__axis span{position:absolute;top:0;font:.6875rem/1 var(--ff-mono);color:var(--on-ink-muted);white-space:nowrap}
+.facts__axis span:nth-child(2){left:40%;transform:translateX(-50%)}
+.facts__axis span:nth-child(3){left:80%;transform:translateX(-1ch)}
+.facts__src{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.5rem;margin-top:var(--sp-md);font-size:var(--fs-xs);color:var(--on-ink-muted)}
+.facts__key{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--ff-mono);color:var(--on-ink)}
+.facts__key::before{content:"";width:14px;height:7px;background:var(--ix-mint,#86C98E)}
+.facts__key--b::before{background:var(--ix-line,#93B4D3);opacity:.55}
+.facts__src span:last-child{flex-basis:100%}
+
 /* ---------- impressions timeline (sits in the dark band, panel is cyanotype night) ---------- */
-.trend{margin-top:var(--sp-xl)}
-.trend__cap{margin-bottom:var(--sp-sm);font-size:var(--fs-sm);color:var(--on-ink-muted);max-width:60ch}
-.trend__plot{position:relative;border:1px solid var(--ln);box-shadow:0 18px 32px -24px rgba(0,0,0,.7);
+.trend{margin-top:var(--sp-xl);padding-top:var(--sp-lg);border-top:1px solid rgba(255,255,255,.14)}
+.trend__cap{margin-bottom:var(--sp-sm);font-size:var(--fs-sm);color:var(--on-ink-muted);max-width:68ch}
+.trend__plot{--tp:clamp(1rem,2.2vw,1.75rem);--th:clamp(220px,24vw,320px);position:relative;padding:calc(var(--tp) + .5rem) var(--tp) .35rem;border:1px solid var(--ln);box-shadow:0 18px 32px -24px rgba(0,0,0,.7);
   background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,var(--n)}
-.trend__plot img{display:block;width:100%;aspect-ratio:8/3;object-fit:fill;filter:invert(.85) hue-rotate(180deg)}
-.is-live .trend__plot img{visibility:hidden}
-.trend__cur,.trend__dot,.trend__range,.trend__axis,.trend__draw{display:none}
-.is-live .trend__draw{display:block;position:absolute;inset:0;pointer-events:none}
-.trend__draw svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.trend__draw path{vector-effect:non-scaling-stroke}
-.trend__area{fill:rgba(147,180,211,.09)}
-.trend__base{fill:none;stroke:var(--ln);stroke-opacity:.5;stroke-width:2}
-.trend__done{fill:none;stroke:var(--mk);stroke-width:3}
-.trend__top{transition:clip-path .22s cubic-bezier(.2,.8,.2,1)}
-.trend__draw.is-draw{animation:ix-trend-draw 1.7s cubic-bezier(.45,.05,.2,1) both}
-@keyframes ix-trend-draw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
-.is-live .trend__cur{display:block;position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--mk);pointer-events:none;transition:left .2s cubic-bezier(.2,.8,.2,1)}
-.is-live .trend__dot{display:block;position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;background:var(--sig);border:2px solid var(--n);box-shadow:0 0 0 1px var(--mk);pointer-events:none;transition:left .2s cubic-bezier(.2,.8,.2,1),top .2s cubic-bezier(.2,.8,.2,1),transform .2s}
-.is-live .trend__plot:active .trend__dot{transform:scale(1.25)}
-.is-live .trend__range{display:block;position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y;-webkit-appearance:none;appearance:none;background:transparent}
+.trend .gsc__plot{height:var(--th);border-bottom-color:var(--ln)}
+.trend .gsc__grid{stroke:rgba(147,180,211,.4)}
+.trend .gsc__area{fill:rgba(147,180,211,.08);opacity:1}
+.trend .gsc__line{stroke:var(--ln);stroke-width:1.5;opacity:.7}
+.trend .gsc__lit{fill:none;stroke:var(--mk);stroke-width:3;stroke-linejoin:round;vector-effect:non-scaling-stroke;transition:clip-path .22s cubic-bezier(.2,.8,.2,1)}
+.trend .gsc__y{color:var(--ix-muted-on,#A9BDD0);background:linear-gradient(var(--n),var(--n)) 0 0/100% calc(100% - .2rem) no-repeat}
+.trend .gsc__peak::before{background:var(--mk);box-shadow:0 0 0 3px var(--n)}
+.trend .gsc__peak b{color:var(--mk)}
+.trend .gsc__peak small,.trend .gsc__m{color:var(--ix-muted-on,#A9BDD0)}
+.trend .gsc__m{border-left-color:var(--ln)}
+.trend.is-live .gsc__peak{display:none}
+/* the line draws itself once, left to right, when the band scrolls in */
+.trend.is-wait :is(.gsc__area,.gsc__line){clip-path:inset(-10px 100% -10px 0)}
+.trend.is-draw :is(.gsc__area,.gsc__line){animation:ix-trend-draw 1.7s cubic-bezier(.45,.05,.2,1) both}
+.trend.is-wait :is(.gsc__lit,.trend__cur,.trend__dot,.trend__tip){opacity:0}
+.trend.is-draw :is(.gsc__lit,.trend__cur,.trend__dot,.trend__tip){animation:ix-trend-in .4s 1.5s both}
+@keyframes ix-trend-draw{from{clip-path:inset(-10px 100% -10px 0)}to{clip-path:inset(-10px 0 -10px 0)}}
+@keyframes ix-trend-in{from{opacity:0}to{opacity:1}}
+/* time marker: dashed cursor, signal point, a tag with the week's impressions */
+.trend__cur,.trend__dot,.trend__tip{position:absolute;pointer-events:none;transition:left .2s cubic-bezier(.2,.8,.2,1),bottom .2s cubic-bezier(.2,.8,.2,1)}
+.trend__cur{top:-.5rem;bottom:0;width:0;border-left:1px dashed var(--mk)}
+.trend__dot{width:14px;height:14px;margin:0 0 -7px -7px;background:var(--sig);border:2px solid var(--n);box-shadow:0 0 0 1px var(--mk)}
+.trend__tip{margin:0 0 12px 12px;padding:.2rem .45rem;font:600 var(--fs-sm)/1 var(--ff-mono);font-variant-numeric:tabular-nums;color:var(--n);background:var(--mk);white-space:nowrap}
+.trend__tip.is-left{transform:translateX(calc(-100% - 24px))}
+.trend:has(.trend__range:active) .trend__dot{transform:scale(1.25)}
+.trend__range{position:absolute;left:var(--tp);right:var(--tp);top:calc(var(--tp) + .5rem);width:calc(100% - 2 * var(--tp));height:var(--th);margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y;-webkit-appearance:none;appearance:none;background:transparent}
 .trend__range::-webkit-slider-thumb{-webkit-appearance:none;width:0;height:100%}
 .trend__range::-moz-range-thumb{width:0;height:100%;border:0}
 .trend__plot:has(.trend__range:focus-visible){outline:3px solid var(--mk);outline-offset:3px}
-.is-live .trend__axis{display:flex;justify-content:space-between;margin-top:.35rem;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:var(--fs-xs);color:var(--ln)}
-.trend__read{margin-top:.5rem;min-height:2.9em;padding-left:.75rem;font-size:var(--fs-sm);color:var(--on-ink);box-shadow:inset 3px 0 0 var(--ix-marker,#FFC65C)}
-@media (max-width:700px){.trend__plot img{aspect-ratio:16/9}}
-@media (prefers-reduced-motion:reduce){.trend__draw.is-draw{animation:none}.serp__bar i,.serp__bar s,.is-live .trend__cur,.is-live .trend__dot,.trend__top{transition:none}.serp__cut.is-hit{animation:none}}
+.trend__read{margin-top:.75rem;min-height:1.6em;padding-left:.75rem;font-size:var(--fs-sm);color:var(--on-ink);box-shadow:inset 3px 0 0 var(--ix-marker,#FFC65C)}
+.trend__read b{font-family:var(--ff-mono);font-weight:600;color:var(--ix-marker,#FFC65C)}
+.trend__src{margin-top:.5rem;font-size:var(--fs-xs);color:var(--on-ink-muted)}
+@media (max-width:700px){
+  .trend__plot{--th:200px}
+  .trend .gsc__m:nth-child(even){border-left-style:none;color:transparent}
+  .facts__axis span:nth-child(2){display:none}
+}
+@media (prefers-reduced-motion:reduce){.trend.is-draw :is(.gsc__area,.gsc__line,.gsc__lit,.trend__cur,.trend__dot,.trend__tip){animation:none}.serp__bar i,.serp__bar s,.trend__cur,.trend__dot,.trend__tip,.trend .gsc__lit{transition:none}.serp__cut.is-hit{animation:none}}
 
 /* ---------- Google result builder on narrow screens: reflow at full size instead of scaling ---------- */
 @media (max-width:700px){
@@ -90,4 +120,4 @@
   .serp__cut{display:none}
   .serp__bar b{display:none}
 }
-.trend__draw.is-wait{clip-path:inset(0 100% 0 0)}
+
