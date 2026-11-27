@@ -130,7 +130,7 @@ class Publishing(unittest.TestCase):
         self.assertIn('<p class="lead">', r.stdout)                 # full text in the log
         entry = json.loads((site / "scripts/autoblog-queue.json").read_text())["queue"][0]
         self.assertEqual(entry["status"], "review_pending")
-        self.assertTrue((site / "scripts/autoblog-data/used" / f"{SLUG}.json").exists())
+        self.assertTrue((site / "_src/autoblog-data/used" / f"{SLUG}.json").exists())
 
     def test_publish_no_git(self):
         site = copy_site(self.tmp / "site")

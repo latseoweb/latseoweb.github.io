@@ -22,11 +22,11 @@ pieliek rakstu saistīto rakstu „Citi raksti” blokā, uzzīmē vāku, palai�
   Publicēt var divējādi: (1) apvienot zaru ar main; (2) rindā iestatīt `"review": false`. Tad nākamā palaišana paņem
   rakstu no zara (ar cilvēka labojumiem), vēlreiz pārbauda un publicē ar tās dienas datumu. Ja zaru izdzēš, nepublicējot,
   un review paliek true, raksts tiks uzrakstīts no jauna.
-- Katram rakstam tiek saglabāts DATI bloks, no kura tas rakstīts: `scripts/autoblog-data/used/<slug>.json`.
+- Katram rakstam tiek saglabāts DATI bloks, no kura tas rakstīts: `_src/autoblog-data/used/<slug>.json`.
 
 ## Dati
 - Galvenais avots: `/var/lib/latseo/blog-stats.json` (nakts taimeris 01:30, CRM agregāti; `AUTOBLOG_STATS`).
-- Ja faila nav: repo kopija `scripts/autoblog-data/blog-stats.json` (CRM agregāti 2026-11-27).
+- Ja faila nav: repo kopija `_src/autoblog-data/blog-stats.json` (CRM agregāti 2026-11-27).
 - `google_pozicija` (nepārbaudīts) un `aukstie_epasti` modelim netiek doti nekad. Ja dati vecāki par 7 dienām,
   žurnālā ir brīdinājums.
 
