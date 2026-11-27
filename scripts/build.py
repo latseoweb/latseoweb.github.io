@@ -51,6 +51,22 @@ TAGS = ("<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer
 TODAY = dt.date.today().isoformat()
 # Cache-busting by content, so a daily blog build does not rewrite every page
 ASSET_V = {f: hashlib.md5((ROOT / f).read_bytes()).hexdigest()[:8] for f in ("css/style.css", "js/main.js")}
+
+
+def asset_v(f):
+    """Content hash of a local /css or /js file (cached); '' if missing."""
+    if f not in ASSET_V:
+        p = ROOT / f
+        ASSET_V[f] = hashlib.md5(p.read_bytes()).hexdigest()[:8] if p.is_file() else ""
+    return ASSET_V[f]
+
+
+def bust_assets(html):
+    """Append ?v=<content hash> to every local /css/*.css and /js/*.js reference that has no query yet."""
+    def sub(m):
+        v = asset_v(m.group(2).lstrip("/"))
+        return f'{m.group(1)}="{m.group(2)}?v={v}"' if v else m.group(0)
+    return re.sub(r'(href|src)="(/(?:css|js)/[\w./-]+\.(?:css|js))"', sub, html)
 ARROW = ''  # no decorative arrows on buttons/links; {{arrow}} in old sources renders as nothing
 
 ORG = {
@@ -459,7 +475,8 @@ def head(meta, graph):
   <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-{"".join(f'  <link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' + chr(10) for f in FONT_PRELOAD)}  <link rel="stylesheet" href="/css/style.css?v={ASSET_V["css/style.css"]}">{meta.get("head_extra", "")}
+{"".join(f'  <link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' + chr(10) for f in FONT_PRELOAD)}  <link rel="stylesheet" href="/css/style.css?v={ASSET_V["css/style.css"]}">
+  <link rel="stylesheet" href="/css/ix-theme.css">{meta.get("head_extra", "")}
   <script type="application/ld+json">
 {schema}
   </script>
@@ -737,8 +754,12 @@ def render(meta, schema_extra=()):
         body = body.replace(" data-hero", "", 1)
     body = body.replace(" data-hero", ' loading="lazy"')
     hdr = header(meta) if meta.get("chrome", "full") == "full" else landing_header(meta)
-    scripts = f'<script src="/js/main.js?v={ASSET_V["js/main.js"]}" defer></script>' + meta.get("scripts", "")
+    if 'hero--plan' in body:   # homepage hero (js/hero-plan.js): its styles, incl. the optional 3D layer
+        meta["head_extra"] = meta.get("head_extra", "") + '\n  <link rel="stylesheet" href="/css/ix-hero.css">'
+    scripts = (f'<script src="/js/main.js?v={ASSET_V["js/main.js"]}" defer></script>'
+               '<script src="/js/ix-theme.js" defer></script>' + meta.get("scripts", ""))
     page = head(meta, graph) + hdr + '\n<main id="main-content">\n' + body.strip() + "\n</main>\n" + footer(lang) + "\n" + scripts + "\n</body>\n</html>\n"
+    page = bust_assets(page)
     f = out_file(path)
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(page, encoding="utf-8")
