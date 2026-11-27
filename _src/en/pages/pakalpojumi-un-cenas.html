@@ -89,7 +89,8 @@
         }
       ]
     }
-  ]
+  ],
+  "head_extra": "\n  <link rel=\"stylesheet\" href=\"/css/ix-cenas.css\">"
 }
 -->
 <div class="rail-wrap">
@@ -119,6 +120,16 @@
     <li><a href="#pec-palaisanas">Costs after launch</a></li>
     <li><a href="#kas-ietekme">What affects the price</a></li>
   </ol>
+  <div class="ix-est" id="ix-est" hidden>
+    <button type="button" class="ix-est__bar" aria-expanded="false" aria-controls="ix-est-body"><span class="ix-est__bar-t">Your estimate</span><span class="ix-est__bar-s" data-ix="barsum"></span></button>
+    <div class="ix-est__body" id="ix-est-body">
+      <p class="ix-est__h">Your estimate <span class="ix-est__n" data-ix="count">0</span></p>
+      <p class="ix-est__hint" data-ix="hint">Tick rows in the tables and they will appear here.</p>
+      <ul class="ix-est__list" data-ix="list"></ul>
+      <dl class="ix-est__tot" data-ix="tot" aria-live="polite"></dl><p class="ix-est__vat" data-ix="vat">excl. VAT</p>
+      <div class="ix-est__act"><a class="btn btn--dark" href="#pieteikties" data-ix="send"></a><button type="button" class="ix-est__clear" data-ix="clear"></button></div>
+    </div>
+  </div>
   <a class="rail__calc sheet" href="/en/majaslapas-izstrade/#calculator" data-nosnippet><span class="rail__calc-title">An approximate price in under a minute</span><span class="rail__calc-text">Choose a package and add-ons, and the calculator adds up the total.</span><span class="post-item__more">Open the calculator</span></a>
 </div></aside>
 
@@ -130,9 +141,9 @@
       <table class="table">
         <thead><tr><th>Service</th><th>What is included</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td><strong>Video audit</strong></td><td>Personal screen recording within 24 h: main technical errors, keyword opportunities, a look at competitors</td><td class="num"><strong>€0</strong></td></tr>
-          <tr><td><strong>SEO audit</strong></td><td>Full technical, content and link profile analysis of the website with a detailed list of recommendations</td><td class="num"><strong>from €150</strong></td></tr>
-          <tr><td><strong>Monthly SEO</strong></td><td>Technical SEO, content optimisation, link building, monitoring and a monthly report</td><td class="num"><strong>from €300/month</strong></td></tr>
+          <tr data-k="seo-video"><td><strong>Video audit</strong></td><td>Personal screen recording within 24 h: main technical errors, keyword opportunities, a look at competitors</td><td class="num"><strong>€0</strong></td></tr>
+          <tr data-k="seo-audit"><td><strong>SEO audit</strong></td><td>Full technical, content and link profile analysis of the website with a detailed list of recommendations</td><td class="num"><strong>from €150</strong></td></tr>
+          <tr data-k="seo-month"><td><strong>Monthly SEO</strong></td><td>Technical SEO, content optimisation, link building, monitoring and a monthly report</td><td class="num"><strong>from €300/month</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -148,9 +159,9 @@
       <table class="table">
         <thead><tr><th>Package</th><th>What is included</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td><strong>One-page website</strong><br><span class="muted small">3–5 working days</span></td><td>Custom design, up to 5 sections</td><td class="num"><strong>from €449</strong></td></tr>
-          <tr><td><strong>Business website</strong><br><span class="muted small">2–4 weeks</span></td><td>Custom design, unlimited number of sections</td><td class="num"><strong>from €799</strong></td></tr>
-          <tr><td><strong>Online store</strong><br><span class="muted small">timeline depends on scope</span></td><td>Product catalogue, cart and ordering, payment integration</td><td class="num"><strong>from €1,299</strong></td></tr>
+          <tr data-k="pkg-card"><td><strong>One-page website</strong><br><span class="muted small">3–5 working days</span></td><td>Custom design, up to 5 sections</td><td class="num"><strong>from €449</strong></td></tr>
+          <tr data-k="pkg-biz"><td><strong>Business website</strong><br><span class="muted small">2–4 weeks</span></td><td>Custom design, unlimited number of sections</td><td class="num"><strong>from €799</strong></td></tr>
+          <tr data-k="pkg-shop"><td><strong>Online store</strong><br><span class="muted small">timeline depends on scope</span></td><td>Product catalogue, cart and ordering, payment integration</td><td class="num"><strong>from €1,299</strong></td></tr>
         </tbody>
       </table>
     </div>
@@ -166,23 +177,23 @@
       <table class="table">
         <thead><tr><th>Option</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td>Logo design (3 options)</td><td class="num">€289</td></tr>
-          <tr><td>Online store core features (catalogue, cart, ordering, payments)</td><td class="num">€599</td></tr>
-          <tr><td>Customer accounts and registration</td><td class="num">€299</td></tr>
-          <tr><td>Product filters and sorting</td><td class="num">€169</td></tr>
-          <tr><td>Discount module</td><td class="num">€69</td></tr>
-          <tr><td>Homepage slideshow</td><td class="num">€45</td></tr>
-          <tr><td>Multi-language support</td><td class="num">€42</td></tr>
-          <tr><td>Blog / news section</td><td class="num">€42</td></tr>
-          <tr><td>Reviews section</td><td class="num">€42</td></tr>
-          <tr><td>Survey</td><td class="num">€42</td></tr>
-          <tr><td>On-site search</td><td class="num">€42</td></tr>
-          <tr><td>Video gallery</td><td class="num">€39</td></tr>
-          <tr><td>Photo gallery</td><td class="num">€35</td></tr>
-          <tr><td>Newsletter sign-up</td><td class="num">€35</td></tr>
-          <tr><td>Contact form</td><td class="num">€25</td></tr>
-          <tr><td>Social media integration</td><td class="num">€25</td></tr>
-          <tr><td>Sitemap</td><td class="num">€25</td></tr>
+          <tr data-k="ad-logo"><td>Logo design (3 options)</td><td class="num">€289</td></tr>
+          <tr data-k="ad-shop"><td>Online store core features (catalogue, cart, ordering, payments)</td><td class="num">€599</td></tr>
+          <tr data-k="ad-accounts"><td>Customer accounts and registration</td><td class="num">€299</td></tr>
+          <tr data-k="ad-filters"><td>Product filters and sorting</td><td class="num">€169</td></tr>
+          <tr data-k="ad-discount"><td>Discount module</td><td class="num">€69</td></tr>
+          <tr data-k="ad-slider"><td>Homepage slideshow</td><td class="num">€45</td></tr>
+          <tr data-k="ad-lang"><td>Multi-language support</td><td class="num">€42</td></tr>
+          <tr data-k="ad-blog"><td>Blog / news section</td><td class="num">€42</td></tr>
+          <tr data-k="ad-reviews"><td>Reviews section</td><td class="num">€42</td></tr>
+          <tr data-k="ad-survey"><td>Survey</td><td class="num">€42</td></tr>
+          <tr data-k="ad-search"><td>On-site search</td><td class="num">€42</td></tr>
+          <tr data-k="ad-video"><td>Video gallery</td><td class="num">€39</td></tr>
+          <tr data-k="ad-photo"><td>Photo gallery</td><td class="num">€35</td></tr>
+          <tr data-k="ad-news"><td>Newsletter sign-up</td><td class="num">€35</td></tr>
+          <tr data-k="ad-form"><td>Contact form</td><td class="num">€25</td></tr>
+          <tr data-k="ad-social"><td>Social media integration</td><td class="num">€25</td></tr>
+          <tr data-k="ad-sitemap"><td>Sitemap</td><td class="num">€25</td></tr>
         </tbody>
       </table>
     </div>
@@ -196,10 +207,10 @@
       <table class="table">
         <thead><tr><th>Item</th><th class="num">Price</th></tr></thead>
         <tbody>
-          <tr><td>Hosting and maintenance — website</td><td class="num">€10/month</td></tr>
-          <tr><td>Hosting and maintenance — online store</td><td class="num">€15/month</td></tr>
-          <tr><td>Domain registration (.lv)</td><td class="num">€20/year</td></tr>
-          <tr><td>Edits and changes after hand-over</td><td class="num">€25/h</td></tr>
+          <tr data-k="run-host"><td>Hosting and maintenance — website</td><td class="num">€10/month</td></tr>
+          <tr data-k="run-shop"><td>Hosting and maintenance — online store</td><td class="num">€15/month</td></tr>
+          <tr data-k="run-domain"><td>Domain registration (.lv)</td><td class="num">€20/year</td></tr>
+          <tr data-k="run-hour"><td>Edits and changes after hand-over</td><td class="num">€25/h</td></tr>
         </tbody>
       </table>
     </div>
@@ -231,6 +242,19 @@
       <p class="small" style="margin-top:1.25rem"><a class="text-link" href="/en/blogs/how-much-does-a-website-cost/">How much does a website cost in 2026: a detailed explanation</a></p>
     </div>
   </div>
+  <div class="container">
+    <div class="ix-f" id="ix-f" hidden data-nosnippet>
+      <p class="ix-f__title">Try it: what each factor adds to the price list</p>
+      <p class="ix-f__intro">Switch a factor on to see which price-list lines it adds. The amounts come only from the tables above.</p>
+      <div class="ix-f__grid">
+        <fieldset class="ix-f__grp" data-single="1"><legend>Package type</legend><div class="ix-f__btns"><button type="button" class="ix-f__btn" data-k="pkg-card" aria-pressed="false"><span>One-page site</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="pkg-biz" aria-pressed="false"><span>Business website</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="pkg-shop" aria-pressed="false"><span>Online store</span><b data-ix="p"></b></button></div></fieldset>
+        <fieldset class="ix-f__grp" data-single="0"><legend>Add-ons</legend><div class="ix-f__btns"><button type="button" class="ix-f__btn" data-k="ad-lang" aria-pressed="false"><span>Languages</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="ad-blog" aria-pressed="false"><span>Blog</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="ad-filters" aria-pressed="false"><span>Filters</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="ad-accounts" aria-pressed="false"><span>Customer accounts</span><b data-ix="p"></b></button></div></fieldset>
+        <fieldset class="ix-f__grp" data-single="0"><legend>Scope of work (SEO)</legend><div class="ix-f__btns"><button type="button" class="ix-f__btn" data-k="seo-video" aria-pressed="false"><span>Video audit</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="seo-audit" aria-pressed="false"><span>SEO audit</span><b data-ix="p"></b></button><button type="button" class="ix-f__btn" data-k="seo-month" aria-pressed="false"><span>Monthly SEO</span><b data-ix="p"></b></button></div></fieldset>
+      </div>
+      <div class="ix-f__out" aria-live="polite"><ul class="ix-f__list" data-ix="flist"></ul><dl class="ix-f__tot" data-ix="ftot"></dl><button type="button" class="btn btn--ghost" data-ix="fadd">Add to my estimate</button></div>
+      <p class="ix-f__note">Website size and niche competition have no separate line in the price list: for SEO I send the exact amount after a call or an audit.</p>
+    </div>
+  </div>
 </section>
 
 <section class="section section--white" aria-labelledby="faq-title">
@@ -259,3 +283,5 @@
     <div class="form-panel">{{form:price|Pricing page}}</div>
   </div>
 </section>
+
+<script src="/js/ix-cenas.js" defer></script>
