@@ -73,3 +73,4 @@
 .section--ink .build__hint{color:var(--on-ink-muted)}
 .section--ink .steps.is-scrub li:not(.is-on){border-top-color:rgba(255,255,255,.3);color:var(--on-ink-muted)}
 .section--ink .steps.is-scrub li.is-on{border-top-color:var(--ix-signal,#F2683F);color:var(--on-ink)}
+@media (max-width:640px){.build .b-live text{display:none}}

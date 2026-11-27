@@ -26,12 +26,12 @@
 .pf.is-bp .pf__scan{left:100%}
 .pf.is-scan .pf__scan{opacity:1}
 .pf__box{position:absolute;border:1px dashed var(--ix-marker,#FFC65C);background:rgba(255,198,92,.07)}
-.pf__note{position:absolute;left:-1px;top:-1px;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.6875rem;line-height:1.2;color:var(--ix-night,#10243A);background:var(--ix-marker,#FFC65C);padding:.1rem .35rem;white-space:nowrap}
+.pf__note{position:absolute;left:-1px;top:-1px;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.75rem;line-height:1.2;color:var(--ix-night,#10243A);background:var(--ix-marker,#FFC65C);padding:.1rem .35rem;white-space:nowrap}
 .pf__dim{position:absolute;left:3%;right:3%;height:0;border-top:1px solid var(--ix-signal,#F2683F)}
 .pf__dim::before,.pf__dim::after{content:"";position:absolute;top:-6px;height:12px;border-left:1px solid var(--ix-signal,#F2683F)}
 .pf__dim::before{left:0}
 .pf__dim::after{right:0}
-.pf__dim span{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.6875rem;line-height:1.2;color:var(--ix-ink-on,#EEF3F8);background:var(--ix-night,#10243A);padding:0 .35rem;white-space:nowrap}
+.pf__dim span{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.75rem;line-height:1.2;color:var(--ix-ink-on,#EEF3F8);background:var(--ix-night,#10243A);padding:0 .35rem;white-space:nowrap}
 /* boxes draw themselves once the sweep passes */
 .pf.is-bp .pf__box{animation:ix-pf-box .5s .3s cubic-bezier(.2,.8,.2,1) backwards}
 .pf.is-bp .pf__box:nth-child(2){animation-delay:.45s}
