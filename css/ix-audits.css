@@ -1,0 +1,28 @@
+/* Bezmaksas audits — "Trīs soļi" kā pārslēdzams celiņš ar rasējuma ilustrācijām */
+.ax{margin-top:var(--sp-xl);max-width:640px}
+.ax[hidden]{display:none}
+.ax__track{position:relative;display:flex;justify-content:space-between;max-width:420px}
+.ax__line{position:absolute;left:22px;right:22px;top:50%;height:1px;border-top:1px dashed var(--on-ink-muted);pointer-events:none}
+.ax__line i{position:absolute;left:0;top:-2px;height:3px;width:calc(var(--p,0)*1%);background:#9FCDB3;transition:width .3s var(--ease)}
+.ax__n{position:relative;width:44px;height:44px;border:1px solid var(--on-ink-muted);background:var(--ink);color:var(--on-ink);font:500 var(--fs-sm)/1 var(--ff-mono);cursor:pointer;padding:0}
+.ax__n[aria-current=step]{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
+.ax__n.is-past{border-color:#9FCDB3;color:#9FCDB3}
+.ax__n:focus-visible,.ax__next:focus-visible{outline:3px solid #9FCDB3;outline-offset:3px}
+.ax__fig{margin:var(--sp-md) 0 0;border:1px solid var(--on-ink-muted)}
+.ax__svg{display:block;width:100%;height:auto;aspect-ratio:2/1}
+.ax__fig figcaption{border-top:1px solid #2A3A30;padding:.35rem .6rem;font:var(--fs-xs)/1.2 var(--ff-mono);color:var(--on-ink-muted)}
+.ax__svg .b{fill:none;stroke:var(--on-ink-muted);stroke-dasharray:4 3}
+.ax__svg .l{fill:none;stroke:var(--on-ink-muted);stroke-width:2}
+.ax__svg .s{fill:none;stroke:#9FCDB3;stroke-width:1.5}
+.ax__svg .t{font:500 10px var(--ff-mono);fill:var(--on-ink-muted)}
+.ax__svg .t.v{fill:var(--on-ink)}
+.ax__svg .t.big{font-size:30px;fill:#9FCDB3;font-family:var(--ff-heading);font-weight:600}
+.ax__g{opacity:0;visibility:hidden;transition:opacity .25s ease}
+.ax__g.is-cur{opacity:1;visibility:visible}
+.ax__svg .ph{transition:transform .9s var(--ease);transform:translateX(0)}
+.ax__g.is-cur .ph{transform:translateX(280px)}
+.ax__next{margin-top:var(--sp-sm);min-height:44px;padding:.5rem 1.1rem;background:transparent;color:var(--on-ink);border:1px solid var(--on-ink);font:500 var(--fs-sm)/1.2 var(--ff-body);cursor:pointer}
+.ax__next:hover{background:var(--on-ink);color:var(--ink)}
+.ax-on .steps li.is-cur{border-top-color:#9FCDB3}
+.ax-on .steps li.is-cur strong{color:#9FCDB3}
+@media (prefers-reduced-motion:reduce){.ax__g,.ax__line i,.ax__svg .ph{transition:none}}

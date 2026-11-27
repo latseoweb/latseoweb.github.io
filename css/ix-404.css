@@ -1,0 +1,27 @@
+/* 404 — rasējuma puzle: salikt lapu no pārvietojamiem gabaliem */
+.pz{margin:var(--sp-md) auto var(--sp-lg);max-width:520px;text-align:left}
+.pz[hidden]{display:none}
+.pz__cap{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--ink);padding-bottom:.4rem;margin-bottom:.6rem;font-family:var(--ff-mono);font-size:var(--fs-xs)}
+.pz__cap span:last-child{color:var(--muted)}
+.pz__stage{position:relative;aspect-ratio:16/10;border:1px solid var(--ink);overflow:hidden;user-select:none;-webkit-user-select:none;
+  background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0V24' fill='none' stroke='%23DDE3E0'/%3E%3C/svg%3E") #FAFBFA}
+.pz__slot,.pz__pc{position:absolute;box-sizing:border-box;left:calc(var(--x)*1%);top:calc(var(--y)*1%);width:calc(var(--w)*1%);height:calc(var(--h)*1%)}
+.pz__slot{border:1px dashed var(--line-strong)}
+.pz__pc{border:1px dashed var(--ink);background:var(--paper);color:var(--ink);cursor:grab;touch-action:none;z-index:1;overflow:hidden}
+.pz__pc:active{cursor:grabbing}
+.pz__pc.is-drag{z-index:3;border-style:solid}
+.pz__pc.is-set{border:1px solid var(--accent);cursor:default;touch-action:auto;z-index:0;transition:left .2s var(--ease),top .2s var(--ease)}
+.pz__pc svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pz__pc .l{fill:none;stroke:var(--muted);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.pz__pc .f{fill:var(--ink)}
+.pz__pc .d{fill:none;stroke:var(--line-strong);vector-effect:non-scaling-stroke}
+.pz__pc em{position:absolute;left:4px;top:2px;font:500 10px/1 var(--ff-mono);font-style:normal;color:var(--accent-ink);background:var(--paper);padding:1px 3px}
+.pz__pc[data-k=btn]{background:var(--ink)}
+.pz__pc[data-k=btn] em{inset:0;left:0;top:0;display:flex;align-items:center;justify-content:center;background:none;color:var(--on-ink);padding:0}
+.pz__btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.pz__btns button{min-height:44px;padding:.4rem .8rem;background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:500 var(--fs-xs)/1.2 var(--ff-mono);cursor:pointer}
+.pz__btns button[aria-pressed=true]{background:var(--ink);color:var(--on-ink)}
+.pz__btns button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.pz__msg{margin:.75rem 0 0;min-height:2.6em;font-family:var(--ff-mono);font-size:var(--fs-sm);border-left:2px solid var(--accent);padding-left:.75rem}
+@media (prefers-reduced-motion:reduce){.pz__pc.is-set{transition:none}}
