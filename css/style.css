@@ -216,6 +216,43 @@ strong{color:var(--ink);font-weight:600}
 .hero__stat-value{font-family:var(--ff-heading);font-size:var(--fs-xl);font-weight:600;color:var(--ink)}
 .hero__stat-label{font-size:var(--fs-xs);color:var(--muted);margin-top:.15rem;max-width:18ch}
 
+/* hero: blueprint -> website slider, full container width */
+.hero--build .hero__grid{grid-template-columns:1.15fr .85fr;grid-template-areas:"title desc" "title actions" "title meta" "build build" "stats stats";column-gap:clamp(2rem,5vw,4.5rem);row-gap:0;align-items:end}
+.hero--build .hero__content{display:contents}
+.hero--build .hero__title{grid-area:title;margin:0;font-size:clamp(2.6rem,1.2rem + 3.6vw,4.4rem);line-height:1.02}
+.hero--build .hero__description{grid-area:desc}
+.hero--build .hero__actions{grid-area:actions}
+.hero--build .hero__meta{grid-area:meta}
+.hero--build .build{grid-area:build;margin:var(--sp-xl) 0 0}
+.hero--build .hero__stats{grid-area:stats}
+.build__stage{position:relative;aspect-ratio:16/10;overflow:hidden;outline:1px solid var(--line-strong);outline-offset:-1px;background:var(--paper-2);touch-action:pan-y}
+.build__site{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.build__plan{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.build__plan svg{display:block;width:100%;height:100%}
+.bp-paper{fill:#FBFCFB}
+.bp-gridline{fill:none;stroke:#E3E8E5;stroke-width:1}
+.bp-ink{fill:none;stroke:var(--ink);stroke-width:1.5}
+.bp-ink .bp-fill{fill:var(--accent-soft)}
+.bp-ink .bp-dash{stroke-dasharray:6 5;stroke-width:1.2}
+.bp-ink .bp-thin{stroke-width:1}
+.bp-ann{fill:none;stroke:var(--accent);stroke-width:1.2}
+.bp-ann text,.bp-titleblock text{fill:var(--accent-ink);stroke:none;font-family:var(--ff-body);font-size:14px}
+.bp-titleblock{fill:#FBFCFB;stroke:var(--ink);stroke-width:1.2}
+.bp-titleblock text{fill:var(--ink);font-size:12px}
+.build__handle{position:absolute;top:0;bottom:0;left:var(--pos);width:0;pointer-events:none}
+.build__handle::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:var(--accent)}
+.build__handle span{position:absolute;top:50%;left:-22px;width:44px;height:44px;margin-top:-22px;background:var(--accent);display:grid;place-items:center}
+.build__handle span::before{content:"";width:6px;height:14px;border-left:2px solid #fff;border-right:2px solid #fff}
+.build__tag{position:absolute;top:.75rem;padding:.3rem .6rem;font-size:var(--fs-xs);font-weight:600;background:var(--paper);color:var(--ink);pointer-events:none}
+.build__tag--plan{left:.75rem}
+.build__tag--site{right:.75rem}
+.build__range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none}
+.build:has(.build__range:focus-visible) .build__handle span{outline:3px solid var(--ink);outline-offset:2px}
+.build figcaption{display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:baseline;justify-content:space-between;padding-top:.75rem;font-size:var(--fs-sm);color:var(--muted)}
+.build figcaption strong{font-family:var(--ff-heading);font-size:var(--fs-lg);color:var(--accent);margin-right:.35rem}
+.hero--build .hero__stats{margin-top:var(--sp-lg)}
+@media (max-width:1000px){.hero--build .hero__grid{grid-template-columns:1fr;grid-template-areas:"title" "desc" "actions" "meta" "build" "stats"}.hero--build .hero__title{margin-bottom:var(--sp-md)}}
+
 /* hero screenshot: one real project, plain frame, caption below */
 .hero-shot{margin:0}
 .hero-shot img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;outline:1px solid var(--line-strong);outline-offset:-1px}
@@ -561,6 +598,16 @@ html.has-consent-bar .floating-ctas{display:none}
 }
 /* mobile: the screenshot with the click numbers comes right after the buttons, before the stats row (SXO audit 2026-11) */
 @media (max-width:767px){
+  .hero--build .hero__grid{display:flex;flex-direction:column;gap:0}
+  .hero--build .hero__title{order:1;margin-bottom:var(--sp-md)}
+  .hero--build .hero__description{order:2}
+  .hero--build .hero__actions{order:3}
+  .hero--build .build{order:4;margin-top:var(--sp-lg)}
+  .hero--build .hero__meta{order:5}
+  .hero--build .hero__stats{order:6}
+  .bp-ann text{font-size:30px}
+  .bp-ann .ann--minor,.bp-titleblock{display:none}
+  .build__hint{display:none}
   .hero__grid:has(.hero-shot){display:flex;flex-direction:column;gap:0}
   .hero__grid:has(.hero-shot) .hero__content{display:contents}
   .hero__grid:has(.hero-shot) .hero__title{order:1}
