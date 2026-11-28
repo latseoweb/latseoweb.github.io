@@ -82,18 +82,6 @@
     btn.hidden = false;
     set(false, false);
     btn.addEventListener('click', function () { set(btn.getAttribute('aria-pressed') !== 'true', true); });
-    var tl = 0;
-    function tilt(e) {
-      if (calm || !(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) || tl) return;
-      tl = requestAnimationFrame(function () {
-        tl = 0; var r = root.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-        root.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); root.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-        root.classList.add('is-hot');
-        wrap.style.transform = 'perspective(1200px) rotateY(' + ((x - 0.5) * 5).toFixed(2) + 'deg) rotateX(' + ((0.5 - y) * 3).toFixed(2) + 'deg)';
-      });
-    }
-    root.addEventListener('pointermove', tilt);
-    root.addEventListener('pointerleave', function () { root.classList.remove('is-hot'); wrap.style.transform = ''; });
   });
 
   /* nolūka izvēle -> lapas veids un bloki (ilustrācija; teksts jau ir HTML) */
