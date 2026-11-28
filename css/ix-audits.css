@@ -1,29 +1,25 @@
-/* Bezmaksas audits — "Trīs soļi" kā nakts kadru lente: sprocket caurumi, kadru skaitītājs, rasējumi zīmējas paši */
-.ax{--n:var(--ix-night,#10243A);--ln:var(--ix-line,#93B4D3);--sig:var(--ix-signal,#F2683F);--mk:var(--ix-marker,#FFC65C);--mint:var(--ix-mint,#86C98E);--on:var(--ix-ink-on,#EEF3F8);
-  margin-top:var(--sp-xl);max-width:640px;padding:1rem 1rem 1.1rem;border:1px solid rgba(147,180,211,.32);
-  background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/22px 22px,var(--n);
-  transform:perspective(900px) rotateX(var(--ix-rx,0deg)) rotateY(var(--ix-ry,0deg));transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+/* Bezmaksas audits: "Trīs soļi" kā parasts soļu rādītājs ar zīmējumu, kas uzzīmējas pats (js/ix-audits.js) */
+.ax{--n:var(--ix-night);--ln:var(--ix-line);--sig:var(--ix-signal);--mk:var(--ix-marker);--mint:var(--ix-mint);--on:var(--ix-ink-on);
+  margin-top:var(--sp-xl);max-width:640px;padding:1rem 1rem 1.1rem;border:1px solid var(--line);background:var(--n)}
 .ax[hidden]{display:none}
 .ax__track{position:relative;display:flex;justify-content:space-between;max-width:420px}
-.ax__line{position:absolute;left:22px;right:22px;top:50%;height:1px;border-top:1px dashed var(--ln);pointer-events:none}
-.ax__line i{position:absolute;left:0;top:-3px;height:5px;width:calc(var(--p,0)*1%);background:var(--mint);box-shadow:0 0 10px rgba(134,201,142,.6);transition:width .6s cubic-bezier(.34,1.3,.64,1)}
-.ax__n{position:relative;width:44px;height:44px;border:1.5px solid var(--ln);background:var(--n);color:var(--on);font:500 var(--fs-sm)/1 var(--ff-mono);cursor:pointer;padding:0;transition:transform .4s cubic-bezier(.34,1.8,.64,1),background-color .25s,color .25s,border-color .25s}
-.ax__n:hover{border-color:var(--on)}
-.ax__n[aria-current=step]{background:var(--mk);color:var(--n);border-color:var(--mk);transform:scale(1.14);box-shadow:0 0 0 5px rgba(255,198,92,.2)}
+.ax__line{position:absolute;left:22px;right:22px;top:50%;height:1px;border-top:1px solid var(--ln);pointer-events:none}
+.ax__line i{position:absolute;left:0;top:-2px;height:3px;width:calc(var(--p,0)*1%);background:var(--mint);transition:width .6s cubic-bezier(.34,1.3,.64,1)}
+.ax__n{position:relative;width:44px;height:44px;border:1px solid var(--ln);border-radius:50%;background:var(--ix-night-2);color:var(--ink);font:500 var(--fs-sm)/1 var(--ff-mono);cursor:pointer;padding:0;transition:transform .4s cubic-bezier(.34,1.8,.64,1),background-color .25s,color .25s,border-color .25s}
+.ax__n:hover{border-color:var(--accent)}
+.ax__n[aria-current=step]{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.1)}
 .ax__n.is-past{border-color:var(--mint);color:var(--mint)}
-.ax__n:focus-visible,.ax__next:focus-visible{outline:3px solid var(--on);outline-offset:3px}
-.ax__fig{position:relative;margin:var(--sp-md) 0 0;padding:14px 12px;border:1px solid rgba(147,180,211,.45);background:
-  repeating-linear-gradient(90deg,rgba(234,242,250,.2) 0 10px,transparent 10px 22px) 0 3px/100% 7px no-repeat,
-  repeating-linear-gradient(90deg,rgba(234,242,250,.2) 0 10px,transparent 10px 22px) 0 calc(100% - 3px)/100% 7px no-repeat,rgba(6,18,31,.7)}
-.ax__fig::before{content:"KADRS " attr(data-f) " / 03";position:absolute;right:14px;top:16px;font:.6875rem/1 var(--ff-mono);letter-spacing:.06em;color:var(--mk);z-index:1}
+.ax__n:focus-visible,.ax__next:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.ax__fig{position:relative;margin:var(--sp-md) 0 0;padding:14px 12px;border:1px solid var(--line);background:var(--ix-night-2)}
+.ax__fig::before{content:"SOLIS " attr(data-f) " / 03";position:absolute;right:14px;top:16px;font:.6875rem/1 var(--ff-mono);letter-spacing:.06em;color:var(--muted);z-index:1}
 .ax__svg{display:block;width:100%;height:auto;aspect-ratio:2/1}
-.ax__fig figcaption{margin:0 -12px -14px;padding:.45rem .8rem .55rem;border-top:1px solid rgba(147,180,211,.3);font:var(--fs-xs)/1.2 var(--ff-mono);color:var(--ln)}
+.ax__fig figcaption{margin:0 -12px -14px;padding:.45rem .8rem .55rem;border-top:1px solid var(--line);font:var(--fs-xs)/1.2 var(--ff-mono);color:var(--muted)}
 .ax__svg .b{fill:none;stroke:var(--ln);stroke-dasharray:4 3}
-.ax__svg .l{fill:none;stroke:var(--on);stroke-width:2}
+.ax__svg .l{fill:none;stroke:var(--ink);stroke-width:2}
 .ax__svg .s{fill:none;stroke:var(--mint);stroke-width:1.75}
-.ax__svg .t{font:500 10px var(--ff-mono);fill:var(--ln)}
-.ax__svg .t.v{fill:var(--on)}
-.ax__svg .t.big{font-size:30px;fill:var(--mk);font-family:var(--ff-heading);font-weight:600}
+.ax__svg .t{font:500 10px var(--ff-mono);fill:var(--muted)}
+.ax__svg .t.v{fill:var(--ink)}
+.ax__svg .t.big{font-size:30px;fill:var(--ix-marker-ink);font-family:var(--ff-heading);font-weight:600}
 .ax__g{opacity:0;visibility:hidden;transform:translateX(26px);transition:opacity .3s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
 .ax__g.is-cur{opacity:1;visibility:visible;transform:none}
 .ax__g.is-cur .b,.ax__g.is-cur .l,.ax__g.is-cur .s{animation:ax-draw .9s var(--d,0s) cubic-bezier(.4,.1,.2,1) backwards}
@@ -34,50 +30,45 @@
 @keyframes ax-draw{0%{stroke-dasharray:var(--len,300);stroke-dashoffset:var(--len,300)}98%{stroke-dasharray:var(--len,300);stroke-dashoffset:0}100%{stroke-dashoffset:0}}
 @keyframes ax-fade{from{opacity:0;transform:translateY(3px)}}
 @keyframes ax-big{from{opacity:0;transform:scale(.4)}}
-.ax__next{margin-top:var(--sp-sm);min-height:44px;padding:.5rem 1.1rem;background:transparent;color:var(--on);border:1.5px solid var(--on);font:500 var(--fs-sm)/1.2 var(--ff-body);cursor:pointer;transition:background-color .2s,color .2s,transform .3s cubic-bezier(.34,1.8,.64,1)}
-.ax__next:hover{background:var(--mk);border-color:var(--mk);color:var(--n)}
+.ax__next{margin-top:var(--sp-sm);min-height:44px;padding:.5rem 1.1rem;background:var(--ix-night-2);color:var(--ink);border:1px solid var(--line-strong);font:500 var(--fs-sm)/1.2 var(--ff-body);cursor:pointer;transition:background-color .2s,color .2s,transform .3s cubic-bezier(.34,1.8,.64,1)}
+.ax__next:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .ax__next:active{transform:scale(.95)}
-.ax-on .steps li.is-cur{border-top-color:var(--ix-mint,#86C98E)}
-.ax-on .steps li.is-cur strong{color:var(--ix-mint,#86C98E)}
+.ax-on .steps li.is-cur{border-top-color:var(--ix-mint)}
+.ax-on .steps li.is-cur strong{color:var(--ix-mint)}
 
-/* ---------- soļu josla: krēslas ūdens (nevis melna), soļi pa kreisi, kadru lente pa labi ---------- */
-.ax-sec{background-color:var(--ix-night);color:var(--ix-muted-on);
-  background-image:linear-gradient(var(--ix-grid) 1px,transparent 1px),linear-gradient(90deg,var(--ix-grid) 1px,transparent 1px);
-  background-size:var(--ix-major) var(--ix-major);background-position:-1px -1px}
+/* ---------- soļu josla: soļi pa kreisi, zīmējums pa labi ---------- */
+.ax-sec{background-color:var(--ix-night);color:var(--ix-muted-on)}
 .ax-sec .section__title{color:var(--ix-ink-on)}
-.ax-sec .ax{background:var(--ix-night-2);border-color:rgba(147,180,211,.38);margin-top:0;max-width:none}
-.ax-sec .ax__fig{background:
-  repeating-linear-gradient(90deg,rgba(234,242,250,.2) 0 10px,transparent 10px 22px) 0 3px/100% 7px no-repeat,
-  repeating-linear-gradient(90deg,rgba(234,242,250,.2) 0 10px,transparent 10px 22px) 0 calc(100% - 3px)/100% 7px no-repeat,var(--ix-night)}
+.ax-sec .ax{background:var(--ix-night-2);margin-top:0;max-width:none}
+.ax-sec .ax__fig{background:var(--ix-night)}
 .ax__svg .t.sb{fill:var(--ix-mint)}
 .ax-wrap{display:grid;gap:var(--sp-lg)}
 @media (min-width:900px){
   .ax-wrap{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--sp-xl);align-items:start}
   .ax-sec.ax-on .steps--row{grid-auto-flow:row;gap:0}
-  .ax-sec.ax-on .steps--row li{padding:1.1rem 0 1.2rem 3.25rem;border-top:1px solid rgba(147,180,211,.3);transition:background-color .25s}
-  .ax-sec.ax-on .steps--row li:last-child{border-bottom:1px solid rgba(147,180,211,.3)}
+  .ax-sec.ax-on .steps--row li{padding:1.1rem 0 1.2rem 3.25rem;border-top:1px solid var(--line);transition:background-color .25s}
+  .ax-sec.ax-on .steps--row li:last-child{border-bottom:1px solid var(--line)}
   .ax-sec.ax-on .steps--row li::before{top:1.2rem;left:.9rem}
 }
 .ax-sec .steps li{color:var(--ix-muted-on)}
 .ax-sec .steps strong{color:var(--ix-ink-on)}
-.ax-sec .steps li::before{color:var(--ix-line)}
-.ax-sec.ax-on .steps li:hover{background:rgba(147,180,211,.06)}
-.ax-sec.ax-on .steps li.is-cur{border-top-color:var(--ix-marker);box-shadow:inset 3px 0 0 var(--ix-marker);background:rgba(255,198,92,.06)}
-.ax-sec.ax-on .steps li.is-cur strong,.ax-sec.ax-on .steps li.is-cur::before{color:var(--ix-marker)}
+.ax-sec .steps li::before{color:var(--muted)}
+.ax-sec.ax-on .steps li:hover{background:var(--ix-night-2)}
+.ax-sec.ax-on .steps li.is-cur{border-top-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent);background:var(--ix-night-2)}
+.ax-sec.ax-on .steps li.is-cur strong,.ax-sec.ax-on .steps li.is-cur::before{color:var(--accent)}
 @media (max-width:899px){.ax-sec.ax-on .steps li.is-cur{box-shadow:none}}
 
 /* ---------- atradumi paša lapā: skaitļi ar avotu ---------- */
 #who-title{font-size:var(--fs-xl)}
 .af-src{margin:-.35rem 0 .9rem;font-family:var(--ff-mono);font-size:var(--fs-xs);color:var(--muted)}
-.af{list-style:none;margin:0;padding:0;border-top:2px solid var(--ix-night)}
+.af{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
 .af li{display:grid;grid-template-columns:6.5rem 1fr;column-gap:1rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--line)}
 .af__n{font-family:var(--ff-heading);font-weight:600;font-size:var(--fs-2xl);line-height:1;color:var(--ix-signal);font-variant-numeric:tabular-nums;white-space:nowrap}
 .af__n small{font-size:.45em;font-weight:500;color:var(--muted);margin-left:.1em}
 .af li>span{color:var(--ink-2)}
 .af__grid{grid-column:2;display:grid;grid-template-columns:repeat(20,1fr);gap:3px;max-width:300px;margin-top:.55rem}
 .af__grid span{aspect-ratio:1;border:1px solid var(--ix-signal)}
-.af__grid span.on{background:var(--ix-night);border-color:var(--ix-night)}
+.af__grid span.on{background:var(--ink);border-color:var(--ink)}
 @media (max-width:480px){.af li{grid-template-columns:5rem 1fr}}
-.ax-sec .steps--row li{border-top-color:rgba(147,180,211,.35)}
 @media (max-width:480px){.ax__svg .t{font:500 15px var(--ff-body)}.ax__svg .t.big{font-size:34px}.ax__fig::before{font-size:.75rem}.ax-sec .ax__fig{padding:12px 8px}.ax-sec .ax__fig figcaption{margin:0 -8px -12px}}
 @media (prefers-reduced-motion:reduce){.ax,.ax__g,.ax__line i,.ax__svg .ph,.ax__n{transition:none}.ax__g.is-cur .b,.ax__g.is-cur .l,.ax__g.is-cur .s,.ax__g.is-cur .t{animation:none}}

@@ -17,15 +17,6 @@
         if (e.getTotalLength) { try { e.style.setProperty('--len', Math.ceil(e.getTotalLength()) + ''); } catch (x) { e.style.setProperty('--len', '400'); } }
       });
     });
-    ax.setAttribute('data-ix-tilt', '');
-    if (window.IX && typeof window.IX.tilt === 'function') window.IX.tilt(ax);
-    else if (matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      ax.addEventListener('pointermove', function (e) {
-        var r = ax.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-        ax.style.setProperty('--ix-rx', (-y * 3).toFixed(2) + 'deg'); ax.style.setProperty('--ix-ry', (x * 4).toFixed(2) + 'deg');
-      });
-      ax.addEventListener('pointerleave', function () { ax.style.setProperty('--ix-rx', '0deg'); ax.style.setProperty('--ix-ry', '0deg'); });
-    }
     function go(i, focus) {
       cur = i;
       ns.forEach(function (n, k) {
