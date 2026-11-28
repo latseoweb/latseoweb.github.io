@@ -29,7 +29,7 @@
         d.__a = a;
         a.onfinish = function () {
           if (mode !== m) return;
-          var ring = mk('circle', 'ring', { cx: end, cy: 47, r: 6, stroke: m ? 'var(--ix-mint,#86C98E)' : 'var(--ix-signal,#F2683F)' });
+          var ring = mk('circle', 'ring', { cx: end, cy: 47, r: 6, stroke: m ? 'var(--ix-mint)' : 'var(--ix-signal)' });
           ring.__a = ring.animate([{ transform: 'scale(.6)', opacity: 1 }, { transform: 'scale(2.8)', opacity: 0 }], { duration: 600, easing: 'ease-out' });
           ring.style.transformBox = 'fill-box'; ring.style.transformOrigin = 'center';
           flash(m ? yesRects[yesRects.length - 1] : node404, m ? 'hit-yes' : 'hit-no');
