@@ -44,6 +44,13 @@
     if (ts.loading) return ts.loading;
     ts.loading = new Promise(function (resolve, reject) {
       if (window.turnstile) return resolve(window.turnstile);
+      var ex = document.querySelector('script[src*="challenges.cloudflare.com/turnstile"]');
+      if (ex) {
+        var t0 = Date.now();
+        (function wait() { if (window.turnstile) return resolve(window.turnstile); if (Date.now() - t0 > 10000) { ts.loading = null; return reject(new Error("turnstile")); } setTimeout(wait, 100); })();
+        ex.addEventListener("error", function () { ts.loading = null; reject(new Error("turnstile")); });
+        return;
+      }
       window.latseoIxCheckReady = function () { resolve(window.turnstile); };
       var s = document.createElement("script");
       s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=latseoIxCheckReady";
