@@ -9,16 +9,20 @@
    Contrast on --ix-night (WCAG): ink-on 14.1, muted-on 8.1, line 7.3, marker 10.1, mint 8.1, signal 5.1;
    night text on signal 5.1 (so active chips use night text, not white); signal on white 3.1 (UI/large only). */
 :root{
-  --ix-night:#10243A;     /* dusk water */
-  --ix-night-2:#1B3753;   /* raised surface: shallower water */
-  --ix-line:#93B4D3;      /* reflected sky: blueprint line */
-  --ix-grid:rgba(147,180,211,.16);
-  --ix-grid-hot:rgba(147,180,211,.42);
-  --ix-signal:#F2683F;    /* sunset ember */
-  --ix-marker:#FFC65C;    /* amber light */
-  --ix-mint:#86C98E;      /* young leaf / moss: pass, after */
-  --ix-ink-on:#EEF3F8;    /* moonlit white */
-  --ix-muted-on:#A9BDD0;
+  /* "plain" pass (owner: the checkered blue backgrounds read as AI slop): instruments are calm light panels.
+     Token NAMES are kept for compatibility; values are now light. No grid paper anywhere. */
+  --ix-night:#F4F6F5;     /* instrument surface: light neutral, slightly green-grey like the brand */
+  --ix-night-2:#FFFFFF;   /* raised surface (cards, inputs) */
+  --ix-line:#B7C0BB;      /* drawing / border line */
+  --ix-grid:transparent;
+  --ix-grid-hot:transparent;
+  --ix-signal:#C8502A;    /* ember: the thing you drag / warnings (UI, large text) */
+  --ix-marker:#D99A2B;    /* amber for graphics (bars, dots, rulers) */
+  --ix-marker-ink:#7A4B00;/* amber-brown for measured values as text (AA on light) */
+  --ix-hl:#FBE3B1;        /* highlighter background behind a value */
+  --ix-mint:#2E7D4F;      /* leaf green: pass / after (AA on light) */
+  --ix-ink-on:#121614;    /* text on panel */
+  --ix-muted-on:#5A6560;
   --ix-cell:24px;
   --ix-major:120px;
   --ix-spring:cubic-bezier(.34,1.56,.64,1);
@@ -32,30 +36,17 @@
 .ix-panel{
   --ix-mx:50%;--ix-my:50%;--ix-rx:0deg;--ix-ry:0deg;
   position:relative;isolation:isolate;color:var(--ix-ink-on);
-  background-color:var(--ix-night);
-  background-image:
-    linear-gradient(var(--ix-grid) 1px,transparent 1px),
-    linear-gradient(90deg,var(--ix-grid) 1px,transparent 1px),
-    linear-gradient(rgba(147,180,211,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(147,180,211,.07) 1px,transparent 1px);
-  background-size:var(--ix-major) var(--ix-major),var(--ix-major) var(--ix-major),var(--ix-cell) var(--ix-cell),var(--ix-cell) var(--ix-cell);
-  background-position:-1px -1px;
+  background:var(--ix-night);border:1px solid var(--line);
 }
-.ix-panel::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s var(--ix-out);
-  background-image:linear-gradient(var(--ix-grid-hot) 1px,transparent 1px),linear-gradient(90deg,var(--ix-grid-hot) 1px,transparent 1px);
-  background-size:var(--ix-cell) var(--ix-cell);background-position:-1px -1px;
-  -webkit-mask:radial-gradient(180px circle at var(--ix-mx) var(--ix-my),#000,transparent 70%);
-          mask:radial-gradient(180px circle at var(--ix-mx) var(--ix-my),#000,transparent 70%);
-}
-.ix-panel.is-lit::before{opacity:1}
+.ix-panel::before{content:none}
+
 .ix-panel :where(h2,h3,h4,strong){color:var(--ix-ink-on)}
 .ix-panel :where(p,li,small,figcaption){color:var(--ix-muted-on)}
 .ix-panel :where(a:not(.btn)){color:var(--ix-ink-on);text-decoration-color:var(--ix-line)}
 
 /* tilt (pointer, fine pointers only; values from ix-theme.js, max 5deg) */
-[data-ix-tilt]{transform:perspective(1100px) rotateX(var(--ix-rx,0deg)) rotateY(var(--ix-ry,0deg));transition:transform .6s var(--ix-spring);will-change:transform}
-[data-ix-tilt].is-tilting{transition:transform .12s linear}
+[data-ix-tilt]{transform:none!important}
+
 
 /* full-width night band for an instrument section; two bands in a row: the second goes white again */
 .ix-band{padding:var(--sp-2xl) 0}
@@ -67,7 +58,7 @@
 .ix-panel .ix-hint{color:var(--ix-line)}
 
 /* ---------- readout: a measured value ---------- */
-.ix-readout{font-family:var(--ff-mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink);background:linear-gradient(transparent 55%,rgba(255,198,92,.75) 55%);padding:0 .15em}
+.ix-readout{font-family:var(--ff-mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink);background:linear-gradient(transparent 55%,var(--ix-hl) 55%);padding:0 .15em}
 .ix-panel .ix-readout{color:var(--ix-marker);background:none;padding:0}
 .ix-readout--lg{font-size:var(--fs-2xl);line-height:1}
 
@@ -140,9 +131,9 @@ main p a:not(.btn):hover,main li a:not(.btn):hover{text-decoration-color:var(--i
 
 /* ---------- dark bands (.section--ink / --dark from style.css) take the dusk night, not near-black ----------
    Text tokens follow (ink-on 14.1:1, muted-on 8.1:1 on night). Instruments inside keep their own line frame. */
-.section--ink,.section--dark{--on-ink:var(--ix-ink-on);--on-ink-muted:var(--ix-muted-on);background:var(--ix-night);color:var(--ix-muted-on)}
-.section--ink .checklist li::before{background-color:var(--ix-night-2)}
-.section--ink .steps li::before{color:var(--ix-mint)}
-.section--ink :is(.btn--ghost,.btn--secondary){color:var(--ix-ink-on);border-color:rgba(147,180,211,.55)}
-.section--ink :is(.btn--ghost,.btn--secondary):hover{border-color:var(--ix-line);background:var(--ix-night-2)}
+
+
+
+
+
 .section--ink a:not(.btn){text-decoration-color:var(--ix-line)}
