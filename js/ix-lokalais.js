@@ -5,25 +5,6 @@
   var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   function el(n, a, p) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
 
-  /* viegls 3D slīpums + kursoram sekojošs izgaismojums uz režģa (nedublējas, ja to jau izdarījis kopīgais skripts) */
-  function glow(box, tilt) {
-    if (!box || box.getAttribute('data-ixl-fx') || box.hasAttribute('data-ix-tilt-on')) return;
-    box.setAttribute('data-ixl-fx', '1');
-    var down = false, raf = 0, rx = 0, ry = 0;
-    box.addEventListener('pointerdown', function () { down = true; });
-    window.addEventListener('pointerup', function () { down = false; });
-    box.addEventListener('pointermove', function (e) {
-      var r = box.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      box.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); box.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-      box.classList.add('is-hot');
-      if (tilt && !calm && fine && !down && !raf) raf = requestAnimationFrame(function () {
-        raf = 0; box.style.transform = 'perspective(1100px) rotateX(' + ((0.5 - y) * 2.6).toFixed(2) + 'deg) rotateY(' + ((x - 0.5) * 3.2).toFixed(2) + 'deg)';
-      });
-    });
-    box.addEventListener('pointerleave', function () { box.classList.remove('is-hot'); if (tilt) box.style.transform = ''; });
-    if (tilt) box.style.transition = 'transform .25s ease-out';
-  }
-
   /* skaitlis, kas saskaita līdz vērtībai */
   function countTo(node, to, ms, fmt) {
     var from = +node.getAttribute('data-n') || 0; node.setAttribute('data-n', to);
@@ -197,7 +178,6 @@
     setVals();
     want = render(); ['rel', 'dist', 'prom', 'tot'].forEach(function (k) { shown[k] = want[k]; });
     draw(want); eased();
-    glow(root, true);
     if (!calm) { me.x = tgt.x = spx + (me.x - spx) * 0.2; me.y = tgt.y = spy + (me.y - spy) * 0.2; tgt.x = +you.getAttribute('data-x'); tgt.y = +you.getAttribute('data-y'); }
     kick();
   });
@@ -254,6 +234,5 @@
     b.forEach(function (x) { x.addEventListener('click', function () { set(x.getAttribute('data-y')); }); });
     seg.hidden = false; cs.setAttribute('data-on', 'now');
     requestAnimationFrame(function () { requestAnimationFrame(function () { cs.classList.remove('is-pre'); }); });
-    glow(cs, false);
   });
 })();

@@ -105,7 +105,6 @@
     }
     card.appendChild(body);
     var RMc = matchMedia('(prefers-reduced-motion: reduce)').matches, drawn = false;
-    tiltIt(sk);
     inp.addEventListener('input', function () {
       var v = inp.value.replace(/\s+/g, ' ').trim();
       logo.textContent = h.textContent = v || T.ph;
@@ -118,19 +117,6 @@
       }
     });
     a.parentNode.replaceChild(card, a);
-  }
-
-  function tiltIt(e) {
-    e.setAttribute('data-ix-tilt', '');
-    if (window.IX && typeof window.IX.tilt === 'function') { window.IX.tilt(e); return; }
-    if (!matchMedia('(hover:hover) and (pointer:fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var host = e.closest('.proof') || e;
-    host.addEventListener('pointermove', function (ev) {
-      var r = e.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width - .5, y = (ev.clientY - r.top) / r.height - .5;
-      e.style.setProperty('--ix-rx', (-y * 5).toFixed(2) + 'deg'); e.style.setProperty('--ix-ry', (x * 6).toFixed(2) + 'deg');
-      e.style.setProperty('--ix-mx', ((x + .5) * 100).toFixed(1) + '%'); e.style.setProperty('--ix-my', ((y + .5) * 100).toFixed(1) + '%');
-    });
-    host.addEventListener('pointerleave', function () { e.style.setProperty('--ix-rx', '0deg'); e.style.setProperty('--ix-ry', '0deg'); });
   }
 
   /* ---------- gadījuma izpēte: joslas izaug un frāžu kvadrāti parādās, kad attēls ir redzams ---------- */
