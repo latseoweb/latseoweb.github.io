@@ -21,8 +21,8 @@
   <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
-  <link rel="stylesheet" href="/css/ix-audits.css">
+  <link rel="stylesheet" href="/css/bundle-core.css?v=41ba0a52">
+  <link rel="stylesheet" href="/css/ix-audits.css?v=814f31f0" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/ix-audits.css?v=814f31f0"></noscript>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -235,11 +235,12 @@
   </div>
 </section>
 
-<section class="section section--ink" aria-labelledby="steps-title">
+<section class="section section--ink ax-sec" aria-labelledby="steps-title">
   <div class="container">
     <div class="section__header">
 <h2 class="section__title" id="steps-title">Trīs soļi līdz auditam</h2>
     </div>
+    <div class="ax-wrap">
     <ol class="steps steps--row">
       <li><strong>Aizpildiet formu</strong>Mājaslapas adrese, vārds un e-pasts.</li>
       <li><strong>Analizēju mājaslapu</strong>Tehnisko stāvokli, saturu, atslēgvārdu pozīcijas un konkurentu datus.</li>
@@ -262,7 +263,8 @@
             <rect class="b" x="40" y="102" width="132" height="24"/>
             <text class="t" x="188" y="94">E-pasts</text>
             <rect class="b" x="188" y="102" width="132" height="24"/>
-            <rect class="s" x="40" y="138" width="104" height="26"/>
+            <rect class="s" x="40" y="138" width="122" height="26"/>
+            <text class="t sb" x="101" y="155" text-anchor="middle">Saņemt auditu</text>
           </g>
           <g class="ax__g" data-i="1">
             <rect class="b" x="40" y="14" width="280" height="110"/>
@@ -285,9 +287,10 @@
             <text class="t" x="180" y="20" text-anchor="middle">video + rīcības plāns</text>
           </g>
         </svg>
-        <figcaption>ilustrācija</figcaption>
+        <figcaption data-c0="1. kadrs (ilustrācija): Jūs ierakstāt adresi, vārdu un e-pastu" data-c1="2. kadrs (ilustrācija): pārbaudu tehniku, saturu, pozīcijas un konkurentus" data-c2="3. kadrs (ilustrācija): video ar rīcības plānu e-pastā">ilustrācija</figcaption>
       </figure>
       <button type="button" class="ax__next"></button>
+    </div>
     </div>
   </div>
 </section>
@@ -303,10 +306,11 @@
     </div>
     <div>
       <h3 style="font-size:var(--fs-md);margin-bottom:.75rem">Ko audits atrada paša LatSEO mājaslapā</h3>
-      <ul class="checklist">
-        <li>No 40 lapām sitemap.xml bija iekļautas tikai 10</li>
-        <li>6 iekšējās saites veda uz neeksistējošām lapām (404)</li>
-        <li>Vaicājumam „seo pakalpojumi” — 1 674 rādījumi un 0 klikšķu 90 dienās</li>
+      <p class="af-src">latseo.com audits, 2026. gada oktobris. Search Console periods: 24.07.–21.10.2026.</p>
+      <ul class="af">
+        <li><b class="af__n" aria-hidden="true">10<small>/40</small></b><span>No 40 lapām sitemap.xml bija iekļautas tikai 10</span><span class="af__grid" aria-hidden="true"></span></li>
+        <li><b class="af__n" aria-hidden="true">6</b><span>6 iekšējās saites veda uz neeksistējošām lapām (404)</span></li>
+        <li><b class="af__n" aria-hidden="true">0<small>/1&nbsp;674</small></b><span>Vaicājumam „seo pakalpojumi” — 1&nbsp;674 rādījumi un 0 klikšķu 90 dienās</span></li>
       </ul>
       <p class="small muted" style="margin-top:.75rem">Šādas lietas no ārpuses nav redzamas — tās parāda Google Search Console un tehniskā skenēšana.</p>
     </div>
@@ -333,7 +337,7 @@
     <div class="cta-band__actions"><a href="#pieteikties" class="btn btn--primary btn--lg">Pieteikt auditu</a></div>
   </div>
 </section>
-<script src="/js/ix-audits.js" defer></script>
+
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">
@@ -360,5 +364,6 @@
   <a href="https://wa.me/37124424434" class="floating-cta floating-cta--whatsapp" aria-label="Rakstīt WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span class="floating-cta__label">WhatsApp</span></a>
 </div>
 <script src="/js/main.js?v=55c30656" defer></script>
+<script>(function(){var s=["/js/ix-audits.js?v=16a62c55", "/js/ix-theme.js?v=a866cd1f"];function go(){s.forEach(function(u){var e=document.createElement('script');e.src=u;e.async=false;document.body.appendChild(e);});}function idle(){(window.requestIdleCallback||setTimeout)(go,{timeout:1500});}if(document.readyState==='complete')idle();else addEventListener('load',idle);})();</script>
 </body>
 </html>

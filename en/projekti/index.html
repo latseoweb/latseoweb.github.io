@@ -24,9 +24,9 @@
   <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
-  <link rel="stylesheet" href="/css/ix-portfolio.css">
-  <link rel="stylesheet" href="/css/ix-projekti.css">
+  <link rel="stylesheet" href="/css/bundle-core.css?v=41ba0a52">
+  <link rel="stylesheet" href="/css/ix-portfolio.css?v=416fb7f7" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/ix-portfolio.css?v=416fb7f7"></noscript>
+  <link rel="stylesheet" href="/css/ix-projekti.css?v=b7e3782f" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/ix-projekti.css?v=b7e3782f"></noscript>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -163,7 +163,7 @@
     <button class="header__mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
   <div class="header__mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-    <a href="/en/">Home</a><a href="/en/majaslapas-izstrade/">Website development</a><a href="/en/seo-pakalpojumi-riga/">SEO optimisation</a><a href="/en/tehniskais-seo/">Technical SEO &amp; audit</a><a href="/en/lokalais-seo/">Local SEO</a><a href="/en/pakalpojumi-un-cenas/">Pricing</a><a href="/en/projekti/">Projects</a><a href="/en/blogs/">Blog</a><a href="/en/par-mani/">About</a><a href="/en/kontakti/">Contact</a>
+    <a href="/en/">Home</a><a href="/en/majaslapas-izstrade/">Website development</a><a href="/en/seo-pakalpojumi-riga/">SEO optimisation</a><a href="/en/tehniskais-seo/">Technical SEO &amp; audit</a><a href="/en/lokalais-seo/">Local SEO</a><a href="/en/pakalpojumi-un-cenas/">Pricing</a><a href="/en/projekti/" aria-current="page">Projects</a><a href="/en/blogs/">Blog</a><a href="/en/par-mani/">About</a><a href="/en/kontakti/">Contact</a>
     <a href="/en/majaslapas-izstrade/#calculator" class="btn btn--primary">Calculate your website price</a>
     <div class="header__mobile-lang"><a href="/projekti/" class="header__lang-btn" hreflang="lv" lang="lv">LV</a><a href="/en/projekti/" class="header__lang-btn header__lang-btn--active" hreflang="en" lang="en" aria-current="true">EN</a></div>
   </div>
@@ -172,9 +172,33 @@
 <section class="page-hero">
   <div class="container">
     <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Projects</span></nav>
+    <div class="page-hero__grid pj-hero">
+      <div>
 <h1 class="page-title">Websites I have built and SEO clients</h1>
-    <p class="lead">7 websites built from scratch, 1 landing page and 3 SEO clients. Projects with numbers show clicks from Google Search over the last 90 days (24 Jul–21 Oct 2026) compared with the previous 90 days.</p>
-    <div class="ix-filter" data-ix-filter></div>
+        <p class="lead">7 websites built from scratch, 1 landing page and 3 SEO clients. Projects with numbers show clicks from Google Search over the last 90 days (24 Jul–21 Oct 2026) compared with the previous 90 days.</p>
+        <div class="ix-filter" data-ix-filter></div>
+      </div>
+      <aside class="pj-ix" data-pj-ix aria-label="Project overview">
+        <p class="pj-ix__h">Projects by type</p>
+        <div class="pj-ix__tiles" aria-hidden="true">
+          <i data-k="dev"></i><i data-k="dev"></i><i data-k="dev"></i><i data-k="dev"></i><i data-k="dev"></i><i data-k="dev"></i><i data-k="dev"></i><i data-k="dev" class="is-land"></i><i data-k="seo"></i><i data-k="seo"></i><i data-k="seo"></i><i class="is-next"></i>
+        </div>
+        <ul class="pj-ix__lg">
+          <li class="pj-ix__lg--dev"><b>7</b> from scratch</li>
+          <li class="pj-ix__lg--land"><b>1</b> landing page</li>
+          <li class="pj-ix__lg--seo"><b>3</b> SEO clients</li>
+        </ul>
+        <p class="pj-ix__h">Clicks from Google, 90 days: before → after</p>
+        <ol class="pj-ix__bars">
+          <li style="--v:212"><span>engineering courses</span><b><small>0</small> → 212</b><i></i></li>
+          <li style="--v:44"><span>laser machine retailer</span><b><small>1</small> → 44</b><i></i></li>
+          <li style="--v:42"><span>CNC router retailer</span><b><small>2</small> → 42</b><i></i></li>
+          <li style="--v:10"><span>3D printing services</span><b><small>0</small> → 10</b><i></i></li>
+          <li style="--v:9"><span>CNC milling services</span><b><small>0</small> → 9</b><i></i></li>
+        </ol>
+        <p class="pj-ix__src">Google Search Console: 24 Jul–21 Oct 2026 vs the previous 90 days.</p>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -206,12 +230,13 @@
     </div>
     <div class="proof-grid">
       <div class="pf" data-pf><a class="proof" href="https://www.autoestetika.lv/" target="_blank" rel="noopener"><span class="pf__frame"><span class="pf__stage"><img src="/assets/images/work/autoestetika.webp" srcset="/assets/images/work/autoestetika-480.webp 480w, /assets/images/work/autoestetika.webp 960w" sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px" alt="autoestetika.lv homepage" width="960" height="600" loading="lazy"></span></span><span class="proof__body"><span class="proof__name">autoestetika.lv</span><span class="proof__tag">SEO and Google Business Profile · car detailing in Riga · since March 2026</span><span class="proof__metric">+31 %<small>Google clicks, Aug–Oct 2026 vs 2025</small></span></span></a></div>
-      <div class="pf" data-pf><a class="proof" href="https://relive.lv/" target="_blank" rel="noopener"><span class="pf__frame"><span class="pf__stage"><img src="/assets/images/work/relive.webp" srcset="/assets/images/work/relive-480.webp 480w, /assets/images/work/relive.webp 960w" sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px" alt="relive.lv homepage" width="960" height="600" loading="lazy"></span></span><span class="proof__body"><span class="proof__name">relive.lv</span><span class="proof__tag">SEO client · real estate agency</span><span class="proof__metric proof__metric--since">since 04.2026<small>start of SEO work</small></span></span></a></div>
-      <div class="pf" data-pf><a class="proof" href="https://e-car.lv/" target="_blank" rel="noopener"><span class="pf__frame"><span class="pf__stage"><img src="/assets/images/work/ecar.webp" srcset="/assets/images/work/ecar-480.webp 480w, /assets/images/work/ecar.webp 960w" sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px" alt="e-car.lv homepage" width="960" height="600" loading="lazy"></span></span><span class="proof__body"><span class="proof__name">e-car.lv</span><span class="proof__tag">SEO client · car rental</span><span class="proof__metric proof__metric--since">since 10.2026<small>start of SEO work</small></span></span></a></div>
+      <div class="pf" data-pf><a class="proof" href="https://relive.lv/" target="_blank" rel="noopener"><span class="pf__frame"><span class="pf__stage"><img src="/assets/images/work/relive.webp" srcset="/assets/images/work/relive-480.webp 480w, /assets/images/work/relive.webp 960w" sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px" alt="relive.lv homepage" width="960" height="600" loading="lazy"></span></span><span class="proof__body"><span class="proof__name">relive.lv</span><span class="proof__tag">SEO client · real estate agency</span><span class="proof__metric proof__metric--since">since 04.2026<small>start of SEO work</small></span></span></a></div>
+      <div class="pf" data-pf><a class="proof" href="https://e-car.lv/" target="_blank" rel="noopener"><span class="pf__frame"><span class="pf__stage"><img src="/assets/images/work/ecar.webp" srcset="/assets/images/work/ecar-480.webp 480w, /assets/images/work/ecar.webp 960w" sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1000px) 50vw, 560px" alt="e-car.lv homepage" width="960" height="600" loading="lazy"></span></span><span class="proof__body"><span class="proof__name">e-car.lv</span><span class="proof__tag">SEO client · car rental</span><span class="proof__metric proof__metric--since">since 10.2026<small>start of SEO work</small></span></span></a></div>
     </div>
     <div class="container--narrow" style="margin-top:2.5rem">
       <h3 id="car-detailing">Car detailing company in Riga: +31% clicks year on year</h3>
       <p>I started in March 2026, fixing the website's technical foundation and the Google Business Profile. Car detailing is strongly seasonal, so I compare the same months a year earlier.</p>
+      <figure class="ixq ix-panel" data-ixq><figcaption class="ixq__h"><b>August–October 2025 (before) vs August–October 2026</b><span>Source: Google Search Console — clicks and impressions from Google Search, 3-month total. Rankings: weekly check, Google.lv, mobile search.</span></figcaption><div class="ixq__grid"><div class="ixq__m"><p class="ixq__t">Clicks from Google<span class="ixq__d">+31%</span></p><div class="ixq__bars" role="img" aria-label="Clicks: August–October 2025 — 1,891, August–October 2026 — 2,469."><div class="ixq__row"><span class="ixq__lab">2025</span><span class="ixq__track"><i style="--w:75.64%"></i></span><b>1,891</b></div><div class="ixq__row is-now"><span class="ixq__lab">2026</span><span class="ixq__track"><i style="--w:98.76%"></i></span><b>2,469</b></div><div class="ixq__axis" aria-hidden="true"><span></span><span class="ixq__ticks"><i style="--t:0.00%">0</i><i style="--t:40.00%">1,000</i><i style="--t:80.00%">2,000</i></span><span></span></div></div></div><div class="ixq__m"><p class="ixq__t">Impressions in Google Search<span class="ixq__d">+25%</span></p><div class="ixq__bars" role="img" aria-label="Impressions: August–October 2025 — 48,467, August–October 2026 — 60,393."><div class="ixq__row"><span class="ixq__lab">2025</span><span class="ixq__track"><i style="--w:69.24%"></i></span><b>48,467</b></div><div class="ixq__row is-now"><span class="ixq__lab">2026</span><span class="ixq__track"><i style="--w:86.28%"></i></span><b>60,393</b></div><div class="ixq__axis" aria-hidden="true"><span></span><span class="ixq__ticks"><i style="--t:0.00%">0</i><i style="--t:42.86%">30,000</i><i style="--t:85.71%">60,000</i></span><span></span></div></div></div><div class="ixq__m"><p class="ixq__t">48 tracked phrases (9 Nov 2026)</p><div class="ixq__dots" role="img" aria-label="48 phrases: 15 in the Google top 3, another 11 in positions 4 to 10, 22 outside the top 10."><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t3"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i class="t10"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><ul class="ixq__lg"><li><i class="t3"></i><b>15</b> top 3</li><li><i class="t10"></i><b>11</b> positions 4–10</li><li><i class=""></i><b>22</b> outside the top 10</li></ul></div></div></figure>
       <div class="table-wrap"><table class="table">
         <thead><tr><th>Period</th><th class="num">Google clicks</th><th class="num">Impressions</th></tr></thead>
         <tbody>
@@ -263,6 +288,7 @@
   <a href="tel:+37124424434" class="floating-cta floating-cta--call" aria-label="Call +371 24424434"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="floating-cta__label">Call</span></a>
   <a href="https://wa.me/37124424434" class="floating-cta floating-cta--whatsapp" aria-label="Message on WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span class="floating-cta__label">WhatsApp</span></a>
 </div>
-<script src="/js/main.js?v=55c30656" defer></script><script src="/js/ix-portfolio.js" defer></script><script src="/js/ix-projekti.js" defer></script>
+<script src="/js/main.js?v=55c30656" defer></script>
+<script>(function(){var s=["/js/ix-theme.js?v=a866cd1f", "/js/ix-portfolio.js?v=1004be04", "/js/ix-projekti.js?v=2f77dc0c"];function go(){s.forEach(function(u){var e=document.createElement('script');e.src=u;e.async=false;document.body.appendChild(e);});}function idle(){(window.requestIdleCallback||setTimeout)(go,{timeout:1500});}if(document.readyState==='complete')idle();else addEventListener('load',idle);})();</script>
 </body>
 </html>

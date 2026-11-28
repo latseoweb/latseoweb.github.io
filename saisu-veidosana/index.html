@@ -24,8 +24,8 @@
   <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
-  <link rel="stylesheet" href="/css/ix-saites.css">
+  <link rel="stylesheet" href="/css/bundle-core.css?v=41ba0a52">
+  <link rel="stylesheet" href="/css/ix-saites.css?v=725d648a" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/ix-saites.css?v=725d648a"></noscript>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -250,6 +250,7 @@
       <article class="item"><h3 class="item__title">Atskaite par katru saiti</h3><p class="item__text">Katru mēnesi saņemat sarakstu ar iegūtajām saitēm, to rādītājiem un ietekmi uz pozīcijām.</p></article>
     </div>
     <div class="ixk" data-ixk data-lang="lv">
+      <p class="ix-hint ixk__hint">Velciet mezglus — saites stiepjas līdzi.</p>
       <div>
         <p class="ixk__tag">Ilustrācija</p>
         <div class="ixk__box">
@@ -259,9 +260,10 @@
             <g class="ixk__me" data-me tabindex="0" role="button" aria-label="Jūsu lapa. Pārvietojiet ar bultiņu taustiņiem vai velkot." transform="translate(300 190)"><circle class="ixk__hit" r="36"/><rect x="-22" y="-22" width="44" height="44"/><text y="42">Jūsu lapa</text></g>
           </svg>
         </div>
-        <p class="ixk__cap">Velciet mezglus. Ilustrācija: avotu nosaukumi ir vispārīgi, skaitļi ir tikai zīmējumā redzamo mezglu skaits, ne mērījumi. Kvalitatīvā tīklā — daži atbilstoši avoti ar biezām saitēm; surogāta tīklā — daudz sīku, nesaistītu avotu ar sapinušām plānām saitēm.</p>
+        <p class="ixk__cap">Avotu nosaukumi ir vispārīgi, skaitļi ir tikai zīmējumā redzamo mezglu skaits, ne mērījumi. Kvalitatīvā tīklā — daži atbilstoši avoti ar biezām saitēm; surogāta tīklā — daudz sīku, nesaistītu avotu ar sapinušām plānām saitēm.</p>
       </div>
       <div class="ixk__side" data-ctl hidden>
+        <p class="ixk__title">Divi saišu profili vienai lapai</p>
         <div class="ixk__seg" role="group" aria-label="Saišu veids"><button type="button" data-mode="q" aria-pressed="true">Kvalitatīvas saites</button><button type="button" data-mode="s" aria-pressed="false">Surogātsaites</button></div>
         <dl class="ixk__out"><dt>Avoti zīmējumā</dt><dd data-v>5</dd><dt>Atbilstība nozarei</dt><dd data-v>—</dd><dt>Risks</dt><dd data-v>—</dd></dl>
         <p class="ixk__status" data-status aria-live="polite"></p>
@@ -270,11 +272,11 @@
   </div>
 </section>
 
-<section class="section section--ink" aria-labelledby="audit-title">
+<section class="section section--white ixs-band" aria-labelledby="audit-title">
   <div class="container two-col">
     <div>
 <h2 class="section__title" id="audit-title">Vispirms — esošo saišu pārbaude</h2>
-      <p class="ink-fact" data-nosnippet><strong>vairāk nekā 2 300</strong><span>domēnu ar saitēm uz latseo.com 2026. gada oktobrī — lielākoties automātiski radītas, nesaistītas vietnes</span></p>
+      <p class="ink-fact" data-nosnippet><strong>vairāk nekā 2 300</strong><span>domēnu ar saitēm uz latseo.com 2026. gada oktobrī — lielākoties automātiski radītas, nesaistītas vietnes</span><small class="ixs-src">Avots: LatSEO paša saišu profila pārbaude, latseo.com, 2026. gada oktobris.</small></p>
     </div>
     <div class="prose">
       <p>Pirms jaunu saišu veidošanas pārbaudu, kādas saites mājaslapai jau ir. Piemēram, LatSEO mājaslapai 2026. gada oktobrī bija saites no vairāk nekā 2 300 domēniem, lielākoties no automātiski radītām, nesaistītām vietnēm. Šādas saites vērtību nedod, tāpēc saišu skaits pats par sevi neko neizsaka.</p>
@@ -282,43 +284,45 @@
     </div>
   </div>
   <div class="container ixi" data-ixi data-lang="lv">
-    <div class="ixi__head"><h3 class="ixi__h">Pārbaudiet paraugu: atstāt vai atteikties?</h3><span class="ixi__tag">Ilustrācija</span></div>
-    <p class="ixi__intro">Seši izdomāti piemēri. Katrai saitei izvēlieties lēmumu — pēc tam redzēsiet, kā to vērtētu audita laikā.</p>
-    <ul class="ixi__list" aria-label="Saišu pārbaudes saraksts">
-      <li class="ixi__row" data-ans="keep">
-        <div><p class="ixi__dom">nozaru-katalogs.example.lv</p><p class="ixi__d">Nozares katalogs: uzņēmuma nosaukums, adrese un tālrunis sakrīt ar Jūsu datiem, saite no uzņēmuma profila lapas.</p></div>
-        <div class="ixi__pick" role="group" aria-label="nozaru-katalogs.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
-        <p class="ixi__why"><span data-res></span><b>Atstāt.</b> Avots atbilst nozarei, dati sakrīt, un saite ir dabīgā vietā.</p>
-      </li>
-      <li class="ixi__row" data-ans="keep">
-        <div><p class="ixi__dom">vietejais-portals.example.lv</p><p class="ixi__d">Vietējā ziņu portāla raksts, kurā uzņēmums minēts ar saiti uz mājaslapu.</p></div>
-        <div class="ixi__pick" role="group" aria-label="vietejais-portals.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
-        <p class="ixi__why"><span data-res></span><b>Atstāt.</b> Reāla pieminēšana vietējā medijā ir tieši tas, ko meklē Google.</p>
-      </li>
-      <li class="ixi__row" data-ans="dis">
-        <div><p class="ixi__dom">forums-8812.example.lv</p><p class="ixi__d">Nesaistīts forums: simtiem identisku komentāru ar vienu un to pašu atslēgvārdu kā saites tekstu.</p></div>
-        <div class="ixi__pick" role="group" aria-label="forums-8812.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
-        <p class="ixi__why"><span data-res></span><b>Atteikties (disavow).</b> Nav saistības ar nozari, enkura teksts atkārtojas — tipiska surogātsaišu pazīme.</p>
-      </li>
-      <li class="ixi__row" data-ans="keep">
-        <div><p class="ixi__dom">partneris.example.lv</p><p class="ixi__d">Piegādātāja mājaslapa: Jūsu uzņēmums ir norādīts partneru sadaļā.</p></div>
-        <div class="ixi__pick" role="group" aria-label="partneris.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
-        <p class="ixi__why"><span data-res></span><b>Atstāt.</b> Īsta saimnieciska saistība, kas ir saprotama arī lasītājam.</p>
-      </li>
-      <li class="ixi__row" data-ans="dis">
-        <div><p class="ixi__dom">saites-par-naudu.example.lv</p><p class="ixi__d">Vietne, kas atklāti piedāvā saites par maksu, un uz tām atsaucas simtiem nesaistītu uzņēmumu.</p></div>
-        <div class="ixi__pick" role="group" aria-label="saites-par-naudu.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
-        <p class="ixi__why"><span data-res></span><b>Atteikties (disavow).</b> Pirktas saites, lai ietekmētu pozīcijas, ir pretrunā ar Google surogātpasta politiku.</p>
-      </li>
-      <li class="ixi__row" data-ans="dis">
-        <div><p class="ixi__dom">auto-teksti.example.lv</p><p class="ixi__d">Automātiski ģenerēta vietne ar nejauši sakārtotiem tekstiem un saitēm uz simtiem nesaistītu lapu.</p></div>
-        <div class="ixi__pick" role="group" aria-label="auto-teksti.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
-        <p class="ixi__why"><span data-res></span><b>Atteikties (disavow).</b> Saturs nav domāts cilvēkiem, un saite nenāk no reāla ieteikuma.</p>
-      </li>
-    </ul>
-    <div class="ixi__foot"><span class="ixi__score" data-score aria-live="polite"></span><button type="button" class="ixi__reset" data-reset hidden>Sākt no jauna</button></div>
-    <p class="ixi__final" data-final hidden>Šādi pārskatu saišu profilu auditā: katru avotu vērtēju pēc nozares atbilstības, konteksta un tā, vai saite izskatās dabīga.</p>
-    <p class="ixi__note">Ilustrācija: domēni ir izdomāti. Atteikšanās (disavow) rīks ir paredzēts retiem gadījumiem — Google lielāko daļu acīmredzami nevērtīgu saišu ignorē pats, tāpēc to lieto tikai tad, ja saišu ir daudz vai ir saņemts manuāls brīdinājums.</p>
+    <div class="ixi__panel ix-panel">
+      <div class="ixi__head"><h3 class="ixi__h">Pārbaudiet paraugu: atstāt vai atteikties?</h3><span class="ixi__tag">Ilustrācija</span></div>
+      <p class="ixi__intro">Seši izdomāti piemēri. Katrai saitei izvēlieties lēmumu — pēc tam redzēsiet, kā to vērtētu audita laikā.</p>
+      <ul class="ixi__list" aria-label="Saišu pārbaudes saraksts">
+        <li class="ixi__row" data-ans="keep">
+          <div><p class="ixi__dom">nozaru-katalogs.example.lv</p><p class="ixi__d">Nozares katalogs: uzņēmuma nosaukums, adrese un tālrunis sakrīt ar Jūsu datiem, saite no uzņēmuma profila lapas.</p></div>
+          <div class="ixi__pick" role="group" aria-label="nozaru-katalogs.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
+          <p class="ixi__why"><span data-res></span><b>Atstāt.</b> Avots atbilst nozarei, dati sakrīt, un saite ir dabīgā vietā.</p>
+        </li>
+        <li class="ixi__row" data-ans="keep">
+          <div><p class="ixi__dom">vietejais-portals.example.lv</p><p class="ixi__d">Vietējā ziņu portāla raksts, kurā uzņēmums minēts ar saiti uz mājaslapu.</p></div>
+          <div class="ixi__pick" role="group" aria-label="vietejais-portals.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
+          <p class="ixi__why"><span data-res></span><b>Atstāt.</b> Reāla pieminēšana vietējā medijā ir tieši tas, ko meklē Google.</p>
+        </li>
+        <li class="ixi__row" data-ans="dis">
+          <div><p class="ixi__dom">forums-8812.example.lv</p><p class="ixi__d">Nesaistīts forums: simtiem identisku komentāru ar vienu un to pašu atslēgvārdu kā saites tekstu.</p></div>
+          <div class="ixi__pick" role="group" aria-label="forums-8812.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
+          <p class="ixi__why"><span data-res></span><b>Atteikties (disavow).</b> Nav saistības ar nozari, enkura teksts atkārtojas — tipiska surogātsaišu pazīme.</p>
+        </li>
+        <li class="ixi__row" data-ans="keep">
+          <div><p class="ixi__dom">partneris.example.lv</p><p class="ixi__d">Piegādātāja mājaslapa: Jūsu uzņēmums ir norādīts partneru sadaļā.</p></div>
+          <div class="ixi__pick" role="group" aria-label="partneris.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
+          <p class="ixi__why"><span data-res></span><b>Atstāt.</b> Īsta saimnieciska saistība, kas ir saprotama arī lasītājam.</p>
+        </li>
+        <li class="ixi__row" data-ans="dis">
+          <div><p class="ixi__dom">saites-par-naudu.example.lv</p><p class="ixi__d">Vietne, kas atklāti piedāvā saites par maksu, un uz tām atsaucas simtiem nesaistītu uzņēmumu.</p></div>
+          <div class="ixi__pick" role="group" aria-label="saites-par-naudu.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
+          <p class="ixi__why"><span data-res></span><b>Atteikties (disavow).</b> Pirktas saites, lai ietekmētu pozīcijas, ir pretrunā ar Google surogātpasta politiku.</p>
+        </li>
+        <li class="ixi__row" data-ans="dis">
+          <div><p class="ixi__dom">auto-teksti.example.lv</p><p class="ixi__d">Automātiski ģenerēta vietne ar nejauši sakārtotiem tekstiem un saitēm uz simtiem nesaistītu lapu.</p></div>
+          <div class="ixi__pick" role="group" aria-label="auto-teksti.example.lv" hidden><button type="button" data-pick="keep" aria-pressed="false">Atstāt</button><button type="button" data-pick="dis" aria-pressed="false">Atteikties (disavow)</button></div>
+          <p class="ixi__why"><span data-res></span><b>Atteikties (disavow).</b> Saturs nav domāts cilvēkiem, un saite nenāk no reāla ieteikuma.</p>
+        </li>
+      </ul>
+      <div class="ixi__foot"><span class="ixi__score" data-score aria-live="polite"></span><button type="button" class="ixi__reset" data-reset hidden>Sākt no jauna</button></div>
+      <p class="ixi__final" data-final hidden>Šādi pārskatu saišu profilu auditā: katru avotu vērtēju pēc nozares atbilstības, konteksta un tā, vai saite izskatās dabīga.</p>
+      <p class="ixi__note">Ilustrācija: domēni ir izdomāti. Atteikšanās (disavow) rīks ir paredzēts retiem gadījumiem — Google lielāko daļu acīmredzami nevērtīgu saišu ignorē pats, tāpēc to lieto tikai tad, ja saišu ir daudz vai ir saņemts manuāls brīdinājums.</p>
+    </div>
   </div>
 </section>
 
@@ -341,7 +345,7 @@
     <div>
 <h2 class="section__title" id="cta-title">Pārbaudiet savu saišu profilu</h2>
       <p class="lead">Norādiet mājaslapu — bezmaksas video auditā iekļaušu arī konkurentu salīdzinājumu.</p>
-      <link rel="stylesheet" href="/css/ix-form.css"><script src="/js/ix-form.js" defer></script><div class="after" data-nosnippet><p class="after__title">Kas notiek pēc pieteikuma</p><ol class="after__steps"><li><strong>Video audits 24 stundu laikā</strong>Ekrāna ieraksts ar Jūsu mājaslapas galvenajām kļūdām un ieteikumiem.</li><li><strong>Īsa saruna</strong>Ja vēlaties turpināt, izrunājam, ko darīt vispirms.</li><li><strong>Precīza cena</strong>Precīzu summu nosūtu pēc sarunas vai audita.</li></ol><figure class="after__sheet sheet" aria-hidden="true" data-m="web" data-draw="[&quot;Ilustrācija: jaunas mājaslapas rasējums — struktūra pirms dizaina.&quot;, &quot;Ilustrācija: SEO esošai mājaslapai — mērķis ir augoša līkne, skaitļi nav solīti.&quot;, &quot;Ilustrācija: audits — lupa uz lapu.&quot;, &quot;Ilustrācija: tukša lapa ar izmēru līnijām — pastāstiet, ko vēlaties.&quot;]"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 zīmes</span><span class="plan__note" style="left:5%;top:calc(21% - 1.6rem)">&lt;h1&gt; · 1 lapā</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span><svg class="after__draw" viewBox="0 0 160 100" hidden focusable="false"><g data-m="web"><rect x="10" y="8" width="140" height="84"/><path d="M10 20H150"/><path d="M16 14h22"/><rect x="16" y="26" width="128" height="30"/><path d="M16 26l128 30M144 26L16 56"/><rect x="16" y="62" width="38" height="24"/><rect x="61" y="62" width="38" height="24"/><rect x="106" y="62" width="38" height="24"/></g><g data-m="seo"><path class="s" d="M18 10V86H148"/><path d="M18 62H148M18 38H148" class="g"/><path class="a" d="M22 80L50 70L74 74L100 48L124 38L146 18"/><rect class="p" x="143" y="15" width="6" height="6"/></g><g data-m="audit"><rect x="26" y="8" width="70" height="84"/><path d="M34 22h40M34 32h54M34 42h48M34 52h54M34 62h30"/><circle class="a" cx="102" cy="58" r="22"/><path class="a" d="M118 74L144 92"/></g><g data-m="other"><rect x="26" y="24" width="108" height="60"/><path d="M26 14H134M26 10v8M134 10v8"/><path d="M14 24V84M10 24h8M10 84h8"/><path d="M26 92H134" class="g"/></g></svg></div><figcaption>3dpakalpojumi.lv, sākumlapa. Mērīts 27.11.2026: 5 no 5 attēliem ar alt tekstu.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom>p.getBoundingClientRect().bottom+8}if(o()){s.classList.add("after__sheet--sm");if(o())s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
+      <link rel="stylesheet" href="/css/ix-form.css?v=c9f39a78" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/ix-form.css?v=c9f39a78"></noscript><div class="after" data-nosnippet><p class="after__title">Kas notiek pēc pieteikuma</p><ol class="after__steps"><li><strong>Video audits 24 stundu laikā</strong>Ekrāna ieraksts ar Jūsu mājaslapas galvenajām kļūdām un ieteikumiem.</li><li><strong>Īsa saruna</strong>Ja vēlaties turpināt, izrunājam, ko darīt vispirms.</li><li><strong>Precīza cena</strong>Precīzu summu nosūtu pēc sarunas vai audita.</li></ol><figure class="after__sheet sheet" aria-hidden="true" data-m="web" data-draw="[&quot;Ilustrācija: jaunas mājaslapas rasējums — struktūra pirms dizaina.&quot;, &quot;Ilustrācija: SEO esošai mājaslapai — mērķis ir augoša līkne, skaitļi nav solīti.&quot;, &quot;Ilustrācija: audits — lupa uz lapu.&quot;, &quot;Ilustrācija: tukša lapa ar izmēru līnijām — pastāstiet, ko vēlaties.&quot;]"><div class="sheet__shot"><img src="/assets/images/work/3dpakalpojumi-480.webp" alt="" width="480" height="300" loading="lazy"><span class="plan__box" style="left:4%;top:21%;width:48%;height:63%"></span><span class="plan__note" style="left:3%;top:3%">&lt;title&gt; · 50 zīmes</span><span class="plan__note" style="left:5%;top:max(calc(3% + 1.55rem),calc(21% - 1.6rem))">&lt;h1&gt; · 1 lapā</span><span class="plan__note" style="right:3%;bottom:6%">JSON-LD: Organization, FAQPage, Service</span><svg class="after__draw" viewBox="0 0 160 100" hidden focusable="false"><g data-m="web"><rect x="10" y="8" width="140" height="84"/><path d="M10 20H150"/><path d="M16 14h22"/><rect x="16" y="26" width="128" height="30"/><path d="M16 26l128 30M144 26L16 56"/><rect x="16" y="62" width="38" height="24"/><rect x="61" y="62" width="38" height="24"/><rect x="106" y="62" width="38" height="24"/></g><g data-m="seo"><path class="s" d="M18 10V86H148"/><path d="M18 62H148M18 38H148" class="g"/><path class="a" d="M22 80L50 70L74 74L100 48L124 38L146 18"/><rect class="p" x="143" y="15" width="6" height="6"/></g><g data-m="audit"><rect x="26" y="8" width="70" height="84"/><path d="M34 22h40M34 32h54M34 42h48M34 52h54M34 62h30"/><circle class="a" cx="102" cy="58" r="22"/><path class="a" d="M118 74L144 92"/></g><g data-m="other"><rect x="26" y="24" width="108" height="60"/><path d="M26 14H134M26 10v8M134 10v8"/><path d="M14 24V84M10 24h8M10 84h8"/><path d="M26 92H134" class="g"/></g></svg></div><figcaption>3dpakalpojumi.lv, sākumlapa. Mērīts 27.11.2026: 5 no 5 attēliem ar alt tekstu.</figcaption></figure></div><script>(function(a){var s=a.querySelector(".after__sheet");function fit(){var f=a.closest(".two-col"),p=f&&f.querySelector(".form-panel");if(!p||!s)return;s.hidden=false;s.classList.remove("after__sheet--sm");function o(){return a.getBoundingClientRect().bottom-p.getBoundingClientRect().bottom}if(matchMedia("(max-width:899px)").matches)s.classList.add("after__sheet--sm");else if(o()>8){s.classList.add("after__sheet--sm");if(o()>120)s.hidden=true}s.dispatchEvent(new Event("ix-fit"))}document.addEventListener("DOMContentLoaded",fit);addEventListener("load",fit);addEventListener("resize",fit)})(document.currentScript.previousElementSibling)</script>
     </div>
     <div class="form-panel"><form class="contact-form" action="#" method="POST" data-redirect="/paldies/"><input type="hidden" name="page_source" value="Saišu veidošana">
 <div class="contact-form__row">
@@ -357,7 +361,7 @@
 <p class="contact-form__hint">Atbildu 24 stundu laikā. Bez saistībām.</p></form></div>
   </div>
 </section>
-<script src="/js/ix-saites.js" defer></script>
+
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">
@@ -384,5 +388,6 @@
   <a href="https://wa.me/37124424434" class="floating-cta floating-cta--whatsapp" aria-label="Rakstīt WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span class="floating-cta__label">WhatsApp</span></a>
 </div>
 <script src="/js/main.js?v=55c30656" defer></script>
+<script>(function(){var s=["/js/ix-form.js?v=de61eb38", "/js/ix-saites.js?v=9f729935", "/js/ix-theme.js?v=a866cd1f"];function go(){s.forEach(function(u){var e=document.createElement('script');e.src=u;e.async=false;document.body.appendChild(e);});}function idle(){(window.requestIdleCallback||setTimeout)(go,{timeout:1500});}if(document.readyState==='complete')idle();else addEventListener('load',idle);})();</script>
 </body>
 </html>

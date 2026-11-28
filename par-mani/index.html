@@ -24,8 +24,8 @@
   <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/style.css?v=08c4a96c">
-  <link rel="stylesheet" href="/css/ix-parmani.css">
+  <link rel="stylesheet" href="/css/bundle-core.css?v=41ba0a52">
+  <link rel="stylesheet" href="/css/ix-parmani.css?v=94b325ad" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/css/ix-parmani.css?v=94b325ad"></noscript>
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -162,7 +162,7 @@
     <button class="header__mobile-toggle" aria-label="Atvērt izvēlni" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
   <div class="header__mobile-menu" id="mobile-menu" aria-label="Mobilā navigācija">
-    <a href="/">Sākums</a><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a><a href="/seo-pakalpojumi-riga/">SEO optimizācija</a><a href="/tehniskais-seo/">Tehniskais SEO un audits</a><a href="/lokalais-seo/">Lokālais SEO</a><a href="/pakalpojumi-un-cenas/">Cenas</a><a href="/projekti/">Projekti</a><a href="/blogs/">Blogs</a><a href="/par-mani/">Par mani</a><a href="/kontakti/">Kontakti</a>
+    <a href="/">Sākums</a><a href="/majaslapas-izstrade/">Mājaslapu izstrāde</a><a href="/seo-pakalpojumi-riga/">SEO optimizācija</a><a href="/tehniskais-seo/">Tehniskais SEO un audits</a><a href="/lokalais-seo/">Lokālais SEO</a><a href="/pakalpojumi-un-cenas/">Cenas</a><a href="/projekti/">Projekti</a><a href="/blogs/">Blogs</a><a href="/par-mani/" aria-current="page">Par mani</a><a href="/kontakti/">Kontakti</a>
     <a href="/majaslapas-izstrade/#kalkulators" class="btn btn--primary">Aprēķināt mājaslapas cenu</a>
     <div class="header__mobile-lang"><a href="/par-mani/" class="header__lang-btn header__lang-btn--active" hreflang="lv" lang="lv" aria-current="true">LV</a><a href="/en/par-mani/" class="header__lang-btn" hreflang="en" lang="en">EN</a></div>
   </div>
@@ -184,14 +184,15 @@
 <section class="section section--white">
   <div class="container split">
     <div class="split__sticky">
-      <div class="facts facts--2" data-facts data-hint="Pieskarieties skaitlim, lai redzētu, kur tekstā tas minēts.">
-        <div data-go="pm-sakums" data-l="Skatīt tekstā: Kā sāku"><strong>2 gadi</strong><span>pieredze SEO un mājaslapu izstrādē</span></div>
-        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>7</strong><span>mājaslapas izstrādātas no nulles</span></div>
-        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>3</strong><span>SEO klienti</span></div>
-        <div data-go="pm-offer" data-l="Skatīt tekstā: Ko piedāvāju"><strong>24 h</strong><span>video audita atbildes laiks</span></div>
+      <div class="facts facts--2 pm-facts" data-facts data-hint="Pieskarieties skaitlim, lai redzētu, kur tekstā tas minēts.">
+        <div data-go="pm-sakums" data-l="Skatīt tekstā: Kā sāku"><strong>2 gadi</strong><span>pieredze SEO un mājaslapu izstrādē</span><small class="pm-ctx">Skaitot no pirmā klienta: uzņēmuma, kurā iepriekš strādāju.</small></div>
+        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>7</strong><span>mājaslapas izstrādātas no nulles</span><small class="pm-ctx">Un vēl 1 landing lapa. Visas ar Google klikšķu datiem sadaļā Projekti.</small></div>
+        <div data-go="pm-links" data-l="Skatīt tekstā: Projekti"><strong>3</strong><span>SEO klienti</span><small class="pm-ctx">Auto detailings (kopš marta), nekustamie īpašumi (kopš aprīļa), auto noma (kopš oktobra). Stāvoklis 2026. gada novembrī.</small>
+          <span class="pm-tl" aria-hidden="true"><span class="pm-tl__c" style="--m:0"></span><span class="pm-tl__c" style="--m:1.9"></span><span class="pm-tl__c" style="--m:7"></span><b>mar</b><b>nov 2026</b></span></div>
+        <div data-go="pm-offer" data-l="Skatīt tekstā: Ko piedāvāju"><strong>24 h</strong><span>video audita atbildes laiks</span><small class="pm-ctx">No pieteikuma līdz video e-pastā. Bez maksas un bez saistībām.</small></div>
       </div>
     </div>
-    <div class="prose">
+    <div class="prose pm-prose">
       <h2>Kā sāku</h2>
       <p id="pm-sakums">Pirmais klients bija uzņēmums, kurā iepriekš strādāju. Veidoju tam mājaslapas un tādā dabiskā veidā iemācījos arī SEO — jo mājaslapa, ko Google nerāda, uzņēmumam klientus neatved. Šobrīd esmu Bratus oficiālais IT partneris.</p>
       <h2>Kļūda, kas mainīja manu pieeju</h2>
@@ -225,17 +226,26 @@
       <h2>Kā strādāju ikdienā</h2>
       <p>Katru rītu atveru Google Search Console. Mani interesē visa domēna rādījumi un klikšķi, ne tikai viena atslēgvārda pozīcija. Atslēgvārdus pētu ar Google Keyword Planner, tehniskās kļūdas meklēju ar Screaming Frog un Ahrefs.</p>
       <p>Kad Google ieviesa AI Overview, sāku optimizēt lapas arī tā, lai tās būtu saprotamas mākslīgā intelekta ģenerētajām atbildēm (GEO).</p>
+      <figure class="pm-gsc" data-gsc data-src="/assets/data/latseo-gsc-weekly.json" hidden
+        data-l-imp="rādījumi" data-l-clk="klikšķi" data-l-pos="vid. pozīcija" data-l-wk="Nedēļa no" data-l-part="nepilna nedēļa" data-loc="lv-LV"
+        data-months="jan,feb,mar,apr,mai,jūn,jūl,aug,sep,okt,nov,dec">
+        <figcaption class="pm-gsc__h"><strong>Tas, ko redzu katru rītu: latseo.com Search Console</strong><span>Stabiņi: rādījumi Google meklēšanā pa nedēļām, 16.02.–26.11.2026. Punkti zem ass: klikšķi tajā pašā nedēļā (lielāks punkts, vairāk klikšķu). Precīzi skaitļi un vidējā pozīcija ir rindā zem grafika.</span></figcaption>
+        <p class="ix-hint pm-gsc__hint">Pavelciet pāri grafikam vai lietojiet bultiņas, lai izvēlētos nedēļu.</p>
+        <div class="pm-gsc__plot" data-plot tabindex="0" role="img" aria-label="Stabiņu diagramma: latseo.com rādījumi Google meklēšanā pa nedēļām no 16.02.2026 līdz 26.11.2026; no 2 rādījumiem februārī līdz 3 135 nedēļā no 16.11.2026."></div>
+        <p class="pm-gsc__read" aria-live="polite" data-read></p>
+        <p class="pm-gsc__src">Avots: latseo.com, Google Search Console, nedēļas dati, 2026. Pēdējā nedēļa ir nepilna (4 dienas).</p>
+      </figure>
       <h2>Ko piedāvāju</h2>
-      <ul>
-        <li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde ar SEO</a> — no 449 € (bez PVN)</li>
-        <li><a href="/seo-pakalpojumi-riga/">SEO optimizācija</a> — audits no 150 €, ikmēneša SEO no 300 €/mēn.</li>
-        <li id="pm-offer"><a href="/bezmaksas-audits/">Bezmaksas video audits</a> — 24 stundu laikā</li>
+      <ul class="pm-offer">
+        <li><a href="/majaslapas-izstrade/">Mājaslapu izstrāde ar SEO</a> <span class="pm-p"><span class="pm-dash">— </span>no 449 € (bez PVN)</span></li>
+        <li><a href="/seo-pakalpojumi-riga/">SEO optimizācija</a> <span class="pm-p"><span class="pm-dash">— </span>audits no 150 €, ikmēneša SEO no 300 €/mēn.</span></li>
+        <li id="pm-offer"><a href="/bezmaksas-audits/">Bezmaksas video audits</a> <span class="pm-p"><span class="pm-dash">— </span>24 stundu laikā</span></li>
       </ul>
-      <p id="pm-links"><a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn profils</a> · <a href="/projekti/">Projekti</a> · <a href="/kontakti/">Kontakti</a></p>
+      <p id="pm-links" class="pm-links"><a href="https://www.linkedin.com/in/adrians-stankevics/" target="_blank" rel="noopener">LinkedIn profils</a> · <a href="/projekti/">Projekti</a> · <a href="/kontakti/">Kontakti</a></p>
     </div>
   </div>
 </section>
-<script src="/js/ix-parmani.js" defer></script>
+
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="container">
@@ -262,5 +272,6 @@
   <a href="https://wa.me/37124424434" class="floating-cta floating-cta--whatsapp" aria-label="Rakstīt WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span class="floating-cta__label">WhatsApp</span></a>
 </div>
 <script src="/js/main.js?v=55c30656" defer></script>
+<script>(function(){var s=["/js/ix-parmani.js?v=fc8f9834", "/js/ix-theme.js?v=a866cd1f"];function go(){s.forEach(function(u){var e=document.createElement('script');e.src=u;e.async=false;document.body.appendChild(e);});}function idle(){(window.requestIdleCallback||setTimeout)(go,{timeout:1500});}if(document.readyState==='complete')idle();else addEventListener('load',idle);})();</script>
 </body>
 </html>
