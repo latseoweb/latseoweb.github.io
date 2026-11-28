@@ -1,7 +1,7 @@
 /* Portfolio device frames (cards from project_card()/browser() in scripts/build.py, css/ix-portfolio.css).
-   Mouse: hover zooms the screenshot, the zoom follows the cursor (eased in a rAF loop) and the frame tilts a few degrees.
+   Mouse: hover zooms the screenshot, the zoom follows the cursor (eased in a rAF loop) (no tilt).
    Touch: drag sideways to look around (vertical swipes still scroll the page). "Rasējums" sweeps an x-ray overlay with
-   element boxes read from data-pf-marks. Tilt is done here on purpose (not data-ix-tilt) so it never doubles up. */
+   element boxes read from data-pf-marks. */
 (function () {
   var cards = document.querySelectorAll("[data-pf]");
   if (!cards.length) return;
@@ -48,7 +48,7 @@
     function aim(e, tilt) {
       var p = pos(e);
       T.ox = p[0]; T.oy = p[1];
-      if (tilt && !RM) { T.ry = (p[0] - 50) / 50 * 4; T.rx = -(p[1] - 50) / 50 * 3; }
+      
       frame.style.setProperty("--mx", p[0] + "%"); frame.style.setProperty("--my", p[1] + "%");
       go();
     }

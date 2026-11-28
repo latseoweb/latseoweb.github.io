@@ -1,7 +1,5 @@
 /* ix-theme: tiny shared helpers for instruments (css/ix-theme.css). Loaded deferred on every page.
    window.IX = { reduced, fine, count(el, to), draw(path), spring(from, to, onStep) }
-   - .ix-panel: grid highlight follows the pointer (--ix-mx/--ix-my)
-   - [data-ix-tilt]: 3D tilt, max 5deg (or the attribute's number), fine pointers only
    - [data-ix-count]: set the attribute to a new number and the text counts to it
    - [data-ix-draw]: SVG path/line draws itself when its "d"/"points" changes, or once in view if value is "in"
    Everything is off under prefers-reduced-motion (states change instantly). */
@@ -68,25 +66,4 @@
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); IX.draw(e.target); } }); }, { threshold: .4 });
     document.querySelectorAll('[data-ix-draw="in"]').forEach(function (p) { io.observe(p); });
   }
-
-  // pointer: grid highlight + tilt, one delegated listener, one frame per move
-  if (IX.reduced || !IX.fine) return;
-  var cur = null, tilt = null, ev = null, queued = false;
-  function leave(el) { if (!el) return; el.classList.remove("is-lit", "is-tilting"); el.style.setProperty("--ix-rx", "0deg"); el.style.setProperty("--ix-ry", "0deg"); }
-  function frame() {
-    queued = false; if (!ev) return;
-    var t = ev.target.closest ? ev.target : null;
-    var panel = t && t.closest(".ix-panel"), tl = t && t.closest("[data-ix-tilt]");
-    if (panel !== cur) { if (cur) cur.classList.remove("is-lit"); cur = panel; }
-    if (tl !== tilt) { leave(tilt); tilt = tl; }
-    if (panel) { var r = panel.getBoundingClientRect(); panel.style.setProperty("--ix-mx", (ev.clientX - r.left) + "px"); panel.style.setProperty("--ix-my", (ev.clientY - r.top) + "px"); panel.classList.add("is-lit"); }
-    if (tl) {
-      var b = tl.getBoundingClientRect(), max = Math.min(5, parseFloat(tl.getAttribute("data-ix-tilt")) || 5);
-      var nx = (ev.clientX - b.left) / b.width - .5, ny = (ev.clientY - b.top) / b.height - .5;
-      tl.classList.add("is-tilting");
-      tl.style.setProperty("--ix-ry", (nx * 2 * max).toFixed(2) + "deg"); tl.style.setProperty("--ix-rx", (-ny * 2 * max).toFixed(2) + "deg");
-    }
-  }
-  document.addEventListener("pointermove", function (e) { if (e.pointerType !== "mouse") return; ev = e; if (!queued) { queued = true; requestAnimationFrame(frame); } }, { passive: true });
-  document.addEventListener("pointerleave", function () { if (cur) cur.classList.remove("is-lit"); leave(tilt); cur = tilt = null; });
 })();

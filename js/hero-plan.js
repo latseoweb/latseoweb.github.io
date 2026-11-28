@@ -184,8 +184,8 @@
     var plot = gsc.querySelector(".gsc__plot");
     var css = getComputedStyle(document.documentElement);
     function col(name, fb) { return new T.Color((css.getPropertyValue(name) || fb).trim() || fb); }
-    var NIGHT = col("--ix-night", "#10243A"), LINE = col("--ix-line", "#93B4D3"), MARK = col("--ix-marker", "#FFC65C"),
-        INK = col("--ix-ink-on", "#EEF3F8");
+    var NIGHT = col("--ix-night", "#F4F6F5"), LINE = col("--ix-line", "#B7C0BB"), MARK = col("--ix-marker", "#D99A2B"),
+        INK = col("--ix-ink-on", "#121614");
 
     var canvas = document.createElement("canvas");
     canvas.className = "hero__gl"; canvas.setAttribute("aria-hidden", "true");
@@ -217,22 +217,19 @@
 
     // layer 1 (body): edges, weekly ribs across the depth, drop lines to the floor
     var body = new T.Group(); xray.add(body);
-    body.add(new T.Mesh(geo, new T.MeshBasicMaterial({ color: LINE, transparent: true, opacity: .07, depthWrite: false })));
-    body.add(new T.LineSegments(new T.EdgesGeometry(geo, 25), new T.LineBasicMaterial({ color: LINE, transparent: true, opacity: .55 })));
+    body.add(new T.Mesh(geo, new T.MeshBasicMaterial({ color: LINE, transparent: true, opacity: .3, depthWrite: false })));
+    body.add(new T.LineSegments(new T.EdgesGeometry(geo, 25), new T.LineBasicMaterial({ color: INK, transparent: true, opacity: .45 })));
     var ribs = [], drops = [];
     pts.forEach(function (p) { ribs.push(v3(p, ZF), v3(p, -ZF)); drops.push(v3(p, -ZF), new T.Vector3(p.x, 0, -ZF)); });
-    body.add(lines(ribs, LINE, .5), lines(drops, LINE, .18));
+    body.add(lines(ribs, LINE, 1), lines(drops, LINE, .6));
 
     // layer 2 (skin, lifts off while the line is dragged): the surface the visitor sees, in ink, its back edge faint
     var skin = new T.Group(); xray.add(skin);
     skin.add(strip(top.map(function (p) { return v3(p, ZF); }), INK, 1), strip(top.map(function (p) { return v3(p, -ZF); }), INK, .3));
 
-    // layer 3 (floor, drops away while dragging): grid and weekly ticks in amber
+    // layer 3 (floor, drops away while dragging): weekly ticks in amber (no grid)
     var floor = new T.Group(); xray.add(floor);
-    var g = [], step = L / (n - 1);
-    for (var i = 0; i < n; i += 4) g.push(new T.Vector3(-L / 2 + i * step, 0, -ZF - .5), new T.Vector3(-L / 2 + i * step, 0, ZF));
-    for (var k = 0; k <= 3; k++) { var z = -ZF - .5 + k * (Z + .5) / 3; g.push(new T.Vector3(-L / 2, 0, z), new T.Vector3(L / 2, 0, z)); }
-    floor.add(lines(g, LINE, .22));
+    var step = L / (n - 1);
     var ticks = [];
     pts.forEach(function (p, i) { ticks.push(new T.Vector3(p.x, 0, -ZF), new T.Vector3(p.x, 0, -ZF - (i % 4 === 0 ? .45 : .2))); });
     floor.add(lines(ticks, MARK, .85));
