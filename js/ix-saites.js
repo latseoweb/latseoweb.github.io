@@ -165,9 +165,6 @@
     btns.forEach(function (b) { b.addEventListener('click', function () { build(b.getAttribute('data-mode')); }); });
     $('[data-ctl]').hidden = false;
     build('q');
-    /* kursoram sekojošs izgaismojums uz režģa */
-    net.addEventListener('pointermove', function (e) { var r = net.getBoundingClientRect(); net.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); net.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); net.classList.add('is-hot'); });
-    net.addEventListener('pointerleave', function () { net.classList.remove('is-hot'); });
   });
 
   /* 2) esošo saišu pārbaude */

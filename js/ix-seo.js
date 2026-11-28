@@ -30,18 +30,7 @@
   var FINE = window.matchMedia && matchMedia("(hover:hover) and (pointer:fine)").matches;
   var SVGNS = "http://www.w3.org/2000/svg";
   function sv(tag, attrs, parent) { var e = document.createElementNS(SVGNS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
-  function tilt(el) {
-    if (el.__ixt) return; el.__ixt = 1; el.setAttribute("data-ix-tilt", "");
-    if (window.IX && typeof window.IX.tilt === "function") { window.IX.tilt(el); return; }
-    if (RM || !FINE) return;
-    el.classList.add("ix-tl");
-    el.addEventListener("pointermove", function (e) {
-      var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      el.style.setProperty("--ix-rx", (-y * 4).toFixed(2) + "deg"); el.style.setProperty("--ix-ry", (x * 5).toFixed(2) + "deg");
-      el.style.setProperty("--ix-mx", ((x + .5) * 100).toFixed(1) + "%"); el.style.setProperty("--ix-my", ((y + .5) * 100).toFixed(1) + "%");
-    });
-    el.addEventListener("pointerleave", function () { el.style.setProperty("--ix-rx", "0deg"); el.style.setProperty("--ix-ry", "0deg"); });
-  }
+  function tilt() {}
   function countTo(el, to, fmt) {
     var from = parseFloat(el.__v || 0); el.__v = to; fmt = fmt || String;
     if (RM || from === to) { el.textContent = fmt(to); return; }
