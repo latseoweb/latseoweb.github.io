@@ -756,8 +756,8 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 /* privacy policy: text starts at the H1's left edge, like the other inner pages */
 .container.prose{max-width:calc(68ch + 2 * clamp(16px,4vw,32px));margin-left:max(0px,calc((100% - var(--max-width)) / 2));margin-right:auto}
 
-/* ix-theme: "cyanotype drafting table, lit with markers". Shared tokens + instrument primitives, loaded on every page
-   (after style.css). Text sections stay white; only instruments sit on --ix-night. Helpers live in js/ix-theme.js.
+/* ix-theme: shared tokens + instrument primitives, loaded on every page (plain light panels, no grid, no glow).
+   (after style.css). Text sections stay white; instruments sit on --ix-night (now a light neutral). Helpers live in js/ix-theme.js.
 
    Palette = dusk over water. In nature the deep blue of dusk water carries the last warm light: an ember sun low on
    the horizon and its amber reflection (warm analogous pair, ~15° and ~40° hue), set against the complementary blue
@@ -767,16 +767,20 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
    Contrast on --ix-night (WCAG): ink-on 14.1, muted-on 8.1, line 7.3, marker 10.1, mint 8.1, signal 5.1;
    night text on signal 5.1 (so active chips use night text, not white); signal on white 3.1 (UI/large only). */
 :root{
-  --ix-night:#10243A;     /* dusk water */
-  --ix-night-2:#1B3753;   /* raised surface: shallower water */
-  --ix-line:#93B4D3;      /* reflected sky: blueprint line */
-  --ix-grid:rgba(147,180,211,.16);
-  --ix-grid-hot:rgba(147,180,211,.42);
-  --ix-signal:#F2683F;    /* sunset ember */
-  --ix-marker:#FFC65C;    /* amber light */
-  --ix-mint:#86C98E;      /* young leaf / moss: pass, after */
-  --ix-ink-on:#EEF3F8;    /* moonlit white */
-  --ix-muted-on:#A9BDD0;
+  /* "plain" pass (owner: the checkered blue backgrounds read as AI slop): instruments are calm light panels.
+     Token NAMES are kept for compatibility; values are now light. No grid paper anywhere. */
+  --ix-night:#F4F6F5;     /* instrument surface: light neutral, slightly green-grey like the brand */
+  --ix-night-2:#FFFFFF;   /* raised surface (cards, inputs) */
+  --ix-line:#B7C0BB;      /* drawing / border line */
+  --ix-grid:transparent;
+  --ix-grid-hot:transparent;
+  --ix-signal:#C8502A;    /* ember: the thing you drag / warnings (UI, large text) */
+  --ix-marker:#D99A2B;    /* amber for graphics (bars, dots, rulers) */
+  --ix-marker-ink:#7A4B00;/* amber-brown for measured values as text (AA on light) */
+  --ix-hl:#FBE3B1;        /* highlighter background behind a value */
+  --ix-mint:#2E7D4F;      /* leaf green: pass / after (AA on light) */
+  --ix-ink-on:#121614;    /* text on panel */
+  --ix-muted-on:#5A6560;
   --ix-cell:24px;
   --ix-major:120px;
   --ix-spring:cubic-bezier(.34,1.56,.64,1);
@@ -786,34 +790,18 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 
 ::selection{background:var(--ix-marker);color:var(--ink)}
 
-/* ---------- panel: night + grid paper; grid lights up around the pointer (--ix-mx/--ix-my set by ix-theme.js) ---------- */
+/* ---------- panel: calm light surface, 1px border ---------- */
 .ix-panel{
-  --ix-mx:50%;--ix-my:50%;--ix-rx:0deg;--ix-ry:0deg;
   position:relative;isolation:isolate;color:var(--ix-ink-on);
-  background-color:var(--ix-night);
-  background-image:
-    linear-gradient(var(--ix-grid) 1px,transparent 1px),
-    linear-gradient(90deg,var(--ix-grid) 1px,transparent 1px),
-    linear-gradient(rgba(147,180,211,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(147,180,211,.07) 1px,transparent 1px);
-  background-size:var(--ix-major) var(--ix-major),var(--ix-major) var(--ix-major),var(--ix-cell) var(--ix-cell),var(--ix-cell) var(--ix-cell);
-  background-position:-1px -1px;
+  background:var(--ix-night);border:1px solid var(--line);
 }
-.ix-panel::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s var(--ix-out);
-  background-image:linear-gradient(var(--ix-grid-hot) 1px,transparent 1px),linear-gradient(90deg,var(--ix-grid-hot) 1px,transparent 1px);
-  background-size:var(--ix-cell) var(--ix-cell);background-position:-1px -1px;
-  -webkit-mask:radial-gradient(180px circle at var(--ix-mx) var(--ix-my),#000,transparent 70%);
-          mask:radial-gradient(180px circle at var(--ix-mx) var(--ix-my),#000,transparent 70%);
-}
-.ix-panel.is-lit::before{opacity:1}
+.ix-panel::before{content:none}
+
 .ix-panel :where(h2,h3,h4,strong){color:var(--ix-ink-on)}
 .ix-panel :where(p,li,small,figcaption){color:var(--ix-muted-on)}
 .ix-panel :where(a:not(.btn)){color:var(--ix-ink-on);text-decoration-color:var(--ix-line)}
 
-/* tilt (pointer, fine pointers only; values from ix-theme.js, max 5deg) */
-[data-ix-tilt]{transform:perspective(1100px) rotateX(var(--ix-rx,0deg)) rotateY(var(--ix-ry,0deg));transition:transform .6s var(--ix-spring);will-change:transform}
-[data-ix-tilt].is-tilting{transition:transform .12s linear}
+
 
 /* full-width night band for an instrument section; two bands in a row: the second goes white again */
 .ix-band{padding:var(--sp-2xl) 0}
@@ -822,11 +810,11 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 /* ---------- hint: one line telling what to do ---------- */
 .ix-hint{display:inline-flex;align-items:center;gap:.5rem;margin:0;font-family:var(--ff-mono);font-size:.8125rem;line-height:1.3;color:var(--muted)}
 .ix-hint::before{content:"";flex:none;width:8px;height:8px;background:var(--ix-signal)}
-.ix-panel .ix-hint{color:var(--ix-line)}
+.ix-panel .ix-hint{color:var(--ix-muted-on)}
 
 /* ---------- readout: a measured value ---------- */
-.ix-readout{font-family:var(--ff-mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink);background:linear-gradient(transparent 55%,rgba(255,198,92,.75) 55%);padding:0 .15em}
-.ix-panel .ix-readout{color:var(--ix-marker);background:none;padding:0}
+.ix-readout{font-family:var(--ff-mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink);background:linear-gradient(transparent 55%,var(--ix-hl) 55%);padding:0 .15em}
+.ix-panel .ix-readout{color:var(--ix-marker-ink);background:none;padding:0}
 .ix-readout--lg{font-size:var(--fs-2xl);line-height:1}
 
 /* ---------- chips & toggles ---------- */
@@ -839,7 +827,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 .ix-chip:hover{--c-bd:var(--ink);transform:translateY(-1px)}
 .ix-chip:active{transform:translateY(0) scale(.97)}
 .ix-chip[aria-pressed="true"],.ix-chip[aria-checked="true"],.ix-chip.is-on,input:checked+.ix-chip{--c-bg:var(--ink);--c-fg:#fff;--c-bd:var(--ink)}
-.ix-panel .ix-chip{--c-fg:var(--ix-ink-on);--c-bd:rgba(147,180,211,.45)}
+.ix-panel .ix-chip{--c-fg:var(--ix-ink-on);--c-bd:var(--line-strong)}
 .ix-panel .ix-chip:hover{--c-bd:var(--ix-line);--c-bg:var(--ix-night-2)}
 .ix-panel .ix-chip[aria-pressed="true"],.ix-panel .ix-chip[aria-checked="true"],.ix-panel .ix-chip.is-on,.ix-panel input:checked+.ix-chip{--c-bg:var(--ix-signal);--c-fg:var(--ix-night);--c-bd:var(--ix-signal)}
 .ix-chip--pass[aria-pressed="true"],.ix-chip--pass.is-on{--c-bg:var(--ix-mint);--c-fg:var(--ix-night);--c-bd:var(--ix-mint)}
@@ -848,7 +836,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 .ix-toggle::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;background:#fff;transition:transform .45s var(--ix-spring)}
 .ix-toggle[aria-checked="true"],.ix-toggle[aria-pressed="true"],input:checked+.ix-toggle{background:var(--ix-signal)}
 .ix-toggle[aria-checked="true"]::after,.ix-toggle[aria-pressed="true"]::after,input:checked+.ix-toggle::after{transform:translateX(20px)}
-.ix-panel .ix-toggle{background:var(--ix-night-2);box-shadow:inset 0 0 0 1px rgba(147,180,211,.45)}
+.ix-panel .ix-toggle{background:var(--ix-night-2);box-shadow:inset 0 0 0 1px var(--line-strong)}
 .ix-panel .ix-toggle[aria-checked="true"],.ix-panel .ix-toggle[aria-pressed="true"],.ix-panel input:checked+.ix-toggle{background:var(--ix-signal);box-shadow:none}
 
 /* range inputs inside instruments */
@@ -872,7 +860,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 .btn:active{transform:translateY(0) scale(.98);transition-duration:.08s}
 .btn--primary:hover{box-shadow:inset 0 -3px 0 var(--ix-signal)}
 .btn--ghost:hover,.btn--secondary:hover{box-shadow:inset 0 -3px 0 var(--ix-marker)}
-.ix-panel .btn--ghost,.ix-panel .btn--secondary{color:var(--ix-ink-on);border-color:rgba(147,180,211,.45)}
+.ix-panel .btn--ghost,.ix-panel .btn--secondary{color:var(--ix-ink-on);border-color:var(--line-strong)}
 .ix-panel .btn--ghost:hover,.ix-panel .btn--secondary:hover{border-color:var(--ix-line)}
 
 /* header: active page marked with a signal-orange bar; hover draws the bar in */
@@ -887,20 +875,13 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent)}
 /* in-text links: marker underline on hover */
 main p a:not(.btn):hover,main li a:not(.btn):hover{text-decoration-color:var(--ix-signal)}
 
-/* ---------- reduced motion: no tilt, no springs, instant states ---------- */
+/* ---------- reduced motion: no springs, instant states ---------- */
 @media (prefers-reduced-motion:reduce){
-  [data-ix-tilt]{transform:none!important;transition:none}
-  .ix-panel::before{display:none}
   .ix-chip,.ix-toggle,.ix-toggle::after,.btn,[data-ix-draw],.header__nav-link::after{transition:none!important}
   .btn:hover,.ix-chip:hover{transform:none}
 }
-@media (hover:none){[data-ix-tilt]{transform:none}.ix-panel::before{display:none}}
 
-/* ---------- dark bands (.section--ink / --dark from style.css) take the dusk night, not near-black ----------
-   Text tokens follow (ink-on 14.1:1, muted-on 8.1:1 on night). Instruments inside keep their own line frame. */
-.section--ink,.section--dark{--on-ink:var(--ix-ink-on);--on-ink-muted:var(--ix-muted-on);background:var(--ix-night);color:var(--ix-muted-on)}
-.section--ink .checklist li::before{background-color:var(--ix-night-2)}
-.section--ink .steps li::before{color:var(--ix-mint)}
-.section--ink :is(.btn--ghost,.btn--secondary){color:var(--ix-ink-on);border-color:rgba(147,180,211,.55)}
-.section--ink :is(.btn--ghost,.btn--secondary):hover{border-color:var(--ix-line);background:var(--ix-night-2)}
 .section--ink a:not(.btn){text-decoration-color:var(--ix-line)}
+
+/* plain pass: no grid paper on drawing sheets (style.css .sheet uses an SVG grid) */
+.sheet{background:var(--ix-night)}
