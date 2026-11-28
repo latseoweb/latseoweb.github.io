@@ -1,15 +1,10 @@
 /* Portfolio cards as device frames (js/ix-portfolio.js): hover / horizontal drag zooms and pans the screenshot
-   inside the frame; the "Rasējums" toggle sweeps an x-ray over it: night grid, marker-yellow element boxes, signal scan line.
+   inside the frame; the "Rasējums" toggle sweeps a light paper drawing over it: ink outlines, amber element boxes, signal scan line (no grid).
    Tokens come from css/ix-theme.css (fallbacks inline so this file works alone). */
-.pf{position:relative;min-width:0;perspective:1100px;container-type:inline-size}
-.pf__frame{display:block;position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--ix-night,#10243A);border-top:16px solid var(--ix-night,#10243A);outline:1px solid var(--ix-night,#10243A);outline-offset:-1px;touch-action:pan-y;cursor:zoom-in;
-  box-shadow:0 1px 0 rgba(11,31,51,.12),0 6px 14px -6px rgba(11,31,51,.28),0 22px 36px -22px rgba(11,31,51,.45);
-  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
-/* window dots in the night bar */
-.pf__frame::before{content:"";position:absolute;z-index:3;left:6px;top:-11px;width:5px;height:5px;background:var(--ix-signal,#F2683F);box-shadow:9px 0 var(--ix-marker,#FFC65C),18px 0 var(--ix-mint,#86C98E);pointer-events:none}
-/* specular sheen that follows the pointer */
-.pf__frame::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,30%),rgba(255,255,255,.16),rgba(255,255,255,0) 46%)}
-.pf.is-zoom .pf__frame::after{opacity:1}
+.pf{position:relative;min-width:0;container-type:inline-size}
+.pf__frame{display:block;position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--ix-night,#F4F6F5);border-top:16px solid var(--ix-night,#F4F6F5);outline:1px solid var(--line);outline-offset:-1px;touch-action:pan-y;cursor:zoom-in}
+/* window dots in the title bar */
+.pf__frame::before{content:"";position:absolute;z-index:3;left:6px;top:-11px;width:5px;height:5px;background:var(--ix-line,#B7C0BB);box-shadow:9px 0 var(--ix-line,#B7C0BB),18px 0 var(--ix-line,#B7C0BB);pointer-events:none}
 .pf__stage{display:block;position:absolute;inset:0;transform-origin:var(--ox,50%) var(--oy,0%);transition:transform .3s var(--ease,ease)}
 .pf.is-js .pf__stage{transform:scale(var(--zs,1));transition:none;will-change:transform}
 .pf__frame img,.shot .pf__frame img{width:100%;height:100%;aspect-ratio:auto;outline:0;object-fit:cover;object-position:top;transition:filter .5s}
@@ -19,19 +14,19 @@
 
 /* x-ray: wiped in from the left behind a signal scan line */
 .pf__bp{display:block;position:absolute;inset:0;pointer-events:none;clip-path:inset(0 100% 0 0);transition:clip-path .75s cubic-bezier(.65,0,.35,1);
-  background:linear-gradient(var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--ix-grid,rgba(147,180,211,.16)) 1px,transparent 1px) 0 0/24px 24px,rgba(11,31,51,.82)}
+  background:var(--ix-night,#F4F6F5)}
 .pf.is-bp .pf__bp{clip-path:inset(0 0 0 0)}
-.pf.is-bp img{filter:grayscale(1) brightness(.75) contrast(1.15)}
-.pf__scan{position:absolute;top:0;bottom:0;left:0;width:0;z-index:2;pointer-events:none;opacity:0;border-left:2px solid var(--ix-signal,#F2683F);transition:left .75s cubic-bezier(.65,0,.35,1),opacity .15s}
+.pf.is-bp img{filter:grayscale(1) contrast(.8) brightness(1.15);opacity:.35}
+.pf__scan{position:absolute;top:0;bottom:0;left:0;width:0;z-index:2;pointer-events:none;opacity:0;border-left:2px solid var(--ix-signal,#C8502A);transition:left .75s cubic-bezier(.65,0,.35,1),opacity .15s}
 .pf.is-bp .pf__scan{left:100%}
 .pf.is-scan .pf__scan{opacity:1}
-.pf__box{position:absolute;border:1px dashed var(--ix-marker,#FFC65C);background:rgba(255,198,92,.07)}
-.pf__note{position:absolute;left:-1px;top:-1px;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.75rem;line-height:1.2;color:var(--ix-night,#10243A);background:var(--ix-marker,#FFC65C);padding:.1rem .35rem;white-space:nowrap}
-.pf__dim{position:absolute;left:3%;right:3%;height:0;border-top:1px solid var(--ix-signal,#F2683F)}
-.pf__dim::before,.pf__dim::after{content:"";position:absolute;top:-6px;height:12px;border-left:1px solid var(--ix-signal,#F2683F)}
+.pf__box{position:absolute;border:1px dashed var(--ix-marker-ink,#7A4B00);background:transparent}
+.pf__note{position:absolute;left:-1px;top:-1px;font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.75rem;line-height:1.2;color:var(--ix-ink-on,#121614);background:var(--ix-hl,#FBE3B1);padding:.1rem .35rem;white-space:nowrap}
+.pf__dim{position:absolute;left:3%;right:3%;height:0;border-top:1px solid var(--ix-signal,#C8502A)}
+.pf__dim::before,.pf__dim::after{content:"";position:absolute;top:-6px;height:12px;border-left:1px solid var(--ix-signal,#C8502A)}
 .pf__dim::before{left:0}
 .pf__dim::after{right:0}
-.pf__dim span{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.75rem;line-height:1.2;color:var(--ix-ink-on,#EEF3F8);background:var(--ix-night,#10243A);padding:0 .35rem;white-space:nowrap}
+.pf__dim span{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);font-family:var(--ff-mono,"IBM Plex Mono",monospace);font-size:.75rem;line-height:1.2;color:var(--ix-ink-on,#121614);background:var(--ix-night,#F4F6F5);padding:0 .35rem;white-space:nowrap}
 /* boxes draw themselves once the sweep passes */
 .pf.is-bp .pf__box{animation:ix-pf-box .5s .3s cubic-bezier(.2,.8,.2,1) backwards}
 .pf.is-bp .pf__box:nth-child(2){animation-delay:.45s}
@@ -41,11 +36,10 @@
 @keyframes ix-pf-dim{from{clip-path:inset(-8px 50% -8px 50%)}to{clip-path:inset(-8px 0 -8px 0)}}
 
 /* the toggle sits in the bottom-right corner of the screenshot (frame height = 62.5cqw), clear of the width dimension under the nav */
-.pf__btn{position:absolute;top:calc(62.5cqw - 40px - .5rem);right:.5rem;z-index:4;min-height:40px;padding:0 .7rem 0 1.6rem;font-family:var(--ff-mono);font-size:.75rem;font-weight:500;color:var(--ix-ink-on,#EEF3F8);background:rgba(16,36,58,.88);border:1px solid rgba(147,180,211,.6);box-shadow:0 6px 14px -8px rgba(0,0,0,.6);cursor:pointer;transition:background .2s,color .2s}
-.pf__btn::before{content:"";position:absolute;left:.7rem;top:50%;width:7px;height:7px;margin-top:-3.5px;border:1px solid var(--ix-line,#93B4D3)}
-.pf__btn:hover{background:var(--ix-night-2,#1B3753)}
-.pf__btn[aria-pressed="true"]{color:var(--ix-night,#10243A);background:var(--ix-signal,#F2683F);border-color:var(--ix-signal,#F2683F)}
-.pf__btn[aria-pressed="true"]::before{background:var(--ix-night,#10243A);border-color:var(--ix-night,#10243A)}
+.pf__btn{position:absolute;top:calc(62.5cqw - 40px - .5rem);right:.5rem;z-index:4;min-height:40px;padding:0 .7rem 0 1.6rem;font-family:var(--ff-mono);font-size:.75rem;font-weight:500;color:var(--ix-ink-on,#121614);background:var(--ix-night-2,#fff);border:1px solid var(--line-strong);cursor:pointer;transition:background .2s,color .2s}
+.pf__btn::before{content:"";position:absolute;left:.7rem;top:50%;width:7px;height:7px;margin-top:-3.5px;border:1px solid var(--ix-ink-on,#121614)}
+.pf__btn:hover{border-color:var(--ix-ink-on,#121614)}
+.pf__btn[aria-pressed="true"]{color:#fff;background:var(--ix-signal,#C8502A);border-color:var(--ix-signal,#C8502A)}
+.pf__btn[aria-pressed="true"]::before{background:#fff;border-color:#fff}
 .pf__btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-@media (hover:none),(max-width:700px){.pf{perspective:none}.pf__frame{transform:none!important;will-change:auto}}
-@media (prefers-reduced-motion:reduce){.pf__stage,.pf__bp,.pf__scan{transition:none}.pf__frame{transform:none!important}.pf.is-bp .pf__box,.pf.is-bp .pf__dim{animation:none}}
+@media (prefers-reduced-motion:reduce){.pf__stage,.pf__bp,.pf__scan{transition:none}.pf.is-bp .pf__box,.pf.is-bp .pf__dim{animation:none}}
