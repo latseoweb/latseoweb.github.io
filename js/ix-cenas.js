@@ -17,16 +17,6 @@
   if (!rows.length || !panel) return;
 
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
-  function lift(el, max) {
-    if (window.IX || reduce || !fine || !el) return;
-    el.addEventListener('pointermove', function (e) {
-      var b = el.getBoundingClientRect(), px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
-      el.style.setProperty('--mx', (px * 100) + '%'); el.style.setProperty('--my', (py * 100) + '%');
-      if (max) { el.style.setProperty('--ix-rx', ((px - .5) * max * 2).toFixed(2) + 'deg'); el.style.setProperty('--ix-ry', ((.5 - py) * max * 2).toFixed(2) + 'deg'); }
-    });
-    el.addEventListener('pointerleave', function () { el.style.setProperty('--ix-rx', '0deg'); el.style.setProperty('--ix-ry', '0deg'); });
-  }
   /* summas skaitļi saskaitās līdz jaunajai vērtībai (pēc dt iezīmes) */
   function countDd(dl) {
     var memo = dl._memo = dl._memo || {};
@@ -196,7 +186,6 @@
 
   panel.hidden = false; draw();
   var hn = document.querySelector('.ix-pick-hint'); if (hn) hn.hidden = false;
-  lift(panel, 0);
 
   /* ---- "Kas ietekme cenu" ---- */
   var f = document.getElementById('ix-f');
@@ -229,7 +218,6 @@
   });
   if (data['pkg-card']) fs = ['pkg-card']; /* sāk ar vienu ieslēgtu faktoru, lai uzreiz redz, kā tas darbojas */
   f.hidden = false; fdraw();
-  lift(f, 2);
   /* faktora poga: pop-animācija */
   f.addEventListener('click', function (e) {
     var b = e.target.closest('.ix-f__btn'); if (!b || reduce) return;

@@ -14,18 +14,6 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
 
-  /* tilt + kursora gaisma uz tumšā paneļa (ja kopējais window.IX nav ielādēts) */
-  function lift(el, max) {
-    if (window.IX || reduce || !fine || !el) return;
-    el.addEventListener('pointermove', function (e) {
-      var b = el.getBoundingClientRect(), px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
-      el.style.setProperty('--mx', (px * 100) + '%'); el.style.setProperty('--my', (py * 100) + '%');
-      el.style.setProperty('--ix-rx', ((px - .5) * max * 2).toFixed(2) + 'deg');
-      el.style.setProperty('--ix-ry', ((.5 - py) * max * 2).toFixed(2) + 'deg');
-    });
-    el.addEventListener('pointerleave', function () { el.style.setProperty('--ix-rx', '0deg'); el.style.setProperty('--ix-ry', '0deg'); });
-  }
-
   /* skaitlis, kas saskaitās līdz vērtībai: "no 1 299 €" -> animē tikai ciparus */
   function countText(el, str) {
     var re = /\d[\d\s\u00a0\u202f,]*\d|\d/;
@@ -413,7 +401,6 @@
     });
     root.hidden = false;
     show(0); first = false;
-    lift(root.querySelector('.pick__body'), 3);
   }
 
   var xr = document.querySelector('[data-xray]');

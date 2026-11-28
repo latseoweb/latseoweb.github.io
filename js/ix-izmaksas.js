@@ -18,7 +18,6 @@
   if (!table) return;
   var started = false;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
 
   /* skaitlis saskaitās līdz jaunajai vērtībai */
   function tween(el, to, fmt, pre) {
@@ -132,15 +131,6 @@
     });
     outA = root.querySelector('[data-a]'); outY = root.querySelector('[data-y]');
     root.classList.add('ix-panel');
-    root.setAttribute('data-ix-tilt', '');
-    if (!window.IX && !reduce && fine) {
-      root.addEventListener('pointermove', function (e) {
-        var b = root.getBoundingClientRect(), px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
-        root.style.setProperty('--mx', (px * 100) + '%'); root.style.setProperty('--my', (py * 100) + '%');
-        root.style.setProperty('--ix-rx', ((px - .5) * 5).toFixed(2) + 'deg'); root.style.setProperty('--ix-ry', ((.5 - py) * 5).toFixed(2) + 'deg');
-      });
-      root.addEventListener('pointerleave', function () { root.style.setProperty('--ix-rx', '0deg'); root.style.setProperty('--ix-ry', '0deg'); });
-    }
     update();
   }
 
