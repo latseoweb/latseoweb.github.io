@@ -72,17 +72,50 @@ def bust_assets(html):
 # Instrument stylesheets (css/ix-*.css) style lazily-initialised sections below the fold, so they must not
 # block first render (mobile LCP). ix-theme.css (global accents) and ix-hero.css (hero layout, above the fold)
 # stay render-blocking; every other ix-* sheet is loaded with the preload/onload swap + <noscript> fallback.
-IX_BLOCKING = ("ix-theme.css", "ix-hero.css")
+
+
+CSS_BUNDLES = {  # generated at build time; one render-blocking request instead of two/three
+    "css/bundle-core.css": ("css/style.css", "css/ix-theme.css"),
+    "css/bundle-hero.css": ("css/style.css", "css/ix-theme.css", "css/ix-hero.css"),
+}
+
+
+def write_css_bundles():
+    for out, parts in CSS_BUNDLES.items():
+        data = "\n".join((ROOT / p).read_text(encoding="utf-8") for p in parts)
+        (ROOT / out).write_text(data, encoding="utf-8")
+        ASSET_V.pop(out, None)
+
+
+IX_JS_LOADER = ("<script>(function(){var s=%s;function go(){s.forEach(function(u){var e=document.createElement('script');"
+                "e.src=u;e.async=false;document.body.appendChild(e);});}"
+                "function idle(){(window.requestIdleCallback||setTimeout)(go,{timeout:1500});}"
+                "if(document.readyState==='complete')idle();else addEventListener('load',idle);})();</script>")
 
 
 def defer_ix_css(html):
-    def sub(m):
+    """Performance for mobile LCP (Lighthouse simulation):
+    - style.css + ix-theme.css (+ ix-hero.css on the hero page) are served as ONE blocking bundle;
+    - other css/ix-*.css load non-blocking via the media=print swap (+ <noscript>);
+    - js/ix-*.js (instrument scripts, below the fold) are injected in order after window load / idle
+      instead of as defer tags, so they are not on the LCP path. hero-plan.js stays defer."""
+    hero = '/css/ix-hero.css' in html
+    bundle = "css/bundle-hero.css" if hero else "css/bundle-core.css"
+    html = re.sub(r'\s*<link rel="stylesheet" href="/css/(?:ix-theme|ix-hero)\.css[^"]*">', "", html)
+    html = re.sub(r'<link rel="stylesheet" href="/css/style\.css[^"]*">',
+                  f'<link rel="stylesheet" href="/{bundle}?v={asset_v(bundle)}">', html, count=1)
+
+    def css(m):
         href = m.group(1)
-        if any(b in href for b in IX_BLOCKING):
-            return m.group(0)
-        return (f'<link rel="preload" href="{href}" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
+        return (f'<link rel="stylesheet" href="{href}" media="print" onload="this.media=\'all\'">'
                 f'<noscript><link rel="stylesheet" href="{href}"></noscript>')
-    return re.sub(r'<link rel="stylesheet" href="(/css/ix-[\w.-]+\.css[^"]*)">', sub, html)
+    html = re.sub(r'<link rel="stylesheet" href="(/css/ix-[\w.-]+\.css[^"]*)">', css, html)
+
+    srcs = re.findall(r'<script src="(/js/ix-[\w.-]+\.js[^"]*)" defer></script>', html)
+    if srcs:
+        html = re.sub(r'<script src="/js/ix-[\w.-]+\.js[^"]*" defer></script>', "", html)
+        html = html.replace("</body>", IX_JS_LOADER % json.dumps(srcs) + "\n</body>", 1)
+    return html
 ARROW = ''  # no decorative arrows on buttons/links; {{arrow}} in old sources renders as nothing
 
 ORG = {
@@ -1003,6 +1036,7 @@ def write_sitemap():
 
 
 def main():
+    write_css_bundles()
     built = write_redirects()
     for lang, base in (("lv", SRC), ("en", SRC / "en")):
         for src in sorted((base / "pages").glob("*.html")):
