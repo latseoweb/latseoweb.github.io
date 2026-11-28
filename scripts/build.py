@@ -67,6 +67,22 @@ def bust_assets(html):
         v = asset_v(m.group(2).lstrip("/"))
         return f'{m.group(1)}="{m.group(2)}?v={v}"' if v else m.group(0)
     return re.sub(r'(href|src)="(/(?:css|js)/[\w./-]+\.(?:css|js))"', sub, html)
+
+
+# Instrument stylesheets (css/ix-*.css) style lazily-initialised sections below the fold, so they must not
+# block first render (mobile LCP). ix-theme.css (global accents) and ix-hero.css (hero layout, above the fold)
+# stay render-blocking; every other ix-* sheet is loaded with the preload/onload swap + <noscript> fallback.
+IX_BLOCKING = ("ix-theme.css", "ix-hero.css")
+
+
+def defer_ix_css(html):
+    def sub(m):
+        href = m.group(1)
+        if any(b in href for b in IX_BLOCKING):
+            return m.group(0)
+        return (f'<link rel="preload" href="{href}" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
+                f'<noscript><link rel="stylesheet" href="{href}"></noscript>')
+    return re.sub(r'<link rel="stylesheet" href="(/css/ix-[\w.-]+\.css[^"]*)">', sub, html)
 ARROW = ''  # no decorative arrows on buttons/links; {{arrow}} in old sources renders as nothing
 
 ORG = {
@@ -833,7 +849,7 @@ def render(meta, schema_extra=()):
     scripts = (f'<script src="/js/main.js?v={ASSET_V["js/main.js"]}" defer></script>'
                '<script src="/js/ix-theme.js" defer></script>' + meta.get("scripts", ""))
     page = head(meta, graph) + hdr + '\n<main id="main-content">\n' + body.strip() + "\n</main>\n" + footer(lang) + "\n" + scripts + "\n</body>\n</html>\n"
-    page = bust_assets(page)
+    page = defer_ix_css(bust_assets(page))
     f = out_file(path)
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(page, encoding="utf-8")
